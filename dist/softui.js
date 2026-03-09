@@ -2803,6 +2803,40 @@ const SoftUI = (() => {
 
     // ── Drop Zone ──
     document.querySelectorAll('.sui-dropzone').forEach(function(zone) {
+      // Click-to-upload: create hidden file input
+      var fileInput = document.createElement('input');
+      fileInput.type = 'file';
+      fileInput.multiple = true;
+      fileInput.style.display = 'none';
+      zone.appendChild(fileInput);
+
+      zone.addEventListener('click', function(e) {
+        if (e.target.closest('.sui-dropzone-file-remove')) return;
+        fileInput.click();
+      });
+
+      fileInput.addEventListener('change', function() {
+        var files = fileInput.files;
+        if (!files.length) return;
+        var fileList = zone.querySelector('.sui-dropzone-files');
+        if (!fileList) {
+          fileList = document.createElement('div');
+          fileList.className = 'sui-dropzone-files';
+          zone.appendChild(fileList);
+        }
+        Array.prototype.slice.call(files).forEach(function(file) {
+          var item = document.createElement('div');
+          item.className = 'sui-dropzone-file';
+          item.innerHTML = '<span>' + file.name + '</span><button class="sui-dropzone-file-remove" type="button">&times;</button>';
+          item.querySelector('.sui-dropzone-file-remove').addEventListener('click', function(ev) {
+            ev.stopPropagation();
+            item.remove();
+          });
+          fileList.appendChild(item);
+        });
+        fileInput.value = '';
+      });
+
       zone.addEventListener('dragover', function(e) {
         e.preventDefault();
         e.dataTransfer.dropEffect = 'copy';
