@@ -6,6 +6,12 @@ A neumorphic CSS component library with soft shadows, muted palettes, and tactil
 
 ```bash
 npm install softui-css
+# or
+yarn add softui-css
+# or
+pnpm add softui-css
+# or
+bun add softui-css
 ```
 
 ### CDN
