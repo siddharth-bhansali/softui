@@ -154,3 +154,7 @@ backup/
 
 # Demo
 demo/
+
+# Internal docs
+TASKS.md
+PROJECT.md

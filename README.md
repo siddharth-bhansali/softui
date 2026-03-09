@@ -5,14 +5,14 @@ A neumorphic CSS component library with soft shadows, muted palettes, and tactil
 ## Install
 
 ```bash
-npm install softui
+npm install softui-css
 ```
 
 ### CDN
 
 ```html
-<link rel="stylesheet" href="https://unpkg.com/softui/dist/softui.min.css">
-<script src="https://unpkg.com/softui/dist/softui.min.js"></script>
+<link rel="stylesheet" href="https://unpkg.com/softui-css/dist/softui.min.css">
+<script src="https://unpkg.com/softui-css/dist/softui.min.js"></script>
 ```
 
 ### Manual
