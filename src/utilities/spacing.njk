@@ -1,0 +1,85 @@
+---
+layout: component.njk
+title: Spacing
+description: Padding and margin utility classes from 0 (none) to 5 (48px), with directional margin variants.
+componentId: spacing
+hasControls: false
+toc:
+  - Padding Scale
+  - Margin Classes
+---
+
+<!-- Padding Scale -->
+<div class="pg-section" id="section-1">
+  <h3 class="pg-section-title">Padding Scale</h3>
+  <div class="pg-section-grid">
+    <div style="text-align:center;">
+      <div class="sui-raised sui-p-0" style="width:72px;height:72px;border-radius:12px;margin:0 auto 8px;display:flex;align-items:center;justify-content:center;">
+        <div style="background:var(--sui-primary);opacity:0.2;width:100%;height:100%;border-radius:inherit;"></div>
+      </div>
+      <small>sui-p-0 (0)</small>
+    </div>
+    <div style="text-align:center;">
+      <div class="sui-raised sui-p-1" style="width:72px;height:72px;border-radius:12px;margin:0 auto 8px;display:flex;align-items:stretch;justify-content:stretch;">
+        <div style="background:var(--sui-primary);opacity:0.2;width:100%;border-radius:4px;"></div>
+      </div>
+      <small>sui-p-1 (4px)</small>
+    </div>
+    <div style="text-align:center;">
+      <div class="sui-raised sui-p-2" style="width:72px;height:72px;border-radius:12px;margin:0 auto 8px;display:flex;align-items:stretch;justify-content:stretch;">
+        <div style="background:var(--sui-primary);opacity:0.2;width:100%;border-radius:4px;"></div>
+      </div>
+      <small>sui-p-2 (8px)</small>
+    </div>
+    <div style="text-align:center;">
+      <div class="sui-raised sui-p-3" style="width:72px;height:72px;border-radius:12px;margin:0 auto 8px;display:flex;align-items:stretch;justify-content:stretch;">
+        <div style="background:var(--sui-primary);opacity:0.2;width:100%;border-radius:4px;"></div>
+      </div>
+      <small>sui-p-3 (16px)</small>
+    </div>
+    <div style="text-align:center;">
+      <div class="sui-raised sui-p-4" style="width:72px;height:72px;border-radius:12px;margin:0 auto 8px;display:flex;align-items:stretch;justify-content:stretch;">
+        <div style="background:var(--sui-primary);opacity:0.2;width:100%;border-radius:4px;"></div>
+      </div>
+      <small>sui-p-4 (24px)</small>
+    </div>
+    <div style="text-align:center;">
+      <div class="sui-raised sui-p-5" style="width:72px;height:72px;border-radius:12px;margin:0 auto 8px;display:flex;align-items:stretch;justify-content:stretch;">
+        <div style="background:var(--sui-primary);opacity:0.2;width:100%;border-radius:4px;"></div>
+      </div>
+      <small>sui-p-5 (48px)</small>
+    </div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;!-- Padding scale: 0=0, 1=4px, 2=8px, 3=16px, 4=24px, 5=48px --&gt;
+&lt;div class="sui-p-0"&gt;...&lt;/div&gt;
+&lt;div class="sui-p-1"&gt;...&lt;/div&gt;
+&lt;div class="sui-p-2"&gt;...&lt;/div&gt;
+&lt;div class="sui-p-3"&gt;...&lt;/div&gt;
+&lt;div class="sui-p-4"&gt;...&lt;/div&gt;
+&lt;div class="sui-p-5"&gt;...&lt;/div&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Margin Classes -->
+<div class="pg-section" id="section-2">
+  <h3 class="pg-section-title">Margin Classes</h3>
+  <div class="pg-section-row">
+    <div class="sui-raised" style="border-radius:12px;padding:20px;display:flex;flex-wrap:wrap;gap:8px;">
+      <code>sui-m-{0-5}</code>
+      <code>sui-mt-{0-5}</code>
+      <code>sui-mb-{0-5}</code>
+      <code>sui-ml-{0-5}</code>
+      <code>sui-mr-{0-5}</code>
+    </div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-mt-3"&gt;Margin top 16px&lt;/div&gt;
+&lt;div class="sui-mb-2"&gt;Margin bottom 8px&lt;/div&gt;
+&lt;div class="sui-ml-4"&gt;Margin left 24px&lt;/div&gt;
+&lt;div class="sui-mr-1"&gt;Margin right 4px&lt;/div&gt;
+&lt;div class="sui-m-5"&gt;Margin all sides 48px&lt;/div&gt;</pre></div>
+  </div>
+</div>

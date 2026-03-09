@@ -1,0 +1,15 @@
+module.exports = function(eleventyConfig) {
+  // Pass through static assets
+  eleventyConfig.addPassthroughCopy("src/softui.css");
+  eleventyConfig.addPassthroughCopy("src/softui.js");
+  eleventyConfig.addPassthroughCopy("src/css");
+
+  return {
+    dir: {
+      input: "src",
+      output: "_site",
+      includes: "_includes",
+      data: "_data"
+    }
+  };
+};

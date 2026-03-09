@@ -1,0 +1,202 @@
+---
+layout: component.njk
+title: Toggles & Checks
+description: Switches, checkboxes, and radio buttons with neumorphic styling.
+componentId: toggles
+hasControls: true
+toc:
+  - Toggles
+  - Toggle Sizes
+  - Toggle Colors
+  - Checkboxes
+  - Checkbox Colors
+  - Radio Buttons
+---
+
+<div class="pg-preview-box" id="pgPreview"></div>
+<div class="pg-code-box"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre id="pgCode"></pre></div>
+
+<!-- Toggles -->
+<div class="pg-section">
+  <h3 class="pg-section-title">Toggles</h3>
+  <div class="pg-section-row">
+    <label class="sui-toggle"><input type="checkbox" checked><span class="sui-toggle-slider"></span></label>
+    <label class="sui-toggle"><input type="checkbox"><span class="sui-toggle-slider"></span></label>
+    <label class="sui-toggle"><input type="checkbox" disabled><span class="sui-toggle-slider"></span></label>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;label class="sui-toggle"&gt;&lt;input type="checkbox" checked&gt;&lt;span class="sui-toggle-slider"&gt;&lt;/span&gt;&lt;/label&gt;
+&lt;label class="sui-toggle"&gt;&lt;input type="checkbox"&gt;&lt;span class="sui-toggle-slider"&gt;&lt;/span&gt;&lt;/label&gt;
+&lt;label class="sui-toggle"&gt;&lt;input type="checkbox" disabled&gt;&lt;span class="sui-toggle-slider"&gt;&lt;/span&gt;&lt;/label&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Toggle Sizes -->
+<div class="pg-section">
+  <h3 class="pg-section-title">Toggle Sizes</h3>
+  <div class="pg-section-row">
+    <label class="sui-toggle sui-toggle-sm sui-toggle-primary"><input type="checkbox" checked><span class="sui-toggle-slider"></span></label>
+    <label class="sui-toggle sui-toggle-primary"><input type="checkbox" checked><span class="sui-toggle-slider"></span></label>
+    <label class="sui-toggle sui-toggle-lg sui-toggle-primary"><input type="checkbox" checked><span class="sui-toggle-slider"></span></label>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;label class="sui-toggle sui-toggle-sm sui-toggle-primary"&gt;&lt;input type="checkbox" checked&gt;&lt;span class="sui-toggle-slider"&gt;&lt;/span&gt;&lt;/label&gt;
+&lt;label class="sui-toggle sui-toggle-primary"&gt;&lt;input type="checkbox" checked&gt;&lt;span class="sui-toggle-slider"&gt;&lt;/span&gt;&lt;/label&gt;
+&lt;label class="sui-toggle sui-toggle-lg sui-toggle-primary"&gt;&lt;input type="checkbox" checked&gt;&lt;span class="sui-toggle-slider"&gt;&lt;/span&gt;&lt;/label&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Toggle Colors -->
+<div class="pg-section">
+  <h3 class="pg-section-title">Toggle Colors</h3>
+  <div class="pg-section-row">
+    <label class="sui-toggle sui-toggle-primary"><input type="checkbox" checked><span class="sui-toggle-slider"></span></label>
+    <label class="sui-toggle sui-toggle-success"><input type="checkbox" checked><span class="sui-toggle-slider"></span></label>
+    <label class="sui-toggle sui-toggle-danger"><input type="checkbox" checked><span class="sui-toggle-slider"></span></label>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;label class="sui-toggle sui-toggle-primary"&gt;&lt;input type="checkbox" checked&gt;&lt;span class="sui-toggle-slider"&gt;&lt;/span&gt;&lt;/label&gt;
+&lt;label class="sui-toggle sui-toggle-success"&gt;&lt;input type="checkbox" checked&gt;&lt;span class="sui-toggle-slider"&gt;&lt;/span&gt;&lt;/label&gt;
+&lt;label class="sui-toggle sui-toggle-danger"&gt;&lt;input type="checkbox" checked&gt;&lt;span class="sui-toggle-slider"&gt;&lt;/span&gt;&lt;/label&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Checkboxes -->
+<div class="pg-section">
+  <h3 class="pg-section-title">Checkboxes</h3>
+  <div class="pg-section-row">
+    <label class="sui-checkbox"><input type="checkbox" checked><span class="sui-check-mark"></span>Checked</label>
+    <label class="sui-checkbox"><input type="checkbox"><span class="sui-check-mark"></span>Unchecked</label>
+    <label class="sui-checkbox"><input type="checkbox" class="indeterminate"><span class="sui-check-mark"></span>Indeterminate</label>
+    <label class="sui-checkbox"><input type="checkbox" disabled><span class="sui-check-mark"></span>Disabled</label>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;label class="sui-checkbox"&gt;&lt;input type="checkbox" checked&gt;&lt;span class="sui-check-mark"&gt;&lt;/span&gt;Checked&lt;/label&gt;
+&lt;label class="sui-checkbox"&gt;&lt;input type="checkbox"&gt;&lt;span class="sui-check-mark"&gt;&lt;/span&gt;Unchecked&lt;/label&gt;
+&lt;label class="sui-checkbox"&gt;&lt;input type="checkbox" class="indeterminate"&gt;&lt;span class="sui-check-mark"&gt;&lt;/span&gt;Indeterminate&lt;/label&gt;
+&lt;label class="sui-checkbox"&gt;&lt;input type="checkbox" disabled&gt;&lt;span class="sui-check-mark"&gt;&lt;/span&gt;Disabled&lt;/label&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Checkbox Colors -->
+<div class="pg-section">
+  <h3 class="pg-section-title">Checkbox Colors</h3>
+  <div class="pg-section-row">
+    <label class="sui-checkbox sui-checkbox-success"><input type="checkbox" checked><span class="sui-check-mark"></span>Success</label>
+    <label class="sui-checkbox sui-checkbox-danger"><input type="checkbox" checked><span class="sui-check-mark"></span>Danger</label>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;label class="sui-checkbox sui-checkbox-success"&gt;&lt;input type="checkbox" checked&gt;&lt;span class="sui-check-mark"&gt;&lt;/span&gt;Success&lt;/label&gt;
+&lt;label class="sui-checkbox sui-checkbox-danger"&gt;&lt;input type="checkbox" checked&gt;&lt;span class="sui-check-mark"&gt;&lt;/span&gt;Danger&lt;/label&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Radio Buttons -->
+<div class="pg-section">
+  <h3 class="pg-section-title">Radio Buttons</h3>
+  <div class="pg-section-row">
+    <label class="sui-radio"><input type="radio" name="demo-radio" checked><span class="sui-radio-mark"></span>Option A</label>
+    <label class="sui-radio"><input type="radio" name="demo-radio"><span class="sui-radio-mark"></span>Option B</label>
+    <label class="sui-radio"><input type="radio" name="demo-radio"><span class="sui-radio-mark"></span>Option C</label>
+  </div>
+  <div class="pg-section-row" style="margin-top:1rem;">
+    <label class="sui-radio sui-radio-success"><input type="radio" name="demo-radio-color1" checked><span class="sui-radio-mark"></span>Success</label>
+    <label class="sui-radio sui-radio-danger"><input type="radio" name="demo-radio-color2" checked><span class="sui-radio-mark"></span>Danger</label>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;label class="sui-radio"&gt;&lt;input type="radio" name="demo-radio" checked&gt;&lt;span class="sui-radio-mark"&gt;&lt;/span&gt;Option A&lt;/label&gt;
+&lt;label class="sui-radio"&gt;&lt;input type="radio" name="demo-radio"&gt;&lt;span class="sui-radio-mark"&gt;&lt;/span&gt;Option B&lt;/label&gt;
+&lt;label class="sui-radio"&gt;&lt;input type="radio" name="demo-radio"&gt;&lt;span class="sui-radio-mark"&gt;&lt;/span&gt;Option C&lt;/label&gt;
+
+&lt;label class="sui-radio sui-radio-success"&gt;&lt;input type="radio" name="demo-radio-color1" checked&gt;&lt;span class="sui-radio-mark"&gt;&lt;/span&gt;Success&lt;/label&gt;
+&lt;label class="sui-radio sui-radio-danger"&gt;&lt;input type="radio" name="demo-radio-color2" checked&gt;&lt;span class="sui-radio-mark"&gt;&lt;/span&gt;Danger&lt;/label&gt;</pre></div>
+  </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  // Set indeterminate state on checkboxes with .indeterminate class
+  document.querySelectorAll('input.indeterminate').forEach(function(el) {
+    el.indeterminate = true;
+  });
+
+  const config = {
+    defaults: { type: 'Toggle', color: 'Primary', size: 'Default', disabled: false },
+    controls: [
+      { key: 'type', label: 'Type', type: 'radio', options: ['Toggle', 'Checkbox', 'Radio'] },
+      { key: 'color', label: 'Color', type: 'radio', options: ['Default', 'Primary', 'Success', 'Danger'] },
+      { key: 'size', label: 'Size', type: 'radio', options: ['Small', 'Default', 'Large'] },
+      { key: 'disabled', label: 'Disabled', type: 'toggle' },
+    ],
+    render(opts) {
+      const c = opts.color.toLowerCase();
+      const dis = opts.disabled ? ' disabled' : '';
+
+      if (opts.type === 'Toggle') {
+        let cls = 'sui-toggle';
+        if (c !== 'default') cls += ' sui-toggle-' + c;
+        if (opts.size === 'Small') cls += ' sui-toggle-sm';
+        else if (opts.size === 'Large') cls += ' sui-toggle-lg';
+        return '<label class="' + cls + '">\n  <input type="checkbox" checked' + dis + '>\n  <span class="sui-toggle-slider"></span>\n</label>';
+      }
+
+      if (opts.type === 'Checkbox') {
+        let cls = 'sui-checkbox';
+        if (c !== 'default') cls += ' sui-checkbox-' + c;
+        return '<label class="' + cls + '">\n  <input type="checkbox" checked' + dis + '>\n  <span class="sui-check-mark"></span>\n  Checked\n</label>';
+      }
+
+      if (opts.type === 'Radio') {
+        let cls = 'sui-radio';
+        if (c !== 'default') cls += ' sui-radio-' + c;
+        return '<label class="' + cls + '">\n  <input type="radio" name="pg-radio" checked' + dis + '>\n  <span class="sui-radio-mark"></span>\n  Option A\n</label>\n\n<label class="' + cls + '">\n  <input type="radio" name="pg-radio"' + dis + '>\n  <span class="sui-radio-mark"></span>\n  Option B\n</label>';
+      }
+
+      return '';
+    }
+  };
+
+  function renderControls() {
+    let html = '<div class="pg-controls-title">Customize</div>';
+    config.controls.forEach(ctrl => {
+      if (ctrl.type === 'radio') {
+        html += '<div class="pg-control-group"><label class="pg-control-label">' + ctrl.label + '</label>';
+        ctrl.options.forEach(opt => {
+          const checked = opt === config.defaults[ctrl.key] ? ' checked' : '';
+          html += '<label class="sui-radio"><input type="radio" name="ctrl-' + ctrl.key + '" value="' + opt + '"' + checked + ' onchange="updatePreview()"><span class="sui-radio-mark"></span>' + opt + '</label>';
+        });
+        html += '</div>';
+      } else if (ctrl.type === 'toggle') {
+        const checked = config.defaults[ctrl.key] ? ' checked' : '';
+        html += '<div class="pg-control-group"><div class="pg-control-row"><label class="pg-control-label">' + ctrl.label + '</label><label class="sui-toggle sui-toggle-sm sui-toggle-primary"><input type="checkbox" data-control="' + ctrl.key + '"' + checked + ' onchange="updatePreview()"><span class="sui-toggle-slider"></span></label></div></div>';
+      }
+    });
+    document.getElementById('pgControlsContent').innerHTML = html;
+  }
+
+  window.updatePreview = function() {
+    const opts = {};
+    config.controls.forEach(ctrl => {
+      if (ctrl.type === 'radio') {
+        const el = document.querySelector('input[name="ctrl-' + ctrl.key + '"]:checked');
+        opts[ctrl.key] = el ? el.value : config.defaults[ctrl.key];
+      } else if (ctrl.type === 'toggle') {
+        const el = document.querySelector('[data-control="' + ctrl.key + '"]');
+        opts[ctrl.key] = el ? el.checked : config.defaults[ctrl.key];
+      }
+    });
+    const code = config.render(opts);
+    document.getElementById('pgPreview').innerHTML = code;
+    document.getElementById('pgCode').textContent = code;
+  };
+
+  renderControls();
+  updatePreview();
+});
+</script>

@@ -1,0 +1,254 @@
+---
+layout: component.njk
+title: Buttons
+description: Tactile, pressable buttons with neumorphic depth. Customize color, style, size, and state.
+componentId: buttons
+hasControls: true
+toc:
+  - All Colors
+  - Outlined
+  - Ghost
+  - Sizes
+  - Icon Buttons
+  - Pressed / Active
+  - Disabled
+  - Full Width
+  - Pill
+  - Loading
+---
+
+<div class="pg-preview-box" id="pgPreview"></div>
+<div class="pg-code-box"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre id="pgCode"></pre></div>
+
+<!-- All Colors -->
+<div class="pg-section">
+  <h3 class="pg-section-title">All Colors</h3>
+  <div class="pg-section-row">
+    <button class="sui-btn">Default</button>
+    <button class="sui-btn sui-btn-primary">Primary</button>
+    <button class="sui-btn sui-btn-success">Success</button>
+    <button class="sui-btn sui-btn-danger">Danger</button>
+    <button class="sui-btn sui-btn-warning">Warning</button>
+    <button class="sui-btn sui-btn-info">Info</button>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;button class="sui-btn"&gt;Default&lt;/button&gt;
+&lt;button class="sui-btn sui-btn-primary"&gt;Primary&lt;/button&gt;
+&lt;button class="sui-btn sui-btn-success"&gt;Success&lt;/button&gt;
+&lt;button class="sui-btn sui-btn-danger"&gt;Danger&lt;/button&gt;
+&lt;button class="sui-btn sui-btn-warning"&gt;Warning&lt;/button&gt;
+&lt;button class="sui-btn sui-btn-info"&gt;Info&lt;/button&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Outlined -->
+<div class="pg-section">
+  <h3 class="pg-section-title">Outlined</h3>
+  <div class="pg-section-row">
+    <button class="sui-btn sui-btn-outline">Default</button>
+    <button class="sui-btn sui-btn-primary sui-btn-outline">Primary</button>
+    <button class="sui-btn sui-btn-success sui-btn-outline">Success</button>
+    <button class="sui-btn sui-btn-danger sui-btn-outline">Danger</button>
+    <button class="sui-btn sui-btn-warning sui-btn-outline">Warning</button>
+    <button class="sui-btn sui-btn-info sui-btn-outline">Info</button>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;button class="sui-btn sui-btn-outline"&gt;Default&lt;/button&gt;
+&lt;button class="sui-btn sui-btn-primary sui-btn-outline"&gt;Primary&lt;/button&gt;
+&lt;button class="sui-btn sui-btn-success sui-btn-outline"&gt;Success&lt;/button&gt;
+&lt;button class="sui-btn sui-btn-danger sui-btn-outline"&gt;Danger&lt;/button&gt;
+&lt;button class="sui-btn sui-btn-warning sui-btn-outline"&gt;Warning&lt;/button&gt;
+&lt;button class="sui-btn sui-btn-info sui-btn-outline"&gt;Info&lt;/button&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Ghost -->
+<div class="pg-section">
+  <h3 class="pg-section-title">Ghost</h3>
+  <div class="pg-section-row">
+    <button class="sui-btn sui-btn-ghost">Default</button>
+    <button class="sui-btn sui-btn-primary sui-btn-ghost">Primary</button>
+    <button class="sui-btn sui-btn-success sui-btn-ghost">Success</button>
+    <button class="sui-btn sui-btn-danger sui-btn-ghost">Danger</button>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;button class="sui-btn sui-btn-ghost"&gt;Default&lt;/button&gt;
+&lt;button class="sui-btn sui-btn-primary sui-btn-ghost"&gt;Primary&lt;/button&gt;
+&lt;button class="sui-btn sui-btn-success sui-btn-ghost"&gt;Success&lt;/button&gt;
+&lt;button class="sui-btn sui-btn-danger sui-btn-ghost"&gt;Danger&lt;/button&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Sizes -->
+<div class="pg-section">
+  <h3 class="pg-section-title">Sizes</h3>
+  <div class="pg-section-row">
+    <button class="sui-btn sui-btn-primary sui-btn-sm">Small</button>
+    <button class="sui-btn sui-btn-primary">Medium</button>
+    <button class="sui-btn sui-btn-primary sui-btn-lg">Large</button>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;button class="sui-btn sui-btn-primary sui-btn-sm"&gt;Small&lt;/button&gt;
+&lt;button class="sui-btn sui-btn-primary"&gt;Medium&lt;/button&gt;
+&lt;button class="sui-btn sui-btn-primary sui-btn-lg"&gt;Large&lt;/button&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Icon Buttons -->
+<div class="pg-section">
+  <h3 class="pg-section-title">Icon Buttons</h3>
+  <div class="pg-section-row">
+    <button class="sui-btn sui-btn-icon" aria-label="Like">&#9829;</button>
+    <button class="sui-btn sui-btn-icon" aria-label="Play">&#9654;</button>
+    <button class="sui-btn sui-btn-icon" aria-label="Stop">&#9198;</button>
+    <button class="sui-btn sui-btn-icon" aria-label="Previous">&#9664;</button>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;button class="sui-btn sui-btn-icon" aria-label="Like"&gt;&amp;#9829;&lt;/button&gt;
+&lt;button class="sui-btn sui-btn-icon" aria-label="Play"&gt;&amp;#9654;&lt;/button&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Pressed / Active -->
+<div class="pg-section">
+  <h3 class="pg-section-title">Pressed / Active</h3>
+  <div class="pg-section-row">
+    <button class="sui-btn sui-pressed">Pressed</button>
+    <button class="sui-btn sui-btn-primary sui-pressed">Pressed Primary</button>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;button class="sui-btn sui-pressed"&gt;Pressed&lt;/button&gt;
+&lt;button class="sui-btn sui-btn-primary sui-pressed"&gt;Pressed Primary&lt;/button&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Disabled -->
+<div class="pg-section">
+  <h3 class="pg-section-title">Disabled</h3>
+  <div class="pg-section-row">
+    <button class="sui-btn" disabled>Disabled</button>
+    <button class="sui-btn sui-btn-primary" disabled>Disabled Primary</button>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;button class="sui-btn" disabled&gt;Disabled&lt;/button&gt;
+&lt;button class="sui-btn sui-btn-primary" disabled&gt;Disabled Primary&lt;/button&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Full Width -->
+<div class="pg-section">
+  <h3 class="pg-section-title">Full Width</h3>
+  <div class="pg-section-row">
+    <button class="sui-btn sui-btn-primary sui-btn-block" style="width:100%;max-width:500px;">Full Width Button</button>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;button class="sui-btn sui-btn-primary sui-btn-block"&gt;Full Width Button&lt;/button&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Pill -->
+<div class="pg-section">
+  <h3 class="pg-section-title">Pill</h3>
+  <div class="pg-section-row">
+    <button class="sui-btn sui-btn-pill">Default</button>
+    <button class="sui-btn sui-btn-primary sui-btn-pill">Primary</button>
+    <button class="sui-btn sui-btn-success sui-btn-pill">Success</button>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;button class="sui-btn sui-btn-pill"&gt;Default&lt;/button&gt;
+&lt;button class="sui-btn sui-btn-primary sui-btn-pill"&gt;Primary&lt;/button&gt;
+&lt;button class="sui-btn sui-btn-success sui-btn-pill"&gt;Success&lt;/button&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Loading -->
+<div class="pg-section">
+  <h3 class="pg-section-title">Loading</h3>
+  <div class="pg-section-row">
+    <button class="sui-btn sui-btn-loading">Default</button>
+    <button class="sui-btn sui-btn-primary sui-btn-loading">Primary</button>
+    <button class="sui-btn sui-btn-danger sui-btn-loading">Danger</button>
+    <button class="sui-btn sui-btn-warning sui-btn-loading">Warning</button>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;button class="sui-btn sui-btn-loading"&gt;Default&lt;/button&gt;
+&lt;button class="sui-btn sui-btn-primary sui-btn-loading"&gt;Primary&lt;/button&gt;
+&lt;button class="sui-btn sui-btn-danger sui-btn-loading"&gt;Danger&lt;/button&gt;
+&lt;button class="sui-btn sui-btn-warning sui-btn-loading"&gt;Warning&lt;/button&gt;</pre></div>
+  </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const config = {
+    defaults: { variant: 'Primary', style: 'Solid', size: 'Default', pill: false, loading: false, disabled: false },
+    controls: [
+      { key: 'variant', label: 'Color', type: 'radio', options: ['Default', 'Primary', 'Success', 'Danger', 'Warning', 'Info'] },
+      { key: 'style', label: 'Style', type: 'radio', options: ['Solid', 'Outline', 'Ghost'] },
+      { key: 'size', label: 'Size', type: 'radio', options: ['Small', 'Default', 'Large'] },
+      { key: 'pill', label: 'Pill Shape', type: 'toggle' },
+      { key: 'loading', label: 'Loading', type: 'toggle' },
+      { key: 'disabled', label: 'Disabled', type: 'toggle' },
+    ],
+    render(opts) {
+      let cls = 'sui-btn';
+      const v = opts.variant.toLowerCase();
+      if (v !== 'default') cls += ' sui-btn-' + v;
+      if (opts.style === 'Outline') cls += ' sui-btn-outline';
+      else if (opts.style === 'Ghost') cls += ' sui-btn-ghost';
+      if (opts.size === 'Small') cls += ' sui-btn-sm';
+      else if (opts.size === 'Large') cls += ' sui-btn-lg';
+      if (opts.pill) cls += ' sui-btn-pill';
+      if (opts.loading) cls += ' sui-btn-loading';
+      return '<button class="' + cls + '"' + (opts.disabled ? ' disabled' : '') + '>Button</button>';
+    }
+  };
+
+  function renderControls() {
+    let html = '<div class="pg-controls-title">Customize</div>';
+    config.controls.forEach(ctrl => {
+      if (ctrl.type === 'radio') {
+        html += '<div class="pg-control-group"><label class="pg-control-label">' + ctrl.label + '</label>';
+        ctrl.options.forEach(opt => {
+          const checked = opt === config.defaults[ctrl.key] ? ' checked' : '';
+          html += '<label class="sui-radio"><input type="radio" name="ctrl-' + ctrl.key + '" value="' + opt + '"' + checked + ' onchange="updatePreview()"><span class="sui-radio-mark"></span>' + opt + '</label>';
+        });
+        html += '</div>';
+      } else if (ctrl.type === 'toggle') {
+        const checked = config.defaults[ctrl.key] ? ' checked' : '';
+        html += '<div class="pg-control-group"><div class="pg-control-row"><label class="pg-control-label">' + ctrl.label + '</label><label class="sui-toggle sui-toggle-sm sui-toggle-primary"><input type="checkbox" data-control="' + ctrl.key + '"' + checked + ' onchange="updatePreview()"><span class="sui-toggle-slider"></span></label></div></div>';
+      }
+    });
+    document.getElementById('pgControlsContent').innerHTML = html;
+  }
+
+  window.updatePreview = function() {
+    const opts = {};
+    config.controls.forEach(ctrl => {
+      if (ctrl.type === 'radio') {
+        const el = document.querySelector('input[name="ctrl-' + ctrl.key + '"]:checked');
+        opts[ctrl.key] = el ? el.value : config.defaults[ctrl.key];
+      } else if (ctrl.type === 'toggle') {
+        const el = document.querySelector('[data-control="' + ctrl.key + '"]');
+        opts[ctrl.key] = el ? el.checked : config.defaults[ctrl.key];
+      }
+    });
+    const code = config.render(opts);
+    document.getElementById('pgPreview').innerHTML = code;
+    document.getElementById('pgCode').textContent = code;
+  };
+
+  renderControls();
+  updatePreview();
+});
+</script>

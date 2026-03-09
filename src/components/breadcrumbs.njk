@@ -1,0 +1,138 @@
+---
+layout: component.njk
+title: Breadcrumbs
+description: Soft navigation trails with separators.
+componentId: breadcrumbs
+hasControls: false
+toc:
+  - Default (slash)
+  - Flat
+  - Inset
+  - Pill
+  - Longer Trail
+  - Arrow
+---
+
+<!-- Default (slash) -->
+<div class="pg-section" id="section-1">
+  <h3 class="pg-section-title">Default (slash)</h3>
+  <div class="pg-section-row">
+    <nav class="sui-breadcrumb">
+      <span class="sui-breadcrumb-item"><a href="#">Home</a></span>
+      <span class="sui-breadcrumb-item"><a href="#">Products</a></span>
+      <span class="sui-breadcrumb-item active"><span>Headphones</span></span>
+    </nav>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;nav class="sui-breadcrumb"&gt;
+  &lt;span class="sui-breadcrumb-item"&gt;&lt;a href="#"&gt;Home&lt;/a&gt;&lt;/span&gt;
+  &lt;span class="sui-breadcrumb-item"&gt;&lt;a href="#"&gt;Products&lt;/a&gt;&lt;/span&gt;
+  &lt;span class="sui-breadcrumb-item active"&gt;&lt;span&gt;Headphones&lt;/span&gt;&lt;/span&gt;
+&lt;/nav&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Flat -->
+<div class="pg-section" id="section-2">
+  <h3 class="pg-section-title">Flat</h3>
+  <div class="pg-section-row">
+    <nav class="sui-breadcrumb sui-breadcrumb-flat">
+      <span class="sui-breadcrumb-item"><a href="#">Home</a></span>
+      <span class="sui-breadcrumb-item"><a href="#">Products</a></span>
+      <span class="sui-breadcrumb-item active"><span>Headphones</span></span>
+    </nav>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;nav class="sui-breadcrumb sui-breadcrumb-flat"&gt;
+  &lt;span class="sui-breadcrumb-item"&gt;&lt;a href="#"&gt;Home&lt;/a&gt;&lt;/span&gt;
+  &lt;span class="sui-breadcrumb-item"&gt;&lt;a href="#"&gt;Products&lt;/a&gt;&lt;/span&gt;
+  &lt;span class="sui-breadcrumb-item active"&gt;&lt;span&gt;Headphones&lt;/span&gt;&lt;/span&gt;
+&lt;/nav&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Inset -->
+<div class="pg-section" id="section-3">
+  <h3 class="pg-section-title">Inset</h3>
+  <div class="pg-section-row">
+    <nav class="sui-breadcrumb sui-breadcrumb-inset">
+      <span class="sui-breadcrumb-item"><a href="#">Home</a></span>
+      <span class="sui-breadcrumb-item"><a href="#">Products</a></span>
+      <span class="sui-breadcrumb-item active"><span>Headphones</span></span>
+    </nav>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;nav class="sui-breadcrumb sui-breadcrumb-inset"&gt;
+  &lt;span class="sui-breadcrumb-item"&gt;&lt;a href="#"&gt;Home&lt;/a&gt;&lt;/span&gt;
+  &lt;span class="sui-breadcrumb-item"&gt;&lt;a href="#"&gt;Products&lt;/a&gt;&lt;/span&gt;
+  &lt;span class="sui-breadcrumb-item active"&gt;&lt;span&gt;Headphones&lt;/span&gt;&lt;/span&gt;
+&lt;/nav&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Pill -->
+<div class="pg-section" id="section-4">
+  <h3 class="pg-section-title">Pill</h3>
+  <div class="pg-section-row">
+    <nav class="sui-breadcrumb sui-breadcrumb-pill">
+      <span class="sui-breadcrumb-item"><a href="#">Home</a></span>
+      <span class="sui-breadcrumb-item"><a href="#">Products</a></span>
+      <span class="sui-breadcrumb-item active"><span>Headphones</span></span>
+    </nav>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;nav class="sui-breadcrumb sui-breadcrumb-pill"&gt;
+  &lt;span class="sui-breadcrumb-item"&gt;&lt;a href="#"&gt;Home&lt;/a&gt;&lt;/span&gt;
+  &lt;span class="sui-breadcrumb-item"&gt;&lt;a href="#"&gt;Products&lt;/a&gt;&lt;/span&gt;
+  &lt;span class="sui-breadcrumb-item active"&gt;&lt;span&gt;Headphones&lt;/span&gt;&lt;/span&gt;
+&lt;/nav&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Longer Trail -->
+<div class="pg-section" id="section-5">
+  <h3 class="pg-section-title">Longer Trail</h3>
+  <div class="pg-section-row">
+    <nav class="sui-breadcrumb">
+      <span class="sui-breadcrumb-item"><a href="#">Home</a></span>
+      <span class="sui-breadcrumb-item"><a href="#">Settings</a></span>
+      <span class="sui-breadcrumb-item"><a href="#">Account</a></span>
+      <span class="sui-breadcrumb-item"><a href="#">Security</a></span>
+      <span class="sui-breadcrumb-item active"><span>Two-Factor Auth</span></span>
+    </nav>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;nav class="sui-breadcrumb"&gt;
+  &lt;span class="sui-breadcrumb-item"&gt;&lt;a href="#"&gt;Home&lt;/a&gt;&lt;/span&gt;
+  &lt;span class="sui-breadcrumb-item"&gt;&lt;a href="#"&gt;Settings&lt;/a&gt;&lt;/span&gt;
+  &lt;span class="sui-breadcrumb-item"&gt;&lt;a href="#"&gt;Account&lt;/a&gt;&lt;/span&gt;
+  &lt;span class="sui-breadcrumb-item"&gt;&lt;a href="#"&gt;Security&lt;/a&gt;&lt;/span&gt;
+  &lt;span class="sui-breadcrumb-item active"&gt;&lt;span&gt;Two-Factor Auth&lt;/span&gt;&lt;/span&gt;
+&lt;/nav&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Arrow -->
+<div class="pg-section" id="section-6">
+  <h3 class="pg-section-title">Arrow</h3>
+  <div class="pg-section-row">
+    <nav class="sui-breadcrumb sui-breadcrumb-arrow">
+      <span class="sui-breadcrumb-item"><a href="#">Home</a></span>
+      <span class="sui-breadcrumb-item"><a href="#">Library</a></span>
+      <span class="sui-breadcrumb-item active"><span>Data</span></span>
+    </nav>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;nav class="sui-breadcrumb sui-breadcrumb-arrow"&gt;
+  &lt;span class="sui-breadcrumb-item"&gt;&lt;a href="#"&gt;Home&lt;/a&gt;&lt;/span&gt;
+  &lt;span class="sui-breadcrumb-item"&gt;&lt;a href="#"&gt;Library&lt;/a&gt;&lt;/span&gt;
+  &lt;span class="sui-breadcrumb-item active"&gt;&lt;span&gt;Data&lt;/span&gt;&lt;/span&gt;
+&lt;/nav&gt;</pre></div>
+  </div>
+</div>

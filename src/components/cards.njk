@@ -1,0 +1,230 @@
+---
+layout: component.njk
+title: Cards
+description: Raised, inset, and flat containers with neumorphic depth.
+componentId: cards
+hasControls: true
+toc:
+  - Raised (Default)
+  - Inset
+  - Flat
+  - With Header
+  - Hoverable
+  - With Footer
+  - Image Top
+  - Image Overlay
+  - Horizontal
+---
+
+<div class="pg-preview-box" id="pgPreview"></div>
+<div class="pg-code-box"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre id="pgCode"></pre></div>
+
+<!-- Raised (Default) -->
+<div class="pg-section">
+  <h3 class="pg-section-title">Raised (Default)</h3>
+  <div class="pg-section-grid">
+    <div class="sui-card" style="max-width:340px;width:100%;"><h4 style="margin-bottom:8px;">Card Title</h4><p>This is a raised neumorphic card. It appears to float above the background surface with soft shadows.</p></div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-card"&gt;
+  &lt;h4&gt;Card Title&lt;/h4&gt;
+  &lt;p&gt;This is a raised neumorphic card. It appears to float above the background surface with soft shadows.&lt;/p&gt;
+&lt;/div&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Inset -->
+<div class="pg-section">
+  <h3 class="pg-section-title">Inset</h3>
+  <div class="pg-section-grid">
+    <div class="sui-card sui-inset" style="max-width:340px;width:100%;"><h4 style="margin-bottom:8px;">Inset Card</h4><p>This card is pressed into the surface, creating a recessed well effect.</p></div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-card sui-inset"&gt;
+  &lt;h4&gt;Inset Card&lt;/h4&gt;
+  &lt;p&gt;This card is pressed into the surface, creating a recessed well effect.&lt;/p&gt;
+&lt;/div&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Flat -->
+<div class="pg-section">
+  <h3 class="pg-section-title">Flat</h3>
+  <div class="pg-section-grid">
+    <div class="sui-card sui-flat" style="max-width:340px;width:100%;"><h4 style="margin-bottom:8px;">Flat Card</h4><p>No shadow — just a subtle border for minimal separation.</p></div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-card sui-flat"&gt;
+  &lt;h4&gt;Flat Card&lt;/h4&gt;
+  &lt;p&gt;No shadow &amp;mdash; just a subtle border for minimal separation.&lt;/p&gt;
+&lt;/div&gt;</pre></div>
+  </div>
+</div>
+
+<!-- With Header -->
+<div class="pg-section">
+  <h3 class="pg-section-title">With Header</h3>
+  <div class="pg-section-grid">
+    <div class="sui-card" style="max-width:340px;width:100%;"><div class="sui-card-header"><h4>Card Header</h4></div><div class="sui-card-body"><p>Card body content goes here.</p></div></div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-card"&gt;
+  &lt;div class="sui-card-header"&gt;
+    &lt;h4&gt;Card Header&lt;/h4&gt;
+  &lt;/div&gt;
+  &lt;div class="sui-card-body"&gt;
+    &lt;p&gt;Card body content goes here.&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Hoverable -->
+<div class="pg-section">
+  <h3 class="pg-section-title">Hoverable</h3>
+  <div class="pg-section-grid">
+    <div class="sui-card sui-card-hover" style="max-width:340px;width:100%;"><h4 style="margin-bottom:8px;">Hover Me</h4><p>Shadow grows on hover for interactive feel.</p></div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-card sui-card-hover"&gt;
+  &lt;h4&gt;Hover Me&lt;/h4&gt;
+  &lt;p&gt;Shadow grows on hover for interactive feel.&lt;/p&gt;
+&lt;/div&gt;</pre></div>
+  </div>
+</div>
+
+<!-- With Footer -->
+<div class="pg-section">
+  <h3 class="pg-section-title">With Footer</h3>
+  <div class="pg-section-grid">
+    <div class="sui-card" style="max-width:340px;width:100%;"><div class="sui-card-body"><h4 style="margin-bottom:8px;">Card with Footer</h4><p>Content above the footer section.</p></div><div class="sui-card-footer"><button class="sui-btn sui-btn-sm">Cancel</button><button class="sui-btn sui-btn-primary sui-btn-sm">Save</button></div></div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-card"&gt;
+  &lt;div class="sui-card-body"&gt;
+    &lt;h4&gt;Card with Footer&lt;/h4&gt;
+    &lt;p&gt;Content above the footer section.&lt;/p&gt;
+  &lt;/div&gt;
+  &lt;div class="sui-card-footer"&gt;
+    &lt;button class="sui-btn sui-btn-sm"&gt;Cancel&lt;/button&gt;
+    &lt;button class="sui-btn sui-btn-primary sui-btn-sm"&gt;Save&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Image Top -->
+<div class="pg-section">
+  <h3 class="pg-section-title">Image Top</h3>
+  <div class="pg-section-grid">
+    <div class="sui-card" style="max-width:340px;width:100%;padding:0;overflow:hidden;"><div class="sui-card-img-top" style="height:160px;background:linear-gradient(135deg, var(--sui-primary) 0%, var(--sui-info) 100%);border-radius:var(--sui-radius-sm) var(--sui-radius-sm) 0 0;"></div><div class="sui-card-body"><h4 style="margin-bottom:8px;">Card with Image</h4><p>An image or visual sits above the card body content.</p></div></div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-card" style="padding:0;overflow:hidden;"&gt;
+  &lt;div class="sui-card-img-top" style="height:160px;background:linear-gradient(135deg, var(--sui-primary) 0%, var(--sui-info) 100%);border-radius:var(--sui-radius-sm) var(--sui-radius-sm) 0 0;"&gt;&lt;/div&gt;
+  &lt;div class="sui-card-body"&gt;
+    &lt;h4&gt;Card with Image&lt;/h4&gt;
+    &lt;p&gt;An image or visual sits above the card body content.&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Image Overlay -->
+<div class="pg-section">
+  <h3 class="pg-section-title">Image Overlay</h3>
+  <div class="pg-section-grid">
+    <div class="sui-card" style="max-width:340px;width:100%;height:220px;padding:0;position:relative;overflow:hidden;"><div style="position:absolute;inset:0;background:linear-gradient(135deg, var(--sui-primary) 0%, var(--sui-info) 100%);border-radius:var(--sui-radius-sm);"></div><div class="sui-card-img-overlay"><h4 style="margin-bottom:8px;color:#fff;">Overlay Title</h4><p style="color:rgba(255,255,255,.85);">Text content layered on top of the image background.</p></div></div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-card" style="height:220px;padding:0;position:relative;overflow:hidden;"&gt;
+  &lt;div style="position:absolute;inset:0;background:linear-gradient(135deg, var(--sui-primary) 0%, var(--sui-info) 100%);"&gt;&lt;/div&gt;
+  &lt;div class="sui-card-img-overlay"&gt;
+    &lt;h4 style="color:#fff;"&gt;Overlay Title&lt;/h4&gt;
+    &lt;p style="color:rgba(255,255,255,.85);"&gt;Text content layered on top of the image background.&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Horizontal -->
+<div class="pg-section">
+  <h3 class="pg-section-title">Horizontal</h3>
+  <div class="pg-section-grid">
+    <div class="sui-card sui-card-horizontal" style="max-width:440px;width:100%;padding:0;overflow:hidden;"><div class="sui-card-img-start" style="width:140px;min-height:160px;background:linear-gradient(135deg, var(--sui-primary) 0%, var(--sui-info) 100%);"></div><div class="sui-card-body"><h4 style="margin-bottom:8px;">Horizontal Card</h4><p>Image and body sit side by side in a row layout.</p></div></div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-card sui-card-horizontal" style="padding:0;overflow:hidden;"&gt;
+  &lt;div class="sui-card-img-start" style="width:140px;min-height:160px;background:linear-gradient(135deg, var(--sui-primary) 0%, var(--sui-info) 100%);"&gt;&lt;/div&gt;
+  &lt;div class="sui-card-body"&gt;
+    &lt;h4&gt;Horizontal Card&lt;/h4&gt;
+    &lt;p&gt;Image and body sit side by side in a row layout.&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</pre></div>
+  </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const config = {
+    defaults: { style: 'Raised', hoverable: false },
+    controls: [
+      { key: 'style', label: 'Style', type: 'radio', options: ['Raised', 'Inset', 'Flat'] },
+      { key: 'hoverable', label: 'Hoverable', type: 'toggle' },
+    ],
+    render(opts) {
+      let cls = 'sui-card';
+      if (opts.style === 'Inset') cls += ' sui-inset';
+      else if (opts.style === 'Flat') cls += ' sui-flat';
+      if (opts.hoverable) cls += ' sui-card-hover';
+      return '<div class="' + cls + '" style="max-width:340px;width:100%;">\n  <h4 style="margin-bottom:8px;">' + opts.style + ' Card</h4>\n  <p>This is a neumorphic card component.</p>\n</div>';
+    }
+  };
+
+  function renderControls() {
+    let html = '<div class="pg-controls-title">Customize</div>';
+    config.controls.forEach(ctrl => {
+      if (ctrl.type === 'radio') {
+        html += '<div class="pg-control-group"><label class="pg-control-label">' + ctrl.label + '</label>';
+        ctrl.options.forEach(opt => {
+          const checked = opt === config.defaults[ctrl.key] ? ' checked' : '';
+          html += '<label class="sui-radio"><input type="radio" name="ctrl-' + ctrl.key + '" value="' + opt + '"' + checked + ' onchange="updatePreview()"><span class="sui-radio-mark"></span>' + opt + '</label>';
+        });
+        html += '</div>';
+      } else if (ctrl.type === 'toggle') {
+        const checked = config.defaults[ctrl.key] ? ' checked' : '';
+        html += '<div class="pg-control-group"><div class="pg-control-row"><label class="pg-control-label">' + ctrl.label + '</label><label class="sui-toggle sui-toggle-sm sui-toggle-primary"><input type="checkbox" data-control="' + ctrl.key + '"' + checked + ' onchange="updatePreview()"><span class="sui-toggle-slider"></span></label></div></div>';
+      }
+    });
+    document.getElementById('pgControlsContent').innerHTML = html;
+  }
+
+  window.updatePreview = function() {
+    const opts = {};
+    config.controls.forEach(ctrl => {
+      if (ctrl.type === 'radio') {
+        const el = document.querySelector('input[name="ctrl-' + ctrl.key + '"]:checked');
+        opts[ctrl.key] = el ? el.value : config.defaults[ctrl.key];
+      } else if (ctrl.type === 'toggle') {
+        const el = document.querySelector('[data-control="' + ctrl.key + '"]');
+        opts[ctrl.key] = el ? el.checked : config.defaults[ctrl.key];
+      }
+    });
+    const code = config.render(opts);
+    document.getElementById('pgPreview').innerHTML = code;
+    document.getElementById('pgCode').textContent = code;
+  };
+
+  renderControls();
+  updatePreview();
+});
+</script>

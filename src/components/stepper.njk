@@ -1,0 +1,401 @@
+---
+layout: component.njk
+title: Stepper
+description: Numbered progress steps with connecting lines and state indicators.
+componentId: stepper
+hasControls: false
+toc:
+  - Default
+  - All States
+  - Vertical
+  - Sizes
+  - Colors
+---
+
+<!-- Default -->
+<div class="pg-section" id="section-1">
+  <h3 class="pg-section-title">Default</h3>
+  <p style="color:var(--sui-text-muted);margin-bottom:16px;">A horizontal stepper with 4 steps showing completed, active, and pending states.</p>
+  <div class="pg-section-row" style="width:100%;">
+    <div class="sui-stepper">
+      <div class="sui-step completed">
+        <div class="sui-step-circle">1</div>
+        <div class="sui-step-label">Account</div>
+      </div>
+      <div class="sui-step-connector"></div>
+      <div class="sui-step active">
+        <div class="sui-step-circle">2</div>
+        <div class="sui-step-label">Profile</div>
+      </div>
+      <div class="sui-step-connector"></div>
+      <div class="sui-step">
+        <div class="sui-step-circle">3</div>
+        <div class="sui-step-label">Settings</div>
+      </div>
+      <div class="sui-step-connector"></div>
+      <div class="sui-step">
+        <div class="sui-step-circle">4</div>
+        <div class="sui-step-label">Complete</div>
+      </div>
+    </div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-stepper"&gt;
+  &lt;div class="sui-step completed"&gt;
+    &lt;div class="sui-step-circle"&gt;1&lt;/div&gt;
+    &lt;div class="sui-step-label"&gt;Account&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="sui-step-connector"&gt;&lt;/div&gt;
+  &lt;div class="sui-step active"&gt;
+    &lt;div class="sui-step-circle"&gt;2&lt;/div&gt;
+    &lt;div class="sui-step-label"&gt;Profile&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="sui-step-connector"&gt;&lt;/div&gt;
+  &lt;div class="sui-step"&gt;
+    &lt;div class="sui-step-circle"&gt;3&lt;/div&gt;
+    &lt;div class="sui-step-label"&gt;Settings&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="sui-step-connector"&gt;&lt;/div&gt;
+  &lt;div class="sui-step"&gt;
+    &lt;div class="sui-step-circle"&gt;4&lt;/div&gt;
+    &lt;div class="sui-step-label"&gt;Complete&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</pre></div>
+  </div>
+</div>
+
+<!-- All States -->
+<div class="pg-section" id="section-2">
+  <h3 class="pg-section-title">All States</h3>
+  <p style="color:var(--sui-text-muted);margin-bottom:16px;">Completed steps show a checkmark, the active step is highlighted, and pending steps remain muted.</p>
+  <div class="pg-section-row" style="width:100%;">
+    <div class="sui-stepper">
+      <div class="sui-step completed">
+        <div class="sui-step-circle">1</div>
+        <div class="sui-step-label">Completed</div>
+      </div>
+      <div class="sui-step-connector"></div>
+      <div class="sui-step completed">
+        <div class="sui-step-circle">2</div>
+        <div class="sui-step-label">Completed</div>
+      </div>
+      <div class="sui-step-connector"></div>
+      <div class="sui-step active">
+        <div class="sui-step-circle">3</div>
+        <div class="sui-step-label">Active</div>
+      </div>
+      <div class="sui-step-connector"></div>
+      <div class="sui-step">
+        <div class="sui-step-circle">4</div>
+        <div class="sui-step-label">Pending</div>
+      </div>
+    </div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-stepper"&gt;
+  &lt;div class="sui-step completed"&gt;
+    &lt;div class="sui-step-circle"&gt;1&lt;/div&gt;
+    &lt;div class="sui-step-label"&gt;Completed&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="sui-step-connector"&gt;&lt;/div&gt;
+  &lt;div class="sui-step completed"&gt;
+    &lt;div class="sui-step-circle"&gt;2&lt;/div&gt;
+    &lt;div class="sui-step-label"&gt;Completed&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="sui-step-connector"&gt;&lt;/div&gt;
+  &lt;div class="sui-step active"&gt;
+    &lt;div class="sui-step-circle"&gt;3&lt;/div&gt;
+    &lt;div class="sui-step-label"&gt;Active&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="sui-step-connector"&gt;&lt;/div&gt;
+  &lt;div class="sui-step"&gt;
+    &lt;div class="sui-step-circle"&gt;4&lt;/div&gt;
+    &lt;div class="sui-step-label"&gt;Pending&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Vertical -->
+<div class="pg-section" id="section-3">
+  <h3 class="pg-section-title">Vertical</h3>
+  <p style="color:var(--sui-text-muted);margin-bottom:16px;">Steps stacked vertically with a connecting line on the left. Add <code>sui-stepper-vertical</code> to the container.</p>
+  <div class="pg-section-row">
+    <div class="sui-stepper sui-stepper-vertical">
+      <div class="sui-step completed">
+        <div class="sui-step-circle">1</div>
+        <div class="sui-step-label">Create account</div>
+      </div>
+      <div class="sui-step-connector"></div>
+      <div class="sui-step completed">
+        <div class="sui-step-circle">2</div>
+        <div class="sui-step-label">Verify email</div>
+      </div>
+      <div class="sui-step-connector"></div>
+      <div class="sui-step active">
+        <div class="sui-step-circle">3</div>
+        <div class="sui-step-label">Set up profile</div>
+      </div>
+      <div class="sui-step-connector"></div>
+      <div class="sui-step">
+        <div class="sui-step-circle">4</div>
+        <div class="sui-step-label">Start exploring</div>
+      </div>
+    </div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-stepper sui-stepper-vertical"&gt;
+  &lt;div class="sui-step completed"&gt;
+    &lt;div class="sui-step-circle"&gt;1&lt;/div&gt;
+    &lt;div class="sui-step-label"&gt;Create account&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="sui-step-connector"&gt;&lt;/div&gt;
+  &lt;div class="sui-step completed"&gt;
+    &lt;div class="sui-step-circle"&gt;2&lt;/div&gt;
+    &lt;div class="sui-step-label"&gt;Verify email&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="sui-step-connector"&gt;&lt;/div&gt;
+  &lt;div class="sui-step active"&gt;
+    &lt;div class="sui-step-circle"&gt;3&lt;/div&gt;
+    &lt;div class="sui-step-label"&gt;Set up profile&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="sui-step-connector"&gt;&lt;/div&gt;
+  &lt;div class="sui-step"&gt;
+    &lt;div class="sui-step-circle"&gt;4&lt;/div&gt;
+    &lt;div class="sui-step-label"&gt;Start exploring&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Sizes -->
+<div class="pg-section" id="section-4">
+  <h3 class="pg-section-title">Sizes</h3>
+  <p style="color:var(--sui-text-muted);margin-bottom:16px;">Small (28px circles) and large (44px circles) variants.</p>
+  <div class="pg-section-row" style="flex-direction:column;gap:32px;width:100%;">
+    <div>
+      <div style="font-size:13px;font-weight:600;color:var(--sui-text-muted);margin-bottom:12px;">Small</div>
+      <div class="sui-stepper sui-stepper-sm">
+        <div class="sui-step completed">
+          <div class="sui-step-circle">1</div>
+          <div class="sui-step-label">Step 1</div>
+        </div>
+        <div class="sui-step-connector"></div>
+        <div class="sui-step active">
+          <div class="sui-step-circle">2</div>
+          <div class="sui-step-label">Step 2</div>
+        </div>
+        <div class="sui-step-connector"></div>
+        <div class="sui-step">
+          <div class="sui-step-circle">3</div>
+          <div class="sui-step-label">Step 3</div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div style="font-size:13px;font-weight:600;color:var(--sui-text-muted);margin-bottom:12px;">Default</div>
+      <div class="sui-stepper">
+        <div class="sui-step completed">
+          <div class="sui-step-circle">1</div>
+          <div class="sui-step-label">Step 1</div>
+        </div>
+        <div class="sui-step-connector"></div>
+        <div class="sui-step active">
+          <div class="sui-step-circle">2</div>
+          <div class="sui-step-label">Step 2</div>
+        </div>
+        <div class="sui-step-connector"></div>
+        <div class="sui-step">
+          <div class="sui-step-circle">3</div>
+          <div class="sui-step-label">Step 3</div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div style="font-size:13px;font-weight:600;color:var(--sui-text-muted);margin-bottom:12px;">Large</div>
+      <div class="sui-stepper sui-stepper-lg">
+        <div class="sui-step completed">
+          <div class="sui-step-circle">1</div>
+          <div class="sui-step-label">Step 1</div>
+        </div>
+        <div class="sui-step-connector"></div>
+        <div class="sui-step active">
+          <div class="sui-step-circle">2</div>
+          <div class="sui-step-label">Step 2</div>
+        </div>
+        <div class="sui-step-connector"></div>
+        <div class="sui-step">
+          <div class="sui-step-circle">3</div>
+          <div class="sui-step-label">Step 3</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;!-- Small --&gt;
+&lt;div class="sui-stepper sui-stepper-sm"&gt;
+  &lt;div class="sui-step completed"&gt;
+    &lt;div class="sui-step-circle"&gt;1&lt;/div&gt;
+    &lt;div class="sui-step-label"&gt;Step 1&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="sui-step-connector"&gt;&lt;/div&gt;
+  &lt;div class="sui-step active"&gt;
+    &lt;div class="sui-step-circle"&gt;2&lt;/div&gt;
+    &lt;div class="sui-step-label"&gt;Step 2&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="sui-step-connector"&gt;&lt;/div&gt;
+  &lt;div class="sui-step"&gt;
+    &lt;div class="sui-step-circle"&gt;3&lt;/div&gt;
+    &lt;div class="sui-step-label"&gt;Step 3&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- Large --&gt;
+&lt;div class="sui-stepper sui-stepper-lg"&gt;
+  &lt;div class="sui-step completed"&gt;
+    &lt;div class="sui-step-circle"&gt;1&lt;/div&gt;
+    &lt;div class="sui-step-label"&gt;Step 1&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="sui-step-connector"&gt;&lt;/div&gt;
+  &lt;div class="sui-step active"&gt;
+    &lt;div class="sui-step-circle"&gt;2&lt;/div&gt;
+    &lt;div class="sui-step-label"&gt;Step 2&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="sui-step-connector"&gt;&lt;/div&gt;
+  &lt;div class="sui-step"&gt;
+    &lt;div class="sui-step-circle"&gt;3&lt;/div&gt;
+    &lt;div class="sui-step-label"&gt;Step 3&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Colors -->
+<div class="pg-section" id="section-5">
+  <h3 class="pg-section-title">Colors</h3>
+  <p style="color:var(--sui-text-muted);margin-bottom:16px;">Color variants change the active and completed step colors. Add <code>sui-stepper-{color}</code> to the container.</p>
+  <div class="pg-section-row" style="flex-direction:column;gap:32px;width:100%;">
+    <div>
+      <div style="font-size:13px;font-weight:600;color:var(--sui-text-muted);margin-bottom:12px;">Primary</div>
+      <div class="sui-stepper sui-stepper-primary">
+        <div class="sui-step completed">
+          <div class="sui-step-circle">1</div>
+          <div class="sui-step-label">Done</div>
+        </div>
+        <div class="sui-step-connector"></div>
+        <div class="sui-step active">
+          <div class="sui-step-circle">2</div>
+          <div class="sui-step-label">Current</div>
+        </div>
+        <div class="sui-step-connector"></div>
+        <div class="sui-step">
+          <div class="sui-step-circle">3</div>
+          <div class="sui-step-label">Next</div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div style="font-size:13px;font-weight:600;color:var(--sui-text-muted);margin-bottom:12px;">Danger</div>
+      <div class="sui-stepper sui-stepper-danger">
+        <div class="sui-step completed">
+          <div class="sui-step-circle">1</div>
+          <div class="sui-step-label">Done</div>
+        </div>
+        <div class="sui-step-connector"></div>
+        <div class="sui-step active">
+          <div class="sui-step-circle">2</div>
+          <div class="sui-step-label">Current</div>
+        </div>
+        <div class="sui-step-connector"></div>
+        <div class="sui-step">
+          <div class="sui-step-circle">3</div>
+          <div class="sui-step-label">Next</div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div style="font-size:13px;font-weight:600;color:var(--sui-text-muted);margin-bottom:12px;">Warning</div>
+      <div class="sui-stepper sui-stepper-warning">
+        <div class="sui-step completed">
+          <div class="sui-step-circle">1</div>
+          <div class="sui-step-label">Done</div>
+        </div>
+        <div class="sui-step-connector"></div>
+        <div class="sui-step active">
+          <div class="sui-step-circle">2</div>
+          <div class="sui-step-label">Current</div>
+        </div>
+        <div class="sui-step-connector"></div>
+        <div class="sui-step">
+          <div class="sui-step-circle">3</div>
+          <div class="sui-step-label">Next</div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div style="font-size:13px;font-weight:600;color:var(--sui-text-muted);margin-bottom:12px;">Info</div>
+      <div class="sui-stepper sui-stepper-info">
+        <div class="sui-step completed">
+          <div class="sui-step-circle">1</div>
+          <div class="sui-step-label">Done</div>
+        </div>
+        <div class="sui-step-connector"></div>
+        <div class="sui-step active">
+          <div class="sui-step-circle">2</div>
+          <div class="sui-step-label">Current</div>
+        </div>
+        <div class="sui-step-connector"></div>
+        <div class="sui-step">
+          <div class="sui-step-circle">3</div>
+          <div class="sui-step-label">Next</div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div style="font-size:13px;font-weight:600;color:var(--sui-text-muted);margin-bottom:12px;">Success</div>
+      <div class="sui-stepper sui-stepper-success">
+        <div class="sui-step completed">
+          <div class="sui-step-circle">1</div>
+          <div class="sui-step-label">Done</div>
+        </div>
+        <div class="sui-step-connector"></div>
+        <div class="sui-step active">
+          <div class="sui-step-circle">2</div>
+          <div class="sui-step-label">Current</div>
+        </div>
+        <div class="sui-step-connector"></div>
+        <div class="sui-step">
+          <div class="sui-step-circle">3</div>
+          <div class="sui-step-label">Next</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;!-- Primary --&gt;
+&lt;div class="sui-stepper sui-stepper-primary"&gt;
+  &lt;div class="sui-step completed"&gt;...&lt;/div&gt;
+  &lt;div class="sui-step-connector"&gt;&lt;/div&gt;
+  &lt;div class="sui-step active"&gt;...&lt;/div&gt;
+  &lt;div class="sui-step-connector"&gt;&lt;/div&gt;
+  &lt;div class="sui-step"&gt;...&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- Danger --&gt;
+&lt;div class="sui-stepper sui-stepper-danger"&gt;...&lt;/div&gt;
+
+&lt;!-- Warning --&gt;
+&lt;div class="sui-stepper sui-stepper-warning"&gt;...&lt;/div&gt;
+
+&lt;!-- Info --&gt;
+&lt;div class="sui-stepper sui-stepper-info"&gt;...&lt;/div&gt;
+
+&lt;!-- Success --&gt;
+&lt;div class="sui-stepper sui-stepper-success"&gt;...&lt;/div&gt;</pre></div>
+  </div>
+</div>

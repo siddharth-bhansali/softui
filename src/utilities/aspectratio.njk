@@ -1,0 +1,173 @@
+---
+layout: component.njk
+title: Aspect Ratio
+description: Utility classes to constrain elements to common aspect ratios. Content scales to fill while maintaining proportion.
+componentId: aspectratio
+hasControls: false
+toc:
+  - Video (16:9)
+  - Square (1:1)
+  - Portrait (9:16)
+  - 4:3
+  - 3:2
+  - Ultrawide (21:9)
+  - With Content
+---
+
+{% set gradients = [
+  "linear-gradient(135deg, #7C5CFC, #5B54E0)",
+  "linear-gradient(135deg, #2DCE89, #1AAB6B)",
+  "linear-gradient(135deg, #FF6B6B, #E74C6F)",
+  "linear-gradient(135deg, #36D1DC, #5B86E5)",
+  "linear-gradient(135deg, #F7971E, #FFD200)",
+  "linear-gradient(135deg, #7C5CFC, #36D1DC)"
+] %}
+
+<!-- Video (16:9) -->
+<div class="pg-section" id="section-1">
+  <h3 class="pg-section-title">Video (16:9)</h3>
+  <p style="font-size:13px;color:var(--sui-text-light);margin-bottom:16px;">Add <code>sui-aspect sui-aspect-video</code> for widescreen 16:9 ratio.</p>
+  <div class="pg-section-row" style="align-items:flex-start;">
+    <div class="sui-aspect sui-aspect-video" style="max-width:400px;border-radius:var(--sui-radius-sm);box-shadow:var(--sui-shadow-raised-sm);">
+      <div style="display:flex;align-items:center;justify-content:center;background:{{ gradients[0] }};color:#fff;font-size:14px;font-weight:600;">16 : 9</div>
+    </div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-aspect sui-aspect-video" style="max-width:400px;"&gt;
+  &lt;img src="..." alt="..." /&gt;
+&lt;/div&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Square (1:1) -->
+<div class="pg-section" id="section-2">
+  <h3 class="pg-section-title">Square (1:1)</h3>
+  <p style="font-size:13px;color:var(--sui-text-light);margin-bottom:16px;">Add <code>sui-aspect-square</code> for a 1:1 ratio. Great for avatars and thumbnails.</p>
+  <div class="pg-section-row" style="align-items:flex-start;">
+    <div class="sui-aspect sui-aspect-square" style="max-width:200px;border-radius:var(--sui-radius-sm);box-shadow:var(--sui-shadow-raised-sm);">
+      <div style="display:flex;align-items:center;justify-content:center;background:{{ gradients[1] }};color:#fff;font-size:14px;font-weight:600;">1 : 1</div>
+    </div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-aspect sui-aspect-square" style="max-width:200px;"&gt;
+  &lt;img src="..." alt="..." /&gt;
+&lt;/div&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Portrait (9:16) -->
+<div class="pg-section" id="section-3">
+  <h3 class="pg-section-title">Portrait (9:16)</h3>
+  <p style="font-size:13px;color:var(--sui-text-light);margin-bottom:16px;">Add <code>sui-aspect-portrait</code> for a 9:16 vertical ratio. Good for phone mockups and stories.</p>
+  <div class="pg-section-row" style="align-items:flex-start;">
+    <div class="sui-aspect sui-aspect-portrait" style="max-width:160px;border-radius:var(--sui-radius-sm);box-shadow:var(--sui-shadow-raised-sm);">
+      <div style="display:flex;align-items:center;justify-content:center;background:{{ gradients[2] }};color:#fff;font-size:14px;font-weight:600;">9 : 16</div>
+    </div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-aspect sui-aspect-portrait" style="max-width:160px;"&gt;
+  &lt;img src="..." alt="..." /&gt;
+&lt;/div&gt;</pre></div>
+  </div>
+</div>
+
+<!-- 4:3 -->
+<div class="pg-section" id="section-4">
+  <h3 class="pg-section-title">4:3</h3>
+  <p style="font-size:13px;color:var(--sui-text-light);margin-bottom:16px;">Add <code>sui-aspect-4-3</code> for the classic 4:3 ratio.</p>
+  <div class="pg-section-row" style="align-items:flex-start;">
+    <div class="sui-aspect sui-aspect-4-3" style="max-width:320px;border-radius:var(--sui-radius-sm);box-shadow:var(--sui-shadow-raised-sm);">
+      <div style="display:flex;align-items:center;justify-content:center;background:{{ gradients[3] }};color:#fff;font-size:14px;font-weight:600;">4 : 3</div>
+    </div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-aspect sui-aspect-4-3" style="max-width:320px;"&gt;
+  &lt;img src="..." alt="..." /&gt;
+&lt;/div&gt;</pre></div>
+  </div>
+</div>
+
+<!-- 3:2 -->
+<div class="pg-section" id="section-5">
+  <h3 class="pg-section-title">3:2</h3>
+  <p style="font-size:13px;color:var(--sui-text-light);margin-bottom:16px;">Add <code>sui-aspect-3-2</code> for a photo-friendly 3:2 ratio.</p>
+  <div class="pg-section-row" style="align-items:flex-start;">
+    <div class="sui-aspect sui-aspect-3-2" style="max-width:360px;border-radius:var(--sui-radius-sm);box-shadow:var(--sui-shadow-raised-sm);">
+      <div style="display:flex;align-items:center;justify-content:center;background:{{ gradients[4] }};color:#fff;font-size:14px;font-weight:600;">3 : 2</div>
+    </div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-aspect sui-aspect-3-2" style="max-width:360px;"&gt;
+  &lt;img src="..." alt="..." /&gt;
+&lt;/div&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Ultrawide (21:9) -->
+<div class="pg-section" id="section-6">
+  <h3 class="pg-section-title">Ultrawide (21:9)</h3>
+  <p style="font-size:13px;color:var(--sui-text-light);margin-bottom:16px;">Add <code>sui-aspect-21-9</code> for a cinematic ultrawide ratio.</p>
+  <div class="pg-section-row" style="align-items:flex-start;">
+    <div class="sui-aspect sui-aspect-21-9" style="max-width:500px;border-radius:var(--sui-radius-sm);box-shadow:var(--sui-shadow-raised-sm);">
+      <div style="display:flex;align-items:center;justify-content:center;background:{{ gradients[5] }};color:#fff;font-size:14px;font-weight:600;">21 : 9</div>
+    </div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-aspect sui-aspect-21-9" style="max-width:500px;"&gt;
+  &lt;img src="..." alt="..." /&gt;
+&lt;/div&gt;</pre></div>
+  </div>
+</div>
+
+<!-- With Content -->
+<div class="pg-section" id="section-7">
+  <h3 class="pg-section-title">With Content</h3>
+  <p style="font-size:13px;color:var(--sui-text-light);margin-bottom:16px;">Children are stretched to fill the container. Use <code>object-fit: cover</code> on images or flex alignment on content.</p>
+  <div class="pg-section-row" style="display:flex;gap:16px;flex-wrap:wrap;align-items:flex-start;">
+    <div class="sui-aspect sui-aspect-video" style="max-width:280px;border-radius:var(--sui-radius-sm);box-shadow:var(--sui-shadow-raised-sm);">
+      <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;background:var(--sui-bg);padding:16px;">
+        <div style="width:48px;height:48px;border-radius:50%;background:{{ gradients[0] }};"></div>
+        <span style="font-size:14px;font-weight:600;color:var(--sui-text);">Video Player</span>
+        <span style="font-size:12px;color:var(--sui-text-muted);">16:9 container</span>
+      </div>
+    </div>
+    <div class="sui-aspect sui-aspect-square" style="max-width:160px;border-radius:var(--sui-radius-sm);box-shadow:var(--sui-shadow-raised-sm);">
+      <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;background:var(--sui-bg);padding:16px;">
+        <div style="width:40px;height:40px;border-radius:50%;background:{{ gradients[1] }};"></div>
+        <span style="font-size:13px;font-weight:600;color:var(--sui-text);">Avatar</span>
+      </div>
+    </div>
+    <div class="sui-aspect sui-aspect-4-3" style="max-width:220px;border-radius:var(--sui-radius-sm);box-shadow:var(--sui-shadow-raised-sm);">
+      <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;background:var(--sui-bg);padding:16px;">
+        <div style="width:48px;height:36px;border-radius:6px;background:{{ gradients[3] }};"></div>
+        <span style="font-size:14px;font-weight:600;color:var(--sui-text);">Photo Card</span>
+        <span style="font-size:12px;color:var(--sui-text-muted);">4:3 container</span>
+      </div>
+    </div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;!-- Video placeholder --&gt;
+&lt;div class="sui-aspect sui-aspect-video" style="max-width:280px;"&gt;
+  &lt;div style="display:flex;align-items:center;justify-content:center;"&gt;
+    Video Player
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- Square avatar --&gt;
+&lt;div class="sui-aspect sui-aspect-square" style="max-width:160px;"&gt;
+  &lt;img src="..." alt="..." style="object-fit:cover;" /&gt;
+&lt;/div&gt;
+
+&lt;!-- Photo card --&gt;
+&lt;div class="sui-aspect sui-aspect-4-3" style="max-width:220px;"&gt;
+  &lt;div&gt;...&lt;/div&gt;
+&lt;/div&gt;</pre></div>
+  </div>
+</div>

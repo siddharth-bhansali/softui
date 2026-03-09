@@ -1,0 +1,181 @@
+---
+layout: component.njk
+title: Badges
+description: Small labels for status, counts, and categorization.
+componentId: badges
+hasControls: true
+toc:
+  - All Colors
+  - Outline
+  - Pill
+  - Sizes
+  - Positioned
+---
+
+<div class="pg-preview-box" id="pgPreview"></div>
+<div class="pg-code-box"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre id="pgCode"></pre></div>
+
+<!-- All Colors -->
+<div class="pg-section">
+  <h3 class="pg-section-title">All Colors</h3>
+  <div class="pg-section-row">
+    <span class="sui-badge">Default</span>
+    <span class="sui-badge sui-badge-primary">Primary</span>
+    <span class="sui-badge sui-badge-success">Success</span>
+    <span class="sui-badge sui-badge-danger">Danger</span>
+    <span class="sui-badge sui-badge-warning">Warning</span>
+    <span class="sui-badge sui-badge-info">Info</span>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;span class="sui-badge"&gt;Default&lt;/span&gt;
+&lt;span class="sui-badge sui-badge-primary"&gt;Primary&lt;/span&gt;
+&lt;span class="sui-badge sui-badge-success"&gt;Success&lt;/span&gt;
+&lt;span class="sui-badge sui-badge-danger"&gt;Danger&lt;/span&gt;
+&lt;span class="sui-badge sui-badge-warning"&gt;Warning&lt;/span&gt;
+&lt;span class="sui-badge sui-badge-info"&gt;Info&lt;/span&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Outline -->
+<div class="pg-section">
+  <h3 class="pg-section-title">Outline</h3>
+  <div class="pg-section-row">
+    <span class="sui-badge sui-badge-outline">Default</span>
+    <span class="sui-badge sui-badge-primary sui-badge-outline">Primary</span>
+    <span class="sui-badge sui-badge-success sui-badge-outline">Success</span>
+    <span class="sui-badge sui-badge-danger sui-badge-outline">Danger</span>
+    <span class="sui-badge sui-badge-warning sui-badge-outline">Warning</span>
+    <span class="sui-badge sui-badge-info sui-badge-outline">Info</span>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;span class="sui-badge sui-badge-outline"&gt;Default&lt;/span&gt;
+&lt;span class="sui-badge sui-badge-primary sui-badge-outline"&gt;Primary&lt;/span&gt;
+&lt;span class="sui-badge sui-badge-success sui-badge-outline"&gt;Success&lt;/span&gt;
+&lt;span class="sui-badge sui-badge-danger sui-badge-outline"&gt;Danger&lt;/span&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Pill -->
+<div class="pg-section">
+  <h3 class="pg-section-title">Pill</h3>
+  <div class="pg-section-row">
+    <span class="sui-badge sui-badge-pill">12</span>
+    <span class="sui-badge sui-badge-primary sui-badge-pill">99+</span>
+    <span class="sui-badge sui-badge-danger sui-badge-pill">3</span>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;span class="sui-badge sui-badge-pill"&gt;12&lt;/span&gt;
+&lt;span class="sui-badge sui-badge-primary sui-badge-pill"&gt;99+&lt;/span&gt;
+&lt;span class="sui-badge sui-badge-danger sui-badge-pill"&gt;3&lt;/span&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Sizes -->
+<div class="pg-section">
+  <h3 class="pg-section-title">Sizes</h3>
+  <div class="pg-section-row">
+    <span class="sui-badge sui-badge-primary sui-badge-sm">Small</span>
+    <span class="sui-badge sui-badge-primary">Default</span>
+    <span class="sui-badge sui-badge-primary sui-badge-lg">Large</span>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;span class="sui-badge sui-badge-primary sui-badge-sm"&gt;Small&lt;/span&gt;
+&lt;span class="sui-badge sui-badge-primary"&gt;Default&lt;/span&gt;
+&lt;span class="sui-badge sui-badge-primary sui-badge-lg"&gt;Large&lt;/span&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Positioned -->
+<div class="pg-section">
+  <h3 class="pg-section-title">Positioned</h3>
+  <div class="pg-section-row" style="gap:16px;">
+    <span class="sui-badge-positioned">
+      <button class="sui-btn">Inbox</button>
+      <span class="sui-badge sui-badge-danger">4</span>
+    </span>
+    <span class="sui-badge-positioned">
+      <button class="sui-btn">Notifications</button>
+      <span class="sui-badge sui-badge-dot sui-badge-danger"></span>
+    </span>
+    <span class="sui-badge-positioned">
+      <button class="sui-btn">Messages</button>
+      <span class="sui-badge sui-badge-dot sui-badge-success"></span>
+    </span>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;span class="sui-badge-positioned"&gt;
+  &lt;button class="sui-btn"&gt;Inbox&lt;/button&gt;
+  &lt;span class="sui-badge sui-badge-danger"&gt;4&lt;/span&gt;
+&lt;/span&gt;
+
+&lt;span class="sui-badge-positioned"&gt;
+  &lt;button class="sui-btn"&gt;Notifications&lt;/button&gt;
+  &lt;span class="sui-badge sui-badge-dot sui-badge-danger"&gt;&lt;/span&gt;
+&lt;/span&gt;
+
+&lt;span class="sui-badge-positioned"&gt;
+  &lt;button class="sui-btn"&gt;Messages&lt;/button&gt;
+  &lt;span class="sui-badge sui-badge-dot sui-badge-success"&gt;&lt;/span&gt;
+&lt;/span&gt;</pre></div>
+  </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const config = {
+    defaults: { variant: 'Primary', style: 'Solid', shape: 'Default', size: 'Default' },
+    controls: [
+      { key: 'variant', label: 'Color', type: 'radio', options: ['Default', 'Primary', 'Success', 'Danger', 'Warning', 'Info'] },
+      { key: 'style', label: 'Style', type: 'radio', options: ['Solid', 'Outline'] },
+      { key: 'shape', label: 'Shape', type: 'radio', options: ['Default', 'Pill'] },
+      { key: 'size', label: 'Size', type: 'radio', options: ['Small', 'Default', 'Large'] },
+    ],
+    render(opts) {
+      let cls = 'sui-badge';
+      const v = opts.variant.toLowerCase();
+      if (v !== 'default') cls += ' sui-badge-' + v;
+      if (opts.style === 'Outline') cls += ' sui-badge-outline';
+      if (opts.shape === 'Pill') cls += ' sui-badge-pill';
+      if (opts.size === 'Small') cls += ' sui-badge-sm';
+      else if (opts.size === 'Large') cls += ' sui-badge-lg';
+      return '<span class="' + cls + '">Badge</span>';
+    }
+  };
+
+  function renderControls() {
+    let html = '<div class="pg-controls-title">Customize</div>';
+    config.controls.forEach(ctrl => {
+      if (ctrl.type === 'radio') {
+        html += '<div class="pg-control-group"><label class="pg-control-label">' + ctrl.label + '</label>';
+        ctrl.options.forEach(opt => {
+          const checked = opt === config.defaults[ctrl.key] ? ' checked' : '';
+          html += '<label class="sui-radio"><input type="radio" name="ctrl-' + ctrl.key + '" value="' + opt + '"' + checked + ' onchange="updatePreview()"><span class="sui-radio-mark"></span>' + opt + '</label>';
+        });
+        html += '</div>';
+      }
+    });
+    document.getElementById('pgControlsContent').innerHTML = html;
+  }
+
+  window.updatePreview = function() {
+    const opts = {};
+    config.controls.forEach(ctrl => {
+      if (ctrl.type === 'radio') {
+        const el = document.querySelector('input[name="ctrl-' + ctrl.key + '"]:checked');
+        opts[ctrl.key] = el ? el.value : config.defaults[ctrl.key];
+      }
+    });
+    const code = config.render(opts);
+    document.getElementById('pgPreview').innerHTML = code;
+    document.getElementById('pgCode').textContent = code;
+  };
+
+  renderControls();
+  updatePreview();
+});
+</script>

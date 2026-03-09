@@ -1,0 +1,804 @@
+---
+layout: base.njk
+title: SoftUI
+---
+<div class="docs-hero">
+  <h1>Soft<span>UI</span></h1>
+  <p>A neumorphic CSS library with soft shadows, muted palettes, and tactile depth. Explore the components below.</p>
+</div>
+
+<div class="docs-bento" id="bentoGrid">
+
+  <!-- Buttons (large) -->
+  <a class="bento-card bento-lg" data-cat="components" href="/components/buttons/">
+    <div class="bento-tag">Component</div>
+    <div class="bento-preview">
+      <button class="sui-btn sui-btn-sm">Default</button>
+      <button class="sui-btn sui-btn-primary sui-btn-sm">Primary</button>
+      <button class="sui-btn sui-btn-success sui-btn-sm">Success</button>
+      <button class="sui-btn sui-btn-danger sui-btn-sm">Danger</button>
+      <button class="sui-btn sui-btn-outline sui-btn-primary sui-btn-sm">Outline</button>
+      <button class="sui-btn sui-btn-ghost sui-btn-primary sui-btn-sm">Ghost</button>
+    </div>
+    <div class="bento-name">Buttons</div>
+    <div class="bento-explore">Explore &rarr;</div>
+  </a>
+
+  <!-- Badges -->
+  <a class="bento-card" data-cat="components" href="/components/badges/">
+    <div class="bento-tag">Component</div>
+    <div class="bento-preview">
+      <span class="sui-badge sui-badge-primary">Primary</span>
+      <span class="sui-badge sui-badge-success">Active</span>
+      <span class="sui-badge sui-badge-danger">3</span>
+      <span class="sui-badge sui-badge-outline sui-badge-primary">Outline</span>
+      <span class="sui-badge sui-badge-pill sui-badge-primary">99+</span>
+    </div>
+    <div class="bento-name">Badges</div>
+    <div class="bento-explore">Explore &rarr;</div>
+  </a>
+
+  <!-- Cards -->
+  <a class="bento-card" data-cat="components" href="/components/cards/">
+    <div class="bento-tag">Component</div>
+    <div class="bento-preview">
+      <div class="sui-card" style="padding:14px; width: 100%; max-width: 200px;">
+        <h4 style="font-size:13px; margin-bottom:4px;">Card Title</h4>
+        <p style="font-size:11px; margin:0;">Raised neumorphic card with soft shadows.</p>
+      </div>
+    </div>
+    <div class="bento-name">Cards</div>
+    <div class="bento-explore">Explore &rarr;</div>
+  </a>
+
+  <!-- Chip -->
+  <a class="bento-card" data-cat="components" href="/components/chip/">
+    <div class="bento-tag">Component</div>
+    <div class="bento-preview" style="flex-wrap:wrap;gap:8px;">
+      <span class="sui-chip sui-chip-primary" style="font-size:12px;padding:5px 12px;">Design</span>
+      <span class="sui-chip sui-chip-success" style="font-size:12px;padding:5px 12px;">Active</span>
+      <span class="sui-chip sui-chip-outline sui-chip-danger" style="font-size:12px;padding:5px 12px;">Urgent</span>
+      <span class="sui-chip" style="font-size:12px;padding:5px 12px;">Tag</span>
+    </div>
+    <div class="bento-name">Chip</div>
+    <div class="bento-explore">Explore &rarr;</div>
+  </a>
+
+  <!-- Alerts -->
+  <a class="bento-card" data-cat="components" href="/components/alerts/">
+    <div class="bento-tag">Component</div>
+    <div class="bento-preview" style="flex-direction: column; align-items:center; gap: 6px; width: 100%;">
+      <div class="sui-alert sui-alert-primary" style="padding:10px 16px; font-size:12px; margin:0; width:100%; max-width:240px;" role="alert">Primary alert message.</div>
+      <div class="sui-alert sui-alert-filled sui-alert-success" style="padding:10px 16px; font-size:12px; margin:0;" role="alert">Filled success alert.</div>
+    </div>
+    <div class="bento-name">Alerts</div>
+    <div class="bento-explore">Explore &rarr;</div>
+  </a>
+
+  <!-- Toggles -->
+  <a class="bento-card" data-cat="forms" href="/components/toggles/">
+    <div class="bento-tag">Form</div>
+    <div class="bento-preview" style="pointer-events: auto;">
+      <label class="sui-toggle sui-toggle-primary"><input type="checkbox" checked><span class="sui-toggle-slider"></span></label>
+      <label class="sui-toggle sui-toggle-success"><input type="checkbox" checked><span class="sui-toggle-slider"></span></label>
+      <label class="sui-toggle sui-toggle-danger"><input type="checkbox"><span class="sui-toggle-slider"></span></label>
+    </div>
+    <div class="bento-name">Toggles & Checks</div>
+    <div class="bento-explore">Explore &rarr;</div>
+  </a>
+
+  <!-- Forms (large) -->
+  <a class="bento-card bento-lg" data-cat="forms" href="/components/forms/">
+    <div class="bento-tag">Form</div>
+    <div class="bento-preview" style="flex-direction: column; gap: 10px; width: 100%; max-width: 380px; margin:0 auto;">
+      <input type="text" class="sui-input" placeholder="Username" style="pointer-events: none; font-size: 13px; padding: 10px 14px;">
+      <div class="sui-input-group" style="pointer-events: none;">
+        <span class="sui-input-group-text" style="font-size: 12px; padding: 0 12px;">@</span>
+        <input type="text" class="sui-input" placeholder="email" style="font-size: 13px; padding: 10px 14px;">
+      </div>
+    </div>
+    <div class="bento-name">Forms & Inputs</div>
+    <div class="bento-explore">Explore &rarr;</div>
+  </a>
+
+  <!-- Progress -->
+  <a class="bento-card" data-cat="components" href="/components/progress/">
+    <div class="bento-tag">Component</div>
+    <div class="bento-preview" style="flex-direction: column; gap: 10px; width: 100%;">
+      <div class="sui-progress" role="progressbar" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100"><div class="sui-progress-bar sui-progress-primary" style="width:65%;"></div></div>
+      <div class="sui-progress" role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100"><div class="sui-progress-bar sui-progress-success" style="width:45%;"></div></div>
+      <div class="sui-progress sui-progress-indeterminate" role="progressbar" aria-valuemin="0" aria-valuemax="100"><div class="sui-progress-bar sui-progress-info"></div></div>
+    </div>
+    <div class="bento-name">Progress</div>
+    <div class="bento-explore">Explore &rarr;</div>
+  </a>
+
+  <!-- Skeleton -->
+  <a class="bento-card" data-cat="components" href="/components/skeleton/">
+    <div class="bento-tag">Component</div>
+    <div class="bento-preview" style="flex-direction:column;gap:8px;width:100%;max-width:200px;margin:0 auto;">
+      <div style="display:flex;align-items:center;gap:10px;">
+        <div class="sui-skeleton sui-skeleton-avatar-sm" style="width:28px;height:28px;" aria-hidden="true"></div>
+        <div style="flex:1;">
+          <div class="sui-skeleton sui-skeleton-text" style="width:80%;height:10px;margin-bottom:5px;" aria-hidden="true"></div>
+          <div class="sui-skeleton sui-skeleton-text" style="width:50%;height:10px;margin-bottom:0;" aria-hidden="true"></div>
+        </div>
+      </div>
+      <div class="sui-skeleton sui-skeleton-text" style="width:100%;height:10px;" aria-hidden="true"></div>
+      <div class="sui-skeleton sui-skeleton-text" style="width:100%;height:10px;" aria-hidden="true"></div>
+      <div class="sui-skeleton sui-skeleton-text" style="width:65%;height:10px;margin-bottom:0;" aria-hidden="true"></div>
+    </div>
+    <div class="bento-name">Skeleton</div>
+    <div class="bento-explore">Explore &rarr;</div>
+  </a>
+
+  <!-- Slider -->
+  <a class="bento-card" data-cat="components" href="/components/slider/">
+    <div class="bento-tag">Component</div>
+    <div class="bento-preview" style="flex-direction:column;gap:10px;width:100%;max-width:220px;margin:0 auto;pointer-events:auto;">
+      <div class="sui-slider sui-slider-primary" style="gap:8px;">
+        <input type="range" min="0" max="100" value="60" aria-label="Value">
+        <span class="sui-slider-value" style="font-size:12px;min-width:32px;padding:2px 6px;">60</span>
+      </div>
+      <div class="sui-slider sui-slider-success" style="gap:8px;">
+        <input type="range" min="0" max="100" value="40" aria-label="Value">
+        <span class="sui-slider-value" style="font-size:12px;min-width:32px;padding:2px 6px;">40</span>
+      </div>
+    </div>
+    <div class="bento-name">Slider</div>
+    <div class="bento-explore">Explore &rarr;</div>
+  </a>
+
+  <!-- Spinner -->
+  <a class="bento-card" data-cat="components" href="/components/spinner/">
+    <div class="bento-tag">Component</div>
+    <div class="bento-preview" style="gap:16px;align-items:center;">
+      <div class="sui-spinner sui-spinner-sm sui-spinner-primary" role="status" aria-label="Loading"></div>
+      <div class="sui-spinner sui-spinner-success" role="status" aria-label="Loading"></div>
+      <div class="sui-spinner-grow sui-spinner-danger" role="status" aria-label="Loading"></div>
+    </div>
+    <div class="bento-name">Spinner</div>
+    <div class="bento-explore">Explore &rarr;</div>
+  </a>
+
+  <!-- Stepper -->
+  <a class="bento-card" data-cat="components" href="/components/stepper/">
+    <div class="bento-tag">Component</div>
+    <div class="bento-preview" style="width:100%;gap:0;">
+      <div style="display:flex;align-items:center;width:100%;padding:0 8px;">
+        <div style="width:24px;height:24px;border-radius:50%;background:var(--sui-success);display:flex;align-items:center;justify-content:center;flex-shrink:0;box-shadow:var(--sui-shadow-raised-sm);"><span style="font-size:0;border-right:2px solid #fff;border-bottom:2px solid #fff;width:5px;height:9px;display:block;transform:rotate(45deg) translate(-1px,-1px);"></span></div>
+        <div style="flex:1;height:2px;background:var(--sui-success);"></div>
+        <div style="width:24px;height:24px;border-radius:50%;background:var(--sui-primary);color:#fff;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:600;flex-shrink:0;box-shadow:var(--sui-shadow-raised-sm);">2</div>
+        <div style="flex:1;height:2px;background:var(--sui-bg-dark);box-shadow:var(--sui-shadow-inset-sm);"></div>
+        <div style="width:24px;height:24px;border-radius:50%;background:var(--sui-bg);color:var(--sui-text-muted);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:600;flex-shrink:0;box-shadow:var(--sui-shadow-raised-sm);">3</div>
+      </div>
+    </div>
+    <div class="bento-name">Stepper</div>
+    <div class="bento-explore">Explore &rarr;</div>
+  </a>
+
+  <!-- Modal -->
+  <a class="bento-card" data-cat="components" href="/components/modal/">
+    <div class="bento-tag">Component</div>
+    <div class="bento-preview">
+      <div class="sui-card" style="padding: 14px; width: 100%; max-width: 180px; border-radius: 12px;">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 8px;">
+          <strong style="font-size:12px;">Modal</strong>
+          <span style="font-size:10px; color: var(--sui-text-light);">&times;</span>
+        </div>
+        <p style="font-size:10px; margin:0; line-height: 1.4;">Dialog with backdrop blur and focus trap.</p>
+      </div>
+    </div>
+    <div class="bento-name">Modal</div>
+    <div class="bento-explore">Explore &rarr;</div>
+  </a>
+
+  <!-- Sheet -->
+  <a class="bento-card" data-cat="components" href="/components/sheet/">
+    <div class="bento-tag">Component</div>
+    <div class="bento-preview">
+      <div style="display:flex;width:100%;max-width:180px;height:60px;gap:0;">
+        <div style="flex:1;background:var(--sui-bg-dark);border-radius:8px 0 0 8px;opacity:0.4;"></div>
+        <div class="sui-card" style="width:70px;padding:10px;border-radius:0 8px 8px 0;margin:0;">
+          <div style="height:4px;width:80%;background:var(--sui-bg-dark);border-radius:2px;margin-bottom:6px;"></div>
+          <div style="height:3px;width:60%;background:var(--sui-bg-dark);border-radius:2px;margin-bottom:4px;"></div>
+          <div style="height:3px;width:70%;background:var(--sui-bg-dark);border-radius:2px;"></div>
+        </div>
+      </div>
+    </div>
+    <div class="bento-name">Sheet</div>
+    <div class="bento-explore">Explore &rarr;</div>
+  </a>
+
+  <!-- Tables (large) -->
+  <a class="bento-card bento-lg" data-cat="components" href="/components/tables/">
+    <div class="bento-tag">Component</div>
+    <div class="bento-preview" style="width: 100%;">
+      <table class="sui-table" style="font-size: 12px;">
+        <thead><tr><th style="padding:8px 12px;">#</th><th style="padding:8px 12px;">Name</th><th style="padding:8px 12px;">Role</th><th style="padding:8px 12px;">Status</th></tr></thead>
+        <tbody>
+          <tr><td style="padding:8px 12px;">1</td><td style="padding:8px 12px;">Alice</td><td style="padding:8px 12px;">Admin</td><td style="padding:8px 12px;"><span class="sui-badge sui-badge-success sui-badge-sm">Active</span></td></tr>
+          <tr><td style="padding:8px 12px;">2</td><td style="padding:8px 12px;">Bob</td><td style="padding:8px 12px;">Editor</td><td style="padding:8px 12px;"><span class="sui-badge sui-badge-warning sui-badge-sm">Pending</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="bento-name">Tables</div>
+    <div class="bento-explore">Explore &rarr;</div>
+  </a>
+
+  <!-- Data Table -->
+  <a class="bento-card" data-cat="components" href="/components/datatable/">
+    <div class="bento-tag">Component</div>
+    <div class="bento-preview" style="width:100%;">
+      <div style="display:flex;flex-direction:column;gap:6px;width:100%;max-width:240px;">
+        <div style="background:var(--sui-bg-light);border-radius:6px;box-shadow:var(--sui-shadow-raised-sm);overflow:hidden;">
+          <div style="display:flex;background:var(--sui-bg-dark);padding:6px 10px;font-weight:700;color:var(--sui-text-muted);font-size:8px;text-transform:uppercase;letter-spacing:0.3px;">
+            <span style="flex:3;">Name</span><span style="flex:3;">Role</span><span style="flex:2;text-align:right;">Status</span>
+          </div>
+          <div style="display:flex;padding:6px 10px;border-bottom:1px solid var(--sui-bg);align-items:center;"><span style="flex:3;color:var(--sui-text);font-size:10px;">Alice</span><span style="flex:3;color:var(--sui-text-muted);font-size:10px;">Admin</span><span style="flex:2;text-align:right;"><span style="font-size:7px;padding:2px 6px;background:var(--sui-success);color:#fff;border-radius:3px;">Active</span></span></div>
+          <div style="display:flex;padding:6px 10px;align-items:center;"><span style="flex:3;color:var(--sui-text);font-size:10px;">Bob</span><span style="flex:3;color:var(--sui-text-muted);font-size:10px;">Editor</span><span style="flex:2;text-align:right;"><span style="font-size:7px;padding:2px 6px;background:var(--sui-warning);color:#fff;border-radius:3px;">Pending</span></span></div>
+        </div>
+        <div style="display:flex;align-items:center;justify-content:space-between;padding:0 2px;">
+          <span style="font-size:8px;color:var(--sui-text-muted);">Showing 1–2 of 8</span>
+          <div style="display:flex;gap:3px;">
+            <div style="width:18px;height:18px;border-radius:4px;background:var(--sui-primary);color:#fff;display:flex;align-items:center;justify-content:center;font-size:8px;font-weight:700;">1</div>
+            <div style="width:18px;height:18px;border-radius:4px;background:var(--sui-bg);box-shadow:var(--sui-shadow-raised-sm);display:flex;align-items:center;justify-content:center;font-size:8px;color:var(--sui-text-muted);">2</div>
+            <div style="width:18px;height:18px;border-radius:4px;background:var(--sui-bg);box-shadow:var(--sui-shadow-raised-sm);display:flex;align-items:center;justify-content:center;font-size:8px;color:var(--sui-text-muted);">3</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="bento-name">Data Table</div>
+    <div class="bento-explore">Explore &rarr;</div>
+  </a>
+
+  <!-- Drag & Drop -->
+  <a class="bento-card" data-cat="components" href="/components/dragdrop/">
+    <div class="bento-tag">Component</div>
+    <div class="bento-preview" style="width:100%;">
+      <div style="display:flex;flex-direction:column;gap:5px;width:100%;max-width:200px;">
+        <div style="padding:7px 10px;background:var(--sui-bg-light);border-radius:6px;box-shadow:var(--sui-shadow-raised-sm);font-size:10px;color:var(--sui-text);display:flex;align-items:center;gap:8px;">
+          <span style="color:var(--sui-text-muted);font-size:8px;">&#9776;</span> Design mockup
+        </div>
+        <div style="padding:7px 10px;background:var(--sui-bg-light);border-radius:6px;box-shadow:var(--sui-shadow-raised);font-size:10px;color:var(--sui-text);display:flex;align-items:center;gap:8px;transform:rotate(1deg);opacity:0.9;">
+          <span style="color:var(--sui-text-muted);font-size:8px;">&#9776;</span> Write API docs
+        </div>
+        <div style="padding:7px 10px;background:var(--sui-bg);border-radius:6px;box-shadow:var(--sui-shadow-inset-sm);font-size:10px;color:var(--sui-text-muted);display:flex;align-items:center;gap:8px;">
+          <span style="font-size:8px;">&#9776;</span> Review PRs
+        </div>
+        <div style="padding:7px 10px;background:var(--sui-bg-light);border-radius:6px;box-shadow:var(--sui-shadow-raised-sm);font-size:10px;color:var(--sui-text);display:flex;align-items:center;gap:8px;">
+          <span style="color:var(--sui-text-muted);font-size:8px;">&#9776;</span> Fix bug
+        </div>
+      </div>
+    </div>
+    <div class="bento-name">Drag & Drop</div>
+    <div class="bento-explore">Explore &rarr;</div>
+  </a>
+
+  <!-- Tabs -->
+  <a class="bento-card" data-cat="components" href="/components/tabs/">
+    <div class="bento-tag">Component</div>
+    <div class="bento-preview" style="width: 100%;">
+      <div style="display:inline-flex; gap:4px; padding:5px; background:var(--sui-bg); border-radius:8px; box-shadow:var(--sui-shadow-inset-sm);">
+        <span style="padding:6px 14px; font-size:12px; font-weight:600; background:var(--sui-bg); box-shadow:var(--sui-shadow-raised-sm); border-radius:6px; color:var(--sui-text);">Tab 1</span>
+        <span style="padding:6px 14px; font-size:12px; color:var(--sui-text-muted);">Tab 2</span>
+        <span style="padding:6px 14px; font-size:12px; color:var(--sui-text-muted);">Tab 3</span>
+      </div>
+    </div>
+    <div class="bento-name">Tabs</div>
+    <div class="bento-explore">Explore &rarr;</div>
+  </a>
+
+  <!-- Navbar -->
+  <a class="bento-card" data-cat="components" href="/components/navbar/">
+    <div class="bento-tag">Component</div>
+    <div class="bento-preview" style="width: 100%;">
+      <div class="sui-navbar sui-navbar-compact" style="width:100%; padding: 8px 14px; gap: 12px;">
+        <div class="sui-navbar-brand" style="font-size:13px;">Brand</div>
+        <div class="sui-navbar-links"><span class="sui-navbar-link active" style="font-size:11px; padding:4px 8px;">Home</span><span class="sui-navbar-link" style="font-size:11px; padding:4px 8px;">About</span></div>
+      </div>
+    </div>
+    <div class="bento-name">Navbar</div>
+    <div class="bento-explore">Explore &rarr;</div>
+  </a>
+
+  <!-- Avatars -->
+  <a class="bento-card" data-cat="components" href="/components/avatars/">
+    <div class="bento-tag">Component</div>
+    <div class="bento-preview">
+      <div class="sui-avatar sui-avatar-sm sui-avatar-status sui-avatar-status-online">A</div>
+      <div class="sui-avatar sui-avatar-status sui-avatar-status-busy">B</div>
+      <div class="sui-avatar sui-avatar-lg">C</div>
+    </div>
+    <div class="bento-name">Avatars</div>
+    <div class="bento-explore">Explore &rarr;</div>
+  </a>
+
+  <!-- Tooltips -->
+  <a class="bento-card" data-cat="components" href="/components/tooltips/">
+    <div class="bento-tag">Component</div>
+    <div class="bento-preview" style="padding-top: 32px;">
+      <span class="sui-tooltip" data-sui-tooltip="I'm a tooltip!" aria-label="I'm a tooltip!" style="pointer-events: auto;">
+        <button class="sui-btn sui-btn-sm">Hover me</button>
+      </span>
+    </div>
+    <div class="bento-name">Tooltips</div>
+    <div class="bento-explore">Explore &rarr;</div>
+  </a>
+
+  <!-- Pagination -->
+  <a class="bento-card" data-cat="components" href="/components/pagination/">
+    <div class="bento-tag">Component</div>
+    <div class="bento-preview">
+      <ul class="sui-pagination" style="gap:5px;">
+        <li class="sui-page-item"><button class="sui-page-link" style="min-width:32px;height:32px;font-size:12px;">1</button></li>
+        <li class="sui-page-item active"><button class="sui-page-link" style="min-width:32px;height:32px;font-size:12px;">2</button></li>
+        <li class="sui-page-item"><button class="sui-page-link" style="min-width:32px;height:32px;font-size:12px;">3</button></li>
+      </ul>
+    </div>
+    <div class="bento-name">Pagination</div>
+    <div class="bento-explore">Explore &rarr;</div>
+  </a>
+
+  <!-- Breadcrumbs -->
+  <a class="bento-card" data-cat="components" href="/components/breadcrumbs/">
+    <div class="bento-tag">Component</div>
+    <div class="bento-preview" style="width: 100%;">
+      <ol class="sui-breadcrumb" style="padding: 8px 16px; font-size: 12px;">
+        <li class="sui-breadcrumb-item"><span>Home</span></li>
+        <li class="sui-breadcrumb-item"><span>Docs</span></li>
+        <li class="sui-breadcrumb-item active"><span>Page</span></li>
+      </ol>
+    </div>
+    <div class="bento-name">Breadcrumbs</div>
+    <div class="bento-explore">Explore &rarr;</div>
+  </a>
+
+  <!-- Button Group -->
+  <a class="bento-card" data-cat="components" href="/components/buttongroup/">
+    <div class="bento-tag">Component</div>
+    <div class="bento-preview">
+      <div class="sui-btn-group">
+        <button class="sui-btn" style="padding:8px 16px; font-size:12px;">Left</button>
+        <button class="sui-btn active" style="padding:8px 16px; font-size:12px;">Mid</button>
+        <button class="sui-btn" style="padding:8px 16px; font-size:12px;">Right</button>
+      </div>
+    </div>
+    <div class="bento-name">Button Group</div>
+    <div class="bento-explore">Explore &rarr;</div>
+  </a>
+
+  <!-- Accordion -->
+  <a class="bento-card" data-cat="components" href="/components/accordion/">
+    <div class="bento-tag">Component</div>
+    <div class="bento-preview" style="flex-direction:column;gap:6px;width:100%;max-width:280px;margin:0 auto;">
+      <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;padding:8px 14px;background:var(--sui-bg);border-radius:8px;box-shadow:var(--sui-shadow-raised-sm);font-size:12px;font-weight:600;color:var(--sui-primary);">Section One <span style="font-size:10px;flex-shrink:0;">&#9650;</span></div>
+      <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;padding:8px 14px;background:var(--sui-bg);border-radius:8px;box-shadow:var(--sui-shadow-raised-sm);font-size:12px;font-weight:600;">Section Two <span style="font-size:10px;flex-shrink:0;">&#9660;</span></div>
+    </div>
+    <div class="bento-name">Accordion</div>
+    <div class="bento-explore">Explore &rarr;</div>
+  </a>
+
+  <!-- Toast -->
+  <a class="bento-card" data-cat="components" href="/components/toast/">
+    <div class="bento-tag">Component</div>
+    <div class="bento-preview" style="flex-direction:column;gap:6px;width:100%;max-width:200px;margin:0 auto;">
+      <div style="padding:10px 14px;background:var(--sui-bg);border-radius:8px;box-shadow:var(--sui-shadow-raised-sm);font-size:11px;">
+        <div style="font-weight:600;color:var(--sui-success);margin-bottom:2px;">Success</div>
+        <div style="color:var(--sui-text-muted);font-size:10px;">Changes saved.</div>
+      </div>
+      <div style="padding:10px 14px;background:var(--sui-bg);border-radius:8px;box-shadow:var(--sui-shadow-raised-sm);font-size:11px;">
+        <div style="font-weight:600;color:var(--sui-danger);margin-bottom:2px;">Error</div>
+        <div style="color:var(--sui-text-muted);font-size:10px;">Something went wrong.</div>
+      </div>
+    </div>
+    <div class="bento-name">Toast</div>
+    <div class="bento-explore">Explore &rarr;</div>
+  </a>
+
+  <!-- Divider -->
+  <a class="bento-card" data-cat="components" href="/components/divider/">
+    <div class="bento-tag">Component</div>
+    <div class="bento-preview" style="flex-direction:column;gap:12px;width:100%;max-width:220px;margin:0 auto;">
+      <span style="font-size:12px;color:var(--sui-text-muted);">Above</span>
+      <hr class="sui-divider">
+      <div class="sui-divider-text" style="font-size:11px;">OR</div>
+      <hr class="sui-divider sui-divider-primary">
+    </div>
+    <div class="bento-name">Divider</div>
+    <div class="bento-explore">Explore &rarr;</div>
+  </a>
+
+  <!-- Dropdown -->
+  <a class="bento-card" data-cat="components" href="/components/dropdown/">
+    <div class="bento-tag">Component</div>
+    <div class="bento-preview" style="flex-direction:column;gap:4px;width:100%;max-width:160px;margin:0 auto;">
+      <div style="padding:8px 14px;background:var(--sui-bg);border-radius:8px;box-shadow:var(--sui-shadow-raised-sm);font-size:12px;font-weight:600;text-align:center;">Options &#9662;</div>
+      <div style="padding:6px;background:var(--sui-bg);border-radius:8px;box-shadow:var(--sui-shadow-raised-sm);">
+        <div style="padding:6px 10px;font-size:11px;border-radius:5px;color:var(--sui-primary);background:var(--sui-bg-dark);">Profile</div>
+        <div style="padding:6px 10px;font-size:11px;">Settings</div>
+        <div style="padding:6px 10px;font-size:11px;">Logout</div>
+      </div>
+    </div>
+    <div class="bento-name">Dropdown</div>
+    <div class="bento-explore">Explore &rarr;</div>
+  </a>
+
+  <!-- Popover -->
+  <a class="bento-card" data-cat="components" href="/components/popover/">
+    <div class="bento-tag">Component</div>
+    <div class="bento-preview" style="flex-direction:column;gap:4px;width:100%;max-width:160px;margin:0 auto;">
+      <div style="padding:8px 14px;background:var(--sui-bg);border-radius:8px;box-shadow:var(--sui-shadow-raised-sm);font-size:12px;font-weight:600;text-align:center;">Click me</div>
+      <div style="position:relative;padding:10px 14px;background:var(--sui-bg);border-radius:8px;box-shadow:var(--sui-shadow-raised-sm);">
+        <div style="font-size:11px;font-weight:600;margin-bottom:4px;">Title</div>
+        <div style="font-size:10px;color:var(--sui-text-muted);">Floating content box.</div>
+      </div>
+    </div>
+    <div class="bento-name">Popover</div>
+    <div class="bento-explore">Explore &rarr;</div>
+  </a>
+
+  <!-- Hover Card -->
+  <a class="bento-card" data-cat="components" href="/components/hovercard/">
+    <div class="bento-tag">Component</div>
+    <div class="bento-preview" style="flex-direction:column;gap:4px;width:100%;max-width:160px;margin:0 auto;">
+      <div style="text-align:center;font-size:12px;color:var(--sui-primary);font-weight:600;text-decoration:underline;text-underline-offset:3px;">Hover me</div>
+      <div style="padding:10px 14px;background:var(--sui-bg);border-radius:8px;box-shadow:var(--sui-shadow-raised-sm);">
+        <div style="display:flex;align-items:center;gap:6px;margin-bottom:6px;">
+          <div style="width:18px;height:18px;border-radius:50%;background:var(--sui-primary);flex-shrink:0;"></div>
+          <div style="font-size:11px;font-weight:600;">User Name</div>
+        </div>
+        <div style="font-size:10px;color:var(--sui-text-muted);">Preview card on hover.</div>
+      </div>
+    </div>
+    <div class="bento-name">Hover Card</div>
+    <div class="bento-explore">Explore &rarr;</div>
+  </a>
+
+  <!-- Carousel -->
+  <a class="bento-card" data-cat="components" href="/components/carousel/">
+    <div class="bento-tag">Component</div>
+    <div class="bento-preview" style="gap:8px;align-items:center;">
+      <div style="width:20px;height:20px;border-radius:50%;background:var(--sui-bg);box-shadow:var(--sui-shadow-raised-sm);display:flex;align-items:center;justify-content:center;font-size:8px;color:var(--sui-text-muted);flex-shrink:0;">&#9664;</div>
+      <div style="flex:1;display:flex;gap:4px;">
+        <div style="flex:1;background:var(--sui-bg);border-radius:6px;box-shadow:var(--sui-shadow-inset-sm);padding:14px 0;text-align:center;font-size:14px;font-weight:700;color:var(--sui-text-muted);">1</div>
+        <div style="flex:1;background:var(--sui-bg);border-radius:6px;box-shadow:var(--sui-shadow-inset-sm);padding:14px 0;text-align:center;font-size:14px;font-weight:700;color:var(--sui-text-muted);">2</div>
+        <div style="flex:1;background:var(--sui-bg);border-radius:6px;box-shadow:var(--sui-shadow-inset-sm);padding:14px 0;text-align:center;font-size:14px;font-weight:700;color:var(--sui-text-muted);">3</div>
+      </div>
+      <div style="width:20px;height:20px;border-radius:50%;background:var(--sui-bg);box-shadow:var(--sui-shadow-raised-sm);display:flex;align-items:center;justify-content:center;font-size:8px;color:var(--sui-text-muted);flex-shrink:0;">&#9654;</div>
+    </div>
+    <div class="bento-name">Carousel</div>
+    <div class="bento-explore">Explore &rarr;</div>
+  </a>
+
+  <!-- Input OTP -->
+  <a class="bento-card" data-cat="components" href="/components/inputotp/">
+    <div class="bento-tag">Component</div>
+    <div class="bento-preview" style="gap:6px;">
+      <div style="width:36px;height:42px;border-radius:8px;background:var(--sui-bg);box-shadow:var(--sui-shadow-inset);display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:700;font-family:'JetBrains Mono',monospace;color:var(--sui-text);">4</div>
+      <div style="width:36px;height:42px;border-radius:8px;background:var(--sui-bg);box-shadow:var(--sui-shadow-inset);display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:700;font-family:'JetBrains Mono',monospace;color:var(--sui-text);">2</div>
+      <div style="width:8px;color:var(--sui-text-muted);font-size:14px;text-align:center;">&ndash;</div>
+      <div style="width:36px;height:42px;border-radius:8px;background:var(--sui-bg);box-shadow:var(--sui-shadow-inset);display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:700;font-family:'JetBrains Mono',monospace;color:var(--sui-text);">7</div>
+      <div style="width:36px;height:42px;border-radius:8px;background:var(--sui-bg);box-shadow:var(--sui-shadow-inset);display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:700;font-family:'JetBrains Mono',monospace;color:var(--sui-primary);border:2px solid var(--sui-primary);"></div>
+    </div>
+    <div class="bento-name">Input OTP</div>
+    <div class="bento-explore">Explore &rarr;</div>
+  </a>
+
+  <!-- Toggle Group -->
+  <a class="bento-card" data-cat="components" href="/components/togglegroup/">
+    <div class="bento-tag">Component</div>
+    <div class="bento-preview" style="gap:6px;">
+      <div style="padding:6px 14px;border-radius:8px;background:var(--sui-bg);box-shadow:var(--sui-shadow-inset);font-size:12px;font-weight:500;color:var(--sui-primary);">On</div>
+      <div style="padding:6px 14px;border-radius:8px;background:var(--sui-bg);box-shadow:var(--sui-shadow-raised-sm);font-size:12px;font-weight:500;color:var(--sui-text-muted);">Off</div>
+      <div style="padding:6px 14px;border-radius:8px;background:var(--sui-bg);box-shadow:var(--sui-shadow-raised-sm);font-size:12px;font-weight:500;color:var(--sui-text-muted);">Off</div>
+    </div>
+    <div class="bento-name">Toggle Group</div>
+    <div class="bento-explore">Explore &rarr;</div>
+  </a>
+
+  <!-- Collapsible -->
+  <a class="bento-card" data-cat="components" href="/components/collapsible/">
+    <div class="bento-tag">Component</div>
+    <div class="bento-preview" style="flex-direction:column;gap:0;width:80%;margin:0 auto;">
+      <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;padding:8px 14px;border-radius:8px 8px 0 0;background:var(--sui-bg);box-shadow:var(--sui-shadow-raised-sm);font-size:12px;font-weight:600;color:var(--sui-primary);">Toggle content <span style="font-size:10px;color:var(--sui-text-muted);flex-shrink:0;">&#9650;</span></div>
+      <div style="padding:8px 14px;border-radius:0 0 8px 8px;background:var(--sui-bg);box-shadow:var(--sui-shadow-inset-sm);font-size:11px;color:var(--sui-text-muted);">Hidden content...</div>
+    </div>
+    <div class="bento-name">Collapsible</div>
+    <div class="bento-explore">Explore &rarr;</div>
+  </a>
+
+  <!-- Kbd -->
+  <a class="bento-card" data-cat="components" href="/components/kbd/">
+    <div class="bento-tag">Component</div>
+    <div class="bento-preview" style="gap:6px;">
+      <span style="display:inline-flex;align-items:center;justify-content:center;min-width:24px;height:26px;padding:0 7px;font-size:12px;font-weight:600;font-family:'JetBrains Mono',monospace;color:var(--sui-text);background:var(--sui-bg);border-radius:6px;box-shadow:var(--sui-shadow-raised-sm),inset 0 -2px 0 rgba(0,0,0,0.08);">&#8984;</span>
+      <span style="display:inline-flex;align-items:center;justify-content:center;min-width:24px;height:26px;padding:0 7px;font-size:12px;font-weight:600;font-family:'JetBrains Mono',monospace;color:var(--sui-text);background:var(--sui-bg);border-radius:6px;box-shadow:var(--sui-shadow-raised-sm),inset 0 -2px 0 rgba(0,0,0,0.08);">Shift</span>
+      <span style="display:inline-flex;align-items:center;justify-content:center;min-width:24px;height:26px;padding:0 7px;font-size:12px;font-weight:600;font-family:'JetBrains Mono',monospace;color:var(--sui-text);background:var(--sui-bg);border-radius:6px;box-shadow:var(--sui-shadow-raised-sm),inset 0 -2px 0 rgba(0,0,0,0.08);">P</span>
+    </div>
+    <div class="bento-name">Kbd</div>
+    <div class="bento-explore">Explore &rarr;</div>
+  </a>
+
+  <!-- Scroll Area -->
+  <a class="bento-card" data-cat="components" href="/components/scrollarea/">
+    <div class="bento-tag">Component</div>
+    <div class="bento-preview" style="flex-direction:column;gap:0;width:70%;margin:0 auto;">
+      <div style="height:80px;border-radius:8px;background:var(--sui-bg);box-shadow:var(--sui-shadow-inset-sm);position:relative;overflow:hidden;padding:8px 12px;">
+        <div style="font-size:10px;font-weight:600;color:var(--sui-text);margin-bottom:4px;">Items</div>
+        <div style="font-size:9px;color:var(--sui-text-muted);padding:4px 0;border-bottom:1px solid var(--sui-bg-dark);">Item one</div>
+        <div style="font-size:9px;color:var(--sui-text-muted);padding:4px 0;border-bottom:1px solid var(--sui-bg-dark);">Item two</div>
+        <div style="font-size:9px;color:var(--sui-text-muted);padding:4px 0;border-bottom:1px solid var(--sui-bg-dark);">Item three</div>
+        <div style="font-size:9px;color:var(--sui-text-muted);padding:4px 0;">Item four</div>
+        <div style="position:absolute;right:3px;top:8px;width:3px;height:24px;border-radius:2px;background:var(--sui-text-muted);opacity:0.4;"></div>
+      </div>
+    </div>
+    <div class="bento-name">Scroll Area</div>
+    <div class="bento-explore">Explore &rarr;</div>
+  </a>
+
+  <!-- Resizable -->
+  <a class="bento-card" data-cat="components" href="/components/resizable/">
+    <div class="bento-tag">Component</div>
+    <div class="bento-preview" style="width:80%;margin:0 auto;">
+      <div style="display:flex;height:60px;width:100%;border-radius:8px;overflow:hidden;box-shadow:var(--sui-shadow-raised-sm);">
+        <div style="flex:1;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:600;color:var(--sui-text-muted);background:var(--sui-bg);">A</div>
+        <div style="width:5px;background:var(--sui-bg-dark);display:flex;align-items:center;justify-content:center;cursor:col-resize;"><div style="width:2px;height:16px;background:var(--sui-text-light);border-radius:2px;"></div></div>
+        <div style="flex:2;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:600;color:var(--sui-text-muted);background:var(--sui-bg);">B</div>
+      </div>
+    </div>
+    <div class="bento-name">Resizable</div>
+    <div class="bento-explore">Explore &rarr;</div>
+  </a>
+
+  <!-- Combobox -->
+  <a class="bento-card" data-cat="components" href="/components/combobox/">
+    <div class="bento-tag">Component</div>
+    <div class="bento-preview" style="flex-direction:column;gap:4px;width:70%;margin:0 auto;">
+      <div style="display:flex;align-items:center;justify-content:space-between;padding:8px 12px;background:var(--sui-bg);border-radius:8px;box-shadow:var(--sui-shadow-inset);font-size:12px;color:var(--sui-text-light);">Select... <span style="font-size:8px;border-right:1.5px solid;border-bottom:1.5px solid;width:5px;height:5px;display:inline-block;transform:rotate(45deg);color:var(--sui-text-muted);"></span></div>
+      <div style="padding:6px;background:var(--sui-bg);border-radius:8px;box-shadow:var(--sui-shadow-raised-sm);">
+        <div style="padding:5px 8px;font-size:10px;border-radius:4px;color:var(--sui-primary);background:var(--sui-bg-dark);">React</div>
+        <div style="padding:5px 8px;font-size:10px;border-radius:4px;color:var(--sui-text-muted);">Vue</div>
+        <div style="padding:5px 8px;font-size:10px;border-radius:4px;color:var(--sui-text-muted);">Angular</div>
+      </div>
+    </div>
+    <div class="bento-name">Combobox</div>
+    <div class="bento-explore">Explore &rarr;</div>
+  </a>
+
+  <!-- Menubar -->
+  <a class="bento-card" data-cat="components" href="/components/menubar/">
+    <div class="bento-tag">Component</div>
+    <div class="bento-preview" style="width:100%;">
+      <div style="display:inline-flex;align-items:center;gap:2px;padding:4px;background:var(--sui-bg);border-radius:8px;box-shadow:var(--sui-shadow-raised-sm);">
+        <span style="padding:5px 10px;font-size:11px;font-weight:500;border-radius:5px;background:var(--sui-bg-dark);color:var(--sui-primary);">File</span>
+        <span style="padding:5px 10px;font-size:11px;font-weight:500;border-radius:5px;color:var(--sui-text-muted);">Edit</span>
+        <span style="padding:5px 10px;font-size:11px;font-weight:500;border-radius:5px;color:var(--sui-text-muted);">View</span>
+        <span style="padding:5px 10px;font-size:11px;font-weight:500;border-radius:5px;color:var(--sui-text-muted);">Help</span>
+      </div>
+    </div>
+    <div class="bento-name">Menubar</div>
+    <div class="bento-explore">Explore &rarr;</div>
+  </a>
+
+  <!-- Context Menu -->
+  <a class="bento-card" data-cat="components" href="/components/contextmenu/">
+    <div class="bento-tag">Component</div>
+    <div class="bento-preview" style="flex-direction:column;gap:3px;width:55%;margin:0 auto;">
+      <div style="padding:6px;background:var(--sui-bg);border-radius:8px;box-shadow:var(--sui-shadow-raised-sm);">
+        <div style="padding:5px 8px;font-size:10px;border-radius:4px;color:var(--sui-primary);background:var(--sui-bg-dark);">Edit</div>
+        <div style="padding:5px 8px;font-size:10px;border-radius:4px;color:var(--sui-text-muted);">Duplicate</div>
+        <div style="height:1px;margin:3px 0;background:var(--sui-bg-dark);"></div>
+        <div style="padding:5px 8px;font-size:10px;border-radius:4px;color:var(--sui-danger);">Delete</div>
+      </div>
+    </div>
+    <div class="bento-name">Context Menu</div>
+    <div class="bento-explore">Explore &rarr;</div>
+  </a>
+
+  <!-- Command -->
+  <a class="bento-card" data-cat="components" href="/components/command/">
+    <div class="bento-tag">Component</div>
+    <div class="bento-preview" style="flex-direction:column;gap:0;width:70%;margin:0 auto;">
+      <div style="background:var(--sui-bg);border-radius:8px;box-shadow:var(--sui-shadow-raised-sm);overflow:hidden;">
+        <div style="display:flex;align-items:center;gap:6px;padding:8px 10px;border-bottom:1px solid var(--sui-bg-dark);">
+          <svg style="width:10px;height:10px;color:var(--sui-text-muted);" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          <span style="font-size:10px;color:var(--sui-text-light);">Search...</span>
+        </div>
+        <div style="padding:4px;">
+          <div style="padding:4px 8px;font-size:9px;font-weight:700;color:var(--sui-text-light);text-transform:uppercase;">Actions</div>
+          <div style="padding:5px 8px;font-size:10px;border-radius:4px;background:var(--sui-bg-dark);color:var(--sui-primary);">Calendar</div>
+          <div style="padding:5px 8px;font-size:10px;border-radius:4px;color:var(--sui-text-muted);">Settings</div>
+        </div>
+      </div>
+    </div>
+    <div class="bento-name">Command</div>
+    <div class="bento-explore">Explore &rarr;</div>
+  </a>
+
+  <!-- Calendar -->
+  <a class="bento-card" data-cat="components" href="/components/calendar/">
+    <div class="bento-tag">Component</div>
+    <div class="bento-preview" style="flex-direction:column;gap:0;width:55%;margin:0 auto;">
+      <div style="background:var(--sui-bg);border-radius:8px;box-shadow:var(--sui-shadow-raised-sm);padding:8px;overflow:hidden;">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;">
+          <span style="font-size:9px;color:var(--sui-text-muted);">&#9664;</span>
+          <span style="font-size:10px;font-weight:700;color:var(--sui-text);">March</span>
+          <span style="font-size:9px;color:var(--sui-text-muted);">&#9654;</span>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(7,1fr);gap:2px;">
+          <div style="width:16px;height:16px;border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:7px;color:var(--sui-text-muted);">12</div>
+          <div style="width:16px;height:16px;border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:7px;color:var(--sui-text-muted);">13</div>
+          <div style="width:16px;height:16px;border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:7px;background:var(--sui-primary);color:#fff;">14</div>
+          <div style="width:16px;height:16px;border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:7px;color:var(--sui-text-muted);">15</div>
+          <div style="width:16px;height:16px;border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:7px;color:var(--sui-text-muted);">16</div>
+          <div style="width:16px;height:16px;border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:7px;color:var(--sui-text-muted);">17</div>
+          <div style="width:16px;height:16px;border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:7px;color:var(--sui-text-muted);">18</div>
+        </div>
+      </div>
+    </div>
+    <div class="bento-name">Calendar</div>
+    <div class="bento-explore">Explore &rarr;</div>
+  </a>
+
+  <!-- Chart -->
+  <a class="bento-card" data-cat="components" href="/components/chart/">
+    <div class="bento-tag">Component</div>
+    <div class="bento-preview" style="flex-direction:row; gap:12px; align-items:flex-end; padding:12px 20px;">
+      <div style="width:16px;height:50%;background:var(--sui-primary);border-radius:4px;box-shadow:var(--sui-shadow-raised-sm);"></div>
+      <div style="width:16px;height:70%;background:var(--sui-primary);border-radius:4px;box-shadow:var(--sui-shadow-raised-sm);"></div>
+      <div style="width:16px;height:40%;background:var(--sui-primary);border-radius:4px;box-shadow:var(--sui-shadow-raised-sm);"></div>
+      <div style="width:16px;height:85%;background:var(--sui-primary);border-radius:4px;box-shadow:var(--sui-shadow-raised-sm);"></div>
+      <div style="width:16px;height:60%;background:var(--sui-primary);border-radius:4px;box-shadow:var(--sui-shadow-raised-sm);"></div>
+    </div>
+    <div class="bento-name">Chart</div>
+    <div class="bento-explore">Explore &rarr;</div>
+  </a>
+
+  <!-- Shadows -->
+  <a class="bento-card" data-cat="utilities" href="/utilities/shadows/">
+    <div class="bento-tag">Utility</div>
+    <div class="bento-preview" style="gap: 20px;">
+      <div class="sui-raised" style="width:56px;height:56px;border-radius:12px;background:var(--sui-bg-light);"></div>
+      <div class="sui-inset" style="width:56px;height:56px;border-radius:12px;background:var(--sui-bg-light);"></div>
+      <div class="sui-flat" style="width:56px;height:56px;border-radius:12px;background:var(--sui-bg-light);border:1px solid var(--sui-bg-dark);"></div>
+    </div>
+    <div class="bento-name">Shadows</div>
+    <div class="bento-explore">Explore &rarr;</div>
+  </a>
+
+  <!-- Layout -->
+  <a class="bento-card" data-cat="components" href="/components/layout/">
+    <div class="bento-tag">Component</div>
+    <div class="bento-preview" style="flex-direction:column;gap:8px;width:100%;max-width:380px;margin:0 auto;">
+      <div style="display:flex;gap:6px;">
+        <div style="flex:1;background:var(--sui-primary);color:#fff;padding:8px;border-radius:6px;text-align:center;font-size:11px;font-weight:600;">col-4</div>
+        <div style="flex:1;background:var(--sui-primary);color:#fff;padding:8px;border-radius:6px;text-align:center;font-size:11px;font-weight:600;">col-4</div>
+        <div style="flex:1;background:var(--sui-primary);color:#fff;padding:8px;border-radius:6px;text-align:center;font-size:11px;font-weight:600;">col-4</div>
+      </div>
+      <div style="display:flex;gap:6px;">
+        <div style="flex:1;background:var(--sui-success);color:#fff;padding:8px;border-radius:6px;text-align:center;font-size:11px;font-weight:600;">col-6</div>
+        <div style="flex:1;background:var(--sui-success);color:#fff;padding:8px;border-radius:6px;text-align:center;font-size:11px;font-weight:600;">col-6</div>
+      </div>
+      <div style="display:flex;gap:6px;">
+        <div style="flex:1;background:var(--sui-info);color:#fff;padding:8px;border-radius:6px;text-align:center;font-size:11px;font-weight:600;">col-3</div>
+        <div style="flex:3;background:var(--sui-info);color:#fff;padding:8px;border-radius:6px;text-align:center;font-size:11px;font-weight:600;">col-9</div>
+      </div>
+    </div>
+    <div class="bento-name">Layout</div>
+    <div class="bento-explore">Explore &rarr;</div>
+  </a>
+
+  <!-- Border Radius -->
+  <a class="bento-card" data-cat="utilities" href="/utilities/radius/">
+    <div class="bento-tag">Utility</div>
+    <div class="bento-preview" style="gap: 16px;">
+      <div class="sui-raised sui-rounded-sm" style="width:48px;height:48px;background:var(--sui-bg-light);"></div>
+      <div class="sui-raised sui-rounded" style="width:48px;height:48px;background:var(--sui-bg-light);"></div>
+      <div class="sui-raised sui-rounded-lg" style="width:48px;height:48px;background:var(--sui-bg-light);"></div>
+      <div class="sui-raised sui-rounded-full" style="width:48px;height:48px;background:var(--sui-bg-light);"></div>
+    </div>
+    <div class="bento-name">Border Radius</div>
+    <div class="bento-explore">Explore &rarr;</div>
+  </a>
+
+  <!-- Spacing -->
+  <a class="bento-card" data-cat="utilities" href="/utilities/spacing/">
+    <div class="bento-tag">Utility</div>
+    <div class="bento-preview" style="gap: 8px;">
+      <div class="sui-raised" style="border-radius:8px;background:var(--sui-bg-light);"><div style="background:var(--sui-primary);opacity:0.15;border-radius:6px;padding:4px;"><span style="font-size:10px;color:var(--sui-text-muted);">p-1</span></div></div>
+      <div class="sui-raised" style="border-radius:8px;background:var(--sui-bg-light);"><div style="background:var(--sui-primary);opacity:0.15;border-radius:6px;padding:12px;"><span style="font-size:10px;color:var(--sui-text-muted);">p-3</span></div></div>
+      <div class="sui-raised" style="border-radius:8px;background:var(--sui-bg-light);"><div style="background:var(--sui-primary);opacity:0.15;border-radius:6px;padding:20px;"><span style="font-size:10px;color:var(--sui-text-muted);">p-5</span></div></div>
+    </div>
+    <div class="bento-name">Spacing</div>
+    <div class="bento-explore">Explore &rarr;</div>
+  </a>
+
+  <!-- Text -->
+  <a class="bento-card" data-cat="utilities" href="/utilities/text/">
+    <div class="bento-tag">Utility</div>
+    <div class="bento-preview" style="flex-direction:column; gap:4px; align-items:center;">
+      <span class="sui-text-primary" style="font-size:13px; font-weight:600;">Primary text</span>
+      <span class="sui-text-success" style="font-size:13px; font-weight:600;">Success text</span>
+      <span class="sui-text-danger" style="font-size:13px; font-weight:600;">Danger text</span>
+      <span class="sui-text-muted" style="font-size:13px;">Muted text</span>
+    </div>
+    <div class="bento-name">Text & Colors</div>
+    <div class="bento-explore">Explore &rarr;</div>
+  </a>
+
+  <!-- Flex -->
+  <a class="bento-card" data-cat="utilities" href="/utilities/flex/">
+    <div class="bento-tag">Utility</div>
+    <div class="bento-preview" style="gap:6px;">
+      <div class="sui-raised" style="padding:6px 10px;border-radius:6px;font-size:11px;">A</div>
+      <div class="sui-raised" style="padding:6px 10px;border-radius:6px;font-size:11px;">B</div>
+      <div class="sui-raised sui-ms-auto" style="padding:6px 10px;border-radius:6px;font-size:11px;">C</div>
+    </div>
+    <div class="bento-name">Flex</div>
+    <div class="bento-explore">Explore &rarr;</div>
+  </a>
+
+  <!-- Typography -->
+  <a class="bento-card" data-cat="utilities" href="/utilities/typography/">
+    <div class="bento-tag">Utility</div>
+    <div class="bento-preview" style="flex-direction:column;gap:4px;align-items:center;">
+      <div style="font-size:16px;font-weight:700;color:var(--sui-text);">Heading</div>
+      <div style="font-size:10px;color:var(--sui-text-muted);line-height:1.5;">Body text with <span style="color:var(--sui-primary);font-family:'JetBrains Mono',monospace;font-size:9px;background:var(--sui-bg-dark);padding:1px 4px;border-radius:3px;">code</span></div>
+      <div style="border-left:2px solid var(--sui-primary);padding-left:6px;font-size:9px;font-style:italic;color:var(--sui-text-light);">"Blockquote"</div>
+    </div>
+    <div class="bento-name">Typography</div>
+    <div class="bento-explore">Explore &rarr;</div>
+  </a>
+
+  <!-- Aspect Ratio -->
+  <a class="bento-card" data-cat="utilities" href="/utilities/aspectratio/">
+    <div class="bento-tag">Utility</div>
+    <div class="bento-preview" style="gap:10px;align-items:flex-end;">
+      <div style="width:54px;aspect-ratio:1/1;border-radius:6px;background:linear-gradient(135deg,#2DCE89,#1AAB6B);"></div>
+      <div style="width:64px;aspect-ratio:16/9;border-radius:6px;background:linear-gradient(135deg,#7C5CFC,#5B54E0);"></div>
+      <div style="width:30px;aspect-ratio:9/16;border-radius:6px;background:linear-gradient(135deg,#FF6B6B,#E74C6F);"></div>
+    </div>
+    <div class="bento-name">Aspect Ratio</div>
+    <div class="bento-explore">Explore &rarr;</div>
+  </a>
+
+</div>
+
+<script>
+  // Homepage filter
+  const params = new URLSearchParams(window.location.search);
+  const filter = params.get('filter');
+  if (filter) {
+    document.querySelectorAll('.docs-topbar-nav a').forEach(a => {
+      a.classList.remove('active');
+      if (a.getAttribute('href') === '/?filter=' + filter) a.classList.add('active');
+    });
+    document.querySelectorAll('.bento-card').forEach(card => {
+      card.style.display = (card.dataset.cat === filter) ? '' : 'none';
+    });
+  }
+
+  // Bento slider previews
+  document.querySelectorAll('.bento-preview .sui-slider input[type="range"]').forEach(input => {
+    const val = input.parentElement.querySelector('.sui-slider-value');
+    if (val) {
+      input.addEventListener('input', () => { val.textContent = input.value; });
+    }
+  });
+
+  // Client-side filter clicks (avoid page reload)
+  document.querySelectorAll('.docs-topbar-nav a').forEach(a => {
+    a.addEventListener('click', (e) => {
+      e.preventDefault();
+      const href = a.getAttribute('href');
+      const f = new URLSearchParams(href.split('?')[1] || '').get('filter');
+      history.pushState(null, '', href);
+      document.querySelectorAll('.docs-topbar-nav a').forEach(l => l.classList.remove('active'));
+      a.classList.add('active');
+      document.querySelectorAll('.bento-card').forEach(card => {
+        card.style.display = (!f || card.dataset.cat === f) ? '' : 'none';
+      });
+    });
+  });
+</script>

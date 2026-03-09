@@ -1,0 +1,229 @@
+---
+layout: component.njk
+title: Progress
+description: Neumorphic progress bars with inset tracks and raised fill indicators.
+componentId: progress
+hasControls: true
+toc:
+  - Default
+  - Colors
+  - Sizes
+  - Indeterminate
+  - Striped
+  - With Label
+---
+
+<div class="pg-preview-box" id="pgPreview"></div>
+<div class="pg-code-box"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre id="pgCode"></pre></div>
+
+<!-- Default -->
+<div class="pg-section">
+  <h3 class="pg-section-title">Default</h3>
+  <div class="pg-section-row">
+    <div class="sui-progress" style="width:100%;max-width:500px;" role="progressbar" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100">
+      <div class="sui-progress-bar sui-progress-primary" style="width:65%;"></div>
+    </div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-progress"&gt;
+  &lt;div class="sui-progress-bar sui-progress-primary" style="width:65%;"&gt;&lt;/div&gt;
+&lt;/div&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Colors -->
+<div class="pg-section">
+  <h3 class="pg-section-title">Colors</h3>
+  <div class="pg-section-row" style="flex-direction:column;gap:16px;width:100%;max-width:500px;">
+    <div class="sui-progress" style="width:100%;" role="progressbar" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100">
+      <div class="sui-progress-bar sui-progress-primary" style="width:65%;"></div>
+    </div>
+    <div class="sui-progress" style="width:100%;" role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100">
+      <div class="sui-progress-bar sui-progress-success" style="width:45%;"></div>
+    </div>
+    <div class="sui-progress" style="width:100%;" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100">
+      <div class="sui-progress-bar sui-progress-danger" style="width:80%;"></div>
+    </div>
+    <div class="sui-progress" style="width:100%;" role="progressbar" aria-valuenow="35" aria-valuemin="0" aria-valuemax="100">
+      <div class="sui-progress-bar sui-progress-warning" style="width:35%;"></div>
+    </div>
+    <div class="sui-progress" style="width:100%;" role="progressbar" aria-valuenow="55" aria-valuemin="0" aria-valuemax="100">
+      <div class="sui-progress-bar sui-progress-info" style="width:55%;"></div>
+    </div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-progress"&gt;
+  &lt;div class="sui-progress-bar sui-progress-primary" style="width:65%;"&gt;&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="sui-progress"&gt;
+  &lt;div class="sui-progress-bar sui-progress-success" style="width:45%;"&gt;&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="sui-progress"&gt;
+  &lt;div class="sui-progress-bar sui-progress-danger" style="width:80%;"&gt;&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="sui-progress"&gt;
+  &lt;div class="sui-progress-bar sui-progress-warning" style="width:35%;"&gt;&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="sui-progress"&gt;
+  &lt;div class="sui-progress-bar sui-progress-info" style="width:55%;"&gt;&lt;/div&gt;
+&lt;/div&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Sizes -->
+<div class="pg-section">
+  <h3 class="pg-section-title">Sizes</h3>
+  <div class="pg-section-row" style="flex-direction:column;gap:16px;width:100%;max-width:500px;">
+    <div class="sui-progress sui-progress-sm" style="width:100%;" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100">
+      <div class="sui-progress-bar sui-progress-primary" style="width:60%;"></div>
+    </div>
+    <div class="sui-progress" style="width:100%;" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100">
+      <div class="sui-progress-bar sui-progress-primary" style="width:60%;"></div>
+    </div>
+    <div class="sui-progress sui-progress-lg" style="width:100%;" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100">
+      <div class="sui-progress-bar sui-progress-primary" style="width:60%;"></div>
+    </div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-progress sui-progress-sm"&gt;
+  &lt;div class="sui-progress-bar sui-progress-primary" style="width:60%;"&gt;&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="sui-progress"&gt;
+  &lt;div class="sui-progress-bar sui-progress-primary" style="width:60%;"&gt;&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="sui-progress sui-progress-lg"&gt;
+  &lt;div class="sui-progress-bar sui-progress-primary" style="width:60%;"&gt;&lt;/div&gt;
+&lt;/div&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Indeterminate -->
+<div class="pg-section">
+  <h3 class="pg-section-title">Indeterminate</h3>
+  <div class="pg-section-row" style="flex-direction:column;gap:16px;width:100%;max-width:500px;">
+    <div class="sui-progress sui-progress-indeterminate" style="width:100%;" role="progressbar" aria-valuemin="0" aria-valuemax="100">
+      <div class="sui-progress-bar sui-progress-primary"></div>
+    </div>
+    <div class="sui-progress sui-progress-indeterminate" style="width:100%;" role="progressbar" aria-valuemin="0" aria-valuemax="100">
+      <div class="sui-progress-bar sui-progress-info"></div>
+    </div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-progress sui-progress-indeterminate"&gt;
+  &lt;div class="sui-progress-bar sui-progress-primary"&gt;&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="sui-progress sui-progress-indeterminate"&gt;
+  &lt;div class="sui-progress-bar sui-progress-info"&gt;&lt;/div&gt;
+&lt;/div&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Striped -->
+<div class="pg-section">
+  <h3 class="pg-section-title">Striped</h3>
+  <div class="pg-section-row">
+    <div class="sui-progress sui-progress-striped" style="width:100%;max-width:500px;" role="progressbar" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100">
+      <div class="sui-progress-bar sui-progress-primary" style="width:65%;"></div>
+    </div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-progress sui-progress-striped"&gt;
+  &lt;div class="sui-progress-bar sui-progress-primary" style="width:65%;"&gt;&lt;/div&gt;
+&lt;/div&gt;</pre></div>
+  </div>
+</div>
+
+<!-- With Label -->
+<div class="pg-section">
+  <h3 class="pg-section-title">With Label</h3>
+  <div class="pg-section-row">
+    <div class="sui-progress sui-progress-labeled" style="width:100%;max-width:500px;" role="progressbar" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100">
+      <div class="sui-progress-bar sui-progress-primary" style="width:65%;">65%</div>
+    </div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-progress sui-progress-labeled"&gt;
+  &lt;div class="sui-progress-bar sui-progress-primary" style="width:65%;"&gt;65%&lt;/div&gt;
+&lt;/div&gt;</pre></div>
+  </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const config = {
+    defaults: { color: 'Primary', size: 'Default', fill: 65, indeterminate: false },
+    controls: [
+      { key: 'color', label: 'Color', type: 'radio', options: ['Primary', 'Success', 'Danger', 'Warning', 'Info'] },
+      { key: 'size', label: 'Size', type: 'radio', options: ['Small', 'Default', 'Large'] },
+      { key: 'fill', label: 'Fill', type: 'range', min: 0, max: 100, unit: '%' },
+      { key: 'indeterminate', label: 'Indeterminate', type: 'toggle' },
+    ],
+    render(opts) {
+      let outerCls = 'sui-progress';
+      if (opts.size === 'Small') outerCls += ' sui-progress-sm';
+      else if (opts.size === 'Large') outerCls += ' sui-progress-lg';
+      if (opts.indeterminate) outerCls += ' sui-progress-indeterminate';
+      const barCls = 'sui-progress-bar sui-progress-' + opts.color.toLowerCase();
+      const widthStyle = opts.indeterminate ? '' : ' style="width:' + opts.fill + '%;"';
+      return '<div class="' + outerCls + '">\n  <div class="' + barCls + '"' + widthStyle + '></div>\n</div>';
+    }
+  };
+
+  function renderControls() {
+    let html = '<div class="pg-controls-title">Customize</div>';
+    config.controls.forEach(ctrl => {
+      if (ctrl.type === 'radio') {
+        html += '<div class="pg-control-group"><label class="pg-control-label">' + ctrl.label + '</label>';
+        ctrl.options.forEach(opt => {
+          const checked = opt === config.defaults[ctrl.key] ? ' checked' : '';
+          html += '<label class="sui-radio"><input type="radio" name="ctrl-' + ctrl.key + '" value="' + opt + '"' + checked + ' onchange="updatePreview()"><span class="sui-radio-mark"></span>' + opt + '</label>';
+        });
+        html += '</div>';
+      } else if (ctrl.type === 'range') {
+        html += '<div class="pg-control-group"><label class="pg-control-label">' + ctrl.label + ' <span id="rangeVal-' + ctrl.key + '">' + config.defaults[ctrl.key] + ctrl.unit + '</span></label>';
+        html += '<input type="range" min="' + ctrl.min + '" max="' + ctrl.max + '" value="' + config.defaults[ctrl.key] + '" data-control="' + ctrl.key + '" data-unit="' + ctrl.unit + '" oninput="document.getElementById(\'rangeVal-' + ctrl.key + '\').textContent=this.value+\'' + ctrl.unit + '\';updatePreview();" style="width:100%;">';
+        html += '</div>';
+      } else if (ctrl.type === 'toggle') {
+        const checked = config.defaults[ctrl.key] ? ' checked' : '';
+        html += '<div class="pg-control-group"><div class="pg-control-row"><label class="pg-control-label">' + ctrl.label + '</label><label class="sui-toggle sui-toggle-sm sui-toggle-primary"><input type="checkbox" data-control="' + ctrl.key + '"' + checked + ' onchange="updatePreview()"><span class="sui-toggle-slider"></span></label></div></div>';
+      }
+    });
+    document.getElementById('pgControlsContent').innerHTML = html;
+  }
+
+  window.updatePreview = function() {
+    const opts = {};
+    config.controls.forEach(ctrl => {
+      if (ctrl.type === 'radio') {
+        const el = document.querySelector('input[name="ctrl-' + ctrl.key + '"]:checked');
+        opts[ctrl.key] = el ? el.value : config.defaults[ctrl.key];
+      } else if (ctrl.type === 'range') {
+        const el = document.querySelector('[data-control="' + ctrl.key + '"]');
+        opts[ctrl.key] = el ? parseInt(el.value, 10) : config.defaults[ctrl.key];
+      } else if (ctrl.type === 'toggle') {
+        const el = document.querySelector('[data-control="' + ctrl.key + '"]');
+        opts[ctrl.key] = el ? el.checked : config.defaults[ctrl.key];
+      }
+    });
+    const code = config.render(opts);
+    document.getElementById('pgPreview').innerHTML = code;
+    document.getElementById('pgCode').textContent = code;
+  };
+
+  renderControls();
+  updatePreview();
+});
+</script>

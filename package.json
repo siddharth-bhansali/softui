@@ -1,0 +1,43 @@
+{
+  "name": "softui",
+  "version": "1.0.0",
+  "description": "A neumorphic CSS component library with soft shadows, muted palettes, and tactile depth.",
+  "main": "dist/softui.js",
+  "style": "dist/softui.css",
+  "files": [
+    "dist/"
+  ],
+  "scripts": {
+    "dev": "eleventy --serve --incremental",
+    "build": "eleventy",
+    "build:min": "cleancss -o dist/softui.min.css src/softui.css && terser src/softui.js -o dist/softui.min.js --compress --mangle && cp src/softui.css dist/softui.css && cp src/softui.js dist/softui.js",
+    "prepublishOnly": "npm run build:min"
+  },
+  "keywords": [
+    "css",
+    "neumorphism",
+    "neumorphic",
+    "soft-ui",
+    "ui",
+    "components",
+    "design-system",
+    "dark-mode",
+    "framework"
+  ],
+  "author": "Siddharth Bhansali",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/siddharth-bhansali/softui.git"
+  },
+  "homepage": "https://github.com/siddharth-bhansali/softui",
+  "bugs": {
+    "url": "https://github.com/siddharth-bhansali/softui/issues"
+  },
+  "type": "commonjs",
+  "devDependencies": {
+    "@11ty/eleventy": "^3.1.2",
+    "clean-css-cli": "^5.6.3",
+    "terser": "^5.46.0"
+  }
+}

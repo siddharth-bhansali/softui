@@ -1,0 +1,58 @@
+---
+layout: component.njk
+title: Text & Colors
+description: Text alignment and color utility classes.
+componentId: text
+hasControls: false
+toc:
+  - Text Colors
+  - Text Alignment
+---
+
+<!-- Text Colors -->
+<div class="pg-section" id="section-1">
+  <h3 class="pg-section-title">Text Colors</h3>
+  <div class="pg-section-row">
+    <div style="display:flex;flex-direction:column;gap:8px;">
+      <span class="sui-text-primary" style="font-weight:600;">sui-text-primary — Primary color text</span>
+      <span class="sui-text-success" style="font-weight:600;">sui-text-success — Success color text</span>
+      <span class="sui-text-danger" style="font-weight:600;">sui-text-danger — Danger color text</span>
+      <span class="sui-text-warning" style="font-weight:600;">sui-text-warning — Warning color text</span>
+      <span class="sui-text-info" style="font-weight:600;">sui-text-info — Info color text</span>
+      <span class="sui-text-muted" style="font-weight:600;">sui-text-muted — Muted color text</span>
+    </div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;span class="sui-text-primary"&gt;Primary color text&lt;/span&gt;
+&lt;span class="sui-text-success"&gt;Success color text&lt;/span&gt;
+&lt;span class="sui-text-danger"&gt;Danger color text&lt;/span&gt;
+&lt;span class="sui-text-warning"&gt;Warning color text&lt;/span&gt;
+&lt;span class="sui-text-info"&gt;Info color text&lt;/span&gt;
+&lt;span class="sui-text-muted"&gt;Muted color text&lt;/span&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Text Alignment -->
+<div class="pg-section" id="section-2">
+  <h3 class="pg-section-title">Text Alignment</h3>
+  <div class="pg-section-row">
+    <div style="display:flex;gap:16px;flex-wrap:wrap;width:100%;">
+      <div class="sui-raised sui-text-left" style="flex:1;min-width:140px;border-radius:12px;padding:16px;">
+        Left aligned text
+      </div>
+      <div class="sui-raised sui-text-center" style="flex:1;min-width:140px;border-radius:12px;padding:16px;">
+        Center aligned text
+      </div>
+      <div class="sui-raised sui-text-right" style="flex:1;min-width:140px;border-radius:12px;padding:16px;">
+        Right aligned text
+      </div>
+    </div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-text-left"&gt;Left aligned text&lt;/div&gt;
+&lt;div class="sui-text-center"&gt;Center aligned text&lt;/div&gt;
+&lt;div class="sui-text-right"&gt;Right aligned text&lt;/div&gt;</pre></div>
+  </div>
+</div>

@@ -1,0 +1,470 @@
+---
+layout: component.njk
+title: Data Table
+description: Interactive tables with sorting, searching, and pagination.
+componentId: datatable
+hasControls: false
+toc:
+  - Basic
+  - Sortable
+  - Searchable
+  - Full Featured
+  - Striped & Compact
+---
+
+<!-- Section 1 — Basic -->
+<div class="pg-section" id="section-1">
+  <h3 class="pg-section-title">Basic Data Table</h3>
+  <p class="pg-section-desc">Wrap a <code>.sui-table</code> in <code>.sui-datatable</code> and add a footer with info and pagination.</p>
+
+  <div class="pg-section-row">
+    <div class="sui-datatable">
+      <div class="docs-table-wrap">
+        <table class="sui-table">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Role</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>1</td><td>Alice Martin</td><td>alice@example.com</td><td>Admin</td><td><span class="sui-badge sui-badge-success">Active</span></td></tr>
+            <tr><td>2</td><td>Bob Chen</td><td>bob@example.com</td><td>Editor</td><td><span class="sui-badge sui-badge-success">Active</span></td></tr>
+            <tr><td>3</td><td>Carol Davis</td><td>carol@example.com</td><td>Viewer</td><td><span class="sui-badge sui-badge-warning">Pending</span></td></tr>
+            <tr><td>4</td><td>David Kim</td><td>david@example.com</td><td>Editor</td><td><span class="sui-badge sui-badge-success">Active</span></td></tr>
+            <tr><td>5</td><td>Eva Novak</td><td>eva@example.com</td><td>Admin</td><td><span class="sui-badge sui-badge-danger">Inactive</span></td></tr>
+            <tr><td>6</td><td>Frank Li</td><td>frank@example.com</td><td>Viewer</td><td><span class="sui-badge sui-badge-success">Active</span></td></tr>
+            <tr><td>7</td><td>Grace Park</td><td>grace@example.com</td><td>Editor</td><td><span class="sui-badge sui-badge-warning">Pending</span></td></tr>
+            <tr><td>8</td><td>Henry Wells</td><td>henry@example.com</td><td>Viewer</td><td><span class="sui-badge sui-badge-success">Active</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="sui-datatable-footer">
+        <div class="sui-datatable-info"></div>
+        <div class="sui-datatable-pagination"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block">
+      <button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button>
+      <pre>&lt;div class="sui-datatable"&gt;
+  &lt;table class="sui-table"&gt;
+    &lt;thead&gt;
+      &lt;tr&gt;
+        &lt;th&gt;#&lt;/th&gt;
+        &lt;th&gt;Name&lt;/th&gt;
+        &lt;th&gt;Email&lt;/th&gt;
+        &lt;th&gt;Role&lt;/th&gt;
+        &lt;th&gt;Status&lt;/th&gt;
+      &lt;/tr&gt;
+    &lt;/thead&gt;
+    &lt;tbody&gt;
+      &lt;tr&gt;
+        &lt;td&gt;1&lt;/td&gt;
+        &lt;td&gt;Alice Martin&lt;/td&gt;
+        &lt;td&gt;alice@example.com&lt;/td&gt;
+        &lt;td&gt;Admin&lt;/td&gt;
+        &lt;td&gt;&lt;span class="sui-badge sui-badge-success"&gt;Active&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;!-- more rows... --&gt;
+    &lt;/tbody&gt;
+  &lt;/table&gt;
+  &lt;div class="sui-datatable-footer"&gt;
+    &lt;div class="sui-datatable-info"&gt;&lt;/div&gt;
+    &lt;div class="sui-datatable-pagination"&gt;&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</pre>
+    </div>
+  </div>
+</div>
+
+<!-- Section 2 — Sortable -->
+<div class="pg-section" id="section-2">
+  <h3 class="pg-section-title">Sortable Columns</h3>
+  <p class="pg-section-desc">Add <code>data-sort="string"</code> or <code>data-sort="number"</code> to <code>&lt;th&gt;</code> elements. Click a header to sort ascending, click again for descending.</p>
+
+  <div class="pg-section-row">
+    <div class="sui-datatable">
+      <div class="docs-table-wrap">
+        <table class="sui-table">
+          <thead>
+            <tr>
+              <th data-sort="number">#</th>
+              <th data-sort="string">Product</th>
+              <th data-sort="string">Category</th>
+              <th data-sort="number">Price</th>
+              <th data-sort="number">Stock</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>1</td><td>Wireless Headphones</td><td>Audio</td><td>$79</td><td>142</td></tr>
+            <tr><td>2</td><td>Mechanical Keyboard</td><td>Peripherals</td><td>$129</td><td>87</td></tr>
+            <tr><td>3</td><td>USB-C Hub</td><td>Accessories</td><td>$45</td><td>310</td></tr>
+            <tr><td>4</td><td>Webcam HD</td><td>Peripherals</td><td>$65</td><td>53</td></tr>
+            <tr><td>5</td><td>Monitor Stand</td><td>Accessories</td><td>$35</td><td>205</td></tr>
+            <tr><td>6</td><td>Bluetooth Speaker</td><td>Audio</td><td>$55</td><td>178</td></tr>
+            <tr><td>7</td><td>Laptop Sleeve</td><td>Accessories</td><td>$25</td><td>420</td></tr>
+            <tr><td>8</td><td>Gaming Mouse</td><td>Peripherals</td><td>$59</td><td>96</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="sui-datatable-footer">
+        <div class="sui-datatable-info"></div>
+        <div class="sui-datatable-pagination"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block">
+      <button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button>
+      <pre>&lt;div class="sui-datatable"&gt;
+  &lt;table class="sui-table"&gt;
+    &lt;thead&gt;
+      &lt;tr&gt;
+        &lt;th data-sort="number"&gt;#&lt;/th&gt;
+        &lt;th data-sort="string"&gt;Product&lt;/th&gt;
+        &lt;th data-sort="string"&gt;Category&lt;/th&gt;
+        &lt;th data-sort="number"&gt;Price&lt;/th&gt;
+        &lt;th data-sort="number"&gt;Stock&lt;/th&gt;
+      &lt;/tr&gt;
+    &lt;/thead&gt;
+    &lt;tbody&gt;
+      &lt;tr&gt;
+        &lt;td&gt;1&lt;/td&gt;
+        &lt;td&gt;Wireless Headphones&lt;/td&gt;
+        &lt;td&gt;Audio&lt;/td&gt;
+        &lt;td&gt;$79&lt;/td&gt;
+        &lt;td&gt;142&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;!-- more rows... --&gt;
+    &lt;/tbody&gt;
+  &lt;/table&gt;
+  &lt;div class="sui-datatable-footer"&gt;
+    &lt;div class="sui-datatable-info"&gt;&lt;/div&gt;
+    &lt;div class="sui-datatable-pagination"&gt;&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</pre>
+    </div>
+  </div>
+</div>
+
+<!-- Section 3 — Searchable -->
+<div class="pg-section" id="section-3">
+  <h3 class="pg-section-title">Searchable</h3>
+  <p class="pg-section-desc">Add a <code>.sui-datatable-toolbar</code> with a search input to filter rows in real time.</p>
+
+  <div class="pg-section-row">
+    <div class="sui-datatable">
+      <div class="sui-datatable-toolbar">
+        <div class="sui-datatable-search">
+          <svg class="sui-datatable-search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          <input type="text" placeholder="Search employees...">
+        </div>
+      </div>
+      <div class="docs-table-wrap">
+        <table class="sui-table">
+          <thead>
+            <tr>
+              <th data-sort="number">#</th>
+              <th data-sort="string">Name</th>
+              <th data-sort="string">Department</th>
+              <th data-sort="string">Location</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>1</td><td>Sarah Johnson</td><td>Engineering</td><td>New York</td><td><span class="sui-badge sui-badge-success">Active</span></td></tr>
+            <tr><td>2</td><td>Michael Brown</td><td>Design</td><td>London</td><td><span class="sui-badge sui-badge-success">Active</span></td></tr>
+            <tr><td>3</td><td>Emily Wilson</td><td>Marketing</td><td>Tokyo</td><td><span class="sui-badge sui-badge-warning">On Leave</span></td></tr>
+            <tr><td>4</td><td>James Taylor</td><td>Engineering</td><td>Berlin</td><td><span class="sui-badge sui-badge-success">Active</span></td></tr>
+            <tr><td>5</td><td>Lisa Anderson</td><td>Sales</td><td>New York</td><td><span class="sui-badge sui-badge-success">Active</span></td></tr>
+            <tr><td>6</td><td>Robert Garcia</td><td>Engineering</td><td>London</td><td><span class="sui-badge sui-badge-danger">Inactive</span></td></tr>
+            <tr><td>7</td><td>Maria Lopez</td><td>Design</td><td>Tokyo</td><td><span class="sui-badge sui-badge-success">Active</span></td></tr>
+            <tr><td>8</td><td>Thomas White</td><td>Marketing</td><td>Berlin</td><td><span class="sui-badge sui-badge-warning">On Leave</span></td></tr>
+            <tr><td>9</td><td>Jennifer Lee</td><td>Sales</td><td>New York</td><td><span class="sui-badge sui-badge-success">Active</span></td></tr>
+            <tr><td>10</td><td>Daniel Clark</td><td>Engineering</td><td>London</td><td><span class="sui-badge sui-badge-success">Active</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="sui-datatable-footer">
+        <div class="sui-datatable-info"></div>
+        <div class="sui-datatable-pagination"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block">
+      <button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button>
+      <pre>&lt;div class="sui-datatable"&gt;
+  &lt;div class="sui-datatable-toolbar"&gt;
+    &lt;div class="sui-datatable-search"&gt;
+      &lt;svg class="sui-datatable-search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"&gt;
+        &lt;circle cx="11" cy="11" r="8"/&gt;
+        &lt;line x1="21" y1="21" x2="16.65" y2="16.65"/&gt;
+      &lt;/svg&gt;
+      &lt;input type="text" placeholder="Search employees..."&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;table class="sui-table"&gt;
+    &lt;thead&gt;
+      &lt;tr&gt;
+        &lt;th data-sort="number"&gt;#&lt;/th&gt;
+        &lt;th data-sort="string"&gt;Name&lt;/th&gt;
+        &lt;th data-sort="string"&gt;Department&lt;/th&gt;
+        &lt;th data-sort="string"&gt;Location&lt;/th&gt;
+        &lt;th&gt;Status&lt;/th&gt;
+      &lt;/tr&gt;
+    &lt;/thead&gt;
+    &lt;tbody&gt;
+      &lt;tr&gt;
+        &lt;td&gt;1&lt;/td&gt;
+        &lt;td&gt;Sarah Johnson&lt;/td&gt;
+        &lt;td&gt;Engineering&lt;/td&gt;
+        &lt;td&gt;New York&lt;/td&gt;
+        &lt;td&gt;&lt;span class="sui-badge sui-badge-success"&gt;Active&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;!-- more rows... --&gt;
+    &lt;/tbody&gt;
+  &lt;/table&gt;
+  &lt;div class="sui-datatable-footer"&gt;
+    &lt;div class="sui-datatable-info"&gt;&lt;/div&gt;
+    &lt;div class="sui-datatable-pagination"&gt;&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</pre>
+    </div>
+  </div>
+</div>
+
+<!-- Section 4 — Full Featured -->
+<div class="pg-section" id="section-4">
+  <h3 class="pg-section-title">Full Featured</h3>
+  <p class="pg-section-desc">Combine search, sortable columns, per-page selector, and pagination for a complete data table experience.</p>
+
+  <div class="pg-section-row">
+    <div class="sui-datatable">
+      <div class="sui-datatable-toolbar">
+        <div class="sui-datatable-search">
+          <svg class="sui-datatable-search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          <input type="text" placeholder="Search orders...">
+        </div>
+        <div class="sui-datatable-perpage">
+          <span>Show</span>
+          <select>
+            <option value="5" selected>5</option>
+            <option value="10">10</option>
+            <option value="25">25</option>
+          </select>
+          <span>entries</span>
+        </div>
+      </div>
+      <div class="docs-table-wrap">
+        <table class="sui-table">
+          <thead>
+            <tr>
+              <th data-sort="number">Order</th>
+              <th data-sort="string">Customer</th>
+              <th data-sort="string">Product</th>
+              <th data-sort="number">Amount</th>
+              <th data-sort="string">Date</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>#1001</td><td>Alice Martin</td><td>Pro Subscription</td><td>$299</td><td>2026-03-01</td><td><span class="sui-badge sui-badge-success">Completed</span></td></tr>
+            <tr><td>#1002</td><td>Bob Chen</td><td>Team License</td><td>$599</td><td>2026-03-02</td><td><span class="sui-badge sui-badge-success">Completed</span></td></tr>
+            <tr><td>#1003</td><td>Carol Davis</td><td>Starter Plan</td><td>$49</td><td>2026-03-02</td><td><span class="sui-badge sui-badge-warning">Pending</span></td></tr>
+            <tr><td>#1004</td><td>David Kim</td><td>Enterprise</td><td>$1,299</td><td>2026-03-03</td><td><span class="sui-badge sui-badge-success">Completed</span></td></tr>
+            <tr><td>#1005</td><td>Eva Novak</td><td>Pro Subscription</td><td>$299</td><td>2026-03-04</td><td><span class="sui-badge sui-badge-danger">Refunded</span></td></tr>
+            <tr><td>#1006</td><td>Frank Li</td><td>Team License</td><td>$599</td><td>2026-03-04</td><td><span class="sui-badge sui-badge-success">Completed</span></td></tr>
+            <tr><td>#1007</td><td>Grace Park</td><td>Starter Plan</td><td>$49</td><td>2026-03-05</td><td><span class="sui-badge sui-badge-success">Completed</span></td></tr>
+            <tr><td>#1008</td><td>Henry Wells</td><td>Pro Subscription</td><td>$299</td><td>2026-03-05</td><td><span class="sui-badge sui-badge-warning">Pending</span></td></tr>
+            <tr><td>#1009</td><td>Ivy Torres</td><td>Enterprise</td><td>$1,299</td><td>2026-03-06</td><td><span class="sui-badge sui-badge-success">Completed</span></td></tr>
+            <tr><td>#1010</td><td>Jack Murphy</td><td>Team License</td><td>$599</td><td>2026-03-06</td><td><span class="sui-badge sui-badge-success">Completed</span></td></tr>
+            <tr><td>#1011</td><td>Karen Scott</td><td>Starter Plan</td><td>$49</td><td>2026-03-07</td><td><span class="sui-badge sui-badge-warning">Pending</span></td></tr>
+            <tr><td>#1012</td><td>Leo Adams</td><td>Pro Subscription</td><td>$299</td><td>2026-03-07</td><td><span class="sui-badge sui-badge-success">Completed</span></td></tr>
+            <tr><td>#1013</td><td>Mia Rivera</td><td>Enterprise</td><td>$1,299</td><td>2026-03-08</td><td><span class="sui-badge sui-badge-danger">Refunded</span></td></tr>
+            <tr><td>#1014</td><td>Noah Cooper</td><td>Team License</td><td>$599</td><td>2026-03-08</td><td><span class="sui-badge sui-badge-success">Completed</span></td></tr>
+            <tr><td>#1015</td><td>Olivia Reed</td><td>Starter Plan</td><td>$49</td><td>2026-03-09</td><td><span class="sui-badge sui-badge-success">Completed</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="sui-datatable-footer">
+        <div class="sui-datatable-info"></div>
+        <div class="sui-datatable-pagination"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block">
+      <button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button>
+      <pre>&lt;div class="sui-datatable"&gt;
+  &lt;div class="sui-datatable-toolbar"&gt;
+    &lt;div class="sui-datatable-search"&gt;
+      &lt;svg class="sui-datatable-search-icon" viewBox="0 0 24 24" fill="none"
+        stroke="currentColor" stroke-width="2"&gt;
+        &lt;circle cx="11" cy="11" r="8"/&gt;
+        &lt;line x1="21" y1="21" x2="16.65" y2="16.65"/&gt;
+      &lt;/svg&gt;
+      &lt;input type="text" placeholder="Search orders..."&gt;
+    &lt;/div&gt;
+    &lt;div class="sui-datatable-perpage"&gt;
+      &lt;span&gt;Show&lt;/span&gt;
+      &lt;select&gt;
+        &lt;option value="5" selected&gt;5&lt;/option&gt;
+        &lt;option value="10"&gt;10&lt;/option&gt;
+        &lt;option value="25"&gt;25&lt;/option&gt;
+      &lt;/select&gt;
+      &lt;span&gt;entries&lt;/span&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;table class="sui-table"&gt;
+    &lt;thead&gt;
+      &lt;tr&gt;
+        &lt;th data-sort="number"&gt;Order&lt;/th&gt;
+        &lt;th data-sort="string"&gt;Customer&lt;/th&gt;
+        &lt;th data-sort="string"&gt;Product&lt;/th&gt;
+        &lt;th data-sort="number"&gt;Amount&lt;/th&gt;
+        &lt;th data-sort="string"&gt;Date&lt;/th&gt;
+        &lt;th&gt;Status&lt;/th&gt;
+      &lt;/tr&gt;
+    &lt;/thead&gt;
+    &lt;tbody&gt;
+      &lt;tr&gt;
+        &lt;td&gt;#1001&lt;/td&gt;
+        &lt;td&gt;Alice Martin&lt;/td&gt;
+        &lt;td&gt;Pro Subscription&lt;/td&gt;
+        &lt;td&gt;$299&lt;/td&gt;
+        &lt;td&gt;2026-03-01&lt;/td&gt;
+        &lt;td&gt;&lt;span class="sui-badge sui-badge-success"&gt;Completed&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;!-- more rows... --&gt;
+    &lt;/tbody&gt;
+  &lt;/table&gt;
+  &lt;div class="sui-datatable-footer"&gt;
+    &lt;div class="sui-datatable-info"&gt;&lt;/div&gt;
+    &lt;div class="sui-datatable-pagination"&gt;&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</pre>
+    </div>
+  </div>
+</div>
+
+<!-- Section 5 — Striped & Compact -->
+<div class="pg-section" id="section-5">
+  <h3 class="pg-section-title">Striped & Compact</h3>
+  <p class="pg-section-desc">Combine with existing table variants like <code>.sui-table-striped</code> and <code>.sui-table-compact</code>.</p>
+
+  <div class="pg-section-row">
+    <div class="sui-datatable">
+      <div class="sui-datatable-toolbar">
+        <div class="sui-datatable-search">
+          <svg class="sui-datatable-search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          <input type="text" placeholder="Search...">
+        </div>
+        <div class="sui-datatable-perpage">
+          <span>Show</span>
+          <select>
+            <option value="5" selected>5</option>
+            <option value="10">10</option>
+          </select>
+          <span>entries</span>
+        </div>
+      </div>
+      <div class="docs-table-wrap">
+        <table class="sui-table sui-table-striped sui-table-compact">
+          <thead>
+            <tr>
+              <th data-sort="number">#</th>
+              <th data-sort="string">Task</th>
+              <th data-sort="string">Assignee</th>
+              <th data-sort="string">Priority</th>
+              <th>Progress</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>1</td><td>Design landing page</td><td>Alice</td><td>High</td><td><span class="sui-badge sui-badge-danger">Blocked</span></td></tr>
+            <tr><td>2</td><td>Write API docs</td><td>Bob</td><td>Medium</td><td><span class="sui-badge sui-badge-warning">In Progress</span></td></tr>
+            <tr><td>3</td><td>Fix login bug</td><td>Carol</td><td>High</td><td><span class="sui-badge sui-badge-success">Done</span></td></tr>
+            <tr><td>4</td><td>Update database schema</td><td>David</td><td>Low</td><td><span class="sui-badge sui-badge-warning">In Progress</span></td></tr>
+            <tr><td>5</td><td>Add unit tests</td><td>Eva</td><td>Medium</td><td><span class="sui-badge sui-badge-success">Done</span></td></tr>
+            <tr><td>6</td><td>Review pull requests</td><td>Frank</td><td>High</td><td><span class="sui-badge sui-badge-warning">In Progress</span></td></tr>
+            <tr><td>7</td><td>Deploy to staging</td><td>Grace</td><td>Medium</td><td><span class="sui-badge sui-badge-success">Done</span></td></tr>
+            <tr><td>8</td><td>Performance audit</td><td>Henry</td><td>Low</td><td><span class="sui-badge sui-badge-danger">Blocked</span></td></tr>
+            <tr><td>9</td><td>Migrate to TypeScript</td><td>Ivy</td><td>High</td><td><span class="sui-badge sui-badge-warning">In Progress</span></td></tr>
+            <tr><td>10</td><td>Set up CI/CD pipeline</td><td>Jack</td><td>Medium</td><td><span class="sui-badge sui-badge-success">Done</span></td></tr>
+            <tr><td>11</td><td>Create onboarding flow</td><td>Karen</td><td>Low</td><td><span class="sui-badge sui-badge-warning">In Progress</span></td></tr>
+            <tr><td>12</td><td>Optimize images</td><td>Leo</td><td>Low</td><td><span class="sui-badge sui-badge-success">Done</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="sui-datatable-footer">
+        <div class="sui-datatable-info"></div>
+        <div class="sui-datatable-pagination"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block">
+      <button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button>
+      <pre>&lt;div class="sui-datatable"&gt;
+  &lt;div class="sui-datatable-toolbar"&gt;
+    &lt;div class="sui-datatable-search"&gt;
+      &lt;svg class="sui-datatable-search-icon" viewBox="0 0 24 24" fill="none"
+        stroke="currentColor" stroke-width="2"&gt;
+        &lt;circle cx="11" cy="11" r="8"/&gt;
+        &lt;line x1="21" y1="21" x2="16.65" y2="16.65"/&gt;
+      &lt;/svg&gt;
+      &lt;input type="text" placeholder="Search..."&gt;
+    &lt;/div&gt;
+    &lt;div class="sui-datatable-perpage"&gt;
+      &lt;span&gt;Show&lt;/span&gt;
+      &lt;select&gt;
+        &lt;option value="5" selected&gt;5&lt;/option&gt;
+        &lt;option value="10"&gt;10&lt;/option&gt;
+      &lt;/select&gt;
+      &lt;span&gt;entries&lt;/span&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;table class="sui-table sui-table-striped sui-table-compact"&gt;
+    &lt;thead&gt;
+      &lt;tr&gt;
+        &lt;th data-sort="number"&gt;#&lt;/th&gt;
+        &lt;th data-sort="string"&gt;Task&lt;/th&gt;
+        &lt;th data-sort="string"&gt;Assignee&lt;/th&gt;
+        &lt;th data-sort="string"&gt;Priority&lt;/th&gt;
+        &lt;th&gt;Progress&lt;/th&gt;
+      &lt;/tr&gt;
+    &lt;/thead&gt;
+    &lt;tbody&gt;
+      &lt;tr&gt;
+        &lt;td&gt;1&lt;/td&gt;
+        &lt;td&gt;Design landing page&lt;/td&gt;
+        &lt;td&gt;Alice&lt;/td&gt;
+        &lt;td&gt;High&lt;/td&gt;
+        &lt;td&gt;&lt;span class="sui-badge sui-badge-danger"&gt;Blocked&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;!-- more rows... --&gt;
+    &lt;/tbody&gt;
+  &lt;/table&gt;
+  &lt;div class="sui-datatable-footer"&gt;
+    &lt;div class="sui-datatable-info"&gt;&lt;/div&gt;
+    &lt;div class="sui-datatable-pagination"&gt;&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</pre>
+    </div>
+  </div>
+</div>
