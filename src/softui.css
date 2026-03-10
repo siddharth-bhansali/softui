@@ -291,7 +291,7 @@ a.sui-btn-warning:visited {
 .sui-btn-outline.sui-btn-primary:hover {
   background: var(--sui-primary);
   color: #fff;
-  box-shadow: 4px 4px 12px rgba(91, 84, 224, 0.35), -2px -2px 8px var(--sui-shadow-light);
+  box-shadow: 2px 2px 8px rgba(91, 84, 224, 0.4), -1px -1px 6px var(--sui-shadow-light);
 }
 .sui-btn-outline.sui-btn-success {
   background: transparent;
