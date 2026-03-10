@@ -8256,3 +8256,416 @@ a.sui-btn-warning:visited {
     pointer-events: auto;
   }
 }
+
+/* ===========================================
+   Timeline
+   =========================================== */
+.sui-timeline {
+  display: flex;
+  flex-direction: column;
+  padding: 8px 0;
+  position: relative;
+}
+
+.sui-timeline-item {
+  display: flex;
+  align-items: flex-start;
+  position: relative;
+  min-height: 70px;
+}
+
+.sui-timeline-item:last-child .sui-timeline-connector {
+  display: none;
+}
+
+/* --- Separator (dot + connector column) --- */
+.sui-timeline-separator {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  align-self: stretch;
+  flex-shrink: 0;
+  margin-right: 20px;
+}
+
+/* --- Dot --- */
+.sui-timeline-dot {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--sui-bg-dark);
+  box-shadow: var(--sui-shadow-raised-sm);
+  flex-shrink: 0;
+  position: relative;
+  z-index: 1;
+  transition: var(--sui-transition);
+}
+
+/* Inset dot */
+.sui-timeline-dot-inset {
+  background: var(--sui-bg);
+  box-shadow: var(--sui-shadow-inset-sm);
+}
+
+.sui-timeline-dot-inset.sui-timeline-dot-primary { background: rgba(91, 84, 224, 0.15); box-shadow: var(--sui-shadow-inset-sm); }
+.sui-timeline-dot-inset.sui-timeline-dot-success { background: rgba(45, 206, 137, 0.15); box-shadow: var(--sui-shadow-inset-sm); }
+.sui-timeline-dot-inset.sui-timeline-dot-danger { background: rgba(231, 76, 111, 0.15); box-shadow: var(--sui-shadow-inset-sm); }
+.sui-timeline-dot-inset.sui-timeline-dot-warning { background: rgba(245, 166, 35, 0.15); box-shadow: var(--sui-shadow-inset-sm); }
+.sui-timeline-dot-inset.sui-timeline-dot-info { background: rgba(54, 163, 247, 0.15); box-shadow: var(--sui-shadow-inset-sm); }
+
+/* --- Connector --- */
+.sui-timeline-connector {
+  width: 2px;
+  flex: 1;
+  min-height: 24px;
+  background: var(--sui-bg-dark);
+  box-shadow: var(--sui-shadow-inset-sm);
+  border-radius: 1px;
+  margin: 4px 0;
+}
+
+/* --- Content --- */
+.sui-timeline-content {
+  flex: 1;
+  padding-bottom: 24px;
+  min-width: 0;
+}
+
+.sui-timeline-content h6 {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--sui-text);
+  margin: -2px 0 4px;
+  line-height: 1.3;
+}
+
+.sui-timeline-content p {
+  font-size: 13px;
+  color: var(--sui-text-muted);
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* --- Opposite content --- */
+.sui-timeline-opposite {
+  flex: 1;
+  text-align: right;
+  padding-right: 20px;
+  padding-bottom: 24px;
+  font-size: 13px;
+  color: var(--sui-text-muted);
+  min-width: 0;
+}
+
+/* ===========================================
+   Timeline — Right Aligned
+   =========================================== */
+.sui-timeline-right .sui-timeline-item {
+  flex-direction: row-reverse;
+}
+
+.sui-timeline-right .sui-timeline-separator {
+  margin-right: 0;
+  margin-left: 20px;
+}
+
+.sui-timeline-right .sui-timeline-content {
+  text-align: right;
+}
+
+/* ===========================================
+   Timeline — Alternating
+   =========================================== */
+.sui-timeline-alternate .sui-timeline-separator {
+  margin: 0 20px;
+}
+
+.sui-timeline-alternate .sui-timeline-content {
+  flex: 1;
+  min-width: 0;
+}
+
+.sui-timeline-alternate .sui-timeline-opposite {
+  flex: 1;
+  min-width: 0;
+  padding-right: 0;
+}
+
+/* Odd items: opposite left, content right */
+.sui-timeline-alternate .sui-timeline-item .sui-timeline-opposite {
+  text-align: right;
+}
+
+.sui-timeline-alternate .sui-timeline-item .sui-timeline-content {
+  text-align: left;
+}
+
+/* Even items: flip to content on left */
+.sui-timeline-alternate .sui-timeline-item:nth-child(even) {
+  flex-direction: row-reverse;
+}
+
+.sui-timeline-alternate .sui-timeline-item:nth-child(even) .sui-timeline-opposite {
+  text-align: left;
+}
+
+.sui-timeline-alternate .sui-timeline-item:nth-child(even) .sui-timeline-content {
+  text-align: right;
+}
+
+/* When no opposite div exists, use pseudo spacer */
+.sui-timeline-alternate .sui-timeline-item::before {
+  content: '';
+  flex: 1;
+}
+
+.sui-timeline-alternate .sui-timeline-item:has(.sui-timeline-opposite)::before {
+  display: none;
+}
+
+.sui-timeline-alternate .sui-timeline-item:nth-child(even):not(:has(.sui-timeline-opposite)) .sui-timeline-content {
+  text-align: right;
+}
+
+/* ===========================================
+   Timeline — Colored Dots
+   =========================================== */
+.sui-timeline-dot-primary {
+  background: var(--sui-primary);
+  box-shadow: 3px 3px 8px rgba(91, 84, 224, 0.4), -3px -3px 8px var(--sui-shadow-light);
+}
+
+.sui-timeline-dot-success {
+  background: var(--sui-success);
+  box-shadow: 3px 3px 8px rgba(45, 206, 137, 0.3), -3px -3px 8px var(--sui-shadow-light);
+}
+
+.sui-timeline-dot-danger {
+  background: var(--sui-danger);
+  box-shadow: 3px 3px 8px rgba(231, 76, 111, 0.3), -3px -3px 8px var(--sui-shadow-light);
+}
+
+.sui-timeline-dot-warning {
+  background: var(--sui-warning);
+  box-shadow: 3px 3px 8px rgba(245, 166, 35, 0.3), -3px -3px 8px var(--sui-shadow-light);
+}
+
+.sui-timeline-dot-info {
+  background: var(--sui-info);
+  box-shadow: 3px 3px 8px rgba(54, 163, 247, 0.3), -3px -3px 8px var(--sui-shadow-light);
+}
+
+/* ===========================================
+   Timeline — Outlined Dots
+   =========================================== */
+.sui-timeline-dot-outline {
+  background: transparent;
+  box-shadow: none;
+  border: 2px solid var(--sui-bg-dark);
+}
+
+.sui-timeline-dot-outline.sui-timeline-dot-primary {
+  border-color: var(--sui-primary);
+  background: transparent;
+  box-shadow: none;
+}
+
+.sui-timeline-dot-outline.sui-timeline-dot-success {
+  border-color: var(--sui-success);
+  background: transparent;
+  box-shadow: none;
+}
+
+.sui-timeline-dot-outline.sui-timeline-dot-danger {
+  border-color: var(--sui-danger);
+  background: transparent;
+  box-shadow: none;
+}
+
+.sui-timeline-dot-outline.sui-timeline-dot-warning {
+  border-color: var(--sui-warning);
+  background: transparent;
+  box-shadow: none;
+}
+
+.sui-timeline-dot-outline.sui-timeline-dot-info {
+  border-color: var(--sui-info);
+  background: transparent;
+  box-shadow: none;
+}
+
+/* ===========================================
+   Timeline — Icon Dots
+   =========================================== */
+.sui-timeline-dot-icon {
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--sui-bg);
+  box-shadow: var(--sui-shadow-raised-sm);
+}
+
+.sui-timeline-dot-icon svg {
+  width: 18px;
+  height: 18px;
+  stroke: var(--sui-text-muted);
+  fill: none;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.sui-timeline-dot-icon.sui-timeline-dot-primary {
+  background: var(--sui-primary);
+}
+.sui-timeline-dot-icon.sui-timeline-dot-primary svg { stroke: #fff; }
+
+.sui-timeline-dot-icon.sui-timeline-dot-success {
+  background: var(--sui-success);
+}
+.sui-timeline-dot-icon.sui-timeline-dot-success svg { stroke: #fff; }
+
+.sui-timeline-dot-icon.sui-timeline-dot-danger {
+  background: var(--sui-danger);
+}
+.sui-timeline-dot-icon.sui-timeline-dot-danger svg { stroke: #fff; }
+
+.sui-timeline-dot-icon.sui-timeline-dot-warning {
+  background: var(--sui-warning);
+}
+.sui-timeline-dot-icon.sui-timeline-dot-warning svg { stroke: #fff; }
+
+.sui-timeline-dot-icon.sui-timeline-dot-info {
+  background: var(--sui-info);
+}
+.sui-timeline-dot-icon.sui-timeline-dot-info svg { stroke: #fff; }
+
+/* Outlined icon dots */
+.sui-timeline-dot-icon.sui-timeline-dot-outline {
+  background: transparent;
+  box-shadow: none;
+  border: 2px solid var(--sui-bg-dark);
+}
+
+.sui-timeline-dot-icon.sui-timeline-dot-outline.sui-timeline-dot-primary {
+  border-color: var(--sui-primary);
+  background: transparent;
+  box-shadow: none;
+}
+.sui-timeline-dot-icon.sui-timeline-dot-outline.sui-timeline-dot-primary svg { stroke: var(--sui-primary); }
+
+.sui-timeline-dot-icon.sui-timeline-dot-outline.sui-timeline-dot-success {
+  border-color: var(--sui-success);
+  background: transparent;
+  box-shadow: none;
+}
+.sui-timeline-dot-icon.sui-timeline-dot-outline.sui-timeline-dot-success svg { stroke: var(--sui-success); }
+
+.sui-timeline-dot-icon.sui-timeline-dot-outline.sui-timeline-dot-danger {
+  border-color: var(--sui-danger);
+  background: transparent;
+  box-shadow: none;
+}
+.sui-timeline-dot-icon.sui-timeline-dot-outline.sui-timeline-dot-danger svg { stroke: var(--sui-danger); }
+
+.sui-timeline-dot-icon.sui-timeline-dot-outline.sui-timeline-dot-warning {
+  border-color: var(--sui-warning);
+  background: transparent;
+  box-shadow: none;
+}
+.sui-timeline-dot-icon.sui-timeline-dot-outline.sui-timeline-dot-warning svg { stroke: var(--sui-warning); }
+
+.sui-timeline-dot-icon.sui-timeline-dot-outline.sui-timeline-dot-info {
+  border-color: var(--sui-info);
+  background: transparent;
+  box-shadow: none;
+}
+.sui-timeline-dot-icon.sui-timeline-dot-outline.sui-timeline-dot-info svg { stroke: var(--sui-info); }
+
+/* Adjust content alignment for icon dots */
+.sui-timeline-item:has(.sui-timeline-dot-icon) .sui-timeline-content h6 {
+  margin-top: 7px;
+}
+.sui-timeline-item:has(.sui-timeline-dot-icon) .sui-timeline-opposite {
+  padding-top: 8px;
+}
+
+/* ===========================================
+   Timeline — Compact
+   =========================================== */
+.sui-timeline-compact .sui-timeline-item {
+  min-height: 48px;
+}
+
+.sui-timeline-compact .sui-timeline-dot {
+  width: 10px;
+  height: 10px;
+}
+
+.sui-timeline-compact .sui-timeline-dot-icon {
+  width: 28px;
+  height: 28px;
+}
+
+.sui-timeline-compact .sui-timeline-dot-icon svg {
+  width: 14px;
+  height: 14px;
+}
+
+.sui-timeline-compact .sui-timeline-connector {
+  min-height: 16px;
+  margin: 4px 0;
+}
+
+.sui-timeline-compact .sui-timeline-content {
+  padding-bottom: 14px;
+}
+
+.sui-timeline-compact .sui-timeline-content h6 {
+  font-size: 13px;
+}
+
+.sui-timeline-compact .sui-timeline-content p {
+  font-size: 12px;
+}
+
+.sui-timeline-compact .sui-timeline-opposite {
+  padding-bottom: 14px;
+  font-size: 12px;
+}
+
+.sui-timeline-compact .sui-timeline-separator {
+  margin-right: 14px;
+}
+
+/* ===========================================
+   Timeline — Responsive
+   =========================================== */
+@media (max-width: 600px) {
+  .sui-timeline-alternate .sui-timeline-item,
+  .sui-timeline-alternate .sui-timeline-item:nth-child(even) {
+    flex-direction: row;
+  }
+
+  .sui-timeline-alternate .sui-timeline-item::before {
+    display: none;
+  }
+
+  .sui-timeline-alternate .sui-timeline-separator {
+    margin: 0 16px 0 0;
+  }
+
+  .sui-timeline-alternate .sui-timeline-content,
+  .sui-timeline-alternate .sui-timeline-item:nth-child(even) .sui-timeline-content {
+    text-align: left;
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .sui-timeline-alternate .sui-timeline-opposite,
+  .sui-timeline-alternate .sui-timeline-item:nth-child(even) .sui-timeline-opposite {
+    display: none;
+  }
+}

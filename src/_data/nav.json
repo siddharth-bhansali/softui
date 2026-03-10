@@ -15,6 +15,7 @@
     { "id": "slider", "name": "Slider", "url": "/components/slider/" },
     { "id": "spinner", "name": "Spinner", "url": "/components/spinner/" },
     { "id": "stepper", "name": "Stepper", "url": "/components/stepper/" },
+    { "id": "timeline", "name": "Timeline", "url": "/components/timeline/" },
     { "id": "tables", "name": "Tables", "url": "/components/tables/" },
     { "id": "datatable", "name": "Data Table", "url": "/components/datatable/" },
     { "id": "dragdrop", "name": "Drag & Drop", "url": "/components/dragdrop/" },

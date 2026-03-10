@@ -1,0 +1,889 @@
+---
+layout: component.njk
+title: Timeline
+description: A vertical timeline component for displaying events in chronological order with dots, connectors, and flexible content positioning.
+componentId: timeline
+hasControls: false
+toc:
+  - Default
+  - Right Aligned
+  - Alternating
+  - Opposite Content
+  - Colored Dots
+  - Outlined Dots
+  - Inset Dots
+  - Icon Dots
+  - Compact
+---
+
+<!-- Default -->
+<div class="pg-section" id="section-1">
+  <h3 class="pg-section-title">Default</h3>
+  <div class="pg-section-row">
+    <div class="sui-timeline">
+      <div class="sui-timeline-item">
+        <div class="sui-timeline-separator">
+          <div class="sui-timeline-dot"></div>
+          <div class="sui-timeline-connector"></div>
+        </div>
+        <div class="sui-timeline-content">
+          <h6>Project Created</h6>
+          <p>The project repository was initialized and the team was assembled.</p>
+        </div>
+      </div>
+      <div class="sui-timeline-item">
+        <div class="sui-timeline-separator">
+          <div class="sui-timeline-dot"></div>
+          <div class="sui-timeline-connector"></div>
+        </div>
+        <div class="sui-timeline-content">
+          <h6>Design Phase</h6>
+          <p>Wireframes and mockups were reviewed and approved by stakeholders.</p>
+        </div>
+      </div>
+      <div class="sui-timeline-item">
+        <div class="sui-timeline-separator">
+          <div class="sui-timeline-dot"></div>
+          <div class="sui-timeline-connector"></div>
+        </div>
+        <div class="sui-timeline-content">
+          <h6>Development Started</h6>
+          <p>Sprint 1 kicked off with core feature implementation.</p>
+        </div>
+      </div>
+      <div class="sui-timeline-item">
+        <div class="sui-timeline-separator">
+          <div class="sui-timeline-dot"></div>
+        </div>
+        <div class="sui-timeline-content">
+          <h6>Launch</h6>
+          <p>Version 1.0 deployed to production.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-timeline"&gt;
+  &lt;div class="sui-timeline-item"&gt;
+    &lt;div class="sui-timeline-separator"&gt;
+      &lt;div class="sui-timeline-dot"&gt;&lt;/div&gt;
+      &lt;div class="sui-timeline-connector"&gt;&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="sui-timeline-content"&gt;
+      &lt;h6&gt;Project Created&lt;/h6&gt;
+      &lt;p&gt;The project repository was initialized and the team was assembled.&lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="sui-timeline-item"&gt;
+    &lt;div class="sui-timeline-separator"&gt;
+      &lt;div class="sui-timeline-dot"&gt;&lt;/div&gt;
+      &lt;div class="sui-timeline-connector"&gt;&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="sui-timeline-content"&gt;
+      &lt;h6&gt;Design Phase&lt;/h6&gt;
+      &lt;p&gt;Wireframes and mockups were reviewed and approved by stakeholders.&lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="sui-timeline-item"&gt;
+    &lt;div class="sui-timeline-separator"&gt;
+      &lt;div class="sui-timeline-dot"&gt;&lt;/div&gt;
+      &lt;div class="sui-timeline-connector"&gt;&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="sui-timeline-content"&gt;
+      &lt;h6&gt;Development Started&lt;/h6&gt;
+      &lt;p&gt;Sprint 1 kicked off with core feature implementation.&lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="sui-timeline-item"&gt;
+    &lt;div class="sui-timeline-separator"&gt;
+      &lt;div class="sui-timeline-dot"&gt;&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="sui-timeline-content"&gt;
+      &lt;h6&gt;Launch&lt;/h6&gt;
+      &lt;p&gt;Version 1.0 deployed to production.&lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Right Aligned -->
+<div class="pg-section" id="section-2">
+  <h3 class="pg-section-title">Right Aligned</h3>
+  <div class="pg-section-row">
+    <div class="sui-timeline sui-timeline-right">
+      <div class="sui-timeline-item">
+        <div class="sui-timeline-separator">
+          <div class="sui-timeline-dot"></div>
+          <div class="sui-timeline-connector"></div>
+        </div>
+        <div class="sui-timeline-content">
+          <h6>Order Placed</h6>
+          <p>Your order #4821 has been confirmed.</p>
+        </div>
+      </div>
+      <div class="sui-timeline-item">
+        <div class="sui-timeline-separator">
+          <div class="sui-timeline-dot"></div>
+          <div class="sui-timeline-connector"></div>
+        </div>
+        <div class="sui-timeline-content">
+          <h6>Processing</h6>
+          <p>Payment verified, preparing shipment.</p>
+        </div>
+      </div>
+      <div class="sui-timeline-item">
+        <div class="sui-timeline-separator">
+          <div class="sui-timeline-dot"></div>
+        </div>
+        <div class="sui-timeline-content">
+          <h6>Shipped</h6>
+          <p>Package dispatched via express delivery.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-timeline sui-timeline-right"&gt;
+  &lt;div class="sui-timeline-item"&gt;
+    &lt;div class="sui-timeline-separator"&gt;
+      &lt;div class="sui-timeline-dot"&gt;&lt;/div&gt;
+      &lt;div class="sui-timeline-connector"&gt;&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="sui-timeline-content"&gt;
+      &lt;h6&gt;Order Placed&lt;/h6&gt;
+      &lt;p&gt;Your order #4821 has been confirmed.&lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="sui-timeline-item"&gt;
+    &lt;div class="sui-timeline-separator"&gt;
+      &lt;div class="sui-timeline-dot"&gt;&lt;/div&gt;
+      &lt;div class="sui-timeline-connector"&gt;&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="sui-timeline-content"&gt;
+      &lt;h6&gt;Processing&lt;/h6&gt;
+      &lt;p&gt;Payment verified, preparing shipment.&lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="sui-timeline-item"&gt;
+    &lt;div class="sui-timeline-separator"&gt;
+      &lt;div class="sui-timeline-dot"&gt;&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="sui-timeline-content"&gt;
+      &lt;h6&gt;Shipped&lt;/h6&gt;
+      &lt;p&gt;Package dispatched via express delivery.&lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Alternating -->
+<div class="pg-section" id="section-3">
+  <h3 class="pg-section-title">Alternating</h3>
+  <div class="pg-section-row">
+    <div class="sui-timeline sui-timeline-alternate">
+      <div class="sui-timeline-item">
+        <div class="sui-timeline-separator">
+          <div class="sui-timeline-dot"></div>
+          <div class="sui-timeline-connector"></div>
+        </div>
+        <div class="sui-timeline-content">
+          <h6>Requirement Gathering</h6>
+          <p>Stakeholder interviews completed and scope defined.</p>
+        </div>
+      </div>
+      <div class="sui-timeline-item">
+        <div class="sui-timeline-separator">
+          <div class="sui-timeline-dot"></div>
+          <div class="sui-timeline-connector"></div>
+        </div>
+        <div class="sui-timeline-content">
+          <h6>Architecture Review</h6>
+          <p>System design approved by the engineering leads.</p>
+        </div>
+      </div>
+      <div class="sui-timeline-item">
+        <div class="sui-timeline-separator">
+          <div class="sui-timeline-dot"></div>
+          <div class="sui-timeline-connector"></div>
+        </div>
+        <div class="sui-timeline-content">
+          <h6>Beta Release</h6>
+          <p>Internal beta launched to select users for feedback.</p>
+        </div>
+      </div>
+      <div class="sui-timeline-item">
+        <div class="sui-timeline-separator">
+          <div class="sui-timeline-dot"></div>
+        </div>
+        <div class="sui-timeline-content">
+          <h6>General Availability</h6>
+          <p>Public release with full documentation.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-timeline sui-timeline-alternate"&gt;
+  &lt;div class="sui-timeline-item"&gt;
+    &lt;div class="sui-timeline-separator"&gt;
+      &lt;div class="sui-timeline-dot"&gt;&lt;/div&gt;
+      &lt;div class="sui-timeline-connector"&gt;&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="sui-timeline-content"&gt;
+      &lt;h6&gt;Requirement Gathering&lt;/h6&gt;
+      &lt;p&gt;Stakeholder interviews completed and scope defined.&lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="sui-timeline-item"&gt;
+    &lt;div class="sui-timeline-separator"&gt;
+      &lt;div class="sui-timeline-dot"&gt;&lt;/div&gt;
+      &lt;div class="sui-timeline-connector"&gt;&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="sui-timeline-content"&gt;
+      &lt;h6&gt;Architecture Review&lt;/h6&gt;
+      &lt;p&gt;System design approved by the engineering leads.&lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="sui-timeline-item"&gt;
+    &lt;div class="sui-timeline-separator"&gt;
+      &lt;div class="sui-timeline-dot"&gt;&lt;/div&gt;
+      &lt;div class="sui-timeline-connector"&gt;&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="sui-timeline-content"&gt;
+      &lt;h6&gt;Beta Release&lt;/h6&gt;
+      &lt;p&gt;Internal beta launched to select users for feedback.&lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="sui-timeline-item"&gt;
+    &lt;div class="sui-timeline-separator"&gt;
+      &lt;div class="sui-timeline-dot"&gt;&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="sui-timeline-content"&gt;
+      &lt;h6&gt;General Availability&lt;/h6&gt;
+      &lt;p&gt;Public release with full documentation.&lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Opposite Content -->
+<div class="pg-section" id="section-4">
+  <h3 class="pg-section-title">Opposite Content</h3>
+  <div class="pg-section-row">
+    <div class="sui-timeline sui-timeline-alternate">
+      <div class="sui-timeline-item">
+        <div class="sui-timeline-opposite">9:30 am</div>
+        <div class="sui-timeline-separator">
+          <div class="sui-timeline-dot"></div>
+          <div class="sui-timeline-connector"></div>
+        </div>
+        <div class="sui-timeline-content">
+          <h6>Stand-up Meeting</h6>
+          <p>Daily sync with the engineering team.</p>
+        </div>
+      </div>
+      <div class="sui-timeline-item">
+        <div class="sui-timeline-opposite">10:00 am</div>
+        <div class="sui-timeline-separator">
+          <div class="sui-timeline-dot"></div>
+          <div class="sui-timeline-connector"></div>
+        </div>
+        <div class="sui-timeline-content">
+          <h6>Code Review</h6>
+          <p>Reviewed pull requests for the auth module.</p>
+        </div>
+      </div>
+      <div class="sui-timeline-item">
+        <div class="sui-timeline-opposite">12:00 pm</div>
+        <div class="sui-timeline-separator">
+          <div class="sui-timeline-dot"></div>
+          <div class="sui-timeline-connector"></div>
+        </div>
+        <div class="sui-timeline-content">
+          <h6>Lunch Break</h6>
+          <p>Team lunch at the new place downtown.</p>
+        </div>
+      </div>
+      <div class="sui-timeline-item">
+        <div class="sui-timeline-opposite">2:00 pm</div>
+        <div class="sui-timeline-separator">
+          <div class="sui-timeline-dot"></div>
+        </div>
+        <div class="sui-timeline-content">
+          <h6>Sprint Planning</h6>
+          <p>Prioritized backlog items for the next sprint.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-timeline sui-timeline-alternate"&gt;
+  &lt;div class="sui-timeline-item"&gt;
+    &lt;div class="sui-timeline-opposite"&gt;9:30 am&lt;/div&gt;
+    &lt;div class="sui-timeline-separator"&gt;
+      &lt;div class="sui-timeline-dot"&gt;&lt;/div&gt;
+      &lt;div class="sui-timeline-connector"&gt;&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="sui-timeline-content"&gt;
+      &lt;h6&gt;Stand-up Meeting&lt;/h6&gt;
+      &lt;p&gt;Daily sync with the engineering team.&lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="sui-timeline-item"&gt;
+    &lt;div class="sui-timeline-opposite"&gt;10:00 am&lt;/div&gt;
+    &lt;div class="sui-timeline-separator"&gt;
+      &lt;div class="sui-timeline-dot"&gt;&lt;/div&gt;
+      &lt;div class="sui-timeline-connector"&gt;&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="sui-timeline-content"&gt;
+      &lt;h6&gt;Code Review&lt;/h6&gt;
+      &lt;p&gt;Reviewed pull requests for the auth module.&lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="sui-timeline-item"&gt;
+    &lt;div class="sui-timeline-opposite"&gt;12:00 pm&lt;/div&gt;
+    &lt;div class="sui-timeline-separator"&gt;
+      &lt;div class="sui-timeline-dot"&gt;&lt;/div&gt;
+      &lt;div class="sui-timeline-connector"&gt;&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="sui-timeline-content"&gt;
+      &lt;h6&gt;Lunch Break&lt;/h6&gt;
+      &lt;p&gt;Team lunch at the new place downtown.&lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="sui-timeline-item"&gt;
+    &lt;div class="sui-timeline-opposite"&gt;2:00 pm&lt;/div&gt;
+    &lt;div class="sui-timeline-separator"&gt;
+      &lt;div class="sui-timeline-dot"&gt;&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="sui-timeline-content"&gt;
+      &lt;h6&gt;Sprint Planning&lt;/h6&gt;
+      &lt;p&gt;Prioritized backlog items for the next sprint.&lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Colored Dots -->
+<div class="pg-section" id="section-5">
+  <h3 class="pg-section-title">Colored Dots</h3>
+  <div class="pg-section-row">
+    <div class="sui-timeline">
+      <div class="sui-timeline-item">
+        <div class="sui-timeline-separator">
+          <div class="sui-timeline-dot sui-timeline-dot-success"></div>
+          <div class="sui-timeline-connector"></div>
+        </div>
+        <div class="sui-timeline-content">
+          <h6>Build Passed</h6>
+          <p>All tests passed on CI pipeline.</p>
+        </div>
+      </div>
+      <div class="sui-timeline-item">
+        <div class="sui-timeline-separator">
+          <div class="sui-timeline-dot sui-timeline-dot-primary"></div>
+          <div class="sui-timeline-connector"></div>
+        </div>
+        <div class="sui-timeline-content">
+          <h6>Deploy to Staging</h6>
+          <p>Changes pushed to the staging environment.</p>
+        </div>
+      </div>
+      <div class="sui-timeline-item">
+        <div class="sui-timeline-separator">
+          <div class="sui-timeline-dot sui-timeline-dot-warning"></div>
+          <div class="sui-timeline-connector"></div>
+        </div>
+        <div class="sui-timeline-content">
+          <h6>Performance Warning</h6>
+          <p>Response time exceeded 500ms threshold.</p>
+        </div>
+      </div>
+      <div class="sui-timeline-item">
+        <div class="sui-timeline-separator">
+          <div class="sui-timeline-dot sui-timeline-dot-danger"></div>
+          <div class="sui-timeline-connector"></div>
+        </div>
+        <div class="sui-timeline-content">
+          <h6>Deployment Failed</h6>
+          <p>Rollback triggered due to health check failure.</p>
+        </div>
+      </div>
+      <div class="sui-timeline-item">
+        <div class="sui-timeline-separator">
+          <div class="sui-timeline-dot sui-timeline-dot-info"></div>
+        </div>
+        <div class="sui-timeline-content">
+          <h6>Investigating</h6>
+          <p>Team is reviewing logs and monitoring metrics.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-timeline"&gt;
+  &lt;div class="sui-timeline-item"&gt;
+    &lt;div class="sui-timeline-separator"&gt;
+      &lt;div class="sui-timeline-dot sui-timeline-dot-success"&gt;&lt;/div&gt;
+      &lt;div class="sui-timeline-connector"&gt;&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="sui-timeline-content"&gt;
+      &lt;h6&gt;Build Passed&lt;/h6&gt;
+      &lt;p&gt;All tests passed on CI pipeline.&lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="sui-timeline-item"&gt;
+    &lt;div class="sui-timeline-separator"&gt;
+      &lt;div class="sui-timeline-dot sui-timeline-dot-primary"&gt;&lt;/div&gt;
+      &lt;div class="sui-timeline-connector"&gt;&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="sui-timeline-content"&gt;
+      &lt;h6&gt;Deploy to Staging&lt;/h6&gt;
+      &lt;p&gt;Changes pushed to the staging environment.&lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="sui-timeline-item"&gt;
+    &lt;div class="sui-timeline-separator"&gt;
+      &lt;div class="sui-timeline-dot sui-timeline-dot-warning"&gt;&lt;/div&gt;
+      &lt;div class="sui-timeline-connector"&gt;&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="sui-timeline-content"&gt;
+      &lt;h6&gt;Performance Warning&lt;/h6&gt;
+      &lt;p&gt;Response time exceeded 500ms threshold.&lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="sui-timeline-item"&gt;
+    &lt;div class="sui-timeline-separator"&gt;
+      &lt;div class="sui-timeline-dot sui-timeline-dot-danger"&gt;&lt;/div&gt;
+      &lt;div class="sui-timeline-connector"&gt;&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="sui-timeline-content"&gt;
+      &lt;h6&gt;Deployment Failed&lt;/h6&gt;
+      &lt;p&gt;Rollback triggered due to health check failure.&lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="sui-timeline-item"&gt;
+    &lt;div class="sui-timeline-separator"&gt;
+      &lt;div class="sui-timeline-dot sui-timeline-dot-info"&gt;&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="sui-timeline-content"&gt;
+      &lt;h6&gt;Investigating&lt;/h6&gt;
+      &lt;p&gt;Team is reviewing logs and monitoring metrics.&lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Outlined Dots -->
+<div class="pg-section" id="section-6">
+  <h3 class="pg-section-title">Outlined Dots</h3>
+  <div class="pg-section-row">
+    <div class="sui-timeline">
+      <div class="sui-timeline-item">
+        <div class="sui-timeline-separator">
+          <div class="sui-timeline-dot sui-timeline-dot-outline"></div>
+          <div class="sui-timeline-connector"></div>
+        </div>
+        <div class="sui-timeline-content">
+          <h6>Pending Review</h6>
+          <p>Awaiting approval from the security team.</p>
+        </div>
+      </div>
+      <div class="sui-timeline-item">
+        <div class="sui-timeline-separator">
+          <div class="sui-timeline-dot sui-timeline-dot-outline sui-timeline-dot-primary"></div>
+          <div class="sui-timeline-connector"></div>
+        </div>
+        <div class="sui-timeline-content">
+          <h6>In Progress</h6>
+          <p>Feature branch is being actively developed.</p>
+        </div>
+      </div>
+      <div class="sui-timeline-item">
+        <div class="sui-timeline-separator">
+          <div class="sui-timeline-dot sui-timeline-dot-outline sui-timeline-dot-success"></div>
+          <div class="sui-timeline-connector"></div>
+        </div>
+        <div class="sui-timeline-content">
+          <h6>Approved</h6>
+          <p>Code review passed with no blocking comments.</p>
+        </div>
+      </div>
+      <div class="sui-timeline-item">
+        <div class="sui-timeline-separator">
+          <div class="sui-timeline-dot sui-timeline-dot-outline sui-timeline-dot-danger"></div>
+        </div>
+        <div class="sui-timeline-content">
+          <h6>Rejected</h6>
+          <p>Changes requested — missing test coverage.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-timeline"&gt;
+  &lt;div class="sui-timeline-item"&gt;
+    &lt;div class="sui-timeline-separator"&gt;
+      &lt;div class="sui-timeline-dot sui-timeline-dot-outline"&gt;&lt;/div&gt;
+      &lt;div class="sui-timeline-connector"&gt;&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="sui-timeline-content"&gt;
+      &lt;h6&gt;Pending Review&lt;/h6&gt;
+      &lt;p&gt;Awaiting approval from the security team.&lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="sui-timeline-item"&gt;
+    &lt;div class="sui-timeline-separator"&gt;
+      &lt;div class="sui-timeline-dot sui-timeline-dot-outline sui-timeline-dot-primary"&gt;&lt;/div&gt;
+      &lt;div class="sui-timeline-connector"&gt;&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="sui-timeline-content"&gt;
+      &lt;h6&gt;In Progress&lt;/h6&gt;
+      &lt;p&gt;Feature branch is being actively developed.&lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="sui-timeline-item"&gt;
+    &lt;div class="sui-timeline-separator"&gt;
+      &lt;div class="sui-timeline-dot sui-timeline-dot-outline sui-timeline-dot-success"&gt;&lt;/div&gt;
+      &lt;div class="sui-timeline-connector"&gt;&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="sui-timeline-content"&gt;
+      &lt;h6&gt;Approved&lt;/h6&gt;
+      &lt;p&gt;Code review passed with no blocking comments.&lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="sui-timeline-item"&gt;
+    &lt;div class="sui-timeline-separator"&gt;
+      &lt;div class="sui-timeline-dot sui-timeline-dot-outline sui-timeline-dot-danger"&gt;&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="sui-timeline-content"&gt;
+      &lt;h6&gt;Rejected&lt;/h6&gt;
+      &lt;p&gt;Changes requested — missing test coverage.&lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Inset Dots -->
+<div class="pg-section" id="section-7">
+  <h3 class="pg-section-title">Inset Dots</h3>
+  <div class="pg-section-row">
+    <div class="sui-timeline">
+      <div class="sui-timeline-item">
+        <div class="sui-timeline-separator">
+          <div class="sui-timeline-dot sui-timeline-dot-inset"></div>
+          <div class="sui-timeline-connector"></div>
+        </div>
+        <div class="sui-timeline-content">
+          <h6>Draft Created</h6>
+          <p>Initial document saved as draft.</p>
+        </div>
+      </div>
+      <div class="sui-timeline-item">
+        <div class="sui-timeline-separator">
+          <div class="sui-timeline-dot sui-timeline-dot-inset sui-timeline-dot-primary"></div>
+          <div class="sui-timeline-connector"></div>
+        </div>
+        <div class="sui-timeline-content">
+          <h6>Under Review</h6>
+          <p>Submitted for team review.</p>
+        </div>
+      </div>
+      <div class="sui-timeline-item">
+        <div class="sui-timeline-separator">
+          <div class="sui-timeline-dot sui-timeline-dot-inset sui-timeline-dot-success"></div>
+          <div class="sui-timeline-connector"></div>
+        </div>
+        <div class="sui-timeline-content">
+          <h6>Approved</h6>
+          <p>All reviewers signed off.</p>
+        </div>
+      </div>
+      <div class="sui-timeline-item">
+        <div class="sui-timeline-separator">
+          <div class="sui-timeline-dot sui-timeline-dot-inset sui-timeline-dot-danger"></div>
+        </div>
+        <div class="sui-timeline-content">
+          <h6>Archived</h6>
+          <p>Document moved to archive.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-timeline"&gt;
+  &lt;div class="sui-timeline-item"&gt;
+    &lt;div class="sui-timeline-separator"&gt;
+      &lt;div class="sui-timeline-dot sui-timeline-dot-inset"&gt;&lt;/div&gt;
+      &lt;div class="sui-timeline-connector"&gt;&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="sui-timeline-content"&gt;
+      &lt;h6&gt;Draft Created&lt;/h6&gt;
+      &lt;p&gt;Initial document saved as draft.&lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="sui-timeline-item"&gt;
+    &lt;div class="sui-timeline-separator"&gt;
+      &lt;div class="sui-timeline-dot sui-timeline-dot-inset sui-timeline-dot-primary"&gt;&lt;/div&gt;
+      &lt;div class="sui-timeline-connector"&gt;&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="sui-timeline-content"&gt;
+      &lt;h6&gt;Under Review&lt;/h6&gt;
+      &lt;p&gt;Submitted for team review.&lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="sui-timeline-item"&gt;
+    &lt;div class="sui-timeline-separator"&gt;
+      &lt;div class="sui-timeline-dot sui-timeline-dot-inset sui-timeline-dot-success"&gt;&lt;/div&gt;
+      &lt;div class="sui-timeline-connector"&gt;&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="sui-timeline-content"&gt;
+      &lt;h6&gt;Approved&lt;/h6&gt;
+      &lt;p&gt;All reviewers signed off.&lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="sui-timeline-item"&gt;
+    &lt;div class="sui-timeline-separator"&gt;
+      &lt;div class="sui-timeline-dot sui-timeline-dot-inset sui-timeline-dot-danger"&gt;&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="sui-timeline-content"&gt;
+      &lt;h6&gt;Archived&lt;/h6&gt;
+      &lt;p&gt;Document moved to archive.&lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Icon Dots -->
+<div class="pg-section" id="section-8">
+  <h3 class="pg-section-title">Icon Dots</h3>
+  <div class="pg-section-row">
+    <div class="sui-timeline">
+      <div class="sui-timeline-item">
+        <div class="sui-timeline-separator">
+          <div class="sui-timeline-dot sui-timeline-dot-icon sui-timeline-dot-success">
+            <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+          <div class="sui-timeline-connector"></div>
+        </div>
+        <div class="sui-timeline-content">
+          <h6>Payment Received</h6>
+          <p>Invoice #1042 paid via credit card.</p>
+        </div>
+      </div>
+      <div class="sui-timeline-item">
+        <div class="sui-timeline-separator">
+          <div class="sui-timeline-dot sui-timeline-dot-icon sui-timeline-dot-primary">
+            <svg viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><polyline points="2 7 12 13 22 7"/></svg>
+          </div>
+          <div class="sui-timeline-connector"></div>
+        </div>
+        <div class="sui-timeline-content">
+          <h6>Confirmation Sent</h6>
+          <p>Email receipt sent to customer.</p>
+        </div>
+      </div>
+      <div class="sui-timeline-item">
+        <div class="sui-timeline-separator">
+          <div class="sui-timeline-dot sui-timeline-dot-icon sui-timeline-dot-info">
+            <svg viewBox="0 0 24 24"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 20 16 8 16 8 13"/><circle cx="12" cy="16" r="2"/><circle cx="16" cy="16" r="2"/></svg>
+          </div>
+          <div class="sui-timeline-connector"></div>
+        </div>
+        <div class="sui-timeline-content">
+          <h6>Shipped</h6>
+          <p>Package dispatched — tracking number provided.</p>
+        </div>
+      </div>
+      <div class="sui-timeline-item">
+        <div class="sui-timeline-separator">
+          <div class="sui-timeline-dot sui-timeline-dot-icon">
+            <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          </div>
+        </div>
+        <div class="sui-timeline-content">
+          <h6>Out for Delivery</h6>
+          <p>Expected arrival today before 5 PM.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-timeline"&gt;
+  &lt;div class="sui-timeline-item"&gt;
+    &lt;div class="sui-timeline-separator"&gt;
+      &lt;div class="sui-timeline-dot sui-timeline-dot-icon sui-timeline-dot-success"&gt;
+        &lt;svg viewBox="0 0 24 24"&gt;&lt;polyline points="20 6 9 17 4 12"/&gt;&lt;/svg&gt;
+      &lt;/div&gt;
+      &lt;div class="sui-timeline-connector"&gt;&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="sui-timeline-content"&gt;
+      &lt;h6&gt;Payment Received&lt;/h6&gt;
+      &lt;p&gt;Invoice #1042 paid via credit card.&lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="sui-timeline-item"&gt;
+    &lt;div class="sui-timeline-separator"&gt;
+      &lt;div class="sui-timeline-dot sui-timeline-dot-icon sui-timeline-dot-primary"&gt;
+        &lt;svg viewBox="0 0 24 24"&gt;&lt;rect x="2" y="7" width="20" height="14" rx="2" ry="2"/&gt;&lt;polyline points="2 7 12 13 22 7"/&gt;&lt;/svg&gt;
+      &lt;/div&gt;
+      &lt;div class="sui-timeline-connector"&gt;&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="sui-timeline-content"&gt;
+      &lt;h6&gt;Confirmation Sent&lt;/h6&gt;
+      &lt;p&gt;Email receipt sent to customer.&lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="sui-timeline-item"&gt;
+    &lt;div class="sui-timeline-separator"&gt;
+      &lt;div class="sui-timeline-dot sui-timeline-dot-icon sui-timeline-dot-info"&gt;
+        &lt;svg viewBox="0 0 24 24"&gt;&lt;rect x="1" y="3" width="15" height="13"/&gt;&lt;polygon points="16 8 20 8 20 16 8 16 8 13"/&gt;&lt;circle cx="12" cy="16" r="2"/&gt;&lt;circle cx="16" cy="16" r="2"/&gt;&lt;/svg&gt;
+      &lt;/div&gt;
+      &lt;div class="sui-timeline-connector"&gt;&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="sui-timeline-content"&gt;
+      &lt;h6&gt;Shipped&lt;/h6&gt;
+      &lt;p&gt;Package dispatched — tracking number provided.&lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="sui-timeline-item"&gt;
+    &lt;div class="sui-timeline-separator"&gt;
+      &lt;div class="sui-timeline-dot sui-timeline-dot-icon"&gt;
+        &lt;svg viewBox="0 0 24 24"&gt;&lt;path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/&gt;&lt;circle cx="12" cy="10" r="3"/&gt;&lt;/svg&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="sui-timeline-content"&gt;
+      &lt;h6&gt;Out for Delivery&lt;/h6&gt;
+      &lt;p&gt;Expected arrival today before 5 PM.&lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Compact -->
+<div class="pg-section" id="section-9">
+  <h3 class="pg-section-title">Compact</h3>
+  <div class="pg-section-row">
+    <div class="sui-timeline sui-timeline-compact">
+      <div class="sui-timeline-item">
+        <div class="sui-timeline-separator">
+          <div class="sui-timeline-dot sui-timeline-dot-success"></div>
+          <div class="sui-timeline-connector"></div>
+        </div>
+        <div class="sui-timeline-content">
+          <h6>v1.1.0 released</h6>
+          <p>Added Sidebar component with collapsible toggle.</p>
+        </div>
+      </div>
+      <div class="sui-timeline-item">
+        <div class="sui-timeline-separator">
+          <div class="sui-timeline-dot sui-timeline-dot-success"></div>
+          <div class="sui-timeline-connector"></div>
+        </div>
+        <div class="sui-timeline-content">
+          <h6>v1.0.8 released</h6>
+          <p>README refresh with banners and badges.</p>
+        </div>
+      </div>
+      <div class="sui-timeline-item">
+        <div class="sui-timeline-separator">
+          <div class="sui-timeline-dot sui-timeline-dot-primary"></div>
+          <div class="sui-timeline-connector"></div>
+        </div>
+        <div class="sui-timeline-content">
+          <h6>v1.0.7 released</h6>
+          <p>Playground page and progress bar fix.</p>
+        </div>
+      </div>
+      <div class="sui-timeline-item">
+        <div class="sui-timeline-separator">
+          <div class="sui-timeline-dot sui-timeline-dot-primary"></div>
+          <div class="sui-timeline-connector"></div>
+        </div>
+        <div class="sui-timeline-content">
+          <h6>v1.0.6 released</h6>
+          <p>Navbar improvements and Getting Started page.</p>
+        </div>
+      </div>
+      <div class="sui-timeline-item">
+        <div class="sui-timeline-separator">
+          <div class="sui-timeline-dot"></div>
+        </div>
+        <div class="sui-timeline-content">
+          <h6>v1.0.0 released</h6>
+          <p>Initial public release with 44 components.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-timeline sui-timeline-compact"&gt;
+  &lt;div class="sui-timeline-item"&gt;
+    &lt;div class="sui-timeline-separator"&gt;
+      &lt;div class="sui-timeline-dot sui-timeline-dot-success"&gt;&lt;/div&gt;
+      &lt;div class="sui-timeline-connector"&gt;&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="sui-timeline-content"&gt;
+      &lt;h6&gt;v1.1.0 released&lt;/h6&gt;
+      &lt;p&gt;Added Sidebar component with collapsible toggle.&lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="sui-timeline-item"&gt;
+    &lt;div class="sui-timeline-separator"&gt;
+      &lt;div class="sui-timeline-dot sui-timeline-dot-success"&gt;&lt;/div&gt;
+      &lt;div class="sui-timeline-connector"&gt;&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="sui-timeline-content"&gt;
+      &lt;h6&gt;v1.0.8 released&lt;/h6&gt;
+      &lt;p&gt;README refresh with banners and badges.&lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="sui-timeline-item"&gt;
+    &lt;div class="sui-timeline-separator"&gt;
+      &lt;div class="sui-timeline-dot sui-timeline-dot-primary"&gt;&lt;/div&gt;
+      &lt;div class="sui-timeline-connector"&gt;&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="sui-timeline-content"&gt;
+      &lt;h6&gt;v1.0.7 released&lt;/h6&gt;
+      &lt;p&gt;Playground page and progress bar fix.&lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="sui-timeline-item"&gt;
+    &lt;div class="sui-timeline-separator"&gt;
+      &lt;div class="sui-timeline-dot sui-timeline-dot-primary"&gt;&lt;/div&gt;
+      &lt;div class="sui-timeline-connector"&gt;&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="sui-timeline-content"&gt;
+      &lt;h6&gt;v1.0.6 released&lt;/h6&gt;
+      &lt;p&gt;Navbar improvements and Getting Started page.&lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="sui-timeline-item"&gt;
+    &lt;div class="sui-timeline-separator"&gt;
+      &lt;div class="sui-timeline-dot"&gt;&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="sui-timeline-content"&gt;
+      &lt;h6&gt;v1.0.0 released&lt;/h6&gt;
+      &lt;p&gt;Initial public release with 44 components.&lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</pre></div>
+  </div>
+</div>
