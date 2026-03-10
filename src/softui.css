@@ -78,6 +78,8 @@
 }
 
 body {
+  margin: 0;
+  min-height: 100vh;
   font-family: var(--sui-font);
   background: var(--sui-bg);
   color: var(--sui-text);
@@ -5334,6 +5336,9 @@ a.sui-btn-warning:visited {
 .sui-gap-3 { gap: 16px !important; }
 .sui-gap-4 { gap: 24px !important; }
 .sui-gap-5 { gap: 48px !important; }
+
+/* Min-height viewport */
+.sui-min-vh-100 { min-height: 100vh !important; }
 
 /* Auto margins */
 .sui-ms-auto { margin-left: auto !important; }
