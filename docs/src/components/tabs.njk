@@ -1,0 +1,249 @@
+---
+layout: component.njk
+title: Tabs
+description: Inset track with raised active tab. Five style variants.
+componentId: tabs
+hasControls: false
+toc:
+  - Default
+  - Pill
+  - Underlined
+  - Boxed
+  - Vertical
+  - Fill
+  - Justified
+---
+
+<!-- Default -->
+<div class="pg-section" id="section-1">
+  <h3 class="pg-section-title">Default</h3>
+  <div class="pg-section-row">
+    <div class="sui-tabs" style="width:100%;">
+      <div class="sui-tab-list" role="tablist">
+        <button class="sui-tab active" data-sui-tab="pg-tab1" role="tab" aria-selected="true">Profile</button>
+        <button class="sui-tab" data-sui-tab="pg-tab2" role="tab" aria-selected="false">Settings</button>
+        <button class="sui-tab" data-sui-tab="pg-tab3" role="tab" aria-selected="false">Billing</button>
+      </div>
+      <div class="sui-tab-panel active" id="pg-tab1" role="tabpanel"><div class="sui-card"><div class="sui-card-body">Profile content goes here.</div></div></div>
+      <div class="sui-tab-panel" id="pg-tab2" role="tabpanel"><div class="sui-card"><div class="sui-card-body">Settings content goes here.</div></div></div>
+      <div class="sui-tab-panel" id="pg-tab3" role="tabpanel"><div class="sui-card"><div class="sui-card-body">Billing content goes here.</div></div></div>
+    </div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-tabs"&gt;
+  &lt;div class="sui-tab-list"&gt;
+    &lt;button class="sui-tab active" data-sui-tab="profile"&gt;Profile&lt;/button&gt;
+    &lt;button class="sui-tab" data-sui-tab="settings"&gt;Settings&lt;/button&gt;
+    &lt;button class="sui-tab" data-sui-tab="billing"&gt;Billing&lt;/button&gt;
+  &lt;/div&gt;
+  &lt;div class="sui-tab-panel active" id="profile"&gt;
+    &lt;div class="sui-card"&gt;&lt;div class="sui-card-body"&gt;Profile content goes here.&lt;/div&gt;&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="sui-tab-panel" id="settings"&gt;
+    &lt;div class="sui-card"&gt;&lt;div class="sui-card-body"&gt;Settings content goes here.&lt;/div&gt;&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="sui-tab-panel" id="billing"&gt;
+    &lt;div class="sui-card"&gt;&lt;div class="sui-card-body"&gt;Billing content goes here.&lt;/div&gt;&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Pill -->
+<div class="pg-section" id="section-2">
+  <h3 class="pg-section-title">Pill</h3>
+  <div class="pg-section-row">
+    <div class="sui-tabs" style="width:100%;">
+      <div class="sui-tab-list-pill" role="tablist">
+        <button class="sui-tab active" data-sui-tab="pg-pill1" role="tab" aria-selected="true">Overview</button>
+        <button class="sui-tab" data-sui-tab="pg-pill2" role="tab" aria-selected="false">Analytics</button>
+        <button class="sui-tab" data-sui-tab="pg-pill3" role="tab" aria-selected="false">Reports</button>
+      </div>
+      <div class="sui-tab-panel active" id="pg-pill1" role="tabpanel"><div class="sui-card"><div class="sui-card-body">Overview content goes here.</div></div></div>
+      <div class="sui-tab-panel" id="pg-pill2" role="tabpanel"><div class="sui-card"><div class="sui-card-body">Analytics content goes here.</div></div></div>
+      <div class="sui-tab-panel" id="pg-pill3" role="tabpanel"><div class="sui-card"><div class="sui-card-body">Reports content goes here.</div></div></div>
+    </div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-tabs"&gt;
+  &lt;div class="sui-tab-list-pill"&gt;
+    &lt;button class="sui-tab active" data-sui-tab="overview"&gt;Overview&lt;/button&gt;
+    &lt;button class="sui-tab" data-sui-tab="analytics"&gt;Analytics&lt;/button&gt;
+    &lt;button class="sui-tab" data-sui-tab="reports"&gt;Reports&lt;/button&gt;
+  &lt;/div&gt;
+  &lt;div class="sui-tab-panel active" id="overview"&gt;...&lt;/div&gt;
+  &lt;div class="sui-tab-panel" id="analytics"&gt;...&lt;/div&gt;
+  &lt;div class="sui-tab-panel" id="reports"&gt;...&lt;/div&gt;
+&lt;/div&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Underlined -->
+<div class="pg-section" id="section-3">
+  <h3 class="pg-section-title">Underlined</h3>
+  <div class="pg-section-row">
+    <div class="sui-tabs" style="width:100%;">
+      <div class="sui-tab-list-underlined" role="tablist">
+        <button class="sui-tab active" data-sui-tab="pg-ul1" role="tab" aria-selected="true">General</button>
+        <button class="sui-tab" data-sui-tab="pg-ul2" role="tab" aria-selected="false">Security</button>
+        <button class="sui-tab" data-sui-tab="pg-ul3" role="tab" aria-selected="false">Billing</button>
+      </div>
+      <div class="sui-tab-panel active" id="pg-ul1" role="tabpanel"><div class="sui-card"><div class="sui-card-body">General settings content.</div></div></div>
+      <div class="sui-tab-panel" id="pg-ul2" role="tabpanel"><div class="sui-card"><div class="sui-card-body">Security settings content.</div></div></div>
+      <div class="sui-tab-panel" id="pg-ul3" role="tabpanel"><div class="sui-card"><div class="sui-card-body">Billing settings content.</div></div></div>
+    </div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-tabs"&gt;
+  &lt;div class="sui-tab-list-underlined"&gt;
+    &lt;button class="sui-tab active" data-sui-tab="general"&gt;General&lt;/button&gt;
+    &lt;button class="sui-tab" data-sui-tab="security"&gt;Security&lt;/button&gt;
+    &lt;button class="sui-tab" data-sui-tab="billing"&gt;Billing&lt;/button&gt;
+  &lt;/div&gt;
+  &lt;div class="sui-tab-panel active" id="general"&gt;...&lt;/div&gt;
+  &lt;div class="sui-tab-panel" id="security"&gt;...&lt;/div&gt;
+  &lt;div class="sui-tab-panel" id="billing"&gt;...&lt;/div&gt;
+&lt;/div&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Boxed -->
+<div class="pg-section" id="section-4">
+  <h3 class="pg-section-title">Boxed</h3>
+  <div class="pg-section-row">
+    <div class="sui-tabs" style="width:100%;">
+      <div class="sui-tab-list-boxed" role="tablist">
+        <button class="sui-tab active" data-sui-tab="pg-box1" role="tab" aria-selected="true">Files</button>
+        <button class="sui-tab" data-sui-tab="pg-box2" role="tab" aria-selected="false">Shared</button>
+        <button class="sui-tab" data-sui-tab="pg-box3" role="tab" aria-selected="false">Recent</button>
+      </div>
+      <div class="sui-tab-panel active" id="pg-box1" role="tabpanel"><div class="sui-card"><div class="sui-card-body">Files content goes here.</div></div></div>
+      <div class="sui-tab-panel" id="pg-box2" role="tabpanel"><div class="sui-card"><div class="sui-card-body">Shared content goes here.</div></div></div>
+      <div class="sui-tab-panel" id="pg-box3" role="tabpanel"><div class="sui-card"><div class="sui-card-body">Recent content goes here.</div></div></div>
+    </div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-tabs"&gt;
+  &lt;div class="sui-tab-list-boxed"&gt;
+    &lt;button class="sui-tab active" data-sui-tab="files"&gt;Files&lt;/button&gt;
+    &lt;button class="sui-tab" data-sui-tab="shared"&gt;Shared&lt;/button&gt;
+    &lt;button class="sui-tab" data-sui-tab="recent"&gt;Recent&lt;/button&gt;
+  &lt;/div&gt;
+  &lt;div class="sui-tab-panel active" id="files"&gt;...&lt;/div&gt;
+  &lt;div class="sui-tab-panel" id="shared"&gt;...&lt;/div&gt;
+  &lt;div class="sui-tab-panel" id="recent"&gt;...&lt;/div&gt;
+&lt;/div&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Vertical -->
+<div class="pg-section" id="section-5">
+  <h3 class="pg-section-title">Vertical</h3>
+  <div class="pg-section-row">
+    <div class="sui-tabs sui-tabs-vertical" style="width:100%;">
+      <div class="sui-tab-list" role="tablist">
+        <button class="sui-tab active" data-sui-tab="pg-vert1" role="tab" aria-selected="true">Dashboard</button>
+        <button class="sui-tab" data-sui-tab="pg-vert2" role="tab" aria-selected="false">Users</button>
+        <button class="sui-tab" data-sui-tab="pg-vert3" role="tab" aria-selected="false">Roles</button>
+      </div>
+      <div class="sui-tab-panel active" id="pg-vert1" role="tabpanel"><div class="sui-card"><div class="sui-card-body">Dashboard content goes here.</div></div></div>
+      <div class="sui-tab-panel" id="pg-vert2" role="tabpanel"><div class="sui-card"><div class="sui-card-body">Users content goes here.</div></div></div>
+      <div class="sui-tab-panel" id="pg-vert3" role="tabpanel"><div class="sui-card"><div class="sui-card-body">Roles content goes here.</div></div></div>
+    </div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-tabs sui-tabs-vertical"&gt;
+  &lt;div class="sui-tab-list"&gt;
+    &lt;button class="sui-tab active" data-sui-tab="dashboard"&gt;Dashboard&lt;/button&gt;
+    &lt;button class="sui-tab" data-sui-tab="users"&gt;Users&lt;/button&gt;
+    &lt;button class="sui-tab" data-sui-tab="roles"&gt;Roles&lt;/button&gt;
+  &lt;/div&gt;
+  &lt;div class="sui-tab-panel active" id="dashboard"&gt;
+    &lt;div class="sui-card"&gt;&lt;div class="sui-card-body"&gt;Dashboard content goes here.&lt;/div&gt;&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="sui-tab-panel" id="users"&gt;
+    &lt;div class="sui-card"&gt;&lt;div class="sui-card-body"&gt;Users content goes here.&lt;/div&gt;&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="sui-tab-panel" id="roles"&gt;
+    &lt;div class="sui-card"&gt;&lt;div class="sui-card-body"&gt;Roles content goes here.&lt;/div&gt;&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Fill -->
+<div class="pg-section" id="section-6">
+  <h3 class="pg-section-title">Fill</h3>
+  <div class="pg-section-row">
+    <div class="sui-tabs" style="width:100%;">
+      <div class="sui-tab-list sui-tab-list-fill" role="tablist">
+        <button class="sui-tab active" data-sui-tab="pg-fill1" role="tab" aria-selected="true">Home</button>
+        <button class="sui-tab" data-sui-tab="pg-fill2" role="tab" aria-selected="false">Profile</button>
+        <button class="sui-tab" data-sui-tab="pg-fill3" role="tab" aria-selected="false">Messages</button>
+      </div>
+      <div class="sui-tab-panel active" id="pg-fill1" role="tabpanel"><div class="sui-card"><div class="sui-card-body">Home content goes here.</div></div></div>
+      <div class="sui-tab-panel" id="pg-fill2" role="tabpanel"><div class="sui-card"><div class="sui-card-body">Profile content goes here.</div></div></div>
+      <div class="sui-tab-panel" id="pg-fill3" role="tabpanel"><div class="sui-card"><div class="sui-card-body">Messages content goes here.</div></div></div>
+    </div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-tabs"&gt;
+  &lt;div class="sui-tab-list sui-tab-list-fill"&gt;
+    &lt;button class="sui-tab active" data-sui-tab="home"&gt;Home&lt;/button&gt;
+    &lt;button class="sui-tab" data-sui-tab="profile"&gt;Profile&lt;/button&gt;
+    &lt;button class="sui-tab" data-sui-tab="messages"&gt;Messages&lt;/button&gt;
+  &lt;/div&gt;
+  &lt;div class="sui-tab-panel active" id="home"&gt;
+    &lt;div class="sui-card"&gt;&lt;div class="sui-card-body"&gt;Home content goes here.&lt;/div&gt;&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="sui-tab-panel" id="profile"&gt;
+    &lt;div class="sui-card"&gt;&lt;div class="sui-card-body"&gt;Profile content goes here.&lt;/div&gt;&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="sui-tab-panel" id="messages"&gt;
+    &lt;div class="sui-card"&gt;&lt;div class="sui-card-body"&gt;Messages content goes here.&lt;/div&gt;&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Justified -->
+<div class="pg-section" id="section-7">
+  <h3 class="pg-section-title">Justified</h3>
+  <div class="pg-section-row">
+    <div class="sui-tabs" style="width:100%;">
+      <div class="sui-tab-list sui-tab-list-justified" role="tablist">
+        <button class="sui-tab active" data-sui-tab="pg-just1" role="tab" aria-selected="true">Overview</button>
+        <button class="sui-tab" data-sui-tab="pg-just2" role="tab" aria-selected="false">Activity</button>
+        <button class="sui-tab" data-sui-tab="pg-just3" role="tab" aria-selected="false">Settings</button>
+      </div>
+      <div class="sui-tab-panel active" id="pg-just1" role="tabpanel"><div class="sui-card"><div class="sui-card-body">Overview content goes here.</div></div></div>
+      <div class="sui-tab-panel" id="pg-just2" role="tabpanel"><div class="sui-card"><div class="sui-card-body">Activity content goes here.</div></div></div>
+      <div class="sui-tab-panel" id="pg-just3" role="tabpanel"><div class="sui-card"><div class="sui-card-body">Settings content goes here.</div></div></div>
+    </div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-tabs"&gt;
+  &lt;div class="sui-tab-list sui-tab-list-justified"&gt;
+    &lt;button class="sui-tab active" data-sui-tab="overview"&gt;Overview&lt;/button&gt;
+    &lt;button class="sui-tab" data-sui-tab="activity"&gt;Activity&lt;/button&gt;
+    &lt;button class="sui-tab" data-sui-tab="settings"&gt;Settings&lt;/button&gt;
+  &lt;/div&gt;
+  &lt;div class="sui-tab-panel active" id="overview"&gt;
+    &lt;div class="sui-card"&gt;&lt;div class="sui-card-body"&gt;Overview content goes here.&lt;/div&gt;&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="sui-tab-panel" id="activity"&gt;
+    &lt;div class="sui-card"&gt;&lt;div class="sui-card-body"&gt;Activity content goes here.&lt;/div&gt;&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="sui-tab-panel" id="settings"&gt;
+    &lt;div class="sui-card"&gt;&lt;div class="sui-card-body"&gt;Settings content goes here.&lt;/div&gt;&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</pre></div>
+  </div>
+</div>

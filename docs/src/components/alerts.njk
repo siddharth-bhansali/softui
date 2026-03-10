@@ -1,0 +1,117 @@
+---
+layout: component.njk
+title: Alerts
+description: Notification banners for user feedback. Default, filled, and dismissible variants.
+componentId: alerts
+toc:
+  - Default Alerts
+  - Dismissible
+  - Filled
+  - Filled + Dismissible
+  - With Icon
+---
+
+<!-- Default Alerts -->
+<div class="pg-section">
+  <h3 class="pg-section-title">Default Alerts</h3>
+  <div class="pg-section-row" style="flex-direction:column;align-items:stretch;gap:12px;">
+    <div class="sui-alert" role="alert">This is a default alert</div>
+    <div class="sui-alert sui-alert-primary" role="alert">primary alert with important info</div>
+    <div class="sui-alert sui-alert-success" role="alert">Success! Your changes have been saved.</div>
+    <div class="sui-alert sui-alert-danger" role="alert">Error! Something went wrong.</div>
+    <div class="sui-alert sui-alert-warning" role="alert">Warning! Please review.</div>
+    <div class="sui-alert sui-alert-info" role="alert">Info — useful information.</div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-alert"&gt;This is a default alert&lt;/div&gt;
+&lt;div class="sui-alert sui-alert-primary"&gt;primary alert with important info&lt;/div&gt;
+&lt;div class="sui-alert sui-alert-success"&gt;Success! Your changes have been saved.&lt;/div&gt;
+&lt;div class="sui-alert sui-alert-danger"&gt;Error! Something went wrong.&lt;/div&gt;
+&lt;div class="sui-alert sui-alert-warning"&gt;Warning! Please review.&lt;/div&gt;
+&lt;div class="sui-alert sui-alert-info"&gt;Info — useful information.&lt;/div&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Dismissible -->
+<div class="pg-section">
+  <h3 class="pg-section-title">Dismissible</h3>
+  <div class="pg-section-row" style="flex-direction:column;align-items:stretch;gap:12px;">
+    <div class="sui-alert sui-alert-primary sui-alert-dismissible" role="alert"><span class="sui-alert-content">Dismissible alert</span><button class="sui-alert-close" aria-label="Dismiss"></button></div>
+    <div class="sui-alert sui-alert-danger sui-alert-dismissible" role="alert"><span class="sui-alert-content">Danger dismissible alert</span><button class="sui-alert-close" aria-label="Dismiss"></button></div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-alert sui-alert-primary sui-alert-dismissible"&gt;
+  &lt;span class="sui-alert-content"&gt;Dismissible alert&lt;/span&gt;
+  &lt;button class="sui-alert-close" aria-label="Dismiss"&gt;&lt;/button&gt;
+&lt;/div&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Filled -->
+<div class="pg-section">
+  <h3 class="pg-section-title">Filled</h3>
+  <div class="pg-section-row" style="flex-direction:column;align-items:stretch;gap:12px;">
+    <div class="sui-alert sui-alert-primary sui-alert-filled" role="alert">Primary filled alert</div>
+    <div class="sui-alert sui-alert-success sui-alert-filled" role="alert">Success filled alert</div>
+    <div class="sui-alert sui-alert-danger sui-alert-filled" role="alert">Danger filled alert</div>
+    <div class="sui-alert sui-alert-warning sui-alert-filled" role="alert">Warning filled alert</div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-alert sui-alert-primary sui-alert-filled"&gt;Primary filled alert&lt;/div&gt;
+&lt;div class="sui-alert sui-alert-success sui-alert-filled"&gt;Success filled alert&lt;/div&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Filled + Dismissible -->
+<div class="pg-section">
+  <h3 class="pg-section-title">Filled + Dismissible</h3>
+  <div class="pg-section-row" style="flex-direction:column;align-items:stretch;gap:12px;">
+    <div class="sui-alert sui-alert-filled sui-alert-success sui-alert-dismissible" role="alert"><span class="sui-alert-content">Filled success dismissible alert</span><button class="sui-alert-close" aria-label="Dismiss"></button></div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-alert sui-alert-filled sui-alert-success sui-alert-dismissible"&gt;
+  &lt;span class="sui-alert-content"&gt;Filled success dismissible alert&lt;/span&gt;
+  &lt;button class="sui-alert-close" aria-label="Dismiss"&gt;&lt;/button&gt;
+&lt;/div&gt;</pre></div>
+  </div>
+</div>
+
+<!-- With Icon -->
+<div class="pg-section">
+  <h3 class="pg-section-title">With Icon</h3>
+  <div class="pg-section-row" style="flex-direction:column;align-items:stretch;gap:12px;">
+    <div class="sui-alert sui-alert-success sui-alert-icon" role="alert">
+      <span class="sui-alert-icon-symbol">&#10003;</span>
+      <div><strong>Success!</strong> Your changes have been saved.</div>
+    </div>
+    <div class="sui-alert sui-alert-danger sui-alert-icon" role="alert">
+      <span class="sui-alert-icon-symbol">&#10007;</span>
+      <div><strong>Error!</strong> Something went wrong.</div>
+    </div>
+    <div class="sui-alert sui-alert-info sui-alert-icon" role="alert">
+      <span class="sui-alert-icon-symbol">&#8505;</span>
+      <div><strong>Info.</strong> Here is some useful information.</div>
+    </div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-alert sui-alert-success sui-alert-icon"&gt;
+  &lt;span class="sui-alert-icon-symbol"&gt;&amp;#10003;&lt;/span&gt;
+  &lt;div&gt;&lt;strong&gt;Success!&lt;/strong&gt; Your changes have been saved.&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="sui-alert sui-alert-danger sui-alert-icon"&gt;
+  &lt;span class="sui-alert-icon-symbol"&gt;&amp;#10007;&lt;/span&gt;
+  &lt;div&gt;&lt;strong&gt;Error!&lt;/strong&gt; Something went wrong.&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="sui-alert sui-alert-info sui-alert-icon"&gt;
+  &lt;span class="sui-alert-icon-symbol"&gt;&amp;#8505;&lt;/span&gt;
+  &lt;div&gt;&lt;strong&gt;Info.&lt;/strong&gt; Here is some useful information.&lt;/div&gt;
+&lt;/div&gt;</pre></div>
+  </div>
+</div>

@@ -1,0 +1,323 @@
+---
+layout: component.njk
+title: Layout
+description: Containers, 12-column grid, and responsive layout utilities.
+componentId: layout
+hasControls: false
+toc:
+  - Container
+  - Fluid Container
+  - Equal Columns
+  - Sized Columns
+  - Responsive
+  - Gutters
+  - Offsets
+---
+
+<!-- Container -->
+<div class="pg-section" id="section-1">
+  <h3 class="pg-section-title">Container</h3>
+  <p style="margin-bottom:16px;color:var(--sui-text-muted);font-size:14px;">
+    <code>.sui-container</code> is a centered container with responsive max-width breakpoints:
+    <strong>540px</strong> (sm), <strong>720px</strong> (md), <strong>960px</strong> (lg), <strong>1140px</strong> (xl), <strong>1320px</strong> (xxl).
+  </p>
+  <div class="pg-section-row" style="overflow:hidden;">
+    <div class="sui-container" style="background:var(--sui-bg-dark);border-radius:12px;padding-top:16px;padding-bottom:16px;text-align:center;box-shadow:var(--sui-shadow-inset-sm);">
+      <span style="font-size:14px;font-weight:600;color:var(--sui-primary);">.sui-container</span>
+      <span style="font-size:12px;color:var(--sui-text-muted);display:block;margin-top:4px;">Resize the browser to see the max-width change at each breakpoint.</span>
+    </div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-container"&gt;
+  &lt;!-- Centered, max-width at breakpoints --&gt;
+&lt;/div&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Fluid Container -->
+<div class="pg-section" id="section-2">
+  <h3 class="pg-section-title">Fluid Container</h3>
+  <p style="margin-bottom:16px;color:var(--sui-text-muted);font-size:14px;">
+    <code>.sui-container-fluid</code> spans the full width at all breakpoints. Use responsive containers like
+    <code>.sui-container-sm</code>, <code>.sui-container-md</code>, <code>.sui-container-lg</code>, <code>.sui-container-xl</code>
+    to be fluid until a specific breakpoint.
+  </p>
+  <div class="pg-section-row" style="overflow:hidden;">
+    <div class="sui-container-fluid" style="background:var(--sui-bg-dark);border-radius:12px;padding-top:16px;padding-bottom:16px;text-align:center;box-shadow:var(--sui-shadow-inset-sm);">
+      <span style="font-size:14px;font-weight:600;color:var(--sui-success);">.sui-container-fluid</span>
+      <span style="font-size:12px;color:var(--sui-text-muted);display:block;margin-top:4px;">Always full-width with 16px side padding.</span>
+    </div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-container-fluid"&gt;
+  &lt;!-- Full-width container --&gt;
+&lt;/div&gt;
+
+&lt;!-- Responsive containers: fluid until the named breakpoint --&gt;
+&lt;div class="sui-container-sm"&gt;...&lt;/div&gt;
+&lt;div class="sui-container-md"&gt;...&lt;/div&gt;
+&lt;div class="sui-container-lg"&gt;...&lt;/div&gt;
+&lt;div class="sui-container-xl"&gt;...&lt;/div&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Equal Columns -->
+<div class="pg-section" id="section-3">
+  <h3 class="pg-section-title">Equal Columns</h3>
+  <p style="margin-bottom:16px;color:var(--sui-text-muted);font-size:14px;">
+    Use <code>.sui-col</code> inside a <code>.sui-row</code> for equal-width columns that automatically share available space.
+  </p>
+  <div class="pg-section-row">
+    <div style="width:100%;">
+      <div class="sui-row" style="margin-bottom:12px;">
+        <div class="sui-col">
+          <div style="background:var(--sui-primary);color:#fff;padding:12px;border-radius:8px;text-align:center;font-size:13px;font-weight:600;">col</div>
+        </div>
+        <div class="sui-col">
+          <div style="background:var(--sui-primary);color:#fff;padding:12px;border-radius:8px;text-align:center;font-size:13px;font-weight:600;">col</div>
+        </div>
+        <div class="sui-col">
+          <div style="background:var(--sui-primary);color:#fff;padding:12px;border-radius:8px;text-align:center;font-size:13px;font-weight:600;">col</div>
+        </div>
+      </div>
+      <div class="sui-row">
+        <div class="sui-col">
+          <div style="background:var(--sui-info);color:#fff;padding:12px;border-radius:8px;text-align:center;font-size:13px;font-weight:600;">col</div>
+        </div>
+        <div class="sui-col">
+          <div style="background:var(--sui-info);color:#fff;padding:12px;border-radius:8px;text-align:center;font-size:13px;font-weight:600;">col</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-row"&gt;
+  &lt;div class="sui-col"&gt;col&lt;/div&gt;
+  &lt;div class="sui-col"&gt;col&lt;/div&gt;
+  &lt;div class="sui-col"&gt;col&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="sui-row"&gt;
+  &lt;div class="sui-col"&gt;col&lt;/div&gt;
+  &lt;div class="sui-col"&gt;col&lt;/div&gt;
+&lt;/div&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Sized Columns -->
+<div class="pg-section" id="section-4">
+  <h3 class="pg-section-title">Sized Columns</h3>
+  <p style="margin-bottom:16px;color:var(--sui-text-muted);font-size:14px;">
+    Use <code>.sui-col-{1-12}</code> for fixed-width columns based on a 12-column grid.
+  </p>
+  <div class="pg-section-row">
+    <div style="width:100%;">
+      <div class="sui-row" style="margin-bottom:12px;">
+        <div class="sui-col-6">
+          <div style="background:var(--sui-primary);color:#fff;padding:12px;border-radius:8px;text-align:center;font-size:13px;font-weight:600;">col-6</div>
+        </div>
+        <div class="sui-col-6">
+          <div style="background:var(--sui-primary);color:#fff;padding:12px;border-radius:8px;text-align:center;font-size:13px;font-weight:600;">col-6</div>
+        </div>
+      </div>
+      <div class="sui-row" style="margin-bottom:12px;">
+        <div class="sui-col-4">
+          <div style="background:var(--sui-success);color:#fff;padding:12px;border-radius:8px;text-align:center;font-size:13px;font-weight:600;">col-4</div>
+        </div>
+        <div class="sui-col-8">
+          <div style="background:var(--sui-success);color:#fff;padding:12px;border-radius:8px;text-align:center;font-size:13px;font-weight:600;">col-8</div>
+        </div>
+      </div>
+      <div class="sui-row">
+        <div class="sui-col-3">
+          <div style="background:var(--sui-warning);color:#fff;padding:12px;border-radius:8px;text-align:center;font-size:13px;font-weight:600;">col-3</div>
+        </div>
+        <div class="sui-col-3">
+          <div style="background:var(--sui-warning);color:#fff;padding:12px;border-radius:8px;text-align:center;font-size:13px;font-weight:600;">col-3</div>
+        </div>
+        <div class="sui-col-3">
+          <div style="background:var(--sui-warning);color:#fff;padding:12px;border-radius:8px;text-align:center;font-size:13px;font-weight:600;">col-3</div>
+        </div>
+        <div class="sui-col-3">
+          <div style="background:var(--sui-warning);color:#fff;padding:12px;border-radius:8px;text-align:center;font-size:13px;font-weight:600;">col-3</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-row"&gt;
+  &lt;div class="sui-col-6"&gt;col-6&lt;/div&gt;
+  &lt;div class="sui-col-6"&gt;col-6&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="sui-row"&gt;
+  &lt;div class="sui-col-4"&gt;col-4&lt;/div&gt;
+  &lt;div class="sui-col-8"&gt;col-8&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="sui-row"&gt;
+  &lt;div class="sui-col-3"&gt;col-3&lt;/div&gt;
+  &lt;div class="sui-col-3"&gt;col-3&lt;/div&gt;
+  &lt;div class="sui-col-3"&gt;col-3&lt;/div&gt;
+  &lt;div class="sui-col-3"&gt;col-3&lt;/div&gt;
+&lt;/div&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Responsive -->
+<div class="pg-section" id="section-5">
+  <h3 class="pg-section-title">Responsive</h3>
+  <p style="margin-bottom:16px;color:var(--sui-text-muted);font-size:14px;">
+    Combine responsive column classes to change layout at different breakpoints. The columns below stack on mobile, become 2-across on tablets, and 3-across on desktop.
+  </p>
+  <div class="pg-section-row">
+    <div style="width:100%;">
+      <div class="sui-row">
+        <div class="sui-col-12 sui-col-md-6 sui-col-lg-4">
+          <div style="background:var(--sui-primary);color:#fff;padding:12px;border-radius:8px;text-align:center;font-size:13px;font-weight:600;margin-bottom:12px;">col-12 col-md-6 col-lg-4</div>
+        </div>
+        <div class="sui-col-12 sui-col-md-6 sui-col-lg-4">
+          <div style="background:var(--sui-primary);color:#fff;padding:12px;border-radius:8px;text-align:center;font-size:13px;font-weight:600;margin-bottom:12px;">col-12 col-md-6 col-lg-4</div>
+        </div>
+        <div class="sui-col-12 sui-col-md-12 sui-col-lg-4">
+          <div style="background:var(--sui-primary);color:#fff;padding:12px;border-radius:8px;text-align:center;font-size:13px;font-weight:600;margin-bottom:12px;">col-12 col-md-12 col-lg-4</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-row"&gt;
+  &lt;div class="sui-col-12 sui-col-md-6 sui-col-lg-4"&gt;...&lt;/div&gt;
+  &lt;div class="sui-col-12 sui-col-md-6 sui-col-lg-4"&gt;...&lt;/div&gt;
+  &lt;div class="sui-col-12 sui-col-md-12 sui-col-lg-4"&gt;...&lt;/div&gt;
+&lt;/div&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Gutters -->
+<div class="pg-section" id="section-6">
+  <h3 class="pg-section-title">Gutters</h3>
+  <p style="margin-bottom:16px;color:var(--sui-text-muted);font-size:14px;">
+    Control gutter (gap) sizes with <code>.sui-g-{0-5}</code>, <code>.sui-gx-{0-5}</code> (horizontal), and <code>.sui-gy-{0-5}</code> (vertical).
+    Values: 0=0, 1=4px, 2=8px, 3=16px, 4=24px (default), 5=48px.
+  </p>
+  <div class="pg-section-row">
+    <div style="width:100%;">
+      <p style="font-size:13px;font-weight:600;margin-bottom:8px;">No gutter (<code>.sui-g-0</code>)</p>
+      <div class="sui-row sui-g-0" style="margin-bottom:20px;">
+        <div class="sui-col-4">
+          <div style="background:var(--sui-danger);color:#fff;padding:12px;border-radius:8px;text-align:center;font-size:13px;font-weight:600;">col-4</div>
+        </div>
+        <div class="sui-col-4">
+          <div style="background:var(--sui-danger);color:#fff;padding:12px;border-radius:8px;text-align:center;font-size:13px;font-weight:600;">col-4</div>
+        </div>
+        <div class="sui-col-4">
+          <div style="background:var(--sui-danger);color:#fff;padding:12px;border-radius:8px;text-align:center;font-size:13px;font-weight:600;">col-4</div>
+        </div>
+      </div>
+      <p style="font-size:13px;font-weight:600;margin-bottom:8px;">Small gutter (<code>.sui-g-2</code>)</p>
+      <div class="sui-row sui-g-2" style="margin-bottom:20px;">
+        <div class="sui-col-4">
+          <div style="background:var(--sui-info);color:#fff;padding:12px;border-radius:8px;text-align:center;font-size:13px;font-weight:600;">col-4</div>
+        </div>
+        <div class="sui-col-4">
+          <div style="background:var(--sui-info);color:#fff;padding:12px;border-radius:8px;text-align:center;font-size:13px;font-weight:600;">col-4</div>
+        </div>
+        <div class="sui-col-4">
+          <div style="background:var(--sui-info);color:#fff;padding:12px;border-radius:8px;text-align:center;font-size:13px;font-weight:600;">col-4</div>
+        </div>
+      </div>
+      <p style="font-size:13px;font-weight:600;margin-bottom:8px;">Large gutter (<code>.sui-g-5</code>)</p>
+      <div class="sui-row sui-g-5">
+        <div class="sui-col-4">
+          <div style="background:var(--sui-success);color:#fff;padding:12px;border-radius:8px;text-align:center;font-size:13px;font-weight:600;">col-4</div>
+        </div>
+        <div class="sui-col-4">
+          <div style="background:var(--sui-success);color:#fff;padding:12px;border-radius:8px;text-align:center;font-size:13px;font-weight:600;">col-4</div>
+        </div>
+        <div class="sui-col-4">
+          <div style="background:var(--sui-success);color:#fff;padding:12px;border-radius:8px;text-align:center;font-size:13px;font-weight:600;">col-4</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;!-- No gutter --&gt;
+&lt;div class="sui-row sui-g-0"&gt;
+  &lt;div class="sui-col-4"&gt;...&lt;/div&gt;
+  &lt;div class="sui-col-4"&gt;...&lt;/div&gt;
+  &lt;div class="sui-col-4"&gt;...&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- Small gutter (8px) --&gt;
+&lt;div class="sui-row sui-g-2"&gt;
+  &lt;div class="sui-col-4"&gt;...&lt;/div&gt;
+  &lt;div class="sui-col-4"&gt;...&lt;/div&gt;
+  &lt;div class="sui-col-4"&gt;...&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- Large gutter (48px) --&gt;
+&lt;div class="sui-row sui-g-5"&gt;
+  &lt;div class="sui-col-4"&gt;...&lt;/div&gt;
+  &lt;div class="sui-col-4"&gt;...&lt;/div&gt;
+  &lt;div class="sui-col-4"&gt;...&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- Horizontal only --&gt;
+&lt;div class="sui-row sui-gx-3"&gt;...&lt;/div&gt;
+
+&lt;!-- Vertical only --&gt;
+&lt;div class="sui-row sui-gy-3"&gt;...&lt;/div&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Offsets -->
+<div class="pg-section" id="section-7">
+  <h3 class="pg-section-title">Offsets</h3>
+  <p style="margin-bottom:16px;color:var(--sui-text-muted);font-size:14px;">
+    Use <code>.sui-offset-{1-11}</code> to push columns to the right with margin-left.
+  </p>
+  <div class="pg-section-row">
+    <div style="width:100%;">
+      <div class="sui-row" style="margin-bottom:12px;">
+        <div class="sui-col-4 sui-offset-4">
+          <div style="background:var(--sui-primary);color:#fff;padding:12px;border-radius:8px;text-align:center;font-size:13px;font-weight:600;">col-4 offset-4</div>
+        </div>
+      </div>
+      <div class="sui-row" style="margin-bottom:12px;">
+        <div class="sui-col-3 sui-offset-3">
+          <div style="background:var(--sui-success);color:#fff;padding:12px;border-radius:8px;text-align:center;font-size:13px;font-weight:600;">col-3 offset-3</div>
+        </div>
+        <div class="sui-col-3 sui-offset-3">
+          <div style="background:var(--sui-success);color:#fff;padding:12px;border-radius:8px;text-align:center;font-size:13px;font-weight:600;">col-3 offset-3</div>
+        </div>
+      </div>
+      <div class="sui-row">
+        <div class="sui-col-6 sui-offset-6">
+          <div style="background:var(--sui-warning);color:#fff;padding:12px;border-radius:8px;text-align:center;font-size:13px;font-weight:600;">col-6 offset-6</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-row"&gt;
+  &lt;div class="sui-col-4 sui-offset-4"&gt;col-4 offset-4&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="sui-row"&gt;
+  &lt;div class="sui-col-3 sui-offset-3"&gt;col-3 offset-3&lt;/div&gt;
+  &lt;div class="sui-col-3 sui-offset-3"&gt;col-3 offset-3&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="sui-row"&gt;
+  &lt;div class="sui-col-6 sui-offset-6"&gt;col-6 offset-6&lt;/div&gt;
+&lt;/div&gt;</pre></div>
+  </div>
+</div>

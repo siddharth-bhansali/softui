@@ -1,0 +1,283 @@
+---
+layout: component.njk
+title: Context Menu
+description: Right-click menu with items, submenus, checkboxes, radios, shortcuts, and keyboard navigation.
+componentId: contextmenu
+hasControls: false
+toc:
+  - Default
+  - With Shortcuts
+  - Checkboxes & Radios
+  - With Submenu
+  - With Icons
+  - Disabled Items
+  - Destructive Item
+---
+
+<!-- Default -->
+<div class="pg-section" id="section-1">
+  <h3 class="pg-section-title">Default</h3>
+  <p style="font-size:13px;color:var(--sui-text-light);margin-bottom:16px;">Right-click the area below to open a context menu.</p>
+  <div class="pg-section-row">
+    <div data-sui-context="ctx-default" style="display:flex;align-items:center;justify-content:center;width:100%;height:160px;border:2px dashed var(--sui-bg-dark);border-radius:var(--sui-radius-sm);font-size:14px;font-weight:600;color:var(--sui-text-muted);cursor:default;user-select:none;">Right-click here</div>
+    <div class="sui-context-menu" id="ctx-default" role="menu">
+      <button class="sui-context-item" role="menuitem">Back</button>
+      <button class="sui-context-item" role="menuitem">Forward</button>
+      <button class="sui-context-item" role="menuitem">Reload</button>
+      <div class="sui-context-separator"></div>
+      <button class="sui-context-item" role="menuitem">Save As...</button>
+      <button class="sui-context-item" role="menuitem">Print...</button>
+      <div class="sui-context-separator"></div>
+      <button class="sui-context-item" role="menuitem">View Page Source</button>
+      <button class="sui-context-item" role="menuitem">Inspect</button>
+    </div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div data-sui-context="ctx-demo"&gt;Right-click here&lt;/div&gt;
+
+&lt;div class="sui-context-menu" id="ctx-demo" role="menu"&gt;
+  &lt;button class="sui-context-item" role="menuitem"&gt;Back&lt;/button&gt;
+  &lt;button class="sui-context-item" role="menuitem"&gt;Forward&lt;/button&gt;
+  &lt;button class="sui-context-item" role="menuitem"&gt;Reload&lt;/button&gt;
+  &lt;div class="sui-context-separator"&gt;&lt;/div&gt;
+  &lt;button class="sui-context-item" role="menuitem"&gt;Save As...&lt;/button&gt;
+  &lt;button class="sui-context-item" role="menuitem"&gt;Print...&lt;/button&gt;
+  &lt;div class="sui-context-separator"&gt;&lt;/div&gt;
+  &lt;button class="sui-context-item" role="menuitem"&gt;View Page Source&lt;/button&gt;
+  &lt;button class="sui-context-item" role="menuitem"&gt;Inspect&lt;/button&gt;
+&lt;/div&gt;</pre></div>
+  </div>
+</div>
+
+<!-- With Shortcuts -->
+<div class="pg-section" id="section-2">
+  <h3 class="pg-section-title">With Shortcuts</h3>
+  <p style="font-size:13px;color:var(--sui-text-light);margin-bottom:16px;">Display keyboard shortcut hints alongside menu items.</p>
+  <div class="pg-section-row">
+    <div data-sui-context="ctx-shortcuts" style="display:flex;align-items:center;justify-content:center;width:100%;height:160px;border:2px dashed var(--sui-bg-dark);border-radius:var(--sui-radius-sm);font-size:14px;font-weight:600;color:var(--sui-text-muted);cursor:default;user-select:none;">Right-click here</div>
+    <div class="sui-context-menu" id="ctx-shortcuts" role="menu">
+      <button class="sui-context-item" role="menuitem">Undo <span class="sui-context-shortcut">⌘Z</span></button>
+      <button class="sui-context-item" role="menuitem">Redo <span class="sui-context-shortcut">⇧⌘Z</span></button>
+      <div class="sui-context-separator"></div>
+      <button class="sui-context-item" role="menuitem">Cut <span class="sui-context-shortcut">⌘X</span></button>
+      <button class="sui-context-item" role="menuitem">Copy <span class="sui-context-shortcut">⌘C</span></button>
+      <button class="sui-context-item" role="menuitem">Paste <span class="sui-context-shortcut">⌘V</span></button>
+      <div class="sui-context-separator"></div>
+      <button class="sui-context-item" role="menuitem">Select All <span class="sui-context-shortcut">⌘A</span></button>
+    </div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div data-sui-context="ctx-shortcuts"&gt;Right-click here&lt;/div&gt;
+
+&lt;div class="sui-context-menu" id="ctx-shortcuts" role="menu"&gt;
+  &lt;button class="sui-context-item" role="menuitem"&gt;Undo &lt;span class="sui-context-shortcut"&gt;⌘Z&lt;/span&gt;&lt;/button&gt;
+  &lt;button class="sui-context-item" role="menuitem"&gt;Redo &lt;span class="sui-context-shortcut"&gt;⇧⌘Z&lt;/span&gt;&lt;/button&gt;
+  &lt;div class="sui-context-separator"&gt;&lt;/div&gt;
+  &lt;button class="sui-context-item" role="menuitem"&gt;Cut &lt;span class="sui-context-shortcut"&gt;⌘X&lt;/span&gt;&lt;/button&gt;
+  &lt;button class="sui-context-item" role="menuitem"&gt;Copy &lt;span class="sui-context-shortcut"&gt;⌘C&lt;/span&gt;&lt;/button&gt;
+  &lt;button class="sui-context-item" role="menuitem"&gt;Paste &lt;span class="sui-context-shortcut"&gt;⌘V&lt;/span&gt;&lt;/button&gt;
+  &lt;div class="sui-context-separator"&gt;&lt;/div&gt;
+  &lt;button class="sui-context-item" role="menuitem"&gt;Select All &lt;span class="sui-context-shortcut"&gt;⌘A&lt;/span&gt;&lt;/button&gt;
+&lt;/div&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Checkboxes & Radios -->
+<div class="pg-section" id="section-3">
+  <h3 class="pg-section-title">Checkboxes & Radios</h3>
+  <p style="font-size:13px;color:var(--sui-text-light);margin-bottom:16px;">Toggle items with checkboxes and exclusive radio selections.</p>
+  <div class="pg-section-row">
+    <div data-sui-context="ctx-checks" style="display:flex;align-items:center;justify-content:center;width:100%;height:160px;border:2px dashed var(--sui-bg-dark);border-radius:var(--sui-radius-sm);font-size:14px;font-weight:600;color:var(--sui-text-muted);cursor:default;user-select:none;">Right-click here</div>
+    <div class="sui-context-menu" id="ctx-checks" role="menu">
+      <div class="sui-context-label">View</div>
+      <button class="sui-context-item" role="menuitemcheckbox" data-sui-context-check><span class="sui-context-check">&#10003;</span> Show Toolbar</button>
+      <button class="sui-context-item" role="menuitemcheckbox" data-sui-context-check><span class="sui-context-check"></span> Show Sidebar</button>
+      <button class="sui-context-item" role="menuitemcheckbox" data-sui-context-check><span class="sui-context-check">&#10003;</span> Show Statusbar</button>
+      <div class="sui-context-separator"></div>
+      <div class="sui-context-label">Sort By</div>
+      <button class="sui-context-item" role="menuitemradio" data-sui-context-radio="sort"><span class="sui-context-check">&bull;</span> Name</button>
+      <button class="sui-context-item" role="menuitemradio" data-sui-context-radio="sort"><span class="sui-context-check"></span> Date</button>
+      <button class="sui-context-item" role="menuitemradio" data-sui-context-radio="sort"><span class="sui-context-check"></span> Size</button>
+    </div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div data-sui-context="ctx-checks"&gt;Right-click here&lt;/div&gt;
+
+&lt;div class="sui-context-menu" id="ctx-checks" role="menu"&gt;
+  &lt;div class="sui-context-label"&gt;View&lt;/div&gt;
+  &lt;button class="sui-context-item" role="menuitemcheckbox" data-sui-context-check&gt;&lt;span class="sui-context-check"&gt;&amp;#10003;&lt;/span&gt; Show Toolbar&lt;/button&gt;
+  &lt;button class="sui-context-item" role="menuitemcheckbox" data-sui-context-check&gt;&lt;span class="sui-context-check"&gt;&lt;/span&gt; Show Sidebar&lt;/button&gt;
+  &lt;button class="sui-context-item" role="menuitemcheckbox" data-sui-context-check&gt;&lt;span class="sui-context-check"&gt;&amp;#10003;&lt;/span&gt; Show Statusbar&lt;/button&gt;
+  &lt;div class="sui-context-separator"&gt;&lt;/div&gt;
+  &lt;div class="sui-context-label"&gt;Sort By&lt;/div&gt;
+  &lt;button class="sui-context-item" role="menuitemradio" data-sui-context-radio="sort"&gt;&lt;span class="sui-context-check"&gt;&amp;bull;&lt;/span&gt; Name&lt;/button&gt;
+  &lt;button class="sui-context-item" role="menuitemradio" data-sui-context-radio="sort"&gt;&lt;span class="sui-context-check"&gt;&lt;/span&gt; Date&lt;/button&gt;
+  &lt;button class="sui-context-item" role="menuitemradio" data-sui-context-radio="sort"&gt;&lt;span class="sui-context-check"&gt;&lt;/span&gt; Size&lt;/button&gt;
+&lt;/div&gt;</pre></div>
+  </div>
+</div>
+
+<!-- With Submenu -->
+<div class="pg-section" id="section-4">
+  <h3 class="pg-section-title">With Submenu</h3>
+  <p style="font-size:13px;color:var(--sui-text-light);margin-bottom:16px;">Nested submenus for organizing deeper actions. Hover or use arrow keys to open.</p>
+  <div class="pg-section-row">
+    <div data-sui-context="ctx-submenu" style="display:flex;align-items:center;justify-content:center;width:100%;height:160px;border:2px dashed var(--sui-bg-dark);border-radius:var(--sui-radius-sm);font-size:14px;font-weight:600;color:var(--sui-text-muted);cursor:default;user-select:none;">Right-click here</div>
+    <div class="sui-context-menu" id="ctx-submenu" role="menu">
+      <button class="sui-context-item" role="menuitem">New File <span class="sui-context-shortcut">⌘N</span></button>
+      <div class="sui-context-sub">
+        <button class="sui-context-sub-trigger">New From Template</button>
+        <div class="sui-context-sub-content" role="menu">
+          <button class="sui-context-item" role="menuitem">HTML</button>
+          <button class="sui-context-item" role="menuitem">CSS</button>
+          <button class="sui-context-item" role="menuitem">JavaScript</button>
+          <div class="sui-context-separator"></div>
+          <button class="sui-context-item" role="menuitem">React Component</button>
+          <button class="sui-context-item" role="menuitem">Vue Component</button>
+        </div>
+      </div>
+      <div class="sui-context-separator"></div>
+      <button class="sui-context-item" role="menuitem">Open File... <span class="sui-context-shortcut">⌘O</span></button>
+      <div class="sui-context-sub">
+        <button class="sui-context-sub-trigger">Open Recent</button>
+        <div class="sui-context-sub-content" role="menu">
+          <button class="sui-context-item" role="menuitem">index.html</button>
+          <button class="sui-context-item" role="menuitem">softui.css</button>
+          <button class="sui-context-item" role="menuitem">softui.js</button>
+        </div>
+      </div>
+      <div class="sui-context-separator"></div>
+      <button class="sui-context-item" role="menuitem">Save <span class="sui-context-shortcut">⌘S</span></button>
+    </div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div data-sui-context="ctx-submenu"&gt;Right-click here&lt;/div&gt;
+
+&lt;div class="sui-context-menu" id="ctx-submenu" role="menu"&gt;
+  &lt;button class="sui-context-item" role="menuitem"&gt;New File &lt;span class="sui-context-shortcut"&gt;⌘N&lt;/span&gt;&lt;/button&gt;
+  &lt;div class="sui-context-sub"&gt;
+    &lt;button class="sui-context-sub-trigger"&gt;New From Template&lt;/button&gt;
+    &lt;div class="sui-context-sub-content" role="menu"&gt;
+      &lt;button class="sui-context-item" role="menuitem"&gt;HTML&lt;/button&gt;
+      &lt;button class="sui-context-item" role="menuitem"&gt;CSS&lt;/button&gt;
+      &lt;button class="sui-context-item" role="menuitem"&gt;JavaScript&lt;/button&gt;
+      &lt;div class="sui-context-separator"&gt;&lt;/div&gt;
+      &lt;button class="sui-context-item" role="menuitem"&gt;React Component&lt;/button&gt;
+      &lt;button class="sui-context-item" role="menuitem"&gt;Vue Component&lt;/button&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="sui-context-separator"&gt;&lt;/div&gt;
+  &lt;button class="sui-context-item" role="menuitem"&gt;Open File... &lt;span class="sui-context-shortcut"&gt;⌘O&lt;/span&gt;&lt;/button&gt;
+  &lt;div class="sui-context-sub"&gt;
+    &lt;button class="sui-context-sub-trigger"&gt;Open Recent&lt;/button&gt;
+    &lt;div class="sui-context-sub-content" role="menu"&gt;
+      &lt;button class="sui-context-item" role="menuitem"&gt;index.html&lt;/button&gt;
+      &lt;button class="sui-context-item" role="menuitem"&gt;softui.css&lt;/button&gt;
+      &lt;button class="sui-context-item" role="menuitem"&gt;softui.js&lt;/button&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="sui-context-separator"&gt;&lt;/div&gt;
+  &lt;button class="sui-context-item" role="menuitem"&gt;Save &lt;span class="sui-context-shortcut"&gt;⌘S&lt;/span&gt;&lt;/button&gt;
+&lt;/div&gt;</pre></div>
+  </div>
+</div>
+
+<!-- With Icons -->
+<div class="pg-section" id="section-5">
+  <h3 class="pg-section-title">With Icons</h3>
+  <p style="font-size:13px;color:var(--sui-text-light);margin-bottom:16px;">Add inline SVG icons with <code>sui-context-icon</code> for visual clarity.</p>
+  <div class="pg-section-row">
+    <div data-sui-context="ctx-icons" style="display:flex;align-items:center;justify-content:center;width:100%;height:160px;border:2px dashed var(--sui-bg-dark);border-radius:var(--sui-radius-sm);font-size:14px;font-weight:600;color:var(--sui-text-muted);cursor:default;user-select:none;">Right-click here</div>
+    <div class="sui-context-menu" id="ctx-icons" role="menu">
+      <button class="sui-context-item" role="menuitem"><svg class="sui-context-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg> Edit <span class="sui-context-shortcut">⌘E</span></button>
+      <button class="sui-context-item" role="menuitem"><svg class="sui-context-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg> Duplicate <span class="sui-context-shortcut">⌘D</span></button>
+      <div class="sui-context-separator"></div>
+      <button class="sui-context-item" role="menuitem"><svg class="sui-context-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg> Share</button>
+      <button class="sui-context-item" role="menuitem"><svg class="sui-context-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg> Download</button>
+      <div class="sui-context-separator"></div>
+      <button class="sui-context-item sui-context-item-destructive" role="menuitem"><svg class="sui-context-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg> Delete</button>
+    </div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div data-sui-context="ctx-icons"&gt;Right-click here&lt;/div&gt;
+
+&lt;div class="sui-context-menu" id="ctx-icons" role="menu"&gt;
+  &lt;button class="sui-context-item" role="menuitem"&gt;
+    &lt;svg class="sui-context-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"&gt;&lt;path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/&gt;&lt;path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/&gt;&lt;/svg&gt;
+    Edit &lt;span class="sui-context-shortcut"&gt;⌘E&lt;/span&gt;
+  &lt;/button&gt;
+  &lt;button class="sui-context-item" role="menuitem"&gt;
+    &lt;svg class="sui-context-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"&gt;&lt;rect x="9" y="9" width="13" height="13" rx="2" ry="2"/&gt;&lt;path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/&gt;&lt;/svg&gt;
+    Duplicate &lt;span class="sui-context-shortcut"&gt;⌘D&lt;/span&gt;
+  &lt;/button&gt;
+  &lt;div class="sui-context-separator"&gt;&lt;/div&gt;
+  &lt;button class="sui-context-item sui-context-item-destructive" role="menuitem"&gt;
+    &lt;svg class="sui-context-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"&gt;&lt;polyline points="3 6 5 6 21 6"/&gt;&lt;path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/&gt;&lt;/svg&gt;
+    Delete
+  &lt;/button&gt;
+&lt;/div&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Disabled Items -->
+<div class="pg-section" id="section-6">
+  <h3 class="pg-section-title">Disabled Items</h3>
+  <p style="font-size:13px;color:var(--sui-text-light);margin-bottom:16px;">Add the <code>disabled</code> class to make items non-interactive.</p>
+  <div class="pg-section-row">
+    <div data-sui-context="ctx-disabled" style="display:flex;align-items:center;justify-content:center;width:100%;height:160px;border:2px dashed var(--sui-bg-dark);border-radius:var(--sui-radius-sm);font-size:14px;font-weight:600;color:var(--sui-text-muted);cursor:default;user-select:none;">Right-click here</div>
+    <div class="sui-context-menu" id="ctx-disabled" role="menu">
+      <button class="sui-context-item" role="menuitem">Cut <span class="sui-context-shortcut">⌘X</span></button>
+      <button class="sui-context-item" role="menuitem">Copy <span class="sui-context-shortcut">⌘C</span></button>
+      <button class="sui-context-item disabled" role="menuitem">Paste <span class="sui-context-shortcut">⌘V</span></button>
+      <div class="sui-context-separator"></div>
+      <button class="sui-context-item" role="menuitem">Select All <span class="sui-context-shortcut">⌘A</span></button>
+      <button class="sui-context-item disabled" role="menuitem">Find & Replace</button>
+    </div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div data-sui-context="ctx-disabled"&gt;Right-click here&lt;/div&gt;
+
+&lt;div class="sui-context-menu" id="ctx-disabled" role="menu"&gt;
+  &lt;button class="sui-context-item" role="menuitem"&gt;Cut &lt;span class="sui-context-shortcut"&gt;⌘X&lt;/span&gt;&lt;/button&gt;
+  &lt;button class="sui-context-item" role="menuitem"&gt;Copy &lt;span class="sui-context-shortcut"&gt;⌘C&lt;/span&gt;&lt;/button&gt;
+  &lt;button class="sui-context-item disabled" role="menuitem"&gt;Paste &lt;span class="sui-context-shortcut"&gt;⌘V&lt;/span&gt;&lt;/button&gt;
+  &lt;div class="sui-context-separator"&gt;&lt;/div&gt;
+  &lt;button class="sui-context-item" role="menuitem"&gt;Select All &lt;span class="sui-context-shortcut"&gt;⌘A&lt;/span&gt;&lt;/button&gt;
+  &lt;button class="sui-context-item disabled" role="menuitem"&gt;Find &amp;amp; Replace&lt;/button&gt;
+&lt;/div&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Destructive Item -->
+<div class="pg-section" id="section-7">
+  <h3 class="pg-section-title">Destructive Item</h3>
+  <p style="font-size:13px;color:var(--sui-text-light);margin-bottom:16px;">Use <code>sui-context-item-destructive</code> for dangerous actions like delete.</p>
+  <div class="pg-section-row">
+    <div data-sui-context="ctx-destructive" style="display:flex;align-items:center;justify-content:center;width:100%;height:160px;border:2px dashed var(--sui-bg-dark);border-radius:var(--sui-radius-sm);font-size:14px;font-weight:600;color:var(--sui-text-muted);cursor:default;user-select:none;">Right-click here</div>
+    <div class="sui-context-menu" id="ctx-destructive" role="menu">
+      <button class="sui-context-item" role="menuitem">Rename</button>
+      <button class="sui-context-item" role="menuitem">Move To...</button>
+      <button class="sui-context-item" role="menuitem">Archive</button>
+      <div class="sui-context-separator"></div>
+      <button class="sui-context-item sui-context-item-destructive" role="menuitem">Delete Permanently</button>
+    </div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div data-sui-context="ctx-destructive"&gt;Right-click here&lt;/div&gt;
+
+&lt;div class="sui-context-menu" id="ctx-destructive" role="menu"&gt;
+  &lt;button class="sui-context-item" role="menuitem"&gt;Rename&lt;/button&gt;
+  &lt;button class="sui-context-item" role="menuitem"&gt;Move To...&lt;/button&gt;
+  &lt;button class="sui-context-item" role="menuitem"&gt;Archive&lt;/button&gt;
+  &lt;div class="sui-context-separator"&gt;&lt;/div&gt;
+  &lt;button class="sui-context-item sui-context-item-destructive" role="menuitem"&gt;Delete Permanently&lt;/button&gt;
+&lt;/div&gt;</pre></div>
+  </div>
+</div>

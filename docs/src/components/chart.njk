@@ -1,0 +1,904 @@
+---
+layout: component.njk
+title: Chart
+description: Bar, donut, pie, and line/area charts with neumorphic styling.
+componentId: chart
+hasControls: false
+toc:
+  - Vertical Bar
+  - Bar with Axes
+  - Horizontal Bar
+  - Stacked Bar
+  - Grouped Bar
+  - Donut
+  - Pie
+  - Line
+  - Area
+  - Colors & Legend
+---
+
+<!-- Vertical Bar -->
+<div class="pg-section" id="section-1">
+  <h3 class="pg-section-title">Vertical Bar</h3>
+  <div class="pg-section-row" style="flex-direction:column; gap:16px; max-width:100%;">
+    <div class="sui-chart">
+      <p class="sui-chart-title">Monthly Revenue</p>
+      <p class="sui-chart-subtitle">Revenue by month in thousands</p>
+      <div class="sui-chart-bars" style="height:220px;">
+        <div class="sui-chart-bar-col">
+          <div class="sui-chart-bar-track">
+            <div class="sui-chart-bar-fill sui-chart-bar-primary" data-value="65" data-max="100"></div>
+          </div>
+          <span class="sui-chart-bar-label">Jan</span>
+        </div>
+        <div class="sui-chart-bar-col">
+          <div class="sui-chart-bar-track">
+            <div class="sui-chart-bar-fill sui-chart-bar-primary" data-value="80" data-max="100"></div>
+          </div>
+          <span class="sui-chart-bar-label">Feb</span>
+        </div>
+        <div class="sui-chart-bar-col">
+          <div class="sui-chart-bar-track">
+            <div class="sui-chart-bar-fill sui-chart-bar-primary" data-value="45" data-max="100"></div>
+          </div>
+          <span class="sui-chart-bar-label">Mar</span>
+        </div>
+        <div class="sui-chart-bar-col">
+          <div class="sui-chart-bar-track">
+            <div class="sui-chart-bar-fill sui-chart-bar-primary" data-value="90" data-max="100"></div>
+          </div>
+          <span class="sui-chart-bar-label">Apr</span>
+        </div>
+        <div class="sui-chart-bar-col">
+          <div class="sui-chart-bar-track">
+            <div class="sui-chart-bar-fill sui-chart-bar-primary" data-value="72" data-max="100"></div>
+          </div>
+          <span class="sui-chart-bar-label">May</span>
+        </div>
+        <div class="sui-chart-bar-col">
+          <div class="sui-chart-bar-track">
+            <div class="sui-chart-bar-fill sui-chart-bar-primary" data-value="55" data-max="100"></div>
+          </div>
+          <span class="sui-chart-bar-label">Jun</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-chart"&gt;
+  &lt;p class="sui-chart-title"&gt;Monthly Revenue&lt;/p&gt;
+  &lt;p class="sui-chart-subtitle"&gt;Revenue by month in thousands&lt;/p&gt;
+  &lt;div class="sui-chart-bars" style="height:220px;"&gt;
+    &lt;div class="sui-chart-bar-col"&gt;
+      &lt;div class="sui-chart-bar-track"&gt;
+        &lt;div class="sui-chart-bar-fill sui-chart-bar-primary" data-value="65" data-max="100"&gt;&lt;/div&gt;
+      &lt;/div&gt;
+      &lt;span class="sui-chart-bar-label"&gt;Jan&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;div class="sui-chart-bar-col"&gt;
+      &lt;div class="sui-chart-bar-track"&gt;
+        &lt;div class="sui-chart-bar-fill sui-chart-bar-primary" data-value="80" data-max="100"&gt;&lt;/div&gt;
+      &lt;/div&gt;
+      &lt;span class="sui-chart-bar-label"&gt;Feb&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;div class="sui-chart-bar-col"&gt;
+      &lt;div class="sui-chart-bar-track"&gt;
+        &lt;div class="sui-chart-bar-fill sui-chart-bar-primary" data-value="45" data-max="100"&gt;&lt;/div&gt;
+      &lt;/div&gt;
+      &lt;span class="sui-chart-bar-label"&gt;Mar&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;div class="sui-chart-bar-col"&gt;
+      &lt;div class="sui-chart-bar-track"&gt;
+        &lt;div class="sui-chart-bar-fill sui-chart-bar-primary" data-value="90" data-max="100"&gt;&lt;/div&gt;
+      &lt;/div&gt;
+      &lt;span class="sui-chart-bar-label"&gt;Apr&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;div class="sui-chart-bar-col"&gt;
+      &lt;div class="sui-chart-bar-track"&gt;
+        &lt;div class="sui-chart-bar-fill sui-chart-bar-primary" data-value="72" data-max="100"&gt;&lt;/div&gt;
+      &lt;/div&gt;
+      &lt;span class="sui-chart-bar-label"&gt;May&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;div class="sui-chart-bar-col"&gt;
+      &lt;div class="sui-chart-bar-track"&gt;
+        &lt;div class="sui-chart-bar-fill sui-chart-bar-primary" data-value="55" data-max="100"&gt;&lt;/div&gt;
+      &lt;/div&gt;
+      &lt;span class="sui-chart-bar-label"&gt;Jun&lt;/span&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Bar with Axes -->
+<div class="pg-section" id="section-2">
+  <h3 class="pg-section-title">Bar with Axes</h3>
+  <div class="pg-section-row" style="flex-direction:column; gap:16px; max-width:480px;">
+    <div class="sui-chart">
+      <p class="sui-chart-title">Monthly Users</p>
+      <div class="sui-chart-axis-wrap" style="height:220px;">
+        <div class="sui-chart-y-labels">
+          <span>1000</span>
+          <span>750</span>
+          <span>500</span>
+          <span>250</span>
+          <span>0</span>
+        </div>
+        <div class="sui-chart-axis-area">
+          <div class="sui-chart-grid">
+            <div class="sui-chart-grid-line"></div>
+            <div class="sui-chart-grid-line"></div>
+            <div class="sui-chart-grid-line"></div>
+            <div class="sui-chart-grid-line"></div>
+            <div class="sui-chart-grid-line"></div>
+          </div>
+          <div class="sui-chart-bars">
+            <div class="sui-chart-bar-col">
+              <div class="sui-chart-bar-track">
+                <div class="sui-chart-bar-fill sui-chart-bar-primary" data-value="650" data-max="1000"></div>
+              </div>
+              <span class="sui-chart-bar-label">Jan</span>
+            </div>
+            <div class="sui-chart-bar-col">
+              <div class="sui-chart-bar-track">
+                <div class="sui-chart-bar-fill sui-chart-bar-primary" data-value="820" data-max="1000"></div>
+              </div>
+              <span class="sui-chart-bar-label">Feb</span>
+            </div>
+            <div class="sui-chart-bar-col">
+              <div class="sui-chart-bar-track">
+                <div class="sui-chart-bar-fill sui-chart-bar-primary" data-value="480" data-max="1000"></div>
+              </div>
+              <span class="sui-chart-bar-label">Mar</span>
+            </div>
+            <div class="sui-chart-bar-col">
+              <div class="sui-chart-bar-track">
+                <div class="sui-chart-bar-fill sui-chart-bar-primary" data-value="930" data-max="1000"></div>
+              </div>
+              <span class="sui-chart-bar-label">Apr</span>
+            </div>
+            <div class="sui-chart-bar-col">
+              <div class="sui-chart-bar-track">
+                <div class="sui-chart-bar-fill sui-chart-bar-primary" data-value="710" data-max="1000"></div>
+              </div>
+              <span class="sui-chart-bar-label">May</span>
+            </div>
+            <div class="sui-chart-bar-col">
+              <div class="sui-chart-bar-track">
+                <div class="sui-chart-bar-fill sui-chart-bar-primary" data-value="560" data-max="1000"></div>
+              </div>
+              <span class="sui-chart-bar-label">Jun</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-chart"&gt;
+  &lt;p class="sui-chart-title"&gt;Monthly Users&lt;/p&gt;
+  &lt;div class="sui-chart-axis-wrap" style="height:220px;"&gt;
+    &lt;div class="sui-chart-y-labels"&gt;
+      &lt;span&gt;1000&lt;/span&gt;
+      &lt;span&gt;750&lt;/span&gt;
+      &lt;span&gt;500&lt;/span&gt;
+      &lt;span&gt;250&lt;/span&gt;
+      &lt;span&gt;0&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;div class="sui-chart-axis-area"&gt;
+      &lt;div class="sui-chart-grid"&gt;
+        &lt;div class="sui-chart-grid-line"&gt;&lt;/div&gt;
+        &lt;div class="sui-chart-grid-line"&gt;&lt;/div&gt;
+        &lt;div class="sui-chart-grid-line"&gt;&lt;/div&gt;
+        &lt;div class="sui-chart-grid-line"&gt;&lt;/div&gt;
+        &lt;div class="sui-chart-grid-line"&gt;&lt;/div&gt;
+      &lt;/div&gt;
+      &lt;div class="sui-chart-bars"&gt;
+        &lt;div class="sui-chart-bar-col"&gt;
+          &lt;div class="sui-chart-bar-track"&gt;
+            &lt;div class="sui-chart-bar-fill sui-chart-bar-primary" data-value="650" data-max="1000"&gt;&lt;/div&gt;
+          &lt;/div&gt;
+          &lt;span class="sui-chart-bar-label"&gt;Jan&lt;/span&gt;
+        &lt;/div&gt;
+        &lt;div class="sui-chart-bar-col"&gt;
+          &lt;div class="sui-chart-bar-track"&gt;
+            &lt;div class="sui-chart-bar-fill sui-chart-bar-primary" data-value="820" data-max="1000"&gt;&lt;/div&gt;
+          &lt;/div&gt;
+          &lt;span class="sui-chart-bar-label"&gt;Feb&lt;/span&gt;
+        &lt;/div&gt;
+        &lt;div class="sui-chart-bar-col"&gt;
+          &lt;div class="sui-chart-bar-track"&gt;
+            &lt;div class="sui-chart-bar-fill sui-chart-bar-primary" data-value="480" data-max="1000"&gt;&lt;/div&gt;
+          &lt;/div&gt;
+          &lt;span class="sui-chart-bar-label"&gt;Mar&lt;/span&gt;
+        &lt;/div&gt;
+        &lt;div class="sui-chart-bar-col"&gt;
+          &lt;div class="sui-chart-bar-track"&gt;
+            &lt;div class="sui-chart-bar-fill sui-chart-bar-primary" data-value="930" data-max="1000"&gt;&lt;/div&gt;
+          &lt;/div&gt;
+          &lt;span class="sui-chart-bar-label"&gt;Apr&lt;/span&gt;
+        &lt;/div&gt;
+        &lt;div class="sui-chart-bar-col"&gt;
+          &lt;div class="sui-chart-bar-track"&gt;
+            &lt;div class="sui-chart-bar-fill sui-chart-bar-primary" data-value="710" data-max="1000"&gt;&lt;/div&gt;
+          &lt;/div&gt;
+          &lt;span class="sui-chart-bar-label"&gt;May&lt;/span&gt;
+        &lt;/div&gt;
+        &lt;div class="sui-chart-bar-col"&gt;
+          &lt;div class="sui-chart-bar-track"&gt;
+            &lt;div class="sui-chart-bar-fill sui-chart-bar-primary" data-value="560" data-max="1000"&gt;&lt;/div&gt;
+          &lt;/div&gt;
+          &lt;span class="sui-chart-bar-label"&gt;Jun&lt;/span&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Horizontal Bar -->
+<div class="pg-section" id="section-3">
+  <h3 class="pg-section-title">Horizontal Bar</h3>
+  <div class="pg-section-row" style="flex-direction:column; gap:16px; max-width:480px;">
+    <div class="sui-chart">
+      <p class="sui-chart-title">Browser Usage</p>
+      <div class="sui-chart-bars sui-chart-bars-horizontal">
+        <div class="sui-chart-bar-row">
+          <span class="sui-chart-bar-label">Chrome</span>
+          <div class="sui-chart-bar-track">
+            <div class="sui-chart-bar-fill sui-chart-bar-primary" data-value="65" data-max="100"></div>
+          </div>
+          <span class="sui-chart-bar-value">65%</span>
+        </div>
+        <div class="sui-chart-bar-row">
+          <span class="sui-chart-bar-label">Safari</span>
+          <div class="sui-chart-bar-track">
+            <div class="sui-chart-bar-fill sui-chart-bar-success" data-value="19" data-max="100"></div>
+          </div>
+          <span class="sui-chart-bar-value">19%</span>
+        </div>
+        <div class="sui-chart-bar-row">
+          <span class="sui-chart-bar-label">Firefox</span>
+          <div class="sui-chart-bar-track">
+            <div class="sui-chart-bar-fill sui-chart-bar-warning" data-value="8" data-max="100"></div>
+          </div>
+          <span class="sui-chart-bar-value">8%</span>
+        </div>
+        <div class="sui-chart-bar-row">
+          <span class="sui-chart-bar-label">Edge</span>
+          <div class="sui-chart-bar-track">
+            <div class="sui-chart-bar-fill sui-chart-bar-info" data-value="5" data-max="100"></div>
+          </div>
+          <span class="sui-chart-bar-value">5%</span>
+        </div>
+        <div class="sui-chart-bar-row">
+          <span class="sui-chart-bar-label">Other</span>
+          <div class="sui-chart-bar-track">
+            <div class="sui-chart-bar-fill sui-chart-bar-muted" data-value="3" data-max="100"></div>
+          </div>
+          <span class="sui-chart-bar-value">3%</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-chart"&gt;
+  &lt;p class="sui-chart-title"&gt;Browser Usage&lt;/p&gt;
+  &lt;div class="sui-chart-bars sui-chart-bars-horizontal"&gt;
+    &lt;div class="sui-chart-bar-row"&gt;
+      &lt;span class="sui-chart-bar-label"&gt;Chrome&lt;/span&gt;
+      &lt;div class="sui-chart-bar-track"&gt;
+        &lt;div class="sui-chart-bar-fill sui-chart-bar-primary" data-value="65" data-max="100"&gt;&lt;/div&gt;
+      &lt;/div&gt;
+      &lt;span class="sui-chart-bar-value"&gt;65%&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;div class="sui-chart-bar-row"&gt;
+      &lt;span class="sui-chart-bar-label"&gt;Safari&lt;/span&gt;
+      &lt;div class="sui-chart-bar-track"&gt;
+        &lt;div class="sui-chart-bar-fill sui-chart-bar-success" data-value="19" data-max="100"&gt;&lt;/div&gt;
+      &lt;/div&gt;
+      &lt;span class="sui-chart-bar-value"&gt;19%&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;div class="sui-chart-bar-row"&gt;
+      &lt;span class="sui-chart-bar-label"&gt;Firefox&lt;/span&gt;
+      &lt;div class="sui-chart-bar-track"&gt;
+        &lt;div class="sui-chart-bar-fill sui-chart-bar-warning" data-value="8" data-max="100"&gt;&lt;/div&gt;
+      &lt;/div&gt;
+      &lt;span class="sui-chart-bar-value"&gt;8%&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;div class="sui-chart-bar-row"&gt;
+      &lt;span class="sui-chart-bar-label"&gt;Edge&lt;/span&gt;
+      &lt;div class="sui-chart-bar-track"&gt;
+        &lt;div class="sui-chart-bar-fill sui-chart-bar-info" data-value="5" data-max="100"&gt;&lt;/div&gt;
+      &lt;/div&gt;
+      &lt;span class="sui-chart-bar-value"&gt;5%&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;div class="sui-chart-bar-row"&gt;
+      &lt;span class="sui-chart-bar-label"&gt;Other&lt;/span&gt;
+      &lt;div class="sui-chart-bar-track"&gt;
+        &lt;div class="sui-chart-bar-fill sui-chart-bar-muted" data-value="3" data-max="100"&gt;&lt;/div&gt;
+      &lt;/div&gt;
+      &lt;span class="sui-chart-bar-value"&gt;3%&lt;/span&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Stacked Bar -->
+<div class="pg-section" id="section-4">
+  <h3 class="pg-section-title">Stacked Bar</h3>
+  <div class="pg-section-row" style="flex-direction:column; gap:16px; max-width:100%;">
+    <div class="sui-chart">
+      <p class="sui-chart-title">Quarterly Sales</p>
+      <p class="sui-chart-subtitle">Product A vs Product B</p>
+      <div class="sui-chart-bars" style="height:220px;">
+        <div class="sui-chart-bar-col">
+          <div class="sui-chart-bar-track sui-chart-bar-track-stacked" data-max="100">
+            <div class="sui-chart-bar-fill sui-chart-bar-primary" data-value="40"></div>
+            <div class="sui-chart-bar-fill sui-chart-bar-success" data-value="25"></div>
+          </div>
+          <span class="sui-chart-bar-label">Q1</span>
+        </div>
+        <div class="sui-chart-bar-col">
+          <div class="sui-chart-bar-track sui-chart-bar-track-stacked" data-max="100">
+            <div class="sui-chart-bar-fill sui-chart-bar-primary" data-value="55"></div>
+            <div class="sui-chart-bar-fill sui-chart-bar-success" data-value="30"></div>
+          </div>
+          <span class="sui-chart-bar-label">Q2</span>
+        </div>
+        <div class="sui-chart-bar-col">
+          <div class="sui-chart-bar-track sui-chart-bar-track-stacked" data-max="100">
+            <div class="sui-chart-bar-fill sui-chart-bar-primary" data-value="35"></div>
+            <div class="sui-chart-bar-fill sui-chart-bar-success" data-value="45"></div>
+          </div>
+          <span class="sui-chart-bar-label">Q3</span>
+        </div>
+        <div class="sui-chart-bar-col">
+          <div class="sui-chart-bar-track sui-chart-bar-track-stacked" data-max="100">
+            <div class="sui-chart-bar-fill sui-chart-bar-primary" data-value="60"></div>
+            <div class="sui-chart-bar-fill sui-chart-bar-success" data-value="35"></div>
+          </div>
+          <span class="sui-chart-bar-label">Q4</span>
+        </div>
+      </div>
+      <div class="sui-chart-legend">
+        <span class="sui-chart-legend-item"><span class="sui-chart-legend-dot" style="background:var(--sui-primary);"></span> Product A</span>
+        <span class="sui-chart-legend-item"><span class="sui-chart-legend-dot" style="background:var(--sui-success);"></span> Product B</span>
+      </div>
+    </div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-chart"&gt;
+  &lt;p class="sui-chart-title"&gt;Quarterly Sales&lt;/p&gt;
+  &lt;p class="sui-chart-subtitle"&gt;Product A vs Product B&lt;/p&gt;
+  &lt;div class="sui-chart-bars" style="height:220px;"&gt;
+    &lt;div class="sui-chart-bar-col"&gt;
+      &lt;div class="sui-chart-bar-track sui-chart-bar-track-stacked" data-max="100"&gt;
+        &lt;div class="sui-chart-bar-fill sui-chart-bar-primary" data-value="40"&gt;&lt;/div&gt;
+        &lt;div class="sui-chart-bar-fill sui-chart-bar-success" data-value="25"&gt;&lt;/div&gt;
+      &lt;/div&gt;
+      &lt;span class="sui-chart-bar-label"&gt;Q1&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;div class="sui-chart-bar-col"&gt;
+      &lt;div class="sui-chart-bar-track sui-chart-bar-track-stacked" data-max="100"&gt;
+        &lt;div class="sui-chart-bar-fill sui-chart-bar-primary" data-value="55"&gt;&lt;/div&gt;
+        &lt;div class="sui-chart-bar-fill sui-chart-bar-success" data-value="30"&gt;&lt;/div&gt;
+      &lt;/div&gt;
+      &lt;span class="sui-chart-bar-label"&gt;Q2&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;div class="sui-chart-bar-col"&gt;
+      &lt;div class="sui-chart-bar-track sui-chart-bar-track-stacked" data-max="100"&gt;
+        &lt;div class="sui-chart-bar-fill sui-chart-bar-primary" data-value="35"&gt;&lt;/div&gt;
+        &lt;div class="sui-chart-bar-fill sui-chart-bar-success" data-value="45"&gt;&lt;/div&gt;
+      &lt;/div&gt;
+      &lt;span class="sui-chart-bar-label"&gt;Q3&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;div class="sui-chart-bar-col"&gt;
+      &lt;div class="sui-chart-bar-track sui-chart-bar-track-stacked" data-max="100"&gt;
+        &lt;div class="sui-chart-bar-fill sui-chart-bar-primary" data-value="60"&gt;&lt;/div&gt;
+        &lt;div class="sui-chart-bar-fill sui-chart-bar-success" data-value="35"&gt;&lt;/div&gt;
+      &lt;/div&gt;
+      &lt;span class="sui-chart-bar-label"&gt;Q4&lt;/span&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="sui-chart-legend"&gt;
+    &lt;span class="sui-chart-legend-item"&gt;&lt;span class="sui-chart-legend-dot" style="background:var(--sui-primary);"&gt;&lt;/span&gt; Product A&lt;/span&gt;
+    &lt;span class="sui-chart-legend-item"&gt;&lt;span class="sui-chart-legend-dot" style="background:var(--sui-success);"&gt;&lt;/span&gt; Product B&lt;/span&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Grouped Bar -->
+<div class="pg-section" id="section-5">
+  <h3 class="pg-section-title">Grouped Bar</h3>
+  <div class="pg-section-row" style="flex-direction:column; gap:16px; max-width:480px;">
+    <div class="sui-chart">
+      <p class="sui-chart-title">Revenue vs Expenses</p>
+      <p class="sui-chart-subtitle">Quarterly comparison</p>
+      <div class="sui-chart-axis-wrap" style="height:220px;">
+        <div class="sui-chart-y-labels">
+          <span>$50k</span>
+          <span>$37k</span>
+          <span>$25k</span>
+          <span>$12k</span>
+          <span>$0</span>
+        </div>
+        <div class="sui-chart-axis-area">
+          <div class="sui-chart-grid">
+            <div class="sui-chart-grid-line"></div>
+            <div class="sui-chart-grid-line"></div>
+            <div class="sui-chart-grid-line"></div>
+            <div class="sui-chart-grid-line"></div>
+            <div class="sui-chart-grid-line"></div>
+          </div>
+          <div class="sui-chart-bars">
+            <div class="sui-chart-bar-col">
+              <div class="sui-chart-bar-group">
+                <div class="sui-chart-bar-track">
+                  <div class="sui-chart-bar-fill sui-chart-bar-primary" data-value="38" data-max="50"></div>
+                </div>
+                <div class="sui-chart-bar-track">
+                  <div class="sui-chart-bar-fill sui-chart-bar-success" data-value="22" data-max="50"></div>
+                </div>
+              </div>
+              <span class="sui-chart-bar-label">Q1</span>
+            </div>
+            <div class="sui-chart-bar-col">
+              <div class="sui-chart-bar-group">
+                <div class="sui-chart-bar-track">
+                  <div class="sui-chart-bar-fill sui-chart-bar-primary" data-value="45" data-max="50"></div>
+                </div>
+                <div class="sui-chart-bar-track">
+                  <div class="sui-chart-bar-fill sui-chart-bar-success" data-value="28" data-max="50"></div>
+                </div>
+              </div>
+              <span class="sui-chart-bar-label">Q2</span>
+            </div>
+            <div class="sui-chart-bar-col">
+              <div class="sui-chart-bar-group">
+                <div class="sui-chart-bar-track">
+                  <div class="sui-chart-bar-fill sui-chart-bar-primary" data-value="32" data-max="50"></div>
+                </div>
+                <div class="sui-chart-bar-track">
+                  <div class="sui-chart-bar-fill sui-chart-bar-success" data-value="30" data-max="50"></div>
+                </div>
+              </div>
+              <span class="sui-chart-bar-label">Q3</span>
+            </div>
+            <div class="sui-chart-bar-col">
+              <div class="sui-chart-bar-group">
+                <div class="sui-chart-bar-track">
+                  <div class="sui-chart-bar-fill sui-chart-bar-primary" data-value="48" data-max="50"></div>
+                </div>
+                <div class="sui-chart-bar-track">
+                  <div class="sui-chart-bar-fill sui-chart-bar-success" data-value="35" data-max="50"></div>
+                </div>
+              </div>
+              <span class="sui-chart-bar-label">Q4</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="sui-chart-legend">
+        <span class="sui-chart-legend-item"><span class="sui-chart-legend-dot" style="background:var(--sui-primary);"></span> Revenue</span>
+        <span class="sui-chart-legend-item"><span class="sui-chart-legend-dot" style="background:var(--sui-success);"></span> Expenses</span>
+      </div>
+    </div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-chart"&gt;
+  &lt;p class="sui-chart-title"&gt;Revenue vs Expenses&lt;/p&gt;
+  &lt;div class="sui-chart-axis-wrap" style="height:220px;"&gt;
+    &lt;div class="sui-chart-y-labels"&gt;
+      &lt;span&gt;$50k&lt;/span&gt;
+      &lt;span&gt;$37k&lt;/span&gt;
+      &lt;span&gt;$25k&lt;/span&gt;
+      &lt;span&gt;$12k&lt;/span&gt;
+      &lt;span&gt;$0&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;div class="sui-chart-axis-area"&gt;
+      &lt;div class="sui-chart-grid"&gt;
+        &lt;div class="sui-chart-grid-line"&gt;&lt;/div&gt;
+        &lt;div class="sui-chart-grid-line"&gt;&lt;/div&gt;
+        &lt;div class="sui-chart-grid-line"&gt;&lt;/div&gt;
+        &lt;div class="sui-chart-grid-line"&gt;&lt;/div&gt;
+        &lt;div class="sui-chart-grid-line"&gt;&lt;/div&gt;
+      &lt;/div&gt;
+      &lt;div class="sui-chart-bars"&gt;
+        &lt;div class="sui-chart-bar-col"&gt;
+          &lt;div class="sui-chart-bar-group"&gt;
+            &lt;div class="sui-chart-bar-track"&gt;
+              &lt;div class="sui-chart-bar-fill sui-chart-bar-primary" data-value="38" data-max="50"&gt;&lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div class="sui-chart-bar-track"&gt;
+              &lt;div class="sui-chart-bar-fill sui-chart-bar-success" data-value="22" data-max="50"&gt;&lt;/div&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+          &lt;span class="sui-chart-bar-label"&gt;Q1&lt;/span&gt;
+        &lt;/div&gt;
+        &lt;div class="sui-chart-bar-col"&gt;
+          &lt;div class="sui-chart-bar-group"&gt;
+            &lt;div class="sui-chart-bar-track"&gt;
+              &lt;div class="sui-chart-bar-fill sui-chart-bar-primary" data-value="45" data-max="50"&gt;&lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div class="sui-chart-bar-track"&gt;
+              &lt;div class="sui-chart-bar-fill sui-chart-bar-success" data-value="28" data-max="50"&gt;&lt;/div&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+          &lt;span class="sui-chart-bar-label"&gt;Q2&lt;/span&gt;
+        &lt;/div&gt;
+        &lt;div class="sui-chart-bar-col"&gt;
+          &lt;div class="sui-chart-bar-group"&gt;
+            &lt;div class="sui-chart-bar-track"&gt;
+              &lt;div class="sui-chart-bar-fill sui-chart-bar-primary" data-value="32" data-max="50"&gt;&lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div class="sui-chart-bar-track"&gt;
+              &lt;div class="sui-chart-bar-fill sui-chart-bar-success" data-value="30" data-max="50"&gt;&lt;/div&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+          &lt;span class="sui-chart-bar-label"&gt;Q3&lt;/span&gt;
+        &lt;/div&gt;
+        &lt;div class="sui-chart-bar-col"&gt;
+          &lt;div class="sui-chart-bar-group"&gt;
+            &lt;div class="sui-chart-bar-track"&gt;
+              &lt;div class="sui-chart-bar-fill sui-chart-bar-primary" data-value="48" data-max="50"&gt;&lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div class="sui-chart-bar-track"&gt;
+              &lt;div class="sui-chart-bar-fill sui-chart-bar-success" data-value="35" data-max="50"&gt;&lt;/div&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+          &lt;span class="sui-chart-bar-label"&gt;Q4&lt;/span&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="sui-chart-legend"&gt;
+    &lt;span class="sui-chart-legend-item"&gt;&lt;span class="sui-chart-legend-dot" style="background:var(--sui-primary);"&gt;&lt;/span&gt; Revenue&lt;/span&gt;
+    &lt;span class="sui-chart-legend-item"&gt;&lt;span class="sui-chart-legend-dot" style="background:var(--sui-success);"&gt;&lt;/span&gt; Expenses&lt;/span&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Donut -->
+<div class="pg-section" id="section-6">
+  <h3 class="pg-section-title">Donut</h3>
+  <div class="pg-section-row" style="gap:40px; flex-wrap:wrap; justify-content:flex-start;">
+    <div class="sui-chart" style="align-items:center; width:auto;">
+      <p class="sui-chart-title">Storage Used</p>
+      <div class="sui-chart-donut-wrap">
+        <div class="sui-chart-donut" data-segments='[{"value":72,"color":"var(--sui-primary)"},{"value":28,"color":"var(--sui-bg-dark)"}]'>
+          <div class="sui-chart-donut-hole">
+            <span class="sui-chart-donut-hole-value">72%</span>
+            <span class="sui-chart-donut-hole-label">Used</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="sui-chart" style="align-items:center; width:auto;">
+      <p class="sui-chart-title">Traffic Sources</p>
+      <div class="sui-chart-donut-wrap">
+        <div class="sui-chart-donut" data-segments='[{"value":45,"color":"var(--sui-primary)"},{"value":25,"color":"var(--sui-success)"},{"value":18,"color":"var(--sui-warning)"},{"value":12,"color":"#3b82f6"}]'>
+          <div class="sui-chart-donut-hole">
+            <span class="sui-chart-donut-hole-value">4</span>
+            <span class="sui-chart-donut-hole-label">Sources</span>
+          </div>
+        </div>
+      </div>
+      <div class="sui-chart-legend" style="justify-content:center;">
+        <span class="sui-chart-legend-item"><span class="sui-chart-legend-dot" style="background:var(--sui-primary);"></span> Direct</span>
+        <span class="sui-chart-legend-item"><span class="sui-chart-legend-dot" style="background:var(--sui-success);"></span> Organic</span>
+        <span class="sui-chart-legend-item"><span class="sui-chart-legend-dot" style="background:var(--sui-warning);"></span> Referral</span>
+        <span class="sui-chart-legend-item"><span class="sui-chart-legend-dot" style="background:#3b82f6;"></span> Social</span>
+      </div>
+    </div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;!-- Simple donut --&gt;
+&lt;div class="sui-chart" style="align-items:center;"&gt;
+  &lt;p class="sui-chart-title"&gt;Storage Used&lt;/p&gt;
+  &lt;div class="sui-chart-donut-wrap"&gt;
+    &lt;div class="sui-chart-donut" data-segments='[{"value":72,"color":"var(--sui-primary)"},{"value":28,"color":"var(--sui-bg-dark)"}]'&gt;
+      &lt;div class="sui-chart-donut-hole"&gt;
+        &lt;span class="sui-chart-donut-hole-value"&gt;72%&lt;/span&gt;
+        &lt;span class="sui-chart-donut-hole-label"&gt;Used&lt;/span&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- Multi-segment donut with legend --&gt;
+&lt;div class="sui-chart" style="align-items:center;"&gt;
+  &lt;p class="sui-chart-title"&gt;Traffic Sources&lt;/p&gt;
+  &lt;div class="sui-chart-donut-wrap"&gt;
+    &lt;div class="sui-chart-donut" data-segments='[{"value":45,"color":"var(--sui-primary)"},{"value":25,"color":"var(--sui-success)"},{"value":18,"color":"var(--sui-warning)"},{"value":12,"color":"#3b82f6"}]'&gt;
+      &lt;div class="sui-chart-donut-hole"&gt;
+        &lt;span class="sui-chart-donut-hole-value"&gt;4&lt;/span&gt;
+        &lt;span class="sui-chart-donut-hole-label"&gt;Sources&lt;/span&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="sui-chart-legend"&gt;
+    &lt;span class="sui-chart-legend-item"&gt;&lt;span class="sui-chart-legend-dot" style="background:var(--sui-primary);"&gt;&lt;/span&gt; Direct&lt;/span&gt;
+    &lt;span class="sui-chart-legend-item"&gt;&lt;span class="sui-chart-legend-dot" style="background:var(--sui-success);"&gt;&lt;/span&gt; Organic&lt;/span&gt;
+    &lt;span class="sui-chart-legend-item"&gt;&lt;span class="sui-chart-legend-dot" style="background:var(--sui-warning);"&gt;&lt;/span&gt; Referral&lt;/span&gt;
+    &lt;span class="sui-chart-legend-item"&gt;&lt;span class="sui-chart-legend-dot" style="background:#3b82f6;"&gt;&lt;/span&gt; Social&lt;/span&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Pie -->
+<div class="pg-section" id="section-7">
+  <h3 class="pg-section-title">Pie</h3>
+  <div class="pg-section-row" style="gap:40px; flex-wrap:wrap; justify-content:flex-start;">
+    <div class="sui-chart" style="align-items:center; width:auto;">
+      <p class="sui-chart-title">Market Share</p>
+      <div class="sui-chart-donut-wrap">
+        <div class="sui-chart-donut sui-chart-pie" data-segments='[{"value":40,"color":"var(--sui-primary)"},{"value":30,"color":"var(--sui-success)"},{"value":20,"color":"var(--sui-warning)"},{"value":10,"color":"var(--sui-danger)"}]'>
+          <div class="sui-chart-donut-hole"></div>
+        </div>
+      </div>
+      <div class="sui-chart-legend" style="justify-content:center;">
+        <span class="sui-chart-legend-item"><span class="sui-chart-legend-dot" style="background:var(--sui-primary);"></span> Us 40%</span>
+        <span class="sui-chart-legend-item"><span class="sui-chart-legend-dot" style="background:var(--sui-success);"></span> Them 30%</span>
+        <span class="sui-chart-legend-item"><span class="sui-chart-legend-dot" style="background:var(--sui-warning);"></span> Others 20%</span>
+        <span class="sui-chart-legend-item"><span class="sui-chart-legend-dot" style="background:var(--sui-danger);"></span> New 10%</span>
+      </div>
+    </div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-chart" style="align-items:center;"&gt;
+  &lt;p class="sui-chart-title"&gt;Market Share&lt;/p&gt;
+  &lt;div class="sui-chart-donut-wrap"&gt;
+    &lt;div class="sui-chart-donut sui-chart-pie" data-segments='[{"value":40,"color":"var(--sui-primary)"},{"value":30,"color":"var(--sui-success)"},{"value":20,"color":"var(--sui-warning)"},{"value":10,"color":"var(--sui-danger)"}]'&gt;
+      &lt;div class="sui-chart-donut-hole"&gt;&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="sui-chart-legend"&gt;
+    &lt;span class="sui-chart-legend-item"&gt;&lt;span class="sui-chart-legend-dot" style="background:var(--sui-primary);"&gt;&lt;/span&gt; Us 40%&lt;/span&gt;
+    &lt;span class="sui-chart-legend-item"&gt;&lt;span class="sui-chart-legend-dot" style="background:var(--sui-success);"&gt;&lt;/span&gt; Them 30%&lt;/span&gt;
+    &lt;span class="sui-chart-legend-item"&gt;&lt;span class="sui-chart-legend-dot" style="background:var(--sui-warning);"&gt;&lt;/span&gt; Others 20%&lt;/span&gt;
+    &lt;span class="sui-chart-legend-item"&gt;&lt;span class="sui-chart-legend-dot" style="background:var(--sui-danger);"&gt;&lt;/span&gt; New 10%&lt;/span&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Line -->
+<div class="pg-section" id="section-8">
+  <h3 class="pg-section-title">Line</h3>
+  <div class="pg-section-row" style="flex-direction:column; gap:16px; max-width:520px;">
+    <div class="sui-chart">
+      <p class="sui-chart-title">Weekly Active Users</p>
+      <div class="sui-chart-line-wrap">
+        <svg viewBox="0 0 500 200" preserveAspectRatio="xMidYMid meet">
+          <line class="chart-grid-line" x1="50" y1="20" x2="480" y2="20"/>
+          <line class="chart-grid-line" x1="50" y1="65" x2="480" y2="65"/>
+          <line class="chart-grid-line" x1="50" y1="110" x2="480" y2="110"/>
+          <line class="chart-grid-line" x1="50" y1="155" x2="480" y2="155"/>
+          <text class="chart-axis-label" x="45" y="24" text-anchor="end">800</text>
+          <text class="chart-axis-label" x="45" y="69" text-anchor="end">600</text>
+          <text class="chart-axis-label" x="45" y="114" text-anchor="end">400</text>
+          <text class="chart-axis-label" x="45" y="159" text-anchor="end">200</text>
+          <text class="chart-axis-label" x="80" y="180" text-anchor="middle">Mon</text>
+          <text class="chart-axis-label" x="150" y="180" text-anchor="middle">Tue</text>
+          <text class="chart-axis-label" x="220" y="180" text-anchor="middle">Wed</text>
+          <text class="chart-axis-label" x="290" y="180" text-anchor="middle">Thu</text>
+          <text class="chart-axis-label" x="360" y="180" text-anchor="middle">Fri</text>
+          <text class="chart-axis-label" x="430" y="180" text-anchor="middle">Sat</text>
+          <polyline class="chart-line" points="80,110 150,65 220,88 290,42 360,55 430,25"/>
+          <circle class="chart-dot" cx="80" cy="110" r="4" data-value="400"/>
+          <circle class="chart-dot" cx="150" cy="65" r="4" data-value="600"/>
+          <circle class="chart-dot" cx="220" cy="88" r="4" data-value="490"/>
+          <circle class="chart-dot" cx="290" cy="42" r="4" data-value="710"/>
+          <circle class="chart-dot" cx="360" cy="55" r="4" data-value="650"/>
+          <circle class="chart-dot" cx="430" cy="25" r="4" data-value="780"/>
+        </svg>
+      </div>
+    </div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-chart"&gt;
+  &lt;p class="sui-chart-title"&gt;Weekly Active Users&lt;/p&gt;
+  &lt;div class="sui-chart-line-wrap"&gt;
+    &lt;svg viewBox="0 0 500 200" preserveAspectRatio="xMidYMid meet"&gt;
+      &lt;line class="chart-grid-line" x1="50" y1="20" x2="480" y2="20"/&gt;
+      &lt;line class="chart-grid-line" x1="50" y1="65" x2="480" y2="65"/&gt;
+      &lt;line class="chart-grid-line" x1="50" y1="110" x2="480" y2="110"/&gt;
+      &lt;line class="chart-grid-line" x1="50" y1="155" x2="480" y2="155"/&gt;
+      &lt;text class="chart-axis-label" x="45" y="24" text-anchor="end"&gt;800&lt;/text&gt;
+      &lt;text class="chart-axis-label" x="45" y="69" text-anchor="end"&gt;600&lt;/text&gt;
+      &lt;text class="chart-axis-label" x="45" y="114" text-anchor="end"&gt;400&lt;/text&gt;
+      &lt;text class="chart-axis-label" x="45" y="159" text-anchor="end"&gt;200&lt;/text&gt;
+      &lt;text class="chart-axis-label" x="80" y="180" text-anchor="middle"&gt;Mon&lt;/text&gt;
+      &lt;text class="chart-axis-label" x="150" y="180" text-anchor="middle"&gt;Tue&lt;/text&gt;
+      &lt;text class="chart-axis-label" x="220" y="180" text-anchor="middle"&gt;Wed&lt;/text&gt;
+      &lt;text class="chart-axis-label" x="290" y="180" text-anchor="middle"&gt;Thu&lt;/text&gt;
+      &lt;text class="chart-axis-label" x="360" y="180" text-anchor="middle"&gt;Fri&lt;/text&gt;
+      &lt;text class="chart-axis-label" x="430" y="180" text-anchor="middle"&gt;Sat&lt;/text&gt;
+      &lt;polyline class="chart-line" points="80,110 150,65 220,88 290,42 360,55 430,25"/&gt;
+      &lt;circle class="chart-dot" cx="80" cy="110" r="4" data-value="400"/&gt;
+      &lt;circle class="chart-dot" cx="150" cy="65" r="4" data-value="600"/&gt;
+      &lt;circle class="chart-dot" cx="220" cy="88" r="4" data-value="490"/&gt;
+      &lt;circle class="chart-dot" cx="290" cy="42" r="4" data-value="710"/&gt;
+      &lt;circle class="chart-dot" cx="360" cy="55" r="4" data-value="650"/&gt;
+      &lt;circle class="chart-dot" cx="430" cy="25" r="4" data-value="780"/&gt;
+    &lt;/svg&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Area -->
+<div class="pg-section" id="section-9">
+  <h3 class="pg-section-title">Area</h3>
+  <div class="pg-section-row" style="flex-direction:column; gap:16px; max-width:520px;">
+    <div class="sui-chart">
+      <p class="sui-chart-title">Revenue Trend</p>
+      <div class="sui-chart-line-wrap">
+        <svg viewBox="0 0 500 200" preserveAspectRatio="xMidYMid meet">
+          <line class="chart-grid-line" x1="50" y1="20" x2="480" y2="20"/>
+          <line class="chart-grid-line" x1="50" y1="65" x2="480" y2="65"/>
+          <line class="chart-grid-line" x1="50" y1="110" x2="480" y2="110"/>
+          <line class="chart-grid-line" x1="50" y1="155" x2="480" y2="155"/>
+          <text class="chart-axis-label" x="45" y="24" text-anchor="end">$40k</text>
+          <text class="chart-axis-label" x="45" y="69" text-anchor="end">$30k</text>
+          <text class="chart-axis-label" x="45" y="114" text-anchor="end">$20k</text>
+          <text class="chart-axis-label" x="45" y="159" text-anchor="end">$10k</text>
+          <text class="chart-axis-label" x="80" y="180" text-anchor="middle">Jan</text>
+          <text class="chart-axis-label" x="150" y="180" text-anchor="middle">Feb</text>
+          <text class="chart-axis-label" x="220" y="180" text-anchor="middle">Mar</text>
+          <text class="chart-axis-label" x="290" y="180" text-anchor="middle">Apr</text>
+          <text class="chart-axis-label" x="360" y="180" text-anchor="middle">May</text>
+          <text class="chart-axis-label" x="430" y="180" text-anchor="middle">Jun</text>
+          <polygon class="chart-area" points="80,130 150,95 220,110 290,55 360,40 430,20 430,165 80,165" fill="var(--sui-primary)"/>
+          <polyline class="chart-line" points="80,130 150,95 220,110 290,55 360,40 430,20"/>
+          <circle class="chart-dot" cx="80" cy="130" r="4" data-value="$15k"/>
+          <circle class="chart-dot" cx="150" cy="95" r="4" data-value="$22k"/>
+          <circle class="chart-dot" cx="220" cy="110" r="4" data-value="$18k"/>
+          <circle class="chart-dot" cx="290" cy="55" r="4" data-value="$32k"/>
+          <circle class="chart-dot" cx="360" cy="40" r="4" data-value="$36k"/>
+          <circle class="chart-dot" cx="430" cy="20" r="4" data-value="$42k"/>
+        </svg>
+      </div>
+    </div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-chart"&gt;
+  &lt;p class="sui-chart-title"&gt;Revenue Trend&lt;/p&gt;
+  &lt;div class="sui-chart-line-wrap"&gt;
+    &lt;svg viewBox="0 0 500 200" preserveAspectRatio="xMidYMid meet"&gt;
+      &lt;line class="chart-grid-line" x1="50" y1="20" x2="480" y2="20"/&gt;
+      &lt;line class="chart-grid-line" x1="50" y1="65" x2="480" y2="65"/&gt;
+      &lt;line class="chart-grid-line" x1="50" y1="110" x2="480" y2="110"/&gt;
+      &lt;line class="chart-grid-line" x1="50" y1="155" x2="480" y2="155"/&gt;
+      &lt;text class="chart-axis-label" x="45" y="24" text-anchor="end"&gt;$40k&lt;/text&gt;
+      &lt;text class="chart-axis-label" x="45" y="69" text-anchor="end"&gt;$30k&lt;/text&gt;
+      &lt;text class="chart-axis-label" x="45" y="114" text-anchor="end"&gt;$20k&lt;/text&gt;
+      &lt;text class="chart-axis-label" x="45" y="159" text-anchor="end"&gt;$10k&lt;/text&gt;
+      &lt;text class="chart-axis-label" x="80" y="180" text-anchor="middle"&gt;Jan&lt;/text&gt;
+      &lt;text class="chart-axis-label" x="150" y="180" text-anchor="middle"&gt;Feb&lt;/text&gt;
+      &lt;text class="chart-axis-label" x="220" y="180" text-anchor="middle"&gt;Mar&lt;/text&gt;
+      &lt;text class="chart-axis-label" x="290" y="180" text-anchor="middle"&gt;Apr&lt;/text&gt;
+      &lt;text class="chart-axis-label" x="360" y="180" text-anchor="middle"&gt;May&lt;/text&gt;
+      &lt;text class="chart-axis-label" x="430" y="180" text-anchor="middle"&gt;Jun&lt;/text&gt;
+      &lt;polygon class="chart-area" points="80,130 150,95 220,110 290,55 360,40 430,20 430,165 80,165" fill="var(--sui-primary)"/&gt;
+      &lt;polyline class="chart-line" points="80,130 150,95 220,110 290,55 360,40 430,20"/&gt;
+      &lt;circle class="chart-dot" cx="80" cy="130" r="4" data-value="$15k"/&gt;
+      &lt;circle class="chart-dot" cx="150" cy="95" r="4" data-value="$22k"/&gt;
+      &lt;circle class="chart-dot" cx="220" cy="110" r="4" data-value="$18k"/&gt;
+      &lt;circle class="chart-dot" cx="290" cy="55" r="4" data-value="$32k"/&gt;
+      &lt;circle class="chart-dot" cx="360" cy="40" r="4" data-value="$36k"/&gt;
+      &lt;circle class="chart-dot" cx="430" cy="20" r="4" data-value="$42k"/&gt;
+    &lt;/svg&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Colors & Legend -->
+<div class="pg-section" id="section-10">
+  <h3 class="pg-section-title">Colors & Legend</h3>
+  <div class="pg-section-row" style="flex-direction:column; gap:20px; max-width:100%;">
+    <div class="sui-chart">
+      <p class="sui-chart-title">Department Budget</p>
+      <div class="sui-chart-bars" style="height:180px;">
+        <div class="sui-chart-bar-col">
+          <div class="sui-chart-bar-track">
+            <div class="sui-chart-bar-fill sui-chart-bar-primary" data-value="85" data-max="100"></div>
+          </div>
+          <span class="sui-chart-bar-label">Eng</span>
+        </div>
+        <div class="sui-chart-bar-col">
+          <div class="sui-chart-bar-track">
+            <div class="sui-chart-bar-fill sui-chart-bar-success" data-value="62" data-max="100"></div>
+          </div>
+          <span class="sui-chart-bar-label">Design</span>
+        </div>
+        <div class="sui-chart-bar-col">
+          <div class="sui-chart-bar-track">
+            <div class="sui-chart-bar-fill sui-chart-bar-warning" data-value="45" data-max="100"></div>
+          </div>
+          <span class="sui-chart-bar-label">Mktg</span>
+        </div>
+        <div class="sui-chart-bar-col">
+          <div class="sui-chart-bar-track">
+            <div class="sui-chart-bar-fill sui-chart-bar-danger" data-value="30" data-max="100"></div>
+          </div>
+          <span class="sui-chart-bar-label">Sales</span>
+        </div>
+        <div class="sui-chart-bar-col">
+          <div class="sui-chart-bar-track">
+            <div class="sui-chart-bar-fill sui-chart-bar-info" data-value="55" data-max="100"></div>
+          </div>
+          <span class="sui-chart-bar-label">Ops</span>
+        </div>
+      </div>
+      <div class="sui-chart-legend">
+        <span class="sui-chart-legend-item"><span class="sui-chart-legend-dot" style="background:var(--sui-primary);"></span> Engineering</span>
+        <span class="sui-chart-legend-item"><span class="sui-chart-legend-dot" style="background:var(--sui-success);"></span> Design</span>
+        <span class="sui-chart-legend-item"><span class="sui-chart-legend-dot" style="background:var(--sui-warning);"></span> Marketing</span>
+        <span class="sui-chart-legend-item"><span class="sui-chart-legend-dot" style="background:var(--sui-danger);"></span> Sales</span>
+        <span class="sui-chart-legend-item"><span class="sui-chart-legend-dot" style="background:#3b82f6;"></span> Operations</span>
+      </div>
+    </div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-chart"&gt;
+  &lt;p class="sui-chart-title"&gt;Department Budget&lt;/p&gt;
+  &lt;div class="sui-chart-bars" style="height:180px;"&gt;
+    &lt;div class="sui-chart-bar-col"&gt;
+      &lt;div class="sui-chart-bar-track"&gt;
+        &lt;div class="sui-chart-bar-fill sui-chart-bar-primary" data-value="85" data-max="100"&gt;&lt;/div&gt;
+      &lt;/div&gt;
+      &lt;span class="sui-chart-bar-label"&gt;Eng&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;div class="sui-chart-bar-col"&gt;
+      &lt;div class="sui-chart-bar-track"&gt;
+        &lt;div class="sui-chart-bar-fill sui-chart-bar-success" data-value="62" data-max="100"&gt;&lt;/div&gt;
+      &lt;/div&gt;
+      &lt;span class="sui-chart-bar-label"&gt;Design&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;div class="sui-chart-bar-col"&gt;
+      &lt;div class="sui-chart-bar-track"&gt;
+        &lt;div class="sui-chart-bar-fill sui-chart-bar-warning" data-value="45" data-max="100"&gt;&lt;/div&gt;
+      &lt;/div&gt;
+      &lt;span class="sui-chart-bar-label"&gt;Mktg&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;div class="sui-chart-bar-col"&gt;
+      &lt;div class="sui-chart-bar-track"&gt;
+        &lt;div class="sui-chart-bar-fill sui-chart-bar-danger" data-value="30" data-max="100"&gt;&lt;/div&gt;
+      &lt;/div&gt;
+      &lt;span class="sui-chart-bar-label"&gt;Sales&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;div class="sui-chart-bar-col"&gt;
+      &lt;div class="sui-chart-bar-track"&gt;
+        &lt;div class="sui-chart-bar-fill sui-chart-bar-info" data-value="55" data-max="100"&gt;&lt;/div&gt;
+      &lt;/div&gt;
+      &lt;span class="sui-chart-bar-label"&gt;Ops&lt;/span&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="sui-chart-legend"&gt;
+    &lt;span class="sui-chart-legend-item"&gt;&lt;span class="sui-chart-legend-dot" style="background:var(--sui-primary);"&gt;&lt;/span&gt; Engineering&lt;/span&gt;
+    &lt;span class="sui-chart-legend-item"&gt;&lt;span class="sui-chart-legend-dot" style="background:var(--sui-success);"&gt;&lt;/span&gt; Design&lt;/span&gt;
+    &lt;span class="sui-chart-legend-item"&gt;&lt;span class="sui-chart-legend-dot" style="background:var(--sui-warning);"&gt;&lt;/span&gt; Marketing&lt;/span&gt;
+    &lt;span class="sui-chart-legend-item"&gt;&lt;span class="sui-chart-legend-dot" style="background:var(--sui-danger);"&gt;&lt;/span&gt; Sales&lt;/span&gt;
+    &lt;span class="sui-chart-legend-item"&gt;&lt;span class="sui-chart-legend-dot" style="background:#3b82f6;"&gt;&lt;/span&gt; Operations&lt;/span&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</pre></div>
+  </div>
+</div>

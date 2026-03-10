@@ -1,0 +1,119 @@
+---
+layout: component.njk
+title: Skeleton
+description: Animated shimmer placeholders for loading states.
+componentId: skeleton
+hasControls: false
+toc:
+  - Text
+  - Card
+  - Media
+  - Shapes
+---
+
+<!-- Text -->
+<div class="pg-section" id="section-1">
+  <h3 class="pg-section-title">Text</h3>
+  <div class="pg-section-row" style="flex-direction:column;align-items:stretch;gap:0;width:100%;max-width:480px;">
+    <div class="sui-skeleton sui-skeleton-text" style="width:100%;" aria-hidden="true"></div>
+    <div class="sui-skeleton sui-skeleton-text" style="width:100%;" aria-hidden="true"></div>
+    <div class="sui-skeleton sui-skeleton-text" style="width:75%;" aria-hidden="true"></div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-skeleton sui-skeleton-text" style="width:100%;" aria-hidden="true"&gt;&lt;/div&gt;
+&lt;div class="sui-skeleton sui-skeleton-text" style="width:100%;" aria-hidden="true"&gt;&lt;/div&gt;
+&lt;div class="sui-skeleton sui-skeleton-text" style="width:75%;" aria-hidden="true"&gt;&lt;/div&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Card -->
+<div class="pg-section" id="section-2">
+  <h3 class="pg-section-title">Card</h3>
+  <div class="pg-section-row">
+    <div class="sui-card" style="padding:20px;width:100%;max-width:360px;">
+      <div style="display:flex;align-items:center;gap:14px;margin-bottom:16px;">
+        <div class="sui-skeleton sui-skeleton-avatar" aria-hidden="true"></div>
+        <div style="flex:1;">
+          <div class="sui-skeleton sui-skeleton-heading" style="width:50%;margin-bottom:6px;" aria-hidden="true"></div>
+          <div class="sui-skeleton sui-skeleton-text" style="width:35%;margin-bottom:0;" aria-hidden="true"></div>
+        </div>
+      </div>
+      <div class="sui-skeleton sui-skeleton-text" style="width:100%;" aria-hidden="true"></div>
+      <div class="sui-skeleton sui-skeleton-text" style="width:100%;" aria-hidden="true"></div>
+      <div class="sui-skeleton sui-skeleton-text" style="width:60%;" aria-hidden="true"></div>
+    </div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-card" style="padding:20px;"&gt;
+  &lt;div style="display:flex;align-items:center;gap:14px;margin-bottom:16px;"&gt;
+    &lt;div class="sui-skeleton sui-skeleton-avatar" aria-hidden="true"&gt;&lt;/div&gt;
+    &lt;div style="flex:1;"&gt;
+      &lt;div class="sui-skeleton sui-skeleton-heading" style="width:50%;margin-bottom:6px;" aria-hidden="true"&gt;&lt;/div&gt;
+      &lt;div class="sui-skeleton sui-skeleton-text" style="width:35%;margin-bottom:0;" aria-hidden="true"&gt;&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="sui-skeleton sui-skeleton-text" style="width:100%;" aria-hidden="true"&gt;&lt;/div&gt;
+  &lt;div class="sui-skeleton sui-skeleton-text" style="width:100%;" aria-hidden="true"&gt;&lt;/div&gt;
+  &lt;div class="sui-skeleton sui-skeleton-text" style="width:60%;" aria-hidden="true"&gt;&lt;/div&gt;
+&lt;/div&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Media -->
+<div class="pg-section" id="section-3">
+  <h3 class="pg-section-title">Media</h3>
+  <div class="pg-section-row">
+    <div class="sui-card" style="padding:0;width:100%;max-width:360px;overflow:hidden;">
+      <div class="sui-skeleton sui-skeleton-img" style="border-radius:var(--sui-radius) var(--sui-radius) 0 0;" aria-hidden="true"></div>
+      <div style="padding:16px;">
+        <div class="sui-skeleton sui-skeleton-heading" style="width:70%;" aria-hidden="true"></div>
+        <div class="sui-skeleton sui-skeleton-text" style="width:100%;" aria-hidden="true"></div>
+        <div class="sui-skeleton sui-skeleton-text" style="width:100%;" aria-hidden="true"></div>
+        <div class="sui-skeleton sui-skeleton-text" style="width:45%;margin-bottom:0;" aria-hidden="true"></div>
+      </div>
+    </div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-card" style="padding:0;overflow:hidden;"&gt;
+  &lt;div class="sui-skeleton sui-skeleton-img" style="border-radius:var(--sui-radius) var(--sui-radius) 0 0;" aria-hidden="true"&gt;&lt;/div&gt;
+  &lt;div style="padding:16px;"&gt;
+    &lt;div class="sui-skeleton sui-skeleton-heading" style="width:70%;" aria-hidden="true"&gt;&lt;/div&gt;
+    &lt;div class="sui-skeleton sui-skeleton-text" style="width:100%;" aria-hidden="true"&gt;&lt;/div&gt;
+    &lt;div class="sui-skeleton sui-skeleton-text" style="width:100%;" aria-hidden="true"&gt;&lt;/div&gt;
+    &lt;div class="sui-skeleton sui-skeleton-text" style="width:45%;margin-bottom:0;" aria-hidden="true"&gt;&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Shapes -->
+<div class="pg-section" id="section-4">
+  <h3 class="pg-section-title">Shapes</h3>
+  <div class="pg-section-row" style="gap:20px;flex-wrap:wrap;align-items:center;">
+    <div class="sui-skeleton sui-skeleton-avatar-sm" aria-hidden="true"></div>
+    <div class="sui-skeleton sui-skeleton-avatar" aria-hidden="true"></div>
+    <div class="sui-skeleton sui-skeleton-avatar-lg" aria-hidden="true"></div>
+    <div class="sui-skeleton sui-skeleton-btn" aria-hidden="true"></div>
+    <div class="sui-skeleton sui-skeleton-heading" style="width:200px;" aria-hidden="true"></div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;!-- Small avatar --&gt;
+&lt;div class="sui-skeleton sui-skeleton-avatar-sm" aria-hidden="true"&gt;&lt;/div&gt;
+
+&lt;!-- Default avatar --&gt;
+&lt;div class="sui-skeleton sui-skeleton-avatar" aria-hidden="true"&gt;&lt;/div&gt;
+
+&lt;!-- Large avatar --&gt;
+&lt;div class="sui-skeleton sui-skeleton-avatar-lg" aria-hidden="true"&gt;&lt;/div&gt;
+
+&lt;!-- Button --&gt;
+&lt;div class="sui-skeleton sui-skeleton-btn" aria-hidden="true"&gt;&lt;/div&gt;
+
+&lt;!-- Heading --&gt;
+&lt;div class="sui-skeleton sui-skeleton-heading" style="width:200px;" aria-hidden="true"&gt;&lt;/div&gt;</pre></div>
+  </div>
+</div>

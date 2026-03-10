@@ -1,0 +1,178 @@
+---
+layout: component.njk
+title: Scroll Area
+description: Custom neumorphic scrollbars that replace browser defaults for a consistent, themed look across all platforms.
+componentId: scrollarea
+hasControls: false
+toc:
+  - Vertical
+  - Horizontal
+  - Both Axes
+  - Inset Track
+  - Thin
+  - Auto-hide
+---
+
+{% set tags = ["Design", "Engineering", "Product", "Marketing", "Sales", "Support", "Analytics", "DevOps", "Security", "QA", "Research", "Mobile", "Frontend", "Backend", "Infrastructure", "Data Science", "AI/ML", "Platform", "Growth", "Content"] %}
+
+<!-- Vertical -->
+<div class="pg-section" id="section-1">
+  <h3 class="pg-section-title">Vertical</h3>
+  <p style="font-size:13px;color:var(--sui-text-light);margin-bottom:16px;">Add <code>sui-scroll-area</code> to any container with a fixed height. Use <code>sui-scroll-area-y</code> to restrict to vertical only.</p>
+  <div class="pg-section-row" style="align-items:flex-start;">
+    <div class="sui-scroll-area sui-scroll-area-y" style="height:200px;width:280px;padding:16px;border-radius:var(--sui-radius-sm);background:var(--sui-bg);box-shadow:var(--sui-shadow-raised-sm);">
+      <div style="font-size:14px;font-weight:600;margin-bottom:12px;color:var(--sui-text);">Team Members</div>
+      <div style="display:flex;flex-direction:column;gap:8px;">
+        {% for name in ["Alice Johnson", "Bob Williams", "Carol Davis", "David Brown", "Eva Martinez", "Frank Wilson", "Grace Lee", "Henry Taylor", "Iris Anderson", "Jack Thomas", "Karen White", "Leo Harris"] %}
+        <div style="display:flex;align-items:center;gap:10px;padding:8px 10px;border-radius:var(--sui-radius-xs);box-shadow:var(--sui-shadow-inset-sm);font-size:13px;color:var(--sui-text);">
+          <div style="width:28px;height:28px;border-radius:50%;background:var(--sui-bg-dark);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:600;color:var(--sui-text-muted);flex-shrink:0;">{{ name[0] }}{{ name.split(" ")[1][0] }}</div>
+          {{ name }}
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-scroll-area sui-scroll-area-y" style="height:200px;"&gt;
+  &lt;!-- Your scrollable content --&gt;
+&lt;/div&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Horizontal -->
+<div class="pg-section" id="section-2">
+  <h3 class="pg-section-title">Horizontal</h3>
+  <p style="font-size:13px;color:var(--sui-text-light);margin-bottom:16px;">Use <code>sui-scroll-area-x</code> for horizontal-only scrolling.</p>
+  <div class="pg-section-row" style="align-items:flex-start;">
+    <div class="sui-scroll-area sui-scroll-area-x" style="width:100%;max-width:500px;padding:16px;border-radius:var(--sui-radius-sm);background:var(--sui-bg);box-shadow:var(--sui-shadow-raised-sm);">
+      <div style="display:flex;gap:10px;width:max-content;">
+        {% for tag in tags %}
+        <div style="padding:8px 16px;border-radius:var(--sui-radius-xs);background:var(--sui-bg);box-shadow:var(--sui-shadow-inset-sm);font-size:13px;font-weight:500;color:var(--sui-text);white-space:nowrap;">{{ tag }}</div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-scroll-area sui-scroll-area-x"&gt;
+  &lt;div style="display:flex;gap:10px;width:max-content;"&gt;
+    &lt;div class="tag"&gt;Design&lt;/div&gt;
+    &lt;div class="tag"&gt;Engineering&lt;/div&gt;
+    &lt;!-- ...more items --&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Both Axes -->
+<div class="pg-section" id="section-3">
+  <h3 class="pg-section-title">Both Axes</h3>
+  <p style="font-size:13px;color:var(--sui-text-light);margin-bottom:16px;">Use <code>sui-scroll-area</code> alone for scrolling in both directions.</p>
+  <div class="pg-section-row" style="align-items:flex-start;">
+    <div class="sui-scroll-area" style="height:200px;width:100%;max-width:400px;border-radius:var(--sui-radius-sm);background:var(--sui-bg);box-shadow:var(--sui-shadow-raised-sm);">
+      <table style="width:600px;border-collapse:collapse;font-size:13px;">
+        <thead>
+          <tr>
+            <th style="padding:10px 14px;text-align:left;font-weight:600;color:var(--sui-text);white-space:nowrap;border-bottom:1px solid var(--sui-bg-dark);position:sticky;top:0;background:var(--sui-bg);">Name</th>
+            <th style="padding:10px 14px;text-align:left;font-weight:600;color:var(--sui-text);white-space:nowrap;border-bottom:1px solid var(--sui-bg-dark);position:sticky;top:0;background:var(--sui-bg);">Role</th>
+            <th style="padding:10px 14px;text-align:left;font-weight:600;color:var(--sui-text);white-space:nowrap;border-bottom:1px solid var(--sui-bg-dark);position:sticky;top:0;background:var(--sui-bg);">Department</th>
+            <th style="padding:10px 14px;text-align:left;font-weight:600;color:var(--sui-text);white-space:nowrap;border-bottom:1px solid var(--sui-bg-dark);position:sticky;top:0;background:var(--sui-bg);">Status</th>
+            <th style="padding:10px 14px;text-align:left;font-weight:600;color:var(--sui-text);white-space:nowrap;border-bottom:1px solid var(--sui-bg-dark);position:sticky;top:0;background:var(--sui-bg);">Location</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for row in [
+            ["Alice Johnson", "Designer", "Product", "Active", "New York"],
+            ["Bob Williams", "Engineer", "Platform", "Active", "San Francisco"],
+            ["Carol Davis", "PM", "Growth", "Away", "London"],
+            ["David Brown", "Analyst", "Data", "Active", "Berlin"],
+            ["Eva Martinez", "Engineer", "Frontend", "Active", "Tokyo"],
+            ["Frank Wilson", "Designer", "Brand", "Offline", "Sydney"],
+            ["Grace Lee", "QA", "Testing", "Active", "Toronto"],
+            ["Henry Taylor", "DevOps", "Infra", "Active", "Austin"],
+            ["Iris Anderson", "Writer", "Content", "Away", "Chicago"],
+            ["Jack Thomas", "Engineer", "Backend", "Active", "Seattle"]
+          ] %}
+          <tr>
+            {% for cell in row %}
+            <td style="padding:10px 14px;color:var(--sui-text-muted);white-space:nowrap;border-bottom:1px solid var(--sui-bg-dark);">{{ cell }}</td>
+            {% endfor %}
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-scroll-area" style="height:200px;width:400px;"&gt;
+  &lt;table style="width:600px;"&gt;
+    &lt;!-- Wide table content that overflows both axes --&gt;
+  &lt;/table&gt;
+&lt;/div&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Inset Track -->
+<div class="pg-section" id="section-4">
+  <h3 class="pg-section-title">Inset Track</h3>
+  <p style="font-size:13px;color:var(--sui-text-light);margin-bottom:16px;">Add <code>sui-scroll-area-inset</code> for a sunken scrollbar track that matches the neumorphic style.</p>
+  <div class="pg-section-row" style="align-items:flex-start;">
+    <div class="sui-scroll-area sui-scroll-area-y sui-scroll-area-inset" style="height:180px;width:280px;padding:16px;border-radius:var(--sui-radius-sm);background:var(--sui-bg);box-shadow:var(--sui-shadow-raised-sm);">
+      <div style="display:flex;flex-direction:column;gap:6px;">
+        {% for tag in tags %}
+        <div style="padding:8px 12px;border-radius:var(--sui-radius-xs);font-size:13px;color:var(--sui-text);box-shadow:var(--sui-shadow-inset-sm);">{{ tag }}</div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-scroll-area sui-scroll-area-y sui-scroll-area-inset" style="height:180px;"&gt;
+  &lt;!-- Content --&gt;
+&lt;/div&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Thin -->
+<div class="pg-section" id="section-5">
+  <h3 class="pg-section-title">Thin</h3>
+  <p style="font-size:13px;color:var(--sui-text-light);margin-bottom:16px;">Add <code>sui-scroll-area-thin</code> for a minimal 4px scrollbar.</p>
+  <div class="pg-section-row" style="align-items:flex-start;">
+    <div class="sui-scroll-area sui-scroll-area-y sui-scroll-area-thin" style="height:180px;width:280px;padding:16px;border-radius:var(--sui-radius-sm);background:var(--sui-bg);box-shadow:var(--sui-shadow-raised-sm);">
+      <div style="display:flex;flex-direction:column;gap:6px;">
+        {% for tag in tags %}
+        <div style="padding:8px 12px;border-radius:var(--sui-radius-xs);font-size:13px;color:var(--sui-text);box-shadow:var(--sui-shadow-inset-sm);">{{ tag }}</div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-scroll-area sui-scroll-area-y sui-scroll-area-thin" style="height:180px;"&gt;
+  &lt;!-- Content --&gt;
+&lt;/div&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Auto-hide -->
+<div class="pg-section" id="section-6">
+  <h3 class="pg-section-title">Auto-hide</h3>
+  <p style="font-size:13px;color:var(--sui-text-light);margin-bottom:16px;">Add <code>sui-scroll-area-auto</code> to hide the scrollbar until the user hovers over the container.</p>
+  <div class="pg-section-row" style="align-items:flex-start;">
+    <div class="sui-scroll-area sui-scroll-area-y sui-scroll-area-auto" style="height:180px;width:280px;padding:16px;border-radius:var(--sui-radius-sm);background:var(--sui-bg);box-shadow:var(--sui-shadow-raised-sm);">
+      <div style="display:flex;flex-direction:column;gap:6px;">
+        {% for tag in tags %}
+        <div style="padding:8px 12px;border-radius:var(--sui-radius-xs);font-size:13px;color:var(--sui-text);box-shadow:var(--sui-shadow-inset-sm);">{{ tag }}</div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-scroll-area sui-scroll-area-y sui-scroll-area-auto" style="height:180px;"&gt;
+  &lt;!-- Content --&gt;
+&lt;/div&gt;</pre></div>
+  </div>
+</div>

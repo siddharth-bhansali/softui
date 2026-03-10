@@ -1,0 +1,205 @@
+---
+layout: component.njk
+title: Drag & Drop
+description: Sortable lists, kanban boards, and file drop zones with neumorphic drag states.
+componentId: dragdrop
+hasControls: false
+toc:
+  - Sortable List
+  - With Handle
+  - Kanban Board
+  - Drop Zone
+---
+
+<!-- Section 1 — Sortable List -->
+<div class="pg-section" id="section-1">
+  <h3 class="pg-section-title">Sortable List</h3>
+  <p class="pg-section-desc">Drag items to reorder. Items lift with a raised shadow when dragged, and the target shows an inset effect.</p>
+
+  <div class="pg-section-row" style="max-width:400px;">
+    <div class="sui-sortable">
+      <div class="sui-sortable-item">Design homepage mockup</div>
+      <div class="sui-sortable-item">Write API documentation</div>
+      <div class="sui-sortable-item">Review pull requests</div>
+      <div class="sui-sortable-item">Fix navigation bug</div>
+      <div class="sui-sortable-item">Deploy to staging</div>
+    </div>
+  </div>
+
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block">
+      <button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button>
+      <pre>&lt;div class="sui-sortable"&gt;
+  &lt;div class="sui-sortable-item"&gt;Design homepage mockup&lt;/div&gt;
+  &lt;div class="sui-sortable-item"&gt;Write API documentation&lt;/div&gt;
+  &lt;div class="sui-sortable-item"&gt;Review pull requests&lt;/div&gt;
+  &lt;div class="sui-sortable-item"&gt;Fix navigation bug&lt;/div&gt;
+  &lt;div class="sui-sortable-item"&gt;Deploy to staging&lt;/div&gt;
+&lt;/div&gt;</pre>
+    </div>
+  </div>
+</div>
+
+<!-- Section 2 — With Handle -->
+<div class="pg-section" id="section-2">
+  <h3 class="pg-section-title">With Handle</h3>
+  <p class="pg-section-desc">Add a <code>.sui-sortable-handle</code> inside each item. Only the grip icon initiates the drag.</p>
+
+  <div class="pg-section-row" style="max-width:400px;">
+    <div class="sui-sortable">
+      <div class="sui-sortable-item">
+        <span class="sui-sortable-handle">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><circle cx="5" cy="3" r="1.5"/><circle cx="11" cy="3" r="1.5"/><circle cx="5" cy="8" r="1.5"/><circle cx="11" cy="8" r="1.5"/><circle cx="5" cy="13" r="1.5"/><circle cx="11" cy="13" r="1.5"/></svg>
+        </span>
+        <span>Set up CI/CD pipeline</span>
+      </div>
+      <div class="sui-sortable-item">
+        <span class="sui-sortable-handle">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><circle cx="5" cy="3" r="1.5"/><circle cx="11" cy="3" r="1.5"/><circle cx="5" cy="8" r="1.5"/><circle cx="11" cy="8" r="1.5"/><circle cx="5" cy="13" r="1.5"/><circle cx="11" cy="13" r="1.5"/></svg>
+        </span>
+        <span>Migrate database schema</span>
+      </div>
+      <div class="sui-sortable-item">
+        <span class="sui-sortable-handle">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><circle cx="5" cy="3" r="1.5"/><circle cx="11" cy="3" r="1.5"/><circle cx="5" cy="8" r="1.5"/><circle cx="11" cy="8" r="1.5"/><circle cx="5" cy="13" r="1.5"/><circle cx="11" cy="13" r="1.5"/></svg>
+        </span>
+        <span>Add unit tests</span>
+      </div>
+      <div class="sui-sortable-item">
+        <span class="sui-sortable-handle">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><circle cx="5" cy="3" r="1.5"/><circle cx="11" cy="3" r="1.5"/><circle cx="5" cy="8" r="1.5"/><circle cx="11" cy="8" r="1.5"/><circle cx="5" cy="13" r="1.5"/><circle cx="11" cy="13" r="1.5"/></svg>
+        </span>
+        <span>Performance audit</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block">
+      <button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button>
+      <pre>&lt;div class="sui-sortable"&gt;
+  &lt;div class="sui-sortable-item"&gt;
+    &lt;span class="sui-sortable-handle"&gt;
+      &lt;svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"&gt;
+        &lt;circle cx="5" cy="3" r="1.5"/&gt;
+        &lt;circle cx="11" cy="3" r="1.5"/&gt;
+        &lt;circle cx="5" cy="8" r="1.5"/&gt;
+        &lt;circle cx="11" cy="8" r="1.5"/&gt;
+        &lt;circle cx="5" cy="13" r="1.5"/&gt;
+        &lt;circle cx="11" cy="13" r="1.5"/&gt;
+      &lt;/svg&gt;
+    &lt;/span&gt;
+    &lt;span&gt;Set up CI/CD pipeline&lt;/span&gt;
+  &lt;/div&gt;
+  &lt;div class="sui-sortable-item"&gt;
+    &lt;span class="sui-sortable-handle"&gt;...&lt;/span&gt;
+    &lt;span&gt;Migrate database schema&lt;/span&gt;
+  &lt;/div&gt;
+  &lt;!-- more items... --&gt;
+&lt;/div&gt;</pre>
+    </div>
+  </div>
+</div>
+
+<!-- Section 3 — Kanban Board -->
+<div class="pg-section" id="section-3">
+  <h3 class="pg-section-title">Kanban Board</h3>
+  <p class="pg-section-desc">Drag cards between columns. Drop zones highlight with a primary border when a card hovers over them.</p>
+
+  <div class="pg-section-row">
+    <div class="sui-kanban">
+      <div class="sui-kanban-col">
+        <div class="sui-kanban-col-header">To Do</div>
+        <div class="sui-kanban-col-body">
+          <div class="sui-kanban-card">Research competitors</div>
+          <div class="sui-kanban-card">Create wireframes</div>
+          <div class="sui-kanban-card">Write test cases</div>
+        </div>
+      </div>
+      <div class="sui-kanban-col">
+        <div class="sui-kanban-col-header">In Progress</div>
+        <div class="sui-kanban-col-body">
+          <div class="sui-kanban-card">Build component library</div>
+          <div class="sui-kanban-card">Design system tokens</div>
+        </div>
+      </div>
+      <div class="sui-kanban-col">
+        <div class="sui-kanban-col-header">Done</div>
+        <div class="sui-kanban-col-body">
+          <div class="sui-kanban-card">Project setup</div>
+          <div class="sui-kanban-card">Define color palette</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block">
+      <button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button>
+      <pre>&lt;div class="sui-kanban"&gt;
+  &lt;div class="sui-kanban-col"&gt;
+    &lt;div class="sui-kanban-col-header"&gt;To Do&lt;/div&gt;
+    &lt;div class="sui-kanban-col-body"&gt;
+      &lt;div class="sui-kanban-card"&gt;Research competitors&lt;/div&gt;
+      &lt;div class="sui-kanban-card"&gt;Create wireframes&lt;/div&gt;
+      &lt;div class="sui-kanban-card"&gt;Write test cases&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="sui-kanban-col"&gt;
+    &lt;div class="sui-kanban-col-header"&gt;In Progress&lt;/div&gt;
+    &lt;div class="sui-kanban-col-body"&gt;
+      &lt;div class="sui-kanban-card"&gt;Build component library&lt;/div&gt;
+      &lt;div class="sui-kanban-card"&gt;Design system tokens&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="sui-kanban-col"&gt;
+    &lt;div class="sui-kanban-col-header"&gt;Done&lt;/div&gt;
+    &lt;div class="sui-kanban-col-body"&gt;
+      &lt;div class="sui-kanban-card"&gt;Project setup&lt;/div&gt;
+      &lt;div class="sui-kanban-card"&gt;Define color palette&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</pre>
+    </div>
+  </div>
+</div>
+
+<!-- Section 4 — Drop Zone -->
+<div class="pg-section" id="section-4">
+  <h3 class="pg-section-title">Drop Zone</h3>
+  <p class="pg-section-desc">A file upload area that highlights when files are dragged over it. Dropped files appear as a list below.</p>
+
+  <div class="pg-section-row" style="max-width:480px;">
+    <div class="sui-dropzone">
+      <svg class="sui-dropzone-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+        <polyline points="17 8 12 3 7 8"/>
+        <line x1="12" y1="3" x2="12" y2="15"/>
+      </svg>
+      <div class="sui-dropzone-text"><strong>Click to upload</strong> or drag and drop</div>
+      <div class="sui-dropzone-hint">PNG, JPG, PDF up to 10MB</div>
+    </div>
+  </div>
+
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block">
+      <button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button>
+      <pre>&lt;div class="sui-dropzone"&gt;
+  &lt;svg class="sui-dropzone-icon" viewBox="0 0 24 24" fill="none"
+    stroke="currentColor" stroke-width="1.5"&gt;
+    &lt;path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/&gt;
+    &lt;polyline points="17 8 12 3 7 8"/&gt;
+    &lt;line x1="12" y1="3" x2="12" y2="15"/&gt;
+  &lt;/svg&gt;
+  &lt;div class="sui-dropzone-text"&gt;
+    &lt;strong&gt;Click to upload&lt;/strong&gt; or drag and drop
+  &lt;/div&gt;
+  &lt;div class="sui-dropzone-hint"&gt;PNG, JPG, PDF up to 10MB&lt;/div&gt;
+&lt;/div&gt;</pre>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,289 @@
+---
+layout: component.njk
+title: Flex
+description: Flexbox utility classes — display, direction, justify, align, wrap, gap, and auto margins.
+componentId: flex
+hasControls: false
+toc:
+  - Display
+  - Direction
+  - Justify Content
+  - Align Items
+  - Wrap
+  - Gap
+  - Auto Margins
+---
+
+<!-- Display -->
+<div class="pg-section" id="section-1">
+  <h3 class="pg-section-title">Display</h3>
+  <div class="pg-section-row">
+    <div class="sui-d-flex sui-gap-2" style="width:100%;">
+      <div class="sui-raised" style="padding:12px 16px;border-radius:8px;">Flex Item 1</div>
+      <div class="sui-raised" style="padding:12px 16px;border-radius:8px;">Flex Item 2</div>
+      <div class="sui-raised" style="padding:12px 16px;border-radius:8px;">Flex Item 3</div>
+    </div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-d-flex"&gt;...&lt;/div&gt;
+&lt;div class="sui-d-inline-flex"&gt;...&lt;/div&gt;
+&lt;div class="sui-d-block"&gt;...&lt;/div&gt;
+&lt;div class="sui-d-none"&gt;...&lt;/div&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Direction -->
+<div class="pg-section" id="section-2">
+  <h3 class="pg-section-title">Direction</h3>
+  <div class="pg-section-row" style="gap:24px;">
+    <div>
+      <small style="display:block;margin-bottom:8px;color:var(--sui-text-muted);">sui-flex-row (default)</small>
+      <div class="sui-d-flex sui-flex-row sui-gap-2">
+        <div class="sui-raised" style="padding:10px 14px;border-radius:8px;">1</div>
+        <div class="sui-raised" style="padding:10px 14px;border-radius:8px;">2</div>
+        <div class="sui-raised" style="padding:10px 14px;border-radius:8px;">3</div>
+      </div>
+    </div>
+    <div>
+      <small style="display:block;margin-bottom:8px;color:var(--sui-text-muted);">sui-flex-column</small>
+      <div class="sui-d-flex sui-flex-column sui-gap-2">
+        <div class="sui-raised" style="padding:10px 14px;border-radius:8px;">1</div>
+        <div class="sui-raised" style="padding:10px 14px;border-radius:8px;">2</div>
+        <div class="sui-raised" style="padding:10px 14px;border-radius:8px;">3</div>
+      </div>
+    </div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-d-flex sui-flex-row"&gt;...&lt;/div&gt;
+&lt;div class="sui-d-flex sui-flex-column"&gt;...&lt;/div&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Justify Content -->
+<div class="pg-section" id="section-3">
+  <h3 class="pg-section-title">Justify Content</h3>
+  <div style="display:flex;flex-direction:column;gap:12px;">
+    <div>
+      <small style="display:block;margin-bottom:4px;color:var(--sui-text-muted);">sui-justify-start</small>
+      <div class="sui-d-flex sui-justify-start sui-gap-2 sui-inset" style="padding:10px;border-radius:8px;">
+        <div class="sui-raised" style="padding:8px 14px;border-radius:6px;">A</div>
+        <div class="sui-raised" style="padding:8px 14px;border-radius:6px;">B</div>
+        <div class="sui-raised" style="padding:8px 14px;border-radius:6px;">C</div>
+      </div>
+    </div>
+    <div>
+      <small style="display:block;margin-bottom:4px;color:var(--sui-text-muted);">sui-justify-center</small>
+      <div class="sui-d-flex sui-justify-center sui-gap-2 sui-inset" style="padding:10px;border-radius:8px;">
+        <div class="sui-raised" style="padding:8px 14px;border-radius:6px;">A</div>
+        <div class="sui-raised" style="padding:8px 14px;border-radius:6px;">B</div>
+        <div class="sui-raised" style="padding:8px 14px;border-radius:6px;">C</div>
+      </div>
+    </div>
+    <div>
+      <small style="display:block;margin-bottom:4px;color:var(--sui-text-muted);">sui-justify-end</small>
+      <div class="sui-d-flex sui-justify-end sui-gap-2 sui-inset" style="padding:10px;border-radius:8px;">
+        <div class="sui-raised" style="padding:8px 14px;border-radius:6px;">A</div>
+        <div class="sui-raised" style="padding:8px 14px;border-radius:6px;">B</div>
+        <div class="sui-raised" style="padding:8px 14px;border-radius:6px;">C</div>
+      </div>
+    </div>
+    <div>
+      <small style="display:block;margin-bottom:4px;color:var(--sui-text-muted);">sui-justify-between</small>
+      <div class="sui-d-flex sui-justify-between sui-inset" style="padding:10px;border-radius:8px;">
+        <div class="sui-raised" style="padding:8px 14px;border-radius:6px;">A</div>
+        <div class="sui-raised" style="padding:8px 14px;border-radius:6px;">B</div>
+        <div class="sui-raised" style="padding:8px 14px;border-radius:6px;">C</div>
+      </div>
+    </div>
+    <div>
+      <small style="display:block;margin-bottom:4px;color:var(--sui-text-muted);">sui-justify-around</small>
+      <div class="sui-d-flex sui-justify-around sui-inset" style="padding:10px;border-radius:8px;">
+        <div class="sui-raised" style="padding:8px 14px;border-radius:6px;">A</div>
+        <div class="sui-raised" style="padding:8px 14px;border-radius:6px;">B</div>
+        <div class="sui-raised" style="padding:8px 14px;border-radius:6px;">C</div>
+      </div>
+    </div>
+    <div>
+      <small style="display:block;margin-bottom:4px;color:var(--sui-text-muted);">sui-justify-evenly</small>
+      <div class="sui-d-flex sui-justify-evenly sui-inset" style="padding:10px;border-radius:8px;">
+        <div class="sui-raised" style="padding:8px 14px;border-radius:6px;">A</div>
+        <div class="sui-raised" style="padding:8px 14px;border-radius:6px;">B</div>
+        <div class="sui-raised" style="padding:8px 14px;border-radius:6px;">C</div>
+      </div>
+    </div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-d-flex sui-justify-start"&gt;...&lt;/div&gt;
+&lt;div class="sui-d-flex sui-justify-center"&gt;...&lt;/div&gt;
+&lt;div class="sui-d-flex sui-justify-end"&gt;...&lt;/div&gt;
+&lt;div class="sui-d-flex sui-justify-between"&gt;...&lt;/div&gt;
+&lt;div class="sui-d-flex sui-justify-around"&gt;...&lt;/div&gt;
+&lt;div class="sui-d-flex sui-justify-evenly"&gt;...&lt;/div&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Align Items -->
+<div class="pg-section" id="section-4">
+  <h3 class="pg-section-title">Align Items</h3>
+  <div style="display:flex;flex-direction:column;gap:12px;">
+    <div>
+      <small style="display:block;margin-bottom:4px;color:var(--sui-text-muted);">sui-align-start</small>
+      <div class="sui-d-flex sui-align-start sui-gap-2 sui-inset" style="padding:10px;border-radius:8px;height:80px;">
+        <div class="sui-raised" style="padding:8px 14px;border-radius:6px;">A</div>
+        <div class="sui-raised" style="padding:8px 14px;border-radius:6px;">B</div>
+      </div>
+    </div>
+    <div>
+      <small style="display:block;margin-bottom:4px;color:var(--sui-text-muted);">sui-align-center</small>
+      <div class="sui-d-flex sui-align-center sui-gap-2 sui-inset" style="padding:10px;border-radius:8px;height:80px;">
+        <div class="sui-raised" style="padding:8px 14px;border-radius:6px;">A</div>
+        <div class="sui-raised" style="padding:8px 14px;border-radius:6px;">B</div>
+      </div>
+    </div>
+    <div>
+      <small style="display:block;margin-bottom:4px;color:var(--sui-text-muted);">sui-align-end</small>
+      <div class="sui-d-flex sui-align-end sui-gap-2 sui-inset" style="padding:10px;border-radius:8px;height:80px;">
+        <div class="sui-raised" style="padding:8px 14px;border-radius:6px;">A</div>
+        <div class="sui-raised" style="padding:8px 14px;border-radius:6px;">B</div>
+      </div>
+    </div>
+    <div>
+      <small style="display:block;margin-bottom:4px;color:var(--sui-text-muted);">sui-align-stretch</small>
+      <div class="sui-d-flex sui-align-stretch sui-gap-2 sui-inset" style="padding:10px;border-radius:8px;height:80px;">
+        <div class="sui-raised" style="padding:8px 14px;border-radius:6px;">A</div>
+        <div class="sui-raised" style="padding:8px 14px;border-radius:6px;">B</div>
+      </div>
+    </div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-d-flex sui-align-start"&gt;...&lt;/div&gt;
+&lt;div class="sui-d-flex sui-align-center"&gt;...&lt;/div&gt;
+&lt;div class="sui-d-flex sui-align-end"&gt;...&lt;/div&gt;
+&lt;div class="sui-d-flex sui-align-stretch"&gt;...&lt;/div&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Wrap -->
+<div class="pg-section" id="section-5">
+  <h3 class="pg-section-title">Wrap</h3>
+  <div style="display:flex;flex-direction:column;gap:12px;">
+    <div>
+      <small style="display:block;margin-bottom:4px;color:var(--sui-text-muted);">sui-flex-wrap</small>
+      <div class="sui-d-flex sui-flex-wrap sui-gap-2 sui-inset" style="padding:10px;border-radius:8px;max-width:280px;">
+        <div class="sui-raised" style="padding:8px 14px;border-radius:6px;">Item 1</div>
+        <div class="sui-raised" style="padding:8px 14px;border-radius:6px;">Item 2</div>
+        <div class="sui-raised" style="padding:8px 14px;border-radius:6px;">Item 3</div>
+        <div class="sui-raised" style="padding:8px 14px;border-radius:6px;">Item 4</div>
+        <div class="sui-raised" style="padding:8px 14px;border-radius:6px;">Item 5</div>
+      </div>
+    </div>
+    <div>
+      <small style="display:block;margin-bottom:4px;color:var(--sui-text-muted);">sui-flex-nowrap</small>
+      <div class="sui-d-flex sui-flex-nowrap sui-gap-2 sui-inset" style="padding:10px;border-radius:8px;max-width:280px;overflow:auto;">
+        <div class="sui-raised" style="padding:8px 14px;border-radius:6px;white-space:nowrap;">Item 1</div>
+        <div class="sui-raised" style="padding:8px 14px;border-radius:6px;white-space:nowrap;">Item 2</div>
+        <div class="sui-raised" style="padding:8px 14px;border-radius:6px;white-space:nowrap;">Item 3</div>
+        <div class="sui-raised" style="padding:8px 14px;border-radius:6px;white-space:nowrap;">Item 4</div>
+        <div class="sui-raised" style="padding:8px 14px;border-radius:6px;white-space:nowrap;">Item 5</div>
+      </div>
+    </div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-d-flex sui-flex-wrap"&gt;...&lt;/div&gt;
+&lt;div class="sui-d-flex sui-flex-nowrap"&gt;...&lt;/div&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Gap -->
+<div class="pg-section" id="section-6">
+  <h3 class="pg-section-title">Gap</h3>
+  <div style="display:flex;flex-direction:column;gap:12px;">
+    <div>
+      <small style="display:block;margin-bottom:4px;color:var(--sui-text-muted);">sui-gap-0 (0)</small>
+      <div class="sui-d-flex sui-gap-0 sui-inset" style="padding:10px;border-radius:8px;">
+        <div class="sui-raised" style="padding:8px 14px;border-radius:6px;">A</div>
+        <div class="sui-raised" style="padding:8px 14px;border-radius:6px;">B</div>
+        <div class="sui-raised" style="padding:8px 14px;border-radius:6px;">C</div>
+      </div>
+    </div>
+    <div>
+      <small style="display:block;margin-bottom:4px;color:var(--sui-text-muted);">sui-gap-2 (8px)</small>
+      <div class="sui-d-flex sui-gap-2 sui-inset" style="padding:10px;border-radius:8px;">
+        <div class="sui-raised" style="padding:8px 14px;border-radius:6px;">A</div>
+        <div class="sui-raised" style="padding:8px 14px;border-radius:6px;">B</div>
+        <div class="sui-raised" style="padding:8px 14px;border-radius:6px;">C</div>
+      </div>
+    </div>
+    <div>
+      <small style="display:block;margin-bottom:4px;color:var(--sui-text-muted);">sui-gap-4 (24px)</small>
+      <div class="sui-d-flex sui-gap-4 sui-inset" style="padding:10px;border-radius:8px;">
+        <div class="sui-raised" style="padding:8px 14px;border-radius:6px;">A</div>
+        <div class="sui-raised" style="padding:8px 14px;border-radius:6px;">B</div>
+        <div class="sui-raised" style="padding:8px 14px;border-radius:6px;">C</div>
+      </div>
+    </div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;!-- Gap scale: 0=0, 1=4px, 2=8px, 3=16px, 4=24px, 5=48px --&gt;
+&lt;div class="sui-d-flex sui-gap-0"&gt;...&lt;/div&gt;
+&lt;div class="sui-d-flex sui-gap-1"&gt;...&lt;/div&gt;
+&lt;div class="sui-d-flex sui-gap-2"&gt;...&lt;/div&gt;
+&lt;div class="sui-d-flex sui-gap-3"&gt;...&lt;/div&gt;
+&lt;div class="sui-d-flex sui-gap-4"&gt;...&lt;/div&gt;
+&lt;div class="sui-d-flex sui-gap-5"&gt;...&lt;/div&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Auto Margins -->
+<div class="pg-section" id="section-7">
+  <h3 class="pg-section-title">Auto Margins</h3>
+  <div style="display:flex;flex-direction:column;gap:12px;">
+    <div>
+      <small style="display:block;margin-bottom:4px;color:var(--sui-text-muted);">sui-ms-auto — push item to the right</small>
+      <div class="sui-d-flex sui-gap-2 sui-inset" style="padding:10px;border-radius:8px;">
+        <div class="sui-raised" style="padding:8px 14px;border-radius:6px;">Logo</div>
+        <div class="sui-raised sui-ms-auto" style="padding:8px 14px;border-radius:6px;">Profile</div>
+      </div>
+    </div>
+    <div>
+      <small style="display:block;margin-bottom:4px;color:var(--sui-text-muted);">sui-mx-auto — center horizontally</small>
+      <div class="sui-d-flex sui-inset" style="padding:10px;border-radius:8px;">
+        <div class="sui-raised sui-mx-auto" style="padding:8px 14px;border-radius:6px;">Centered</div>
+      </div>
+    </div>
+    <div>
+      <small style="display:block;margin-bottom:4px;color:var(--sui-text-muted);">sui-me-auto — push item to the left</small>
+      <div class="sui-d-flex sui-gap-2 sui-inset" style="padding:10px;border-radius:8px;">
+        <div class="sui-raised sui-me-auto" style="padding:8px 14px;border-radius:6px;">Left</div>
+        <div class="sui-raised" style="padding:8px 14px;border-radius:6px;">Right 1</div>
+        <div class="sui-raised" style="padding:8px 14px;border-radius:6px;">Right 2</div>
+      </div>
+    </div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;!-- Push item to the right --&gt;
+&lt;div class="sui-d-flex"&gt;
+  &lt;div&gt;Logo&lt;/div&gt;
+  &lt;div class="sui-ms-auto"&gt;Profile&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- Center horizontally --&gt;
+&lt;div class="sui-d-flex"&gt;
+  &lt;div class="sui-mx-auto"&gt;Centered&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- Push item to the left --&gt;
+&lt;div class="sui-d-flex"&gt;
+  &lt;div class="sui-me-auto"&gt;Left&lt;/div&gt;
+  &lt;div&gt;Right 1&lt;/div&gt;
+  &lt;div&gt;Right 2&lt;/div&gt;
+&lt;/div&gt;</pre></div>
+  </div>
+</div>

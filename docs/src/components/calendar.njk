@@ -1,0 +1,377 @@
+---
+layout: component.njk
+title: Calendar
+description: Date calendar with drill-down month/year navigation, range picking, date picker popover, and min/max constraints.
+componentId: calendar
+hasControls: false
+toc:
+  - Default
+  - Range Selection
+  - Two Months
+  - Date Picker
+  - Date Range Picker
+  - Date & Time Picker
+  - With Min & Max Dates
+  - Time Picker
+---
+
+<!-- Default -->
+<div class="pg-section" id="section-1">
+  <h3 class="pg-section-title">Default</h3>
+  <p style="font-size:13px;color:var(--sui-text-light);margin-bottom:16px;">A single-month calendar with today highlight. Click a day to select it. Click the title to drill down into month and year views for fast navigation.</p>
+  <div class="pg-section-row" style="justify-content:center;">
+    <div class="sui-calendar" data-sui-calendar="single">
+      <div class="sui-calendar-header">
+        <button class="sui-calendar-nav-btn" data-sui-calendar-prev type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg></button>
+        <div class="sui-calendar-title"></div>
+        <button class="sui-calendar-nav-btn" data-sui-calendar-next type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></button>
+      </div>
+      <div class="sui-calendar-grid"></div>
+      <button class="sui-calendar-clear" data-sui-calendar-clear type="button">Clear</button>
+    </div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-calendar" data-sui-calendar="single"&gt;
+  &lt;div class="sui-calendar-header"&gt;
+    &lt;button class="sui-calendar-nav-btn" data-sui-calendar-prev type="button"&gt;
+      &lt;svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"&gt;&lt;polyline points="15 18 9 12 15 6"/&gt;&lt;/svg&gt;
+    &lt;/button&gt;
+    &lt;div class="sui-calendar-title"&gt;&lt;/div&gt;
+    &lt;button class="sui-calendar-nav-btn" data-sui-calendar-next type="button"&gt;
+      &lt;svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"&gt;&lt;polyline points="9 18 15 12 9 6"/&gt;&lt;/svg&gt;
+    &lt;/button&gt;
+  &lt;/div&gt;
+  &lt;div class="sui-calendar-grid"&gt;&lt;/div&gt;
+  &lt;button class="sui-calendar-clear" data-sui-calendar-clear type="button"&gt;Clear&lt;/button&gt;
+&lt;/div&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Range Selection -->
+<div class="pg-section" id="section-2">
+  <h3 class="pg-section-title">Range Selection</h3>
+  <p style="font-size:13px;color:var(--sui-text-light);margin-bottom:16px;">Click two dates to select a range. The first click sets the start, the second sets the end.</p>
+  <div class="pg-section-row" style="justify-content:center;">
+    <div class="sui-calendar" data-sui-calendar="range">
+      <div class="sui-calendar-header">
+        <button class="sui-calendar-nav-btn" data-sui-calendar-prev type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg></button>
+        <div class="sui-calendar-title"></div>
+        <button class="sui-calendar-nav-btn" data-sui-calendar-next type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></button>
+      </div>
+      <div class="sui-calendar-grid"></div>
+      <button class="sui-calendar-clear" data-sui-calendar-clear type="button">Clear</button>
+    </div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-calendar" data-sui-calendar="range"&gt;
+  &lt;div class="sui-calendar-header"&gt;
+    &lt;button class="sui-calendar-nav-btn" data-sui-calendar-prev type="button"&gt;
+      &lt;svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"&gt;&lt;polyline points="15 18 9 12 15 6"/&gt;&lt;/svg&gt;
+    &lt;/button&gt;
+    &lt;div class="sui-calendar-title"&gt;&lt;/div&gt;
+    &lt;button class="sui-calendar-nav-btn" data-sui-calendar-next type="button"&gt;
+      &lt;svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"&gt;&lt;polyline points="9 18 15 12 9 6"/&gt;&lt;/svg&gt;
+    &lt;/button&gt;
+  &lt;/div&gt;
+  &lt;div class="sui-calendar-grid"&gt;&lt;/div&gt;
+  &lt;button class="sui-calendar-clear" data-sui-calendar-clear type="button"&gt;Clear&lt;/button&gt;
+&lt;/div&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Two Months -->
+<div class="pg-section" id="section-3">
+  <h3 class="pg-section-title">Two Months</h3>
+  <p style="font-size:13px;color:var(--sui-text-light);margin-bottom:16px;">Display two months side by side for range selection across months. Click the title to drill down into month and year views.</p>
+  <div class="pg-section-row" style="justify-content:center;">
+    <div class="sui-calendar" data-sui-calendar="range">
+      <div class="sui-calendar-header">
+        <button class="sui-calendar-nav-btn" data-sui-calendar-prev type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg></button>
+        <div class="sui-calendar-title"></div>
+        <button class="sui-calendar-nav-btn" data-sui-calendar-next type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></button>
+      </div>
+      <div class="sui-calendar-months">
+        <div class="sui-calendar-month">
+          <div class="sui-calendar-title" style="text-align:center;margin-bottom:8px;font-size:13px;font-weight:600;color:var(--sui-text);"></div>
+          <div class="sui-calendar-grid"></div>
+        </div>
+        <div class="sui-calendar-month">
+          <div class="sui-calendar-title" style="text-align:center;margin-bottom:8px;font-size:13px;font-weight:600;color:var(--sui-text);"></div>
+          <div class="sui-calendar-grid"></div>
+        </div>
+      </div>
+      <button class="sui-calendar-clear" data-sui-calendar-clear type="button">Clear</button>
+    </div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-calendar" data-sui-calendar="range"&gt;
+  &lt;div class="sui-calendar-header"&gt;
+    &lt;button class="sui-calendar-nav-btn" data-sui-calendar-prev type="button"&gt;
+      &lt;svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"&gt;&lt;polyline points="15 18 9 12 15 6"/&gt;&lt;/svg&gt;
+    &lt;/button&gt;
+    &lt;div class="sui-calendar-title"&gt;&lt;/div&gt;
+    &lt;button class="sui-calendar-nav-btn" data-sui-calendar-next type="button"&gt;
+      &lt;svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"&gt;&lt;polyline points="9 18 15 12 9 6"/&gt;&lt;/svg&gt;
+    &lt;/button&gt;
+  &lt;/div&gt;
+  &lt;div class="sui-calendar-months"&gt;
+    &lt;div class="sui-calendar-month"&gt;
+      &lt;div class="sui-calendar-title"&gt;&lt;/div&gt;
+      &lt;div class="sui-calendar-grid"&gt;&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="sui-calendar-month"&gt;
+      &lt;div class="sui-calendar-title"&gt;&lt;/div&gt;
+      &lt;div class="sui-calendar-grid"&gt;&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;button class="sui-calendar-clear" data-sui-calendar-clear type="button"&gt;Clear&lt;/button&gt;
+&lt;/div&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Date Picker -->
+<div class="pg-section" id="section-4">
+  <h3 class="pg-section-title">Date Picker</h3>
+  <p style="font-size:13px;color:var(--sui-text-light);margin-bottom:16px;">Click the input to open a calendar popover. Selecting a date closes the popover and updates the trigger. Use the clear button inside the calendar to reset.</p>
+  <div class="pg-section-row" style="justify-content:center;">
+    <div class="sui-datepicker">
+      <button class="sui-datepicker-trigger" type="button">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        <span class="sui-datepicker-placeholder">Pick a date</span>
+      </button>
+      <div class="sui-datepicker-popover">
+        <div class="sui-calendar" data-sui-calendar="single">
+          <div class="sui-calendar-header">
+            <button class="sui-calendar-nav-btn" data-sui-calendar-prev type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg></button>
+            <div class="sui-calendar-title"></div>
+            <button class="sui-calendar-nav-btn" data-sui-calendar-next type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></button>
+          </div>
+          <div class="sui-calendar-grid"></div>
+          <button class="sui-calendar-clear" data-sui-calendar-clear type="button">Clear</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-datepicker"&gt;
+  &lt;button class="sui-datepicker-trigger" type="button"&gt;
+    &lt;svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"&gt;&lt;rect x="3" y="4" width="18" height="18" rx="2" ry="2"/&gt;&lt;line x1="16" y1="2" x2="16" y2="6"/&gt;&lt;line x1="8" y1="2" x2="8" y2="6"/&gt;&lt;line x1="3" y1="10" x2="21" y2="10"/&gt;&lt;/svg&gt;
+    &lt;span class="sui-datepicker-placeholder"&gt;Pick a date&lt;/span&gt;
+  &lt;/button&gt;
+  &lt;div class="sui-datepicker-popover"&gt;
+    &lt;div class="sui-calendar" data-sui-calendar="single"&gt;
+      &lt;div class="sui-calendar-header"&gt;
+        &lt;button class="sui-calendar-nav-btn" data-sui-calendar-prev type="button"&gt;
+          &lt;svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"&gt;&lt;polyline points="15 18 9 12 15 6"/&gt;&lt;/svg&gt;
+        &lt;/button&gt;
+        &lt;div class="sui-calendar-title"&gt;&lt;/div&gt;
+        &lt;button class="sui-calendar-nav-btn" data-sui-calendar-next type="button"&gt;
+          &lt;svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"&gt;&lt;polyline points="9 18 15 12 9 6"/&gt;&lt;/svg&gt;
+        &lt;/button&gt;
+      &lt;/div&gt;
+      &lt;div class="sui-calendar-grid"&gt;&lt;/div&gt;
+      &lt;button class="sui-calendar-clear" data-sui-calendar-clear type="button"&gt;Clear&lt;/button&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Date Range Picker -->
+<div class="pg-section" id="section-5">
+  <h3 class="pg-section-title">Date Range Picker</h3>
+  <p style="font-size:13px;color:var(--sui-text-light);margin-bottom:16px;">A popover date picker in range mode. Select two dates to define a range.</p>
+  <div class="pg-section-row" style="justify-content:center;">
+    <div class="sui-datepicker">
+      <button class="sui-datepicker-trigger" type="button">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        <span class="sui-datepicker-placeholder">Pick a date range</span>
+      </button>
+      <div class="sui-datepicker-popover">
+        <div class="sui-calendar" data-sui-calendar="range">
+          <div class="sui-calendar-header">
+            <button class="sui-calendar-nav-btn" data-sui-calendar-prev type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg></button>
+            <div class="sui-calendar-title"></div>
+            <button class="sui-calendar-nav-btn" data-sui-calendar-next type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></button>
+          </div>
+          <div class="sui-calendar-grid"></div>
+          <button class="sui-calendar-clear" data-sui-calendar-clear type="button">Clear</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-datepicker"&gt;
+  &lt;button class="sui-datepicker-trigger" type="button"&gt;
+    &lt;svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"&gt;&lt;rect x="3" y="4" width="18" height="18" rx="2" ry="2"/&gt;&lt;line x1="16" y1="2" x2="16" y2="6"/&gt;&lt;line x1="8" y1="2" x2="8" y2="6"/&gt;&lt;line x1="3" y1="10" x2="21" y2="10"/&gt;&lt;/svg&gt;
+    &lt;span class="sui-datepicker-placeholder"&gt;Pick a date range&lt;/span&gt;
+  &lt;/button&gt;
+  &lt;div class="sui-datepicker-popover"&gt;
+    &lt;div class="sui-calendar" data-sui-calendar="range"&gt;
+      &lt;div class="sui-calendar-header"&gt;
+        &lt;button class="sui-calendar-nav-btn" data-sui-calendar-prev type="button"&gt;
+          &lt;svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"&gt;&lt;polyline points="15 18 9 12 15 6"/&gt;&lt;/svg&gt;
+        &lt;/button&gt;
+        &lt;div class="sui-calendar-title"&gt;&lt;/div&gt;
+        &lt;button class="sui-calendar-nav-btn" data-sui-calendar-next type="button"&gt;
+          &lt;svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"&gt;&lt;polyline points="9 18 15 12 9 6"/&gt;&lt;/svg&gt;
+        &lt;/button&gt;
+      &lt;/div&gt;
+      &lt;div class="sui-calendar-grid"&gt;&lt;/div&gt;
+      &lt;button class="sui-calendar-clear" data-sui-calendar-clear type="button"&gt;Clear&lt;/button&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Date & Time Picker -->
+<div class="pg-section" id="section-6">
+  <h3 class="pg-section-title">Date & Time Picker</h3>
+  <p style="font-size:13px;color:var(--sui-text-light);margin-bottom:16px;">Add <code>data-sui-calendar-time</code> for 12-hour format with AM/PM toggle, or <code>data-sui-calendar-time="24h"</code> for 24-hour format. Hour and minute inputs support arrow keys. The popover stays open after selecting a date so you can adjust the time.</p>
+  <div class="pg-section-row" style="justify-content:center;gap:24px;flex-wrap:wrap;">
+    <div class="sui-datepicker">
+      <button class="sui-datepicker-trigger" type="button">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        <span class="sui-datepicker-placeholder">Pick date & time (12h)</span>
+      </button>
+      <div class="sui-datepicker-popover">
+        <div class="sui-calendar" data-sui-calendar="single" data-sui-calendar-time>
+          <div class="sui-calendar-header">
+            <button class="sui-calendar-nav-btn" data-sui-calendar-prev type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg></button>
+            <div class="sui-calendar-title"></div>
+            <button class="sui-calendar-nav-btn" data-sui-calendar-next type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></button>
+          </div>
+          <div class="sui-calendar-grid"></div>
+          <button class="sui-calendar-clear" data-sui-calendar-clear type="button">Clear</button>
+        </div>
+      </div>
+    </div>
+    <div class="sui-datepicker">
+      <button class="sui-datepicker-trigger" type="button">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        <span class="sui-datepicker-placeholder">Pick date & time (24h)</span>
+      </button>
+      <div class="sui-datepicker-popover">
+        <div class="sui-calendar" data-sui-calendar="single" data-sui-calendar-time="24h">
+          <div class="sui-calendar-header">
+            <button class="sui-calendar-nav-btn" data-sui-calendar-prev type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg></button>
+            <div class="sui-calendar-title"></div>
+            <button class="sui-calendar-nav-btn" data-sui-calendar-next type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></button>
+          </div>
+          <div class="sui-calendar-grid"></div>
+          <button class="sui-calendar-clear" data-sui-calendar-clear type="button">Clear</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;!-- 12-hour format (default) --&gt;
+&lt;div class="sui-datepicker"&gt;
+  &lt;button class="sui-datepicker-trigger" type="button"&gt;
+    &lt;svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"&gt;&lt;rect x="3" y="4" width="18" height="18" rx="2" ry="2"/&gt;&lt;line x1="16" y1="2" x2="16" y2="6"/&gt;&lt;line x1="8" y1="2" x2="8" y2="6"/&gt;&lt;line x1="3" y1="10" x2="21" y2="10"/&gt;&lt;/svg&gt;
+    &lt;span class="sui-datepicker-placeholder"&gt;Pick date &amp; time&lt;/span&gt;
+  &lt;/button&gt;
+  &lt;div class="sui-datepicker-popover"&gt;
+    &lt;div class="sui-calendar" data-sui-calendar="single" data-sui-calendar-time&gt;
+      &lt;div class="sui-calendar-header"&gt;
+        &lt;button class="sui-calendar-nav-btn" data-sui-calendar-prev type="button"&gt;
+          &lt;svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"&gt;&lt;polyline points="15 18 9 12 15 6"/&gt;&lt;/svg&gt;
+        &lt;/button&gt;
+        &lt;div class="sui-calendar-title"&gt;&lt;/div&gt;
+        &lt;button class="sui-calendar-nav-btn" data-sui-calendar-next type="button"&gt;
+          &lt;svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"&gt;&lt;polyline points="9 18 15 12 9 6"/&gt;&lt;/svg&gt;
+        &lt;/button&gt;
+      &lt;/div&gt;
+      &lt;div class="sui-calendar-grid"&gt;&lt;/div&gt;
+      &lt;button class="sui-calendar-clear" data-sui-calendar-clear type="button"&gt;Clear&lt;/button&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- 24-hour format — just change the attribute value --&gt;
+&lt;div class="sui-calendar" data-sui-calendar="single" data-sui-calendar-time="24h"&gt;
+  &lt;!-- same structure as above --&gt;
+&lt;/div&gt;</pre></div>
+  </div>
+</div>
+
+<!-- With Min & Max Dates -->
+<div class="pg-section" id="section-7">
+  <h3 class="pg-section-title">With Min & Max Dates</h3>
+  <p style="font-size:13px;color:var(--sui-text-light);margin-bottom:16px;">Constrain selectable dates with <code>data-sui-min</code> and <code>data-sui-max</code>. Accepts <code>"today"</code> or a date string like <code>"2026-06-15"</code> (YYYY-MM-DD). Dates outside the range are disabled.</p>
+  <div class="pg-section-row" style="justify-content:center;">
+    <div class="sui-calendar" data-sui-calendar="single" data-sui-min="today" data-sui-max="2026-12-31">
+      <div class="sui-calendar-header">
+        <button class="sui-calendar-nav-btn" data-sui-calendar-prev type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg></button>
+        <div class="sui-calendar-title"></div>
+        <button class="sui-calendar-nav-btn" data-sui-calendar-next type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></button>
+      </div>
+      <div class="sui-calendar-grid"></div>
+      <button class="sui-calendar-clear" data-sui-calendar-clear type="button">Clear</button>
+    </div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-calendar" data-sui-calendar="single"
+     data-sui-min="today"
+     data-sui-max="2026-12-31"&gt;
+  &lt;div class="sui-calendar-header"&gt;
+    &lt;button class="sui-calendar-nav-btn" data-sui-calendar-prev type="button"&gt;
+      &lt;svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"&gt;&lt;polyline points="15 18 9 12 15 6"/&gt;&lt;/svg&gt;
+    &lt;/button&gt;
+    &lt;div class="sui-calendar-title"&gt;&lt;/div&gt;
+    &lt;button class="sui-calendar-nav-btn" data-sui-calendar-next type="button"&gt;
+      &lt;svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"&gt;&lt;polyline points="9 18 15 12 9 6"/&gt;&lt;/svg&gt;
+    &lt;/button&gt;
+  &lt;/div&gt;
+  &lt;div class="sui-calendar-grid"&gt;&lt;/div&gt;
+  &lt;button class="sui-calendar-clear" data-sui-calendar-clear type="button"&gt;Clear&lt;/button&gt;
+&lt;/div&gt;
+
+&lt;!-- Supported values for data-sui-min / data-sui-max:
+     "today"        — relative to current date
+     "2026-03-15"   — specific date (YYYY-MM-DD)
+
+     You can also disable specific dates:
+     data-sui-disabled="2026-03-25,2026-04-01"
+--&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Time Picker -->
+<div class="pg-section" id="section-8">
+  <h3 class="pg-section-title">Time Picker</h3>
+  <p style="font-size:13px;color:var(--sui-text-light);margin-bottom:16px;">A standalone time picker without a calendar. Use <code>data-sui-timepicker</code> for 12-hour format or <code>data-sui-timepicker="24h"</code> for 24-hour. Arrow keys increment/decrement values. Fires a <code>sui-time-change</code> event.</p>
+  <div class="pg-section-row" style="justify-content:center;gap:24px;flex-wrap:wrap;">
+    <div>
+      <p style="font-size:12px;color:var(--sui-text-muted);margin-bottom:8px;text-align:center;">12-hour</p>
+      <div class="sui-timepicker" data-sui-timepicker></div>
+    </div>
+    <div>
+      <p style="font-size:12px;color:var(--sui-text-muted);margin-bottom:8px;text-align:center;">24-hour</p>
+      <div class="sui-timepicker" data-sui-timepicker="24h"></div>
+    </div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;!-- 12-hour time picker --&gt;
+&lt;div class="sui-timepicker" data-sui-timepicker&gt;&lt;/div&gt;
+
+&lt;!-- 24-hour time picker --&gt;
+&lt;div class="sui-timepicker" data-sui-timepicker="24h"&gt;&lt;/div&gt;
+
+&lt;!-- Listen for changes --&gt;
+&lt;script&gt;
+  document.querySelector('.sui-timepicker').addEventListener('sui-time-change', function(e) {
+    console.log(e.detail); // { hour: 2, minute: 30, period: 'PM', is24h: false }
+  });
+&lt;/script&gt;</pre></div>
+  </div>
+</div>

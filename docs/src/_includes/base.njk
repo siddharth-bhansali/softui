@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% if title == "SoftUI" %}SoftUI{% else %}{{ title }} — SoftUI{% endif %}</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="https://unpkg.com/softui-css/dist/softui.min.css">
+  <link rel="stylesheet" href="/css/docs.css">
+  <script src="https://unpkg.com/softui-css/dist/softui.min.js"></script>
+</head>
+<body>
+
+  <!-- Top Navbar -->
+  <nav class="docs-topbar">
+    <a class="docs-topbar-brand" href="/">Soft<span>UI</span></a>
+    <div class="docs-topbar-nav">
+      <a href="/"{% if page.url == "/" %} class="active"{% endif %}>All</a>
+      <a href="/?filter=forms"{% if filter == "forms" %} class="active"{% endif %}>Forms</a>
+      <a href="/?filter=components"{% if filter == "components" %} class="active"{% endif %}>Components</a>
+      <a href="/?filter=utilities"{% if filter == "utilities" %} class="active"{% endif %}>Utilities</a>
+    </div>
+    <div class="docs-topbar-actions">
+      <button class="docs-theme-toggle" onclick="toggleTheme()">
+        <span class="theme-icon">&#9790;</span>
+      </button>
+      <button class="docs-hamburger" onclick="toggleMobileNav()" aria-label="Toggle navigation">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile Nav Drawer -->
+  <div class="docs-mobile-overlay" onclick="toggleMobileNav()"></div>
+  <nav class="docs-mobile-drawer">
+    <div class="mobile-drawer-header">
+      <span class="docs-topbar-brand">Soft<span>UI</span></span>
+      <button class="docs-mobile-close" onclick="toggleMobileNav()" aria-label="Close navigation">&times;</button>
+    </div>
+    <div class="mobile-drawer-links">
+      <a href="/">Home</a>
+    </div>
+    <div class="mobile-drawer-cat">Forms</div>
+    {%- for item in nav.forms %}
+    <a class="mobile-drawer-link{% if item.id == componentId %} active{% endif %}" href="{{ item.url }}">{{ item.name }}</a>
+    {%- endfor %}
+    <div class="mobile-drawer-cat">Components</div>
+    {%- for item in nav.components %}
+    <a class="mobile-drawer-link{% if item.id == componentId %} active{% endif %}" href="{{ item.url }}">{{ item.name }}</a>
+    {%- endfor %}
+    <div class="mobile-drawer-cat">Utilities</div>
+    {%- for item in nav.utilities %}
+    <a class="mobile-drawer-link{% if item.id == componentId %} active{% endif %}" href="{{ item.url }}">{{ item.name }}</a>
+    {%- endfor %}
+  </nav>
+
+  {{ content | safe }}
+
+  <!-- Modal Instances (for demos) -->
+  <div class="sui-modal-backdrop" id="demoModal" role="dialog" aria-modal="true">
+    <div class="sui-modal">
+      <div class="sui-modal-header"><h3>Modal Title</h3><button class="sui-modal-close" aria-label="Close"></button></div>
+      <div class="sui-modal-body"><p>This is a neumorphic modal dialog. It features backdrop blur, smooth animations, and focus trap. Press Escape or click outside to close.</p></div>
+      <div class="sui-modal-footer"><button class="sui-btn sui-btn-sm" onclick="SoftUI.modal('#demoModal').close()">Cancel</button><button class="sui-btn sui-btn-primary sui-btn-sm">Confirm</button></div>
+    </div>
+  </div>
+  <div class="sui-modal-backdrop" id="demoModalSm" role="dialog" aria-modal="true">
+    <div class="sui-modal sui-modal-sm">
+      <div class="sui-modal-header"><h3>Session Timeout</h3><button class="sui-modal-close" aria-label="Close"></button></div>
+      <div class="sui-modal-body"><p>Your session will expire in 5 minutes. Would you like to stay signed in?</p></div>
+      <div class="sui-modal-footer"><button class="sui-btn sui-btn-sm" onclick="SoftUI.modal('#demoModalSm').close()">Sign Out</button><button class="sui-btn sui-btn-primary sui-btn-sm" onclick="SoftUI.modal('#demoModalSm').close()">Stay Signed In</button></div>
+    </div>
+  </div>
+  <div class="sui-modal-backdrop sui-modal-static" id="demoModalAlert" role="alertdialog" aria-modal="true" aria-labelledby="alertDialogTitle" aria-describedby="alertDialogDesc">
+    <div class="sui-modal sui-modal-sm">
+      <div class="sui-modal-header"><h3 id="alertDialogTitle">Delete this item?</h3></div>
+      <div class="sui-modal-body"><p id="alertDialogDesc">This action cannot be undone. This will permanently delete the item and remove all associated data.</p></div>
+      <div class="sui-modal-footer"><button class="sui-btn sui-btn-sm" onclick="SoftUI.modal('#demoModalAlert').close()">Cancel</button><button class="sui-btn sui-btn-danger sui-btn-sm" onclick="SoftUI.modal('#demoModalAlert').close()">Delete</button></div>
+    </div>
+  </div>
+  <div class="sui-modal-backdrop" id="demoModalLg" role="dialog" aria-modal="true">
+    <div class="sui-modal sui-modal-lg">
+      <div class="sui-modal-header"><h3>Create Account</h3><button class="sui-modal-close" aria-label="Close"></button></div>
+      <div class="sui-modal-body">
+        <div class="sui-form-group"><label class="sui-label">Full Name</label><input type="text" class="sui-input" placeholder="John Doe"></div>
+        <div class="sui-form-group"><label class="sui-label">Email Address</label><input type="email" class="sui-input" placeholder="john@example.com"></div>
+        <div class="sui-form-group"><label class="sui-label">Message</label><textarea class="sui-input sui-textarea" placeholder="Tell us about yourself..."></textarea></div>
+      </div>
+      <div class="sui-modal-footer"><button class="sui-btn sui-btn-sm" onclick="SoftUI.modal('#demoModalLg').close()">Cancel</button><button class="sui-btn sui-btn-primary sui-btn-sm">Create Account</button></div>
+    </div>
+  </div>
+  <div class="sui-modal-backdrop" id="demoModalFs" role="dialog" aria-modal="true">
+    <div class="sui-modal sui-modal-fullscreen">
+      <div class="sui-modal-header"><h3>Fullscreen Modal</h3><button class="sui-modal-close" aria-label="Close"></button></div>
+      <div class="sui-modal-body"><p>This modal takes up the entire viewport. Useful for immersive content, editors, or media viewers.</p><p>Press Escape or click the close button to dismiss.</p></div>
+      <div class="sui-modal-footer"><button class="sui-btn sui-btn-sm" onclick="SoftUI.modal('#demoModalFs').close()">Close</button></div>
+    </div>
+  </div>
+  <div class="sui-modal-backdrop" id="demoModalScroll" role="dialog" aria-modal="true">
+    <div class="sui-modal sui-modal-scrollable">
+      <div class="sui-modal-header"><h3>Terms of Service</h3><button class="sui-modal-close" aria-label="Close"></button></div>
+      <div class="sui-modal-body">
+        <h4 style="margin-bottom:12px;">1. Acceptance of Terms</h4>
+        <p>By accessing and using this service, you accept and agree to be bound by the terms and provision of this agreement. In addition, when using these particular services, you shall be subject to any posted guidelines or rules applicable to such services. Any participation in this service will constitute acceptance of this agreement.</p>
+        <h4 style="margin-bottom:12px;">2. Use License</h4>
+        <p>Permission is granted to temporarily download one copy of the materials on this website for personal, non-commercial transitory viewing only. This is the grant of a license, not a transfer of title, and under this license you may not modify or copy the materials, use the materials for any commercial purpose, attempt to reverse engineer any software, or remove any copyright notations.</p>
+        <h4 style="margin-bottom:12px;">3. Disclaimer</h4>
+        <p>The materials on this website are provided on an 'as is' basis. We make no warranties, expressed or implied, and hereby disclaim and negate all other warranties including, without limitation, implied warranties or conditions of merchantability, fitness for a particular purpose, or non-infringement of intellectual property.</p>
+        <h4 style="margin-bottom:12px;">4. Limitations</h4>
+        <p>In no event shall this company or its suppliers be liable for any damages (including, without limitation, damages for loss of data or profit, or due to business interruption) arising out of the use or inability to use the materials, even if we have been notified orally or in writing of the possibility of such damage.</p>
+        <h4 style="margin-bottom:12px;">5. Accuracy of Materials</h4>
+        <p>The materials appearing on this website could include technical, typographical, or photographic errors. We do not warrant that any of the materials on its website are accurate, complete or current. We may make changes to the materials contained on its website at any time without notice.</p>
+        <h4 style="margin-bottom:12px;">6. Links</h4>
+        <p>We have not reviewed all of the sites linked to this website and are not responsible for the contents of any such linked site. The inclusion of any link does not imply endorsement. Use of any such linked web site is at the user's own risk.</p>
+        <h4 style="margin-bottom:12px;">7. Modifications</h4>
+        <p>We may revise these terms of service for this website at any time without notice. By using this website you are agreeing to be bound by the then current version of these terms of service. Any changes will be posted on this page with an updated revision date.</p>
+        <h4 style="margin-bottom:12px;">8. Governing Law</h4>
+        <p>These terms and conditions are governed by and construed in accordance with applicable laws and you irrevocably submit to the exclusive jurisdiction of the courts in that location. If any provision of these terms shall be unlawful, void, or unenforceable, then that provision shall be deemed severable and shall not affect the validity of the remaining provisions.</p>
+      </div>
+      <div class="sui-modal-footer"><button class="sui-btn sui-btn-sm" onclick="SoftUI.modal('#demoModalScroll').close()">Decline</button><button class="sui-btn sui-btn-primary sui-btn-sm">Accept</button></div>
+    </div>
+  </div>
+  <div class="sui-modal-backdrop sui-modal-static" id="demoModalStatic" role="dialog" aria-modal="true">
+    <div class="sui-modal">
+      <div class="sui-modal-header"><h3>Static Backdrop</h3><button class="sui-modal-close" aria-label="Close"></button></div>
+      <div class="sui-modal-body"><p>Clicking outside this modal won't close it. Instead, the modal will shake to indicate it requires explicit action. Use the close button or press Escape to dismiss.</p></div>
+      <div class="sui-modal-footer"><button class="sui-btn sui-btn-sm" onclick="SoftUI.modal('#demoModalStatic').close()">Cancel</button><button class="sui-btn sui-btn-primary sui-btn-sm">Understood</button></div>
+    </div>
+  </div>
+
+  <!-- Sheet demos -->
+  <div class="sui-sheet-backdrop" id="demoSheet" role="dialog" aria-modal="true" aria-label="Default Sheet">
+    <div class="sui-sheet sui-sheet-right">
+      <div class="sui-sheet-header"><h3>Sheet Title</h3><button class="sui-sheet-close" aria-label="Close"></button></div>
+      <div class="sui-sheet-body"><p>This is a default right-side sheet. It slides in from the right edge of the screen with a blurred backdrop.</p><p>Sheets are great for navigation menus, settings panels, detail views, and forms that don't need to interrupt the main content flow.</p></div>
+      <div class="sui-sheet-footer"><button class="sui-btn sui-btn-sm" onclick="SoftUI.sheet('#demoSheet').close()">Cancel</button><button class="sui-btn sui-btn-primary sui-btn-sm">Save</button></div>
+    </div>
+  </div>
+  <div class="sui-sheet-backdrop" id="demoSheetLeft" role="dialog" aria-modal="true" aria-label="Left Sheet">
+    <div class="sui-sheet sui-sheet-left">
+      <div class="sui-sheet-header"><h3>Navigation</h3><button class="sui-sheet-close" aria-label="Close"></button></div>
+      <div class="sui-sheet-body" style="padding-top:8px;"><a href="#" style="display:block;padding:10px 0;color:var(--sui-text);text-decoration:none;border-bottom:1px solid var(--sui-bg-dark);">Dashboard</a><a href="#" style="display:block;padding:10px 0;color:var(--sui-text);text-decoration:none;border-bottom:1px solid var(--sui-bg-dark);">Analytics</a><a href="#" style="display:block;padding:10px 0;color:var(--sui-text);text-decoration:none;border-bottom:1px solid var(--sui-bg-dark);">Customers</a><a href="#" style="display:block;padding:10px 0;color:var(--sui-text);text-decoration:none;border-bottom:1px solid var(--sui-bg-dark);">Settings</a><a href="#" style="display:block;padding:10px 0;color:var(--sui-text);text-decoration:none;">Help</a></div>
+    </div>
+  </div>
+  <div class="sui-sheet-backdrop" id="demoSheetTop" role="dialog" aria-modal="true" aria-label="Top Sheet">
+    <div class="sui-sheet sui-sheet-top sui-sheet-sm">
+      <div class="sui-sheet-header"><h3>Announcement</h3><button class="sui-sheet-close" aria-label="Close"></button></div>
+      <div class="sui-sheet-body"><p>This sheet slides down from the top. Great for announcements, notification panels, or search interfaces.</p></div>
+    </div>
+  </div>
+  <div class="sui-sheet-backdrop" id="demoSheetBottom" role="dialog" aria-modal="true" aria-label="Bottom Sheet">
+    <div class="sui-sheet sui-sheet-bottom sui-sheet-sm">
+      <div class="sui-sheet-header"><h3>Quick Actions</h3><button class="sui-sheet-close" aria-label="Close"></button></div>
+      <div class="sui-sheet-body"><div style="display:flex;gap:10px;flex-wrap:wrap;"><button class="sui-btn sui-btn-primary sui-btn-sm">Share</button><button class="sui-btn sui-btn-success sui-btn-sm">Download</button><button class="sui-btn sui-btn-info sui-btn-sm">Print</button><button class="sui-btn sui-btn-danger sui-btn-sm">Delete</button></div></div>
+    </div>
+  </div>
+  <div class="sui-sheet-backdrop" id="demoSheetSm" role="dialog" aria-modal="true" aria-label="Small Sheet">
+    <div class="sui-sheet sui-sheet-right sui-sheet-sm">
+      <div class="sui-sheet-header"><h3>Small Sheet</h3><button class="sui-sheet-close" aria-label="Close"></button></div>
+      <div class="sui-sheet-body"><p>This is a small (280px) right-side sheet.</p></div>
+      <div class="sui-sheet-footer"><button class="sui-btn sui-btn-sm" onclick="SoftUI.sheet('#demoSheetSm').close()">Close</button></div>
+    </div>
+  </div>
+  <div class="sui-sheet-backdrop" id="demoSheetLg" role="dialog" aria-modal="true" aria-label="Large Sheet">
+    <div class="sui-sheet sui-sheet-right sui-sheet-lg">
+      <div class="sui-sheet-header"><h3>Large Sheet</h3><button class="sui-sheet-close" aria-label="Close"></button></div>
+      <div class="sui-sheet-body"><p>This is a large (480px) right-side sheet. Great for forms, detail views, or complex content.</p></div>
+      <div class="sui-sheet-footer"><button class="sui-btn sui-btn-sm" onclick="SoftUI.sheet('#demoSheetLg').close()">Cancel</button><button class="sui-btn sui-btn-primary sui-btn-sm">Save Changes</button></div>
+    </div>
+  </div>
+  <div class="sui-sheet-backdrop" id="demoSheetForm" role="dialog" aria-modal="true" aria-label="Edit Profile">
+    <div class="sui-sheet sui-sheet-right sui-sheet-lg">
+      <div class="sui-sheet-header"><h3>Edit Profile</h3><button class="sui-sheet-close" aria-label="Close"></button></div>
+      <div class="sui-sheet-body"><div class="sui-form-group" style="margin-bottom:16px;"><label class="sui-label">Full Name</label><input type="text" class="sui-input" placeholder="John Doe"></div><div class="sui-form-group" style="margin-bottom:16px;"><label class="sui-label">Email</label><input type="email" class="sui-input" placeholder="john@example.com"></div><div class="sui-form-group" style="margin-bottom:16px;"><label class="sui-label">Bio</label><textarea class="sui-input sui-textarea" rows="4" placeholder="Tell us about yourself..."></textarea></div><label class="sui-checkbox"><input type="checkbox" checked><span class="sui-check-mark"></span>Make profile public</label></div>
+      <div class="sui-sheet-footer"><button class="sui-btn sui-btn-sm" onclick="SoftUI.sheet('#demoSheetForm').close()">Cancel</button><button class="sui-btn sui-btn-primary sui-btn-sm">Update Profile</button></div>
+    </div>
+  </div>
+  <div class="sui-sheet-backdrop sui-sheet-static" id="demoSheetStatic" role="dialog" aria-modal="true" aria-label="Static Sheet">
+    <div class="sui-sheet sui-sheet-right">
+      <div class="sui-sheet-header"><h3>Static Backdrop</h3><button class="sui-sheet-close" aria-label="Close"></button></div>
+      <div class="sui-sheet-body"><p>Clicking outside this sheet won't close it. The sheet will shake to indicate it requires explicit action. Use the close button or press Escape.</p></div>
+      <div class="sui-sheet-footer"><button class="sui-btn sui-btn-sm" onclick="SoftUI.sheet('#demoSheetStatic').close()">Close</button></div>
+    </div>
+  </div>
+
+  <footer class="docs-footer">
+    <div class="docs-footer-inner">
+      <div class="docs-footer-brand">
+        <span class="docs-footer-logo">Soft<span>UI</span></span>
+        <span class="docs-footer-tagline">A neumorphic CSS component library</span>
+      </div>
+      <div class="docs-footer-links">
+        <a href="https://github.com/siddharth-bhansali/softui" target="_blank" rel="noopener" class="docs-footer-link">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+          GitHub
+        </a>
+        <a href="https://www.npmjs.com/package/softui-css" target="_blank" rel="noopener" class="docs-footer-link">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M0 7.334v8h6.666v1.332H12v-1.332h12v-8H0zm6.666 6.664H5.334v-4H3.999v4H1.335V8.667h5.331v5.331zm4 0v1.336H8.001V8.667h5.334v5.331h-2.669zm12.001 0h-1.33v-4h-1.336v4h-1.335v-4h-1.33v4h-2.671V8.667h8.002v5.331zM10.665 10H12v2.667h-1.335V10z"/></svg>
+          npm
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile nav
+    function toggleMobileNav() {
+      const drawer = document.querySelector('.docs-mobile-drawer');
+      const opening = !drawer.classList.contains('open');
+      drawer.classList.toggle('open');
+      document.querySelector('.docs-mobile-overlay').classList.toggle('open');
+      document.body.classList.toggle('mobile-nav-open');
+      if (opening) {
+        const active = drawer.querySelector('.mobile-drawer-link.active');
+        if (active) {
+          active.scrollIntoView({ block: 'center', behavior: 'instant' });
+        }
+      }
+    }
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape' && document.querySelector('.docs-mobile-drawer.open')) {
+        toggleMobileNav();
+      }
+    });
+
+    // Theme
+    function toggleTheme() {
+      const html = document.documentElement;
+      const isDark = html.getAttribute('data-theme') === 'dark';
+      html.setAttribute('data-theme', isDark ? 'light' : 'dark');
+      document.querySelector('.theme-icon').textContent = isDark ? '\u263E' : '\u2600';
+      localStorage.setItem('sui-theme', isDark ? 'light' : 'dark');
+    }
+    (function() {
+      const saved = localStorage.getItem('sui-theme');
+      if (saved === 'dark') {
+        document.documentElement.setAttribute('data-theme', 'dark');
+        document.querySelector('.theme-icon').textContent = '\u2600';
+      }
+    })();
+
+    // Scroll sidebar to active item on page load
+    (function() {
+      const sidebar = document.querySelector('.docs-pg-sidebar');
+      if (sidebar) {
+        const active = sidebar.querySelector('.pg-sidebar-link.active');
+        if (active) {
+          active.scrollIntoView({ block: 'center', behavior: 'instant' });
+        }
+      }
+    })();
+
+    // Copy code
+    function copyPgCode(btn) {
+      const pre = btn.parentElement.querySelector('pre');
+      navigator.clipboard.writeText(pre.textContent).then(() => {
+        btn.textContent = 'Copied!';
+        setTimeout(() => btn.textContent = 'Copy', 1500);
+      });
+    }
+
+    // Toggle code blocks
+    function toggleGalleryCode(btn) {
+      const block = btn.nextElementSibling;
+      const isOpen = block.classList.toggle('open');
+      btn.classList.toggle('open', isOpen);
+    }
+  </script>
+</body>
+</html>

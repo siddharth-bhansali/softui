@@ -1,0 +1,44 @@
+---
+layout: base.njk
+---
+<div class="docs-component">
+
+  <!-- Left Sidebar -->
+  <aside class="docs-pg-sidebar">
+    <div class="pg-sidebar-cat">Forms</div>
+    {%- for item in nav.forms %}
+    <a class="pg-sidebar-link{% if item.id == componentId %} active{% endif %}" href="{{ item.url }}">{{ item.name }}</a>
+    {%- endfor %}
+
+    <div class="pg-sidebar-cat">Components</div>
+    {%- for item in nav.components %}
+    <a class="pg-sidebar-link{% if item.id == componentId %} active{% endif %}" href="{{ item.url }}">{{ item.name }}</a>
+    {%- endfor %}
+
+    <div class="pg-sidebar-cat">Utilities</div>
+    {%- for item in nav.utilities %}
+    <a class="pg-sidebar-link{% if item.id == componentId %} active{% endif %}" href="{{ item.url }}">{{ item.name }}</a>
+    {%- endfor %}
+  </aside>
+
+  <!-- Main Content -->
+  <div class="docs-pg-main">
+    <nav class="sui-breadcrumb sui-breadcrumb-flat" style="font-size:13px;padding:4px 0;margin-bottom:4px;">
+      <span class="sui-breadcrumb-item"><a href="/">Home</a></span>
+      <span class="sui-breadcrumb-item active"><span>{{ title }}</span></span>
+    </nav>
+    <h1 class="docs-pg-title">{{ title }}</h1>
+    <p class="docs-pg-desc">{{ description }}</p>
+
+    {{ content | safe }}
+  </div>
+
+  <!-- Right Panel -->
+  <aside class="docs-pg-controls">
+    <div class="pg-toc-title">On This Page</div>
+    {%- for section in toc %}
+    <a class="pg-toc-link" href="#section-{{ loop.index }}">{{ section }}</a>
+    {%- endfor %}
+  </aside>
+
+</div>

@@ -1,0 +1,347 @@
+---
+layout: component.njk
+title: Command
+description: Searchable command palette for quick actions. Supports groups, icons, shortcuts, and dialog mode with Cmd+K.
+componentId: command
+hasControls: false
+toc:
+  - Default
+  - With Icons
+  - Groups
+  - Empty State
+  - Dialog Mode
+  - Disabled Items
+---
+
+<!-- Default -->
+<div class="pg-section" id="section-1">
+  <h3 class="pg-section-title">Default</h3>
+  <p style="font-size:13px;color:var(--sui-text-light);margin-bottom:16px;">A searchable list of commands. Type to filter items.</p>
+  <div class="pg-section-row" style="justify-content:center;">
+    <div class="sui-command" data-sui-command style="max-width:420px;">
+      <div class="sui-command-input-wrap">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        <input class="sui-command-input" type="text" placeholder="Type a command or search...">
+      </div>
+      <div class="sui-command-list">
+        <div class="sui-command-group">
+          <div class="sui-command-group-label">Suggestions</div>
+          <button class="sui-command-item">Calendar</button>
+          <button class="sui-command-item">Search Emoji</button>
+          <button class="sui-command-item">Calculator</button>
+        </div>
+        <div class="sui-command-separator"></div>
+        <div class="sui-command-group">
+          <div class="sui-command-group-label">Settings</div>
+          <button class="sui-command-item">Profile <span class="sui-command-shortcut">⌘P</span></button>
+          <button class="sui-command-item">Billing <span class="sui-command-shortcut">⌘B</span></button>
+          <button class="sui-command-item">Settings <span class="sui-command-shortcut">⌘,</span></button>
+        </div>
+      </div>
+      <div class="sui-command-empty">No results found.</div>
+    </div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-command" data-sui-command&gt;
+  &lt;div class="sui-command-input-wrap"&gt;
+    &lt;svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"&gt;&lt;circle cx="11" cy="11" r="8"/&gt;&lt;line x1="21" y1="21" x2="16.65" y2="16.65"/&gt;&lt;/svg&gt;
+    &lt;input class="sui-command-input" type="text" placeholder="Type a command or search..."&gt;
+  &lt;/div&gt;
+  &lt;div class="sui-command-list"&gt;
+    &lt;div class="sui-command-group"&gt;
+      &lt;div class="sui-command-group-label"&gt;Suggestions&lt;/div&gt;
+      &lt;button class="sui-command-item"&gt;Calendar&lt;/button&gt;
+      &lt;button class="sui-command-item"&gt;Search Emoji&lt;/button&gt;
+      &lt;button class="sui-command-item"&gt;Calculator&lt;/button&gt;
+    &lt;/div&gt;
+    &lt;div class="sui-command-separator"&gt;&lt;/div&gt;
+    &lt;div class="sui-command-group"&gt;
+      &lt;div class="sui-command-group-label"&gt;Settings&lt;/div&gt;
+      &lt;button class="sui-command-item"&gt;Profile &lt;span class="sui-command-shortcut"&gt;⌘P&lt;/span&gt;&lt;/button&gt;
+      &lt;button class="sui-command-item"&gt;Billing &lt;span class="sui-command-shortcut"&gt;⌘B&lt;/span&gt;&lt;/button&gt;
+      &lt;button class="sui-command-item"&gt;Settings &lt;span class="sui-command-shortcut"&gt;⌘,&lt;/span&gt;&lt;/button&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="sui-command-empty"&gt;No results found.&lt;/div&gt;
+&lt;/div&gt;</pre></div>
+  </div>
+</div>
+
+<!-- With Icons -->
+<div class="pg-section" id="section-2">
+  <h3 class="pg-section-title">With Icons</h3>
+  <p style="font-size:13px;color:var(--sui-text-light);margin-bottom:16px;">Add SVG icons with <code>sui-command-icon</code> for quick visual scanning.</p>
+  <div class="pg-section-row" style="justify-content:center;">
+    <div class="sui-command" data-sui-command style="max-width:420px;">
+      <div class="sui-command-input-wrap">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        <input class="sui-command-input" type="text" placeholder="Search commands...">
+      </div>
+      <div class="sui-command-list">
+        <div class="sui-command-group">
+          <div class="sui-command-group-label">Actions</div>
+          <button class="sui-command-item"><svg class="sui-command-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg> Calendar <span class="sui-command-shortcut">⌘K C</span></button>
+          <button class="sui-command-item"><svg class="sui-command-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg> Search Emoji <span class="sui-command-shortcut">⌘K E</span></button>
+          <button class="sui-command-item"><svg class="sui-command-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="16" y1="14" x2="16" y2="18"/><line x1="8" y1="10" x2="8" y2="10"/><line x1="12" y1="10" x2="12" y2="10"/><line x1="16" y1="10" x2="16" y2="10"/><line x1="8" y1="14" x2="8" y2="14"/><line x1="12" y1="14" x2="12" y2="14"/></svg> Calculator <span class="sui-command-shortcut">⌘K M</span></button>
+        </div>
+        <div class="sui-command-separator"></div>
+        <div class="sui-command-group">
+          <div class="sui-command-group-label">Settings</div>
+          <button class="sui-command-item"><svg class="sui-command-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg> Profile <span class="sui-command-shortcut">⌘P</span></button>
+          <button class="sui-command-item"><svg class="sui-command-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg> Billing <span class="sui-command-shortcut">⌘B</span></button>
+          <button class="sui-command-item"><svg class="sui-command-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg> Settings <span class="sui-command-shortcut">⌘,</span></button>
+        </div>
+      </div>
+      <div class="sui-command-empty">No results found.</div>
+    </div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-command" data-sui-command&gt;
+  &lt;div class="sui-command-input-wrap"&gt;
+    &lt;svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"&gt;&lt;circle cx="11" cy="11" r="8"/&gt;&lt;line x1="21" y1="21" x2="16.65" y2="16.65"/&gt;&lt;/svg&gt;
+    &lt;input class="sui-command-input" type="text" placeholder="Search commands..."&gt;
+  &lt;/div&gt;
+  &lt;div class="sui-command-list"&gt;
+    &lt;div class="sui-command-group"&gt;
+      &lt;div class="sui-command-group-label"&gt;Actions&lt;/div&gt;
+      &lt;button class="sui-command-item"&gt;
+        &lt;svg class="sui-command-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"&gt;&lt;rect x="3" y="4" width="18" height="18" rx="2" ry="2"/&gt;&lt;line x1="16" y1="2" x2="16" y2="6"/&gt;&lt;line x1="8" y1="2" x2="8" y2="6"/&gt;&lt;line x1="3" y1="10" x2="21" y2="10"/&gt;&lt;/svg&gt;
+        Calendar &lt;span class="sui-command-shortcut"&gt;⌘K C&lt;/span&gt;
+      &lt;/button&gt;
+      &lt;button class="sui-command-item"&gt;
+        &lt;svg class="sui-command-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"&gt;&lt;circle cx="12" cy="12" r="10"/&gt;&lt;line x1="12" y1="8" x2="12" y2="12"/&gt;&lt;line x1="12" y1="16" x2="12.01" y2="16"/&gt;&lt;/svg&gt;
+        Search Emoji &lt;span class="sui-command-shortcut"&gt;⌘K E&lt;/span&gt;
+      &lt;/button&gt;
+    &lt;/div&gt;
+    &lt;div class="sui-command-separator"&gt;&lt;/div&gt;
+    &lt;div class="sui-command-group"&gt;
+      &lt;div class="sui-command-group-label"&gt;Settings&lt;/div&gt;
+      &lt;button class="sui-command-item"&gt;
+        &lt;svg class="sui-command-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"&gt;&lt;path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/&gt;&lt;circle cx="12" cy="7" r="4"/&gt;&lt;/svg&gt;
+        Profile &lt;span class="sui-command-shortcut"&gt;⌘P&lt;/span&gt;
+      &lt;/button&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="sui-command-empty"&gt;No results found.&lt;/div&gt;
+&lt;/div&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Groups -->
+<div class="pg-section" id="section-3">
+  <h3 class="pg-section-title">Groups</h3>
+  <p style="font-size:13px;color:var(--sui-text-light);margin-bottom:16px;">Organize commands into labeled groups with separators between them. Groups auto-hide when all items are filtered out.</p>
+  <div class="pg-section-row" style="justify-content:center;">
+    <div class="sui-command" data-sui-command style="max-width:420px;">
+      <div class="sui-command-input-wrap">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        <input class="sui-command-input" type="text" placeholder="Search...">
+      </div>
+      <div class="sui-command-list">
+        <div class="sui-command-group">
+          <div class="sui-command-group-label">File</div>
+          <button class="sui-command-item"><svg class="sui-command-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="12" y1="18" x2="12" y2="12"/><line x1="9" y1="15" x2="15" y2="15"/></svg> New File</button>
+          <button class="sui-command-item"><svg class="sui-command-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg> New Folder</button>
+        </div>
+        <div class="sui-command-separator"></div>
+        <div class="sui-command-group">
+          <div class="sui-command-group-label">Edit</div>
+          <button class="sui-command-item"><svg class="sui-command-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg> Find</button>
+          <button class="sui-command-item"><svg class="sui-command-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg> Find & Replace</button>
+        </div>
+        <div class="sui-command-separator"></div>
+        <div class="sui-command-group">
+          <div class="sui-command-group-label">View</div>
+          <button class="sui-command-item"><svg class="sui-command-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg> Toggle Sidebar</button>
+          <button class="sui-command-item"><svg class="sui-command-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 14 10 14 10 20"/><polyline points="20 10 14 10 14 4"/><line x1="14" y1="10" x2="21" y2="3"/><line x1="3" y1="21" x2="10" y2="14"/></svg> Toggle Fullscreen</button>
+          <button class="sui-command-item"><svg class="sui-command-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg> Zen Mode</button>
+        </div>
+      </div>
+      <div class="sui-command-empty">No results found.</div>
+    </div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-command" data-sui-command&gt;
+  &lt;div class="sui-command-input-wrap"&gt;
+    &lt;svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"&gt;&lt;circle cx="11" cy="11" r="8"/&gt;&lt;line x1="21" y1="21" x2="16.65" y2="16.65"/&gt;&lt;/svg&gt;
+    &lt;input class="sui-command-input" type="text" placeholder="Search..."&gt;
+  &lt;/div&gt;
+  &lt;div class="sui-command-list"&gt;
+    &lt;div class="sui-command-group"&gt;
+      &lt;div class="sui-command-group-label"&gt;File&lt;/div&gt;
+      &lt;button class="sui-command-item"&gt;New File&lt;/button&gt;
+      &lt;button class="sui-command-item"&gt;New Folder&lt;/button&gt;
+    &lt;/div&gt;
+    &lt;div class="sui-command-separator"&gt;&lt;/div&gt;
+    &lt;div class="sui-command-group"&gt;
+      &lt;div class="sui-command-group-label"&gt;Edit&lt;/div&gt;
+      &lt;button class="sui-command-item"&gt;Find&lt;/button&gt;
+      &lt;button class="sui-command-item"&gt;Find &amp;amp; Replace&lt;/button&gt;
+    &lt;/div&gt;
+    &lt;div class="sui-command-separator"&gt;&lt;/div&gt;
+    &lt;div class="sui-command-group"&gt;
+      &lt;div class="sui-command-group-label"&gt;View&lt;/div&gt;
+      &lt;button class="sui-command-item"&gt;Toggle Sidebar&lt;/button&gt;
+      &lt;button class="sui-command-item"&gt;Toggle Fullscreen&lt;/button&gt;
+      &lt;button class="sui-command-item"&gt;Zen Mode&lt;/button&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="sui-command-empty"&gt;No results found.&lt;/div&gt;
+&lt;/div&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Empty State -->
+<div class="pg-section" id="section-4">
+  <h3 class="pg-section-title">Empty State</h3>
+  <p style="font-size:13px;color:var(--sui-text-light);margin-bottom:16px;">When no items match the search query, a "no results" message is shown automatically. Try typing "xyz" below.</p>
+  <div class="pg-section-row" style="justify-content:center;">
+    <div class="sui-command" data-sui-command style="max-width:420px;">
+      <div class="sui-command-input-wrap">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        <input class="sui-command-input" type="text" placeholder="Try searching 'xyz'...">
+      </div>
+      <div class="sui-command-list">
+        <div class="sui-command-group">
+          <button class="sui-command-item">Apple</button>
+          <button class="sui-command-item">Banana</button>
+          <button class="sui-command-item">Cherry</button>
+          <button class="sui-command-item">Grape</button>
+          <button class="sui-command-item">Mango</button>
+        </div>
+      </div>
+      <div class="sui-command-empty">No results found.</div>
+    </div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-command" data-sui-command&gt;
+  &lt;div class="sui-command-input-wrap"&gt;
+    &lt;svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"&gt;&lt;circle cx="11" cy="11" r="8"/&gt;&lt;line x1="21" y1="21" x2="16.65" y2="16.65"/&gt;&lt;/svg&gt;
+    &lt;input class="sui-command-input" type="text" placeholder="Try searching 'xyz'..."&gt;
+  &lt;/div&gt;
+  &lt;div class="sui-command-list"&gt;
+    &lt;div class="sui-command-group"&gt;
+      &lt;button class="sui-command-item"&gt;Apple&lt;/button&gt;
+      &lt;button class="sui-command-item"&gt;Banana&lt;/button&gt;
+      &lt;button class="sui-command-item"&gt;Cherry&lt;/button&gt;
+      &lt;button class="sui-command-item"&gt;Grape&lt;/button&gt;
+      &lt;button class="sui-command-item"&gt;Mango&lt;/button&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="sui-command-empty"&gt;No results found.&lt;/div&gt;
+&lt;/div&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Dialog Mode -->
+<div class="pg-section" id="section-5">
+  <h3 class="pg-section-title">Dialog Mode</h3>
+  <p style="font-size:13px;color:var(--sui-text-light);margin-bottom:16px;">Press <kbd style="padding:2px 6px;background:var(--sui-bg-dark);border-radius:4px;font-size:12px;font-family:'JetBrains Mono',monospace;">⌘K</kbd> or click the button below to open the command palette as a dialog overlay.</p>
+  <div class="pg-section-row" style="justify-content:center;">
+    <button class="sui-btn sui-btn-primary" data-sui-command-open="cmd-dialog">Open Command Palette (⌘K)</button>
+    <div class="sui-command-dialog" id="cmd-dialog" data-sui-command-key="k">
+      <div class="sui-command" data-sui-command>
+        <div class="sui-command-input-wrap">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          <input class="sui-command-input" type="text" placeholder="Type a command or search...">
+        </div>
+        <div class="sui-command-list">
+          <div class="sui-command-group">
+            <div class="sui-command-group-label">Suggestions</div>
+            <button class="sui-command-item"><svg class="sui-command-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg> Calendar</button>
+            <button class="sui-command-item"><svg class="sui-command-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg> Search Emoji</button>
+            <button class="sui-command-item"><svg class="sui-command-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/></svg> Calculator</button>
+          </div>
+          <div class="sui-command-separator"></div>
+          <div class="sui-command-group">
+            <div class="sui-command-group-label">Settings</div>
+            <button class="sui-command-item"><svg class="sui-command-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg> Profile <span class="sui-command-shortcut">⌘P</span></button>
+            <button class="sui-command-item"><svg class="sui-command-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg> Billing <span class="sui-command-shortcut">⌘B</span></button>
+            <button class="sui-command-item"><svg class="sui-command-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg> Settings <span class="sui-command-shortcut">⌘,</span></button>
+          </div>
+        </div>
+        <div class="sui-command-empty">No results found.</div>
+      </div>
+    </div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;!-- Trigger button --&gt;
+&lt;button class="sui-btn" data-sui-command-open="cmd-dialog"&gt;Open Command Palette (⌘K)&lt;/button&gt;
+
+&lt;!-- Dialog overlay --&gt;
+&lt;div class="sui-command-dialog" id="cmd-dialog" data-sui-command-key="k"&gt;
+  &lt;div class="sui-command" data-sui-command&gt;
+    &lt;div class="sui-command-input-wrap"&gt;
+      &lt;svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"&gt;&lt;circle cx="11" cy="11" r="8"/&gt;&lt;line x1="21" y1="21" x2="16.65" y2="16.65"/&gt;&lt;/svg&gt;
+      &lt;input class="sui-command-input" type="text" placeholder="Type a command or search..."&gt;
+    &lt;/div&gt;
+    &lt;div class="sui-command-list"&gt;
+      &lt;div class="sui-command-group"&gt;
+        &lt;div class="sui-command-group-label"&gt;Suggestions&lt;/div&gt;
+        &lt;button class="sui-command-item"&gt;Calendar&lt;/button&gt;
+        &lt;button class="sui-command-item"&gt;Search Emoji&lt;/button&gt;
+        &lt;button class="sui-command-item"&gt;Calculator&lt;/button&gt;
+      &lt;/div&gt;
+      &lt;div class="sui-command-separator"&gt;&lt;/div&gt;
+      &lt;div class="sui-command-group"&gt;
+        &lt;div class="sui-command-group-label"&gt;Settings&lt;/div&gt;
+        &lt;button class="sui-command-item"&gt;Profile &lt;span class="sui-command-shortcut"&gt;⌘P&lt;/span&gt;&lt;/button&gt;
+        &lt;button class="sui-command-item"&gt;Billing &lt;span class="sui-command-shortcut"&gt;⌘B&lt;/span&gt;&lt;/button&gt;
+        &lt;button class="sui-command-item"&gt;Settings &lt;span class="sui-command-shortcut"&gt;⌘,&lt;/span&gt;&lt;/button&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="sui-command-empty"&gt;No results found.&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Disabled Items -->
+<div class="pg-section" id="section-6">
+  <h3 class="pg-section-title">Disabled Items</h3>
+  <p style="font-size:13px;color:var(--sui-text-light);margin-bottom:16px;">Add the <code>disabled</code> class to make items non-interactive. Disabled items are skipped by keyboard navigation.</p>
+  <div class="pg-section-row" style="justify-content:center;">
+    <div class="sui-command" data-sui-command style="max-width:420px;">
+      <div class="sui-command-input-wrap">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        <input class="sui-command-input" type="text" placeholder="Search actions...">
+      </div>
+      <div class="sui-command-list">
+        <div class="sui-command-group">
+          <div class="sui-command-group-label">Actions</div>
+          <button class="sui-command-item">New Project</button>
+          <button class="sui-command-item disabled">Import From GitHub</button>
+          <button class="sui-command-item">Invite Team Member</button>
+          <button class="sui-command-item disabled">Deploy to Production</button>
+          <button class="sui-command-item">View Analytics</button>
+        </div>
+      </div>
+      <div class="sui-command-empty">No results found.</div>
+    </div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-command" data-sui-command&gt;
+  &lt;div class="sui-command-input-wrap"&gt;
+    &lt;svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"&gt;&lt;circle cx="11" cy="11" r="8"/&gt;&lt;line x1="21" y1="21" x2="16.65" y2="16.65"/&gt;&lt;/svg&gt;
+    &lt;input class="sui-command-input" type="text" placeholder="Search actions..."&gt;
+  &lt;/div&gt;
+  &lt;div class="sui-command-list"&gt;
+    &lt;div class="sui-command-group"&gt;
+      &lt;div class="sui-command-group-label"&gt;Actions&lt;/div&gt;
+      &lt;button class="sui-command-item"&gt;New Project&lt;/button&gt;
+      &lt;button class="sui-command-item disabled"&gt;Import From GitHub&lt;/button&gt;
+      &lt;button class="sui-command-item"&gt;Invite Team Member&lt;/button&gt;
+      &lt;button class="sui-command-item disabled"&gt;Deploy to Production&lt;/button&gt;
+      &lt;button class="sui-command-item"&gt;View Analytics&lt;/button&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="sui-command-empty"&gt;No results found.&lt;/div&gt;
+&lt;/div&gt;</pre></div>
+  </div>
+</div>
