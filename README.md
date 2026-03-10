@@ -1,8 +1,8 @@
 <p align="center">
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="assets/banner-dark.png">
-    <source media="(prefers-color-scheme: light)" srcset="assets/banner-light.png">
-    <img alt="SoftUI — Neumorphic CSS Components" src="assets/banner-light.png" width="100%">
+    <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/siddharth-bhansali/softui/main/assets/banner-dark.png">
+    <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/siddharth-bhansali/softui/main/assets/banner-light.png">
+    <img alt="SoftUI — Neumorphic CSS Components" src="https://raw.githubusercontent.com/siddharth-bhansali/softui/main/assets/banner-light.png" width="100%">
   </picture>
 </p>
 
