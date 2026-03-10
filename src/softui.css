@@ -8669,3 +8669,171 @@ a.sui-btn-warning:visited {
     display: none;
   }
 }
+
+/* ===========================================
+   Stat Card
+   =========================================== */
+.sui-stat {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 20px;
+  background: var(--sui-bg);
+  border-radius: var(--sui-radius);
+  box-shadow: var(--sui-shadow-raised-sm);
+  transition: var(--sui-transition);
+}
+
+.sui-stat:hover {
+  box-shadow: var(--sui-shadow-raised-lg);
+  transform: translateY(-4px);
+}
+
+.sui-stat-label {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--sui-text-muted);
+  margin: 0;
+  line-height: 1.3;
+}
+
+.sui-stat-value {
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--sui-text);
+  margin: 4px 0 2px;
+  line-height: 1.2;
+}
+
+.sui-stat-trend {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  color: var(--sui-text-muted);
+  white-space: nowrap;
+}
+
+.sui-stat-change {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  font-weight: 600;
+  font-size: 12px;
+}
+
+.sui-stat-change-up { color: var(--sui-success); }
+.sui-stat-change-down { color: var(--sui-danger); }
+.sui-stat-change-flat { color: var(--sui-warning); }
+
+/* --- With Icon --- */
+.sui-stat-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+
+.sui-stat-icon {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--sui-radius-sm);
+  background: var(--sui-bg);
+  box-shadow: var(--sui-shadow-raised-sm);
+  flex-shrink: 0;
+}
+
+.sui-stat-icon svg {
+  width: 20px;
+  height: 20px;
+  stroke: var(--sui-text-muted);
+  fill: none;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.sui-stat-icon-primary { background: rgba(91, 84, 224, 0.1); }
+.sui-stat-icon-primary svg { stroke: var(--sui-primary); }
+
+.sui-stat-icon-success { background: rgba(45, 206, 137, 0.1); }
+.sui-stat-icon-success svg { stroke: var(--sui-success); }
+
+.sui-stat-icon-danger { background: rgba(231, 76, 111, 0.1); }
+.sui-stat-icon-danger svg { stroke: var(--sui-danger); }
+
+.sui-stat-icon-warning { background: rgba(245, 166, 35, 0.1); }
+.sui-stat-icon-warning svg { stroke: var(--sui-warning); }
+
+.sui-stat-icon-info { background: rgba(54, 163, 247, 0.1); }
+.sui-stat-icon-info svg { stroke: var(--sui-info); }
+
+/* --- With Progress --- */
+.sui-stat .sui-progress {
+  margin-top: 12px;
+}
+
+/* --- Bordered accent --- */
+.sui-stat-bordered {
+  border-left: 3px solid var(--sui-bg-dark);
+}
+
+.sui-stat-bordered-primary { border-left-color: var(--sui-primary); }
+.sui-stat-bordered-success { border-left-color: var(--sui-success); }
+.sui-stat-bordered-danger { border-left-color: var(--sui-danger); }
+.sui-stat-bordered-warning { border-left-color: var(--sui-warning); }
+.sui-stat-bordered-info { border-left-color: var(--sui-info); }
+
+/* --- Inset --- */
+.sui-stat-inset {
+  box-shadow: var(--sui-shadow-inset);
+}
+
+.sui-stat-inset:hover {
+  box-shadow: var(--sui-shadow-inset), var(--sui-shadow-raised-lg);
+  transform: translateY(-4px);
+}
+
+/* --- Flat --- */
+.sui-stat-flat {
+  box-shadow: none;
+  border: 1px solid var(--sui-bg-dark);
+}
+
+.sui-stat-flat:hover {
+  box-shadow: var(--sui-shadow-raised-lg);
+  transform: translateY(-4px);
+}
+
+/* --- Compact --- */
+.sui-stat-compact {
+  padding: 14px 16px;
+  gap: 0;
+}
+
+.sui-stat-compact .sui-stat-value {
+  font-size: 22px;
+  margin: 2px 0;
+}
+
+.sui-stat-compact .sui-stat-label {
+  font-size: 12px;
+}
+
+.sui-stat-compact .sui-stat-icon {
+  width: 34px;
+  height: 34px;
+}
+
+.sui-stat-compact .sui-stat-icon svg {
+  width: 16px;
+  height: 16px;
+}
+
+.sui-stat-compact .sui-progress {
+  margin-top: 8px;
+}
