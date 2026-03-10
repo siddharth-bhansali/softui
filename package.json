@@ -1,6 +1,6 @@
 {
   "name": "softui-css",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "A neumorphic CSS component library with soft shadows, muted palettes, and tactile depth.",
   "main": "dist/softui.js",
   "style": "dist/softui.css",
