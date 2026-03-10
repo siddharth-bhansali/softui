@@ -2,7 +2,7 @@
 
 A neumorphic CSS component library with soft shadows, muted palettes, and tactile depth. No dependencies. Dark mode included.
 
-**[Documentation & Live Demos](https://softui-css.netlify.app)**
+**[Documentation](https://softui-css.netlify.app)** | **[Live Demo](https://softui-demo.netlify.app)**
 
 ## Install
 
