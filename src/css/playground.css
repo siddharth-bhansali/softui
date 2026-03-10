@@ -145,15 +145,12 @@
   gap: 4px;
   padding: 5px 6px;
   border-radius: 6px;
+  cursor: pointer;
   transition: background 0.15s ease;
 }
 
 .pg-snippet-row:hover {
   background: rgba(91, 84, 224, 0.06);
-}
-
-.has-variants > .pg-snippet-row {
-  cursor: pointer;
 }
 
 .pg-snippet-expand {
@@ -199,33 +196,6 @@
   color: var(--sui-text);
 }
 
-.pg-snippet-add {
-  width: 22px;
-  height: 22px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0;
-  border: 1px solid transparent;
-  background: none;
-  color: var(--sui-text-light);
-  cursor: pointer;
-  border-radius: 4px;
-  flex-shrink: 0;
-  opacity: 0;
-  transition: all 0.15s ease;
-}
-
-.pg-snippet-row:hover .pg-snippet-add {
-  opacity: 1;
-}
-
-.pg-snippet-add:hover {
-  color: var(--sui-primary);
-  border-color: var(--sui-primary);
-  background: rgba(91, 84, 224, 0.08);
-}
-
 /* Children (sub-items under expandable parent) */
 .pg-snippet-children {
   display: none;
@@ -243,6 +213,7 @@
   gap: 4px;
   padding: 4px 6px;
   border-radius: 6px;
+  cursor: pointer;
   transition: background 0.15s ease;
 }
 
@@ -263,14 +234,6 @@
 
 .pg-snippet-child:hover .pg-snippet-child-label {
   color: var(--sui-text-muted);
-}
-
-.pg-snippet-child .pg-snippet-add {
-  opacity: 0;
-}
-
-.pg-snippet-child:hover .pg-snippet-add {
-  opacity: 1;
 }
 
 .pg-snippets-cat.hidden {

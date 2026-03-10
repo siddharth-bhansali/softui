@@ -24,24 +24,17 @@ permalink: /playground/
       <div class="pg-snippets-cat">{{ category }}</div>
       {%- for item in items %}
       <div class="pg-snippet-item{% if item.variants %} has-variants{% endif %}" data-snippet-id="{{ item.id }}" draggable="true">
-        <div class="pg-snippet-row"{% if item.variants %} onclick="pgToggleVariants(this)"{% endif %}>
+        <div class="pg-snippet-row" onclick="{% if item.variants %}pgToggleVariants(this){% else %}insertSnippet('{{ item.id }}'){% endif %}">
           <span class="pg-snippet-label">{{ item.label }}</span>
           {%- if item.variants %}
-          <button class="pg-snippet-expand" aria-label="Expand variants"><svg width="10" height="10" viewBox="0 0 10 10"><polyline points="3,2 7,5 3,8" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-          {%- else %}
-          <button class="pg-snippet-add" onclick="insertSnippet('{{ item.id }}')" title="Add to editor" aria-label="Add {{ item.label }}">
-            <svg width="12" height="12" viewBox="0 0 12 12"><line x1="6" y1="2" x2="6" y2="10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><line x1="2" y1="6" x2="10" y2="6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
-          </button>
+          <span class="pg-snippet-expand" aria-label="Expand variants"><svg width="10" height="10" viewBox="0 0 10 10"><polyline points="3,2 7,5 3,8" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
           {%- endif %}
         </div>
         {%- if item.variants %}
         <div class="pg-snippet-children">
           {%- for v in item.variants %}
-          <div class="pg-snippet-child">
+          <div class="pg-snippet-child" onclick="insertVariant('{{ item.id }}', {{ loop.index0 }})">
             <span class="pg-snippet-child-label">{{ v.label }}</span>
-            <button class="pg-snippet-add" onclick="insertVariant('{{ item.id }}', {{ loop.index0 }})" title="Add {{ v.label }}" aria-label="Add {{ v.label }}">
-              <svg width="12" height="12" viewBox="0 0 12 12"><line x1="6" y1="2" x2="6" y2="10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><line x1="2" y1="6" x2="10" y2="6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
-            </button>
           </div>
           {%- endfor %}
         </div>
