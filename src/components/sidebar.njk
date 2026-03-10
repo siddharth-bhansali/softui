@@ -1,0 +1,529 @@
+---
+layout: component.njk
+title: Sidebar
+description: A composable sidebar navigation component with header, content groups, footer, collapsible icon mode, and mobile drawer.
+componentId: sidebar
+hasControls: false
+toc:
+  - Default
+  - With Groups
+  - With Badges
+  - Bordered
+  - Compact
+  - Collapsible
+  - Collapsed (Icon Only)
+  - With Header & Footer
+---
+
+<!-- Default -->
+<div class="pg-section" id="section-1">
+  <h3 class="pg-section-title">Default</h3>
+  <div class="pg-section-row">
+    <div style="display:flex;border:1px solid var(--sui-bg-dark);border-radius:var(--sui-radius);overflow:hidden;height:340px;width:100%;">
+      <aside class="sui-sidebar sui-sidebar-bordered" style="height:100%;">
+        <div class="sui-sidebar-content">
+          <div class="sui-sidebar-group">
+            <h6 class="sui-sidebar-group-label">Main</h6>
+            <ul class="sui-sidebar-nav">
+              <li><a href="#" class="active">Dashboard</a></li>
+              <li><a href="#">Analytics</a></li>
+              <li><a href="#">Customers</a></li>
+              <li><a href="#">Products</a></li>
+              <li><a href="#">Orders</a></li>
+            </ul>
+          </div>
+          <div class="sui-sidebar-divider"></div>
+          <div class="sui-sidebar-group">
+            <h6 class="sui-sidebar-group-label">Settings</h6>
+            <ul class="sui-sidebar-nav">
+              <li><a href="#">Team</a></li>
+              <li><a href="#">Billing</a></li>
+              <li><a href="#">Integrations</a></li>
+            </ul>
+          </div>
+        </div>
+      </aside>
+      <div style="flex:1;padding:24px;display:flex;align-items:center;justify-content:center;color:var(--sui-text-muted);font-size:14px;">Main content area</div>
+    </div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;aside class="sui-sidebar sui-sidebar-bordered"&gt;
+  &lt;div class="sui-sidebar-content"&gt;
+    &lt;div class="sui-sidebar-group"&gt;
+      &lt;h6 class="sui-sidebar-group-label"&gt;Main&lt;/h6&gt;
+      &lt;ul class="sui-sidebar-nav"&gt;
+        &lt;li&gt;&lt;a href="#" class="active"&gt;Dashboard&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="#"&gt;Analytics&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="#"&gt;Customers&lt;/a&gt;&lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/div&gt;
+    &lt;div class="sui-sidebar-divider"&gt;&lt;/div&gt;
+    &lt;div class="sui-sidebar-group"&gt;
+      &lt;h6 class="sui-sidebar-group-label"&gt;Settings&lt;/h6&gt;
+      &lt;ul class="sui-sidebar-nav"&gt;
+        &lt;li&gt;&lt;a href="#"&gt;Team&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="#"&gt;Billing&lt;/a&gt;&lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/aside&gt;</pre></div>
+  </div>
+</div>
+
+<!-- With Groups -->
+<div class="pg-section" id="section-2">
+  <h3 class="pg-section-title">With Groups</h3>
+  <div class="pg-section-row">
+    <div style="display:flex;border:1px solid var(--sui-bg-dark);border-radius:var(--sui-radius);overflow:hidden;height:380px;width:100%;">
+      <aside class="sui-sidebar sui-sidebar-bordered" style="height:100%;">
+        <div class="sui-sidebar-content">
+          <div class="sui-sidebar-group">
+            <h6 class="sui-sidebar-group-label">Platform</h6>
+            <ul class="sui-sidebar-nav">
+              <li><a href="#" class="active">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+                <span>Dashboard</span>
+              </a></li>
+              <li><a href="#">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+                <span>Customers</span>
+              </a></li>
+              <li><a href="#">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
+                <span>Orders</span>
+              </a></li>
+            </ul>
+          </div>
+          <div class="sui-sidebar-divider"></div>
+          <div class="sui-sidebar-group">
+            <h6 class="sui-sidebar-group-label">Account</h6>
+            <ul class="sui-sidebar-nav">
+              <li><a href="#">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"/></svg>
+                <span>Settings</span>
+              </a></li>
+              <li><a href="#">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+                <span>Billing</span>
+              </a></li>
+            </ul>
+          </div>
+        </div>
+      </aside>
+      <div style="flex:1;padding:24px;display:flex;align-items:center;justify-content:center;color:var(--sui-text-muted);font-size:14px;">Main content area</div>
+    </div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;aside class="sui-sidebar sui-sidebar-bordered"&gt;
+  &lt;div class="sui-sidebar-content"&gt;
+    &lt;div class="sui-sidebar-group"&gt;
+      &lt;h6 class="sui-sidebar-group-label"&gt;Platform&lt;/h6&gt;
+      &lt;ul class="sui-sidebar-nav"&gt;
+        &lt;li&gt;&lt;a href="#" class="active"&gt;
+          &lt;svg ...&gt;...&lt;/svg&gt;
+          &lt;span&gt;Dashboard&lt;/span&gt;
+        &lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="#"&gt;
+          &lt;svg ...&gt;...&lt;/svg&gt;
+          &lt;span&gt;Customers&lt;/span&gt;
+        &lt;/a&gt;&lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/aside&gt;</pre></div>
+  </div>
+</div>
+
+<!-- With Badges -->
+<div class="pg-section" id="section-3">
+  <h3 class="pg-section-title">With Badges</h3>
+  <div class="pg-section-row">
+    <div style="display:flex;border:1px solid var(--sui-bg-dark);border-radius:var(--sui-radius);overflow:hidden;height:300px;width:100%;">
+      <aside class="sui-sidebar sui-sidebar-bordered" style="height:100%;">
+        <div class="sui-sidebar-content">
+          <div class="sui-sidebar-group">
+            <ul class="sui-sidebar-nav">
+              <li><a href="#" class="active"><span>Inbox</span><span class="sui-sidebar-badge">12</span></a></li>
+              <li><a href="#"><span>Drafts</span><span class="sui-sidebar-badge">3</span></a></li>
+              <li><a href="#"><span>Sent</span></a></li>
+              <li><a href="#"><span>Archive</span></a></li>
+              <li><a href="#"><span>Spam</span><span class="sui-sidebar-badge">99+</span></a></li>
+            </ul>
+          </div>
+        </div>
+      </aside>
+      <div style="flex:1;padding:24px;display:flex;align-items:center;justify-content:center;color:var(--sui-text-muted);font-size:14px;">Main content area</div>
+    </div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;ul class="sui-sidebar-nav"&gt;
+  &lt;li&gt;&lt;a href="#" class="active"&gt;
+    &lt;span&gt;Inbox&lt;/span&gt;
+    &lt;span class="sui-sidebar-badge"&gt;12&lt;/span&gt;
+  &lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="#"&gt;
+    &lt;span&gt;Drafts&lt;/span&gt;
+    &lt;span class="sui-sidebar-badge"&gt;3&lt;/span&gt;
+  &lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="#"&gt;&lt;span&gt;Sent&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Bordered -->
+<div class="pg-section" id="section-4">
+  <h3 class="pg-section-title">Bordered</h3>
+  <div class="pg-section-row">
+    <div style="display:flex;border:1px solid var(--sui-bg-dark);border-radius:var(--sui-radius);overflow:hidden;height:260px;width:100%;">
+      <aside class="sui-sidebar sui-sidebar-bordered" style="height:100%;">
+        <div class="sui-sidebar-content">
+          <div class="sui-sidebar-group">
+            <ul class="sui-sidebar-nav">
+              <li><a href="#" class="active">Home</a></li>
+              <li><a href="#">About</a></li>
+              <li><a href="#">Services</a></li>
+              <li><a href="#">Contact</a></li>
+            </ul>
+          </div>
+        </div>
+      </aside>
+      <div style="flex:1;padding:24px;display:flex;align-items:center;justify-content:center;color:var(--sui-text-muted);font-size:14px;">
+        <code style="font-size:13px;">sui-sidebar-bordered</code> &mdash; uses a border instead of box-shadow
+      </div>
+    </div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;aside class="sui-sidebar sui-sidebar-bordered"&gt;
+  ...
+&lt;/aside&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Compact -->
+<div class="pg-section" id="section-5">
+  <h3 class="pg-section-title">Compact</h3>
+  <div class="pg-section-row">
+    <div style="display:flex;border:1px solid var(--sui-bg-dark);border-radius:var(--sui-radius);overflow:hidden;height:340px;width:100%;">
+      <aside class="sui-sidebar sui-sidebar-bordered sui-sidebar-compact" style="height:100%;">
+        <div class="sui-sidebar-content">
+          <div class="sui-sidebar-group">
+            <h6 class="sui-sidebar-group-label">Forms</h6>
+            <ul class="sui-sidebar-nav">
+              <li><a href="#">Inputs</a></li>
+              <li><a href="#">Toggles & Checks</a></li>
+            </ul>
+          </div>
+          <div class="sui-sidebar-group">
+            <h6 class="sui-sidebar-group-label">Components</h6>
+            <ul class="sui-sidebar-nav">
+              <li><a href="#" class="active">Sidebar</a></li>
+              <li><a href="#">Navbar</a></li>
+              <li><a href="#">Buttons</a></li>
+              <li><a href="#">Cards</a></li>
+              <li><a href="#">Modal</a></li>
+              <li><a href="#">Tabs</a></li>
+            </ul>
+          </div>
+          <div class="sui-sidebar-group">
+            <h6 class="sui-sidebar-group-label">Utilities</h6>
+            <ul class="sui-sidebar-nav">
+              <li><a href="#">Spacing</a></li>
+              <li><a href="#">Shadows</a></li>
+            </ul>
+          </div>
+        </div>
+      </aside>
+      <div style="flex:1;padding:24px;display:flex;align-items:center;justify-content:center;color:var(--sui-text-muted);font-size:14px;">
+        A tighter, docs-style sidebar. Uses <code style="font-size:13px;">sui-sidebar-compact</code>
+      </div>
+    </div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;aside class="sui-sidebar sui-sidebar-bordered sui-sidebar-compact"&gt;
+  &lt;div class="sui-sidebar-content"&gt;
+    &lt;div class="sui-sidebar-group"&gt;
+      &lt;h6 class="sui-sidebar-group-label"&gt;Components&lt;/h6&gt;
+      &lt;ul class="sui-sidebar-nav"&gt;
+        &lt;li&gt;&lt;a href="#" class="active"&gt;Sidebar&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="#"&gt;Navbar&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="#"&gt;Buttons&lt;/a&gt;&lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/aside&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Collapsible -->
+<div class="pg-section" id="section-6">
+  <h3 class="pg-section-title">Collapsible</h3>
+  <div class="pg-section-row">
+    <div style="display:flex;border:1px solid var(--sui-bg-dark);border-radius:var(--sui-radius);overflow:hidden;height:420px;width:100%;">
+      <aside class="sui-sidebar sui-sidebar-bordered sui-sidebar-collapsible" style="height:100%;">
+        <div class="sui-sidebar-header sui-sidebar-header-toggle">
+          <div class="sui-sidebar-brand">
+            <div class="sui-avatar sui-avatar-sm" style="background:var(--sui-primary);color:#fff;font-weight:700;font-size:12px;">CM</div>
+            <span>CloudMetrics</span>
+          </div>
+          <button class="sui-sidebar-toggle" data-sidebar-toggle title="Toggle sidebar">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="11 17 6 12 11 7"/><polyline points="18 17 13 12 18 7"/></svg>
+          </button>
+        </div>
+        <div class="sui-sidebar-divider" style="margin:0 0 4px;"></div>
+        <div class="sui-sidebar-content">
+          <div class="sui-sidebar-group">
+            <h6 class="sui-sidebar-group-label">Platform</h6>
+            <ul class="sui-sidebar-nav">
+              <li><a href="#" class="active">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+                <span>Dashboard</span>
+              </a></li>
+              <li><a href="#">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+                <span>Analytics</span>
+              </a></li>
+              <li><a href="#">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+                <span>Customers</span>
+                <span class="sui-sidebar-badge">24</span>
+              </a></li>
+              <li><a href="#">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
+                <span>Orders</span>
+              </a></li>
+            </ul>
+          </div>
+          <div class="sui-sidebar-divider"></div>
+          <div class="sui-sidebar-group">
+            <h6 class="sui-sidebar-group-label">Settings</h6>
+            <ul class="sui-sidebar-nav">
+              <li><a href="#">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"/></svg>
+                <span>Settings</span>
+              </a></li>
+              <li><a href="#">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+                <span>Billing</span>
+              </a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="sui-sidebar-divider" style="margin:4px 0 0;"></div>
+        <div class="sui-sidebar-footer">
+          <div style="display:flex;align-items:center;gap:10px;">
+            <div class="sui-avatar sui-avatar-sm" style="background:var(--sui-success);color:#fff;font-weight:600;font-size:11px;flex-shrink:0;">JD</div>
+            <span style="font-size:13px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">John Doe</span>
+          </div>
+        </div>
+      </aside>
+      <div style="flex:1;padding:24px;display:flex;align-items:center;justify-content:center;color:var(--sui-text-muted);font-size:14px;">
+        Click the toggle button in the header to collapse &amp; expand.
+      </div>
+    </div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;aside class="sui-sidebar sui-sidebar-bordered sui-sidebar-collapsible"&gt;
+  &lt;div class="sui-sidebar-header sui-sidebar-header-toggle"&gt;
+    &lt;div class="sui-sidebar-brand"&gt;
+      &lt;div class="sui-avatar sui-avatar-sm"&gt;CM&lt;/div&gt;
+      &lt;span&gt;CloudMetrics&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;button class="sui-sidebar-toggle" data-sidebar-toggle&gt;
+      &lt;svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+        stroke-width="2" stroke-linecap="round" stroke-linejoin="round"&gt;
+        &lt;polyline points="11 17 6 12 11 7"/&gt;
+        &lt;polyline points="18 17 13 12 18 7"/&gt;
+      &lt;/svg&gt;
+    &lt;/button&gt;
+  &lt;/div&gt;
+
+  &lt;div class="sui-sidebar-content"&gt;
+    &lt;div class="sui-sidebar-group"&gt;
+      &lt;h6 class="sui-sidebar-group-label"&gt;Platform&lt;/h6&gt;
+      &lt;ul class="sui-sidebar-nav"&gt;
+        &lt;li&gt;&lt;a href="#" class="active"&gt;
+          &lt;svg ...&gt;...&lt;/svg&gt;
+          &lt;span&gt;Dashboard&lt;/span&gt;
+        &lt;/a&gt;&lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;div class="sui-sidebar-footer"&gt;
+    &lt;div style="display:flex;align-items:center;gap:10px;"&gt;
+      &lt;div class="sui-avatar sui-avatar-sm"&gt;JD&lt;/div&gt;
+      &lt;span&gt;John Doe&lt;/span&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/aside&gt;
+
+&lt;!-- Or toggle programmatically --&gt;
+&lt;script&gt;
+  const sb = SoftUI.sidebar('.my-sidebar');
+  sb.toggle();   // toggle collapsed
+  sb.collapse(); // force collapse
+  sb.expand();   // force expand
+&lt;/script&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Collapsed (Icon Only) -->
+<div class="pg-section" id="section-7">
+  <h3 class="pg-section-title">Collapsed (Icon Only)</h3>
+  <div class="pg-section-row">
+    <div style="display:flex;border:1px solid var(--sui-bg-dark);border-radius:var(--sui-radius);overflow:hidden;height:320px;width:100%;">
+      <aside class="sui-sidebar sui-sidebar-bordered sui-sidebar-collapsed" style="height:100%;">
+        <div class="sui-sidebar-content">
+          <div class="sui-sidebar-group">
+            <ul class="sui-sidebar-nav">
+              <li><a href="#" class="active">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+                <span>Dashboard</span>
+              </a></li>
+              <li><a href="#">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+                <span>Customers</span>
+              </a></li>
+              <li><a href="#">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
+                <span>Orders</span>
+              </a></li>
+              <li><a href="#">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"/></svg>
+                <span>Settings</span>
+              </a></li>
+            </ul>
+          </div>
+        </div>
+      </aside>
+      <div style="flex:1;padding:24px;display:flex;align-items:center;justify-content:center;color:var(--sui-text-muted);font-size:14px;">
+        Add <code style="font-size:13px;">sui-sidebar-collapsed</code> for icon-only mode. Labels and badges are hidden automatically.
+      </div>
+    </div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;aside class="sui-sidebar sui-sidebar-bordered sui-sidebar-collapsed"&gt;
+  &lt;div class="sui-sidebar-content"&gt;
+    &lt;ul class="sui-sidebar-nav"&gt;
+      &lt;li&gt;&lt;a href="#" class="active"&gt;
+        &lt;svg ...&gt;...&lt;/svg&gt;
+        &lt;span&gt;Dashboard&lt;/span&gt;
+      &lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/div&gt;
+&lt;/aside&gt;</pre></div>
+  </div>
+</div>
+
+<!-- With Header & Footer -->
+<div class="pg-section" id="section-8">
+  <h3 class="pg-section-title">With Header & Footer</h3>
+  <div class="pg-section-row">
+    <div style="display:flex;border:1px solid var(--sui-bg-dark);border-radius:var(--sui-radius);overflow:hidden;height:420px;width:100%;">
+      <aside class="sui-sidebar sui-sidebar-bordered" style="height:100%;">
+        <div class="sui-sidebar-header">
+          <div style="display:flex;align-items:center;gap:10px;">
+            <div class="sui-avatar sui-avatar-sm" style="background:var(--sui-primary);color:#fff;font-weight:700;font-size:12px;">CM</div>
+            <div>
+              <div style="font-weight:700;font-size:14px;">CloudMetrics</div>
+              <div style="font-size:11px;color:var(--sui-text-muted);">Enterprise Plan</div>
+            </div>
+          </div>
+        </div>
+        <div class="sui-sidebar-divider" style="margin:0 0 4px;"></div>
+        <div class="sui-sidebar-content">
+          <div class="sui-sidebar-group">
+            <h6 class="sui-sidebar-group-label">Platform</h6>
+            <ul class="sui-sidebar-nav">
+              <li><a href="#" class="active">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+                <span>Dashboard</span>
+              </a></li>
+              <li><a href="#">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+                <span>Analytics</span>
+              </a></li>
+              <li><a href="#">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+                <span>Customers</span>
+                <span class="sui-sidebar-badge">24</span>
+              </a></li>
+              <li><a href="#">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
+                <span>Orders</span>
+              </a></li>
+            </ul>
+          </div>
+          <div class="sui-sidebar-divider"></div>
+          <div class="sui-sidebar-group">
+            <h6 class="sui-sidebar-group-label">Settings</h6>
+            <ul class="sui-sidebar-nav">
+              <li><a href="#">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"/></svg>
+                <span>Settings</span>
+              </a></li>
+              <li><a href="#">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+                <span>Billing</span>
+              </a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="sui-sidebar-divider" style="margin:4px 0 0;"></div>
+        <div class="sui-sidebar-footer">
+          <div style="display:flex;align-items:center;gap:10px;">
+            <div class="sui-avatar sui-avatar-sm" style="background:var(--sui-success);color:#fff;font-weight:600;font-size:11px;">JD</div>
+            <div style="flex:1;min-width:0;">
+              <div style="font-size:13px;font-weight:600;">John Doe</div>
+              <div style="font-size:11px;color:var(--sui-text-muted);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">john@cloudmetrics.io</div>
+            </div>
+          </div>
+        </div>
+      </aside>
+      <div style="flex:1;padding:24px;display:flex;align-items:center;justify-content:center;color:var(--sui-text-muted);font-size:14px;">Main content area</div>
+    </div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;aside class="sui-sidebar sui-sidebar-bordered"&gt;
+  &lt;div class="sui-sidebar-header"&gt;
+    &lt;div style="display:flex;align-items:center;gap:10px;"&gt;
+      &lt;div class="sui-avatar sui-avatar-sm"&gt;CM&lt;/div&gt;
+      &lt;div&gt;
+        &lt;div style="font-weight:700;"&gt;CloudMetrics&lt;/div&gt;
+        &lt;div style="font-size:11px;color:var(--sui-text-muted);"&gt;Enterprise Plan&lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;div class="sui-sidebar-content"&gt;
+    &lt;div class="sui-sidebar-group"&gt;
+      &lt;h6 class="sui-sidebar-group-label"&gt;Platform&lt;/h6&gt;
+      &lt;ul class="sui-sidebar-nav"&gt;
+        &lt;li&gt;&lt;a href="#"&gt;
+          &lt;svg ...&gt;...&lt;/svg&gt;
+          &lt;span&gt;Dashboard&lt;/span&gt;
+        &lt;/a&gt;&lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;div class="sui-sidebar-footer"&gt;
+    &lt;div style="display:flex;align-items:center;gap:10px;"&gt;
+      &lt;div class="sui-avatar sui-avatar-sm"&gt;JD&lt;/div&gt;
+      &lt;div&gt;
+        &lt;div&gt;John Doe&lt;/div&gt;
+        &lt;div style="font-size:11px;"&gt;john@cloudmetrics.io&lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/aside&gt;</pre></div>
+  </div>
+</div>

@@ -2874,5 +2874,29 @@ const SoftUI = (() => {
     });
   }
 
-  return { modal, sheet, toast, carousel };
+  // =========================================
+  // Sidebar — collapsible toggle
+  // =========================================
+  document.addEventListener('click', function(e) {
+    var btn = e.target.closest('[data-sidebar-toggle]');
+    if (!btn) return;
+    var sidebar = btn.closest('.sui-sidebar');
+    if (sidebar) {
+      sidebar.classList.toggle('sui-sidebar-collapsed');
+    }
+  });
+
+  function sidebar(selector) {
+    var el = typeof selector === 'string' ? document.querySelector(selector) : selector;
+    if (!el) return null;
+
+    function collapse() { el.classList.add('sui-sidebar-collapsed'); }
+    function expand() { el.classList.remove('sui-sidebar-collapsed'); }
+    function toggle() { el.classList.toggle('sui-sidebar-collapsed'); }
+    function isCollapsed() { return el.classList.contains('sui-sidebar-collapsed'); }
+
+    return { collapse: collapse, expand: expand, toggle: toggle, isCollapsed: isCollapsed, el: el };
+  }
+
+  return { modal, sheet, toast, carousel, sidebar };
 })();

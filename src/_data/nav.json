@@ -21,6 +21,7 @@
     { "id": "modal", "name": "Modal", "url": "/components/modal/" },
     { "id": "sheet", "name": "Sheet", "url": "/components/sheet/" },
     { "id": "navbar", "name": "Navbar", "url": "/components/navbar/" },
+    { "id": "sidebar", "name": "Sidebar", "url": "/components/sidebar/" },
     { "id": "layout", "name": "Layout", "url": "/components/layout/" },
     { "id": "avatars", "name": "Avatars", "url": "/components/avatars/" },
     { "id": "tooltips", "name": "Tooltips", "url": "/components/tooltips/" },
