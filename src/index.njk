@@ -770,39 +770,11 @@ title: SoftUI
 </div>
 
 <script>
-  // Homepage filter
-  const params = new URLSearchParams(window.location.search);
-  const filter = params.get('filter');
-  if (filter) {
-    document.querySelectorAll('.docs-topbar-nav a').forEach(a => {
-      a.classList.remove('active');
-      if (a.getAttribute('href') === '/?filter=' + filter) a.classList.add('active');
-    });
-    document.querySelectorAll('.bento-card').forEach(card => {
-      card.style.display = (card.dataset.cat === filter) ? '' : 'none';
-    });
-  }
-
   // Bento slider previews
   document.querySelectorAll('.bento-preview .sui-slider input[type="range"]').forEach(input => {
     const val = input.parentElement.querySelector('.sui-slider-value');
     if (val) {
       input.addEventListener('input', () => { val.textContent = input.value; });
     }
-  });
-
-  // Client-side filter clicks (avoid page reload)
-  document.querySelectorAll('.docs-topbar-nav a').forEach(a => {
-    a.addEventListener('click', (e) => {
-      e.preventDefault();
-      const href = a.getAttribute('href');
-      const f = new URLSearchParams(href.split('?')[1] || '').get('filter');
-      history.pushState(null, '', href);
-      document.querySelectorAll('.docs-topbar-nav a').forEach(l => l.classList.remove('active'));
-      a.classList.add('active');
-      document.querySelectorAll('.bento-card').forEach(card => {
-        card.style.display = (!f || card.dataset.cat === f) ? '' : 'none';
-      });
-    });
   });
 </script>

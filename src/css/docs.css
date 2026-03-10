@@ -58,6 +58,13 @@
   color: var(--sui-text-muted);
 }
 .docs-theme-toggle:hover { box-shadow: var(--sui-shadow-inset-sm); }
+.docs-topbar-icon {
+  display: flex;
+  align-items: center;
+  color: var(--sui-text-muted);
+  transition: color 0.2s ease;
+}
+.docs-topbar-icon:hover { color: var(--sui-text); }
 
 /* =========================================
    Hero
