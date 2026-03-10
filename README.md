@@ -35,11 +35,14 @@ Download `softui.min.css` and `softui.min.js` from the `dist/` folder and includ
 ## Quick Start
 
 ```html
-<button class="sui-btn sui-btn-primary">Click me</button>
-
-<div class="sui-card sui-raised" style="padding: 24px;">
-  <h3>Hello SoftUI</h3>
-  <p>A neumorphic card with a soft raised shadow.</p>
+<div class="sui-container" style="max-width: 480px; padding: 48px 24px;">
+  <div class="sui-card sui-raised" style="padding: 32px;">
+    <h3>Hello SoftUI</h3>
+    <p style="color: var(--sui-text-muted); margin: 8px 0 20px;">
+      A neumorphic card with a soft raised shadow.
+    </p>
+    <button class="sui-btn sui-btn-primary">Get Started</button>
+  </div>
 </div>
 ```
 
