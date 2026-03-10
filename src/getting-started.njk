@@ -1,0 +1,89 @@
+---
+layout: base.njk
+title: Getting Started
+permalink: /getting-started/
+---
+<div class="docs-getstarted-page">
+
+  <h1 class="docs-getstarted-title">Getting Started</h1>
+  <p class="docs-getstarted-desc">Add SoftUI to your project in seconds. No build tools required.</p>
+
+  <!-- Install -->
+  <section class="docs-getstarted-section" id="install">
+    <h2>Install</h2>
+    <div class="docs-getstarted-code">
+<pre><code>npm install softui-css
+# or
+yarn add softui-css
+# or
+pnpm add softui-css
+# or
+bun add softui-css</code></pre>
+    </div>
+  </section>
+
+  <!-- CDN -->
+  <section class="docs-getstarted-section" id="cdn">
+    <h2>CDN</h2>
+    <p>Drop these two lines into your <code>&lt;head&gt;</code> and you're ready to go:</p>
+    <div class="docs-getstarted-code">
+<pre><code>&lt;link rel="stylesheet" href="https://unpkg.com/softui-css/dist/softui.min.css"&gt;
+&lt;script src="https://unpkg.com/softui-css/dist/softui.min.js"&gt;&lt;/script&gt;</code></pre>
+    </div>
+  </section>
+
+  <!-- Quick Start -->
+  <section class="docs-getstarted-section" id="quickstart">
+    <h2>Quick Start</h2>
+    <p>Here's a minimal HTML page with a neumorphic button and card:</p>
+    <div class="docs-getstarted-code">
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+  &lt;link rel="stylesheet" href="https://unpkg.com/softui-css/dist/softui.min.css"&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+  &lt;button class="sui-btn sui-btn-primary"&gt;Click me&lt;/button&gt;
+
+  &lt;div class="sui-card sui-raised" style="padding: 24px;"&gt;
+    &lt;h3&gt;Hello SoftUI&lt;/h3&gt;
+    &lt;p&gt;A neumorphic card with a soft raised shadow.&lt;/p&gt;
+  &lt;/div&gt;
+
+  &lt;script src="https://unpkg.com/softui-css/dist/softui.min.js"&gt;&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+    </div>
+  </section>
+
+  <!-- Dark Mode -->
+  <section class="docs-getstarted-section" id="darkmode">
+    <h2>Dark Mode</h2>
+    <p>Add <code>data-theme="dark"</code> to your <code>&lt;html&gt;</code> element. Every component adapts automatically.</p>
+    <div class="docs-getstarted-code">
+<pre><code>&lt;html data-theme="dark"&gt;</code></pre>
+    </div>
+  </section>
+
+  <!-- Customization -->
+  <section class="docs-getstarted-section" id="customize">
+    <h2>Customization</h2>
+    <p>SoftUI is built on CSS custom properties. Override them anywhere to match your brand:</p>
+    <div class="docs-getstarted-code">
+<pre><code>:root {
+  --sui-primary: #7C5CFC;
+  --sui-radius: 12px;
+  --sui-shadow-raised: 6px 6px 12px rgba(0,0,0,0.15),
+                       -6px -6px 12px rgba(255,255,255,0.05);
+}</code></pre>
+    </div>
+  </section>
+
+  <div style="text-align:center;margin-top:48px;">
+    <a href="/components/buttons/" class="sui-btn sui-btn-primary sui-btn-lg">Explore Components</a>
+  </div>
+
+</div>

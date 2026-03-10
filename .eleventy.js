@@ -1,5 +1,7 @@
 module.exports = function(eleventyConfig) {
   // Pass through static assets
+  eleventyConfig.addPassthroughCopy("src/softui.css");
+  eleventyConfig.addPassthroughCopy("src/softui.js");
   eleventyConfig.addPassthroughCopy("src/css");
   eleventyConfig.addPassthroughCopy("src/favicon.svg");
 
