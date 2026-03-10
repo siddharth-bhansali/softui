@@ -1,6 +1,6 @@
 {
   "name": "softui-css",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "A neumorphic CSS component library with soft shadows, muted palettes, and tactile depth.",
   "main": "dist/softui.js",
   "style": "dist/softui.css",
@@ -8,8 +8,6 @@
     "dist/"
   ],
   "scripts": {
-    "dev": "eleventy --serve --incremental",
-    "build": "eleventy",
     "build:min": "cleancss -o dist/softui.min.css src/softui.css && terser src/softui.js -o dist/softui.min.js --compress --mangle && node -e \"fs=require('fs');fs.copyFileSync('src/softui.css','dist/softui.css');fs.copyFileSync('src/softui.js','dist/softui.js')\"",
     "prepublishOnly": "npm run build:min"
   },
@@ -36,7 +34,6 @@
   },
   "type": "commonjs",
   "devDependencies": {
-    "@11ty/eleventy": "^3.1.2",
     "clean-css-cli": "^5.6.3",
     "terser": "^5.46.0"
   }
