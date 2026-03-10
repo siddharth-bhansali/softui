@@ -1719,8 +1719,8 @@ a.sui-btn-warning:visited {
   transform: scaleX(1);
 }
 
-.sui-tab-list-underlined + .sui-tab-panel > .sui-card:only-child,
-.sui-tab-list-underlined ~ .sui-tab-panel > .sui-card:only-child {
+.sui-tab-list-underlined + .sui-tab-panel > .sui-card:only-child.sui-tab-flush,
+.sui-tab-list-underlined ~ .sui-tab-panel > .sui-card:only-child.sui-tab-flush {
   border-top-left-radius: 0;
   border-top-right-radius: 0;
 }
