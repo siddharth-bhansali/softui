@@ -1,0 +1,96 @@
+---
+layout: base.njk
+title: Playground
+permalink: /playground/
+---
+
+<link rel="stylesheet" href="/css/playground.css">
+
+<div class="pg-snippets-overlay" onclick="pgToggleSnippets()"></div>
+
+<div class="playground-page">
+
+  <!-- Snippet Sidebar -->
+  <aside class="pg-snippets">
+    <div class="pg-snippets-header">
+      <div class="pg-snippets-title">Snippets</div>
+      <div class="pg-search-wrap">
+        <input type="text" class="pg-snippets-search" id="pg-snippet-search" placeholder="Search snippets...">
+        <button class="pg-search-clear" id="pg-search-clear" aria-label="Clear search">&times;</button>
+      </div>
+    </div>
+    <div class="pg-snippets-list">
+      {%- for category, items in snippets %}
+      <div class="pg-snippets-cat">{{ category }}</div>
+      {%- for item in items %}
+      <div class="pg-snippet-item{% if item.variants %} has-variants{% endif %}" data-snippet-id="{{ item.id }}" draggable="true">
+        <div class="pg-snippet-row"{% if item.variants %} onclick="pgToggleVariants(this)"{% endif %}>
+          <span class="pg-snippet-label">{{ item.label }}</span>
+          {%- if item.variants %}
+          <button class="pg-snippet-expand" aria-label="Expand variants"><svg width="10" height="10" viewBox="0 0 10 10"><polyline points="3,2 7,5 3,8" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+          {%- else %}
+          <button class="pg-snippet-add" onclick="insertSnippet('{{ item.id }}')" title="Add to editor" aria-label="Add {{ item.label }}">
+            <svg width="12" height="12" viewBox="0 0 12 12"><line x1="6" y1="2" x2="6" y2="10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><line x1="2" y1="6" x2="10" y2="6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </button>
+          {%- endif %}
+        </div>
+        {%- if item.variants %}
+        <div class="pg-snippet-children">
+          {%- for v in item.variants %}
+          <div class="pg-snippet-child">
+            <span class="pg-snippet-child-label">{{ v.label }}</span>
+            <button class="pg-snippet-add" onclick="insertVariant('{{ item.id }}', {{ loop.index0 }})" title="Add {{ v.label }}" aria-label="Add {{ v.label }}">
+              <svg width="12" height="12" viewBox="0 0 12 12"><line x1="6" y1="2" x2="6" y2="10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><line x1="2" y1="6" x2="10" y2="6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+            </button>
+          </div>
+          {%- endfor %}
+        </div>
+        {%- endif %}
+      </div>
+      {%- endfor %}
+      {%- endfor %}
+    </div>
+  </aside>
+
+  <!-- Editor + Preview -->
+  <div class="pg-editor-area">
+
+    <!-- Toolbar -->
+    <div class="pg-toolbar">
+      <button class="pg-toolbar-btn pg-mobile-snippets-toggle" onclick="pgToggleSnippets()">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+        Snippets
+      </button>
+      <button class="pg-toolbar-btn" onclick="pgReset()">Reset</button>
+      <button class="pg-toolbar-btn" id="pg-theme-toggle" onclick="pgTogglePreviewTheme()">
+        <svg class="pg-icon-moon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none;"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+        <svg class="pg-icon-sun" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+        <span id="pg-theme-label">Light Preview</span>
+      </button>
+      <div class="pg-toolbar-spacer"></div>
+      <button class="pg-toolbar-btn" id="pg-share-btn" onclick="pgShare()">Share</button>
+    </div>
+
+    <!-- Split: Editor + Preview -->
+    <div class="pg-panels">
+      <div class="pg-editor-wrap">
+        <textarea id="pg-editor" class="pg-editor" spellcheck="false" placeholder="Write your HTML here..."></textarea>
+      </div>
+      <div class="pg-resizer" id="pg-resizer"></div>
+      <div class="pg-preview-wrap">
+        <div class="pg-preview-label">
+          <span class="pg-preview-dot"></span>
+          Preview
+        </div>
+        <iframe id="pg-preview" class="pg-preview-iframe" sandbox="allow-scripts allow-same-origin" title="Live preview"></iframe>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+  // Serialize snippet data for runtime JS
+  window.__PG_SNIPPETS__ = {{ snippets | dump | safe }};
+</script>
+<script src="/js/playground.js"></script>

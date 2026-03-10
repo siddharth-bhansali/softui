@@ -1,0 +1,349 @@
+{
+  "Forms": [
+    {
+      "id": "input",
+      "label": "Text Input",
+      "code": "<div class=\"sui-form-group\">\n  <label class=\"sui-label\">Email</label>\n  <input type=\"email\" class=\"sui-input\" placeholder=\"john@example.com\">\n</div>"
+    },
+    {
+      "id": "select",
+      "label": "Select",
+      "code": "<div class=\"sui-form-group\">\n  <label class=\"sui-label\">Country</label>\n  <select class=\"sui-input sui-select\">\n    <option>Select a country</option>\n    <option>United States</option>\n    <option>United Kingdom</option>\n    <option>Canada</option>\n  </select>\n</div>"
+    },
+    {
+      "id": "textarea",
+      "label": "Textarea",
+      "code": "<div class=\"sui-form-group\">\n  <label class=\"sui-label\">Bio</label>\n  <textarea class=\"sui-input sui-textarea\" rows=\"3\" placeholder=\"Tell us about yourself...\"></textarea>\n</div>"
+    },
+    {
+      "id": "checkbox",
+      "label": "Checkbox",
+      "code": "<label class=\"sui-checkbox\">\n  <input type=\"checkbox\" checked>\n  <span class=\"sui-check-mark\"></span>\n  Remember me\n</label>"
+    },
+    {
+      "id": "toggle",
+      "label": "Toggle Switch",
+      "code": "<label class=\"sui-toggle\">\n  <input type=\"checkbox\" checked>\n  <span class=\"sui-toggle-slider\"></span>\n</label>"
+    },
+    {
+      "id": "radio",
+      "label": "Radio Buttons",
+      "code": "<label class=\"sui-radio\">\n  <input type=\"radio\" name=\"pg-radio\" checked>\n  <span class=\"sui-radio-mark\"></span>\n  Option A\n</label>\n<label class=\"sui-radio\">\n  <input type=\"radio\" name=\"pg-radio\">\n  <span class=\"sui-radio-mark\"></span>\n  Option B\n</label>"
+    },
+    {
+      "id": "slider",
+      "label": "Slider",
+      "code": "<div class=\"sui-slider\">\n  <input type=\"range\" aria-label=\"Value\" min=\"0\" max=\"100\" value=\"50\">\n  <span class=\"sui-slider-value\">50</span>\n</div>"
+    },
+    {
+      "id": "input-otp",
+      "label": "Input OTP",
+      "code": "<div class=\"sui-otp\" data-sui-otp>\n  <div class=\"sui-otp-group\">\n    <div class=\"sui-otp-slot\"></div>\n    <div class=\"sui-otp-slot\"></div>\n    <div class=\"sui-otp-slot\"></div>\n  </div>\n  <div class=\"sui-otp-separator\"></div>\n  <div class=\"sui-otp-group\">\n    <div class=\"sui-otp-slot\"></div>\n    <div class=\"sui-otp-slot\"></div>\n    <div class=\"sui-otp-slot\"></div>\n  </div>\n</div>"
+    },
+    {
+      "id": "combobox",
+      "label": "Combobox",
+      "code": "<div class=\"sui-combobox\">\n  <button type=\"button\" class=\"sui-combobox-trigger\">\n    <span class=\"sui-combobox-value placeholder\">Select framework...</span>\n    <span class=\"sui-combobox-arrow\"></span>\n  </button>\n  <div class=\"sui-combobox-content\">\n    <div class=\"sui-combobox-search\">\n      <input type=\"text\" class=\"sui-combobox-input\" placeholder=\"Search...\">\n    </div>\n    <div class=\"sui-combobox-list\">\n      <button type=\"button\" class=\"sui-combobox-item\">React</button>\n      <button type=\"button\" class=\"sui-combobox-item\">Vue</button>\n      <button type=\"button\" class=\"sui-combobox-item\">Angular</button>\n      <button type=\"button\" class=\"sui-combobox-item\">Svelte</button>\n    </div>\n  </div>\n</div>"
+    },
+    {
+      "id": "form-card",
+      "label": "Login Form",
+      "code": "<div class=\"sui-card\" style=\"max-width:400px;\">\n  <h4 style=\"margin-bottom:20px;\">Sign In</h4>\n  <div class=\"sui-form-group\">\n    <label class=\"sui-label\">Email</label>\n    <input type=\"email\" class=\"sui-input\" placeholder=\"john@example.com\">\n  </div>\n  <div class=\"sui-form-group\">\n    <label class=\"sui-label\">Password</label>\n    <input type=\"password\" class=\"sui-input\" placeholder=\"Enter password\">\n  </div>\n  <label class=\"sui-checkbox\" style=\"margin-bottom:16px;\">\n    <input type=\"checkbox\">\n    <span class=\"sui-check-mark\"></span>\n    Remember me\n  </label>\n  <button class=\"sui-btn sui-btn-primary sui-btn-block\">Sign In</button>\n</div>"
+    }
+  ],
+  "Components": [
+    {
+      "id": "buttons",
+      "label": "Buttons",
+      "code": "<button class=\"sui-btn\">Default</button>\n<button class=\"sui-btn sui-btn-primary\">Primary</button>\n<button class=\"sui-btn sui-btn-success\">Success</button>\n<button class=\"sui-btn sui-btn-danger\">Danger</button>\n<button class=\"sui-btn sui-btn-warning\">Warning</button>\n<button class=\"sui-btn sui-btn-info\">Info</button>",
+      "variants": [
+        { "label": "Default", "code": "<button class=\"sui-btn\">Default</button>" },
+        { "label": "Primary", "code": "<button class=\"sui-btn sui-btn-primary\">Primary</button>" },
+        { "label": "Success", "code": "<button class=\"sui-btn sui-btn-success\">Success</button>" },
+        { "label": "Danger", "code": "<button class=\"sui-btn sui-btn-danger\">Danger</button>" },
+        { "label": "Warning", "code": "<button class=\"sui-btn sui-btn-warning\">Warning</button>" },
+        { "label": "Info", "code": "<button class=\"sui-btn sui-btn-info\">Info</button>" }
+      ]
+    },
+    {
+      "id": "buttons-outline",
+      "label": "Outline Buttons",
+      "code": "<button class=\"sui-btn sui-btn-outline\">Default</button>\n<button class=\"sui-btn sui-btn-primary sui-btn-outline\">Primary</button>\n<button class=\"sui-btn sui-btn-success sui-btn-outline\">Success</button>\n<button class=\"sui-btn sui-btn-danger sui-btn-outline\">Danger</button>",
+      "variants": [
+        { "label": "Default", "code": "<button class=\"sui-btn sui-btn-outline\">Default</button>" },
+        { "label": "Primary", "code": "<button class=\"sui-btn sui-btn-primary sui-btn-outline\">Primary</button>" },
+        { "label": "Success", "code": "<button class=\"sui-btn sui-btn-success sui-btn-outline\">Success</button>" },
+        { "label": "Danger", "code": "<button class=\"sui-btn sui-btn-danger sui-btn-outline\">Danger</button>" }
+      ]
+    },
+    {
+      "id": "button-group",
+      "label": "Button Group",
+      "code": "<div class=\"sui-btn-group\">\n  <button class=\"sui-btn\">Left</button>\n  <button class=\"sui-btn active\">Center</button>\n  <button class=\"sui-btn\">Right</button>\n</div>"
+    },
+    {
+      "id": "card",
+      "label": "Card",
+      "code": "<div class=\"sui-card\" style=\"max-width:340px;\">\n  <h4 style=\"margin-bottom:8px;\">Card Title</h4>\n  <p>This is a raised neumorphic card with soft shadows.</p>\n</div>"
+    },
+    {
+      "id": "card-header",
+      "label": "Card with Header",
+      "code": "<div class=\"sui-card\" style=\"max-width:340px;\">\n  <div class=\"sui-card-header\">\n    <h4>Card Header</h4>\n  </div>\n  <div class=\"sui-card-body\">\n    <p>Card body content goes here.</p>\n  </div>\n</div>"
+    },
+    {
+      "id": "badges",
+      "label": "Badges",
+      "code": "<span class=\"sui-badge\">Default</span>\n<span class=\"sui-badge sui-badge-primary\">Primary</span>\n<span class=\"sui-badge sui-badge-success\">Success</span>\n<span class=\"sui-badge sui-badge-danger\">Danger</span>\n<span class=\"sui-badge sui-badge-warning\">Warning</span>\n<span class=\"sui-badge sui-badge-info\">Info</span>",
+      "variants": [
+        { "label": "Default", "code": "<span class=\"sui-badge\">Default</span>" },
+        { "label": "Primary", "code": "<span class=\"sui-badge sui-badge-primary\">Primary</span>" },
+        { "label": "Success", "code": "<span class=\"sui-badge sui-badge-success\">Success</span>" },
+        { "label": "Danger", "code": "<span class=\"sui-badge sui-badge-danger\">Danger</span>" },
+        { "label": "Warning", "code": "<span class=\"sui-badge sui-badge-warning\">Warning</span>" },
+        { "label": "Info", "code": "<span class=\"sui-badge sui-badge-info\">Info</span>" }
+      ]
+    },
+    {
+      "id": "alerts",
+      "label": "Alerts",
+      "code": "<div class=\"sui-alert sui-alert-primary\" role=\"alert\">Primary alert with important info</div>\n<div class=\"sui-alert sui-alert-success\" role=\"alert\">Success! Your changes have been saved.</div>\n<div class=\"sui-alert sui-alert-danger\" role=\"alert\">Error! Something went wrong.</div>\n<div class=\"sui-alert sui-alert-warning\" role=\"alert\">Warning! Please review.</div>",
+      "variants": [
+        { "label": "Primary", "code": "<div class=\"sui-alert sui-alert-primary\" role=\"alert\">Primary alert with important info</div>" },
+        { "label": "Success", "code": "<div class=\"sui-alert sui-alert-success\" role=\"alert\">Success! Your changes have been saved.</div>" },
+        { "label": "Danger", "code": "<div class=\"sui-alert sui-alert-danger\" role=\"alert\">Error! Something went wrong.</div>" },
+        { "label": "Warning", "code": "<div class=\"sui-alert sui-alert-warning\" role=\"alert\">Warning! Please review.</div>" }
+      ]
+    },
+    {
+      "id": "alert-dismissible",
+      "label": "Dismissible Alert",
+      "code": "<div class=\"sui-alert sui-alert-primary sui-alert-dismissible\" role=\"alert\">\n  <span class=\"sui-alert-content\">Dismissible alert</span>\n  <button class=\"sui-alert-close\" aria-label=\"Dismiss\"></button>\n</div>"
+    },
+    {
+      "id": "avatar",
+      "label": "Avatars",
+      "code": "<div class=\"sui-avatar sui-avatar-sm\">A</div>\n<div class=\"sui-avatar\">B</div>\n<div class=\"sui-avatar sui-avatar-lg\">C</div>\n<div class=\"sui-avatar sui-avatar-xl\">D</div>",
+      "variants": [
+        { "label": "Small", "code": "<div class=\"sui-avatar sui-avatar-sm\">A</div>" },
+        { "label": "Default", "code": "<div class=\"sui-avatar\">B</div>" },
+        { "label": "Large", "code": "<div class=\"sui-avatar sui-avatar-lg\">C</div>" },
+        { "label": "XL", "code": "<div class=\"sui-avatar sui-avatar-xl\">D</div>" }
+      ]
+    },
+    {
+      "id": "chips",
+      "label": "Chips",
+      "code": "<span class=\"sui-chip\">Technology</span>\n<span class=\"sui-chip\">Design</span>\n<span class=\"sui-chip\">Marketing</span>\n<span class=\"sui-chip\">Sales</span>"
+    },
+    {
+      "id": "progress",
+      "label": "Progress Bar",
+      "code": "<div class=\"sui-progress\" style=\"width:100%;max-width:500px;\">\n  <div class=\"sui-progress-bar sui-progress-primary\" style=\"width:65%;\"></div>\n</div>",
+      "variants": [
+        { "label": "Primary", "code": "<div class=\"sui-progress\" style=\"width:100%;max-width:500px;\">\n  <div class=\"sui-progress-bar sui-progress-primary\" style=\"width:65%;\"></div>\n</div>" },
+        { "label": "Success", "code": "<div class=\"sui-progress\" style=\"width:100%;max-width:500px;\">\n  <div class=\"sui-progress-bar sui-progress-success\" style=\"width:45%;\"></div>\n</div>" },
+        { "label": "Danger", "code": "<div class=\"sui-progress\" style=\"width:100%;max-width:500px;\">\n  <div class=\"sui-progress-bar sui-progress-danger\" style=\"width:80%;\"></div>\n</div>" },
+        { "label": "Warning", "code": "<div class=\"sui-progress\" style=\"width:100%;max-width:500px;\">\n  <div class=\"sui-progress-bar sui-progress-warning\" style=\"width:55%;\"></div>\n</div>" },
+        { "label": "Indeterminate", "code": "<div class=\"sui-progress sui-progress-indeterminate\" style=\"width:100%;max-width:500px;\">\n  <div class=\"sui-progress-bar sui-progress-primary\"></div>\n</div>" },
+        { "label": "Striped", "code": "<div class=\"sui-progress\" style=\"width:100%;max-width:500px;\">\n  <div class=\"sui-progress-bar sui-progress-primary sui-progress-striped\" style=\"width:65%;\"></div>\n</div>" },
+        { "label": "With Label", "code": "<div class=\"sui-progress sui-progress-labeled\" style=\"width:100%;max-width:500px;\">\n  <div class=\"sui-progress-bar sui-progress-primary\" style=\"width:65%;\" data-label=\"65%\"></div>\n</div>" }
+      ]
+    },
+    {
+      "id": "spinner",
+      "label": "Spinner",
+      "code": "<div class=\"sui-spinner\" role=\"status\" aria-label=\"Loading\"></div>\n<div class=\"sui-spinner sui-spinner-primary\" role=\"status\" aria-label=\"Loading\"></div>\n<div class=\"sui-spinner sui-spinner-success\" role=\"status\" aria-label=\"Loading\"></div>",
+      "variants": [
+        { "label": "Default", "code": "<div class=\"sui-spinner\" role=\"status\" aria-label=\"Loading\"></div>" },
+        { "label": "Primary", "code": "<div class=\"sui-spinner sui-spinner-primary\" role=\"status\" aria-label=\"Loading\"></div>" },
+        { "label": "Success", "code": "<div class=\"sui-spinner sui-spinner-success\" role=\"status\" aria-label=\"Loading\"></div>" },
+        { "label": "Danger", "code": "<div class=\"sui-spinner sui-spinner-danger\" role=\"status\" aria-label=\"Loading\"></div>" },
+        { "label": "Warning", "code": "<div class=\"sui-spinner sui-spinner-warning\" role=\"status\" aria-label=\"Loading\"></div>" },
+        { "label": "Info", "code": "<div class=\"sui-spinner sui-spinner-info\" role=\"status\" aria-label=\"Loading\"></div>" },
+        { "label": "Wobble", "code": "<div class=\"sui-spinner sui-spinner-wobble\" role=\"status\" aria-label=\"Loading\"></div>" },
+        { "label": "Elastic", "code": "<div class=\"sui-spinner sui-spinner-elastic\" role=\"status\" aria-label=\"Loading\">\n  <svg viewBox=\"0 0 40 40\"><circle cx=\"20\" cy=\"20\" r=\"18\"/></svg>\n</div>" },
+        { "label": "Growing", "code": "<div class=\"sui-spinner sui-spinner-grow\" role=\"status\" aria-label=\"Loading\"></div>" },
+        { "label": "Pulse", "code": "<div class=\"sui-spinner sui-spinner-pulse\" role=\"status\" aria-label=\"Loading\"></div>" },
+        { "label": "Dots", "code": "<div class=\"sui-spinner sui-spinner-dots\" role=\"status\" aria-label=\"Loading\">\n  <span></span><span></span><span></span>\n</div>" }
+      ]
+    },
+    {
+      "id": "table",
+      "label": "Table",
+      "code": "<table class=\"sui-table\">\n  <thead>\n    <tr>\n      <th>#</th>\n      <th>Name</th>\n      <th>Email</th>\n      <th>Role</th>\n      <th>Status</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td>1</td>\n      <td>Alice Martin</td>\n      <td>alice@example.com</td>\n      <td>Admin</td>\n      <td><span class=\"sui-badge sui-badge-success\">Active</span></td>\n    </tr>\n    <tr>\n      <td>2</td>\n      <td>Bob Wilson</td>\n      <td>bob@example.com</td>\n      <td>Editor</td>\n      <td><span class=\"sui-badge sui-badge-warning\">Pending</span></td>\n    </tr>\n    <tr>\n      <td>3</td>\n      <td>Carol Davis</td>\n      <td>carol@example.com</td>\n      <td>Viewer</td>\n      <td><span class=\"sui-badge sui-badge-danger\">Inactive</span></td>\n    </tr>\n  </tbody>\n</table>"
+    },
+    {
+      "id": "accordion",
+      "label": "Accordion",
+      "code": "<div class=\"sui-accordion\">\n  <div class=\"sui-accordion-item active\">\n    <button type=\"button\" class=\"sui-accordion-header\">What is SoftUI?</button>\n    <div class=\"sui-accordion-body\">\n      <div class=\"sui-accordion-body-inner\">\n        SoftUI is a neumorphic CSS component library with soft shadows and rounded surfaces.\n      </div>\n    </div>\n  </div>\n  <div class=\"sui-accordion-item\">\n    <button type=\"button\" class=\"sui-accordion-header\">Do I need JavaScript?</button>\n    <div class=\"sui-accordion-body\">\n      <div class=\"sui-accordion-body-inner\">\n        The accordion requires softui.js for expand/collapse behavior.\n      </div>\n    </div>\n  </div>\n  <div class=\"sui-accordion-item\">\n    <button type=\"button\" class=\"sui-accordion-header\">Can I customize the styles?</button>\n    <div class=\"sui-accordion-body\">\n      <div class=\"sui-accordion-body-inner\">\n        Yes. Override CSS custom properties on :root to theme everything.\n      </div>\n    </div>\n  </div>\n</div>"
+    },
+    {
+      "id": "tabs",
+      "label": "Tabs",
+      "code": "<div class=\"sui-tabs\">\n  <div class=\"sui-tab-list\">\n    <button class=\"sui-tab active\" data-sui-tab=\"tab-profile\">Profile</button>\n    <button class=\"sui-tab\" data-sui-tab=\"tab-settings\">Settings</button>\n    <button class=\"sui-tab\" data-sui-tab=\"tab-billing\">Billing</button>\n  </div>\n  <div class=\"sui-tab-panel active\" id=\"tab-profile\">\n    <div class=\"sui-card\"><div class=\"sui-card-body\">Profile content goes here.</div></div>\n  </div>\n  <div class=\"sui-tab-panel\" id=\"tab-settings\">\n    <div class=\"sui-card\"><div class=\"sui-card-body\">Settings content goes here.</div></div>\n  </div>\n  <div class=\"sui-tab-panel\" id=\"tab-billing\">\n    <div class=\"sui-card\"><div class=\"sui-card-body\">Billing content goes here.</div></div>\n  </div>\n</div>"
+    },
+    {
+      "id": "modal",
+      "label": "Modal",
+      "code": "<div class=\"sui-modal-backdrop\" id=\"myModal\">\n  <div class=\"sui-modal\">\n    <div class=\"sui-modal-header\">\n      <h3>Modal Title</h3>\n      <button class=\"sui-modal-close\" aria-label=\"Close\"></button>\n    </div>\n    <div class=\"sui-modal-body\">\n      <p>This is a neumorphic modal dialog.</p>\n    </div>\n    <div class=\"sui-modal-footer\">\n      <button class=\"sui-btn sui-btn-sm\" onclick=\"SoftUI.modal('#myModal').close()\">Cancel</button>\n      <button class=\"sui-btn sui-btn-primary sui-btn-sm\">Confirm</button>\n    </div>\n  </div>\n</div>\n\n<button class=\"sui-btn sui-btn-primary\" onclick=\"SoftUI.modal('#myModal').open()\">Open Modal</button>"
+    },
+    {
+      "id": "dropdown",
+      "label": "Dropdown",
+      "code": "<div class=\"sui-dropdown\">\n  <button class=\"sui-btn sui-dropdown-toggle\" data-sui-dropdown>Options</button>\n  <div class=\"sui-dropdown-menu\">\n    <button class=\"sui-dropdown-item\">Profile</button>\n    <button class=\"sui-dropdown-item\">Settings</button>\n    <button class=\"sui-dropdown-item\">Notifications</button>\n  </div>\n</div>"
+    },
+    {
+      "id": "tooltip",
+      "label": "Tooltip",
+      "code": "<span class=\"sui-tooltip\" data-sui-tooltip=\"Tooltip on top\">\n  <button class=\"sui-btn\">Hover me</button>\n</span>"
+    },
+    {
+      "id": "popover",
+      "label": "Popover",
+      "code": "<div class=\"sui-popover\">\n  <button class=\"sui-btn sui-btn-primary\" data-sui-popover>Click Me</button>\n  <div class=\"sui-popover-content\">\n    <div class=\"sui-popover-header\">Popover Title</div>\n    <div class=\"sui-popover-body\">This popover appears below the trigger. Click outside to dismiss.</div>\n  </div>\n</div>"
+    },
+    {
+      "id": "toast",
+      "label": "Toast",
+      "code": "<button class=\"sui-btn sui-btn-primary\" onclick=\"SoftUI.toast({ title: 'Notification', message: 'This is a toast message.' })\">\n  Show Toast\n</button>\n\n<button class=\"sui-btn sui-btn-success\" onclick=\"SoftUI.toast({ title: 'Success', message: 'Changes saved!', variant: 'success' })\">\n  Success Toast\n</button>"
+    },
+    {
+      "id": "navbar",
+      "label": "Navbar",
+      "code": "<div class=\"sui-navbar\">\n  <div class=\"sui-navbar-brand\">SoftUI</div>\n  <div class=\"sui-navbar-links\">\n    <a href=\"#\" class=\"sui-navbar-link active\">Home</a>\n    <a href=\"#\" class=\"sui-navbar-link\">Features</a>\n    <a href=\"#\" class=\"sui-navbar-link\">Pricing</a>\n  </div>\n  <button class=\"sui-btn sui-btn-primary sui-btn-sm\">Sign Up</button>\n</div>"
+    },
+    {
+      "id": "pagination",
+      "label": "Pagination",
+      "code": "<nav class=\"sui-pagination\" aria-label=\"Pagination\">\n  <span class=\"sui-page-item disabled\"><button class=\"sui-page-link\">&lsaquo;</button></span>\n  <span class=\"sui-page-item\"><button class=\"sui-page-link\">1</button></span>\n  <span class=\"sui-page-item active\"><button class=\"sui-page-link\">2</button></span>\n  <span class=\"sui-page-item\"><button class=\"sui-page-link\">3</button></span>\n  <span class=\"sui-page-item\"><button class=\"sui-page-link\">4</button></span>\n  <span class=\"sui-page-item\"><button class=\"sui-page-link\">&rsaquo;</button></span>\n</nav>"
+    },
+    {
+      "id": "breadcrumb",
+      "label": "Breadcrumb",
+      "code": "<nav class=\"sui-breadcrumb\">\n  <span class=\"sui-breadcrumb-item\"><a href=\"#\">Home</a></span>\n  <span class=\"sui-breadcrumb-item\"><a href=\"#\">Products</a></span>\n  <span class=\"sui-breadcrumb-item active\"><span>Headphones</span></span>\n</nav>"
+    },
+    {
+      "id": "stepper",
+      "label": "Stepper",
+      "code": "<div class=\"sui-stepper\">\n  <div class=\"sui-step completed\">\n    <div class=\"sui-step-circle\">1</div>\n    <div class=\"sui-step-label\">Account</div>\n  </div>\n  <div class=\"sui-step-connector\"></div>\n  <div class=\"sui-step active\">\n    <div class=\"sui-step-circle\">2</div>\n    <div class=\"sui-step-label\">Profile</div>\n  </div>\n  <div class=\"sui-step-connector\"></div>\n  <div class=\"sui-step\">\n    <div class=\"sui-step-circle\">3</div>\n    <div class=\"sui-step-label\">Settings</div>\n  </div>\n  <div class=\"sui-step-connector\"></div>\n  <div class=\"sui-step\">\n    <div class=\"sui-step-circle\">4</div>\n    <div class=\"sui-step-label\">Complete</div>\n  </div>\n</div>"
+    },
+    {
+      "id": "divider",
+      "label": "Divider",
+      "code": "<p>Content above the divider.</p>\n<hr class=\"sui-divider\">\n<p>Content below the divider.</p>"
+    },
+    {
+      "id": "skeleton",
+      "label": "Skeleton",
+      "code": "<div class=\"sui-skeleton sui-skeleton-text\" style=\"width:100%;\" aria-hidden=\"true\"></div>\n<div class=\"sui-skeleton sui-skeleton-text\" style=\"width:100%;\" aria-hidden=\"true\"></div>\n<div class=\"sui-skeleton sui-skeleton-text\" style=\"width:75%;\" aria-hidden=\"true\"></div>"
+    },
+    {
+      "id": "kbd",
+      "label": "Kbd",
+      "code": "<kbd class=\"sui-kbd\">Ctrl</kbd> + <kbd class=\"sui-kbd\">Shift</kbd> + <kbd class=\"sui-kbd\">P</kbd>"
+    },
+    {
+      "id": "toggle-group",
+      "label": "Toggle Group",
+      "code": "<div class=\"sui-toggle-group\" data-sui-toggle=\"single\">\n  <button class=\"sui-toggle-group-item active\" aria-pressed=\"true\">Left</button>\n  <button class=\"sui-toggle-group-item\" aria-pressed=\"false\">Center</button>\n  <button class=\"sui-toggle-group-item\" aria-pressed=\"false\">Right</button>\n</div>"
+    },
+    {
+      "id": "collapsible",
+      "label": "Collapsible",
+      "code": "<div class=\"sui-collapsible\">\n  <button type=\"button\" class=\"sui-collapsible-trigger\" aria-expanded=\"false\">\n    Toggle content\n  </button>\n  <div class=\"sui-collapsible-content\">\n    <div class=\"sui-collapsible-content-inner\">\n      This is the collapsible content. Click the trigger again to collapse.\n    </div>\n  </div>\n</div>"
+    },
+    {
+      "id": "sheet",
+      "label": "Sheet",
+      "code": "<div class=\"sui-sheet-backdrop\" id=\"mySheet\" role=\"dialog\" aria-modal=\"true\">\n  <div class=\"sui-sheet sui-sheet-right\">\n    <div class=\"sui-sheet-header\">\n      <h3>Sheet Title</h3>\n      <button class=\"sui-sheet-close\" aria-label=\"Close\"></button>\n    </div>\n    <div class=\"sui-sheet-body\">\n      <p>Sheet content here.</p>\n    </div>\n    <div class=\"sui-sheet-footer\">\n      <button class=\"sui-btn sui-btn-sm\" onclick=\"SoftUI.sheet('#mySheet').close()\">Cancel</button>\n      <button class=\"sui-btn sui-btn-primary sui-btn-sm\">Save</button>\n    </div>\n  </div>\n</div>\n\n<button class=\"sui-btn\" onclick=\"SoftUI.sheet('#mySheet').open()\">Open Sheet</button>"
+    },
+    {
+      "id": "carousel",
+      "label": "Carousel",
+      "code": "<div class=\"sui-carousel\" id=\"myCarousel\">\n  <div class=\"sui-carousel-track\">\n    <div class=\"sui-carousel-item\" style=\"height:140px;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,var(--sui-primary),var(--sui-info));\"><span style=\"font-size:32px;font-weight:700;color:#fff;\">1</span></div>\n    <div class=\"sui-carousel-item\" style=\"height:140px;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,var(--sui-info),var(--sui-success));\"><span style=\"font-size:32px;font-weight:700;color:#fff;\">2</span></div>\n    <div class=\"sui-carousel-item\" style=\"height:140px;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,var(--sui-success),var(--sui-warning));\"><span style=\"font-size:32px;font-weight:700;color:#fff;\">3</span></div>\n  </div>\n  <button class=\"sui-carousel-prev\" aria-label=\"Previous\"></button>\n  <button class=\"sui-carousel-next\" aria-label=\"Next\"></button>\n</div>"
+    },
+    {
+      "id": "hover-card",
+      "label": "Hover Card",
+      "code": "<span>Designed by\n  <div class=\"sui-hover-card\" style=\"display:inline-flex;\">\n    <span class=\"sui-hover-card-trigger\" tabindex=\"0\">@johndoe</span>\n    <div class=\"sui-hover-card-content\">\n      <div style=\"display:flex;align-items:center;gap:12px;margin-bottom:10px;\">\n        <div class=\"sui-avatar sui-avatar-sm\" style=\"background:var(--sui-primary);color:#fff;font-weight:700;\">JD</div>\n        <div>\n          <div style=\"font-weight:700;font-size:14px;\">John Doe</div>\n          <div style=\"font-size:12px;color:var(--sui-text-muted);\">@johndoe</div>\n        </div>\n      </div>\n      <div style=\"font-size:13px;color:var(--sui-text-light);\">Full-stack developer and open source enthusiast.</div>\n    </div>\n  </div>\n</span>"
+    },
+    {
+      "id": "context-menu",
+      "label": "Context Menu",
+      "code": "<div data-sui-context=\"ctx-demo\" style=\"display:flex;align-items:center;justify-content:center;width:100%;height:160px;border:2px dashed var(--sui-bg-dark);border-radius:var(--sui-radius-sm);font-size:14px;font-weight:600;color:var(--sui-text-muted);cursor:default;\">Right-click here</div>\n<div class=\"sui-context-menu\" id=\"ctx-demo\">\n  <button class=\"sui-context-item\">Cut</button>\n  <button class=\"sui-context-item\">Copy</button>\n  <button class=\"sui-context-item\">Paste</button>\n  <div class=\"sui-context-separator\"></div>\n  <button class=\"sui-context-item\">Delete</button>\n</div>"
+    },
+    {
+      "id": "menubar",
+      "label": "Menubar",
+      "code": "<div class=\"sui-menubar\">\n  <div class=\"sui-menubar-menu\">\n    <button type=\"button\" class=\"sui-menubar-trigger\">File</button>\n    <div class=\"sui-menubar-content\">\n      <button type=\"button\" class=\"sui-menubar-item\">New File</button>\n      <button type=\"button\" class=\"sui-menubar-item\">Open</button>\n      <button type=\"button\" class=\"sui-menubar-item\">Save</button>\n      <div class=\"sui-menubar-separator\"></div>\n      <button type=\"button\" class=\"sui-menubar-item\">Exit</button>\n    </div>\n  </div>\n  <div class=\"sui-menubar-menu\">\n    <button type=\"button\" class=\"sui-menubar-trigger\">Edit</button>\n    <div class=\"sui-menubar-content\">\n      <button type=\"button\" class=\"sui-menubar-item\">Undo</button>\n      <button type=\"button\" class=\"sui-menubar-item\">Redo</button>\n      <div class=\"sui-menubar-separator\"></div>\n      <button type=\"button\" class=\"sui-menubar-item\">Cut</button>\n      <button type=\"button\" class=\"sui-menubar-item\">Copy</button>\n      <button type=\"button\" class=\"sui-menubar-item\">Paste</button>\n    </div>\n  </div>\n</div>"
+    },
+    {
+      "id": "command",
+      "label": "Command Palette",
+      "code": "<div class=\"sui-command\" data-sui-command style=\"max-width:420px;\">\n  <div class=\"sui-command-input-wrap\">\n    <svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><circle cx=\"11\" cy=\"11\" r=\"8\"/><line x1=\"21\" y1=\"21\" x2=\"16.65\" y2=\"16.65\"/></svg>\n    <input class=\"sui-command-input\" type=\"text\" placeholder=\"Type a command...\">\n  </div>\n  <div class=\"sui-command-list\">\n    <div class=\"sui-command-group\">\n      <div class=\"sui-command-group-label\">Suggestions</div>\n      <button class=\"sui-command-item\">Calendar</button>\n      <button class=\"sui-command-item\">Search Emoji</button>\n      <button class=\"sui-command-item\">Calculator</button>\n    </div>\n  </div>\n</div>"
+    },
+    {
+      "id": "resizable",
+      "label": "Resizable Panels",
+      "code": "<div class=\"sui-resizable\" style=\"height:200px;\">\n  <div class=\"sui-resizable-panel\" data-size=\"50\">Panel One</div>\n  <div class=\"sui-resizable-handle\"></div>\n  <div class=\"sui-resizable-panel\" data-size=\"50\">Panel Two</div>\n</div>"
+    },
+    {
+      "id": "sortable",
+      "label": "Sortable List",
+      "code": "<div class=\"sui-sortable\">\n  <div class=\"sui-sortable-item\">Design homepage mockup</div>\n  <div class=\"sui-sortable-item\">Write API documentation</div>\n  <div class=\"sui-sortable-item\">Review pull requests</div>\n  <div class=\"sui-sortable-item\">Fix navigation bug</div>\n  <div class=\"sui-sortable-item\">Deploy to staging</div>\n</div>"
+    },
+    {
+      "id": "calendar",
+      "label": "Calendar",
+      "code": "<div class=\"sui-calendar\" data-sui-calendar=\"single\">\n  <div class=\"sui-calendar-header\">\n    <button class=\"sui-calendar-nav-btn\" data-sui-calendar-prev type=\"button\">\n      <svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"15 18 9 12 15 6\"/></svg>\n    </button>\n    <div class=\"sui-calendar-title\"></div>\n    <button class=\"sui-calendar-nav-btn\" data-sui-calendar-next type=\"button\">\n      <svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"9 18 15 12 9 6\"/></svg>\n    </button>\n  </div>\n  <div class=\"sui-calendar-grid\"></div>\n  <button class=\"sui-calendar-clear\" data-sui-calendar-clear type=\"button\">Clear</button>\n</div>"
+    },
+    {
+      "id": "chart",
+      "label": "Chart (Bar)",
+      "code": "<div class=\"sui-chart\">\n  <p class=\"sui-chart-title\">Monthly Revenue</p>\n  <p class=\"sui-chart-subtitle\">Revenue by month in thousands</p>\n  <div class=\"sui-chart-bars\" style=\"height:220px;\">\n    <div class=\"sui-chart-bar-col\">\n      <div class=\"sui-chart-bar-track\">\n        <div class=\"sui-chart-bar-fill sui-chart-bar-primary\" data-value=\"65\" data-max=\"100\"></div>\n      </div>\n      <span class=\"sui-chart-bar-label\">Jan</span>\n    </div>\n    <div class=\"sui-chart-bar-col\">\n      <div class=\"sui-chart-bar-track\">\n        <div class=\"sui-chart-bar-fill sui-chart-bar-primary\" data-value=\"80\" data-max=\"100\"></div>\n      </div>\n      <span class=\"sui-chart-bar-label\">Feb</span>\n    </div>\n    <div class=\"sui-chart-bar-col\">\n      <div class=\"sui-chart-bar-track\">\n        <div class=\"sui-chart-bar-fill sui-chart-bar-primary\" data-value=\"45\" data-max=\"100\"></div>\n      </div>\n      <span class=\"sui-chart-bar-label\">Mar</span>\n    </div>\n  </div>\n</div>"
+    },
+    {
+      "id": "datatable",
+      "label": "Data Table",
+      "code": "<div class=\"sui-datatable\">\n  <table class=\"sui-table\">\n    <thead>\n      <tr>\n        <th>#</th>\n        <th>Name</th>\n        <th>Email</th>\n        <th>Role</th>\n      </tr>\n    </thead>\n    <tbody>\n      <tr>\n        <td>1</td>\n        <td>Alice Martin</td>\n        <td>alice@example.com</td>\n        <td>Admin</td>\n      </tr>\n      <tr>\n        <td>2</td>\n        <td>Bob Wilson</td>\n        <td>bob@example.com</td>\n        <td>Editor</td>\n      </tr>\n    </tbody>\n  </table>\n  <div class=\"sui-datatable-footer\">\n    <div class=\"sui-datatable-info\"></div>\n    <div class=\"sui-datatable-pagination\"></div>\n  </div>\n</div>"
+    },
+    {
+      "id": "scroll-area",
+      "label": "Scroll Area",
+      "code": "<div class=\"sui-scroll-area sui-scroll-area-y\" style=\"height:200px;\">\n  <p>Scrollable content goes here. Add enough content to overflow.</p>\n  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>\n  <p>Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>\n  <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>\n  <p>Duis aute irure dolor in reprehenderit in voluptate velit.</p>\n  <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa.</p>\n  <p>Nemo enim ipsam voluptatem quia voluptas sit aspernatur.</p>\n  <p>Neque porro quisquam est qui dolorem ipsum quia dolor.</p>\n</div>"
+    }
+  ],
+  "Utilities": [
+    {
+      "id": "grid",
+      "label": "Grid Layout",
+      "code": "<div class=\"sui-container\">\n  <div class=\"sui-row\">\n    <div class=\"sui-col-4\"><div class=\"sui-card sui-inset sui-p-3 sui-text-center\">Col 4</div></div>\n    <div class=\"sui-col-4\"><div class=\"sui-card sui-inset sui-p-3 sui-text-center\">Col 4</div></div>\n    <div class=\"sui-col-4\"><div class=\"sui-card sui-inset sui-p-3 sui-text-center\">Col 4</div></div>\n  </div>\n</div>"
+    },
+    {
+      "id": "flex",
+      "label": "Flex Utilities",
+      "code": "<div class=\"sui-d-flex sui-justify-between sui-align-center sui-gap-3\">\n  <button class=\"sui-btn sui-btn-primary\">Left</button>\n  <button class=\"sui-btn\">Center</button>\n  <button class=\"sui-btn sui-btn-success\">Right</button>\n</div>"
+    },
+    {
+      "id": "spacing",
+      "label": "Spacing",
+      "code": "<div class=\"sui-card sui-p-5\">\n  <h4 class=\"sui-mb-3\">Spacing Example</h4>\n  <p class=\"sui-mt-2 sui-text-muted\">This card uses padding and margin utility classes.</p>\n  <button class=\"sui-btn sui-btn-primary sui-mt-3\">Action</button>\n</div>"
+    },
+    {
+      "id": "text",
+      "label": "Text Utilities",
+      "code": "<p class=\"sui-text-center sui-fw-bold\">Bold centered text</p>\n<p class=\"sui-text-muted sui-fs-sm\">Small muted text</p>\n<p class=\"sui-text-primary sui-fw-semibold\">Primary semibold text</p>\n<p class=\"sui-text-right sui-text-light\">Right-aligned light text</p>"
+    },
+    {
+      "id": "shadows",
+      "label": "Shadows",
+      "code": "<div style=\"display:flex;gap:24px;flex-wrap:wrap;\">\n  <div class=\"sui-card sui-raised sui-p-4 sui-text-center\" style=\"width:140px;\">Raised</div>\n  <div class=\"sui-card sui-inset sui-p-4 sui-text-center\" style=\"width:140px;\">Inset</div>\n  <div class=\"sui-card sui-flat sui-p-4 sui-text-center\" style=\"width:140px;\">Flat</div>\n</div>"
+    },
+    {
+      "id": "dark-mode",
+      "label": "Dark Mode",
+      "code": "<!-- Add to your <html> tag to enable dark mode -->\n<!-- <html data-theme=\"dark\"> -->\n\n<div class=\"sui-card sui-p-4\" style=\"max-width:340px;\">\n  <h4 style=\"margin-bottom:8px;\">Theme Aware</h4>\n  <p class=\"sui-text-muted\">This card adapts automatically to light and dark themes.</p>\n  <button class=\"sui-btn sui-btn-primary sui-mt-3\">Action</button>\n</div>"
+    }
+  ]
+}

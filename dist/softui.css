@@ -78,6 +78,8 @@
 }
 
 body {
+  margin: 0;
+  min-height: 100vh;
   font-family: var(--sui-font);
   background: var(--sui-bg);
   color: var(--sui-text);
@@ -154,6 +156,31 @@ a:hover {
   line-height: 1.4;
 }
 
+a.sui-btn,
+a.sui-btn:hover,
+a.sui-btn:visited {
+  text-decoration: none;
+  color: var(--sui-text);
+}
+a.sui-btn-primary,
+a.sui-btn-primary:hover,
+a.sui-btn-primary:visited,
+a.sui-btn-success,
+a.sui-btn-success:hover,
+a.sui-btn-success:visited,
+a.sui-btn-danger,
+a.sui-btn-danger:hover,
+a.sui-btn-danger:visited,
+a.sui-btn-info,
+a.sui-btn-info:hover,
+a.sui-btn-info:visited {
+  color: #fff;
+}
+a.sui-btn-warning,
+a.sui-btn-warning:hover,
+a.sui-btn-warning:visited {
+  color: #2D3748;
+}
 .sui-btn:hover {
   box-shadow: var(--sui-shadow-raised-sm);
 }
@@ -266,7 +293,7 @@ a:hover {
 .sui-btn-outline.sui-btn-primary:hover {
   background: var(--sui-primary);
   color: #fff;
-  box-shadow: 4px 4px 12px rgba(91, 84, 224, 0.35), -2px -2px 8px var(--sui-shadow-light);
+  box-shadow: 2px 2px 8px rgba(91, 84, 224, 0.4), -1px -1px 6px var(--sui-shadow-light);
 }
 .sui-btn-outline.sui-btn-success {
   background: transparent;
@@ -2298,18 +2325,24 @@ a:hover {
    Progress — Label
    =========================================== */
 .sui-progress-labeled {
+  position: relative;
   height: 20px;
 }
 .sui-progress-labeled .sui-progress-bar {
-  font-size: 11px;
-  font-weight: 600;
-  color: #fff;
-  text-align: center;
-  line-height: 1;
+  overflow: visible;
+}
+.sui-progress-labeled .sui-progress-bar::after {
+  content: attr(data-label);
+  position: absolute;
+  inset: 0;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 0 8px;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--sui-text-muted);
+  white-space: nowrap;
+  pointer-events: none;
 }
 
 /* ===========================================
@@ -5309,6 +5342,9 @@ a:hover {
 .sui-gap-3 { gap: 16px !important; }
 .sui-gap-4 { gap: 24px !important; }
 .sui-gap-5 { gap: 48px !important; }
+
+/* Min-height viewport */
+.sui-min-vh-100 { min-height: 100vh !important; }
 
 /* Auto margins */
 .sui-ms-auto { margin-left: auto !important; }

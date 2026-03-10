@@ -20,6 +20,7 @@
     <div class="docs-topbar-nav">
       <a href="/getting-started/"{% if page.url == "/getting-started/" %} class="active"{% endif %}>Get Started</a>
       <a href="/components/buttons/"{% if "/components/" in page.url or "/utilities/" in page.url %} class="active"{% endif %}>Components</a>
+      <a href="/playground/"{% if page.url == "/playground/" %} class="active"{% endif %}>Playground</a>
     </div>
     <div class="docs-topbar-actions">
       <a href="https://github.com/siddharth-bhansali/softui" target="_blank" rel="noopener" class="docs-topbar-icon" aria-label="GitHub">
@@ -45,6 +46,7 @@
       <a href="/">Home</a>
       <a href="/getting-started/">Get Started</a>
       <a href="https://github.com/siddharth-bhansali/softui" target="_blank" rel="noopener">GitHub</a>
+      <a href="/playground/">Playground</a>
     </div>
     <div class="mobile-drawer-cat">Forms</div>
     {%- for item in nav.forms %}
