@@ -342,26 +342,18 @@ title: SoftUI
   <!-- Timeline -->
   <a class="bento-card" data-cat="components" href="/components/timeline/">
     <div class="bento-tag">Component</div>
-    <div class="bento-preview" style="flex-direction:column;gap:0;align-items:center;justify-content:center;padding:10px 14px;">
-      <div style="display:flex;align-items:flex-start;gap:8px;">
-        <div style="display:flex;flex-direction:column;align-items:center;">
-          <div style="width:10px;height:10px;border-radius:50%;background:var(--sui-success);flex-shrink:0;"></div>
-          <div style="width:2px;height:18px;background:var(--sui-bg-dark);margin:3px 0;"></div>
-        </div>
-        <div style="font-size:9px;font-weight:600;color:var(--sui-text);margin-top:0px;">Build Passed</div>
-      </div>
-      <div style="display:flex;align-items:flex-start;gap:8px;">
-        <div style="display:flex;flex-direction:column;align-items:center;">
-          <div style="width:10px;height:10px;border-radius:50%;background:var(--sui-primary);flex-shrink:0;"></div>
-          <div style="width:2px;height:18px;background:var(--sui-bg-dark);margin:3px 0;"></div>
-        </div>
-        <div style="font-size:9px;font-weight:600;color:var(--sui-text);margin-top:0px;">Deployed</div>
-      </div>
-      <div style="display:flex;align-items:flex-start;gap:8px;">
-        <div style="display:flex;flex-direction:column;align-items:center;">
-          <div style="width:10px;height:10px;border-radius:50%;background:var(--sui-bg);box-shadow:2px 2px 4px var(--sui-shadow-dark),-2px -2px 4px var(--sui-shadow-light);flex-shrink:0;"></div>
-        </div>
-        <div style="font-size:9px;font-weight:600;color:var(--sui-text);margin-top:0px;">Released</div>
+    <div class="bento-preview" style="align-items:center;justify-content:center;padding:10px 14px;">
+      <div style="display:grid;grid-template-columns:10px 1fr;column-gap:8px;row-gap:0;align-items:center;justify-items:center;">
+        <div style="width:10px;height:10px;border-radius:50%;background:var(--sui-success);"></div>
+        <div style="font-size:9px;font-weight:600;color:var(--sui-text);justify-self:start;">Build Passed</div>
+        <div style="width:2px;height:14px;background:var(--sui-bg-dark);"></div>
+        <div></div>
+        <div style="width:10px;height:10px;border-radius:50%;background:var(--sui-primary);"></div>
+        <div style="font-size:9px;font-weight:600;color:var(--sui-text);justify-self:start;">Deployed</div>
+        <div style="width:2px;height:14px;background:var(--sui-bg-dark);"></div>
+        <div></div>
+        <div style="width:10px;height:10px;border-radius:50%;background:var(--sui-bg-dark);"></div>
+        <div style="font-size:9px;font-weight:600;color:var(--sui-text);justify-self:start;">Released</div>
       </div>
     </div>
     <div class="bento-name">Timeline</div>
