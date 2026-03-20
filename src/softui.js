@@ -2898,5 +2898,90 @@ const SoftUI = (() => {
     return { collapse: collapse, expand: expand, toggle: toggle, isCollapsed: isCollapsed, el: el };
   }
 
+  // =========================================
+  // Rating
+  // =========================================
+  function ratingIsHalf(star, e) {
+    var rect = star.getBoundingClientRect();
+    return e.clientX < rect.left + rect.width / 2;
+  }
+
+  function ratingEnsureDualSvg(star) {
+    var svgs = star.querySelectorAll('svg');
+    if (svgs.length < 2) {
+      var clone = svgs[0].cloneNode(true);
+      star.appendChild(clone);
+    }
+  }
+
+  function ratingResetSvg(star) {
+    var svgs = star.querySelectorAll('svg');
+    if (svgs.length > 1) {
+      for (var i = svgs.length - 1; i > 0; i--) { svgs[i].remove(); }
+    }
+  }
+
+  document.addEventListener('click', function(e) {
+    var star = e.target.closest('.sui-rating:not(.sui-rating-readonly) .sui-rating-star');
+    if (!star) return;
+    var rating = star.closest('.sui-rating');
+    var stars = Array.from(rating.querySelectorAll('.sui-rating-star'));
+    var index = stars.indexOf(star);
+    var allowHalf = rating.classList.contains('sui-rating-half');
+    var isHalf = allowHalf && ratingIsHalf(star, e);
+    var value = isHalf ? index + 0.5 : index + 1;
+    stars.forEach(function(s, i) {
+      s.classList.remove('active', 'half', 'hover', 'hover-half');
+      ratingResetSvg(s);
+      if (i < index) {
+        s.classList.add('active');
+      } else if (i === index) {
+        if (isHalf) {
+          ratingEnsureDualSvg(s);
+          s.classList.add('half');
+        } else {
+          s.classList.add('active');
+        }
+      }
+    });
+    rating.setAttribute('data-value', value);
+    rating.dispatchEvent(new CustomEvent('sui-rating-change', { detail: { value: value } }));
+  });
+
+  document.addEventListener('mousemove', function(e) {
+    var star = e.target.closest('.sui-rating:not(.sui-rating-readonly) .sui-rating-star');
+    if (!star) return;
+    var rating = star.closest('.sui-rating');
+    var stars = Array.from(rating.querySelectorAll('.sui-rating-star'));
+    var index = stars.indexOf(star);
+    var allowHalf = rating.classList.contains('sui-rating-half');
+    var isHalf = allowHalf && ratingIsHalf(star, e);
+    stars.forEach(function(s, i) {
+      s.classList.remove('hover', 'hover-half');
+      ratingResetSvg(s);
+      if (i < index) {
+        s.classList.add('hover');
+      } else if (i === index) {
+        if (isHalf) {
+          ratingEnsureDualSvg(s);
+          s.classList.add('hover-half');
+        } else {
+          s.classList.add('hover');
+        }
+      }
+    });
+  });
+
+  document.addEventListener('mouseout', function(e) {
+    var star = e.target.closest('.sui-rating:not(.sui-rating-readonly) .sui-rating-star');
+    if (!star) return;
+    var rating = star.closest('.sui-rating');
+    var stars = Array.from(rating.querySelectorAll('.sui-rating-star'));
+    stars.forEach(function(s) {
+      s.classList.remove('hover', 'hover-half');
+      if (!s.classList.contains('half')) { ratingResetSvg(s); }
+    });
+  });
+
   return { modal, sheet, toast, carousel, sidebar };
 })();

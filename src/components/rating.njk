@@ -1,0 +1,497 @@
+---
+layout: component.njk
+title: Rating
+description: Star-based rating component for collecting or displaying user feedback. Supports interactive and read-only modes, half stars, sizes, colors, and custom icons.
+componentId: rating
+hasControls: false
+toc:
+  - Default
+  - Sizes
+  - Colors
+  - Half Stars
+  - Read Only
+  - With Count
+  - Custom Icons
+  - Inset
+---
+
+{% set starSvg %}<svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>{% endset %}
+{% set heartSvg %}<svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78L12 21.23l8.84-8.84a5.5 5.5 0 000-7.78z"/></svg>{% endset %}
+{% set thumbSvg %}<svg viewBox="0 0 24 24"><path d="M14 9V5a3 3 0 00-3-3l-4 9v11h11.28a2 2 0 002-1.7l1.38-9a2 2 0 00-2-2.3H14zM7 22H4a2 2 0 01-2-2v-7a2 2 0 012-2h3"/></svg>{% endset %}
+{% set circleSvg %}<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/></svg>{% endset %}
+
+<!-- Default -->
+<div class="pg-section" id="section-1">
+  <h3 class="pg-section-title">Default</h3>
+  <div class="pg-section-row">
+    <div style="display:flex;flex-wrap:wrap;gap:24px;align-items:center;">
+      <div class="sui-rating" data-value="3">
+        <span class="sui-rating-star active">{{ starSvg | safe }}</span>
+        <span class="sui-rating-star active">{{ starSvg | safe }}</span>
+        <span class="sui-rating-star active">{{ starSvg | safe }}</span>
+        <span class="sui-rating-star">{{ starSvg | safe }}</span>
+        <span class="sui-rating-star">{{ starSvg | safe }}</span>
+      </div>
+      <div class="sui-rating" data-value="0">
+        <span class="sui-rating-star">{{ starSvg | safe }}</span>
+        <span class="sui-rating-star">{{ starSvg | safe }}</span>
+        <span class="sui-rating-star">{{ starSvg | safe }}</span>
+        <span class="sui-rating-star">{{ starSvg | safe }}</span>
+        <span class="sui-rating-star">{{ starSvg | safe }}</span>
+      </div>
+    </div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-rating" data-value="3"&gt;
+  &lt;span class="sui-rating-star active"&gt;
+    &lt;svg viewBox="0 0 24 24"&gt;&lt;path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14 2 9.27l6.91-1.01L12 2z"/&gt;&lt;/svg&gt;
+  &lt;/span&gt;
+  &lt;span class="sui-rating-star active"&gt;
+    &lt;svg viewBox="0 0 24 24"&gt;&lt;path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14 2 9.27l6.91-1.01L12 2z"/&gt;&lt;/svg&gt;
+  &lt;/span&gt;
+  &lt;span class="sui-rating-star active"&gt;
+    &lt;svg viewBox="0 0 24 24"&gt;&lt;path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14 2 9.27l6.91-1.01L12 2z"/&gt;&lt;/svg&gt;
+  &lt;/span&gt;
+  &lt;span class="sui-rating-star"&gt;
+    &lt;svg viewBox="0 0 24 24"&gt;&lt;path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14 2 9.27l6.91-1.01L12 2z"/&gt;&lt;/svg&gt;
+  &lt;/span&gt;
+  &lt;span class="sui-rating-star"&gt;
+    &lt;svg viewBox="0 0 24 24"&gt;&lt;path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14 2 9.27l6.91-1.01L12 2z"/&gt;&lt;/svg&gt;
+  &lt;/span&gt;
+&lt;/div&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Sizes -->
+<div class="pg-section" id="section-2">
+  <h3 class="pg-section-title">Sizes</h3>
+  <div class="pg-section-row">
+    <div style="display:flex;flex-wrap:wrap;gap:24px;align-items:center;">
+      <div>
+        <div style="font-size:12px;color:var(--sui-text-muted);margin-bottom:6px;">Small</div>
+        <div class="sui-rating sui-rating-sm" data-value="4">
+          <span class="sui-rating-star active">{{ starSvg | safe }}</span>
+          <span class="sui-rating-star active">{{ starSvg | safe }}</span>
+          <span class="sui-rating-star active">{{ starSvg | safe }}</span>
+          <span class="sui-rating-star active">{{ starSvg | safe }}</span>
+          <span class="sui-rating-star">{{ starSvg | safe }}</span>
+        </div>
+      </div>
+      <div>
+        <div style="font-size:12px;color:var(--sui-text-muted);margin-bottom:6px;">Default</div>
+        <div class="sui-rating" data-value="4">
+          <span class="sui-rating-star active">{{ starSvg | safe }}</span>
+          <span class="sui-rating-star active">{{ starSvg | safe }}</span>
+          <span class="sui-rating-star active">{{ starSvg | safe }}</span>
+          <span class="sui-rating-star active">{{ starSvg | safe }}</span>
+          <span class="sui-rating-star">{{ starSvg | safe }}</span>
+        </div>
+      </div>
+      <div>
+        <div style="font-size:12px;color:var(--sui-text-muted);margin-bottom:6px;">Large</div>
+        <div class="sui-rating sui-rating-lg" data-value="4">
+          <span class="sui-rating-star active">{{ starSvg | safe }}</span>
+          <span class="sui-rating-star active">{{ starSvg | safe }}</span>
+          <span class="sui-rating-star active">{{ starSvg | safe }}</span>
+          <span class="sui-rating-star active">{{ starSvg | safe }}</span>
+          <span class="sui-rating-star">{{ starSvg | safe }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;!-- Small --&gt;
+&lt;div class="sui-rating sui-rating-sm" data-value="4"&gt;
+  &lt;span class="sui-rating-star active"&gt;
+    &lt;svg viewBox="0 0 24 24"&gt;&lt;path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14 2 9.27l6.91-1.01L12 2z"/&gt;&lt;/svg&gt;
+  &lt;/span&gt;
+  &lt;!-- ... more stars --&gt;
+&lt;/div&gt;
+
+&lt;!-- Default --&gt;
+&lt;div class="sui-rating" data-value="4"&gt;
+  &lt;span class="sui-rating-star active"&gt;
+    &lt;svg viewBox="0 0 24 24"&gt;&lt;path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14 2 9.27l6.91-1.01L12 2z"/&gt;&lt;/svg&gt;
+  &lt;/span&gt;
+  &lt;!-- ... more stars --&gt;
+&lt;/div&gt;
+
+&lt;!-- Large --&gt;
+&lt;div class="sui-rating sui-rating-lg" data-value="4"&gt;
+  &lt;span class="sui-rating-star active"&gt;
+    &lt;svg viewBox="0 0 24 24"&gt;&lt;path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14 2 9.27l6.91-1.01L12 2z"/&gt;&lt;/svg&gt;
+  &lt;/span&gt;
+  &lt;!-- ... more stars --&gt;
+&lt;/div&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Colors -->
+<div class="pg-section" id="section-3">
+  <h3 class="pg-section-title">Colors</h3>
+  <div class="pg-section-row">
+    <div style="display:flex;flex-wrap:wrap;gap:24px;align-items:center;">
+      <div>
+        <div style="font-size:12px;color:var(--sui-text-muted);margin-bottom:6px;">Default (warning)</div>
+        <div class="sui-rating" data-value="4">
+          <span class="sui-rating-star active">{{ starSvg | safe }}</span>
+          <span class="sui-rating-star active">{{ starSvg | safe }}</span>
+          <span class="sui-rating-star active">{{ starSvg | safe }}</span>
+          <span class="sui-rating-star active">{{ starSvg | safe }}</span>
+          <span class="sui-rating-star">{{ starSvg | safe }}</span>
+        </div>
+      </div>
+      <div>
+        <div style="font-size:12px;color:var(--sui-text-muted);margin-bottom:6px;">Primary</div>
+        <div class="sui-rating sui-rating-primary" data-value="4">
+          <span class="sui-rating-star active">{{ starSvg | safe }}</span>
+          <span class="sui-rating-star active">{{ starSvg | safe }}</span>
+          <span class="sui-rating-star active">{{ starSvg | safe }}</span>
+          <span class="sui-rating-star active">{{ starSvg | safe }}</span>
+          <span class="sui-rating-star">{{ starSvg | safe }}</span>
+        </div>
+      </div>
+      <div>
+        <div style="font-size:12px;color:var(--sui-text-muted);margin-bottom:6px;">Success</div>
+        <div class="sui-rating sui-rating-success" data-value="4">
+          <span class="sui-rating-star active">{{ starSvg | safe }}</span>
+          <span class="sui-rating-star active">{{ starSvg | safe }}</span>
+          <span class="sui-rating-star active">{{ starSvg | safe }}</span>
+          <span class="sui-rating-star active">{{ starSvg | safe }}</span>
+          <span class="sui-rating-star">{{ starSvg | safe }}</span>
+        </div>
+      </div>
+      <div>
+        <div style="font-size:12px;color:var(--sui-text-muted);margin-bottom:6px;">Danger</div>
+        <div class="sui-rating sui-rating-danger" data-value="3">
+          <span class="sui-rating-star active">{{ starSvg | safe }}</span>
+          <span class="sui-rating-star active">{{ starSvg | safe }}</span>
+          <span class="sui-rating-star active">{{ starSvg | safe }}</span>
+          <span class="sui-rating-star">{{ starSvg | safe }}</span>
+          <span class="sui-rating-star">{{ starSvg | safe }}</span>
+        </div>
+      </div>
+      <div>
+        <div style="font-size:12px;color:var(--sui-text-muted);margin-bottom:6px;">Info</div>
+        <div class="sui-rating sui-rating-info" data-value="5">
+          <span class="sui-rating-star active">{{ starSvg | safe }}</span>
+          <span class="sui-rating-star active">{{ starSvg | safe }}</span>
+          <span class="sui-rating-star active">{{ starSvg | safe }}</span>
+          <span class="sui-rating-star active">{{ starSvg | safe }}</span>
+          <span class="sui-rating-star active">{{ starSvg | safe }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-rating sui-rating-primary" data-value="4"&gt;
+  &lt;span class="sui-rating-star active"&gt;
+    &lt;svg viewBox="0 0 24 24"&gt;&lt;path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14 2 9.27l6.91-1.01L12 2z"/&gt;&lt;/svg&gt;
+  &lt;/span&gt;
+  &lt;span class="sui-rating-star active"&gt;
+    &lt;svg viewBox="0 0 24 24"&gt;&lt;path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14 2 9.27l6.91-1.01L12 2z"/&gt;&lt;/svg&gt;
+  &lt;/span&gt;
+  &lt;span class="sui-rating-star active"&gt;
+    &lt;svg viewBox="0 0 24 24"&gt;&lt;path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14 2 9.27l6.91-1.01L12 2z"/&gt;&lt;/svg&gt;
+  &lt;/span&gt;
+  &lt;span class="sui-rating-star active"&gt;
+    &lt;svg viewBox="0 0 24 24"&gt;&lt;path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14 2 9.27l6.91-1.01L12 2z"/&gt;&lt;/svg&gt;
+  &lt;/span&gt;
+  &lt;span class="sui-rating-star"&gt;
+    &lt;svg viewBox="0 0 24 24"&gt;&lt;path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14 2 9.27l6.91-1.01L12 2z"/&gt;&lt;/svg&gt;
+  &lt;/span&gt;
+&lt;/div&gt;
+
+&lt;!-- Color variants: sui-rating-primary, sui-rating-success, sui-rating-danger, sui-rating-info --&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Half Stars -->
+<div class="pg-section" id="section-4">
+  <h3 class="pg-section-title">Half Stars</h3>
+  <div class="pg-section-row">
+    <div style="display:flex;flex-wrap:wrap;gap:24px;align-items:center;">
+      <div class="sui-rating sui-rating-half" data-value="3.5">
+        <span class="sui-rating-star active">{{ starSvg | safe }}</span>
+        <span class="sui-rating-star active">{{ starSvg | safe }}</span>
+        <span class="sui-rating-star active">{{ starSvg | safe }}</span>
+        <span class="sui-rating-star half">
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        </span>
+        <span class="sui-rating-star">{{ starSvg | safe }}</span>
+      </div>
+      <div class="sui-rating sui-rating-half" data-value="4.5">
+        <span class="sui-rating-star active">{{ starSvg | safe }}</span>
+        <span class="sui-rating-star active">{{ starSvg | safe }}</span>
+        <span class="sui-rating-star active">{{ starSvg | safe }}</span>
+        <span class="sui-rating-star active">{{ starSvg | safe }}</span>
+        <span class="sui-rating-star half">
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        </span>
+      </div>
+    </div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-rating sui-rating-half" data-value="3.5"&gt;
+  &lt;span class="sui-rating-star active"&gt;
+    &lt;svg viewBox="0 0 24 24"&gt;&lt;path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14 2 9.27l6.91-1.01L12 2z"/&gt;&lt;/svg&gt;
+  &lt;/span&gt;
+  &lt;span class="sui-rating-star active"&gt;
+    &lt;svg viewBox="0 0 24 24"&gt;&lt;path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14 2 9.27l6.91-1.01L12 2z"/&gt;&lt;/svg&gt;
+  &lt;/span&gt;
+  &lt;span class="sui-rating-star active"&gt;
+    &lt;svg viewBox="0 0 24 24"&gt;&lt;path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14 2 9.27l6.91-1.01L12 2z"/&gt;&lt;/svg&gt;
+  &lt;/span&gt;
+  &lt;span class="sui-rating-star half"&gt;
+    &lt;svg viewBox="0 0 24 24"&gt;&lt;path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14 2 9.27l6.91-1.01L12 2z"/&gt;&lt;/svg&gt;
+    &lt;svg viewBox="0 0 24 24"&gt;&lt;path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14 2 9.27l6.91-1.01L12 2z"/&gt;&lt;/svg&gt;
+  &lt;/span&gt;
+  &lt;span class="sui-rating-star"&gt;
+    &lt;svg viewBox="0 0 24 24"&gt;&lt;path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14 2 9.27l6.91-1.01L12 2z"/&gt;&lt;/svg&gt;
+  &lt;/span&gt;
+&lt;/div&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Read Only -->
+<div class="pg-section" id="section-5">
+  <h3 class="pg-section-title">Read Only</h3>
+  <div class="pg-section-row">
+    <div style="display:flex;flex-wrap:wrap;gap:24px;align-items:center;">
+      <div class="sui-rating sui-rating-readonly" data-value="5">
+        <span class="sui-rating-star active">{{ starSvg | safe }}</span>
+        <span class="sui-rating-star active">{{ starSvg | safe }}</span>
+        <span class="sui-rating-star active">{{ starSvg | safe }}</span>
+        <span class="sui-rating-star active">{{ starSvg | safe }}</span>
+        <span class="sui-rating-star active">{{ starSvg | safe }}</span>
+      </div>
+      <div class="sui-rating sui-rating-readonly" data-value="2">
+        <span class="sui-rating-star active">{{ starSvg | safe }}</span>
+        <span class="sui-rating-star active">{{ starSvg | safe }}</span>
+        <span class="sui-rating-star">{{ starSvg | safe }}</span>
+        <span class="sui-rating-star">{{ starSvg | safe }}</span>
+        <span class="sui-rating-star">{{ starSvg | safe }}</span>
+      </div>
+    </div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-rating sui-rating-readonly" data-value="5"&gt;
+  &lt;span class="sui-rating-star active"&gt;
+    &lt;svg viewBox="0 0 24 24"&gt;&lt;path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14 2 9.27l6.91-1.01L12 2z"/&gt;&lt;/svg&gt;
+  &lt;/span&gt;
+  &lt;span class="sui-rating-star active"&gt;
+    &lt;svg viewBox="0 0 24 24"&gt;&lt;path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14 2 9.27l6.91-1.01L12 2z"/&gt;&lt;/svg&gt;
+  &lt;/span&gt;
+  &lt;span class="sui-rating-star active"&gt;
+    &lt;svg viewBox="0 0 24 24"&gt;&lt;path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14 2 9.27l6.91-1.01L12 2z"/&gt;&lt;/svg&gt;
+  &lt;/span&gt;
+  &lt;span class="sui-rating-star active"&gt;
+    &lt;svg viewBox="0 0 24 24"&gt;&lt;path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14 2 9.27l6.91-1.01L12 2z"/&gt;&lt;/svg&gt;
+  &lt;/span&gt;
+  &lt;span class="sui-rating-star active"&gt;
+    &lt;svg viewBox="0 0 24 24"&gt;&lt;path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14 2 9.27l6.91-1.01L12 2z"/&gt;&lt;/svg&gt;
+  &lt;/span&gt;
+&lt;/div&gt;</pre></div>
+  </div>
+</div>
+
+<!-- With Count -->
+<div class="pg-section" id="section-6">
+  <h3 class="pg-section-title">With Count</h3>
+  <div class="pg-section-row">
+    <div style="display:flex;flex-wrap:wrap;gap:24px;align-items:flex-start;">
+      <div class="sui-rating" data-value="4">
+        <span class="sui-rating-star active">{{ starSvg | safe }}</span>
+        <span class="sui-rating-star active">{{ starSvg | safe }}</span>
+        <span class="sui-rating-star active">{{ starSvg | safe }}</span>
+        <span class="sui-rating-star active">{{ starSvg | safe }}</span>
+        <span class="sui-rating-star">{{ starSvg | safe }}</span>
+        <span class="sui-rating-count">4.0 (128 reviews)</span>
+      </div>
+      <div class="sui-rating sui-rating-sm" data-value="5">
+        <span class="sui-rating-star active">{{ starSvg | safe }}</span>
+        <span class="sui-rating-star active">{{ starSvg | safe }}</span>
+        <span class="sui-rating-star active">{{ starSvg | safe }}</span>
+        <span class="sui-rating-star active">{{ starSvg | safe }}</span>
+        <span class="sui-rating-star active">{{ starSvg | safe }}</span>
+        <span class="sui-rating-count">5.0 (42 reviews)</span>
+      </div>
+    </div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-rating sui-rating-readonly" data-value="4"&gt;
+  &lt;span class="sui-rating-star active"&gt;
+    &lt;svg viewBox="0 0 24 24"&gt;&lt;path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14 2 9.27l6.91-1.01L12 2z"/&gt;&lt;/svg&gt;
+  &lt;/span&gt;
+  &lt;span class="sui-rating-star active"&gt;
+    &lt;svg viewBox="0 0 24 24"&gt;&lt;path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14 2 9.27l6.91-1.01L12 2z"/&gt;&lt;/svg&gt;
+  &lt;/span&gt;
+  &lt;span class="sui-rating-star active"&gt;
+    &lt;svg viewBox="0 0 24 24"&gt;&lt;path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14 2 9.27l6.91-1.01L12 2z"/&gt;&lt;/svg&gt;
+  &lt;/span&gt;
+  &lt;span class="sui-rating-star active"&gt;
+    &lt;svg viewBox="0 0 24 24"&gt;&lt;path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14 2 9.27l6.91-1.01L12 2z"/&gt;&lt;/svg&gt;
+  &lt;/span&gt;
+  &lt;span class="sui-rating-star"&gt;
+    &lt;svg viewBox="0 0 24 24"&gt;&lt;path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14 2 9.27l6.91-1.01L12 2z"/&gt;&lt;/svg&gt;
+  &lt;/span&gt;
+  &lt;span class="sui-rating-count"&gt;4.0 (128 reviews)&lt;/span&gt;
+&lt;/div&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Custom Icons -->
+<div class="pg-section" id="section-7">
+  <h3 class="pg-section-title">Custom Icons</h3>
+  <div class="pg-section-row">
+    <div style="display:flex;flex-wrap:wrap;gap:24px;align-items:center;">
+      <div>
+        <div style="font-size:12px;color:var(--sui-text-muted);margin-bottom:6px;">Hearts</div>
+        <div class="sui-rating sui-rating-danger" data-value="4">
+          <span class="sui-rating-star active">{{ heartSvg | safe }}</span>
+          <span class="sui-rating-star active">{{ heartSvg | safe }}</span>
+          <span class="sui-rating-star active">{{ heartSvg | safe }}</span>
+          <span class="sui-rating-star active">{{ heartSvg | safe }}</span>
+          <span class="sui-rating-star">{{ heartSvg | safe }}</span>
+        </div>
+      </div>
+      <div>
+        <div style="font-size:12px;color:var(--sui-text-muted);margin-bottom:6px;">Thumbs Up</div>
+        <div class="sui-rating sui-rating-success" data-value="3">
+          <span class="sui-rating-star active">{{ thumbSvg | safe }}</span>
+          <span class="sui-rating-star active">{{ thumbSvg | safe }}</span>
+          <span class="sui-rating-star active">{{ thumbSvg | safe }}</span>
+          <span class="sui-rating-star">{{ thumbSvg | safe }}</span>
+          <span class="sui-rating-star">{{ thumbSvg | safe }}</span>
+        </div>
+      </div>
+      <div>
+        <div style="font-size:12px;color:var(--sui-text-muted);margin-bottom:6px;">Circles</div>
+        <div class="sui-rating sui-rating-primary" data-value="3">
+          <span class="sui-rating-star active">{{ circleSvg | safe }}</span>
+          <span class="sui-rating-star active">{{ circleSvg | safe }}</span>
+          <span class="sui-rating-star active">{{ circleSvg | safe }}</span>
+          <span class="sui-rating-star">{{ circleSvg | safe }}</span>
+          <span class="sui-rating-star">{{ circleSvg | safe }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;!-- Hearts --&gt;
+&lt;div class="sui-rating sui-rating-danger" data-value="4"&gt;
+  &lt;span class="sui-rating-star active"&gt;
+    &lt;svg viewBox="0 0 24 24"&gt;&lt;path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78L12 21.23l8.84-8.84a5.5 5.5 0 000-7.78z"/&gt;&lt;/svg&gt;
+  &lt;/span&gt;
+  &lt;span class="sui-rating-star active"&gt;
+    &lt;svg viewBox="0 0 24 24"&gt;&lt;path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78L12 21.23l8.84-8.84a5.5 5.5 0 000-7.78z"/&gt;&lt;/svg&gt;
+  &lt;/span&gt;
+  &lt;span class="sui-rating-star active"&gt;
+    &lt;svg viewBox="0 0 24 24"&gt;&lt;path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78L12 21.23l8.84-8.84a5.5 5.5 0 000-7.78z"/&gt;&lt;/svg&gt;
+  &lt;/span&gt;
+  &lt;span class="sui-rating-star active"&gt;
+    &lt;svg viewBox="0 0 24 24"&gt;&lt;path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78L12 21.23l8.84-8.84a5.5 5.5 0 000-7.78z"/&gt;&lt;/svg&gt;
+  &lt;/span&gt;
+  &lt;span class="sui-rating-star"&gt;
+    &lt;svg viewBox="0 0 24 24"&gt;&lt;path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78L12 21.23l8.84-8.84a5.5 5.5 0 000-7.78z"/&gt;&lt;/svg&gt;
+  &lt;/span&gt;
+&lt;/div&gt;
+
+&lt;!-- Thumbs Up --&gt;
+&lt;div class="sui-rating sui-rating-success" data-value="3"&gt;
+  &lt;span class="sui-rating-star active"&gt;
+    &lt;svg viewBox="0 0 24 24"&gt;&lt;path d="M14 9V5a3 3 0 00-3-3l-4 9v11h11.28a2 2 0 002-1.7l1.38-9a2 2 0 00-2-2.3H14zM7 22H4a2 2 0 01-2-2v-7a2 2 0 012-2h3"/&gt;&lt;/svg&gt;
+  &lt;/span&gt;
+  &lt;span class="sui-rating-star active"&gt;
+    &lt;svg viewBox="0 0 24 24"&gt;&lt;path d="M14 9V5a3 3 0 00-3-3l-4 9v11h11.28a2 2 0 002-1.7l1.38-9a2 2 0 00-2-2.3H14zM7 22H4a2 2 0 01-2-2v-7a2 2 0 012-2h3"/&gt;&lt;/svg&gt;
+  &lt;/span&gt;
+  &lt;span class="sui-rating-star active"&gt;
+    &lt;svg viewBox="0 0 24 24"&gt;&lt;path d="M14 9V5a3 3 0 00-3-3l-4 9v11h11.28a2 2 0 002-1.7l1.38-9a2 2 0 00-2-2.3H14zM7 22H4a2 2 0 01-2-2v-7a2 2 0 012-2h3"/&gt;&lt;/svg&gt;
+  &lt;/span&gt;
+  &lt;span class="sui-rating-star"&gt;
+    &lt;svg viewBox="0 0 24 24"&gt;&lt;path d="M14 9V5a3 3 0 00-3-3l-4 9v11h11.28a2 2 0 002-1.7l1.38-9a2 2 0 00-2-2.3H14zM7 22H4a2 2 0 01-2-2v-7a2 2 0 012-2h3"/&gt;&lt;/svg&gt;
+  &lt;/span&gt;
+  &lt;span class="sui-rating-star"&gt;
+    &lt;svg viewBox="0 0 24 24"&gt;&lt;path d="M14 9V5a3 3 0 00-3-3l-4 9v11h11.28a2 2 0 002-1.7l1.38-9a2 2 0 00-2-2.3H14zM7 22H4a2 2 0 01-2-2v-7a2 2 0 012-2h3"/&gt;&lt;/svg&gt;
+  &lt;/span&gt;
+&lt;/div&gt;
+
+&lt;!-- Circles --&gt;
+&lt;div class="sui-rating sui-rating-primary" data-value="3"&gt;
+  &lt;span class="sui-rating-star active"&gt;
+    &lt;svg viewBox="0 0 24 24"&gt;&lt;circle cx="12" cy="12" r="10"/&gt;&lt;/svg&gt;
+  &lt;/span&gt;
+  &lt;span class="sui-rating-star active"&gt;
+    &lt;svg viewBox="0 0 24 24"&gt;&lt;circle cx="12" cy="12" r="10"/&gt;&lt;/svg&gt;
+  &lt;/span&gt;
+  &lt;span class="sui-rating-star active"&gt;
+    &lt;svg viewBox="0 0 24 24"&gt;&lt;circle cx="12" cy="12" r="10"/&gt;&lt;/svg&gt;
+  &lt;/span&gt;
+  &lt;span class="sui-rating-star"&gt;
+    &lt;svg viewBox="0 0 24 24"&gt;&lt;circle cx="12" cy="12" r="10"/&gt;&lt;/svg&gt;
+  &lt;/span&gt;
+  &lt;span class="sui-rating-star"&gt;
+    &lt;svg viewBox="0 0 24 24"&gt;&lt;circle cx="12" cy="12" r="10"/&gt;&lt;/svg&gt;
+  &lt;/span&gt;
+&lt;/div&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Inset -->
+<div class="pg-section" id="section-8">
+  <h3 class="pg-section-title">Inset</h3>
+  <div class="pg-section-row">
+    <div style="display:flex;flex-wrap:wrap;gap:24px;align-items:center;">
+      <div class="sui-rating sui-rating-inset" data-value="4">
+        <span class="sui-rating-star active">{{ starSvg | safe }}</span>
+        <span class="sui-rating-star active">{{ starSvg | safe }}</span>
+        <span class="sui-rating-star active">{{ starSvg | safe }}</span>
+        <span class="sui-rating-star active">{{ starSvg | safe }}</span>
+        <span class="sui-rating-star">{{ starSvg | safe }}</span>
+      </div>
+      <div class="sui-rating sui-rating-inset sui-rating-primary" data-value="3">
+        <span class="sui-rating-star active">{{ starSvg | safe }}</span>
+        <span class="sui-rating-star active">{{ starSvg | safe }}</span>
+        <span class="sui-rating-star active">{{ starSvg | safe }}</span>
+        <span class="sui-rating-star">{{ starSvg | safe }}</span>
+        <span class="sui-rating-star">{{ starSvg | safe }}</span>
+      </div>
+      <div class="sui-rating sui-rating-inset sui-rating-lg sui-rating-success" data-value="5">
+        <span class="sui-rating-star active">{{ starSvg | safe }}</span>
+        <span class="sui-rating-star active">{{ starSvg | safe }}</span>
+        <span class="sui-rating-star active">{{ starSvg | safe }}</span>
+        <span class="sui-rating-star active">{{ starSvg | safe }}</span>
+        <span class="sui-rating-star active">{{ starSvg | safe }}</span>
+      </div>
+    </div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-rating sui-rating-inset" data-value="4"&gt;
+  &lt;span class="sui-rating-star active"&gt;
+    &lt;svg viewBox="0 0 24 24"&gt;&lt;path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14 2 9.27l6.91-1.01L12 2z"/&gt;&lt;/svg&gt;
+  &lt;/span&gt;
+  &lt;span class="sui-rating-star active"&gt;
+    &lt;svg viewBox="0 0 24 24"&gt;&lt;path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14 2 9.27l6.91-1.01L12 2z"/&gt;&lt;/svg&gt;
+  &lt;/span&gt;
+  &lt;span class="sui-rating-star active"&gt;
+    &lt;svg viewBox="0 0 24 24"&gt;&lt;path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14 2 9.27l6.91-1.01L12 2z"/&gt;&lt;/svg&gt;
+  &lt;/span&gt;
+  &lt;span class="sui-rating-star active"&gt;
+    &lt;svg viewBox="0 0 24 24"&gt;&lt;path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14 2 9.27l6.91-1.01L12 2z"/&gt;&lt;/svg&gt;
+  &lt;/span&gt;
+  &lt;span class="sui-rating-star"&gt;
+    &lt;svg viewBox="0 0 24 24"&gt;&lt;path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14 2 9.27l6.91-1.01L12 2z"/&gt;&lt;/svg&gt;
+  &lt;/span&gt;
+&lt;/div&gt;</pre></div>
+  </div>
+</div>

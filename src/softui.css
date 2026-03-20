@@ -8837,3 +8837,132 @@ a.sui-btn-warning:visited {
 .sui-stat-compact .sui-progress {
   margin-top: 8px;
 }
+
+/* =========================================
+   Rating
+   ========================================= */
+.sui-rating {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+}
+
+.sui-rating-star {
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+  color: var(--sui-bg-dark);
+  transition: color 0.15s ease, transform 0.15s ease;
+  flex-shrink: 0;
+}
+
+.sui-rating-star svg {
+  width: 100%;
+  height: 100%;
+  fill: currentColor;
+  stroke: none;
+}
+
+.sui-rating-star:hover {
+  transform: scale(1.15);
+}
+
+.sui-rating-star.active {
+  color: var(--sui-warning);
+}
+
+.sui-rating-star.hover {
+  color: var(--sui-warning);
+  opacity: 0.7;
+}
+
+.sui-rating-primary .sui-rating-star.hover { color: var(--sui-primary); }
+.sui-rating-success .sui-rating-star.hover { color: var(--sui-success); }
+.sui-rating-danger .sui-rating-star.hover { color: var(--sui-danger); }
+.sui-rating-info .sui-rating-star.hover { color: var(--sui-info); }
+
+/* Read-only */
+.sui-rating-readonly .sui-rating-star {
+  cursor: default;
+}
+
+.sui-rating-readonly .sui-rating-star:hover {
+  transform: none;
+}
+
+/* Half star — uses two layered SVGs: filled (clipped left) + empty (behind) */
+.sui-rating-star.half,
+.sui-rating-star.hover-half {
+  position: relative;
+  color: var(--sui-bg-dark);
+}
+
+.sui-rating-star.hover-half {
+  opacity: 0.7;
+}
+
+.sui-rating-star.half svg:last-child,
+.sui-rating-star.hover-half svg:last-child {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.sui-rating-star.half svg:first-child,
+.sui-rating-star.hover-half svg:first-child {
+  clip-path: inset(0 50% 0 0);
+  color: var(--sui-warning);
+  position: relative;
+  z-index: 1;
+}
+
+/* Sizes */
+.sui-rating-sm .sui-rating-star {
+  width: 16px;
+  height: 16px;
+}
+
+.sui-rating-sm .sui-rating-star:hover {
+  transform: scale(1.05);
+}
+
+.sui-rating-lg .sui-rating-star {
+  width: 32px;
+  height: 32px;
+}
+
+/* Colors */
+.sui-rating-primary .sui-rating-star.active { color: var(--sui-primary); }
+.sui-rating-primary .sui-rating-star.half svg:first-child { color: var(--sui-primary); }
+.sui-rating-primary .sui-rating-star.hover-half svg:first-child { color: var(--sui-primary); }
+
+.sui-rating-success .sui-rating-star.active { color: var(--sui-success); }
+.sui-rating-success .sui-rating-star.half svg:first-child { color: var(--sui-success); }
+.sui-rating-success .sui-rating-star.hover-half svg:first-child { color: var(--sui-success); }
+
+.sui-rating-danger .sui-rating-star.active { color: var(--sui-danger); }
+.sui-rating-danger .sui-rating-star.half svg:first-child { color: var(--sui-danger); }
+.sui-rating-danger .sui-rating-star.hover-half svg:first-child { color: var(--sui-danger); }
+
+.sui-rating-info .sui-rating-star.active { color: var(--sui-info); }
+.sui-rating-info .sui-rating-star.half svg:first-child { color: var(--sui-info); }
+.sui-rating-info .sui-rating-star.hover-half svg:first-child { color: var(--sui-info); }
+
+/* With count */
+.sui-rating-count {
+  margin-left: 6px;
+  font-size: 13px;
+  color: var(--sui-text-muted);
+  font-weight: 500;
+}
+
+/* Inset style */
+.sui-rating-inset {
+  background: var(--sui-bg);
+  box-shadow: var(--sui-shadow-inset-sm);
+  border-radius: var(--sui-radius);
+  padding: 6px 10px;
+  gap: 4px;
+}
