@@ -22,6 +22,7 @@
     { "id": "radialprogress", "name": "Radial Progress", "url": "/components/radialprogress/" },
     { "id": "rating", "name": "Rating", "url": "/components/rating/" },
     { "id": "statcard", "name": "Stat Card", "url": "/components/statcard/" },
+    { "id": "swap", "name": "Swap", "url": "/components/swap/" },
     { "id": "timeline", "name": "Timeline", "url": "/components/timeline/" },
     { "id": "tables", "name": "Tables", "url": "/components/tables/" },
     { "id": "datatable", "name": "Data Table", "url": "/components/datatable/" },

@@ -3461,6 +3461,26 @@ const SoftUI = (() => {
   }
 
   // =========================================
+  // Swap
+  // =========================================
+  document.addEventListener('click', function(e) {
+    var swap = e.target.closest('.sui-swap');
+    if (!swap) return;
+    if (swap.classList.contains('sui-swap-cycle')) {
+      var states = Array.from(swap.querySelectorAll('.sui-swap-state'));
+      var current = states.findIndex(function(s) { return s.classList.contains('active'); });
+      var next = (current + 1) % states.length;
+      states.forEach(function(s) { s.classList.remove('active'); });
+      states[next].classList.add('active');
+      swap.setAttribute('data-state', next);
+      swap.dispatchEvent(new CustomEvent('sui-swap-change', { detail: { state: next, total: states.length } }));
+    } else {
+      swap.classList.toggle('active');
+      swap.dispatchEvent(new CustomEvent('sui-swap-change', { detail: { active: swap.classList.contains('active') } }));
+    }
+  });
+
+  // =========================================
   // Dock — magnification effect
   // =========================================
   var dockMaxScale = 1.5;

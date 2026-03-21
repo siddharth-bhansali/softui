@@ -10114,6 +10114,234 @@ a.sui-btn-warning:visited {
   box-shadow: var(--sui-shadow-raised-sm);
 }
 
+/* =========================================
+   Swap
+   ========================================= */
+.sui-swap {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  position: relative;
+  width: 40px;
+  height: 40px;
+  border: none;
+  background: none;
+  padding: 0;
+  font: inherit;
+  outline: none;
+  color: var(--sui-text);
+}
+
+.sui-swap-on,
+.sui-swap-off {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.sui-swap-on {
+  position: absolute;
+  opacity: 0;
+  transform: scale(0);
+}
+
+.sui-swap-off {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.sui-swap.active .sui-swap-on {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.sui-swap.active .sui-swap-off {
+  opacity: 0;
+  transform: scale(0);
+}
+
+.sui-swap svg {
+  width: 24px;
+  height: 24px;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* Rotate */
+.sui-swap-rotate .sui-swap-on {
+  transform: rotate(-180deg) scale(0);
+}
+
+.sui-swap-rotate .sui-swap-off {
+  transform: rotate(0deg) scale(1);
+}
+
+.sui-swap-rotate.active .sui-swap-on {
+  transform: rotate(0deg) scale(1);
+}
+
+.sui-swap-rotate.active .sui-swap-off {
+  transform: rotate(180deg) scale(0);
+}
+
+/* Flip */
+.sui-swap-flip {
+  perspective: 200px;
+}
+
+.sui-swap-flip .sui-swap-on,
+.sui-swap-flip .sui-swap-off {
+  backface-visibility: hidden;
+  transition: transform 0.4s ease;
+  transform-style: preserve-3d;
+}
+
+.sui-swap-flip .sui-swap-on {
+  transform: rotateY(180deg);
+  opacity: 1;
+}
+
+.sui-swap-flip .sui-swap-off {
+  transform: rotateY(0deg);
+  opacity: 1;
+}
+
+.sui-swap-flip.active .sui-swap-on {
+  transform: rotateY(0deg);
+}
+
+.sui-swap-flip.active .sui-swap-off {
+  transform: rotateY(-180deg);
+}
+
+/* Fade */
+.sui-swap-fade .sui-swap-on {
+  transform: none;
+  opacity: 0;
+}
+
+.sui-swap-fade .sui-swap-off {
+  transform: none;
+  opacity: 1;
+}
+
+.sui-swap-fade.active .sui-swap-on {
+  opacity: 1;
+}
+
+.sui-swap-fade.active .sui-swap-off {
+  opacity: 0;
+}
+
+/* Slide */
+.sui-swap-slide .sui-swap-on {
+  transform: translateY(-20px);
+  opacity: 0;
+}
+
+.sui-swap-slide .sui-swap-off {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.sui-swap-slide.active .sui-swap-on {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.sui-swap-slide.active .sui-swap-off {
+  transform: translateY(20px);
+  opacity: 0;
+}
+
+/* Text swap */
+.sui-swap-text {
+  width: auto;
+  height: auto;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.sui-swap-text .sui-swap-on,
+.sui-swap-text .sui-swap-off {
+  padding: 6px 12px;
+}
+
+/* Cycle — multi-state swap */
+.sui-swap-cycle .sui-swap-state {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  opacity: 0;
+  transform: scale(0);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.sui-swap-cycle .sui-swap-state.active {
+  opacity: 1;
+  transform: scale(1);
+  position: relative;
+}
+
+.sui-swap-cycle.sui-swap-rotate .sui-swap-state {
+  transform: rotate(-180deg) scale(0);
+}
+
+.sui-swap-cycle.sui-swap-rotate .sui-swap-state.active {
+  transform: rotate(0deg) scale(1);
+}
+
+.sui-swap-cycle.sui-swap-fade .sui-swap-state {
+  transform: none;
+}
+
+.sui-swap-cycle.sui-swap-fade .sui-swap-state.active {
+  transform: none;
+}
+
+.sui-swap-cycle.sui-swap-slide .sui-swap-state {
+  transform: translateY(-20px);
+  opacity: 0;
+}
+
+.sui-swap-cycle.sui-swap-slide .sui-swap-state.active {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.sui-swap-cycle.sui-swap-slide-x .sui-swap-state {
+  transform: translateX(-20px);
+  opacity: 0;
+}
+
+.sui-swap-cycle.sui-swap-slide-x .sui-swap-state.active {
+  transform: translateX(0);
+  opacity: 1;
+}
+
+/* Sizes */
+.sui-swap-sm { width: 28px; height: 28px; }
+.sui-swap-sm svg { width: 16px; height: 16px; }
+
+.sui-swap-lg { width: 52px; height: 52px; }
+.sui-swap-lg svg { width: 32px; height: 32px; }
+
+/* Inset */
+.sui-swap-inset {
+  background: var(--sui-bg);
+  box-shadow: var(--sui-shadow-inset-sm);
+  border-radius: var(--sui-radius-sm);
+  padding: 8px;
+  width: auto;
+  height: auto;
+}
+
 .sui-color-spectrum-rgb-field label {
   font-size: 10px;
   font-weight: 600;

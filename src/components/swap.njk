@@ -1,0 +1,363 @@
+---
+layout: component.njk
+title: Swap
+description: Animated toggle between two elements with multiple transition effects — rotate, flip, fade, and slide.
+componentId: swap
+hasControls: false
+toc:
+  - Default
+  - Rotate
+  - Flip
+  - Fade
+  - Slide
+  - Cycle
+  - With Text
+  - Inset
+---
+
+{% set sunSvg %}<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>{% endset %}
+{% set moonSvg %}<svg viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>{% endset %}
+{% set volOnSvg %}<svg viewBox="0 0 24 24"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M19.07 4.93a10 10 0 010 14.14"/><path d="M15.54 8.46a5 5 0 010 7.07"/></svg>{% endset %}
+{% set volOffSvg %}<svg viewBox="0 0 24 24"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/></svg>{% endset %}
+{% set heartSvg %}<svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78L12 21.23l8.84-8.84a5.5 5.5 0 000-7.78z"/></svg>{% endset %}
+{% set heartFillSvg %}<svg viewBox="0 0 24 24" style="fill:var(--sui-danger);stroke:var(--sui-danger);"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78L12 21.23l8.84-8.84a5.5 5.5 0 000-7.78z"/></svg>{% endset %}
+{% set eyeSvg %}<svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>{% endset %}
+{% set eyeOffSvg %}<svg viewBox="0 0 24 24"><path d="M17.94 17.94A10.07 10.07 0 0112 20c-7 0-11-8-11-8a18.45 18.45 0 015.06-5.94M9.9 4.24A9.12 9.12 0 0112 4c7 0 11 8 11 8a18.5 18.5 0 01-2.16 3.19m-6.72-1.07a3 3 0 11-4.24-4.24"/><line x1="1" y1="1" x2="23" y2="23"/></svg>{% endset %}
+{% set sortAscSvg %}<svg viewBox="0 0 24 24"><line x1="12" y1="19" x2="12" y2="5"/><polyline points="5 12 12 5 19 12"/></svg>{% endset %}
+{% set sortDescSvg %}<svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><polyline points="19 12 12 19 5 12"/></svg>{% endset %}
+{% set sortNoneSvg %}<svg viewBox="0 0 24 24"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>{% endset %}
+{% set repeatOffSvg %}<svg viewBox="0 0 24 24"><polyline points="17 1 21 5 17 9"/><path d="M3 11V9a4 4 0 014-4h14"/><polyline points="7 23 3 19 7 15"/><path d="M21 13v2a4 4 0 01-4 4H3"/></svg>{% endset %}
+{% set repeatAllSvg %}<svg viewBox="0 0 24 24" style="stroke:var(--sui-primary);"><polyline points="17 1 21 5 17 9"/><path d="M3 11V9a4 4 0 014-4h14"/><polyline points="7 23 3 19 7 15"/><path d="M21 13v2a4 4 0 01-4 4H3"/></svg>{% endset %}
+{% set repeatOneSvg %}<svg viewBox="0 0 24 24" style="stroke:var(--sui-success);"><polyline points="17 1 21 5 17 9"/><path d="M3 11V9a4 4 0 014-4h14"/><polyline points="7 23 3 19 7 15"/><path d="M21 13v2a4 4 0 01-4 4H3"/><text x="12" y="15" text-anchor="middle" font-size="8" font-weight="700" fill="currentColor" stroke="none">1</text></svg>{% endset %}
+{% set alignLeftSvg %}<svg viewBox="0 0 24 24"><line x1="17" y1="10" x2="3" y2="10"/><line x1="21" y1="6" x2="3" y2="6"/><line x1="21" y1="14" x2="3" y2="14"/><line x1="17" y1="18" x2="3" y2="18"/></svg>{% endset %}
+{% set alignCenterSvg %}<svg viewBox="0 0 24 24"><line x1="18" y1="10" x2="6" y2="10"/><line x1="21" y1="6" x2="3" y2="6"/><line x1="21" y1="14" x2="3" y2="14"/><line x1="18" y1="18" x2="6" y2="18"/></svg>{% endset %}
+{% set alignRightSvg %}<svg viewBox="0 0 24 24"><line x1="21" y1="10" x2="7" y2="10"/><line x1="21" y1="6" x2="3" y2="6"/><line x1="21" y1="14" x2="3" y2="14"/><line x1="21" y1="18" x2="7" y2="18"/></svg>{% endset %}
+{% set circleSvg %}<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/></svg>{% endset %}
+
+<!-- Default -->
+<div class="pg-section" id="section-1">
+  <h3 class="pg-section-title">Default</h3>
+  <div class="pg-section-row">
+    <div style="display:flex;flex-wrap:wrap;gap:24px;align-items:center;">
+      <button class="sui-swap">
+        <span class="sui-swap-on">{{ moonSvg | safe }}</span>
+        <span class="sui-swap-off">{{ sunSvg | safe }}</span>
+      </button>
+      <button class="sui-swap">
+        <span class="sui-swap-on">{{ volOnSvg | safe }}</span>
+        <span class="sui-swap-off">{{ volOffSvg | safe }}</span>
+      </button>
+      <button class="sui-swap">
+        <span class="sui-swap-on">{{ heartFillSvg | safe }}</span>
+        <span class="sui-swap-off">{{ heartSvg | safe }}</span>
+      </button>
+      <button class="sui-swap">
+        <span class="sui-swap-on">{{ eyeOffSvg | safe }}</span>
+        <span class="sui-swap-off">{{ eyeSvg | safe }}</span>
+      </button>
+    </div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;button class="sui-swap"&gt;
+  &lt;span class="sui-swap-on"&gt;
+    &lt;svg viewBox="0 0 24 24"&gt;&lt;path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/&gt;&lt;/svg&gt;
+  &lt;/span&gt;
+  &lt;span class="sui-swap-off"&gt;
+    &lt;svg viewBox="0 0 24 24"&gt;&lt;circle cx="12" cy="12" r="5"/&gt;&lt;line x1="12" y1="1" x2="12" y2="3"/&gt;&lt;line x1="12" y1="21" x2="12" y2="23"/&gt;&lt;line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/&gt;&lt;line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/&gt;&lt;line x1="1" y1="12" x2="3" y2="12"/&gt;&lt;line x1="21" y1="12" x2="23" y2="12"/&gt;&lt;line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/&gt;&lt;line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/&gt;&lt;/svg&gt;
+  &lt;/span&gt;
+&lt;/button&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Rotate -->
+<div class="pg-section" id="section-2">
+  <h3 class="pg-section-title">Rotate</h3>
+  <div class="pg-section-row">
+    <div style="display:flex;flex-wrap:wrap;gap:24px;align-items:center;">
+      <button class="sui-swap sui-swap-rotate">
+        <span class="sui-swap-on">{{ moonSvg | safe }}</span>
+        <span class="sui-swap-off">{{ sunSvg | safe }}</span>
+      </button>
+      <button class="sui-swap sui-swap-rotate">
+        <span class="sui-swap-on">{{ volOnSvg | safe }}</span>
+        <span class="sui-swap-off">{{ volOffSvg | safe }}</span>
+      </button>
+      <button class="sui-swap sui-swap-rotate">
+        <span class="sui-swap-on">{{ heartFillSvg | safe }}</span>
+        <span class="sui-swap-off">{{ heartSvg | safe }}</span>
+      </button>
+    </div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;button class="sui-swap sui-swap-rotate"&gt;
+  &lt;span class="sui-swap-on"&gt;
+    &lt;svg viewBox="0 0 24 24"&gt;&lt;path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/&gt;&lt;/svg&gt;
+  &lt;/span&gt;
+  &lt;span class="sui-swap-off"&gt;
+    &lt;svg viewBox="0 0 24 24"&gt;&lt;circle cx="12" cy="12" r="5"/&gt;&lt;line x1="12" y1="1" x2="12" y2="3"/&gt;&lt;line x1="12" y1="21" x2="12" y2="23"/&gt;&lt;line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/&gt;&lt;line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/&gt;&lt;line x1="1" y1="12" x2="3" y2="12"/&gt;&lt;line x1="21" y1="12" x2="23" y2="12"/&gt;&lt;line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/&gt;&lt;line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/&gt;&lt;/svg&gt;
+  &lt;/span&gt;
+&lt;/button&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Flip -->
+<div class="pg-section" id="section-3">
+  <h3 class="pg-section-title">Flip</h3>
+  <div class="pg-section-row">
+    <div style="display:flex;flex-wrap:wrap;gap:24px;align-items:center;">
+      <button class="sui-swap sui-swap-flip">
+        <span class="sui-swap-on">{{ moonSvg | safe }}</span>
+        <span class="sui-swap-off">{{ sunSvg | safe }}</span>
+      </button>
+      <button class="sui-swap sui-swap-flip">
+        <span class="sui-swap-on">{{ heartFillSvg | safe }}</span>
+        <span class="sui-swap-off">{{ heartSvg | safe }}</span>
+      </button>
+      <button class="sui-swap sui-swap-flip">
+        <span class="sui-swap-on">{{ eyeOffSvg | safe }}</span>
+        <span class="sui-swap-off">{{ eyeSvg | safe }}</span>
+      </button>
+    </div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;button class="sui-swap sui-swap-flip"&gt;
+  &lt;span class="sui-swap-on"&gt;
+    &lt;svg viewBox="0 0 24 24"&gt;&lt;path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/&gt;&lt;/svg&gt;
+  &lt;/span&gt;
+  &lt;span class="sui-swap-off"&gt;
+    &lt;svg viewBox="0 0 24 24"&gt;&lt;circle cx="12" cy="12" r="5"/&gt;&lt;line x1="12" y1="1" x2="12" y2="3"/&gt;&lt;line x1="12" y1="21" x2="12" y2="23"/&gt;&lt;line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/&gt;&lt;line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/&gt;&lt;line x1="1" y1="12" x2="3" y2="12"/&gt;&lt;line x1="21" y1="12" x2="23" y2="12"/&gt;&lt;line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/&gt;&lt;line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/&gt;&lt;/svg&gt;
+  &lt;/span&gt;
+&lt;/button&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Fade -->
+<div class="pg-section" id="section-4">
+  <h3 class="pg-section-title">Fade</h3>
+  <div class="pg-section-row">
+    <div style="display:flex;flex-wrap:wrap;gap:24px;align-items:center;">
+      <button class="sui-swap sui-swap-fade">
+        <span class="sui-swap-on">{{ moonSvg | safe }}</span>
+        <span class="sui-swap-off">{{ sunSvg | safe }}</span>
+      </button>
+      <button class="sui-swap sui-swap-fade">
+        <span class="sui-swap-on">{{ volOnSvg | safe }}</span>
+        <span class="sui-swap-off">{{ volOffSvg | safe }}</span>
+      </button>
+      <button class="sui-swap sui-swap-fade">
+        <span class="sui-swap-on">{{ heartFillSvg | safe }}</span>
+        <span class="sui-swap-off">{{ heartSvg | safe }}</span>
+      </button>
+    </div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;button class="sui-swap sui-swap-fade"&gt;
+  &lt;span class="sui-swap-on"&gt;
+    &lt;svg viewBox="0 0 24 24"&gt;&lt;path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/&gt;&lt;/svg&gt;
+  &lt;/span&gt;
+  &lt;span class="sui-swap-off"&gt;
+    &lt;svg viewBox="0 0 24 24"&gt;&lt;circle cx="12" cy="12" r="5"/&gt;&lt;line x1="12" y1="1" x2="12" y2="3"/&gt;&lt;line x1="12" y1="21" x2="12" y2="23"/&gt;&lt;line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/&gt;&lt;line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/&gt;&lt;line x1="1" y1="12" x2="3" y2="12"/&gt;&lt;line x1="21" y1="12" x2="23" y2="12"/&gt;&lt;line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/&gt;&lt;line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/&gt;&lt;/svg&gt;
+  &lt;/span&gt;
+&lt;/button&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Slide -->
+<div class="pg-section" id="section-5">
+  <h3 class="pg-section-title">Slide</h3>
+  <div class="pg-section-row">
+    <div style="display:flex;flex-wrap:wrap;gap:24px;align-items:center;">
+      <button class="sui-swap sui-swap-slide">
+        <span class="sui-swap-on">{{ moonSvg | safe }}</span>
+        <span class="sui-swap-off">{{ sunSvg | safe }}</span>
+      </button>
+      <button class="sui-swap sui-swap-slide">
+        <span class="sui-swap-on">{{ volOnSvg | safe }}</span>
+        <span class="sui-swap-off">{{ volOffSvg | safe }}</span>
+      </button>
+      <button class="sui-swap sui-swap-slide">
+        <span class="sui-swap-on">{{ eyeOffSvg | safe }}</span>
+        <span class="sui-swap-off">{{ eyeSvg | safe }}</span>
+      </button>
+    </div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;button class="sui-swap sui-swap-slide"&gt;
+  &lt;span class="sui-swap-on"&gt;
+    &lt;svg viewBox="0 0 24 24"&gt;&lt;path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/&gt;&lt;/svg&gt;
+  &lt;/span&gt;
+  &lt;span class="sui-swap-off"&gt;
+    &lt;svg viewBox="0 0 24 24"&gt;&lt;circle cx="12" cy="12" r="5"/&gt;&lt;line x1="12" y1="1" x2="12" y2="3"/&gt;&lt;line x1="12" y1="21" x2="12" y2="23"/&gt;&lt;line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/&gt;&lt;line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/&gt;&lt;line x1="1" y1="12" x2="3" y2="12"/&gt;&lt;line x1="21" y1="12" x2="23" y2="12"/&gt;&lt;line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/&gt;&lt;line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/&gt;&lt;/svg&gt;
+  &lt;/span&gt;
+&lt;/button&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Cycle -->
+<div class="pg-section" id="section-6">
+  <h3 class="pg-section-title">Cycle</h3>
+  <div class="pg-section-row">
+    <div style="display:flex;flex-wrap:wrap;gap:24px;align-items:flex-start;">
+      <div style="display:flex;flex-direction:column;align-items:center;">
+        <div style="font-size:12px;color:var(--sui-text-muted);margin-bottom:6px;">Sort</div>
+        <button class="sui-swap sui-swap-cycle sui-swap-rotate">
+          <span class="sui-swap-state active">{{ sortNoneSvg | safe }}</span>
+          <span class="sui-swap-state">{{ sortAscSvg | safe }}</span>
+          <span class="sui-swap-state">{{ sortDescSvg | safe }}</span>
+        </button>
+      </div>
+      <div style="display:flex;flex-direction:column;align-items:center;">
+        <div style="font-size:12px;color:var(--sui-text-muted);margin-bottom:6px;">Repeat</div>
+        <button class="sui-swap sui-swap-cycle sui-swap-fade">
+          <span class="sui-swap-state active">{{ repeatOffSvg | safe }}</span>
+          <span class="sui-swap-state">{{ repeatAllSvg | safe }}</span>
+          <span class="sui-swap-state">{{ repeatOneSvg | safe }}</span>
+        </button>
+      </div>
+      <div style="display:flex;flex-direction:column;align-items:center;">
+        <div style="font-size:12px;color:var(--sui-text-muted);margin-bottom:6px;">Align</div>
+        <button class="sui-swap sui-swap-cycle sui-swap-slide-x">
+          <span class="sui-swap-state active">{{ alignLeftSvg | safe }}</span>
+          <span class="sui-swap-state">{{ alignCenterSvg | safe }}</span>
+          <span class="sui-swap-state">{{ alignRightSvg | safe }}</span>
+        </button>
+      </div>
+      <div style="display:flex;flex-direction:column;align-items:center;">
+        <div style="font-size:12px;color:var(--sui-text-muted);margin-bottom:6px;">Traffic Light</div>
+        <button class="sui-swap sui-swap-cycle sui-swap-fade">
+          <span class="sui-swap-state active"><svg viewBox="0 0 24 24" style="fill:var(--sui-danger);stroke:var(--sui-danger);"><circle cx="12" cy="12" r="10"/></svg></span>
+          <span class="sui-swap-state"><svg viewBox="0 0 24 24" style="fill:var(--sui-warning);stroke:var(--sui-warning);"><circle cx="12" cy="12" r="10"/></svg></span>
+          <span class="sui-swap-state"><svg viewBox="0 0 24 24" style="fill:var(--sui-success);stroke:var(--sui-success);"><circle cx="12" cy="12" r="10"/></svg></span>
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;!-- Sort: 3 states (none → ascending → descending) --&gt;
+&lt;button class="sui-swap sui-swap-cycle sui-swap-rotate"&gt;
+  &lt;span class="sui-swap-state active"&gt;
+    &lt;svg viewBox="0 0 24 24"&gt;&lt;line x1="8" y1="6" x2="21" y2="6"/&gt;&lt;line x1="8" y1="12" x2="21" y2="12"/&gt;&lt;line x1="8" y1="18" x2="21" y2="18"/&gt;&lt;line x1="3" y1="6" x2="3.01" y2="6"/&gt;&lt;line x1="3" y1="12" x2="3.01" y2="12"/&gt;&lt;line x1="3" y1="18" x2="3.01" y2="18"/&gt;&lt;/svg&gt;
+  &lt;/span&gt;
+  &lt;span class="sui-swap-state"&gt;
+    &lt;svg viewBox="0 0 24 24"&gt;&lt;line x1="12" y1="19" x2="12" y2="5"/&gt;&lt;polyline points="5 12 12 5 19 12"/&gt;&lt;/svg&gt;
+  &lt;/span&gt;
+  &lt;span class="sui-swap-state"&gt;
+    &lt;svg viewBox="0 0 24 24"&gt;&lt;line x1="12" y1="5" x2="12" y2="19"/&gt;&lt;polyline points="19 12 12 19 5 12"/&gt;&lt;/svg&gt;
+  &lt;/span&gt;
+&lt;/button&gt;
+
+&lt;!-- Repeat: off → all → one --&gt;
+&lt;button class="sui-swap sui-swap-cycle sui-swap-fade"&gt;
+  &lt;span class="sui-swap-state active"&gt;&lt;!-- repeat off icon --&gt;&lt;/span&gt;
+  &lt;span class="sui-swap-state"&gt;&lt;!-- repeat all icon (colored) --&gt;&lt;/span&gt;
+  &lt;span class="sui-swap-state"&gt;&lt;!-- repeat one icon (colored) --&gt;&lt;/span&gt;
+&lt;/button&gt;
+
+&lt;!-- Align: left → center → right --&gt;
+&lt;button class="sui-swap sui-swap-cycle sui-swap-slide-x"&gt;
+  &lt;span class="sui-swap-state active"&gt;
+    &lt;svg viewBox="0 0 24 24"&gt;&lt;line x1="17" y1="10" x2="3" y2="10"/&gt;&lt;line x1="21" y1="6" x2="3" y2="6"/&gt;&lt;line x1="21" y1="14" x2="3" y2="14"/&gt;&lt;line x1="17" y1="18" x2="3" y2="18"/&gt;&lt;/svg&gt;
+  &lt;/span&gt;
+  &lt;span class="sui-swap-state"&gt;
+    &lt;svg viewBox="0 0 24 24"&gt;&lt;line x1="18" y1="10" x2="6" y2="10"/&gt;&lt;line x1="21" y1="6" x2="3" y2="6"/&gt;&lt;line x1="21" y1="14" x2="3" y2="14"/&gt;&lt;line x1="18" y1="18" x2="6" y2="18"/&gt;&lt;/svg&gt;
+  &lt;/span&gt;
+  &lt;span class="sui-swap-state"&gt;
+    &lt;svg viewBox="0 0 24 24"&gt;&lt;line x1="21" y1="10" x2="7" y2="10"/&gt;&lt;line x1="21" y1="6" x2="3" y2="6"/&gt;&lt;line x1="21" y1="14" x2="3" y2="14"/&gt;&lt;line x1="21" y1="18" x2="7" y2="18"/&gt;&lt;/svg&gt;
+  &lt;/span&gt;
+&lt;/button&gt;
+
+&lt;!-- Traffic light: red → yellow → green --&gt;
+&lt;button class="sui-swap sui-swap-cycle sui-swap-fade"&gt;
+  &lt;span class="sui-swap-state active"&gt;
+    &lt;svg viewBox="0 0 24 24" style="fill:var(--sui-danger);stroke:var(--sui-danger);"&gt;&lt;circle cx="12" cy="12" r="10"/&gt;&lt;/svg&gt;
+  &lt;/span&gt;
+  &lt;span class="sui-swap-state"&gt;
+    &lt;svg viewBox="0 0 24 24" style="fill:var(--sui-warning);stroke:var(--sui-warning);"&gt;&lt;circle cx="12" cy="12" r="10"/&gt;&lt;/svg&gt;
+  &lt;/span&gt;
+  &lt;span class="sui-swap-state"&gt;
+    &lt;svg viewBox="0 0 24 24" style="fill:var(--sui-success);stroke:var(--sui-success);"&gt;&lt;circle cx="12" cy="12" r="10"/&gt;&lt;/svg&gt;
+  &lt;/span&gt;
+&lt;/button&gt;
+</pre></div>
+  </div>
+</div>
+
+<!-- With Text -->
+<div class="pg-section" id="section-7">
+  <h3 class="pg-section-title">With Text</h3>
+  <div class="pg-section-row">
+    <div style="display:flex;flex-wrap:wrap;gap:24px;align-items:center;">
+      <button class="sui-swap sui-swap-text sui-swap-rotate">
+        <span class="sui-swap-on">ON</span>
+        <span class="sui-swap-off">OFF</span>
+      </button>
+      <button class="sui-swap sui-swap-text sui-swap-fade">
+        <span class="sui-swap-on">Pause</span>
+        <span class="sui-swap-off">Play</span>
+      </button>
+      <button class="sui-swap sui-swap-text sui-swap-slide">
+        <span class="sui-swap-on">Hide</span>
+        <span class="sui-swap-off">Show</span>
+      </button>
+      <button class="sui-swap sui-swap-text">
+        <span class="sui-swap-on">Yes</span>
+        <span class="sui-swap-off">No</span>
+      </button>
+    </div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;button class="sui-swap sui-swap-text sui-swap-rotate"&gt;
+  &lt;span class="sui-swap-on"&gt;ON&lt;/span&gt;
+  &lt;span class="sui-swap-off"&gt;OFF&lt;/span&gt;
+&lt;/button&gt;
+
+&lt;button class="sui-swap sui-swap-text sui-swap-fade"&gt;
+  &lt;span class="sui-swap-on"&gt;Pause&lt;/span&gt;
+  &lt;span class="sui-swap-off"&gt;Play&lt;/span&gt;
+&lt;/button&gt;
+
+&lt;button class="sui-swap sui-swap-text sui-swap-slide"&gt;
+  &lt;span class="sui-swap-on"&gt;Hide&lt;/span&gt;
+  &lt;span class="sui-swap-off"&gt;Show&lt;/span&gt;
+&lt;/button&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Inset -->
+<div class="pg-section" id="section-8">
+  <h3 class="pg-section-title">Inset</h3>
+  <div class="pg-section-row">
+    <div style="display:flex;flex-wrap:wrap;gap:24px;align-items:center;">
+      <button class="sui-swap sui-swap-inset sui-swap-rotate">
+        <span class="sui-swap-on">{{ moonSvg | safe }}</span>
+        <span class="sui-swap-off">{{ sunSvg | safe }}</span>
+      </button>
+      <button class="sui-swap sui-swap-inset sui-swap-flip">
+        <span class="sui-swap-on">{{ heartFillSvg | safe }}</span>
+        <span class="sui-swap-off">{{ heartSvg | safe }}</span>
+      </button>
+      <button class="sui-swap sui-swap-inset sui-swap-text sui-swap-fade">
+        <span class="sui-swap-on">ON</span>
+        <span class="sui-swap-off">OFF</span>
+      </button>
+    </div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;button class="sui-swap sui-swap-inset sui-swap-rotate"&gt;
+  &lt;span class="sui-swap-on"&gt;
+    &lt;svg viewBox="0 0 24 24"&gt;&lt;path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/&gt;&lt;/svg&gt;
+  &lt;/span&gt;
+  &lt;span class="sui-swap-off"&gt;
+    &lt;svg viewBox="0 0 24 24"&gt;&lt;circle cx="12" cy="12" r="5"/&gt;&lt;line x1="12" y1="1" x2="12" y2="3"/&gt;&lt;line x1="12" y1="21" x2="12" y2="23"/&gt;&lt;line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/&gt;&lt;line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/&gt;&lt;line x1="1" y1="12" x2="3" y2="12"/&gt;&lt;line x1="21" y1="12" x2="23" y2="12"/&gt;&lt;line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/&gt;&lt;line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/&gt;&lt;/svg&gt;
+  &lt;/span&gt;
+&lt;/button&gt;</pre></div>
+  </div>
+</div>
