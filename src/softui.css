@@ -9935,6 +9935,185 @@ a.sui-btn-warning:visited {
   box-shadow: var(--sui-shadow-inset-sm);
 }
 
+/* =========================================
+   Dock
+   ========================================= */
+.sui-dock {
+  display: inline-flex;
+  align-items: flex-end;
+  gap: 4px;
+  padding: 8px 12px;
+  background: var(--sui-bg);
+  border-radius: var(--sui-radius-lg);
+  box-shadow: var(--sui-shadow-raised);
+}
+
+.sui-dock-item {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--sui-radius-sm);
+  background: var(--sui-bg);
+  box-shadow: var(--sui-shadow-raised-sm);
+  cursor: pointer;
+  transition: transform 0.2s cubic-bezier(0.2, 0, 0, 1), width 0.2s cubic-bezier(0.2, 0, 0, 1), height 0.2s cubic-bezier(0.2, 0, 0, 1);
+  position: relative;
+  flex-shrink: 0;
+  border: none;
+  padding: 0;
+  font: inherit;
+  outline: none;
+}
+
+.sui-dock-item svg {
+  width: 22px;
+  height: 22px;
+  stroke: var(--sui-text-muted);
+  fill: none;
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  transition: width 0.2s cubic-bezier(0.2, 0, 0, 1), height 0.2s cubic-bezier(0.2, 0, 0, 1);
+}
+
+.sui-dock-item:hover {
+  box-shadow: var(--sui-shadow-raised);
+}
+
+/* Tooltip label */
+.sui-dock-item[data-label]::after {
+  content: attr(data-label);
+  position: absolute;
+  bottom: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%) scale(0.8);
+  background: var(--sui-text);
+  color: var(--sui-bg);
+  font-size: 11px;
+  font-weight: 600;
+  padding: 4px 8px;
+  border-radius: var(--sui-radius-sm);
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.15s ease, transform 0.15s ease;
+}
+
+.sui-dock-item[data-label]:hover::after {
+  opacity: 1;
+  transform: translateX(-50%) scale(1);
+}
+
+/* Vertical */
+.sui-dock-vertical {
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 12px 8px;
+}
+
+.sui-dock-vertical .sui-dock-item[data-label]::after {
+  bottom: auto;
+  left: calc(100% + 8px);
+  top: 50%;
+  transform: translateY(-50%) scale(0.8);
+}
+
+.sui-dock-vertical .sui-dock-item[data-label]:hover::after {
+  transform: translateY(-50%) scale(1);
+}
+
+/* Sizes */
+.sui-dock-sm .sui-dock-item {
+  width: 32px;
+  height: 32px;
+}
+
+.sui-dock-sm .sui-dock-item svg {
+  width: 16px;
+  height: 16px;
+}
+
+.sui-dock-lg .sui-dock-item {
+  width: 52px;
+  height: 52px;
+}
+
+.sui-dock-lg .sui-dock-item svg {
+  width: 28px;
+  height: 28px;
+}
+
+/* Colors */
+.sui-dock-dark {
+  background: #1B1D2A;
+  box-shadow: none;
+}
+
+.sui-dock-dark .sui-dock-item {
+  background: rgba(255, 255, 255, 0.1);
+  box-shadow: none;
+}
+
+.sui-dock-dark .sui-dock-item svg {
+  stroke: rgba(255, 255, 255, 0.8);
+}
+
+.sui-dock-dark .sui-dock-item:hover {
+  background: rgba(255, 255, 255, 0.2);
+  box-shadow: none;
+}
+
+.sui-dock-primary {
+  background: var(--sui-primary);
+  box-shadow: none;
+}
+
+.sui-dock-primary .sui-dock-item {
+  background: rgba(255, 255, 255, 0.15);
+  box-shadow: none;
+}
+
+.sui-dock-primary .sui-dock-item svg {
+  stroke: rgba(255, 255, 255, 0.9);
+}
+
+.sui-dock-primary .sui-dock-item:hover {
+  background: rgba(255, 255, 255, 0.25);
+  box-shadow: none;
+}
+
+/* Icon-only scale — button stays fixed, SVG grows */
+.sui-dock-icon-scale .sui-dock-item {
+  transition: none;
+}
+
+.sui-dock-icon-scale .sui-dock-item svg {
+  transition: transform 0.2s cubic-bezier(0.2, 0, 0, 1);
+}
+
+/* No scale */
+.sui-dock-no-scale .sui-dock-item {
+  transition: none;
+}
+
+/* Ghost — no tray background */
+.sui-dock-ghost {
+  background: none;
+  box-shadow: none;
+  padding: 0;
+}
+
+/* Inset */
+.sui-dock-inset {
+  box-shadow: var(--sui-shadow-inset);
+}
+
+.sui-dock-inset .sui-dock-item {
+  box-shadow: var(--sui-shadow-raised-sm);
+}
+
 .sui-color-spectrum-rgb-field label {
   font-size: 10px;
   font-weight: 600;

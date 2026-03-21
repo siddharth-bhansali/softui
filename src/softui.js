@@ -3460,5 +3460,66 @@ const SoftUI = (() => {
     initRadialProgress();
   }
 
+  // =========================================
+  // Dock — magnification effect
+  // =========================================
+  var dockMaxScale = 1.5;
+  var dockRange = 3;
+
+  document.addEventListener('mousemove', function(e) {
+    var dock = e.target.closest('.sui-dock');
+    if (!dock) return;
+    if (dock.classList.contains('sui-dock-no-scale')) return;
+    var iconOnly = dock.classList.contains('sui-dock-icon-scale');
+    var items = Array.from(dock.querySelectorAll('.sui-dock-item'));
+    var isVertical = dock.classList.contains('sui-dock-vertical');
+
+    items.forEach(function(item) {
+      var rect = item.getBoundingClientRect();
+      var center = isVertical
+        ? rect.top + rect.height / 2
+        : rect.left + rect.width / 2;
+      var mouse = isVertical ? e.clientY : e.clientX;
+      var baseSize = dock.classList.contains('sui-dock-sm') ? 32
+        : dock.classList.contains('sui-dock-lg') ? 52 : 40;
+      var dist = Math.abs(mouse - center) / baseSize;
+
+      if (dist < dockRange) {
+        var scale = dockMaxScale - (dist / dockRange) * (dockMaxScale - 1);
+        if (iconOnly) {
+          item.style.width = '';
+          item.style.height = '';
+          var svg = item.querySelector('svg');
+          if (svg) svg.style.transform = 'scale(' + scale + ')';
+        } else {
+          var newSize = Math.round(baseSize * scale);
+          item.style.width = newSize + 'px';
+          item.style.height = newSize + 'px';
+        }
+      } else {
+        item.style.width = '';
+        item.style.height = '';
+        if (iconOnly) {
+          var svg = item.querySelector('svg');
+          if (svg) svg.style.transform = '';
+        }
+      }
+    });
+  });
+
+  document.addEventListener('mouseleave', function(e) {
+    if (!e.target.classList || !e.target.classList.contains('sui-dock')) return;
+    var iconOnly = e.target.classList.contains('sui-dock-icon-scale');
+    var items = e.target.querySelectorAll('.sui-dock-item');
+    items.forEach(function(item) {
+      item.style.width = '';
+      item.style.height = '';
+      if (iconOnly) {
+        var svg = item.querySelector('svg');
+        if (svg) svg.style.transform = '';
+      }
+    });
+  }, true);
+
   return { modal, sheet, toast, carousel, sidebar };
 })();

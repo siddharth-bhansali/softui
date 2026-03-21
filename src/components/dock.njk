@@ -1,0 +1,402 @@
+---
+layout: component.njk
+title: Dock
+description: macOS-style icon bar with smooth hover magnification effect. Supports horizontal, vertical, labels, sizes, and color themes.
+componentId: dock
+hasControls: false
+toc:
+  - Default
+  - With Labels
+  - Vertical
+  - Sizes
+  - Colors
+  - Icon Scale
+  - No Scale
+  - Ghost
+  - Inset
+---
+
+{% set homeSvg %}<svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>{% endset %}
+{% set searchSvg %}<svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>{% endset %}
+{% set mailSvg %}<svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22 6 12 13 2 6"/></svg>{% endset %}
+{% set calendarSvg %}<svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>{% endset %}
+{% set imageSvg %}<svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>{% endset %}
+{% set musicSvg %}<svg viewBox="0 0 24 24"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>{% endset %}
+{% set settingsSvg %}<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"/></svg>{% endset %}
+{% set terminalSvg %}<svg viewBox="0 0 24 24"><polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/></svg>{% endset %}
+
+<!-- Default -->
+<div class="pg-section" id="section-1">
+  <h3 class="pg-section-title">Default</h3>
+  <div class="pg-section-row">
+    <div class="sui-dock">
+      <button class="sui-dock-item">{{ homeSvg | safe }}</button>
+      <button class="sui-dock-item">{{ searchSvg | safe }}</button>
+      <button class="sui-dock-item">{{ mailSvg | safe }}</button>
+      <button class="sui-dock-item">{{ calendarSvg | safe }}</button>
+      <button class="sui-dock-item">{{ imageSvg | safe }}</button>
+      <button class="sui-dock-item">{{ musicSvg | safe }}</button>
+      <button class="sui-dock-item">{{ settingsSvg | safe }}</button>
+    </div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-dock"&gt;
+  &lt;button class="sui-dock-item"&gt;
+    &lt;svg viewBox="0 0 24 24"&gt;&lt;path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/&gt;&lt;polyline points="9 22 9 12 15 12 15 22"/&gt;&lt;/svg&gt;
+  &lt;/button&gt;
+  &lt;button class="sui-dock-item"&gt;
+    &lt;svg viewBox="0 0 24 24"&gt;&lt;circle cx="11" cy="11" r="8"/&gt;&lt;line x1="21" y1="21" x2="16.65" y2="16.65"/&gt;&lt;/svg&gt;
+  &lt;/button&gt;
+  &lt;button class="sui-dock-item"&gt;
+    &lt;svg viewBox="0 0 24 24"&gt;&lt;path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/&gt;&lt;polyline points="22 6 12 13 2 6"/&gt;&lt;/svg&gt;
+  &lt;/button&gt;
+  &lt;button class="sui-dock-item"&gt;
+    &lt;svg viewBox="0 0 24 24"&gt;&lt;rect x="3" y="4" width="18" height="18" rx="2" ry="2"/&gt;&lt;line x1="16" y1="2" x2="16" y2="6"/&gt;&lt;line x1="8" y1="2" x2="8" y2="6"/&gt;&lt;line x1="3" y1="10" x2="21" y2="10"/&gt;&lt;/svg&gt;
+  &lt;/button&gt;
+  &lt;button class="sui-dock-item"&gt;
+    &lt;svg viewBox="0 0 24 24"&gt;&lt;rect x="3" y="3" width="18" height="18" rx="2" ry="2"/&gt;&lt;circle cx="8.5" cy="8.5" r="1.5"/&gt;&lt;polyline points="21 15 16 10 5 21"/&gt;&lt;/svg&gt;
+  &lt;/button&gt;
+  &lt;button class="sui-dock-item"&gt;
+    &lt;svg viewBox="0 0 24 24"&gt;&lt;path d="M9 18V5l12-2v13"/&gt;&lt;circle cx="6" cy="18" r="3"/&gt;&lt;circle cx="18" cy="16" r="3"/&gt;&lt;/svg&gt;
+  &lt;/button&gt;
+  &lt;button class="sui-dock-item"&gt;
+    &lt;svg viewBox="0 0 24 24"&gt;&lt;circle cx="12" cy="12" r="3"/&gt;&lt;path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"/&gt;&lt;/svg&gt;
+  &lt;/button&gt;
+&lt;/div&gt;</pre></div>
+  </div>
+</div>
+
+<!-- With Labels -->
+<div class="pg-section" id="section-2">
+  <h3 class="pg-section-title">With Labels</h3>
+  <div class="pg-section-row">
+    <div class="sui-dock">
+      <button class="sui-dock-item" data-label="Home">{{ homeSvg | safe }}</button>
+      <button class="sui-dock-item" data-label="Search">{{ searchSvg | safe }}</button>
+      <button class="sui-dock-item" data-label="Mail">{{ mailSvg | safe }}</button>
+      <button class="sui-dock-item" data-label="Calendar">{{ calendarSvg | safe }}</button>
+      <button class="sui-dock-item" data-label="Photos">{{ imageSvg | safe }}</button>
+      <button class="sui-dock-item" data-label="Music">{{ musicSvg | safe }}</button>
+      <button class="sui-dock-item" data-label="Settings">{{ settingsSvg | safe }}</button>
+      <button class="sui-dock-item" data-label="Terminal">{{ terminalSvg | safe }}</button>
+    </div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-dock"&gt;
+  &lt;button class="sui-dock-item" data-label="Home"&gt;
+    &lt;svg viewBox="0 0 24 24"&gt;&lt;path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/&gt;&lt;polyline points="9 22 9 12 15 12 15 22"/&gt;&lt;/svg&gt;
+  &lt;/button&gt;
+  &lt;button class="sui-dock-item" data-label="Search"&gt;
+    &lt;svg viewBox="0 0 24 24"&gt;&lt;circle cx="11" cy="11" r="8"/&gt;&lt;line x1="21" y1="21" x2="16.65" y2="16.65"/&gt;&lt;/svg&gt;
+  &lt;/button&gt;
+  &lt;button class="sui-dock-item" data-label="Mail"&gt;
+    &lt;svg viewBox="0 0 24 24"&gt;&lt;path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/&gt;&lt;polyline points="22 6 12 13 2 6"/&gt;&lt;/svg&gt;
+  &lt;/button&gt;
+  &lt;button class="sui-dock-item" data-label="Calendar"&gt;
+    &lt;svg viewBox="0 0 24 24"&gt;&lt;rect x="3" y="4" width="18" height="18" rx="2" ry="2"/&gt;&lt;line x1="16" y1="2" x2="16" y2="6"/&gt;&lt;line x1="8" y1="2" x2="8" y2="6"/&gt;&lt;line x1="3" y1="10" x2="21" y2="10"/&gt;&lt;/svg&gt;
+  &lt;/button&gt;
+  &lt;!-- Add data-label="..." to any dock item for tooltip --&gt;
+&lt;/div&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Vertical -->
+<div class="pg-section" id="section-3">
+  <h3 class="pg-section-title">Vertical</h3>
+  <div class="pg-section-row">
+    <div class="sui-dock sui-dock-vertical">
+      <button class="sui-dock-item" data-label="Home">{{ homeSvg | safe }}</button>
+      <button class="sui-dock-item" data-label="Search">{{ searchSvg | safe }}</button>
+      <button class="sui-dock-item" data-label="Mail">{{ mailSvg | safe }}</button>
+      <button class="sui-dock-item" data-label="Calendar">{{ calendarSvg | safe }}</button>
+      <button class="sui-dock-item" data-label="Photos">{{ imageSvg | safe }}</button>
+      <button class="sui-dock-item" data-label="Settings">{{ settingsSvg | safe }}</button>
+    </div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-dock sui-dock-vertical"&gt;
+  &lt;button class="sui-dock-item" data-label="Home"&gt;
+    &lt;svg viewBox="0 0 24 24"&gt;&lt;path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/&gt;&lt;polyline points="9 22 9 12 15 12 15 22"/&gt;&lt;/svg&gt;
+  &lt;/button&gt;
+  &lt;button class="sui-dock-item" data-label="Search"&gt;
+    &lt;svg viewBox="0 0 24 24"&gt;&lt;circle cx="11" cy="11" r="8"/&gt;&lt;line x1="21" y1="21" x2="16.65" y2="16.65"/&gt;&lt;/svg&gt;
+  &lt;/button&gt;
+  &lt;button class="sui-dock-item" data-label="Mail"&gt;
+    &lt;svg viewBox="0 0 24 24"&gt;&lt;path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/&gt;&lt;polyline points="22 6 12 13 2 6"/&gt;&lt;/svg&gt;
+  &lt;/button&gt;
+  &lt;button class="sui-dock-item" data-label="Calendar"&gt;
+    &lt;svg viewBox="0 0 24 24"&gt;&lt;rect x="3" y="4" width="18" height="18" rx="2" ry="2"/&gt;&lt;line x1="16" y1="2" x2="16" y2="6"/&gt;&lt;line x1="8" y1="2" x2="8" y2="6"/&gt;&lt;line x1="3" y1="10" x2="21" y2="10"/&gt;&lt;/svg&gt;
+  &lt;/button&gt;
+  &lt;button class="sui-dock-item" data-label="Photos"&gt;
+    &lt;svg viewBox="0 0 24 24"&gt;&lt;rect x="3" y="3" width="18" height="18" rx="2" ry="2"/&gt;&lt;circle cx="8.5" cy="8.5" r="1.5"/&gt;&lt;polyline points="21 15 16 10 5 21"/&gt;&lt;/svg&gt;
+  &lt;/button&gt;
+  &lt;button class="sui-dock-item" data-label="Settings"&gt;
+    &lt;svg viewBox="0 0 24 24"&gt;&lt;circle cx="12" cy="12" r="3"/&gt;&lt;path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"/&gt;&lt;/svg&gt;
+  &lt;/button&gt;
+&lt;/div&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Sizes -->
+<div class="pg-section" id="section-4">
+  <h3 class="pg-section-title">Sizes</h3>
+  <div class="pg-section-row">
+    <div style="display:flex;flex-wrap:wrap;gap:24px;align-items:flex-end;">
+      <div>
+        <div style="font-size:12px;color:var(--sui-text-muted);margin-bottom:6px;">Small</div>
+        <div class="sui-dock sui-dock-sm">
+          <button class="sui-dock-item">{{ homeSvg | safe }}</button>
+          <button class="sui-dock-item">{{ searchSvg | safe }}</button>
+          <button class="sui-dock-item">{{ mailSvg | safe }}</button>
+          <button class="sui-dock-item">{{ calendarSvg | safe }}</button>
+          <button class="sui-dock-item">{{ settingsSvg | safe }}</button>
+        </div>
+      </div>
+      <div>
+        <div style="font-size:12px;color:var(--sui-text-muted);margin-bottom:6px;">Default</div>
+        <div class="sui-dock">
+          <button class="sui-dock-item">{{ homeSvg | safe }}</button>
+          <button class="sui-dock-item">{{ searchSvg | safe }}</button>
+          <button class="sui-dock-item">{{ mailSvg | safe }}</button>
+          <button class="sui-dock-item">{{ calendarSvg | safe }}</button>
+          <button class="sui-dock-item">{{ settingsSvg | safe }}</button>
+        </div>
+      </div>
+      <div>
+        <div style="font-size:12px;color:var(--sui-text-muted);margin-bottom:6px;">Large</div>
+        <div class="sui-dock sui-dock-lg">
+          <button class="sui-dock-item">{{ homeSvg | safe }}</button>
+          <button class="sui-dock-item">{{ searchSvg | safe }}</button>
+          <button class="sui-dock-item">{{ mailSvg | safe }}</button>
+          <button class="sui-dock-item">{{ calendarSvg | safe }}</button>
+          <button class="sui-dock-item">{{ settingsSvg | safe }}</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;!-- Small --&gt;
+&lt;div class="sui-dock sui-dock-sm"&gt;
+  &lt;button class="sui-dock-item"&gt;&lt;svg viewBox="0 0 24 24"&gt;&lt;!-- icon --&gt;&lt;/svg&gt;&lt;/button&gt;
+  &lt;!-- more items --&gt;
+&lt;/div&gt;
+
+&lt;!-- Default --&gt;
+&lt;div class="sui-dock"&gt;
+  &lt;button class="sui-dock-item"&gt;&lt;svg viewBox="0 0 24 24"&gt;&lt;!-- icon --&gt;&lt;/svg&gt;&lt;/button&gt;
+  &lt;!-- more items --&gt;
+&lt;/div&gt;
+
+&lt;!-- Large --&gt;
+&lt;div class="sui-dock sui-dock-lg"&gt;
+  &lt;button class="sui-dock-item"&gt;&lt;svg viewBox="0 0 24 24"&gt;&lt;!-- icon --&gt;&lt;/svg&gt;&lt;/button&gt;
+  &lt;!-- more items --&gt;
+&lt;/div&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Colors -->
+<div class="pg-section" id="section-5">
+  <h3 class="pg-section-title">Colors</h3>
+  <div class="pg-section-row">
+    <div style="display:flex;flex-wrap:wrap;gap:24px;align-items:flex-end;">
+      <div>
+        <div style="font-size:12px;color:var(--sui-text-muted);margin-bottom:6px;">Default</div>
+        <div class="sui-dock">
+          <button class="sui-dock-item">{{ homeSvg | safe }}</button>
+          <button class="sui-dock-item">{{ searchSvg | safe }}</button>
+          <button class="sui-dock-item">{{ mailSvg | safe }}</button>
+          <button class="sui-dock-item">{{ settingsSvg | safe }}</button>
+        </div>
+      </div>
+      <div>
+        <div style="font-size:12px;color:var(--sui-text-muted);margin-bottom:6px;">Dark</div>
+        <div class="sui-dock sui-dock-dark">
+          <button class="sui-dock-item">{{ homeSvg | safe }}</button>
+          <button class="sui-dock-item">{{ searchSvg | safe }}</button>
+          <button class="sui-dock-item">{{ mailSvg | safe }}</button>
+          <button class="sui-dock-item">{{ settingsSvg | safe }}</button>
+        </div>
+      </div>
+      <div>
+        <div style="font-size:12px;color:var(--sui-text-muted);margin-bottom:6px;">Primary</div>
+        <div class="sui-dock sui-dock-primary">
+          <button class="sui-dock-item">{{ homeSvg | safe }}</button>
+          <button class="sui-dock-item">{{ searchSvg | safe }}</button>
+          <button class="sui-dock-item">{{ mailSvg | safe }}</button>
+          <button class="sui-dock-item">{{ settingsSvg | safe }}</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;!-- Default --&gt;
+&lt;div class="sui-dock"&gt;
+  &lt;button class="sui-dock-item"&gt;
+    &lt;svg viewBox="0 0 24 24"&gt;&lt;path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/&gt;&lt;polyline points="9 22 9 12 15 12 15 22"/&gt;&lt;/svg&gt;
+  &lt;/button&gt;
+  &lt;!-- more items --&gt;
+&lt;/div&gt;
+
+&lt;!-- Dark --&gt;
+&lt;div class="sui-dock sui-dock-dark"&gt;
+  &lt;button class="sui-dock-item"&gt;
+    &lt;svg viewBox="0 0 24 24"&gt;&lt;path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/&gt;&lt;polyline points="9 22 9 12 15 12 15 22"/&gt;&lt;/svg&gt;
+  &lt;/button&gt;
+  &lt;!-- more items --&gt;
+&lt;/div&gt;
+
+&lt;!-- Primary --&gt;
+&lt;div class="sui-dock sui-dock-primary"&gt;
+  &lt;button class="sui-dock-item"&gt;
+    &lt;svg viewBox="0 0 24 24"&gt;&lt;path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/&gt;&lt;polyline points="9 22 9 12 15 12 15 22"/&gt;&lt;/svg&gt;
+  &lt;/button&gt;
+  &lt;!-- more items --&gt;
+&lt;/div&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Icon Scale -->
+<div class="pg-section" id="section-6">
+  <h3 class="pg-section-title">Icon Scale</h3>
+  <div class="pg-section-row">
+    <div class="sui-dock sui-dock-icon-scale">
+      <button class="sui-dock-item" data-label="Home">{{ homeSvg | safe }}</button>
+      <button class="sui-dock-item" data-label="Search">{{ searchSvg | safe }}</button>
+      <button class="sui-dock-item" data-label="Mail">{{ mailSvg | safe }}</button>
+      <button class="sui-dock-item" data-label="Calendar">{{ calendarSvg | safe }}</button>
+      <button class="sui-dock-item" data-label="Photos">{{ imageSvg | safe }}</button>
+      <button class="sui-dock-item" data-label="Music">{{ musicSvg | safe }}</button>
+      <button class="sui-dock-item" data-label="Settings">{{ settingsSvg | safe }}</button>
+    </div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;!-- Only the icon SVG scales, button stays fixed --&gt;
+&lt;div class="sui-dock sui-dock-icon-scale"&gt;
+  &lt;button class="sui-dock-item" data-label="Home"&gt;
+    &lt;svg viewBox="0 0 24 24"&gt;&lt;path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/&gt;&lt;polyline points="9 22 9 12 15 12 15 22"/&gt;&lt;/svg&gt;
+  &lt;/button&gt;
+  &lt;button class="sui-dock-item" data-label="Search"&gt;
+    &lt;svg viewBox="0 0 24 24"&gt;&lt;circle cx="11" cy="11" r="8"/&gt;&lt;line x1="21" y1="21" x2="16.65" y2="16.65"/&gt;&lt;/svg&gt;
+  &lt;/button&gt;
+  &lt;!-- more items --&gt;
+&lt;/div&gt;</pre></div>
+  </div>
+</div>
+
+<!-- No Scale -->
+<div class="pg-section" id="section-7">
+  <h3 class="pg-section-title">No Scale</h3>
+  <div class="pg-section-row">
+    <div class="sui-dock sui-dock-no-scale">
+      <button class="sui-dock-item" data-label="Home">{{ homeSvg | safe }}</button>
+      <button class="sui-dock-item" data-label="Search">{{ searchSvg | safe }}</button>
+      <button class="sui-dock-item" data-label="Mail">{{ mailSvg | safe }}</button>
+      <button class="sui-dock-item" data-label="Calendar">{{ calendarSvg | safe }}</button>
+      <button class="sui-dock-item" data-label="Photos">{{ imageSvg | safe }}</button>
+      <button class="sui-dock-item" data-label="Music">{{ musicSvg | safe }}</button>
+      <button class="sui-dock-item" data-label="Settings">{{ settingsSvg | safe }}</button>
+    </div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;!-- No magnification, just tooltip labels --&gt;
+&lt;div class="sui-dock sui-dock-no-scale"&gt;
+  &lt;button class="sui-dock-item" data-label="Home"&gt;
+    &lt;svg viewBox="0 0 24 24"&gt;&lt;path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/&gt;&lt;polyline points="9 22 9 12 15 12 15 22"/&gt;&lt;/svg&gt;
+  &lt;/button&gt;
+  &lt;button class="sui-dock-item" data-label="Search"&gt;
+    &lt;svg viewBox="0 0 24 24"&gt;&lt;circle cx="11" cy="11" r="8"/&gt;&lt;line x1="21" y1="21" x2="16.65" y2="16.65"/&gt;&lt;/svg&gt;
+  &lt;/button&gt;
+  &lt;!-- more items --&gt;
+&lt;/div&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Ghost -->
+<div class="pg-section" id="section-8">
+  <h3 class="pg-section-title">Ghost</h3>
+  <div class="pg-section-row">
+    <div style="display:flex;flex-wrap:wrap;gap:24px;align-items:flex-end;">
+      <div class="sui-dock sui-dock-ghost">
+        <button class="sui-dock-item" data-label="Home">{{ homeSvg | safe }}</button>
+        <button class="sui-dock-item" data-label="Search">{{ searchSvg | safe }}</button>
+        <button class="sui-dock-item" data-label="Mail">{{ mailSvg | safe }}</button>
+        <button class="sui-dock-item" data-label="Calendar">{{ calendarSvg | safe }}</button>
+        <button class="sui-dock-item" data-label="Photos">{{ imageSvg | safe }}</button>
+        <button class="sui-dock-item" data-label="Settings">{{ settingsSvg | safe }}</button>
+      </div>
+      <div class="sui-dock sui-dock-ghost sui-dock-vertical">
+        <button class="sui-dock-item" data-label="Home">{{ homeSvg | safe }}</button>
+        <button class="sui-dock-item" data-label="Search">{{ searchSvg | safe }}</button>
+        <button class="sui-dock-item" data-label="Mail">{{ mailSvg | safe }}</button>
+        <button class="sui-dock-item" data-label="Settings">{{ settingsSvg | safe }}</button>
+      </div>
+    </div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-dock sui-dock-ghost"&gt;
+  &lt;button class="sui-dock-item" data-label="Home"&gt;
+    &lt;svg viewBox="0 0 24 24"&gt;&lt;path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/&gt;&lt;polyline points="9 22 9 12 15 12 15 22"/&gt;&lt;/svg&gt;
+  &lt;/button&gt;
+  &lt;button class="sui-dock-item" data-label="Search"&gt;
+    &lt;svg viewBox="0 0 24 24"&gt;&lt;circle cx="11" cy="11" r="8"/&gt;&lt;line x1="21" y1="21" x2="16.65" y2="16.65"/&gt;&lt;/svg&gt;
+  &lt;/button&gt;
+  &lt;button class="sui-dock-item" data-label="Mail"&gt;
+    &lt;svg viewBox="0 0 24 24"&gt;&lt;path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/&gt;&lt;polyline points="22 6 12 13 2 6"/&gt;&lt;/svg&gt;
+  &lt;/button&gt;
+  &lt;button class="sui-dock-item" data-label="Settings"&gt;
+    &lt;svg viewBox="0 0 24 24"&gt;&lt;circle cx="12" cy="12" r="3"/&gt;&lt;path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"/&gt;&lt;/svg&gt;
+  &lt;/button&gt;
+&lt;/div&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Inset -->
+<div class="pg-section" id="section-9">
+  <h3 class="pg-section-title">Inset</h3>
+  <div class="pg-section-row">
+    <div class="sui-dock sui-dock-inset">
+      <button class="sui-dock-item" data-label="Home">{{ homeSvg | safe }}</button>
+      <button class="sui-dock-item" data-label="Search">{{ searchSvg | safe }}</button>
+      <button class="sui-dock-item" data-label="Mail">{{ mailSvg | safe }}</button>
+      <button class="sui-dock-item" data-label="Calendar">{{ calendarSvg | safe }}</button>
+      <button class="sui-dock-item" data-label="Photos">{{ imageSvg | safe }}</button>
+      <button class="sui-dock-item" data-label="Music">{{ musicSvg | safe }}</button>
+      <button class="sui-dock-item" data-label="Settings">{{ settingsSvg | safe }}</button>
+    </div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-dock sui-dock-inset"&gt;
+  &lt;button class="sui-dock-item" data-label="Home"&gt;
+    &lt;svg viewBox="0 0 24 24"&gt;&lt;path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/&gt;&lt;polyline points="9 22 9 12 15 12 15 22"/&gt;&lt;/svg&gt;
+  &lt;/button&gt;
+  &lt;button class="sui-dock-item" data-label="Search"&gt;
+    &lt;svg viewBox="0 0 24 24"&gt;&lt;circle cx="11" cy="11" r="8"/&gt;&lt;line x1="21" y1="21" x2="16.65" y2="16.65"/&gt;&lt;/svg&gt;
+  &lt;/button&gt;
+  &lt;button class="sui-dock-item" data-label="Mail"&gt;
+    &lt;svg viewBox="0 0 24 24"&gt;&lt;path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/&gt;&lt;polyline points="22 6 12 13 2 6"/&gt;&lt;/svg&gt;
+  &lt;/button&gt;
+  &lt;button class="sui-dock-item" data-label="Calendar"&gt;
+    &lt;svg viewBox="0 0 24 24"&gt;&lt;rect x="3" y="4" width="18" height="18" rx="2" ry="2"/&gt;&lt;line x1="16" y1="2" x2="16" y2="6"/&gt;&lt;line x1="8" y1="2" x2="8" y2="6"/&gt;&lt;line x1="3" y1="10" x2="21" y2="10"/&gt;&lt;/svg&gt;
+  &lt;/button&gt;
+  &lt;button class="sui-dock-item" data-label="Photos"&gt;
+    &lt;svg viewBox="0 0 24 24"&gt;&lt;rect x="3" y="3" width="18" height="18" rx="2" ry="2"/&gt;&lt;circle cx="8.5" cy="8.5" r="1.5"/&gt;&lt;polyline points="21 15 16 10 5 21"/&gt;&lt;/svg&gt;
+  &lt;/button&gt;
+  &lt;button class="sui-dock-item" data-label="Music"&gt;
+    &lt;svg viewBox="0 0 24 24"&gt;&lt;path d="M9 18V5l12-2v13"/&gt;&lt;circle cx="6" cy="18" r="3"/&gt;&lt;circle cx="18" cy="16" r="3"/&gt;&lt;/svg&gt;
+  &lt;/button&gt;
+  &lt;button class="sui-dock-item" data-label="Settings"&gt;
+    &lt;svg viewBox="0 0 24 24"&gt;&lt;circle cx="12" cy="12" r="3"/&gt;&lt;path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"/&gt;&lt;/svg&gt;
+  &lt;/button&gt;
+&lt;/div&gt;</pre></div>
+  </div>
+</div>
