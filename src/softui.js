@@ -3217,5 +3217,201 @@ const SoftUI = (() => {
     initSpectrumPickers();
   }
 
+  // =========================================
+  // File Upload
+  // =========================================
+  function formatFileSize(bytes) {
+    if (bytes < 1024) return bytes + ' B';
+    if (bytes < 1048576) return (bytes / 1024).toFixed(1) + ' KB';
+    return (bytes / 1048576).toFixed(1) + ' MB';
+  }
+
+  var fileIcons = {
+    file: '<svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>',
+    image: '<svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>',
+    pdf: '<svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="9" y1="15" x2="15" y2="15"/><line x1="9" y1="18" x2="13" y2="18"/><line x1="9" y1="12" x2="11" y2="12"/></svg>',
+    video: '<svg viewBox="0 0 24 24"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>',
+    audio: '<svg viewBox="0 0 24 24"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>',
+    code: '<svg viewBox="0 0 24 24"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>',
+    archive: '<svg viewBox="0 0 24 24"><path d="M21 8v13H3V8"/><path d="M1 3h22v5H1z"/><path d="M10 12h4"/></svg>',
+    spreadsheet: '<svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="8" y1="13" x2="16" y2="13"/><line x1="8" y1="17" x2="16" y2="17"/><line x1="12" y1="9" x2="12" y2="21"/></svg>'
+  };
+
+  function getFileType(file) {
+    var type = file.type || '';
+    var ext = file.name.split('.').pop().toLowerCase();
+    if (type.startsWith('image/')) return 'image';
+    if (type === 'application/pdf' || ext === 'pdf') return 'pdf';
+    if (type.startsWith('video/')) return 'video';
+    if (type.startsWith('audio/')) return 'audio';
+    if (/^(js|ts|jsx|tsx|html|css|json|xml|py|rb|go|rs|java|c|cpp|php|sh|yml|yaml)$/.test(ext)) return 'code';
+    if (/^(zip|rar|7z|tar|gz|bz2)$/.test(ext)) return 'archive';
+    if (/^(csv|xlsx|xls|ods)$/.test(ext)) return 'spreadsheet';
+    return 'file';
+  }
+
+  function getFileIcon(file) {
+    return fileIcons[getFileType(file)];
+  }
+
+  function getFileIconClass(file) {
+    return 'sui-file-item-icon-' + getFileType(file);
+  }
+
+  function getOrCreateContainer(zone, cls) {
+    var wrap = zone.closest('.sui-file-upload-wrap');
+    if (!wrap) {
+      wrap = document.createElement('div');
+      wrap.className = 'sui-file-upload-wrap';
+      zone.parentNode.insertBefore(wrap, zone);
+      wrap.appendChild(zone);
+    }
+    var container = wrap.querySelector('.' + cls);
+    if (!container) {
+      container = document.createElement('div');
+      container.className = cls;
+      wrap.appendChild(container);
+    }
+    return container;
+  }
+
+  function renderFileList(zone, files, append) {
+    var container = getOrCreateContainer(zone, 'sui-file-list');
+    if (!append) container.innerHTML = '';
+    for (var i = 0; i < files.length; i++) {
+      var f = files[i];
+      var item = document.createElement('div');
+      item.className = 'sui-file-item';
+      item.innerHTML =
+        '<div class="sui-file-item-icon ' + getFileIconClass(f) + '">' + getFileIcon(f) + '</div>' +
+        '<div class="sui-file-item-info">' +
+          '<div class="sui-file-item-name">' + f.name + '</div>' +
+          '<div class="sui-file-item-size">' + formatFileSize(f.size) + '</div>' +
+        '</div>' +
+        '<button class="sui-file-item-remove" aria-label="Remove">&times;</button>';
+      container.appendChild(item);
+    }
+  }
+
+  function renderFileProgress(zone, files, append) {
+    var container = getOrCreateContainer(zone, 'sui-file-list');
+    if (!append) container.innerHTML = '';
+    for (var i = 0; i < files.length; i++) {
+      var f = files[i];
+      var item = document.createElement('div');
+      item.className = 'sui-file-item';
+      item.innerHTML =
+        '<div class="sui-file-item-icon ' + getFileIconClass(f) + '">' + getFileIcon(f) + '</div>' +
+        '<div class="sui-file-item-info sui-file-item-progress">' +
+          '<div style="display:flex;justify-content:space-between;align-items:center;">' +
+            '<div class="sui-file-item-name">' + f.name + '</div>' +
+            '<span class="sui-file-item-status sui-file-item-status-uploading">0%</span>' +
+          '</div>' +
+          '<div class="sui-progress sui-progress-sm"><div class="sui-progress-bar sui-progress-primary" style="width:0%;"></div></div>' +
+        '</div>' +
+        '<button class="sui-file-item-remove" aria-label="Remove">&times;</button>';
+      container.appendChild(item);
+      simulateProgress(item);
+    }
+  }
+
+  function simulateProgress(item) {
+    var bar = item.querySelector('.sui-progress-bar');
+    var status = item.querySelector('.sui-file-item-status');
+    var pct = 0;
+    var interval = setInterval(function() {
+      pct += Math.floor(Math.random() * 15) + 5;
+      if (pct >= 100) {
+        pct = 100;
+        clearInterval(interval);
+        bar.style.width = '100%';
+        bar.className = 'sui-progress-bar sui-progress-success';
+        status.className = 'sui-file-item-status sui-file-item-status-complete';
+        status.textContent = '\u2713';
+      } else {
+        bar.style.width = pct + '%';
+        status.textContent = pct + '%';
+      }
+    }, 300 + Math.random() * 200);
+  }
+
+  function renderFilePreview(zone, files, append) {
+    var container = getOrCreateContainer(zone, 'sui-file-preview-grid');
+    if (!append) container.innerHTML = '';
+    for (var i = 0; i < files.length; i++) {
+      var f = files[i];
+      if (!f.type || !f.type.startsWith('image/')) continue;
+      var item = document.createElement('div');
+      item.className = 'sui-file-preview-item';
+      item.innerHTML =
+        '<img alt="' + f.name + '">' +
+        '<button class="sui-file-preview-item-remove" aria-label="Remove">&times;</button>';
+      container.appendChild(item);
+      (function(img, file) {
+        var reader = new FileReader();
+        reader.onload = function(e) { img.src = e.target.result; };
+        reader.readAsDataURL(file);
+      })(item.querySelector('img'), f);
+    }
+  }
+
+  // Delegated change on file inputs
+  document.addEventListener('change', function(e) {
+    if (!e.target.matches('.sui-file-upload input[type="file"]')) return;
+    var input = e.target;
+    var zone = input.closest('.sui-file-upload');
+    if (!zone) return;
+    var files = Array.from(input.files);
+    if (!files.length) return;
+    var mode = zone.getAttribute('data-sui-upload') || 'list';
+    if (mode === 'preview') {
+      renderFilePreview(zone, files);
+    } else if (mode === 'progress') {
+      renderFileProgress(zone, files);
+    } else {
+      renderFileList(zone, files);
+    }
+    input.value = '';
+  });
+
+  // Delegated remove clicks
+  document.addEventListener('click', function(e) {
+    var removeBtn = e.target.closest('.sui-file-item-remove, .sui-file-preview-item-remove');
+    if (!removeBtn) return;
+    var item = removeBtn.closest('.sui-file-item, .sui-file-preview-item');
+    if (item) item.remove();
+  });
+
+  // Dragover styling
+  document.addEventListener('dragover', function(e) {
+    var zone = e.target.closest('.sui-file-upload');
+    if (!zone) return;
+    e.preventDefault();
+    zone.classList.add('sui-file-upload-dragover');
+  });
+
+  document.addEventListener('dragleave', function(e) {
+    var zone = e.target.closest('.sui-file-upload');
+    if (!zone) return;
+    zone.classList.remove('sui-file-upload-dragover');
+  });
+
+  document.addEventListener('drop', function(e) {
+    var zone = e.target.closest('.sui-file-upload');
+    if (!zone) return;
+    e.preventDefault();
+    zone.classList.remove('sui-file-upload-dragover');
+    var files = Array.from(e.dataTransfer.files);
+    if (!files.length) return;
+    var mode = zone.getAttribute('data-sui-upload') || 'list';
+    if (mode === 'preview') {
+      renderFilePreview(zone, files, true);
+    } else if (mode === 'progress') {
+      renderFileProgress(zone, files, true);
+    } else {
+      renderFileList(zone, files, true);
+    }
+  });
+
   return { modal, sheet, toast, carousel, sidebar };
 })();

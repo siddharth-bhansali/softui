@@ -314,6 +314,11 @@
       "code": "<div style=\"display:flex;height:300px;\">\n  <aside class=\"sui-sidebar sui-sidebar-bordered\" style=\"height:100%;\">\n    <div class=\"sui-sidebar-content\">\n      <div class=\"sui-sidebar-group\">\n        <h6 class=\"sui-sidebar-group-label\">Main</h6>\n        <ul class=\"sui-sidebar-nav\">\n          <li><a href=\"#\" class=\"active\">Dashboard</a></li>\n          <li><a href=\"#\">Analytics</a></li>\n          <li><a href=\"#\">Customers</a></li>\n        </ul>\n      </div>\n      <div class=\"sui-sidebar-divider\"></div>\n      <div class=\"sui-sidebar-group\">\n        <h6 class=\"sui-sidebar-group-label\">Settings</h6>\n        <ul class=\"sui-sidebar-nav\">\n          <li><a href=\"#\">Team</a></li>\n          <li><a href=\"#\">Billing</a></li>\n        </ul>\n      </div>\n    </div>\n  </aside>\n  <div style=\"flex:1;padding:24px;\">Main content</div>\n</div>"
     },
     {
+      "id": "fileupload",
+      "label": "File Upload",
+      "code": "<div class=\"sui-file-upload\">\n  <input type=\"file\" multiple>\n  <div class=\"sui-file-upload-icon\">\n    <svg viewBox=\"0 0 24 24\"><path d=\"M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4\"/><polyline points=\"17 8 12 3 7 8\"/><line x1=\"12\" y1=\"3\" x2=\"12\" y2=\"15\"/></svg>\n  </div>\n  <div class=\"sui-file-upload-text\"><strong>Click to upload</strong> or drag and drop</div>\n  <div class=\"sui-file-upload-hint\">PNG, JPG, PDF up to 10MB</div>\n</div>"
+    },
+    {
       "id": "colorpicker",
       "label": "Color Picker",
       "code": "<div class=\"sui-color-picker\">\n  <div class=\"sui-color-swatch active\" data-color=\"#5B54E0\" style=\"background:#5B54E0;\"></div>\n  <div class=\"sui-color-swatch\" data-color=\"#2DCE89\" style=\"background:#2DCE89;\"></div>\n  <div class=\"sui-color-swatch\" data-color=\"#E74C6F\" style=\"background:#E74C6F;\"></div>\n  <div class=\"sui-color-swatch\" data-color=\"#F5A623\" style=\"background:#F5A623;\"></div>\n  <div class=\"sui-color-swatch\" data-color=\"#36A3F7\" style=\"background:#36A3F7;\"></div>\n</div>"
