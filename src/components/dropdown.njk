@@ -79,17 +79,34 @@ toc:
     <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
     <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-dropdown"&gt;
   &lt;button class="sui-btn sui-btn-primary sui-dropdown-toggle" data-sui-dropdown&gt;Primary&lt;/button&gt;
-  &lt;div class="sui-dropdown-menu"&gt;...&lt;/div&gt;
+  &lt;div class="sui-dropdown-menu"&gt;
+    &lt;button class="sui-dropdown-item"&gt;Action One&lt;/button&gt;
+    &lt;button class="sui-dropdown-item"&gt;Action Two&lt;/button&gt;
+  &lt;/div&gt;
 &lt;/div&gt;
 
 &lt;div class="sui-dropdown"&gt;
   &lt;button class="sui-btn sui-btn-success sui-dropdown-toggle" data-sui-dropdown&gt;Success&lt;/button&gt;
-  &lt;div class="sui-dropdown-menu"&gt;...&lt;/div&gt;
+  &lt;div class="sui-dropdown-menu"&gt;
+    &lt;button class="sui-dropdown-item"&gt;Action One&lt;/button&gt;
+    &lt;button class="sui-dropdown-item"&gt;Action Two&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="sui-dropdown"&gt;
+  &lt;button class="sui-btn sui-btn-danger sui-dropdown-toggle" data-sui-dropdown&gt;Danger&lt;/button&gt;
+  &lt;div class="sui-dropdown-menu"&gt;
+    &lt;button class="sui-dropdown-item"&gt;Action One&lt;/button&gt;
+    &lt;button class="sui-dropdown-item"&gt;Action Two&lt;/button&gt;
+  &lt;/div&gt;
 &lt;/div&gt;
 
 &lt;div class="sui-dropdown"&gt;
   &lt;button class="sui-btn sui-btn-outline sui-btn-primary sui-dropdown-toggle" data-sui-dropdown&gt;Outline&lt;/button&gt;
-  &lt;div class="sui-dropdown-menu"&gt;...&lt;/div&gt;
+  &lt;div class="sui-dropdown-menu"&gt;
+    &lt;button class="sui-dropdown-item"&gt;Action One&lt;/button&gt;
+    &lt;button class="sui-dropdown-item"&gt;Action Two&lt;/button&gt;
+  &lt;/div&gt;
 &lt;/div&gt;</pre></div>
   </div>
 </div>
@@ -148,9 +165,9 @@ toc:
     <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-dropdown"&gt;
   &lt;button class="sui-btn sui-dropdown-toggle" data-sui-dropdown&gt;Navigate&lt;/button&gt;
   &lt;div class="sui-dropdown-menu"&gt;
-    &lt;a href="/docs" class="sui-dropdown-item"&gt;Documentation&lt;/a&gt;
-    &lt;a href="/api" class="sui-dropdown-item"&gt;API Reference&lt;/a&gt;
-    &lt;a href="/examples" class="sui-dropdown-item"&gt;Examples&lt;/a&gt;
+    &lt;a href="#" class="sui-dropdown-item"&gt;Documentation&lt;/a&gt;
+    &lt;a href="#" class="sui-dropdown-item"&gt;API Reference&lt;/a&gt;
+    &lt;a href="#" class="sui-dropdown-item"&gt;Examples&lt;/a&gt;
   &lt;/div&gt;
 &lt;/div&gt;</pre></div>
   </div>
@@ -179,16 +196,21 @@ toc:
   </div>
   <div class="pg-code-wrap">
     <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
-    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-dropdown-menu"&gt;
-  &lt;span class="sui-dropdown-header"&gt;File&lt;/span&gt;
-  &lt;button class="sui-dropdown-item"&gt;New&lt;/button&gt;
-  &lt;button class="sui-dropdown-item"&gt;Open&lt;/button&gt;
-  &lt;div class="sui-dropdown-divider"&gt;&lt;/div&gt;
-  &lt;span class="sui-dropdown-header"&gt;Edit&lt;/span&gt;
-  &lt;button class="sui-dropdown-item"&gt;Cut&lt;/button&gt;
-  &lt;button class="sui-dropdown-item"&gt;Copy&lt;/button&gt;
-  &lt;div class="sui-dropdown-divider"&gt;&lt;/div&gt;
-  &lt;button class="sui-dropdown-item" style="color:var(--sui-danger);"&gt;Delete&lt;/button&gt;
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-dropdown"&gt;
+  &lt;button class="sui-btn sui-dropdown-toggle" data-sui-dropdown&gt;More Actions&lt;/button&gt;
+  &lt;div class="sui-dropdown-menu"&gt;
+    &lt;span class="sui-dropdown-header"&gt;File&lt;/span&gt;
+    &lt;button class="sui-dropdown-item"&gt;New&lt;/button&gt;
+    &lt;button class="sui-dropdown-item"&gt;Open&lt;/button&gt;
+    &lt;button class="sui-dropdown-item"&gt;Save&lt;/button&gt;
+    &lt;div class="sui-dropdown-divider"&gt;&lt;/div&gt;
+    &lt;span class="sui-dropdown-header"&gt;Edit&lt;/span&gt;
+    &lt;button class="sui-dropdown-item"&gt;Cut&lt;/button&gt;
+    &lt;button class="sui-dropdown-item"&gt;Copy&lt;/button&gt;
+    &lt;button class="sui-dropdown-item"&gt;Paste&lt;/button&gt;
+    &lt;div class="sui-dropdown-divider"&gt;&lt;/div&gt;
+    &lt;button class="sui-dropdown-item" style="color:var(--sui-danger);"&gt;Delete&lt;/button&gt;
+  &lt;/div&gt;
 &lt;/div&gt;</pre></div>
   </div>
 </div>
@@ -210,9 +232,16 @@ toc:
   </div>
   <div class="pg-code-wrap">
     <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
-    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;button class="sui-dropdown-item active"&gt;Dashboard&lt;/button&gt;
-&lt;button class="sui-dropdown-item"&gt;Settings&lt;/button&gt;
-&lt;button class="sui-dropdown-item disabled"&gt;Admin Panel&lt;/button&gt;</pre></div>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-dropdown"&gt;
+  &lt;button class="sui-btn sui-dropdown-toggle" data-sui-dropdown&gt;User Menu&lt;/button&gt;
+  &lt;div class="sui-dropdown-menu"&gt;
+    &lt;button class="sui-dropdown-item active"&gt;Dashboard&lt;/button&gt;
+    &lt;button class="sui-dropdown-item"&gt;Settings&lt;/button&gt;
+    &lt;button class="sui-dropdown-item disabled"&gt;Admin Panel&lt;/button&gt;
+    &lt;div class="sui-dropdown-divider"&gt;&lt;/div&gt;
+    &lt;button class="sui-dropdown-item"&gt;Log Out&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</pre></div>
   </div>
 </div>
 
@@ -252,16 +281,40 @@ toc:
   <div class="pg-code-wrap">
     <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
     <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;!-- Down (default) --&gt;
-&lt;div class="sui-dropdown"&gt;...&lt;/div&gt;
+&lt;div class="sui-dropdown"&gt;
+  &lt;button class="sui-btn sui-dropdown-toggle" data-sui-dropdown&gt;Dropdown&lt;/button&gt;
+  &lt;div class="sui-dropdown-menu"&gt;
+    &lt;button class="sui-dropdown-item"&gt;Action One&lt;/button&gt;
+    &lt;button class="sui-dropdown-item"&gt;Action Two&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
 
 &lt;!-- Up --&gt;
-&lt;div class="sui-dropdown sui-dropup"&gt;...&lt;/div&gt;
+&lt;div class="sui-dropdown sui-dropup"&gt;
+  &lt;button class="sui-btn sui-dropdown-toggle" data-sui-dropdown&gt;Dropup&lt;/button&gt;
+  &lt;div class="sui-dropdown-menu"&gt;
+    &lt;button class="sui-dropdown-item"&gt;Action One&lt;/button&gt;
+    &lt;button class="sui-dropdown-item"&gt;Action Two&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
 
 &lt;!-- Right --&gt;
-&lt;div class="sui-dropdown sui-dropend"&gt;...&lt;/div&gt;
+&lt;div class="sui-dropdown sui-dropend"&gt;
+  &lt;button class="sui-btn sui-dropdown-toggle" data-sui-dropdown&gt;Dropend&lt;/button&gt;
+  &lt;div class="sui-dropdown-menu"&gt;
+    &lt;button class="sui-dropdown-item"&gt;Action One&lt;/button&gt;
+    &lt;button class="sui-dropdown-item"&gt;Action Two&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
 
 &lt;!-- Left --&gt;
-&lt;div class="sui-dropdown sui-dropstart"&gt;...&lt;/div&gt;</pre></div>
+&lt;div class="sui-dropdown sui-dropstart"&gt;
+  &lt;button class="sui-btn sui-dropdown-toggle" data-sui-dropdown&gt;Dropstart&lt;/button&gt;
+  &lt;div class="sui-dropdown-menu"&gt;
+    &lt;button class="sui-dropdown-item"&gt;Action One&lt;/button&gt;
+    &lt;button class="sui-dropdown-item"&gt;Action Two&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</pre></div>
   </div>
 </div>
 
@@ -288,10 +341,22 @@ toc:
   <div class="pg-code-wrap">
     <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
     <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;!-- Start-aligned (default) --&gt;
-&lt;div class="sui-dropdown-menu"&gt;...&lt;/div&gt;
+&lt;div class="sui-dropdown"&gt;
+  &lt;button class="sui-btn sui-dropdown-toggle" data-sui-dropdown&gt;Start-aligned&lt;/button&gt;
+  &lt;div class="sui-dropdown-menu"&gt;
+    &lt;button class="sui-dropdown-item"&gt;Menu left edge matches&lt;/button&gt;
+    &lt;button class="sui-dropdown-item"&gt;button left edge&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
 
 &lt;!-- End-aligned --&gt;
-&lt;div class="sui-dropdown-menu sui-dropdown-menu-end"&gt;...&lt;/div&gt;</pre></div>
+&lt;div class="sui-dropdown"&gt;
+  &lt;button class="sui-btn sui-dropdown-toggle" data-sui-dropdown&gt;End-aligned&lt;/button&gt;
+  &lt;div class="sui-dropdown-menu sui-dropdown-menu-end"&gt;
+    &lt;button class="sui-dropdown-item"&gt;Menu right edge matches&lt;/button&gt;
+    &lt;button class="sui-dropdown-item"&gt;button right edge&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</pre></div>
   </div>
 </div>
 

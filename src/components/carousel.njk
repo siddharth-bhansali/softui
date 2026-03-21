@@ -43,20 +43,35 @@ toc:
     <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
     <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-carousel" id="myCarousel"&gt;
   &lt;div class="sui-carousel-track"&gt;
-    &lt;div class="sui-carousel-item"&gt;Slide 1&lt;/div&gt;
-    &lt;div class="sui-carousel-item"&gt;Slide 2&lt;/div&gt;
-    &lt;div class="sui-carousel-item"&gt;Slide 3&lt;/div&gt;
+    &lt;div class="sui-carousel-item"&gt;
+      &lt;div style="height:140px;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg, var(--sui-primary), var(--sui-info));"&gt;
+        &lt;span style="font-size:32px;font-weight:700;color:#fff;"&gt;1&lt;/span&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="sui-carousel-item"&gt;
+      &lt;div style="height:140px;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg, var(--sui-info), var(--sui-success));"&gt;
+        &lt;span style="font-size:32px;font-weight:700;color:#fff;"&gt;2&lt;/span&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="sui-carousel-item"&gt;
+      &lt;div style="height:140px;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg, var(--sui-success), var(--sui-warning));"&gt;
+        &lt;span style="font-size:32px;font-weight:700;color:#fff;"&gt;3&lt;/span&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="sui-carousel-item"&gt;
+      &lt;div style="height:140px;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg, var(--sui-warning), var(--sui-danger));"&gt;
+        &lt;span style="font-size:32px;font-weight:700;color:#fff;"&gt;4&lt;/span&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="sui-carousel-item"&gt;
+      &lt;div style="height:140px;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg, var(--sui-danger), var(--sui-primary));"&gt;
+        &lt;span style="font-size:32px;font-weight:700;color:#fff;"&gt;5&lt;/span&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
   &lt;/div&gt;
-  &lt;button class="sui-carousel-prev" aria-label="Previous"&gt;&lt;/button&gt;
-  &lt;button class="sui-carousel-next" aria-label="Next"&gt;&lt;/button&gt;
-&lt;/div&gt;
-
-&lt;script&gt;
-  // Auto-initialized, or use the API:
-  SoftUI.carousel('#myCarousel').next();
-  SoftUI.carousel('#myCarousel').prev();
-  SoftUI.carousel('#myCarousel').goTo(2);
-&lt;/script&gt;</pre></div>
+  &lt;button class="sui-carousel-prev" aria-label="Previous slide"&gt;&lt;/button&gt;
+  &lt;button class="sui-carousel-next" aria-label="Next slide"&gt;&lt;/button&gt;
+&lt;/div&gt;</pre></div>
   </div>
 </div>
 
@@ -83,16 +98,40 @@ toc:
     <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
     <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-carousel" id="myCarousel"&gt;
   &lt;div class="sui-carousel-track"&gt;
-    &lt;div class="sui-carousel-item"&gt;...&lt;/div&gt;
-    &lt;div class="sui-carousel-item"&gt;...&lt;/div&gt;
-    &lt;div class="sui-carousel-item"&gt;...&lt;/div&gt;
+    &lt;div class="sui-carousel-item"&gt;
+      &lt;div style="height:140px;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg, var(--sui-primary), var(--sui-info));"&gt;
+        &lt;span style="font-size:32px;font-weight:700;color:#fff;"&gt;1&lt;/span&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="sui-carousel-item"&gt;
+      &lt;div style="height:140px;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg, var(--sui-info), var(--sui-success));"&gt;
+        &lt;span style="font-size:32px;font-weight:700;color:#fff;"&gt;2&lt;/span&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="sui-carousel-item"&gt;
+      &lt;div style="height:140px;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg, var(--sui-success), var(--sui-warning));"&gt;
+        &lt;span style="font-size:32px;font-weight:700;color:#fff;"&gt;3&lt;/span&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="sui-carousel-item"&gt;
+      &lt;div style="height:140px;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg, var(--sui-warning), var(--sui-danger));"&gt;
+        &lt;span style="font-size:32px;font-weight:700;color:#fff;"&gt;4&lt;/span&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="sui-carousel-item"&gt;
+      &lt;div style="height:140px;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg, var(--sui-danger), var(--sui-primary));"&gt;
+        &lt;span style="font-size:32px;font-weight:700;color:#fff;"&gt;5&lt;/span&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
   &lt;/div&gt;
-  &lt;button class="sui-carousel-prev" aria-label="Previous"&gt;&lt;/button&gt;
-  &lt;button class="sui-carousel-next" aria-label="Next"&gt;&lt;/button&gt;
+  &lt;button class="sui-carousel-prev" aria-label="Previous slide"&gt;&lt;/button&gt;
+  &lt;button class="sui-carousel-next" aria-label="Next slide"&gt;&lt;/button&gt;
   &lt;div class="sui-carousel-dots"&gt;
     &lt;button class="sui-carousel-dot active" aria-label="Slide 1"&gt;&lt;/button&gt;
     &lt;button class="sui-carousel-dot" aria-label="Slide 2"&gt;&lt;/button&gt;
     &lt;button class="sui-carousel-dot" aria-label="Slide 3"&gt;&lt;/button&gt;
+    &lt;button class="sui-carousel-dot" aria-label="Slide 4"&gt;&lt;/button&gt;
+    &lt;button class="sui-carousel-dot" aria-label="Slide 5"&gt;&lt;/button&gt;
   &lt;/div&gt;
 &lt;/div&gt;</pre></div>
   </div>
@@ -122,12 +161,35 @@ toc:
     <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
     <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-carousel" id="myCarousel" data-sui-loop&gt;
   &lt;div class="sui-carousel-track"&gt;
-    &lt;div class="sui-carousel-item"&gt;...&lt;/div&gt;
-    &lt;div class="sui-carousel-item"&gt;...&lt;/div&gt;
-    &lt;div class="sui-carousel-item"&gt;...&lt;/div&gt;
+    &lt;div class="sui-carousel-item"&gt;
+      &lt;div style="height:140px;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg, var(--sui-primary), var(--sui-info));"&gt;
+        &lt;span style="font-size:32px;font-weight:700;color:#fff;"&gt;1&lt;/span&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="sui-carousel-item"&gt;
+      &lt;div style="height:140px;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg, var(--sui-info), var(--sui-success));"&gt;
+        &lt;span style="font-size:32px;font-weight:700;color:#fff;"&gt;2&lt;/span&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="sui-carousel-item"&gt;
+      &lt;div style="height:140px;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg, var(--sui-success), var(--sui-warning));"&gt;
+        &lt;span style="font-size:32px;font-weight:700;color:#fff;"&gt;3&lt;/span&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="sui-carousel-item"&gt;
+      &lt;div style="height:140px;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg, var(--sui-warning), var(--sui-danger));"&gt;
+        &lt;span style="font-size:32px;font-weight:700;color:#fff;"&gt;4&lt;/span&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
   &lt;/div&gt;
-  &lt;button class="sui-carousel-prev" aria-label="Previous"&gt;&lt;/button&gt;
-  &lt;button class="sui-carousel-next" aria-label="Next"&gt;&lt;/button&gt;
+  &lt;button class="sui-carousel-prev" aria-label="Previous slide"&gt;&lt;/button&gt;
+  &lt;button class="sui-carousel-next" aria-label="Next slide"&gt;&lt;/button&gt;
+  &lt;div class="sui-carousel-dots"&gt;
+    &lt;button class="sui-carousel-dot active" aria-label="Slide 1"&gt;&lt;/button&gt;
+    &lt;button class="sui-carousel-dot" aria-label="Slide 2"&gt;&lt;/button&gt;
+    &lt;button class="sui-carousel-dot" aria-label="Slide 3"&gt;&lt;/button&gt;
+    &lt;button class="sui-carousel-dot" aria-label="Slide 4"&gt;&lt;/button&gt;
+  &lt;/div&gt;
 &lt;/div&gt;</pre></div>
   </div>
 </div>
@@ -156,12 +218,35 @@ toc:
     <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
     <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-carousel" id="myCarousel" data-sui-loop="rewind"&gt;
   &lt;div class="sui-carousel-track"&gt;
-    &lt;div class="sui-carousel-item"&gt;...&lt;/div&gt;
-    &lt;div class="sui-carousel-item"&gt;...&lt;/div&gt;
-    &lt;div class="sui-carousel-item"&gt;...&lt;/div&gt;
+    &lt;div class="sui-carousel-item"&gt;
+      &lt;div style="height:140px;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg, var(--sui-primary), var(--sui-info));"&gt;
+        &lt;span style="font-size:32px;font-weight:700;color:#fff;"&gt;1&lt;/span&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="sui-carousel-item"&gt;
+      &lt;div style="height:140px;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg, var(--sui-info), var(--sui-success));"&gt;
+        &lt;span style="font-size:32px;font-weight:700;color:#fff;"&gt;2&lt;/span&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="sui-carousel-item"&gt;
+      &lt;div style="height:140px;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg, var(--sui-success), var(--sui-warning));"&gt;
+        &lt;span style="font-size:32px;font-weight:700;color:#fff;"&gt;3&lt;/span&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="sui-carousel-item"&gt;
+      &lt;div style="height:140px;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg, var(--sui-warning), var(--sui-danger));"&gt;
+        &lt;span style="font-size:32px;font-weight:700;color:#fff;"&gt;4&lt;/span&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
   &lt;/div&gt;
-  &lt;button class="sui-carousel-prev" aria-label="Previous"&gt;&lt;/button&gt;
-  &lt;button class="sui-carousel-next" aria-label="Next"&gt;&lt;/button&gt;
+  &lt;button class="sui-carousel-prev" aria-label="Previous slide"&gt;&lt;/button&gt;
+  &lt;button class="sui-carousel-next" aria-label="Next slide"&gt;&lt;/button&gt;
+  &lt;div class="sui-carousel-dots"&gt;
+    &lt;button class="sui-carousel-dot active" aria-label="Slide 1"&gt;&lt;/button&gt;
+    &lt;button class="sui-carousel-dot" aria-label="Slide 2"&gt;&lt;/button&gt;
+    &lt;button class="sui-carousel-dot" aria-label="Slide 3"&gt;&lt;/button&gt;
+    &lt;button class="sui-carousel-dot" aria-label="Slide 4"&gt;&lt;/button&gt;
+  &lt;/div&gt;
 &lt;/div&gt;</pre></div>
   </div>
 </div>
@@ -183,14 +268,42 @@ toc:
   </div>
   <div class="pg-code-wrap">
     <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
-    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;!-- Show 2 items --&gt;
-&lt;div class="sui-carousel sui-carousel-2" id="..."&gt;...&lt;/div&gt;
-
-&lt;!-- Show 3 items --&gt;
-&lt;div class="sui-carousel sui-carousel-3" id="..."&gt;...&lt;/div&gt;
-
-&lt;!-- Show 4 items --&gt;
-&lt;div class="sui-carousel sui-carousel-4" id="..."&gt;...&lt;/div&gt;</pre></div>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-carousel sui-carousel-3" id="myCarousel"&gt;
+  &lt;div class="sui-carousel-track"&gt;
+    &lt;div class="sui-carousel-item"&gt;
+      &lt;div style="height:100px;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg, var(--sui-primary), var(--sui-info));"&gt;
+        &lt;span style="font-size:24px;font-weight:700;color:#fff;"&gt;1&lt;/span&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="sui-carousel-item"&gt;
+      &lt;div style="height:100px;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg, var(--sui-info), var(--sui-success));"&gt;
+        &lt;span style="font-size:24px;font-weight:700;color:#fff;"&gt;2&lt;/span&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="sui-carousel-item"&gt;
+      &lt;div style="height:100px;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg, var(--sui-success), var(--sui-warning));"&gt;
+        &lt;span style="font-size:24px;font-weight:700;color:#fff;"&gt;3&lt;/span&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="sui-carousel-item"&gt;
+      &lt;div style="height:100px;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg, var(--sui-warning), var(--sui-danger));"&gt;
+        &lt;span style="font-size:24px;font-weight:700;color:#fff;"&gt;4&lt;/span&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="sui-carousel-item"&gt;
+      &lt;div style="height:100px;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg, var(--sui-danger), var(--sui-primary));"&gt;
+        &lt;span style="font-size:24px;font-weight:700;color:#fff;"&gt;5&lt;/span&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="sui-carousel-item"&gt;
+      &lt;div style="height:100px;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg, var(--sui-primary), var(--sui-success));"&gt;
+        &lt;span style="font-size:24px;font-weight:700;color:#fff;"&gt;6&lt;/span&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;button class="sui-carousel-prev" aria-label="Previous slide"&gt;&lt;/button&gt;
+  &lt;button class="sui-carousel-next" aria-label="Next slide"&gt;&lt;/button&gt;
+&lt;/div&gt;</pre></div>
   </div>
 </div>
 
@@ -211,18 +324,41 @@ toc:
   </div>
   <div class="pg-code-wrap">
     <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
-    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-carousel sui-carousel-3 sui-carousel-gap" id="..."&gt;
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-carousel sui-carousel-3 sui-carousel-gap" id="myCarousel"&gt;
   &lt;div class="sui-carousel-track"&gt;
     &lt;div class="sui-carousel-item"&gt;
-      &lt;div class="sui-card" style="padding:32px;"&gt;Card 1&lt;/div&gt;
+      &lt;div class="sui-card" style="padding:32px 16px;text-align:center;"&gt;
+        &lt;span style="font-size:24px;font-weight:700;color:var(--sui-text-muted);"&gt;1&lt;/span&gt;
+      &lt;/div&gt;
     &lt;/div&gt;
     &lt;div class="sui-carousel-item"&gt;
-      &lt;div class="sui-card" style="padding:32px;"&gt;Card 2&lt;/div&gt;
+      &lt;div class="sui-card" style="padding:32px 16px;text-align:center;"&gt;
+        &lt;span style="font-size:24px;font-weight:700;color:var(--sui-text-muted);"&gt;2&lt;/span&gt;
+      &lt;/div&gt;
     &lt;/div&gt;
-    &lt;!-- ... --&gt;
+    &lt;div class="sui-carousel-item"&gt;
+      &lt;div class="sui-card" style="padding:32px 16px;text-align:center;"&gt;
+        &lt;span style="font-size:24px;font-weight:700;color:var(--sui-text-muted);"&gt;3&lt;/span&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="sui-carousel-item"&gt;
+      &lt;div class="sui-card" style="padding:32px 16px;text-align:center;"&gt;
+        &lt;span style="font-size:24px;font-weight:700;color:var(--sui-text-muted);"&gt;4&lt;/span&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="sui-carousel-item"&gt;
+      &lt;div class="sui-card" style="padding:32px 16px;text-align:center;"&gt;
+        &lt;span style="font-size:24px;font-weight:700;color:var(--sui-text-muted);"&gt;5&lt;/span&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="sui-carousel-item"&gt;
+      &lt;div class="sui-card" style="padding:32px 16px;text-align:center;"&gt;
+        &lt;span style="font-size:24px;font-weight:700;color:var(--sui-text-muted);"&gt;6&lt;/span&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
   &lt;/div&gt;
-  &lt;button class="sui-carousel-prev" aria-label="Previous"&gt;&lt;/button&gt;
-  &lt;button class="sui-carousel-next" aria-label="Next"&gt;&lt;/button&gt;
+  &lt;button class="sui-carousel-prev" aria-label="Previous slide"&gt;&lt;/button&gt;
+  &lt;button class="sui-carousel-next" aria-label="Next slide"&gt;&lt;/button&gt;
 &lt;/div&gt;</pre></div>
   </div>
 </div>
@@ -244,17 +380,41 @@ toc:
   </div>
   <div class="pg-code-wrap">
     <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
-    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-carousel sui-carousel-3 sui-carousel-gap" id="..."&gt;
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-carousel sui-carousel-3 sui-carousel-gap" id="myCarousel"&gt;
   &lt;div class="sui-carousel-track"&gt;
     &lt;div class="sui-carousel-item"&gt;
-      &lt;div style="height:100px;background:...;border-radius:var(--sui-radius);"&gt;
-        Slide 1
+      &lt;div style="height:100px;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg, var(--sui-primary), var(--sui-info));border-radius:var(--sui-radius);"&gt;
+        &lt;span style="font-size:24px;font-weight:700;color:#fff;"&gt;1&lt;/span&gt;
       &lt;/div&gt;
     &lt;/div&gt;
-    &lt;!-- ... --&gt;
+    &lt;div class="sui-carousel-item"&gt;
+      &lt;div style="height:100px;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg, var(--sui-info), var(--sui-success));border-radius:var(--sui-radius);"&gt;
+        &lt;span style="font-size:24px;font-weight:700;color:#fff;"&gt;2&lt;/span&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="sui-carousel-item"&gt;
+      &lt;div style="height:100px;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg, var(--sui-success), var(--sui-warning));border-radius:var(--sui-radius);"&gt;
+        &lt;span style="font-size:24px;font-weight:700;color:#fff;"&gt;3&lt;/span&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="sui-carousel-item"&gt;
+      &lt;div style="height:100px;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg, var(--sui-warning), var(--sui-danger));border-radius:var(--sui-radius);"&gt;
+        &lt;span style="font-size:24px;font-weight:700;color:#fff;"&gt;4&lt;/span&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="sui-carousel-item"&gt;
+      &lt;div style="height:100px;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg, var(--sui-danger), var(--sui-primary));border-radius:var(--sui-radius);"&gt;
+        &lt;span style="font-size:24px;font-weight:700;color:#fff;"&gt;5&lt;/span&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="sui-carousel-item"&gt;
+      &lt;div style="height:100px;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg, var(--sui-primary), var(--sui-success));border-radius:var(--sui-radius);"&gt;
+        &lt;span style="font-size:24px;font-weight:700;color:#fff;"&gt;6&lt;/span&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
   &lt;/div&gt;
-  &lt;button class="sui-carousel-prev" aria-label="Previous"&gt;&lt;/button&gt;
-  &lt;button class="sui-carousel-next" aria-label="Next"&gt;&lt;/button&gt;
+  &lt;button class="sui-carousel-prev" aria-label="Previous slide"&gt;&lt;/button&gt;
+  &lt;button class="sui-carousel-next" aria-label="Next slide"&gt;&lt;/button&gt;
 &lt;/div&gt;</pre></div>
   </div>
 </div>
@@ -284,16 +444,34 @@ toc:
     <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-carousel" id="myCarousel"
      data-sui-autoplay="3000" data-sui-loop&gt;
   &lt;div class="sui-carousel-track"&gt;
-    &lt;div class="sui-carousel-item"&gt;...&lt;/div&gt;
-    &lt;div class="sui-carousel-item"&gt;...&lt;/div&gt;
-    &lt;div class="sui-carousel-item"&gt;...&lt;/div&gt;
+    &lt;div class="sui-carousel-item"&gt;
+      &lt;div style="height:140px;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg, var(--sui-primary), var(--sui-info));"&gt;
+        &lt;span style="font-size:32px;font-weight:700;color:#fff;"&gt;1&lt;/span&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="sui-carousel-item"&gt;
+      &lt;div style="height:140px;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg, var(--sui-info), var(--sui-success));"&gt;
+        &lt;span style="font-size:32px;font-weight:700;color:#fff;"&gt;2&lt;/span&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="sui-carousel-item"&gt;
+      &lt;div style="height:140px;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg, var(--sui-success), var(--sui-warning));"&gt;
+        &lt;span style="font-size:32px;font-weight:700;color:#fff;"&gt;3&lt;/span&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="sui-carousel-item"&gt;
+      &lt;div style="height:140px;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg, var(--sui-warning), var(--sui-danger));"&gt;
+        &lt;span style="font-size:32px;font-weight:700;color:#fff;"&gt;4&lt;/span&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
   &lt;/div&gt;
-  &lt;button class="sui-carousel-prev" aria-label="Previous"&gt;&lt;/button&gt;
-  &lt;button class="sui-carousel-next" aria-label="Next"&gt;&lt;/button&gt;
+  &lt;button class="sui-carousel-prev" aria-label="Previous slide"&gt;&lt;/button&gt;
+  &lt;button class="sui-carousel-next" aria-label="Next slide"&gt;&lt;/button&gt;
   &lt;div class="sui-carousel-dots"&gt;
-    &lt;button class="sui-carousel-dot active"&gt;&lt;/button&gt;
-    &lt;button class="sui-carousel-dot"&gt;&lt;/button&gt;
-    &lt;button class="sui-carousel-dot"&gt;&lt;/button&gt;
+    &lt;button class="sui-carousel-dot active" aria-label="Slide 1"&gt;&lt;/button&gt;
+    &lt;button class="sui-carousel-dot" aria-label="Slide 2"&gt;&lt;/button&gt;
+    &lt;button class="sui-carousel-dot" aria-label="Slide 3"&gt;&lt;/button&gt;
+    &lt;button class="sui-carousel-dot" aria-label="Slide 4"&gt;&lt;/button&gt;
   &lt;/div&gt;
 &lt;/div&gt;</pre></div>
   </div>
@@ -319,15 +497,39 @@ toc:
     <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-carousel sui-carousel-vertical sui-carousel-3"
      id="myCarousel" style="height:340px;"&gt;
   &lt;div class="sui-carousel-track"&gt;
-    &lt;div class="sui-carousel-item"&gt;...&lt;/div&gt;
-    &lt;div class="sui-carousel-item"&gt;...&lt;/div&gt;
-    &lt;div class="sui-carousel-item"&gt;...&lt;/div&gt;
-    &lt;div class="sui-carousel-item"&gt;...&lt;/div&gt;
-    &lt;div class="sui-carousel-item"&gt;...&lt;/div&gt;
-    &lt;div class="sui-carousel-item"&gt;...&lt;/div&gt;
+    &lt;div class="sui-carousel-item"&gt;
+      &lt;div style="height:100%;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg, var(--sui-primary), var(--sui-info));"&gt;
+        &lt;span style="font-size:28px;font-weight:700;color:#fff;"&gt;1&lt;/span&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="sui-carousel-item"&gt;
+      &lt;div style="height:100%;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg, var(--sui-info), var(--sui-success));"&gt;
+        &lt;span style="font-size:28px;font-weight:700;color:#fff;"&gt;2&lt;/span&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="sui-carousel-item"&gt;
+      &lt;div style="height:100%;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg, var(--sui-success), var(--sui-warning));"&gt;
+        &lt;span style="font-size:28px;font-weight:700;color:#fff;"&gt;3&lt;/span&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="sui-carousel-item"&gt;
+      &lt;div style="height:100%;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg, var(--sui-warning), var(--sui-danger));"&gt;
+        &lt;span style="font-size:28px;font-weight:700;color:#fff;"&gt;4&lt;/span&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="sui-carousel-item"&gt;
+      &lt;div style="height:100%;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg, var(--sui-danger), var(--sui-primary));"&gt;
+        &lt;span style="font-size:28px;font-weight:700;color:#fff;"&gt;5&lt;/span&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="sui-carousel-item"&gt;
+      &lt;div style="height:100%;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg, var(--sui-primary), var(--sui-success));"&gt;
+        &lt;span style="font-size:28px;font-weight:700;color:#fff;"&gt;6&lt;/span&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
   &lt;/div&gt;
-  &lt;button class="sui-carousel-prev" aria-label="Previous"&gt;&lt;/button&gt;
-  &lt;button class="sui-carousel-next" aria-label="Next"&gt;&lt;/button&gt;
+  &lt;button class="sui-carousel-prev" aria-label="Previous slide"&gt;&lt;/button&gt;
+  &lt;button class="sui-carousel-next" aria-label="Next slide"&gt;&lt;/button&gt;
 &lt;/div&gt;</pre></div>
   </div>
 </div>

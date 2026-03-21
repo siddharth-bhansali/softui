@@ -3413,5 +3413,52 @@ const SoftUI = (() => {
     }
   });
 
+  // =========================================
+  // Radial Progress
+  // =========================================
+  function initRadialProgress() {
+    var radials = document.querySelectorAll('.sui-radial[data-value]');
+    radials.forEach(function(el) {
+      var fill = el.querySelector('.sui-radial-fill');
+      if (!fill) return;
+      var value = parseFloat(el.getAttribute('data-value')) || 0;
+      value = Math.max(0, Math.min(100, value));
+      var circumference = parseFloat(fill.getAttribute('stroke-dasharray') || fill.style.strokeDasharray);
+      if (!circumference) {
+        var r = fill.getAttribute('r');
+        circumference = 2 * Math.PI * parseFloat(r);
+      }
+      fill.style.strokeDasharray = circumference;
+      fill.style.strokeDashoffset = circumference;
+      var valueEl = el.querySelector('.sui-radial-value');
+      var duration = el.classList.contains('sui-radial-animated') ? 1200 : 600;
+
+      requestAnimationFrame(function() {
+        requestAnimationFrame(function() {
+          var offset = circumference - (value / 100) * circumference;
+          fill.style.strokeDashoffset = offset;
+
+          if (valueEl) {
+            var start = performance.now();
+            function tick(now) {
+              var elapsed = now - start;
+              var progress = Math.min(elapsed / duration, 1);
+              var current = Math.round(progress * value);
+              valueEl.textContent = current + '%';
+              if (progress < 1) requestAnimationFrame(tick);
+            }
+            requestAnimationFrame(tick);
+          }
+        });
+      });
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initRadialProgress);
+  } else {
+    initRadialProgress();
+  }
+
   return { modal, sheet, toast, carousel, sidebar };
 })();

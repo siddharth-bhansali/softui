@@ -1,0 +1,363 @@
+---
+layout: component.njk
+title: Radial Progress
+description: Circular progress ring with percentage label, multiple sizes, colors, animation, and neumorphic variants.
+componentId: radialprogress
+hasControls: false
+toc:
+  - Default
+  - Sizes
+  - Colors
+  - With Label
+  - Animated
+  - Inset
+---
+
+<!-- Default -->
+<div class="pg-section" id="section-1">
+  <h3 class="pg-section-title">Default</h3>
+  <div class="pg-section-row">
+    <div style="display:flex;flex-wrap:wrap;gap:24px;align-items:center;">
+      <div class="sui-radial" data-value="75">
+        <svg viewBox="0 0 100 100">
+          <circle class="sui-radial-track" cx="50" cy="50" r="40"/>
+          <circle class="sui-radial-fill" cx="50" cy="50" r="40"/>
+        </svg>
+        <span class="sui-radial-value">75%</span>
+      </div>
+      <div class="sui-radial" data-value="42">
+        <svg viewBox="0 0 100 100">
+          <circle class="sui-radial-track" cx="50" cy="50" r="40"/>
+          <circle class="sui-radial-fill" cx="50" cy="50" r="40"/>
+        </svg>
+        <span class="sui-radial-value">42%</span>
+      </div>
+      <div class="sui-radial" data-value="100">
+        <svg viewBox="0 0 100 100">
+          <circle class="sui-radial-track" cx="50" cy="50" r="40"/>
+          <circle class="sui-radial-fill" cx="50" cy="50" r="40"/>
+        </svg>
+        <span class="sui-radial-value">100%</span>
+      </div>
+    </div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-radial" data-value="75"&gt;
+  &lt;svg viewBox="0 0 100 100"&gt;
+    &lt;circle class="sui-radial-track" cx="50" cy="50" r="40"/&gt;
+    &lt;circle class="sui-radial-fill" cx="50" cy="50" r="40"/&gt;
+  &lt;/svg&gt;
+  &lt;span class="sui-radial-value"&gt;75%&lt;/span&gt;
+&lt;/div&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Sizes -->
+<div class="pg-section" id="section-2">
+  <h3 class="pg-section-title">Sizes</h3>
+  <div class="pg-section-row">
+    <div style="display:flex;flex-wrap:wrap;gap:24px;align-items:center;">
+      <div>
+        <div style="font-size:12px;color:var(--sui-text-muted);margin-bottom:6px;text-align:center;">Small</div>
+        <div class="sui-radial sui-radial-sm" data-value="65">
+          <svg viewBox="0 0 64 64">
+            <circle class="sui-radial-track" cx="32" cy="32" r="26"/>
+            <circle class="sui-radial-fill" cx="32" cy="32" r="26"/>
+          </svg>
+          <span class="sui-radial-value">65%</span>
+        </div>
+      </div>
+      <div>
+        <div style="font-size:12px;color:var(--sui-text-muted);margin-bottom:6px;text-align:center;">Default</div>
+        <div class="sui-radial" data-value="65">
+          <svg viewBox="0 0 100 100">
+            <circle class="sui-radial-track" cx="50" cy="50" r="40"/>
+            <circle class="sui-radial-fill" cx="50" cy="50" r="40"/>
+          </svg>
+          <span class="sui-radial-value">65%</span>
+        </div>
+      </div>
+      <div>
+        <div style="font-size:12px;color:var(--sui-text-muted);margin-bottom:6px;text-align:center;">Large</div>
+        <div class="sui-radial sui-radial-lg" data-value="65">
+          <svg viewBox="0 0 140 140">
+            <circle class="sui-radial-track" cx="70" cy="70" r="55"/>
+            <circle class="sui-radial-fill" cx="70" cy="70" r="55"/>
+          </svg>
+          <span class="sui-radial-value">65%</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;!-- Small --&gt;
+&lt;div class="sui-radial sui-radial-sm" data-value="65"&gt;
+  &lt;svg viewBox="0 0 64 64"&gt;
+    &lt;circle class="sui-radial-track" cx="32" cy="32" r="26"/&gt;
+    &lt;circle class="sui-radial-fill" cx="32" cy="32" r="26"/&gt;
+  &lt;/svg&gt;
+  &lt;span class="sui-radial-value"&gt;65%&lt;/span&gt;
+&lt;/div&gt;
+
+&lt;!-- Default --&gt;
+&lt;div class="sui-radial" data-value="65"&gt;
+  &lt;svg viewBox="0 0 100 100"&gt;
+    &lt;circle class="sui-radial-track" cx="50" cy="50" r="40"/&gt;
+    &lt;circle class="sui-radial-fill" cx="50" cy="50" r="40"/&gt;
+  &lt;/svg&gt;
+  &lt;span class="sui-radial-value"&gt;65%&lt;/span&gt;
+&lt;/div&gt;
+
+&lt;!-- Large --&gt;
+&lt;div class="sui-radial sui-radial-lg" data-value="65"&gt;
+  &lt;svg viewBox="0 0 140 140"&gt;
+    &lt;circle class="sui-radial-track" cx="70" cy="70" r="55"/&gt;
+    &lt;circle class="sui-radial-fill" cx="70" cy="70" r="55"/&gt;
+  &lt;/svg&gt;
+  &lt;span class="sui-radial-value"&gt;65%&lt;/span&gt;
+&lt;/div&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Colors -->
+<div class="pg-section" id="section-3">
+  <h3 class="pg-section-title">Colors</h3>
+  <div class="pg-section-row">
+    <div style="display:flex;flex-wrap:wrap;gap:24px;align-items:center;">
+      <div class="sui-radial" data-value="80">
+        <svg viewBox="0 0 100 100">
+          <circle class="sui-radial-track" cx="50" cy="50" r="40"/>
+          <circle class="sui-radial-fill" cx="50" cy="50" r="40"/>
+        </svg>
+        <span class="sui-radial-value">80%</span>
+      </div>
+      <div class="sui-radial sui-radial-success" data-value="92">
+        <svg viewBox="0 0 100 100">
+          <circle class="sui-radial-track" cx="50" cy="50" r="40"/>
+          <circle class="sui-radial-fill" cx="50" cy="50" r="40"/>
+        </svg>
+        <span class="sui-radial-value">92%</span>
+      </div>
+      <div class="sui-radial sui-radial-danger" data-value="28">
+        <svg viewBox="0 0 100 100">
+          <circle class="sui-radial-track" cx="50" cy="50" r="40"/>
+          <circle class="sui-radial-fill" cx="50" cy="50" r="40"/>
+        </svg>
+        <span class="sui-radial-value">28%</span>
+      </div>
+      <div class="sui-radial sui-radial-warning" data-value="55">
+        <svg viewBox="0 0 100 100">
+          <circle class="sui-radial-track" cx="50" cy="50" r="40"/>
+          <circle class="sui-radial-fill" cx="50" cy="50" r="40"/>
+        </svg>
+        <span class="sui-radial-value">55%</span>
+      </div>
+      <div class="sui-radial sui-radial-info" data-value="68">
+        <svg viewBox="0 0 100 100">
+          <circle class="sui-radial-track" cx="50" cy="50" r="40"/>
+          <circle class="sui-radial-fill" cx="50" cy="50" r="40"/>
+        </svg>
+        <span class="sui-radial-value">68%</span>
+      </div>
+    </div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;!-- Primary (default) --&gt;
+&lt;div class="sui-radial" data-value="80"&gt;
+  &lt;svg viewBox="0 0 100 100"&gt;
+    &lt;circle class="sui-radial-track" cx="50" cy="50" r="40"/&gt;
+    &lt;circle class="sui-radial-fill" cx="50" cy="50" r="40"/&gt;
+  &lt;/svg&gt;
+  &lt;span class="sui-radial-value"&gt;80%&lt;/span&gt;
+&lt;/div&gt;
+
+&lt;!-- Success --&gt;
+&lt;div class="sui-radial sui-radial-success" data-value="92"&gt;
+  &lt;svg viewBox="0 0 100 100"&gt;
+    &lt;circle class="sui-radial-track" cx="50" cy="50" r="40"/&gt;
+    &lt;circle class="sui-radial-fill" cx="50" cy="50" r="40"/&gt;
+  &lt;/svg&gt;
+  &lt;span class="sui-radial-value"&gt;92%&lt;/span&gt;
+&lt;/div&gt;
+
+&lt;!-- Danger --&gt;
+&lt;div class="sui-radial sui-radial-danger" data-value="28"&gt;
+  &lt;svg viewBox="0 0 100 100"&gt;
+    &lt;circle class="sui-radial-track" cx="50" cy="50" r="40"/&gt;
+    &lt;circle class="sui-radial-fill" cx="50" cy="50" r="40"/&gt;
+  &lt;/svg&gt;
+  &lt;span class="sui-radial-value"&gt;28%&lt;/span&gt;
+&lt;/div&gt;
+
+&lt;!-- Warning --&gt;
+&lt;div class="sui-radial sui-radial-warning" data-value="55"&gt;
+  &lt;svg viewBox="0 0 100 100"&gt;
+    &lt;circle class="sui-radial-track" cx="50" cy="50" r="40"/&gt;
+    &lt;circle class="sui-radial-fill" cx="50" cy="50" r="40"/&gt;
+  &lt;/svg&gt;
+  &lt;span class="sui-radial-value"&gt;55%&lt;/span&gt;
+&lt;/div&gt;
+
+&lt;!-- Info --&gt;
+&lt;div class="sui-radial sui-radial-info" data-value="68"&gt;
+  &lt;svg viewBox="0 0 100 100"&gt;
+    &lt;circle class="sui-radial-track" cx="50" cy="50" r="40"/&gt;
+    &lt;circle class="sui-radial-fill" cx="50" cy="50" r="40"/&gt;
+  &lt;/svg&gt;
+  &lt;span class="sui-radial-value"&gt;68%&lt;/span&gt;
+&lt;/div&gt;</pre></div>
+  </div>
+</div>
+
+<!-- With Label -->
+<div class="pg-section" id="section-4">
+  <h3 class="pg-section-title">With Label</h3>
+  <div class="pg-section-row">
+    <div style="display:flex;flex-wrap:wrap;gap:24px;align-items:center;">
+      <div class="sui-radial sui-radial-success" data-value="92">
+        <svg viewBox="0 0 100 100">
+          <circle class="sui-radial-track" cx="50" cy="50" r="40"/>
+          <circle class="sui-radial-fill" cx="50" cy="50" r="40"/>
+        </svg>
+        <div class="sui-radial-label">
+          <span class="sui-radial-value">92%</span>
+          <span class="sui-radial-label-text">Uptime</span>
+        </div>
+      </div>
+      <div class="sui-radial" data-value="68">
+        <svg viewBox="0 0 100 100">
+          <circle class="sui-radial-track" cx="50" cy="50" r="40"/>
+          <circle class="sui-radial-fill" cx="50" cy="50" r="40"/>
+        </svg>
+        <div class="sui-radial-label">
+          <span class="sui-radial-value">68%</span>
+          <span class="sui-radial-label-text">Storage</span>
+        </div>
+      </div>
+      <div class="sui-radial sui-radial-danger" data-value="15">
+        <svg viewBox="0 0 100 100">
+          <circle class="sui-radial-track" cx="50" cy="50" r="40"/>
+          <circle class="sui-radial-fill" cx="50" cy="50" r="40"/>
+        </svg>
+        <div class="sui-radial-label">
+          <span class="sui-radial-value">15%</span>
+          <span class="sui-radial-label-text">Battery</span>
+        </div>
+      </div>
+      <div class="sui-radial sui-radial-lg sui-radial-warning" data-value="47">
+        <svg viewBox="0 0 140 140">
+          <circle class="sui-radial-track" cx="70" cy="70" r="55"/>
+          <circle class="sui-radial-fill" cx="70" cy="70" r="55"/>
+        </svg>
+        <div class="sui-radial-label">
+          <span class="sui-radial-value">47%</span>
+          <span class="sui-radial-label-text">CPU Usage</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-radial sui-radial-success" data-value="92"&gt;
+  &lt;svg viewBox="0 0 100 100"&gt;
+    &lt;circle class="sui-radial-track" cx="50" cy="50" r="40"/&gt;
+    &lt;circle class="sui-radial-fill" cx="50" cy="50" r="40"/&gt;
+  &lt;/svg&gt;
+  &lt;div class="sui-radial-label"&gt;
+    &lt;span class="sui-radial-value"&gt;92%&lt;/span&gt;
+    &lt;span class="sui-radial-label-text"&gt;Uptime&lt;/span&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Animated -->
+<div class="pg-section" id="section-5">
+  <h3 class="pg-section-title">Animated</h3>
+  <div class="pg-section-row">
+    <div style="display:flex;flex-wrap:wrap;gap:24px;align-items:center;">
+      <div class="sui-radial sui-radial-animated" data-value="85">
+        <svg viewBox="0 0 100 100">
+          <circle class="sui-radial-track" cx="50" cy="50" r="40"/>
+          <circle class="sui-radial-fill" cx="50" cy="50" r="40"/>
+        </svg>
+        <span class="sui-radial-value">85%</span>
+      </div>
+      <div class="sui-radial sui-radial-animated sui-radial-success" data-value="60">
+        <svg viewBox="0 0 100 100">
+          <circle class="sui-radial-track" cx="50" cy="50" r="40"/>
+          <circle class="sui-radial-fill" cx="50" cy="50" r="40"/>
+        </svg>
+        <span class="sui-radial-value">60%</span>
+      </div>
+      <div class="sui-radial sui-radial-animated sui-radial-lg sui-radial-info" data-value="73">
+        <svg viewBox="0 0 140 140">
+          <circle class="sui-radial-track" cx="70" cy="70" r="55"/>
+          <circle class="sui-radial-fill" cx="70" cy="70" r="55"/>
+        </svg>
+        <div class="sui-radial-label">
+          <span class="sui-radial-value">73%</span>
+          <span class="sui-radial-label-text">Progress</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-radial sui-radial-animated" data-value="85"&gt;
+  &lt;svg viewBox="0 0 100 100"&gt;
+    &lt;circle class="sui-radial-track" cx="50" cy="50" r="40"/&gt;
+    &lt;circle class="sui-radial-fill" cx="50" cy="50" r="40"/&gt;
+  &lt;/svg&gt;
+  &lt;span class="sui-radial-value"&gt;85%&lt;/span&gt;
+&lt;/div&gt;
+
+&lt;!-- Add sui-radial-animated for slower, smoother fill animation --&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Inset -->
+<div class="pg-section" id="section-6">
+  <h3 class="pg-section-title">Inset</h3>
+  <div class="pg-section-row">
+    <div style="display:flex;flex-wrap:wrap;gap:24px;align-items:center;">
+      <div class="sui-radial sui-radial-inset" data-value="78">
+        <svg viewBox="0 0 100 100">
+          <circle class="sui-radial-track" cx="50" cy="50" r="40"/>
+          <circle class="sui-radial-fill" cx="50" cy="50" r="40"/>
+        </svg>
+        <span class="sui-radial-value">78%</span>
+      </div>
+      <div class="sui-radial sui-radial-inset sui-radial-success" data-value="100">
+        <svg viewBox="0 0 100 100">
+          <circle class="sui-radial-track" cx="50" cy="50" r="40"/>
+          <circle class="sui-radial-fill" cx="50" cy="50" r="40"/>
+        </svg>
+        <span class="sui-radial-value">100%</span>
+      </div>
+      <div class="sui-radial sui-radial-inset sui-radial-lg sui-radial-danger" data-value="33">
+        <svg viewBox="0 0 140 140">
+          <circle class="sui-radial-track" cx="70" cy="70" r="55"/>
+          <circle class="sui-radial-fill" cx="70" cy="70" r="55"/>
+        </svg>
+        <div class="sui-radial-label">
+          <span class="sui-radial-value">33%</span>
+          <span class="sui-radial-label-text">Disk</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-radial sui-radial-inset" data-value="78"&gt;
+  &lt;svg viewBox="0 0 100 100"&gt;
+    &lt;circle class="sui-radial-track" cx="50" cy="50" r="40"/&gt;
+    &lt;circle class="sui-radial-fill" cx="50" cy="50" r="40"/&gt;
+  &lt;/svg&gt;
+  &lt;span class="sui-radial-value"&gt;78%&lt;/span&gt;
+&lt;/div&gt;</pre></div>
+  </div>
+</div>

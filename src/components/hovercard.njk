@@ -46,7 +46,7 @@ toc:
         &lt;div style="font-size:12px;"&gt;@johndoe&lt;/div&gt;
       &lt;/div&gt;
     &lt;/div&gt;
-    &lt;p&gt;Bio text here.&lt;/p&gt;
+    &lt;div style="font-size:13px;line-height:1.5;"&gt;Full-stack developer and open source enthusiast. Building tools for the modern web.&lt;/div&gt;
   &lt;/div&gt;
 &lt;/div&gt;</pre></div>
   </div>
@@ -86,17 +86,34 @@ toc:
     <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;!-- Bottom (default) --&gt;
 &lt;div class="sui-hover-card"&gt;
   &lt;span class="sui-hover-card-trigger" tabindex="0"&gt;Bottom&lt;/span&gt;
-  &lt;div class="sui-hover-card-content"&gt;...&lt;/div&gt;
+  &lt;div class="sui-hover-card-content"&gt;
+    &lt;div style="font-size:13px;"&gt;Default placement below the trigger element.&lt;/div&gt;
+  &lt;/div&gt;
 &lt;/div&gt;
 
 &lt;!-- Top --&gt;
-&lt;div class="sui-hover-card sui-hover-card-top"&gt;...&lt;/div&gt;
+&lt;div class="sui-hover-card sui-hover-card-top"&gt;
+  &lt;span class="sui-hover-card-trigger" tabindex="0"&gt;Top&lt;/span&gt;
+  &lt;div class="sui-hover-card-content"&gt;
+    &lt;div style="font-size:13px;"&gt;Appears above the trigger element.&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
 
 &lt;!-- Left --&gt;
-&lt;div class="sui-hover-card sui-hover-card-left"&gt;...&lt;/div&gt;
+&lt;div class="sui-hover-card sui-hover-card-left"&gt;
+  &lt;span class="sui-hover-card-trigger" tabindex="0"&gt;Left&lt;/span&gt;
+  &lt;div class="sui-hover-card-content"&gt;
+    &lt;div style="font-size:13px;"&gt;Appears to the left of the trigger.&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
 
 &lt;!-- Right --&gt;
-&lt;div class="sui-hover-card sui-hover-card-right"&gt;...&lt;/div&gt;</pre></div>
+&lt;div class="sui-hover-card sui-hover-card-right"&gt;
+  &lt;span class="sui-hover-card-trigger" tabindex="0"&gt;Right&lt;/span&gt;
+  &lt;div class="sui-hover-card-content"&gt;
+    &lt;div style="font-size:13px;"&gt;Appears to the right of the trigger.&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</pre></div>
   </div>
 </div>
 
@@ -131,23 +148,23 @@ toc:
 &lt;div class="sui-hover-card"&gt;
   &lt;button class="sui-btn sui-btn-primary"&gt;Hover for Info&lt;/button&gt;
   &lt;div class="sui-hover-card-content"&gt;
-    &lt;div style="font-weight:700;"&gt;Quick Preview&lt;/div&gt;
-    &lt;p&gt;Content here.&lt;/p&gt;
+    &lt;div style="font-weight:700;font-size:14px;margin-bottom:6px;"&gt;Quick Preview&lt;/div&gt;
+    &lt;div style="font-size:13px;line-height:1.5;"&gt;Hover cards work on any element — buttons, badges, avatars, or plain text. No click required.&lt;/div&gt;
   &lt;/div&gt;
 &lt;/div&gt;
 
 &lt;!-- Avatar trigger --&gt;
 &lt;div class="sui-hover-card"&gt;
   &lt;div class="sui-avatar sui-avatar-status sui-avatar-status-online"&gt;JD&lt;/div&gt;
-  &lt;div class="sui-hover-card-content"&gt;
-    &lt;div style="display:flex;align-items:center;gap:12px;"&gt;
+  &lt;div class="sui-hover-card-content" style="min-width:240px;"&gt;
+    &lt;div style="display:flex;align-items:center;gap:12px;margin-bottom:10px;"&gt;
       &lt;div class="sui-avatar sui-avatar-sm"&gt;JD&lt;/div&gt;
       &lt;div&gt;
-        &lt;div style="font-weight:700;"&gt;John Doe&lt;/div&gt;
-        &lt;div style="font-size:12px;"&gt;Online&lt;/div&gt;
+        &lt;div style="font-weight:700;font-size:14px;"&gt;John Doe&lt;/div&gt;
+        &lt;div style="font-size:12px;color:var(--sui-success);"&gt;Online&lt;/div&gt;
       &lt;/div&gt;
     &lt;/div&gt;
-    &lt;p&gt;Product Designer &amp;middot; Joined Jan 2024&lt;/p&gt;
+    &lt;div style="font-size:13px;line-height:1.5;"&gt;Product Designer &amp;middot; Joined Jan 2024&lt;/div&gt;
   &lt;/div&gt;
 &lt;/div&gt;</pre></div>
   </div>
@@ -172,11 +189,11 @@ toc:
   <div class="pg-code-wrap">
     <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
     <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-hover-card sui-hover-card-start" style="display:inline-flex;"&gt;
-  &lt;a href="/article" class="sui-hover-card-trigger"&gt;this article&lt;/a&gt;
+  &lt;a href="#" class="sui-hover-card-trigger"&gt;this article&lt;/a&gt;
   &lt;div class="sui-hover-card-content"&gt;
-    &lt;div style="font-weight:700;"&gt;Article Title&lt;/div&gt;
-    &lt;p&gt;Article description.&lt;/p&gt;
-    &lt;div style="font-size:11px;"&gt;5 min read&lt;/div&gt;
+    &lt;div style="font-weight:700;font-size:14px;margin-bottom:6px;"&gt;Getting Started with Neumorphism&lt;/div&gt;
+    &lt;div style="margin-bottom:8px;font-size:13px;line-height:1.5;"&gt;Learn how to design soft, tactile interfaces with inset shadows, raised surfaces, and muted palettes.&lt;/div&gt;
+    &lt;div style="font-size:11px;color:var(--sui-text-muted);"&gt;5 min read &amp;middot; Design &amp;middot; March 2024&lt;/div&gt;
   &lt;/div&gt;
 &lt;/div&gt;</pre></div>
   </div>
@@ -211,16 +228,16 @@ toc:
     <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
     <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-hover-card sui-hover-card-start" style="display:inline-flex;"&gt;
   &lt;span class="sui-hover-card-trigger" tabindex="0"&gt;John Doe&lt;/span&gt;
-  &lt;div class="sui-hover-card-content"&gt;
+  &lt;div class="sui-hover-card-content" style="min-width:280px;"&gt;
     &lt;div style="display:flex;align-items:center;gap:12px;margin-bottom:12px;"&gt;
       &lt;div class="sui-avatar"&gt;JD&lt;/div&gt;
       &lt;div&gt;
-        &lt;div style="font-weight:700;"&gt;John Doe&lt;/div&gt;
-        &lt;div style="font-size:12px;"&gt;@johndoe&lt;/div&gt;
+        &lt;div style="font-weight:700;font-size:14px;"&gt;John Doe&lt;/div&gt;
+        &lt;div style="font-size:12px;color:var(--sui-text-muted);"&gt;@johndoe&lt;/div&gt;
       &lt;/div&gt;
     &lt;/div&gt;
-    &lt;p&gt;Bio text here.&lt;/p&gt;
-    &lt;div style="display:flex;gap:16px;font-size:12px;"&gt;
+    &lt;div style="margin-bottom:12px;font-size:13px;line-height:1.5;"&gt;Product designer and open source enthusiast. Building neumorphic design systems for modern web applications.&lt;/div&gt;
+    &lt;div style="display:flex;gap:16px;font-size:12px;color:var(--sui-text-muted);"&gt;
       &lt;span&gt;&lt;strong&gt;142&lt;/strong&gt; following&lt;/span&gt;
       &lt;span&gt;&lt;strong&gt;1.2k&lt;/strong&gt; followers&lt;/span&gt;
     &lt;/div&gt;
@@ -250,14 +267,18 @@ toc:
     <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
     <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;!-- Start-aligned --&gt;
 &lt;div class="sui-hover-card sui-hover-card-start"&gt;
-  &lt;span class="sui-hover-card-trigger" tabindex="0"&gt;Start&lt;/span&gt;
-  &lt;div class="sui-hover-card-content"&gt;...&lt;/div&gt;
+  &lt;span class="sui-hover-card-trigger" tabindex="0"&gt;Start aligned&lt;/span&gt;
+  &lt;div class="sui-hover-card-content"&gt;
+    &lt;div style="font-size:13px;"&gt;Left edge aligns with the trigger's left edge.&lt;/div&gt;
+  &lt;/div&gt;
 &lt;/div&gt;
 
 &lt;!-- End-aligned --&gt;
 &lt;div class="sui-hover-card sui-hover-card-end"&gt;
-  &lt;span class="sui-hover-card-trigger" tabindex="0"&gt;End&lt;/span&gt;
-  &lt;div class="sui-hover-card-content"&gt;...&lt;/div&gt;
+  &lt;span class="sui-hover-card-trigger" tabindex="0"&gt;End aligned&lt;/span&gt;
+  &lt;div class="sui-hover-card-content"&gt;
+    &lt;div style="font-size:13px;"&gt;Right edge aligns with the trigger's right edge.&lt;/div&gt;
+  &lt;/div&gt;
 &lt;/div&gt;</pre></div>
   </div>
 </div>

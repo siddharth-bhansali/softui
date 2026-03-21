@@ -29,12 +29,12 @@ toc:
   <div class="pg-code-wrap">
     <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
     <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-popover"&gt;
-  &lt;button class="sui-btn" data-sui-popover aria-expanded="false" aria-haspopup="true"&gt;
+  &lt;button class="sui-btn sui-btn-primary" data-sui-popover aria-expanded="false" aria-haspopup="true"&gt;
     Click Me
   &lt;/button&gt;
   &lt;div class="sui-popover-content" role="dialog"&gt;
     &lt;div class="sui-popover-header"&gt;Popover Title&lt;/div&gt;
-    &lt;div class="sui-popover-body"&gt;Popover content goes here.&lt;/div&gt;
+    &lt;div class="sui-popover-body"&gt;This is a default popover that appears below the trigger. Click outside or press Escape to dismiss.&lt;/div&gt;
   &lt;/div&gt;
 &lt;/div&gt;</pre></div>
   </div>
@@ -76,16 +76,40 @@ toc:
   <div class="pg-code-wrap">
     <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
     <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;!-- Bottom (default) --&gt;
-&lt;div class="sui-popover"&gt;...&lt;/div&gt;
+&lt;div class="sui-popover"&gt;
+  &lt;button class="sui-btn sui-btn-primary" data-sui-popover aria-expanded="false" aria-haspopup="true"&gt;Bottom&lt;/button&gt;
+  &lt;div class="sui-popover-content" role="dialog"&gt;
+    &lt;div class="sui-popover-header"&gt;Bottom&lt;/div&gt;
+    &lt;div class="sui-popover-body"&gt;Default placement below the trigger.&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
 
 &lt;!-- Top --&gt;
-&lt;div class="sui-popover sui-popover-top"&gt;...&lt;/div&gt;
+&lt;div class="sui-popover sui-popover-top"&gt;
+  &lt;button class="sui-btn sui-btn-primary" data-sui-popover aria-expanded="false" aria-haspopup="true"&gt;Top&lt;/button&gt;
+  &lt;div class="sui-popover-content" role="dialog"&gt;
+    &lt;div class="sui-popover-header"&gt;Top&lt;/div&gt;
+    &lt;div class="sui-popover-body"&gt;Appears above the trigger.&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
 
 &lt;!-- Left --&gt;
-&lt;div class="sui-popover sui-popover-left"&gt;...&lt;/div&gt;
+&lt;div class="sui-popover sui-popover-left"&gt;
+  &lt;button class="sui-btn sui-btn-primary" data-sui-popover aria-expanded="false" aria-haspopup="true"&gt;Left&lt;/button&gt;
+  &lt;div class="sui-popover-content" role="dialog"&gt;
+    &lt;div class="sui-popover-header"&gt;Left&lt;/div&gt;
+    &lt;div class="sui-popover-body"&gt;Appears to the left.&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
 
 &lt;!-- Right --&gt;
-&lt;div class="sui-popover sui-popover-right"&gt;...&lt;/div&gt;</pre></div>
+&lt;div class="sui-popover sui-popover-right"&gt;
+  &lt;button class="sui-btn sui-btn-primary" data-sui-popover aria-expanded="false" aria-haspopup="true"&gt;Right&lt;/button&gt;
+  &lt;div class="sui-popover-content" role="dialog"&gt;
+    &lt;div class="sui-popover-header"&gt;Right&lt;/div&gt;
+    &lt;div class="sui-popover-body"&gt;Appears to the right.&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</pre></div>
   </div>
 </div>
 
@@ -120,20 +144,29 @@ toc:
     <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
     <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;!-- Start-aligned --&gt;
 &lt;div class="sui-popover sui-popover-start"&gt;
-  &lt;button class="sui-btn" data-sui-popover&gt;Start&lt;/button&gt;
-  &lt;div class="sui-popover-content"&gt;...&lt;/div&gt;
+  &lt;button class="sui-btn sui-btn-primary" data-sui-popover aria-expanded="false" aria-haspopup="true"&gt;Start&lt;/button&gt;
+  &lt;div class="sui-popover-content" role="dialog"&gt;
+    &lt;div class="sui-popover-header"&gt;Start Aligned&lt;/div&gt;
+    &lt;div class="sui-popover-body"&gt;Left edge aligns with the trigger's left edge.&lt;/div&gt;
+  &lt;/div&gt;
 &lt;/div&gt;
 
 &lt;!-- Center (default) --&gt;
 &lt;div class="sui-popover"&gt;
-  &lt;button class="sui-btn" data-sui-popover&gt;Center&lt;/button&gt;
-  &lt;div class="sui-popover-content"&gt;...&lt;/div&gt;
+  &lt;button class="sui-btn sui-btn-primary" data-sui-popover aria-expanded="false" aria-haspopup="true"&gt;Center&lt;/button&gt;
+  &lt;div class="sui-popover-content" role="dialog"&gt;
+    &lt;div class="sui-popover-header"&gt;Center Aligned&lt;/div&gt;
+    &lt;div class="sui-popover-body"&gt;Default — centered on the trigger.&lt;/div&gt;
+  &lt;/div&gt;
 &lt;/div&gt;
 
 &lt;!-- End-aligned --&gt;
 &lt;div class="sui-popover sui-popover-end"&gt;
-  &lt;button class="sui-btn" data-sui-popover&gt;End&lt;/button&gt;
-  &lt;div class="sui-popover-content"&gt;...&lt;/div&gt;
+  &lt;button class="sui-btn sui-btn-primary" data-sui-popover aria-expanded="false" aria-haspopup="true"&gt;End&lt;/button&gt;
+  &lt;div class="sui-popover-content" role="dialog"&gt;
+    &lt;div class="sui-popover-header"&gt;End Aligned&lt;/div&gt;
+    &lt;div class="sui-popover-body"&gt;Right edge aligns with the trigger's right edge.&lt;/div&gt;
+  &lt;/div&gt;
 &lt;/div&gt;</pre></div>
   </div>
 </div>
@@ -156,13 +189,13 @@ toc:
   <div class="pg-code-wrap">
     <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
     <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-popover"&gt;
-  &lt;button class="sui-btn" data-sui-popover&gt;Dismissible&lt;/button&gt;
+  &lt;button class="sui-btn sui-btn-primary" data-sui-popover aria-expanded="false" aria-haspopup="true"&gt;Dismissible&lt;/button&gt;
   &lt;div class="sui-popover-content" role="dialog"&gt;
     &lt;div class="sui-popover-header"&gt;
       Dismissible
       &lt;button class="sui-popover-close" aria-label="Close"&gt;&lt;/button&gt;
     &lt;/div&gt;
-    &lt;div class="sui-popover-body"&gt;Click the X to close.&lt;/div&gt;
+    &lt;div class="sui-popover-body"&gt;Click the X button, click outside, or press Escape to close this popover.&lt;/div&gt;
   &lt;/div&gt;
 &lt;/div&gt;</pre></div>
   </div>
@@ -261,21 +294,21 @@ toc:
   <div class="pg-code-wrap">
     <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
     <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-popover sui-popover-start"&gt;
-  &lt;button class="sui-btn" data-sui-popover&gt;User Profile&lt;/button&gt;
-  &lt;div class="sui-popover-content" role="dialog"&gt;
+  &lt;button class="sui-btn sui-btn-primary" data-sui-popover aria-expanded="false" aria-haspopup="true"&gt;User Profile&lt;/button&gt;
+  &lt;div class="sui-popover-content" role="dialog" style="min-width:280px;"&gt;
     &lt;div class="sui-popover-header"&gt;
       John Doe
       &lt;button class="sui-popover-close" aria-label="Close"&gt;&lt;/button&gt;
     &lt;/div&gt;
     &lt;div class="sui-popover-body"&gt;
       &lt;div style="display:flex;align-items:center;gap:12px;margin-bottom:12px;"&gt;
-        &lt;div class="sui-avatar sui-avatar-sm"&gt;JD&lt;/div&gt;
+        &lt;div class="sui-avatar sui-avatar-sm" style="background:var(--sui-primary);color:#fff;font-weight:600;display:flex;align-items:center;justify-content:center;flex-shrink:0;"&gt;JD&lt;/div&gt;
         &lt;div&gt;
-          &lt;div style="font-weight:600;"&gt;Product Designer&lt;/div&gt;
-          &lt;div style="font-size:12px;"&gt;Joined March 2024&lt;/div&gt;
+          &lt;div style="font-weight:600;color:var(--sui-text);font-size:14px;"&gt;Product Designer&lt;/div&gt;
+          &lt;div style="color:var(--sui-text-muted);font-size:12px;"&gt;Joined March 2024&lt;/div&gt;
         &lt;/div&gt;
       &lt;/div&gt;
-      &lt;p&gt;Bio text here.&lt;/p&gt;
+      &lt;p style="margin:0;"&gt;Building neumorphic interfaces and design systems for modern web applications.&lt;/p&gt;
     &lt;/div&gt;
     &lt;div class="sui-popover-footer" style="justify-content:flex-start;"&gt;
       &lt;button class="sui-btn sui-btn-primary sui-btn-sm"&gt;Follow&lt;/button&gt;
@@ -300,9 +333,9 @@ toc:
   <div class="pg-code-wrap">
     <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
     <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-popover"&gt;
-  &lt;button class="sui-btn" data-sui-popover&gt;Simple Popover&lt;/button&gt;
-  &lt;div class="sui-popover-content"&gt;
-    &lt;div class="sui-popover-body"&gt;Just body content, no header.&lt;/div&gt;
+  &lt;button class="sui-btn" data-sui-popover aria-expanded="false" aria-haspopup="true"&gt;Simple Popover&lt;/button&gt;
+  &lt;div class="sui-popover-content" role="dialog"&gt;
+    &lt;div class="sui-popover-body"&gt;A simple popover with just body content — no header or title needed.&lt;/div&gt;
   &lt;/div&gt;
 &lt;/div&gt;</pre></div>
   </div>

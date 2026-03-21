@@ -34,7 +34,7 @@ toc:
   &lt;/button&gt;
   &lt;div class="sui-collapsible-content"&gt;
     &lt;div class="sui-collapsible-content-inner"&gt;
-      This is the collapsible content...
+      This is the collapsible content. It can contain any HTML — text, links, images, or other components. Click the trigger again to collapse.
     &lt;/div&gt;
   &lt;/div&gt;
 &lt;/div&gt;</pre></div>
@@ -61,7 +61,7 @@ toc:
   &lt;/button&gt;
   &lt;div class="sui-collapsible-content"&gt;
     &lt;div class="sui-collapsible-content-inner"&gt;
-      These are your project settings...
+      These are your project settings. You can configure build options, environment variables, and deployment targets here. Click to collapse when you're done.
     &lt;/div&gt;
   &lt;/div&gt;
 &lt;/div&gt;</pre></div>
@@ -99,11 +99,24 @@ toc:
     <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
     <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-collapsible"&gt;
   &lt;button type="button" class="sui-collapsible-trigger" aria-expanded="false"&gt;
-    3 items tagged &lt;span class="sui-badge sui-badge-primary"&gt;3&lt;/span&gt;
+    3 items tagged &lt;span class="sui-badge sui-badge-primary" style="margin-left:8px;"&gt;3&lt;/span&gt;
   &lt;/button&gt;
   &lt;div class="sui-collapsible-content"&gt;
     &lt;div class="sui-collapsible-content-inner"&gt;
-      &lt;!-- Your rich content here --&gt;
+      &lt;div style="display:flex;flex-direction:column;gap:8px;"&gt;
+        &lt;div style="display:flex;align-items:center;justify-content:space-between;gap:16px;padding:8px 12px;border-radius:var(--sui-radius-xs);box-shadow:var(--sui-shadow-inset-sm);"&gt;
+          &lt;span&gt;project-alpha.config&lt;/span&gt;
+          &lt;span class="sui-badge sui-badge-sm"&gt;Config&lt;/span&gt;
+        &lt;/div&gt;
+        &lt;div style="display:flex;align-items:center;justify-content:space-between;gap:16px;padding:8px 12px;border-radius:var(--sui-radius-xs);box-shadow:var(--sui-shadow-inset-sm);"&gt;
+          &lt;span&gt;dashboard.module.ts&lt;/span&gt;
+          &lt;span class="sui-badge sui-badge-sm sui-badge-success"&gt;Active&lt;/span&gt;
+        &lt;/div&gt;
+        &lt;div style="display:flex;align-items:center;justify-content:space-between;gap:16px;padding:8px 12px;border-radius:var(--sui-radius-xs);box-shadow:var(--sui-shadow-inset-sm);"&gt;
+          &lt;span&gt;auth.service.ts&lt;/span&gt;
+          &lt;span class="sui-badge sui-badge-sm sui-badge-warning"&gt;Review&lt;/span&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
     &lt;/div&gt;
   &lt;/div&gt;
 &lt;/div&gt;</pre></div>
@@ -129,7 +142,9 @@ toc:
     Advanced options
   &lt;/button&gt;
   &lt;div class="sui-collapsible-content"&gt;
-    &lt;div class="sui-collapsible-content-inner"&gt;...&lt;/div&gt;
+    &lt;div class="sui-collapsible-content-inner"&gt;
+      Flush collapsibles have no background or shadow. They work well embedded inside cards, sidebars, or other containers where you don't want a nested card look.
+    &lt;/div&gt;
   &lt;/div&gt;
 &lt;/div&gt;</pre></div>
   </div>
@@ -154,7 +169,9 @@ toc:
     Click to reveal details
   &lt;/button&gt;
   &lt;div class="sui-collapsible-content"&gt;
-    &lt;div class="sui-collapsible-content-inner"&gt;...&lt;/div&gt;
+    &lt;div class="sui-collapsible-content-inner"&gt;
+      This collapsible has no chevron icon. The entire trigger area is still clickable. Use this when you want a cleaner look or provide your own icon inside the trigger.
+    &lt;/div&gt;
   &lt;/div&gt;
 &lt;/div&gt;</pre></div>
   </div>
@@ -187,23 +204,29 @@ toc:
   <div class="pg-code-wrap">
     <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
     <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-collapsible"&gt;
-  &lt;button type="button" class="sui-collapsible-trigger"&gt;Section A&lt;/button&gt;
+  &lt;button type="button" class="sui-collapsible-trigger" aria-expanded="false"&gt;Section A&lt;/button&gt;
   &lt;div class="sui-collapsible-content"&gt;
-    &lt;div class="sui-collapsible-content-inner"&gt;...&lt;/div&gt;
+    &lt;div class="sui-collapsible-content-inner"&gt;
+      Content for section A. This is independent of the other sections below.
+    &lt;/div&gt;
   &lt;/div&gt;
 &lt;/div&gt;
 
 &lt;div class="sui-collapsible"&gt;
-  &lt;button type="button" class="sui-collapsible-trigger"&gt;Section B&lt;/button&gt;
+  &lt;button type="button" class="sui-collapsible-trigger" aria-expanded="false"&gt;Section B&lt;/button&gt;
   &lt;div class="sui-collapsible-content"&gt;
-    &lt;div class="sui-collapsible-content-inner"&gt;...&lt;/div&gt;
+    &lt;div class="sui-collapsible-content-inner"&gt;
+      Content for section B. Open and close this without affecting A or C.
+    &lt;/div&gt;
   &lt;/div&gt;
 &lt;/div&gt;
 
 &lt;div class="sui-collapsible"&gt;
-  &lt;button type="button" class="sui-collapsible-trigger"&gt;Section C&lt;/button&gt;
+  &lt;button type="button" class="sui-collapsible-trigger" aria-expanded="false"&gt;Section C&lt;/button&gt;
   &lt;div class="sui-collapsible-content"&gt;
-    &lt;div class="sui-collapsible-content-inner"&gt;...&lt;/div&gt;
+    &lt;div class="sui-collapsible-content-inner"&gt;
+      Content for section C. All three can be open at the same time.
+    &lt;/div&gt;
   &lt;/div&gt;
 &lt;/div&gt;</pre></div>
   </div>
@@ -224,11 +247,13 @@ toc:
   <div class="pg-code-wrap">
     <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
     <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-collapsible"&gt;
-  &lt;button type="button" class="sui-collapsible-trigger" disabled&gt;
+  &lt;button type="button" class="sui-collapsible-trigger" aria-expanded="false" disabled&gt;
     This section is locked
   &lt;/button&gt;
   &lt;div class="sui-collapsible-content"&gt;
-    &lt;div class="sui-collapsible-content-inner"&gt;...&lt;/div&gt;
+    &lt;div class="sui-collapsible-content-inner"&gt;
+      You shouldn't be able to see this.
+    &lt;/div&gt;
   &lt;/div&gt;
 &lt;/div&gt;</pre></div>
   </div>

@@ -52,14 +52,18 @@ toc:
   </div>
   <div class="pg-code-wrap">
     <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
-    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-sheet-backdrop" id="navSheet"&gt;
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-sheet-backdrop" id="navSheet" role="dialog" aria-modal="true"&gt;
   &lt;div class="sui-sheet sui-sheet-left"&gt;
     &lt;div class="sui-sheet-header"&gt;
       &lt;h3&gt;Navigation&lt;/h3&gt;
       &lt;button class="sui-sheet-close" aria-label="Close"&gt;&lt;/button&gt;
     &lt;/div&gt;
     &lt;div class="sui-sheet-body"&gt;
-      &lt;!-- nav links --&gt;
+      &lt;a href="#"&gt;Dashboard&lt;/a&gt;
+      &lt;a href="#"&gt;Analytics&lt;/a&gt;
+      &lt;a href="#"&gt;Customers&lt;/a&gt;
+      &lt;a href="#"&gt;Settings&lt;/a&gt;
+      &lt;a href="#"&gt;Help&lt;/a&gt;
     &lt;/div&gt;
   &lt;/div&gt;
 &lt;/div&gt;</pre></div>
@@ -76,13 +80,34 @@ toc:
   <div class="pg-code-wrap">
     <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
     <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;!-- Top sheet --&gt;
-&lt;div class="sui-sheet-backdrop" id="topSheet"&gt;
-  &lt;div class="sui-sheet sui-sheet-top"&gt;...&lt;/div&gt;
+&lt;div class="sui-sheet-backdrop" id="topSheet" role="dialog" aria-modal="true"&gt;
+  &lt;div class="sui-sheet sui-sheet-top sui-sheet-sm"&gt;
+    &lt;div class="sui-sheet-header"&gt;
+      &lt;h3&gt;Announcement&lt;/h3&gt;
+      &lt;button class="sui-sheet-close" aria-label="Close"&gt;&lt;/button&gt;
+    &lt;/div&gt;
+    &lt;div class="sui-sheet-body"&gt;
+      &lt;p&gt;This sheet slides down from the top. Great for announcements, notification panels, or search interfaces.&lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
 &lt;/div&gt;
 
 &lt;!-- Bottom sheet --&gt;
-&lt;div class="sui-sheet-backdrop" id="bottomSheet"&gt;
-  &lt;div class="sui-sheet sui-sheet-bottom"&gt;...&lt;/div&gt;
+&lt;div class="sui-sheet-backdrop" id="bottomSheet" role="dialog" aria-modal="true"&gt;
+  &lt;div class="sui-sheet sui-sheet-bottom sui-sheet-sm"&gt;
+    &lt;div class="sui-sheet-header"&gt;
+      &lt;h3&gt;Quick Actions&lt;/h3&gt;
+      &lt;button class="sui-sheet-close" aria-label="Close"&gt;&lt;/button&gt;
+    &lt;/div&gt;
+    &lt;div class="sui-sheet-body"&gt;
+      &lt;div style="display:flex;gap:10px;flex-wrap:wrap;"&gt;
+        &lt;button class="sui-btn sui-btn-primary sui-btn-sm"&gt;Share&lt;/button&gt;
+        &lt;button class="sui-btn sui-btn-success sui-btn-sm"&gt;Download&lt;/button&gt;
+        &lt;button class="sui-btn sui-btn-info sui-btn-sm"&gt;Print&lt;/button&gt;
+        &lt;button class="sui-btn sui-btn-danger sui-btn-sm"&gt;Delete&lt;/button&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
 &lt;/div&gt;</pre></div>
   </div>
 </div>
@@ -97,17 +122,68 @@ toc:
   </div>
   <div class="pg-code-wrap">
     <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
-    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;!-- Small --&gt;
-&lt;div class="sui-sheet sui-sheet-right sui-sheet-sm"&gt;...&lt;/div&gt;
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;!-- Small (280px) --&gt;
+&lt;div class="sui-sheet-backdrop" id="smSheet" role="dialog" aria-modal="true"&gt;
+  &lt;div class="sui-sheet sui-sheet-right sui-sheet-sm"&gt;
+    &lt;div class="sui-sheet-header"&gt;
+      &lt;h3&gt;Small Sheet&lt;/h3&gt;
+      &lt;button class="sui-sheet-close" aria-label="Close"&gt;&lt;/button&gt;
+    &lt;/div&gt;
+    &lt;div class="sui-sheet-body"&gt;
+      &lt;p&gt;This is a small (280px) right-side sheet.&lt;/p&gt;
+    &lt;/div&gt;
+    &lt;div class="sui-sheet-footer"&gt;
+      &lt;button class="sui-btn sui-btn-sm" onclick="SoftUI.sheet('#smSheet').close()"&gt;Close&lt;/button&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
 
 &lt;!-- Default (320px) --&gt;
-&lt;div class="sui-sheet sui-sheet-right"&gt;...&lt;/div&gt;
+&lt;div class="sui-sheet-backdrop" id="defaultSheet" role="dialog" aria-modal="true"&gt;
+  &lt;div class="sui-sheet sui-sheet-right"&gt;
+    &lt;div class="sui-sheet-header"&gt;
+      &lt;h3&gt;Sheet Title&lt;/h3&gt;
+      &lt;button class="sui-sheet-close" aria-label="Close"&gt;&lt;/button&gt;
+    &lt;/div&gt;
+    &lt;div class="sui-sheet-body"&gt;
+      &lt;p&gt;Default 320px sheet content.&lt;/p&gt;
+    &lt;/div&gt;
+    &lt;div class="sui-sheet-footer"&gt;
+      &lt;button class="sui-btn sui-btn-sm" onclick="SoftUI.sheet('#defaultSheet').close()"&gt;Cancel&lt;/button&gt;
+      &lt;button class="sui-btn sui-btn-primary sui-btn-sm"&gt;Save&lt;/button&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
 
-&lt;!-- Large --&gt;
-&lt;div class="sui-sheet sui-sheet-right sui-sheet-lg"&gt;...&lt;/div&gt;
+&lt;!-- Large (480px) --&gt;
+&lt;div class="sui-sheet-backdrop" id="lgSheet" role="dialog" aria-modal="true"&gt;
+  &lt;div class="sui-sheet sui-sheet-right sui-sheet-lg"&gt;
+    &lt;div class="sui-sheet-header"&gt;
+      &lt;h3&gt;Large Sheet&lt;/h3&gt;
+      &lt;button class="sui-sheet-close" aria-label="Close"&gt;&lt;/button&gt;
+    &lt;/div&gt;
+    &lt;div class="sui-sheet-body"&gt;
+      &lt;p&gt;This is a large (480px) right-side sheet. Great for forms, detail views, or complex content.&lt;/p&gt;
+    &lt;/div&gt;
+    &lt;div class="sui-sheet-footer"&gt;
+      &lt;button class="sui-btn sui-btn-sm" onclick="SoftUI.sheet('#lgSheet').close()"&gt;Cancel&lt;/button&gt;
+      &lt;button class="sui-btn sui-btn-primary sui-btn-sm"&gt;Save Changes&lt;/button&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
 
 &lt;!-- Full width --&gt;
-&lt;div class="sui-sheet sui-sheet-right sui-sheet-full"&gt;...&lt;/div&gt;</pre></div>
+&lt;div class="sui-sheet-backdrop" id="fullSheet" role="dialog" aria-modal="true"&gt;
+  &lt;div class="sui-sheet sui-sheet-right sui-sheet-full"&gt;
+    &lt;div class="sui-sheet-header"&gt;
+      &lt;h3&gt;Full Sheet&lt;/h3&gt;
+      &lt;button class="sui-sheet-close" aria-label="Close"&gt;&lt;/button&gt;
+    &lt;/div&gt;
+    &lt;div class="sui-sheet-body"&gt;
+      &lt;p&gt;Full-width sheet content.&lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</pre></div>
   </div>
 </div>
 

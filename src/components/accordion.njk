@@ -34,18 +34,26 @@ toc:
     <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
     <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-accordion"&gt;
   &lt;div class="sui-accordion-item active"&gt;
-    &lt;button type="button" class="sui-accordion-header"&gt;What is SoftUI?&lt;/button&gt;
+    &lt;button type="button" class="sui-accordion-header" aria-expanded="true"&gt;What is SoftUI?&lt;/button&gt;
     &lt;div class="sui-accordion-body"&gt;
       &lt;div class="sui-accordion-body-inner"&gt;
-        SoftUI is a neumorphic CSS component library...
+        SoftUI is a neumorphic CSS component library with soft shadows, rounded surfaces, and gentle depth. It includes dark mode, utility classes, and a small JS module for interactive behaviors.
       &lt;/div&gt;
     &lt;/div&gt;
   &lt;/div&gt;
   &lt;div class="sui-accordion-item"&gt;
-    &lt;button type="button" class="sui-accordion-header"&gt;Do I need JavaScript?&lt;/button&gt;
+    &lt;button type="button" class="sui-accordion-header" aria-expanded="false"&gt;Do I need JavaScript?&lt;/button&gt;
     &lt;div class="sui-accordion-body"&gt;
       &lt;div class="sui-accordion-body-inner"&gt;
-        The accordion requires softui.js...
+        The accordion requires softui.js for expand/collapse behavior.
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="sui-accordion-item"&gt;
+    &lt;button type="button" class="sui-accordion-header" aria-expanded="false"&gt;Can I customize the styles?&lt;/button&gt;
+    &lt;div class="sui-accordion-body"&gt;
+      &lt;div class="sui-accordion-body-inner"&gt;
+        Yes. SoftUI uses CSS custom properties for colors, shadows, border-radius, and more. Override the variables on &lt;code&gt;:root&lt;/code&gt; to theme everything at once.
       &lt;/div&gt;
     &lt;/div&gt;
   &lt;/div&gt;
@@ -76,15 +84,27 @@ toc:
     <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
     <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-accordion" data-sui-multi&gt;
   &lt;div class="sui-accordion-item active"&gt;
-    &lt;button type="button" class="sui-accordion-header"&gt;Section One&lt;/button&gt;
+    &lt;button type="button" class="sui-accordion-header" aria-expanded="true"&gt;Section One&lt;/button&gt;
     &lt;div class="sui-accordion-body"&gt;
-      &lt;div class="sui-accordion-body-inner"&gt;...&lt;/div&gt;
+      &lt;div class="sui-accordion-body-inner"&gt;
+        This accordion allows multiple items to be open at the same time. Add &lt;code&gt;data-sui-multi&lt;/code&gt; to the container to enable this behavior.
+      &lt;/div&gt;
     &lt;/div&gt;
   &lt;/div&gt;
   &lt;div class="sui-accordion-item active"&gt;
-    &lt;button type="button" class="sui-accordion-header"&gt;Section Two&lt;/button&gt;
+    &lt;button type="button" class="sui-accordion-header" aria-expanded="true"&gt;Section Two&lt;/button&gt;
     &lt;div class="sui-accordion-body"&gt;
-      &lt;div class="sui-accordion-body-inner"&gt;...&lt;/div&gt;
+      &lt;div class="sui-accordion-body-inner"&gt;
+        Both this section and the one above can stay open simultaneously. Click either header to toggle it independently.
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="sui-accordion-item"&gt;
+    &lt;button type="button" class="sui-accordion-header" aria-expanded="false"&gt;Section Three&lt;/button&gt;
+    &lt;div class="sui-accordion-body"&gt;
+      &lt;div class="sui-accordion-body-inner"&gt;
+        This section starts closed but can be opened without closing the others.
+      &lt;/div&gt;
     &lt;/div&gt;
   &lt;/div&gt;
 &lt;/div&gt;</pre></div>
@@ -128,11 +148,32 @@ toc:
     <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
     <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-accordion"&gt;
   &lt;div class="sui-accordion-item"&gt;
-    &lt;button type="button" class="sui-accordion-header"&gt;Account Settings&lt;/button&gt;
+    &lt;button type="button" class="sui-accordion-header" aria-expanded="false"&gt;Account Settings&lt;/button&gt;
     &lt;div class="sui-accordion-body"&gt;
       &lt;div class="sui-accordion-body-inner"&gt;
-        &lt;!-- Any HTML content works here --&gt;
-        &lt;input type="text" class="sui-input" placeholder="Name"&gt;
+        &lt;div class="sui-form-group" style="margin-bottom:12px;"&gt;
+          &lt;label class="sui-label"&gt;Display Name&lt;/label&gt;
+          &lt;input type="text" class="sui-input" placeholder="John Doe"&gt;
+        &lt;/div&gt;
+        &lt;div class="sui-form-group"&gt;
+          &lt;label class="sui-label"&gt;Email Address&lt;/label&gt;
+          &lt;input type="email" class="sui-input" placeholder="john@example.com"&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="sui-accordion-item"&gt;
+    &lt;button type="button" class="sui-accordion-header" aria-expanded="false"&gt;Notification Preferences&lt;/button&gt;
+    &lt;div class="sui-accordion-body"&gt;
+      &lt;div class="sui-accordion-body-inner"&gt;
+        &lt;div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;"&gt;
+          &lt;span&gt;Email notifications&lt;/span&gt;
+          &lt;label class="sui-toggle sui-toggle-primary"&gt;&lt;input type="checkbox" checked&gt;&lt;span class="sui-toggle-slider"&gt;&lt;/span&gt;&lt;/label&gt;
+        &lt;/div&gt;
+        &lt;div style="display:flex;align-items:center;justify-content:space-between;"&gt;
+          &lt;span&gt;Push notifications&lt;/span&gt;
+          &lt;label class="sui-toggle sui-toggle-primary"&gt;&lt;input type="checkbox"&gt;&lt;span class="sui-toggle-slider"&gt;&lt;/span&gt;&lt;/label&gt;
+        &lt;/div&gt;
       &lt;/div&gt;
     &lt;/div&gt;
   &lt;/div&gt;
@@ -163,7 +204,7 @@ toc:
     <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
     <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-accordion sui-accordion-flush"&gt;
   &lt;div class="sui-accordion-item active"&gt;
-    &lt;button type="button" class="sui-accordion-header"&gt;What is a flush accordion?&lt;/button&gt;
+    &lt;button type="button" class="sui-accordion-header" aria-expanded="true"&gt;What is a flush accordion?&lt;/button&gt;
     &lt;div class="sui-accordion-body"&gt;
       &lt;div class="sui-accordion-body-inner"&gt;
         Flush accordions have no background or shadow, just simple dividers between items.
@@ -171,18 +212,18 @@ toc:
     &lt;/div&gt;
   &lt;/div&gt;
   &lt;div class="sui-accordion-item"&gt;
-    &lt;button type="button" class="sui-accordion-header"&gt;When should I use it?&lt;/button&gt;
+    &lt;button type="button" class="sui-accordion-header" aria-expanded="false"&gt;When should I use it?&lt;/button&gt;
     &lt;div class="sui-accordion-body"&gt;
       &lt;div class="sui-accordion-body-inner"&gt;
-        Use flush accordions when you want the content to blend seamlessly...
+        Use flush accordions when you want the content to blend seamlessly into the surrounding layout without raised card styling.
       &lt;/div&gt;
     &lt;/div&gt;
   &lt;/div&gt;
   &lt;div class="sui-accordion-item"&gt;
-    &lt;button type="button" class="sui-accordion-header"&gt;How do I enable it?&lt;/button&gt;
+    &lt;button type="button" class="sui-accordion-header" aria-expanded="false"&gt;How do I enable it?&lt;/button&gt;
     &lt;div class="sui-accordion-body"&gt;
       &lt;div class="sui-accordion-body-inner"&gt;
-        Add the sui-accordion-flush modifier class alongside sui-accordion.
+        Add the &lt;code&gt;sui-accordion-flush&lt;/code&gt; modifier class alongside &lt;code&gt;sui-accordion&lt;/code&gt; on the container element.
       &lt;/div&gt;
     &lt;/div&gt;
   &lt;/div&gt;

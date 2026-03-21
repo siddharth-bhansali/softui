@@ -9792,6 +9792,149 @@ a.sui-btn-warning:visited {
   box-shadow: var(--sui-shadow-inset-sm), 0 0 0 2px var(--sui-primary);
 }
 
+/* =========================================
+   Radial Progress
+   ========================================= */
+.sui-radial {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 100px;
+  height: 100px;
+}
+
+.sui-radial svg {
+  width: 100%;
+  height: 100%;
+  transform: rotate(-90deg);
+}
+
+.sui-radial-track {
+  fill: none;
+  stroke: var(--sui-bg-dark);
+  stroke-width: 8;
+}
+
+.sui-radial-fill {
+  fill: none;
+  stroke: var(--sui-primary);
+  stroke-width: 8;
+  stroke-linecap: round;
+  stroke-dasharray: 251.2;
+  stroke-dashoffset: 251.2;
+  transition: stroke-dashoffset 0.6s ease;
+}
+
+.sui-radial-value {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--sui-text);
+  line-height: 1;
+}
+
+.sui-radial-label {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  line-height: 1;
+}
+
+.sui-radial-label .sui-radial-value {
+  position: static;
+  transform: none;
+}
+
+.sui-radial-label-text {
+  font-size: 11px;
+  color: var(--sui-text-muted);
+  font-weight: 500;
+}
+
+/* Sizes */
+.sui-radial-sm {
+  width: 64px;
+  height: 64px;
+}
+
+.sui-radial-sm .sui-radial-track,
+.sui-radial-sm .sui-radial-fill {
+  stroke-width: 6;
+}
+
+.sui-radial-sm .sui-radial-fill {
+  stroke-dasharray: 163.4;
+  stroke-dashoffset: 163.4;
+}
+
+.sui-radial-sm .sui-radial-value {
+  font-size: 14px;
+}
+
+.sui-radial-sm .sui-radial-label-text {
+  font-size: 9px;
+}
+
+.sui-radial-lg {
+  width: 140px;
+  height: 140px;
+}
+
+.sui-radial-lg .sui-radial-track,
+.sui-radial-lg .sui-radial-fill {
+  stroke-width: 10;
+}
+
+.sui-radial-lg .sui-radial-fill {
+  stroke-dasharray: 345.6;
+  stroke-dashoffset: 345.6;
+}
+
+.sui-radial-lg .sui-radial-value {
+  font-size: 28px;
+}
+
+.sui-radial-lg .sui-radial-label-text {
+  font-size: 13px;
+}
+
+/* Colors */
+.sui-radial-success .sui-radial-fill { stroke: var(--sui-success); }
+.sui-radial-danger .sui-radial-fill { stroke: var(--sui-danger); }
+.sui-radial-warning .sui-radial-fill { stroke: var(--sui-warning); }
+.sui-radial-info .sui-radial-fill { stroke: var(--sui-info); }
+
+/* Animated */
+.sui-radial-animated .sui-radial-fill {
+  transition: stroke-dashoffset 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Inset — inner circle is pressed in */
+.sui-radial-inset .sui-radial-track {
+  stroke: none;
+}
+
+.sui-radial-inset::before {
+  content: "";
+  position: absolute;
+  top: 12%;
+  left: 12%;
+  width: 76%;
+  height: 76%;
+  border-radius: 50%;
+  background: var(--sui-bg);
+  box-shadow: var(--sui-shadow-inset-sm);
+}
+
 .sui-color-spectrum-rgb-field label {
   font-size: 10px;
   font-weight: 600;
