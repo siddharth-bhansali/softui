@@ -8966,3 +8966,161 @@ a.sui-btn-warning:visited {
   padding: 6px 10px;
   gap: 4px;
 }
+
+/* =========================================
+   Chat Bubble
+   ========================================= */
+.sui-chat {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.sui-chat-message {
+  display: flex;
+  align-items: flex-end;
+  gap: 8px;
+  max-width: 75%;
+}
+
+.sui-chat-message-sent {
+  align-self: flex-end;
+  flex-direction: row-reverse;
+}
+
+.sui-chat-message-received {
+  align-self: flex-start;
+}
+
+.sui-chat-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  font-weight: 700;
+  background: var(--sui-bg);
+  box-shadow: var(--sui-shadow-raised-sm);
+  color: var(--sui-text-muted);
+}
+
+.sui-chat-bubble {
+  padding: 10px 14px;
+  border-radius: var(--sui-radius);
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--sui-text);
+  position: relative;
+}
+
+.sui-chat-message-received .sui-chat-bubble {
+  background: var(--sui-bg);
+  box-shadow: var(--sui-shadow-raised-sm);
+  border-bottom-left-radius: 4px;
+}
+
+.sui-chat-message-sent .sui-chat-bubble {
+  background: var(--sui-primary);
+  color: #fff;
+  box-shadow: var(--sui-shadow-raised-sm);
+  border-bottom-right-radius: 4px;
+}
+
+.sui-chat-meta {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  color: var(--sui-text-muted);
+  margin-top: 4px;
+  padding: 0 4px;
+}
+
+.sui-chat-message-sent .sui-chat-meta {
+  justify-content: flex-end;
+}
+
+.sui-chat-status {
+  display: inline-flex;
+  font-size: 11px;
+}
+
+.sui-chat-status-sent { color: var(--sui-text-muted); }
+.sui-chat-status-delivered { color: var(--sui-text-muted); }
+.sui-chat-status-read { color: var(--sui-primary); }
+
+/* Grouped — no avatar, tighter spacing */
+.sui-chat-grouped {
+  gap: 4px;
+}
+
+.sui-chat-grouped .sui-chat-avatar {
+  visibility: hidden;
+}
+
+.sui-chat-grouped .sui-chat-message-received .sui-chat-bubble {
+  border-bottom-left-radius: 4px;
+  border-top-left-radius: 4px;
+}
+
+.sui-chat-grouped .sui-chat-message-sent .sui-chat-bubble {
+  border-bottom-right-radius: 4px;
+  border-top-right-radius: 4px;
+}
+
+.sui-chat-grouped .sui-chat-message:first-child .sui-chat-avatar {
+  visibility: visible;
+}
+
+.sui-chat-grouped .sui-chat-message-received:first-child .sui-chat-bubble {
+  border-top-left-radius: var(--sui-radius);
+}
+
+.sui-chat-grouped .sui-chat-message-sent:first-child .sui-chat-bubble {
+  border-top-right-radius: var(--sui-radius);
+}
+
+.sui-chat-grouped .sui-chat-message:last-child .sui-chat-bubble {
+  border-bottom-left-radius: var(--sui-radius);
+  border-bottom-right-radius: var(--sui-radius);
+}
+
+/* Color variants — sent bubble */
+.sui-chat-success .sui-chat-message-sent .sui-chat-bubble { background: var(--sui-success); }
+.sui-chat-danger .sui-chat-message-sent .sui-chat-bubble { background: var(--sui-danger); }
+.sui-chat-warning .sui-chat-message-sent .sui-chat-bubble { background: var(--sui-warning); color: var(--sui-text); }
+.sui-chat-info .sui-chat-message-sent .sui-chat-bubble { background: var(--sui-info); }
+
+/* Inset — both pressed-in; sent uses tinted background */
+.sui-chat-inset .sui-chat-message-received .sui-chat-bubble {
+  box-shadow: var(--sui-shadow-inset-sm);
+}
+
+.sui-chat-inset .sui-chat-message-sent .sui-chat-bubble {
+  background: rgba(91, 84, 224, 0.15);
+  color: var(--sui-text);
+  box-shadow: var(--sui-shadow-inset-sm);
+}
+
+.sui-chat-inset.sui-chat-success .sui-chat-message-sent .sui-chat-bubble {
+  background: rgba(45, 206, 137, 0.15);
+  color: var(--sui-text);
+}
+
+.sui-chat-inset.sui-chat-danger .sui-chat-message-sent .sui-chat-bubble {
+  background: rgba(231, 76, 111, 0.15);
+  color: var(--sui-text);
+}
+
+.sui-chat-inset.sui-chat-warning .sui-chat-message-sent .sui-chat-bubble {
+  background: rgba(245, 166, 35, 0.15);
+  color: var(--sui-text);
+}
+
+.sui-chat-inset.sui-chat-info .sui-chat-message-sent .sui-chat-bubble {
+  background: rgba(54, 163, 247, 0.15);
+  color: var(--sui-text);
+}
