@@ -16,6 +16,7 @@
     { "id": "spinner", "name": "Spinner", "url": "/components/spinner/" },
     { "id": "stepper", "name": "Stepper", "url": "/components/stepper/" },
     { "id": "chatbubble", "name": "Chat Bubble", "url": "/components/chatbubble/" },
+    { "id": "colorpicker", "name": "Color Picker", "url": "/components/colorpicker/" },
     { "id": "rating", "name": "Rating", "url": "/components/rating/" },
     { "id": "statcard", "name": "Stat Card", "url": "/components/statcard/" },
     { "id": "timeline", "name": "Timeline", "url": "/components/timeline/" },

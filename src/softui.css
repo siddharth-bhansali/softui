@@ -9124,3 +9124,399 @@ a.sui-btn-warning:visited {
   background: rgba(54, 163, 247, 0.15);
   color: var(--sui-text);
 }
+
+/* =========================================
+   Color Picker
+   ========================================= */
+.sui-color-picker {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.sui-color-swatch {
+  width: 36px;
+  height: 36px;
+  border-radius: var(--sui-radius-sm);
+  border: 2px solid transparent;
+  cursor: pointer;
+  box-shadow: var(--sui-shadow-raised-sm);
+  transition: var(--sui-transition);
+  position: relative;
+}
+
+.sui-color-swatch:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--sui-shadow-raised);
+}
+
+.sui-color-swatch.active {
+  border-color: var(--sui-text);
+  box-shadow: var(--sui-shadow-raised);
+}
+
+.sui-color-swatch.active::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -60%) rotate(45deg);
+  width: 6px;
+  height: 10px;
+  border: 2px solid #fff;
+  border-top: none;
+  border-left: none;
+}
+
+/* Sizes */
+.sui-color-picker-sm .sui-color-swatch {
+  width: 24px;
+  height: 24px;
+}
+
+.sui-color-picker-sm .sui-color-swatch.active::after {
+  width: 4px;
+  height: 8px;
+}
+
+.sui-color-picker-lg .sui-color-swatch {
+  width: 48px;
+  height: 48px;
+}
+
+.sui-color-picker-lg .sui-color-swatch.active::after {
+  width: 8px;
+  height: 14px;
+}
+
+/* With label */
+.sui-color-picker-labeled {
+  gap: 12px;
+}
+
+.sui-color-picker-labeled .sui-color-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.sui-color-picker-labeled .sui-color-label {
+  font-size: 11px;
+  color: var(--sui-text-muted);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+
+/* Palette rows */
+.sui-color-palette {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.sui-color-palette-row {
+  display: flex;
+  gap: 4px;
+}
+
+.sui-color-palette-row .sui-color-swatch {
+  border-radius: 4px;
+  box-shadow: none;
+  border: none;
+  width: 32px;
+  height: 32px;
+}
+
+.sui-color-palette-row .sui-color-swatch:first-child {
+  border-radius: var(--sui-radius-sm) 4px 4px var(--sui-radius-sm);
+}
+
+.sui-color-palette-row .sui-color-swatch:last-child {
+  border-radius: 4px var(--sui-radius-sm) var(--sui-radius-sm) 4px;
+}
+
+.sui-color-palette-row .sui-color-swatch:hover {
+  transform: scale(1.15);
+  z-index: 1;
+  box-shadow: var(--sui-shadow-raised-sm);
+}
+
+.sui-color-palette-label {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--sui-text-muted);
+  min-width: 60px;
+  display: flex;
+  align-items: center;
+}
+
+/* Native input */
+.sui-color-input {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--sui-bg);
+  box-shadow: var(--sui-shadow-raised-sm);
+  border-radius: var(--sui-radius);
+  padding: 8px 12px;
+}
+
+.sui-color-input input[type="color"] {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 36px;
+  height: 36px;
+  border: none;
+  border-radius: var(--sui-radius-sm);
+  cursor: pointer;
+  padding: 0;
+  background: none;
+  box-shadow: var(--sui-shadow-inset-sm);
+}
+
+.sui-color-input input[type="color"]::-webkit-color-swatch-wrapper {
+  padding: 2px;
+}
+
+.sui-color-input input[type="color"]::-webkit-color-swatch {
+  border: none;
+  border-radius: 4px;
+}
+
+.sui-color-input input[type="color"]::-moz-color-swatch {
+  border: none;
+  border-radius: 4px;
+}
+
+.sui-color-input-value {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--sui-text);
+  font-family: var(--sui-font-mono);
+  text-transform: uppercase;
+}
+
+.sui-color-input-label {
+  font-size: 12px;
+  color: var(--sui-text-muted);
+}
+
+/* Preview */
+.sui-color-preview {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  background: var(--sui-bg);
+  box-shadow: var(--sui-shadow-raised-sm);
+  border-radius: var(--sui-radius);
+  padding: 12px 16px;
+}
+
+.sui-color-preview-swatch {
+  width: 48px;
+  height: 48px;
+  border-radius: var(--sui-radius-sm);
+  box-shadow: var(--sui-shadow-inset-sm);
+  flex-shrink: 0;
+}
+
+.sui-color-preview-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.sui-color-preview-hex {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--sui-text);
+  font-family: var(--sui-font-mono);
+  text-transform: uppercase;
+}
+
+.sui-color-preview-name {
+  font-size: 12px;
+  color: var(--sui-text-muted);
+}
+
+/* Inset container */
+.sui-color-picker-inset {
+  background: var(--sui-bg);
+  box-shadow: var(--sui-shadow-inset-sm);
+  border-radius: var(--sui-radius);
+  padding: 12px;
+}
+
+.sui-color-picker-inset .sui-color-swatch {
+  box-shadow: var(--sui-shadow-raised-sm);
+}
+
+/* Spectrum picker */
+.sui-color-spectrum {
+  display: inline-flex;
+  flex-direction: column;
+  gap: 12px;
+  background: var(--sui-bg);
+  box-shadow: var(--sui-shadow-raised);
+  border-radius: var(--sui-radius-lg);
+  padding: 16px;
+  width: 280px;
+}
+
+.sui-color-spectrum-canvas {
+  position: relative;
+  width: 100%;
+  height: 180px;
+  border-radius: var(--sui-radius-sm);
+  overflow: hidden;
+  cursor: crosshair;
+  box-shadow: var(--sui-shadow-inset-sm);
+}
+
+.sui-color-spectrum-canvas canvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.sui-color-spectrum-cursor {
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  border: 2px solid #fff;
+  border-radius: 50%;
+  box-shadow: 0 0 0 1px rgba(0,0,0,0.3), 0 2px 4px rgba(0,0,0,0.3);
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  top: 0;
+  left: 100%;
+}
+
+.sui-color-spectrum-hue {
+  position: relative;
+  width: 100%;
+  height: 14px;
+  border-radius: 7px;
+  background: linear-gradient(to right, #f00, #ff0, #0f0, #0ff, #00f, #f0f, #f00);
+  cursor: pointer;
+  box-shadow: var(--sui-shadow-inset-sm);
+}
+
+.sui-color-spectrum-hue-cursor {
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  border: 2px solid #fff;
+  border-radius: 50%;
+  box-shadow: 0 0 0 1px rgba(0,0,0,0.2), 0 2px 4px rgba(0,0,0,0.2);
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  top: 50%;
+  left: 0;
+  background: #f00;
+}
+
+.sui-color-spectrum-footer {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.sui-color-spectrum-preview {
+  width: 40px;
+  height: 40px;
+  border-radius: var(--sui-radius-sm);
+  box-shadow: var(--sui-shadow-inset-sm);
+  flex-shrink: 0;
+}
+
+.sui-color-spectrum-values {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.sui-color-spectrum-hex {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.sui-color-spectrum-hex label {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--sui-text-muted);
+  text-transform: uppercase;
+}
+
+.sui-color-spectrum-hex input {
+  flex: 1;
+  background: var(--sui-bg);
+  box-shadow: var(--sui-shadow-inset-sm);
+  border: none;
+  border-radius: var(--sui-radius-sm);
+  padding: 6px 8px;
+  font-size: 13px;
+  font-family: var(--sui-font-mono);
+  font-weight: 600;
+  color: var(--sui-text);
+  text-transform: uppercase;
+  outline: none;
+  width: 100%;
+}
+
+.sui-color-spectrum-hex input:focus {
+  box-shadow: var(--sui-shadow-inset-sm), 0 0 0 2px var(--sui-primary);
+}
+
+.sui-color-spectrum-rgb {
+  display: flex;
+  gap: 6px;
+}
+
+.sui-color-spectrum-rgb-field {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  flex: 1;
+}
+
+.sui-color-spectrum-rgb-field input {
+  width: 100%;
+  background: var(--sui-bg);
+  box-shadow: var(--sui-shadow-inset-sm);
+  border: none;
+  border-radius: var(--sui-radius-sm);
+  padding: 5px 4px;
+  font-size: 12px;
+  font-family: var(--sui-font-mono);
+  font-weight: 600;
+  color: var(--sui-text);
+  text-align: center;
+  outline: none;
+}
+
+.sui-color-spectrum-rgb-field input:focus {
+  box-shadow: var(--sui-shadow-inset-sm), 0 0 0 2px var(--sui-primary);
+}
+
+.sui-color-spectrum-rgb-field input::-webkit-inner-spin-button,
+.sui-color-spectrum-rgb-field input::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.sui-color-spectrum-rgb-field input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+.sui-color-spectrum-rgb-field label {
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--sui-text-muted);
+  text-transform: uppercase;
+}

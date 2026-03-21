@@ -1,0 +1,456 @@
+---
+layout: component.njk
+title: Color Picker
+description: Neumorphic color swatch selector with sizes, labels, palettes, spectrum picker, native input styling, and preview panel.
+componentId: colorpicker
+hasControls: false
+toc:
+  - Swatches
+  - Sizes
+  - With Label
+  - Palette
+  - Spectrum
+  - Native Input
+  - With Preview
+  - Inset
+---
+
+<!-- Swatches -->
+<div class="pg-section" id="section-1">
+  <h3 class="pg-section-title">Swatches</h3>
+  <div class="pg-section-row">
+    <div class="sui-color-picker">
+      <div class="sui-color-swatch active" data-color="#5B54E0" style="background:#5B54E0;"></div>
+      <div class="sui-color-swatch" data-color="#2DCE89" style="background:#2DCE89;"></div>
+      <div class="sui-color-swatch" data-color="#E74C6F" style="background:#E74C6F;"></div>
+      <div class="sui-color-swatch" data-color="#F5A623" style="background:#F5A623;"></div>
+      <div class="sui-color-swatch" data-color="#36A3F7" style="background:#36A3F7;"></div>
+      <div class="sui-color-swatch" data-color="#1B1D2A" style="background:#1B1D2A;"></div>
+      <div class="sui-color-swatch" data-color="#6C757D" style="background:#6C757D;"></div>
+      <div class="sui-color-swatch" data-color="#FFFFFF" style="background:#FFFFFF;"></div>
+    </div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-color-picker"&gt;
+  &lt;div class="sui-color-swatch active" data-color="#5B54E0" style="background:#5B54E0;"&gt;&lt;/div&gt;
+  &lt;div class="sui-color-swatch" data-color="#2DCE89" style="background:#2DCE89;"&gt;&lt;/div&gt;
+  &lt;div class="sui-color-swatch" data-color="#E74C6F" style="background:#E74C6F;"&gt;&lt;/div&gt;
+  &lt;div class="sui-color-swatch" data-color="#F5A623" style="background:#F5A623;"&gt;&lt;/div&gt;
+  &lt;div class="sui-color-swatch" data-color="#36A3F7" style="background:#36A3F7;"&gt;&lt;/div&gt;
+  &lt;div class="sui-color-swatch" data-color="#1B1D2A" style="background:#1B1D2A;"&gt;&lt;/div&gt;
+  &lt;div class="sui-color-swatch" data-color="#6C757D" style="background:#6C757D;"&gt;&lt;/div&gt;
+  &lt;div class="sui-color-swatch" data-color="#FFFFFF" style="background:#FFFFFF;"&gt;&lt;/div&gt;
+&lt;/div&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Sizes -->
+<div class="pg-section" id="section-2">
+  <h3 class="pg-section-title">Sizes</h3>
+  <div class="pg-section-row">
+    <div style="display:flex;flex-wrap:wrap;gap:24px;align-items:flex-start;">
+      <div>
+        <div style="font-size:12px;color:var(--sui-text-muted);margin-bottom:6px;">Small</div>
+        <div class="sui-color-picker sui-color-picker-sm">
+          <div class="sui-color-swatch active" data-color="#5B54E0" style="background:#5B54E0;"></div>
+          <div class="sui-color-swatch" data-color="#2DCE89" style="background:#2DCE89;"></div>
+          <div class="sui-color-swatch" data-color="#E74C6F" style="background:#E74C6F;"></div>
+          <div class="sui-color-swatch" data-color="#F5A623" style="background:#F5A623;"></div>
+          <div class="sui-color-swatch" data-color="#36A3F7" style="background:#36A3F7;"></div>
+        </div>
+      </div>
+      <div>
+        <div style="font-size:12px;color:var(--sui-text-muted);margin-bottom:6px;">Default</div>
+        <div class="sui-color-picker">
+          <div class="sui-color-swatch active" data-color="#5B54E0" style="background:#5B54E0;"></div>
+          <div class="sui-color-swatch" data-color="#2DCE89" style="background:#2DCE89;"></div>
+          <div class="sui-color-swatch" data-color="#E74C6F" style="background:#E74C6F;"></div>
+          <div class="sui-color-swatch" data-color="#F5A623" style="background:#F5A623;"></div>
+          <div class="sui-color-swatch" data-color="#36A3F7" style="background:#36A3F7;"></div>
+        </div>
+      </div>
+      <div>
+        <div style="font-size:12px;color:var(--sui-text-muted);margin-bottom:6px;">Large</div>
+        <div class="sui-color-picker sui-color-picker-lg">
+          <div class="sui-color-swatch active" data-color="#5B54E0" style="background:#5B54E0;"></div>
+          <div class="sui-color-swatch" data-color="#2DCE89" style="background:#2DCE89;"></div>
+          <div class="sui-color-swatch" data-color="#E74C6F" style="background:#E74C6F;"></div>
+          <div class="sui-color-swatch" data-color="#F5A623" style="background:#F5A623;"></div>
+          <div class="sui-color-swatch" data-color="#36A3F7" style="background:#36A3F7;"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;!-- Small --&gt;
+&lt;div class="sui-color-picker sui-color-picker-sm"&gt;
+  &lt;div class="sui-color-swatch" data-color="#5B54E0" style="background:#5B54E0;"&gt;&lt;/div&gt;
+  &lt;!-- more swatches --&gt;
+&lt;/div&gt;
+
+&lt;!-- Default --&gt;
+&lt;div class="sui-color-picker"&gt;
+  &lt;div class="sui-color-swatch" data-color="#5B54E0" style="background:#5B54E0;"&gt;&lt;/div&gt;
+  &lt;!-- more swatches --&gt;
+&lt;/div&gt;
+
+&lt;!-- Large --&gt;
+&lt;div class="sui-color-picker sui-color-picker-lg"&gt;
+  &lt;div class="sui-color-swatch" data-color="#5B54E0" style="background:#5B54E0;"&gt;&lt;/div&gt;
+  &lt;!-- more swatches --&gt;
+&lt;/div&gt;</pre></div>
+  </div>
+</div>
+
+<!-- With Label -->
+<div class="pg-section" id="section-3">
+  <h3 class="pg-section-title">With Label</h3>
+  <div class="pg-section-row">
+    <div class="sui-color-picker sui-color-picker-labeled">
+      <div class="sui-color-item">
+        <div class="sui-color-swatch active" data-color="#5B54E0" style="background:#5B54E0;"></div>
+        <span class="sui-color-label">Primary</span>
+      </div>
+      <div class="sui-color-item">
+        <div class="sui-color-swatch" data-color="#2DCE89" style="background:#2DCE89;"></div>
+        <span class="sui-color-label">Success</span>
+      </div>
+      <div class="sui-color-item">
+        <div class="sui-color-swatch" data-color="#E74C6F" style="background:#E74C6F;"></div>
+        <span class="sui-color-label">Danger</span>
+      </div>
+      <div class="sui-color-item">
+        <div class="sui-color-swatch" data-color="#F5A623" style="background:#F5A623;"></div>
+        <span class="sui-color-label">Warning</span>
+      </div>
+      <div class="sui-color-item">
+        <div class="sui-color-swatch" data-color="#36A3F7" style="background:#36A3F7;"></div>
+        <span class="sui-color-label">Info</span>
+      </div>
+    </div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-color-picker sui-color-picker-labeled"&gt;
+  &lt;div class="sui-color-item"&gt;
+    &lt;div class="sui-color-swatch active" data-color="#5B54E0" style="background:#5B54E0;"&gt;&lt;/div&gt;
+    &lt;span class="sui-color-label"&gt;Primary&lt;/span&gt;
+  &lt;/div&gt;
+  &lt;div class="sui-color-item"&gt;
+    &lt;div class="sui-color-swatch" data-color="#2DCE89" style="background:#2DCE89;"&gt;&lt;/div&gt;
+    &lt;span class="sui-color-label"&gt;Success&lt;/span&gt;
+  &lt;/div&gt;
+  &lt;div class="sui-color-item"&gt;
+    &lt;div class="sui-color-swatch" data-color="#E74C6F" style="background:#E74C6F;"&gt;&lt;/div&gt;
+    &lt;span class="sui-color-label"&gt;Danger&lt;/span&gt;
+  &lt;/div&gt;
+  &lt;div class="sui-color-item"&gt;
+    &lt;div class="sui-color-swatch" data-color="#F5A623" style="background:#F5A623;"&gt;&lt;/div&gt;
+    &lt;span class="sui-color-label"&gt;Warning&lt;/span&gt;
+  &lt;/div&gt;
+  &lt;div class="sui-color-item"&gt;
+    &lt;div class="sui-color-swatch" data-color="#36A3F7" style="background:#36A3F7;"&gt;&lt;/div&gt;
+    &lt;span class="sui-color-label"&gt;Info&lt;/span&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Palette -->
+<div class="pg-section" id="section-4">
+  <h3 class="pg-section-title">Palette</h3>
+  <div class="pg-section-row">
+    <div class="sui-color-palette">
+      <div style="display:flex;align-items:center;gap:12px;">
+        <span class="sui-color-palette-label">Purple</span>
+        <div class="sui-color-palette-row">
+          <div class="sui-color-swatch" style="background:#EDE9FE;"></div>
+          <div class="sui-color-swatch" style="background:#C4B5FD;"></div>
+          <div class="sui-color-swatch" style="background:#8B5CF6;"></div>
+          <div class="sui-color-swatch" style="background:#7C3AED;"></div>
+          <div class="sui-color-swatch" style="background:#6D28D9;"></div>
+          <div class="sui-color-swatch" style="background:#5B21B6;"></div>
+          <div class="sui-color-swatch" style="background:#4C1D95;"></div>
+        </div>
+      </div>
+      <div style="display:flex;align-items:center;gap:12px;">
+        <span class="sui-color-palette-label">Green</span>
+        <div class="sui-color-palette-row">
+          <div class="sui-color-swatch" style="background:#D1FAE5;"></div>
+          <div class="sui-color-swatch" style="background:#6EE7B7;"></div>
+          <div class="sui-color-swatch" style="background:#34D399;"></div>
+          <div class="sui-color-swatch" style="background:#10B981;"></div>
+          <div class="sui-color-swatch" style="background:#059669;"></div>
+          <div class="sui-color-swatch" style="background:#047857;"></div>
+          <div class="sui-color-swatch" style="background:#065F46;"></div>
+        </div>
+      </div>
+      <div style="display:flex;align-items:center;gap:12px;">
+        <span class="sui-color-palette-label">Red</span>
+        <div class="sui-color-palette-row">
+          <div class="sui-color-swatch" style="background:#FEE2E2;"></div>
+          <div class="sui-color-swatch" style="background:#FCA5A5;"></div>
+          <div class="sui-color-swatch" style="background:#F87171;"></div>
+          <div class="sui-color-swatch" style="background:#EF4444;"></div>
+          <div class="sui-color-swatch" style="background:#DC2626;"></div>
+          <div class="sui-color-swatch" style="background:#B91C1C;"></div>
+          <div class="sui-color-swatch" style="background:#991B1B;"></div>
+        </div>
+      </div>
+      <div style="display:flex;align-items:center;gap:12px;">
+        <span class="sui-color-palette-label">Gray</span>
+        <div class="sui-color-palette-row">
+          <div class="sui-color-swatch" style="background:#F3F4F6;"></div>
+          <div class="sui-color-swatch" style="background:#D1D5DB;"></div>
+          <div class="sui-color-swatch" style="background:#9CA3AF;"></div>
+          <div class="sui-color-swatch" style="background:#6B7280;"></div>
+          <div class="sui-color-swatch" style="background:#4B5563;"></div>
+          <div class="sui-color-swatch" style="background:#374151;"></div>
+          <div class="sui-color-swatch" style="background:#1F2937;"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-color-palette"&gt;
+  &lt;div style="display:flex;align-items:center;gap:12px;"&gt;
+    &lt;span class="sui-color-palette-label"&gt;Purple&lt;/span&gt;
+    &lt;div class="sui-color-palette-row"&gt;
+      &lt;div class="sui-color-swatch" style="background:#EDE9FE;"&gt;&lt;/div&gt;
+      &lt;div class="sui-color-swatch" style="background:#C4B5FD;"&gt;&lt;/div&gt;
+      &lt;div class="sui-color-swatch" style="background:#8B5CF6;"&gt;&lt;/div&gt;
+      &lt;div class="sui-color-swatch" style="background:#7C3AED;"&gt;&lt;/div&gt;
+      &lt;div class="sui-color-swatch" style="background:#6D28D9;"&gt;&lt;/div&gt;
+      &lt;div class="sui-color-swatch" style="background:#5B21B6;"&gt;&lt;/div&gt;
+      &lt;div class="sui-color-swatch" style="background:#4C1D95;"&gt;&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div style="display:flex;align-items:center;gap:12px;"&gt;
+    &lt;span class="sui-color-palette-label"&gt;Green&lt;/span&gt;
+    &lt;div class="sui-color-palette-row"&gt;
+      &lt;div class="sui-color-swatch" style="background:#D1FAE5;"&gt;&lt;/div&gt;
+      &lt;div class="sui-color-swatch" style="background:#6EE7B7;"&gt;&lt;/div&gt;
+      &lt;div class="sui-color-swatch" style="background:#34D399;"&gt;&lt;/div&gt;
+      &lt;div class="sui-color-swatch" style="background:#10B981;"&gt;&lt;/div&gt;
+      &lt;div class="sui-color-swatch" style="background:#059669;"&gt;&lt;/div&gt;
+      &lt;div class="sui-color-swatch" style="background:#047857;"&gt;&lt;/div&gt;
+      &lt;div class="sui-color-swatch" style="background:#065F46;"&gt;&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Spectrum -->
+<div class="pg-section" id="section-5">
+  <h3 class="pg-section-title">Spectrum</h3>
+  <div class="pg-section-row">
+    <div style="display:flex;flex-wrap:wrap;gap:24px;align-items:flex-start;">
+      <div class="sui-color-spectrum" data-color="#5B54E0">
+        <div class="sui-color-spectrum-canvas">
+          <canvas></canvas>
+          <div class="sui-color-spectrum-cursor"></div>
+        </div>
+        <div class="sui-color-spectrum-hue">
+          <div class="sui-color-spectrum-hue-cursor"></div>
+        </div>
+        <div class="sui-color-spectrum-footer">
+          <div class="sui-color-spectrum-preview"></div>
+          <div class="sui-color-spectrum-values">
+            <div class="sui-color-spectrum-hex">
+              <label>Hex</label>
+              <input type="text" value="5B54E0" maxlength="6" spellcheck="false">
+            </div>
+            <div class="sui-color-spectrum-rgb">
+              <div class="sui-color-spectrum-rgb-field">
+                <input type="number" data-channel="r" min="0" max="255" value="91">
+                <label>R</label>
+              </div>
+              <div class="sui-color-spectrum-rgb-field">
+                <input type="number" data-channel="g" min="0" max="255" value="84">
+                <label>G</label>
+              </div>
+              <div class="sui-color-spectrum-rgb-field">
+                <input type="number" data-channel="b" min="0" max="255" value="224">
+                <label>B</label>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="sui-color-spectrum" data-color="#2DCE89">
+        <div class="sui-color-spectrum-canvas">
+          <canvas></canvas>
+          <div class="sui-color-spectrum-cursor"></div>
+        </div>
+        <div class="sui-color-spectrum-hue">
+          <div class="sui-color-spectrum-hue-cursor"></div>
+        </div>
+        <div class="sui-color-spectrum-footer">
+          <div class="sui-color-spectrum-preview"></div>
+          <div class="sui-color-spectrum-values">
+            <div class="sui-color-spectrum-hex">
+              <label>Hex</label>
+              <input type="text" value="2DCE89" maxlength="6" spellcheck="false">
+            </div>
+            <div class="sui-color-spectrum-rgb">
+              <div class="sui-color-spectrum-rgb-field">
+                <input type="number" data-channel="r" min="0" max="255" value="45">
+                <label>R</label>
+              </div>
+              <div class="sui-color-spectrum-rgb-field">
+                <input type="number" data-channel="g" min="0" max="255" value="206">
+                <label>G</label>
+              </div>
+              <div class="sui-color-spectrum-rgb-field">
+                <input type="number" data-channel="b" min="0" max="255" value="137">
+                <label>B</label>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-color-spectrum" data-color="#5B54E0"&gt;
+  &lt;div class="sui-color-spectrum-canvas"&gt;
+    &lt;canvas&gt;&lt;/canvas&gt;
+    &lt;div class="sui-color-spectrum-cursor"&gt;&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="sui-color-spectrum-hue"&gt;
+    &lt;div class="sui-color-spectrum-hue-cursor"&gt;&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="sui-color-spectrum-footer"&gt;
+    &lt;div class="sui-color-spectrum-preview"&gt;&lt;/div&gt;
+    &lt;div class="sui-color-spectrum-values"&gt;
+      &lt;div class="sui-color-spectrum-hex"&gt;
+        &lt;label&gt;Hex&lt;/label&gt;
+        &lt;input type="text" value="5B54E0" maxlength="6" spellcheck="false"&gt;
+      &lt;/div&gt;
+      &lt;div class="sui-color-spectrum-rgb"&gt;
+        &lt;div class="sui-color-spectrum-rgb-field"&gt;
+          &lt;input type="number" data-channel="r" min="0" max="255" value="91"&gt;
+          &lt;label&gt;R&lt;/label&gt;
+        &lt;/div&gt;
+        &lt;div class="sui-color-spectrum-rgb-field"&gt;
+          &lt;input type="number" data-channel="g" min="0" max="255" value="84"&gt;
+          &lt;label&gt;G&lt;/label&gt;
+        &lt;/div&gt;
+        &lt;div class="sui-color-spectrum-rgb-field"&gt;
+          &lt;input type="number" data-channel="b" min="0" max="255" value="224"&gt;
+          &lt;label&gt;B&lt;/label&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Native Input -->
+<div class="pg-section" id="section-6">
+  <h3 class="pg-section-title">Native Input</h3>
+  <div class="pg-section-row">
+    <div style="display:flex;flex-wrap:wrap;gap:24px;align-items:flex-start;">
+      <div class="sui-color-input">
+        <input type="color" value="#5B54E0">
+        <div>
+          <div class="sui-color-input-value">#5B54E0</div>
+          <div class="sui-color-input-label">Brand Color</div>
+        </div>
+      </div>
+      <div class="sui-color-input">
+        <input type="color" value="#2DCE89">
+        <div>
+          <div class="sui-color-input-value">#2DCE89</div>
+          <div class="sui-color-input-label">Accent Color</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-color-input"&gt;
+  &lt;input type="color" value="#5B54E0"&gt;
+  &lt;div&gt;
+    &lt;div class="sui-color-input-value"&gt;#5B54E0&lt;/div&gt;
+    &lt;div class="sui-color-input-label"&gt;Brand Color&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</pre></div>
+  </div>
+</div>
+
+<!-- With Preview -->
+<div class="pg-section" id="section-7">
+  <h3 class="pg-section-title">With Preview</h3>
+  <div class="pg-section-row">
+    <div style="display:flex;flex-wrap:wrap;gap:24px;align-items:flex-start;">
+      <div class="sui-color-preview">
+        <div class="sui-color-preview-swatch" style="background:#5B54E0;"></div>
+        <div class="sui-color-preview-info">
+          <div class="sui-color-preview-hex">#5B54E0</div>
+          <div class="sui-color-preview-name">Primary Purple</div>
+        </div>
+      </div>
+      <div class="sui-color-preview">
+        <div class="sui-color-preview-swatch" style="background:#2DCE89;"></div>
+        <div class="sui-color-preview-info">
+          <div class="sui-color-preview-hex">#2DCE89</div>
+          <div class="sui-color-preview-name">Success Green</div>
+        </div>
+      </div>
+      <div class="sui-color-preview">
+        <div class="sui-color-preview-swatch" style="background:#E74C6F;"></div>
+        <div class="sui-color-preview-info">
+          <div class="sui-color-preview-hex">#E74C6F</div>
+          <div class="sui-color-preview-name">Danger Rose</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-color-preview"&gt;
+  &lt;div class="sui-color-preview-swatch" style="background:#5B54E0;"&gt;&lt;/div&gt;
+  &lt;div class="sui-color-preview-info"&gt;
+    &lt;div class="sui-color-preview-hex"&gt;#5B54E0&lt;/div&gt;
+    &lt;div class="sui-color-preview-name"&gt;Primary Purple&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Inset -->
+<div class="pg-section" id="section-8">
+  <h3 class="pg-section-title">Inset</h3>
+  <div class="pg-section-row">
+    <div class="sui-color-picker sui-color-picker-inset">
+      <div class="sui-color-swatch active" data-color="#5B54E0" style="background:#5B54E0;"></div>
+      <div class="sui-color-swatch" data-color="#2DCE89" style="background:#2DCE89;"></div>
+      <div class="sui-color-swatch" data-color="#E74C6F" style="background:#E74C6F;"></div>
+      <div class="sui-color-swatch" data-color="#F5A623" style="background:#F5A623;"></div>
+      <div class="sui-color-swatch" data-color="#36A3F7" style="background:#36A3F7;"></div>
+      <div class="sui-color-swatch" data-color="#1B1D2A" style="background:#1B1D2A;"></div>
+      <div class="sui-color-swatch" data-color="#6C757D" style="background:#6C757D;"></div>
+      <div class="sui-color-swatch" data-color="#FFFFFF" style="background:#FFFFFF;"></div>
+    </div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-color-picker sui-color-picker-inset"&gt;
+  &lt;div class="sui-color-swatch active" data-color="#5B54E0" style="background:#5B54E0;"&gt;&lt;/div&gt;
+  &lt;div class="sui-color-swatch" data-color="#2DCE89" style="background:#2DCE89;"&gt;&lt;/div&gt;
+  &lt;div class="sui-color-swatch" data-color="#E74C6F" style="background:#E74C6F;"&gt;&lt;/div&gt;
+  &lt;div class="sui-color-swatch" data-color="#F5A623" style="background:#F5A623;"&gt;&lt;/div&gt;
+  &lt;div class="sui-color-swatch" data-color="#36A3F7" style="background:#36A3F7;"&gt;&lt;/div&gt;
+  &lt;div class="sui-color-swatch" data-color="#1B1D2A" style="background:#1B1D2A;"&gt;&lt;/div&gt;
+  &lt;div class="sui-color-swatch" data-color="#6C757D" style="background:#6C757D;"&gt;&lt;/div&gt;
+  &lt;div class="sui-color-swatch" data-color="#FFFFFF" style="background:#FFFFFF;"&gt;&lt;/div&gt;
+&lt;/div&gt;</pre></div>
+  </div>
+</div>
