@@ -3463,6 +3463,33 @@ const SoftUI = (() => {
   // =========================================
   // Swap
   // =========================================
+  // Lock slide swap dimensions so absolute children don't collapse container
+  function initSlideSwaps() {
+    document.querySelectorAll('.sui-swap-slide, .sui-swap-slide-x').forEach(function(swap) {
+      if (swap.dataset.suiSlideInit) return;
+      var children = swap.querySelectorAll('.sui-swap-on, .sui-swap-off, .sui-swap-state');
+      var maxW = 0, maxH = 0;
+      children.forEach(function(c) {
+        var prev = c.style.cssText;
+        c.style.position = 'relative';
+        c.style.opacity = '1';
+        c.style.transform = 'none';
+        maxW = Math.max(maxW, c.offsetWidth);
+        maxH = Math.max(maxH, c.offsetHeight);
+        c.style.cssText = prev;
+      });
+      if (maxW) swap.style.width = maxW + 'px';
+      if (maxH) swap.style.height = maxH + 'px';
+      swap.dataset.suiSlideInit = '1';
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initSlideSwaps);
+  } else {
+    initSlideSwaps();
+  }
+
   document.addEventListener('click', function(e) {
     var swap = e.target.closest('.sui-swap');
     if (!swap) return;
