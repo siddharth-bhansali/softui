@@ -254,9 +254,15 @@ toc:
 
 &lt;!-- Repeat: off → all → one --&gt;
 &lt;button class="sui-swap sui-swap-cycle sui-swap-fade"&gt;
-  &lt;span class="sui-swap-state active"&gt;&lt;!-- repeat off icon --&gt;&lt;/span&gt;
-  &lt;span class="sui-swap-state"&gt;&lt;!-- repeat all icon (colored) --&gt;&lt;/span&gt;
-  &lt;span class="sui-swap-state"&gt;&lt;!-- repeat one icon (colored) --&gt;&lt;/span&gt;
+  &lt;span class="sui-swap-state active"&gt;
+    &lt;svg viewBox="0 0 24 24"&gt;&lt;polyline points="17 1 21 5 17 9"/&gt;&lt;path d="M3 11V9a4 4 0 014-4h14"/&gt;&lt;polyline points="7 23 3 19 7 15"/&gt;&lt;path d="M21 13v2a4 4 0 01-4 4H3"/&gt;&lt;/svg&gt;
+  &lt;/span&gt;
+  &lt;span class="sui-swap-state"&gt;
+    &lt;svg viewBox="0 0 24 24" style="stroke:var(--sui-primary);"&gt;&lt;polyline points="17 1 21 5 17 9"/&gt;&lt;path d="M3 11V9a4 4 0 014-4h14"/&gt;&lt;polyline points="7 23 3 19 7 15"/&gt;&lt;path d="M21 13v2a4 4 0 01-4 4H3"/&gt;&lt;/svg&gt;
+  &lt;/span&gt;
+  &lt;span class="sui-swap-state"&gt;
+    &lt;svg viewBox="0 0 24 24" style="stroke:var(--sui-success);"&gt;&lt;polyline points="17 1 21 5 17 9"/&gt;&lt;path d="M3 11V9a4 4 0 014-4h14"/&gt;&lt;polyline points="7 23 3 19 7 15"/&gt;&lt;path d="M21 13v2a4 4 0 01-4 4H3"/&gt;&lt;text x="12" y="15" text-anchor="middle" font-size="8" font-weight="700" fill="currentColor" stroke="none"&gt;1&lt;/text&gt;&lt;/svg&gt;
+  &lt;/span&gt;
 &lt;/button&gt;
 
 &lt;!-- Align: left → center → right --&gt;
@@ -326,6 +332,11 @@ toc:
 &lt;button class="sui-swap sui-swap-text sui-swap-slide"&gt;
   &lt;span class="sui-swap-on"&gt;Hide&lt;/span&gt;
   &lt;span class="sui-swap-off"&gt;Show&lt;/span&gt;
+&lt;/button&gt;
+
+&lt;button class="sui-swap sui-swap-text"&gt;
+  &lt;span class="sui-swap-on"&gt;Yes&lt;/span&gt;
+  &lt;span class="sui-swap-off"&gt;No&lt;/span&gt;
 &lt;/button&gt;</pre></div>
   </div>
 </div>
@@ -358,6 +369,20 @@ toc:
   &lt;span class="sui-swap-off"&gt;
     &lt;svg viewBox="0 0 24 24"&gt;&lt;circle cx="12" cy="12" r="5"/&gt;&lt;line x1="12" y1="1" x2="12" y2="3"/&gt;&lt;line x1="12" y1="21" x2="12" y2="23"/&gt;&lt;line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/&gt;&lt;line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/&gt;&lt;line x1="1" y1="12" x2="3" y2="12"/&gt;&lt;line x1="21" y1="12" x2="23" y2="12"/&gt;&lt;line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/&gt;&lt;line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/&gt;&lt;/svg&gt;
   &lt;/span&gt;
+&lt;/button&gt;
+
+&lt;button class="sui-swap sui-swap-inset sui-swap-flip"&gt;
+  &lt;span class="sui-swap-on"&gt;
+    &lt;svg viewBox="0 0 24 24" style="fill:var(--sui-danger);stroke:var(--sui-danger);"&gt;&lt;path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78L12 21.23l8.84-8.84a5.5 5.5 0 000-7.78z"/&gt;&lt;/svg&gt;
+  &lt;/span&gt;
+  &lt;span class="sui-swap-off"&gt;
+    &lt;svg viewBox="0 0 24 24"&gt;&lt;path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78L12 21.23l8.84-8.84a5.5 5.5 0 000-7.78z"/&gt;&lt;/svg&gt;
+  &lt;/span&gt;
+&lt;/button&gt;
+
+&lt;button class="sui-swap sui-swap-inset sui-swap-text sui-swap-fade"&gt;
+  &lt;span class="sui-swap-on"&gt;ON&lt;/span&gt;
+  &lt;span class="sui-swap-off"&gt;OFF&lt;/span&gt;
 &lt;/button&gt;</pre></div>
   </div>
 </div>
