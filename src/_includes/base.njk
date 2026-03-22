@@ -23,6 +23,11 @@
       <a href="/playground/"{% if page.url == "/playground/" %} class="active"{% endif %}>Playground</a>
     </div>
     <div class="docs-topbar-actions">
+      <button class="docs-search-btn" onclick="document.getElementById('docsSearch').classList.add('open');document.body.style.overflow='hidden';setTimeout(function(){document.querySelector('#docsSearch .sui-command-input').focus();},50);" aria-label="Search">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        <span class="docs-search-label">Search</span>
+        <kbd class="docs-search-kbd">Ctrl K</kbd>
+      </button>
       <a href="https://github.com/siddharth-bhansali/softui" target="_blank" rel="noopener" class="docs-topbar-icon" aria-label="GitHub">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
       </a>
@@ -274,5 +279,42 @@
       btn.classList.toggle('open', isOpen);
     }
   </script>
+
+  <!-- Search Command Dialog -->
+  <div class="sui-command-dialog" id="docsSearch" data-sui-command-key="k">
+    <div class="sui-command-dialog-overlay"></div>
+    <div class="sui-command" data-sui-command style="max-width:520px;">
+      <div class="sui-command-input-wrap">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        <input class="sui-command-input" type="text" placeholder="Search components...">
+      </div>
+      <div class="sui-command-list">
+        <div class="sui-command-group">
+          <div class="sui-command-group-label">Pages</div>
+          <a class="sui-command-item" href="/getting-started/">Get Started</a>
+          <a class="sui-command-item" href="/playground/">Playground</a>
+        </div>
+        <div class="sui-command-group">
+          <div class="sui-command-group-label">Forms</div>
+          {%- for item in nav.forms %}
+          <a class="sui-command-item" href="{{ item.url }}"{% if item.id == "forms" %} data-keywords="forms form input text password number tags"{% endif %}{% if item.id == "toggles" %} data-keywords="toggles checkbox radio switch check"{% endif %}>{{ item.name }}</a>
+          {%- endfor %}
+        </div>
+        <div class="sui-command-group">
+          <div class="sui-command-group-label">Components</div>
+          {%- for item in nav.components %}
+          <a class="sui-command-item" href="{{ item.url }}"{% if item.id == "chatbubble" %} data-keywords="chat message bubble conversation"{% endif %}{% if item.id == "colorpicker" %} data-keywords="color picker swatch spectrum"{% endif %}{% if item.id == "fileupload" %} data-keywords="file upload drop zone drag"{% endif %}{% if item.id == "radialprogress" %} data-keywords="radial progress circle ring percentage"{% endif %}{% if item.id == "statcard" %} data-keywords="stat card metric kpi statistic"{% endif %}{% if item.id == "datatable" %} data-keywords="data table sort filter paginate"{% endif %}{% if item.id == "dragdrop" %} data-keywords="drag drop sortable kanban"{% endif %}{% if item.id == "hovercard" %} data-keywords="hover card popup preview"{% endif %}{% if item.id == "inputotp" %} data-keywords="input otp code verification pin"{% endif %}{% if item.id == "togglegroup" %} data-keywords="toggle group segment button"{% endif %}{% if item.id == "contextmenu" %} data-keywords="context menu right click"{% endif %}{% if item.id == "buttongroup" %} data-keywords="button group joined"{% endif %}{% if item.id == "scrollarea" %} data-keywords="scroll area scrollbar overflow"{% endif %}>{{ item.name }}</a>
+          {%- endfor %}
+        </div>
+        <div class="sui-command-group">
+          <div class="sui-command-group-label">Utilities</div>
+          {%- for item in nav.utilities %}
+          <a class="sui-command-item" href="{{ item.url }}">{{ item.name }}</a>
+          {%- endfor %}
+        </div>
+        <div class="sui-command-empty" style="display:none;">No results found.</div>
+      </div>
+    </div>
+  </div>
 </body>
 </html>

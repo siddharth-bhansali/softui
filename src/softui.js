@@ -909,7 +909,8 @@ const SoftUI = (() => {
 
         items.forEach(function(item) {
           var text = item.textContent.toLowerCase();
-          var match = !query || text.indexOf(query) !== -1;
+          var keywords = (item.getAttribute('data-keywords') || '').toLowerCase();
+          var match = !query || text.indexOf(query) !== -1 || keywords.indexOf(query) !== -1;
           item.hidden = !match;
           if (match) anyVisible = true;
         });

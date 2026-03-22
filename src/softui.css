@@ -4586,6 +4586,10 @@ a.sui-btn-warning:visited {
   padding: 2px 0;
 }
 
+.sui-command-group[hidden] {
+  display: none;
+}
+
 .sui-command-group-label {
   padding: 8px 10px 4px;
   font-size: 11px;
@@ -4593,6 +4597,10 @@ a.sui-btn-warning:visited {
   color: var(--sui-text-light);
   text-transform: uppercase;
   letter-spacing: 0.5px;
+}
+
+.sui-command-item[hidden] {
+  display: none;
 }
 
 .sui-command-item {
@@ -4606,12 +4614,13 @@ a.sui-btn-warning:visited {
   color: var(--sui-text);
   background: transparent;
   border: none;
-  border-radius: var(--sui-radius-xs);
+  border-radius: var(--sui-radius-sm);
   cursor: pointer;
   text-align: left;
   transition: var(--sui-transition);
   line-height: 1.4;
   gap: 10px;
+  text-decoration: none;
 }
 
 .sui-command-item:hover,
