@@ -3461,6 +3461,82 @@ const SoftUI = (() => {
   }
 
   // =========================================
+  // Number Input
+  // =========================================
+  document.addEventListener('click', function(e) {
+    var btn = e.target.closest('.sui-number-input-btn');
+    if (!btn) return;
+    var wrap = btn.closest('.sui-number-input');
+    var input = wrap.querySelector('input[type="number"]');
+    if (!input) return;
+    var step = parseFloat(input.step) || 1;
+    var min = input.min !== '' ? parseFloat(input.min) : -Infinity;
+    var max = input.max !== '' ? parseFloat(input.max) : Infinity;
+    var val = parseFloat(input.value) || 0;
+    if (btn.getAttribute('data-action') === 'decrement') {
+      val = Math.max(min, val - step);
+    } else {
+      val = Math.min(max, val + step);
+    }
+    input.value = val;
+    input.dispatchEvent(new Event('change', { bubbles: true }));
+  });
+
+  // =========================================
+  // Password Toggle
+  // =========================================
+  document.addEventListener('click', function(e) {
+    var btn = e.target.closest('.sui-password-toggle');
+    if (!btn) return;
+    e.stopPropagation();
+    var wrap = btn.closest('.sui-password-input');
+    var input = wrap.querySelector('input');
+    if (!input) return;
+    var isPassword = input.type === 'password';
+    input.type = isPassword ? 'text' : 'password';
+    btn.classList.toggle('active');
+  }, true);
+
+  // =========================================
+  // Tags Input
+  // =========================================
+  document.addEventListener('keydown', function(e) {
+    var input = e.target.closest('.sui-tags-input-field');
+    if (!input) return;
+    var wrap = input.closest('.sui-tags-input');
+    if (e.key === 'Enter' || e.key === ',') {
+      e.preventDefault();
+      var val = input.value.trim().replace(/,$/, '');
+      if (!val) return;
+      var tag = document.createElement('span');
+      tag.className = 'sui-chip';
+      tag.textContent = val;
+      var closeBtn = document.createElement('button');
+      closeBtn.className = 'sui-chip-close';
+      closeBtn.setAttribute('aria-label', 'Remove');
+      tag.appendChild(closeBtn);
+      wrap.insertBefore(tag, input);
+      input.value = '';
+    } else if (e.key === 'Backspace' && !input.value) {
+      var tags = wrap.querySelectorAll('.sui-chip');
+      if (tags.length) tags[tags.length - 1].remove();
+    }
+  });
+
+  document.addEventListener('click', function(e) {
+    var dismiss = e.target.closest('.sui-tags-input .sui-chip-close');
+    if (dismiss) {
+      dismiss.closest('.sui-chip').remove();
+      return;
+    }
+    var wrap = e.target.closest('.sui-tags-input');
+    if (wrap) {
+      var input = wrap.querySelector('.sui-tags-input-field');
+      if (input) input.focus();
+    }
+  });
+
+  // =========================================
   // Swap
   // =========================================
   // Lock slide swap dimensions so absolute children don't collapse container

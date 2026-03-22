@@ -2030,6 +2030,185 @@ a.sui-btn-warning:visited {
   padding-right: 22px;
 }
 
+/* --- Number Input --- */
+.sui-number-input {
+  display: inline-flex;
+  align-items: center;
+}
+
+.sui-number-input .sui-input {
+  text-align: center;
+  border-radius: 0;
+  -moz-appearance: textfield;
+  width: 64px;
+}
+
+.sui-number-input .sui-input::-webkit-inner-spin-button,
+.sui-number-input .sui-input::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.sui-number-input-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  align-self: stretch;
+  border: none;
+  background: var(--sui-bg);
+  box-shadow: var(--sui-shadow-raised-sm);
+  color: var(--sui-text);
+  font-size: 18px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--sui-transition);
+  padding: 0;
+  line-height: 1;
+}
+
+.sui-number-input-btn:first-child {
+  border-radius: var(--sui-radius-sm) 0 0 var(--sui-radius-sm);
+}
+
+.sui-number-input-btn:last-child {
+  border-radius: 0 var(--sui-radius-sm) var(--sui-radius-sm) 0;
+}
+
+.sui-number-input-btn:hover {
+  box-shadow: var(--sui-shadow-raised);
+}
+
+.sui-number-input-btn:active {
+  box-shadow: var(--sui-shadow-inset-sm);
+}
+
+.sui-number-input-sm .sui-input {
+  height: 30px;
+  font-size: 13px;
+  width: 50px;
+}
+
+.sui-number-input-sm .sui-number-input-btn {
+  width: 30px;
+  height: 30px;
+  font-size: 14px;
+}
+
+.sui-number-input-lg .sui-input {
+  height: 46px;
+  font-size: 18px;
+  width: 80px;
+}
+
+.sui-number-input-lg .sui-number-input-btn {
+  width: 46px;
+  height: 46px;
+  font-size: 22px;
+}
+
+/* --- Password Input --- */
+.sui-password-input {
+  position: relative;
+}
+
+.sui-password-input .sui-input {
+  padding-right: 40px;
+  width: 100%;
+}
+
+.sui-password-input .sui-password-toggle {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 20px;
+  height: 20px;
+  border: none;
+  background: none;
+  padding: 0;
+  cursor: pointer;
+  color: var(--sui-text-muted);
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sui-password-toggle svg {
+  width: 18px;
+  height: 18px;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.sui-password-toggle:hover {
+  color: var(--sui-text);
+}
+
+.sui-password-rules {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.sui-password-rule {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  color: var(--sui-text-muted);
+  transition: color 0.2s ease;
+}
+
+.sui-password-rule.valid {
+  color: var(--sui-success);
+}
+
+
+/* --- Tags Input --- */
+.sui-tags-input {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 10px;
+  background: var(--sui-bg);
+  box-shadow: var(--sui-shadow-inset-sm);
+  border-radius: var(--sui-radius-sm);
+  min-height: 38px;
+  cursor: text;
+  transition: var(--sui-transition);
+}
+
+.sui-tags-input:focus-within {
+  box-shadow: var(--sui-shadow-inset-sm), 0 0 0 2px var(--sui-primary);
+}
+
+.sui-tags-input .sui-chip {
+  margin: 0;
+  font-size: 12px;
+}
+
+.sui-tags-input-field {
+  border: none;
+  background: none;
+  outline: none;
+  font-size: 14px;
+  font-family: var(--sui-font);
+  color: var(--sui-text);
+  flex: 1;
+  min-width: 80px;
+  padding: 2px 0;
+}
+
+.sui-tags-input-field::placeholder {
+  color: var(--sui-text-light);
+}
+
 /* ===========================================
    Toggles — Sizes
    =========================================== */
