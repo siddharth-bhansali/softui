@@ -4,6 +4,7 @@ title: Toast
 description: Auto-dismissing slide-in notifications with stacking and color variants.
 componentId: toast
 hasControls: false
+requiresJs: true
 toc:
   - Default
   - Variants
@@ -19,18 +20,26 @@ toc:
   </div>
   <div class="pg-code-wrap">
     <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
-    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>// Default toast (auto-dismisses after 4s)
-SoftUI.toast({
-  title: 'Notification',
-  message: 'This is a default toast message.'
-});
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;!-- Trigger a toast from a button --&gt;
+&lt;button class="sui-btn sui-btn-primary"
+  onclick="SoftUI.toast({ title: 'Notification', message: 'This is a default toast message.' })"&gt;
+  Show Toast
+&lt;/button&gt;
 
-// Persistent toast (no auto-dismiss)
-SoftUI.toast({
-  title: 'No auto-close',
-  message: 'This toast stays until you dismiss it.',
-  duration: 0
-});</pre></div>
+&lt;!-- Or call from JavaScript --&gt;
+&lt;script&gt;
+  SoftUI.toast({
+    title: 'Notification',
+    message: 'This is a default toast message.'
+  });
+
+  // Persistent toast (no auto-dismiss)
+  SoftUI.toast({
+    title: 'No auto-close',
+    message: 'This toast stays until you dismiss it.',
+    duration: 0
+  });
+&lt;/script&gt;</pre></div>
   </div>
 </div>
 

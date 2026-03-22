@@ -4,6 +4,7 @@ title: Input OTP
 description: One-time password input with individual digit boxes, auto-focus advance, blinking cursor, and paste support.
 componentId: inputotp
 hasControls: false
+requiresJs: true
 toc:
   - Default
   - Four Digits
@@ -55,7 +56,8 @@ toc:
   document.querySelector('.sui-otp').addEventListener('sui-otp-complete', (e) =&gt; {
     console.log('OTP entered:', e.detail.value);
   });
-&lt;/script&gt;</pre></div>
+&lt;/script&gt;
+</pre></div>
   </div>
 </div>
 

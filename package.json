@@ -8,7 +8,7 @@
     "dist/"
   ],
   "scripts": {
-    "dev": "bunx @11ty/eleventy --serve --incremental",
+    "dev": "NODE_OPTIONS='--max-old-space-size=8192' bunx @11ty/eleventy --serve --incremental",
     "build": "bunx @11ty/eleventy",
     "build:min": "cleancss -o dist/softui.min.css src/softui.css && terser src/softui.js -o dist/softui.min.js --compress --mangle && node -e \"fs=require('fs');fs.copyFileSync('src/softui.css','dist/softui.css');fs.copyFileSync('src/softui.js','dist/softui.js')\"",
     "prepublishOnly": "npm run build:min"

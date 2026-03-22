@@ -23,12 +23,18 @@ layout: base.njk
 
   <!-- Main Content -->
   <div class="docs-pg-main">
-    <nav class="sui-breadcrumb sui-breadcrumb-flat" style="font-size:13px;padding:4px 0;margin-bottom:4px;">
+    <nav class="sui-breadcrumb sui-breadcrumb-flat" style="font-size:13px;padding:4px 0;margin-bottom:4px;margin-left:-8px;">
       <span class="sui-breadcrumb-item"><a href="/">Home</a></span>
       <span class="sui-breadcrumb-item active"><span>{{ title }}</span></span>
     </nav>
     <h1 class="docs-pg-title">{{ title }}</h1>
     <p class="docs-pg-desc">{{ description }}</p>
+    {% if requiresJs %}
+    <div class="docs-js-note">
+      <svg viewBox="0 0 24 24" style="width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0;"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+      <span>{% if partialJs %}Some sections on this page require{% else %}This component requires{% endif %} <a href="/getting-started/#javascript">softui.js</a> for interactive behavior.</span>
+    </div>
+    {% endif %}
 
     {{ content | safe }}
   </div>
