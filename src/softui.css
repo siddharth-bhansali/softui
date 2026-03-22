@@ -1947,6 +1947,49 @@ a.sui-btn-warning:visited {
 }
 
 /* ===========================================
+   Cards — Empty State
+   =========================================== */
+.sui-card-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 40px 24px;
+}
+
+.sui-card-empty-icon {
+  width: 48px;
+  height: 48px;
+  color: var(--sui-text-light);
+  margin-bottom: 12px;
+}
+
+.sui-card-empty-icon svg {
+  width: 100%;
+  height: 100%;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.sui-card-empty-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--sui-text);
+  margin-bottom: 4px;
+}
+
+.sui-card-empty-text {
+  font-size: 13px;
+  color: var(--sui-text-muted);
+  margin-bottom: 16px;
+  max-width: 280px;
+}
+
+/* ===========================================
    Cards — Hoverable
    =========================================== */
 .sui-card-hover {

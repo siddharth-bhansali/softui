@@ -13,6 +13,7 @@ toc:
   - Image Top
   - Image Overlay
   - Horizontal
+  - Empty State
 ---
 
 <!-- Raised (Default) -->
@@ -165,6 +166,60 @@ toc:
     &lt;h4&gt;Horizontal Card&lt;/h4&gt;
     &lt;p&gt;Image and body sit side by side in a row layout.&lt;/p&gt;
   &lt;/div&gt;
+&lt;/div&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Empty State -->
+<div class="pg-section">
+  <h3 class="pg-section-title">Empty State</h3>
+  <div class="pg-section-row">
+    <div style="display:flex;flex-wrap:wrap;gap:24px;">
+      <div class="sui-card sui-card-empty" style="max-width:340px;width:100%;">
+        <div class="sui-card-empty-icon">
+          <svg viewBox="0 0 24 24"><path d="M13 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V9z"/><polyline points="13 2 13 9 20 9"/></svg>
+        </div>
+        <div class="sui-card-empty-title">No documents yet</div>
+        <div class="sui-card-empty-text">Upload your first document to get started.</div>
+        <button class="sui-btn sui-btn-primary sui-btn-sm">Upload File</button>
+      </div>
+      <div class="sui-card sui-card-empty" style="max-width:340px;width:100%;">
+        <div class="sui-card-empty-icon">
+          <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+        </div>
+        <div class="sui-card-empty-title">No team members</div>
+        <div class="sui-card-empty-text">Invite people to collaborate on this project.</div>
+        <button class="sui-btn sui-btn-primary sui-btn-sm">Invite People</button>
+      </div>
+      <div class="sui-card sui-inset sui-card-empty" style="max-width:340px;width:100%;">
+        <div class="sui-card-empty-icon">
+          <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        </div>
+        <div class="sui-card-empty-title">No results found</div>
+        <div class="sui-card-empty-text">Try adjusting your search or filter criteria.</div>
+        <button class="sui-btn sui-btn-sm">Clear Filters</button>
+      </div>
+    </div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-card sui-card-empty"&gt;
+  &lt;div class="sui-card-empty-icon"&gt;
+    &lt;svg viewBox="0 0 24 24"&gt;&lt;path d="M13 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V9z"/&gt;&lt;polyline points="13 2 13 9 20 9"/&gt;&lt;/svg&gt;
+  &lt;/div&gt;
+  &lt;div class="sui-card-empty-title"&gt;No documents yet&lt;/div&gt;
+  &lt;div class="sui-card-empty-text"&gt;Upload your first document to get started.&lt;/div&gt;
+  &lt;button class="sui-btn sui-btn-primary sui-btn-sm"&gt;Upload File&lt;/button&gt;
+&lt;/div&gt;
+
+&lt;!-- Inset empty state --&gt;
+&lt;div class="sui-card sui-inset sui-card-empty"&gt;
+  &lt;div class="sui-card-empty-icon"&gt;
+    &lt;svg viewBox="0 0 24 24"&gt;&lt;circle cx="11" cy="11" r="8"/&gt;&lt;line x1="21" y1="21" x2="16.65" y2="16.65"/&gt;&lt;/svg&gt;
+  &lt;/div&gt;
+  &lt;div class="sui-card-empty-title"&gt;No results found&lt;/div&gt;
+  &lt;div class="sui-card-empty-text"&gt;Try adjusting your search or filter criteria.&lt;/div&gt;
+  &lt;button class="sui-btn sui-btn-sm"&gt;Clear Filters&lt;/button&gt;
 &lt;/div&gt;</pre></div>
   </div>
 </div>
