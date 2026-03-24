@@ -9205,6 +9205,14 @@ a.sui-btn-warning:visited {
 }
 
 /* Inset style */
+.sui-rating-raised {
+  background: var(--sui-bg);
+  box-shadow: var(--sui-shadow-raised-sm);
+  border-radius: var(--sui-radius);
+  padding: 6px 10px;
+  gap: 4px;
+}
+
 .sui-rating-inset {
   background: var(--sui-bg);
   box-shadow: var(--sui-shadow-inset-sm);
@@ -9588,6 +9596,13 @@ a.sui-btn-warning:visited {
 }
 
 /* Inset container */
+.sui-color-picker-raised {
+  background: var(--sui-bg);
+  box-shadow: var(--sui-shadow-raised-sm);
+  border-radius: var(--sui-radius);
+  padding: 12px;
+}
+
 .sui-color-picker-inset {
   background: var(--sui-bg);
   box-shadow: var(--sui-shadow-inset-sm);
@@ -10620,6 +10635,15 @@ a.sui-btn-warning:visited {
 .sui-swap-lg svg { width: 32px; height: 32px; }
 
 /* Inset */
+.sui-swap-raised {
+  background: var(--sui-bg);
+  box-shadow: var(--sui-shadow-raised-sm);
+  border-radius: var(--sui-radius-sm);
+  padding: 8px;
+  width: auto;
+  height: auto;
+}
+
 .sui-swap-inset {
   background: var(--sui-bg);
   box-shadow: var(--sui-shadow-inset-sm);
@@ -10634,4 +10658,182 @@ a.sui-btn-warning:visited {
   font-weight: 600;
   color: var(--sui-text-muted);
   text-transform: uppercase;
+}
+
+/* =========================================
+   Tree View
+   ========================================= */
+.sui-tree {
+  display: flex;
+  flex-direction: column;
+  font-size: 14px;
+}
+
+.sui-tree-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.sui-tree-label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 8px;
+  border-radius: var(--sui-radius-sm);
+  cursor: pointer;
+  color: var(--sui-text);
+  font-weight: 500;
+  transition: background 0.15s ease;
+  user-select: none;
+}
+
+.sui-tree-label:hover {
+  background: rgba(91, 84, 224, 0.06);
+}
+
+.sui-tree-label.active {
+  background: rgba(91, 84, 224, 0.1);
+  color: var(--sui-primary);
+}
+
+.sui-tree-toggle {
+  width: 16px;
+  height: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: transform 0.2s ease;
+}
+
+.sui-tree-toggle svg {
+  width: 12px;
+  height: 12px;
+  stroke: var(--sui-text-muted);
+  fill: none;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.sui-tree-item.expanded > .sui-tree-label .sui-tree-toggle {
+  transform: rotate(90deg);
+}
+
+.sui-tree-toggle-spacer {
+  width: 16px;
+  flex-shrink: 0;
+}
+
+.sui-tree-icon {
+  width: 16px;
+  height: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.sui-tree-icon svg {
+  width: 16px;
+  height: 16px;
+  stroke: var(--sui-text-muted);
+  fill: none;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.sui-tree-item.expanded > .sui-tree-label .sui-tree-icon svg {
+  stroke: var(--sui-primary);
+}
+
+.sui-tree-text {
+  flex: 1;
+  line-height: 1.4;
+}
+
+.sui-tree-children {
+  display: none;
+  padding-left: 22px;
+}
+
+.sui-tree-item.expanded > .sui-tree-children {
+  display: flex;
+  flex-direction: column;
+}
+
+/* With guide lines */
+.sui-tree-lines .sui-tree-children {
+  margin-left: 7px;
+  padding-left: 15px;
+  border-left: 1px solid var(--sui-bg-dark);
+}
+
+/* With checkboxes */
+.sui-tree-label .sui-checkbox {
+  margin: 0;
+  font-size: inherit;
+}
+
+/* Sizes */
+.sui-tree-sm .sui-tree-label {
+  padding: 3px 6px;
+  font-size: 13px;
+  gap: 4px;
+}
+
+.sui-tree-sm .sui-tree-toggle,
+.sui-tree-sm .sui-tree-icon {
+  width: 14px;
+  height: 14px;
+}
+
+.sui-tree-sm .sui-tree-toggle svg,
+.sui-tree-sm .sui-tree-icon svg {
+  width: 12px;
+  height: 12px;
+}
+
+.sui-tree-sm .sui-tree-children {
+  padding-left: 18px;
+}
+
+.sui-tree-lg .sui-tree-label {
+  padding: 7px 10px;
+  font-size: 15px;
+  gap: 8px;
+}
+
+.sui-tree-lg .sui-tree-toggle,
+.sui-tree-lg .sui-tree-icon {
+  width: 18px;
+  height: 18px;
+}
+
+.sui-tree-lg .sui-tree-toggle svg,
+.sui-tree-lg .sui-tree-icon svg {
+  width: 16px;
+  height: 16px;
+}
+
+.sui-tree-lg .sui-tree-children {
+  padding-left: 26px;
+}
+
+/* Inset container */
+/* Raised container */
+.sui-tree-raised {
+  background: var(--sui-bg);
+  box-shadow: var(--sui-shadow-raised-sm);
+  border-radius: var(--sui-radius);
+  padding: 10px;
+}
+
+/* Inset container */
+.sui-tree-inset {
+  background: var(--sui-bg);
+  box-shadow: var(--sui-shadow-inset-sm);
+  border-radius: var(--sui-radius);
+  padding: 10px;
 }

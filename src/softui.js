@@ -3645,5 +3645,65 @@ const SoftUI = (() => {
     });
   }, true);
 
+  // =========================================
+  // Tree View
+  // =========================================
+  document.addEventListener('click', function(e) {
+    var label = e.target.closest('.sui-tree-label');
+    if (!label) return;
+    if (e.target.closest('.sui-checkbox')) return;
+    var item = label.closest('.sui-tree-item');
+    var children = item.querySelector('.sui-tree-children');
+    if (children) {
+      item.classList.toggle('expanded');
+    }
+  });
+
+  // Tree checkbox propagation
+  document.addEventListener('change', function(e) {
+    if (!e.target.closest('.sui-tree .sui-checkbox input')) return;
+    var checkbox = e.target;
+    var item = checkbox.closest('.sui-tree-item');
+    var checked = checkbox.checked;
+
+    // Propagate down — check/uncheck all children
+    var childBoxes = item.querySelectorAll('.sui-tree-children .sui-checkbox input');
+    childBoxes.forEach(function(cb) {
+      cb.checked = checked;
+      cb.indeterminate = false;
+    });
+
+    // Propagate up — update parent state
+    updateTreeParent(item);
+  });
+
+  function updateTreeParent(item) {
+    var parentChildren = item.closest('.sui-tree-children');
+    if (!parentChildren) return;
+    var parentItem = parentChildren.closest('.sui-tree-item');
+    if (!parentItem) return;
+    var parentCb = parentItem.querySelector(':scope > .sui-tree-label .sui-checkbox input');
+    if (!parentCb) return;
+
+    var siblings = parentChildren.querySelectorAll(':scope > .sui-tree-item > .sui-tree-label .sui-checkbox input');
+    var total = siblings.length;
+    var checkedCount = 0;
+    siblings.forEach(function(cb) { if (cb.checked) checkedCount++; });
+
+    if (checkedCount === 0) {
+      parentCb.checked = false;
+      parentCb.indeterminate = false;
+    } else if (checkedCount === total) {
+      parentCb.checked = true;
+      parentCb.indeterminate = false;
+    } else {
+      parentCb.checked = false;
+      parentCb.indeterminate = true;
+    }
+
+    // Continue up the tree
+    updateTreeParent(parentItem);
+  }
+
   return { modal, sheet, toast, carousel, sidebar };
 })();
