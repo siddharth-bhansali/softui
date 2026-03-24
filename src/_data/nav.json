@@ -18,6 +18,7 @@
     { "id": "chatbubble", "name": "Chat Bubble", "url": "/components/chatbubble/" },
     { "id": "dock", "name": "Dock", "url": "/components/dock/" },
     { "id": "colorpicker", "name": "Color Picker", "url": "/components/colorpicker/" },
+    { "id": "lightbox", "name": "Image Lightbox", "url": "/components/lightbox/" },
     { "id": "fileupload", "name": "File Upload", "url": "/components/fileupload/" },
     { "id": "radialprogress", "name": "Radial Progress", "url": "/components/radialprogress/" },
     { "id": "rating", "name": "Rating", "url": "/components/rating/" },

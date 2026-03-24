@@ -1,0 +1,252 @@
+---
+layout: component.njk
+title: Image Lightbox
+description: Click-to-zoom image preview with gallery navigation, captions, keyboard support, and zoom.
+componentId: lightbox
+hasControls: false
+requiresJs: true
+toc:
+  - Default
+  - Grid
+  - Filmstrip
+  - Vertical Gallery
+  - With Captions
+  - Inset
+---
+
+{% set placeholderBase %}data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='400'%3E{% endset %}
+
+<!-- Default -->
+<div class="pg-section" id="section-1">
+  <h3 class="pg-section-title">Default</h3>
+  <div class="pg-section-row">
+    <div style="display:flex;flex-wrap:wrap;gap:16px;">
+      <div class="sui-lightbox-thumb" style="width:200px;height:140px;">
+        <img src="{{ placeholderBase | safe }}%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0%25' stop-color='%235B54E0'/%3E%3Cstop offset='100%25' stop-color='%2336A3F7'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect fill='url(%23g)' width='600' height='400'/%3E%3Ctext x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' fill='white' font-size='24' font-family='sans-serif' font-weight='700'%3EClick me%3C/text%3E%3C/svg%3E" alt="Gradient image">
+      </div>
+    </div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-lightbox-thumb" style="width:200px;height:140px;"&gt;
+  &lt;img src="path/to/image.jpg" alt="Description"&gt;
+&lt;/div&gt;
+
+&lt;!-- Click the thumbnail to open the lightbox --&gt;
+&lt;!-- Press Escape to close, click image to zoom --&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Grid -->
+<div class="pg-section" id="section-2">
+  <h3 class="pg-section-title">Grid</h3>
+  <div class="pg-section-row">
+    <div class="sui-lightbox-grid" style="max-width:500px;">
+      <div class="sui-lightbox-thumb">
+        <img src="{{ placeholderBase | safe }}%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0%25' stop-color='%235B54E0'/%3E%3Cstop offset='100%25' stop-color='%2336A3F7'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect fill='url(%23g)' width='600' height='400'/%3E%3Ctext x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' fill='white' font-size='32' font-family='sans-serif' font-weight='700'%3E1%3C/text%3E%3C/svg%3E" alt="Image 1">
+      </div>
+      <div class="sui-lightbox-thumb">
+        <img src="{{ placeholderBase | safe }}%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0%25' stop-color='%232DCE89'/%3E%3Cstop offset='100%25' stop-color='%2336A3F7'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect fill='url(%23g)' width='600' height='400'/%3E%3Ctext x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' fill='white' font-size='32' font-family='sans-serif' font-weight='700'%3E2%3C/text%3E%3C/svg%3E" alt="Image 2">
+      </div>
+      <div class="sui-lightbox-thumb">
+        <img src="{{ placeholderBase | safe }}%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0%25' stop-color='%23E74C6F'/%3E%3Cstop offset='100%25' stop-color='%23F5A623'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect fill='url(%23g)' width='600' height='400'/%3E%3Ctext x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' fill='white' font-size='32' font-family='sans-serif' font-weight='700'%3E3%3C/text%3E%3C/svg%3E" alt="Image 3">
+      </div>
+      <div class="sui-lightbox-thumb">
+        <img src="{{ placeholderBase | safe }}%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0%25' stop-color='%23F5A623'/%3E%3Cstop offset='100%25' stop-color='%23E74C6F'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect fill='url(%23g)' width='600' height='400'/%3E%3Ctext x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' fill='white' font-size='32' font-family='sans-serif' font-weight='700'%3E4%3C/text%3E%3C/svg%3E" alt="Image 4">
+      </div>
+      <div class="sui-lightbox-thumb">
+        <img src="{{ placeholderBase | safe }}%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0%25' stop-color='%2336A3F7'/%3E%3Cstop offset='100%25' stop-color='%235B54E0'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect fill='url(%23g)' width='600' height='400'/%3E%3Ctext x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' fill='white' font-size='32' font-family='sans-serif' font-weight='700'%3E5%3C/text%3E%3C/svg%3E" alt="Image 5">
+      </div>
+      <div class="sui-lightbox-thumb">
+        <img src="{{ placeholderBase | safe }}%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0%25' stop-color='%231B1D2A'/%3E%3Cstop offset='100%25' stop-color='%235B54E0'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect fill='url(%23g)' width='600' height='400'/%3E%3Ctext x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' fill='white' font-size='32' font-family='sans-serif' font-weight='700'%3E6%3C/text%3E%3C/svg%3E" alt="Image 6">
+      </div>
+    </div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;!-- Wrap thumbnails in sui-lightbox-grid for gallery mode --&gt;
+&lt;div class="sui-lightbox-grid"&gt;
+  &lt;div class="sui-lightbox-thumb"&gt;
+    &lt;img src="image1.jpg" alt="Image 1"&gt;
+  &lt;/div&gt;
+  &lt;div class="sui-lightbox-thumb"&gt;
+    &lt;img src="image2.jpg" alt="Image 2"&gt;
+  &lt;/div&gt;
+  &lt;div class="sui-lightbox-thumb"&gt;
+    &lt;img src="image3.jpg" alt="Image 3"&gt;
+  &lt;/div&gt;
+  &lt;!-- Lightbox auto-detects siblings for prev/next navigation --&gt;
+  &lt;!-- Arrow keys: Left/Right to navigate, Escape to close --&gt;
+&lt;/div&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Filmstrip -->
+<div class="pg-section" id="section-3">
+  <h3 class="pg-section-title">Filmstrip</h3>
+  <div class="pg-section-row">
+    <div class="sui-lightbox-filmstrip" style="max-width:500px;">
+      <div class="sui-lightbox-thumb">
+        <img src="{{ placeholderBase | safe }}%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0%25' stop-color='%235B54E0'/%3E%3Cstop offset='100%25' stop-color='%2336A3F7'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect fill='url(%23g)' width='600' height='400'/%3E%3Ctext x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' fill='white' font-size='32' font-family='sans-serif' font-weight='700'%3E1%3C/text%3E%3C/svg%3E" alt="Image 1">
+      </div>
+      <div class="sui-lightbox-thumb">
+        <img src="{{ placeholderBase | safe }}%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0%25' stop-color='%232DCE89'/%3E%3Cstop offset='100%25' stop-color='%2336A3F7'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect fill='url(%23g)' width='600' height='400'/%3E%3Ctext x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' fill='white' font-size='32' font-family='sans-serif' font-weight='700'%3E2%3C/text%3E%3C/svg%3E" alt="Image 2">
+      </div>
+      <div class="sui-lightbox-thumb">
+        <img src="{{ placeholderBase | safe }}%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0%25' stop-color='%23E74C6F'/%3E%3Cstop offset='100%25' stop-color='%23F5A623'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect fill='url(%23g)' width='600' height='400'/%3E%3Ctext x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' fill='white' font-size='32' font-family='sans-serif' font-weight='700'%3E3%3C/text%3E%3C/svg%3E" alt="Image 3">
+      </div>
+      <div class="sui-lightbox-thumb">
+        <img src="{{ placeholderBase | safe }}%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0%25' stop-color='%23F5A623'/%3E%3Cstop offset='100%25' stop-color='%23E74C6F'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect fill='url(%23g)' width='600' height='400'/%3E%3Ctext x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' fill='white' font-size='32' font-family='sans-serif' font-weight='700'%3E4%3C/text%3E%3C/svg%3E" alt="Image 4">
+      </div>
+      <div class="sui-lightbox-thumb">
+        <img src="{{ placeholderBase | safe }}%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0%25' stop-color='%2336A3F7'/%3E%3Cstop offset='100%25' stop-color='%235B54E0'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect fill='url(%23g)' width='600' height='400'/%3E%3Ctext x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' fill='white' font-size='32' font-family='sans-serif' font-weight='700'%3E5%3C/text%3E%3C/svg%3E" alt="Image 5">
+      </div>
+    </div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;!-- Horizontal scrolling filmstrip --&gt;
+&lt;div class="sui-lightbox-filmstrip"&gt;
+  &lt;div class="sui-lightbox-thumb"&gt;
+    &lt;img src="image1.jpg" alt="Image 1"&gt;
+  &lt;/div&gt;
+  &lt;div class="sui-lightbox-thumb"&gt;
+    &lt;img src="image2.jpg" alt="Image 2"&gt;
+  &lt;/div&gt;
+  &lt;div class="sui-lightbox-thumb"&gt;
+    &lt;img src="image3.jpg" alt="Image 3"&gt;
+  &lt;/div&gt;
+  &lt;!-- Scrolls horizontally when thumbnails overflow --&gt;
+&lt;/div&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Vertical Gallery -->
+<div class="pg-section" id="section-4">
+  <h3 class="pg-section-title">Vertical Gallery</h3>
+  <div class="pg-section-row">
+    <div class="sui-lightbox-vertical" style="max-width:440px;height:280px;">
+      <div class="sui-lightbox-vertical-strip">
+        <div class="sui-lightbox-thumb active">
+          <img src="{{ placeholderBase | safe }}%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0%25' stop-color='%235B54E0'/%3E%3Cstop offset='100%25' stop-color='%2336A3F7'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect fill='url(%23g)' width='600' height='400'/%3E%3Ctext x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' fill='white' font-size='32' font-family='sans-serif' font-weight='700'%3E1%3C/text%3E%3C/svg%3E" alt="Image 1">
+        </div>
+        <div class="sui-lightbox-thumb">
+          <img src="{{ placeholderBase | safe }}%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0%25' stop-color='%232DCE89'/%3E%3Cstop offset='100%25' stop-color='%2336A3F7'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect fill='url(%23g)' width='600' height='400'/%3E%3Ctext x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' fill='white' font-size='32' font-family='sans-serif' font-weight='700'%3E2%3C/text%3E%3C/svg%3E" alt="Image 2">
+        </div>
+        <div class="sui-lightbox-thumb">
+          <img src="{{ placeholderBase | safe }}%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0%25' stop-color='%23E74C6F'/%3E%3Cstop offset='100%25' stop-color='%23F5A623'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect fill='url(%23g)' width='600' height='400'/%3E%3Ctext x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' fill='white' font-size='32' font-family='sans-serif' font-weight='700'%3E3%3C/text%3E%3C/svg%3E" alt="Image 3">
+        </div>
+        <div class="sui-lightbox-thumb">
+          <img src="{{ placeholderBase | safe }}%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0%25' stop-color='%23F5A623'/%3E%3Cstop offset='100%25' stop-color='%23E74C6F'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect fill='url(%23g)' width='600' height='400'/%3E%3Ctext x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' fill='white' font-size='32' font-family='sans-serif' font-weight='700'%3E4%3C/text%3E%3C/svg%3E" alt="Image 4">
+        </div>
+        <div class="sui-lightbox-thumb">
+          <img src="{{ placeholderBase | safe }}%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0%25' stop-color='%2336A3F7'/%3E%3Cstop offset='100%25' stop-color='%235B54E0'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect fill='url(%23g)' width='600' height='400'/%3E%3Ctext x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' fill='white' font-size='32' font-family='sans-serif' font-weight='700'%3E5%3C/text%3E%3C/svg%3E" alt="Image 5">
+        </div>
+        <div class="sui-lightbox-thumb">
+          <img src="{{ placeholderBase | safe }}%3Crect fill='%231B1D2A' width='600' height='400'/%3E%3Ctext x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' fill='white' font-size='32' font-family='sans-serif' font-weight='700'%3E6%3C/text%3E%3C/svg%3E" alt="Image 6">
+        </div>
+        <div class="sui-lightbox-thumb">
+          <img src="{{ placeholderBase | safe }}%3Crect fill='%236C757D' width='600' height='400'/%3E%3Ctext x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' fill='white' font-size='32' font-family='sans-serif' font-weight='700'%3E7%3C/text%3E%3C/svg%3E" alt="Image 7">
+        </div>
+      </div>
+      <div class="sui-lightbox-vertical-main">
+        <img src="{{ placeholderBase | safe }}%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0%25' stop-color='%235B54E0'/%3E%3Cstop offset='100%25' stop-color='%2336A3F7'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect fill='url(%23g)' width='600' height='400'/%3E%3Ctext x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' fill='white' font-size='48' font-family='sans-serif' font-weight='700'%3E1%3C/text%3E%3C/svg%3E" alt="Main image">
+      </div>
+    </div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;!-- Amazon-style vertical gallery --&gt;
+&lt;div class="sui-lightbox-vertical" style="height:280px;"&gt;
+  &lt;div class="sui-lightbox-vertical-strip"&gt;
+    &lt;div class="sui-lightbox-thumb active"&gt;
+      &lt;img src="image1.jpg" alt="Image 1"&gt;
+    &lt;/div&gt;
+    &lt;div class="sui-lightbox-thumb"&gt;
+      &lt;img src="image2.jpg" alt="Image 2"&gt;
+    &lt;/div&gt;
+    &lt;div class="sui-lightbox-thumb"&gt;
+      &lt;img src="image3.jpg" alt="Image 3"&gt;
+    &lt;/div&gt;
+    &lt;div class="sui-lightbox-thumb"&gt;
+      &lt;img src="image4.jpg" alt="Image 4"&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="sui-lightbox-vertical-main"&gt;
+    &lt;img src="image1.jpg" alt="Main image"&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;!-- Click side thumbnails to swap main image --&gt;
+&lt;!-- Click main image to open lightbox with gallery nav --&gt;</pre></div>
+  </div>
+</div>
+
+<!-- With Captions -->
+<div class="pg-section" id="section-5">
+  <h3 class="pg-section-title">With Captions</h3>
+  <div class="pg-section-row">
+    <div class="sui-lightbox-grid" style="max-width:500px;">
+      <div class="sui-lightbox-thumb" data-caption="Sunset over the mountains with purple and blue hues">
+        <img src="{{ placeholderBase | safe }}%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0%25' stop-color='%235B54E0'/%3E%3Cstop offset='100%25' stop-color='%23E74C6F'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect fill='url(%23g)' width='600' height='400'/%3E%3Ctext x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' fill='white' font-size='20' font-family='sans-serif' font-weight='700'%3ESunset%3C/text%3E%3C/svg%3E" alt="Sunset">
+      </div>
+      <div class="sui-lightbox-thumb" data-caption="Lush forest canopy from above">
+        <img src="{{ placeholderBase | safe }}%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0%25' stop-color='%232DCE89'/%3E%3Cstop offset='100%25' stop-color='%23065F46'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect fill='url(%23g)' width='600' height='400'/%3E%3Ctext x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' fill='white' font-size='20' font-family='sans-serif' font-weight='700'%3EForest%3C/text%3E%3C/svg%3E" alt="Forest">
+      </div>
+      <div class="sui-lightbox-thumb" data-caption="Ocean waves at golden hour">
+        <img src="{{ placeholderBase | safe }}%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0%25' stop-color='%2336A3F7'/%3E%3Cstop offset='100%25' stop-color='%23F5A623'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect fill='url(%23g)' width='600' height='400'/%3E%3Ctext x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' fill='white' font-size='20' font-family='sans-serif' font-weight='700'%3EOcean%3C/text%3E%3C/svg%3E" alt="Ocean">
+      </div>
+    </div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-lightbox-grid"&gt;
+  &lt;div class="sui-lightbox-thumb" data-caption="Sunset over the mountains"&gt;
+    &lt;img src="sunset.jpg" alt="Sunset"&gt;
+  &lt;/div&gt;
+  &lt;div class="sui-lightbox-thumb" data-caption="Lush forest canopy"&gt;
+    &lt;img src="forest.jpg" alt="Forest"&gt;
+  &lt;/div&gt;
+  &lt;div class="sui-lightbox-thumb" data-caption="Ocean waves at golden hour"&gt;
+    &lt;img src="ocean.jpg" alt="Ocean"&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Inset -->
+<div class="pg-section" id="section-6">
+  <h3 class="pg-section-title">Inset</h3>
+  <div class="pg-section-row">
+    <div class="sui-lightbox-grid sui-lightbox-inset" style="max-width:500px;">
+      <div class="sui-lightbox-thumb">
+        <img src="{{ placeholderBase | safe }}%3Crect fill='%235B54E0' width='600' height='400'/%3E%3Ctext x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' fill='white' font-size='24' font-family='sans-serif' font-weight='700'%3EPurple%3C/text%3E%3C/svg%3E" alt="Purple">
+      </div>
+      <div class="sui-lightbox-thumb">
+        <img src="{{ placeholderBase | safe }}%3Crect fill='%232DCE89' width='600' height='400'/%3E%3Ctext x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' fill='white' font-size='24' font-family='sans-serif' font-weight='700'%3EGreen%3C/text%3E%3C/svg%3E" alt="Green">
+      </div>
+      <div class="sui-lightbox-thumb">
+        <img src="{{ placeholderBase | safe }}%3Crect fill='%23E74C6F' width='600' height='400'/%3E%3Ctext x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' fill='white' font-size='24' font-family='sans-serif' font-weight='700'%3ERed%3C/text%3E%3C/svg%3E" alt="Red">
+      </div>
+      <div class="sui-lightbox-thumb">
+        <img src="{{ placeholderBase | safe }}%3Crect fill='%23F5A623' width='600' height='400'/%3E%3Ctext x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' fill='white' font-size='24' font-family='sans-serif' font-weight='700'%3EOrange%3C/text%3E%3C/svg%3E" alt="Orange">
+      </div>
+    </div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-lightbox-grid sui-lightbox-inset"&gt;
+  &lt;div class="sui-lightbox-thumb"&gt;
+    &lt;img src="image1.jpg" alt="Image 1"&gt;
+  &lt;/div&gt;
+  &lt;div class="sui-lightbox-thumb"&gt;
+    &lt;img src="image2.jpg" alt="Image 2"&gt;
+  &lt;/div&gt;
+  &lt;div class="sui-lightbox-thumb"&gt;
+    &lt;img src="image3.jpg" alt="Image 3"&gt;
+  &lt;/div&gt;
+  &lt;div class="sui-lightbox-thumb"&gt;
+    &lt;img src="image4.jpg" alt="Image 4"&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</pre></div>
+  </div>
+</div>
