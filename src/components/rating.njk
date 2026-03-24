@@ -13,6 +13,7 @@ toc:
   - Read Only
   - With Count
   - Custom Icons
+  - Raised
   - Inset
 ---
 
@@ -481,8 +482,69 @@ toc:
   </div>
 </div>
 
-<!-- Inset -->
+<!-- Raised -->
 <div class="pg-section" id="section-8">
+  <h3 class="pg-section-title">Raised</h3>
+  <div class="pg-section-row">
+    <div style="display:flex;flex-wrap:wrap;gap:24px;align-items:center;">
+      <div class="sui-rating sui-rating-raised" data-value="4">
+        <span class="sui-rating-star active">{{ starSvg | safe }}</span>
+        <span class="sui-rating-star active">{{ starSvg | safe }}</span>
+        <span class="sui-rating-star active">{{ starSvg | safe }}</span>
+        <span class="sui-rating-star active">{{ starSvg | safe }}</span>
+        <span class="sui-rating-star">{{ starSvg | safe }}</span>
+      </div>
+      <div class="sui-rating sui-rating-raised sui-rating-primary" data-value="3">
+        <span class="sui-rating-star active">{{ starSvg | safe }}</span>
+        <span class="sui-rating-star active">{{ starSvg | safe }}</span>
+        <span class="sui-rating-star active">{{ starSvg | safe }}</span>
+        <span class="sui-rating-star">{{ starSvg | safe }}</span>
+        <span class="sui-rating-star">{{ starSvg | safe }}</span>
+      </div>
+    </div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-rating sui-rating-raised" data-value="4"&gt;
+  &lt;span class="sui-rating-star active"&gt;
+    &lt;svg viewBox="0 0 24 24"&gt;&lt;path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14 2 9.27l6.91-1.01L12 2z"/&gt;&lt;/svg&gt;
+  &lt;/span&gt;
+  &lt;span class="sui-rating-star active"&gt;
+    &lt;svg viewBox="0 0 24 24"&gt;&lt;path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14 2 9.27l6.91-1.01L12 2z"/&gt;&lt;/svg&gt;
+  &lt;/span&gt;
+  &lt;span class="sui-rating-star active"&gt;
+    &lt;svg viewBox="0 0 24 24"&gt;&lt;path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14 2 9.27l6.91-1.01L12 2z"/&gt;&lt;/svg&gt;
+  &lt;/span&gt;
+  &lt;span class="sui-rating-star active"&gt;
+    &lt;svg viewBox="0 0 24 24"&gt;&lt;path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14 2 9.27l6.91-1.01L12 2z"/&gt;&lt;/svg&gt;
+  &lt;/span&gt;
+  &lt;span class="sui-rating-star"&gt;
+    &lt;svg viewBox="0 0 24 24"&gt;&lt;path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14 2 9.27l6.91-1.01L12 2z"/&gt;&lt;/svg&gt;
+  &lt;/span&gt;
+&lt;/div&gt;
+
+&lt;div class="sui-rating sui-rating-raised sui-rating-primary" data-value="3"&gt;
+  &lt;span class="sui-rating-star active"&gt;
+    &lt;svg viewBox="0 0 24 24"&gt;&lt;path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14 2 9.27l6.91-1.01L12 2z"/&gt;&lt;/svg&gt;
+  &lt;/span&gt;
+  &lt;span class="sui-rating-star active"&gt;
+    &lt;svg viewBox="0 0 24 24"&gt;&lt;path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14 2 9.27l6.91-1.01L12 2z"/&gt;&lt;/svg&gt;
+  &lt;/span&gt;
+  &lt;span class="sui-rating-star active"&gt;
+    &lt;svg viewBox="0 0 24 24"&gt;&lt;path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14 2 9.27l6.91-1.01L12 2z"/&gt;&lt;/svg&gt;
+  &lt;/span&gt;
+  &lt;span class="sui-rating-star"&gt;
+    &lt;svg viewBox="0 0 24 24"&gt;&lt;path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14 2 9.27l6.91-1.01L12 2z"/&gt;&lt;/svg&gt;
+  &lt;/span&gt;
+  &lt;span class="sui-rating-star"&gt;
+    &lt;svg viewBox="0 0 24 24"&gt;&lt;path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14 2 9.27l6.91-1.01L12 2z"/&gt;&lt;/svg&gt;
+  &lt;/span&gt;
+&lt;/div&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Inset -->
+<div class="pg-section" id="section-9">
   <h3 class="pg-section-title">Inset</h3>
   <div class="pg-section-row">
     <div style="display:flex;flex-wrap:wrap;gap:24px;align-items:center;">
