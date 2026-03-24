@@ -53,17 +53,22 @@
       <a href="https://github.com/siddharth-bhansali/softui" target="_blank" rel="noopener">GitHub</a>
       <a href="/playground/">Playground</a>
     </div>
-    <div class="mobile-drawer-cat">Forms</div>
-    {%- for item in nav.forms %}
+    {% set mobileGroups = [
+      { key: "forms", label: "Forms" },
+      { key: "general", label: "General" },
+      { key: "dataDisplay", label: "Data Display" },
+      { key: "feedback", label: "Feedback" },
+      { key: "navigation", label: "Navigation" },
+      { key: "overlays", label: "Overlays" },
+      { key: "layout", label: "Layout" },
+      { key: "media", label: "Media" },
+      { key: "utilities", label: "Utilities" }
+    ] %}
+    {%- for group in mobileGroups %}
+    <div class="mobile-drawer-cat">{{ group.label }}</div>
+    {%- for item in nav[group.key] %}
     <a class="mobile-drawer-link{% if item.id == componentId %} active{% endif %}" href="{{ item.url }}">{{ item.name }}</a>
     {%- endfor %}
-    <div class="mobile-drawer-cat">Components</div>
-    {%- for item in nav.components %}
-    <a class="mobile-drawer-link{% if item.id == componentId %} active{% endif %}" href="{{ item.url }}">{{ item.name }}</a>
-    {%- endfor %}
-    <div class="mobile-drawer-cat">Utilities</div>
-    {%- for item in nav.utilities %}
-    <a class="mobile-drawer-link{% if item.id == componentId %} active{% endif %}" href="{{ item.url }}">{{ item.name }}</a>
     {%- endfor %}
   </nav>
 
@@ -324,24 +329,25 @@
           <a class="sui-command-item" href="/getting-started/">Get Started</a>
           <a class="sui-command-item" href="/playground/">Playground</a>
         </div>
+        {% set searchGroups = [
+          { key: "forms", label: "Forms" },
+          { key: "general", label: "General" },
+          { key: "dataDisplay", label: "Data Display" },
+          { key: "feedback", label: "Feedback" },
+          { key: "navigation", label: "Navigation" },
+          { key: "overlays", label: "Overlays" },
+          { key: "layout", label: "Layout" },
+          { key: "media", label: "Media" },
+          { key: "utilities", label: "Utilities" }
+        ] %}
+        {%- for group in searchGroups %}
         <div class="sui-command-group">
-          <div class="sui-command-group-label">Forms</div>
-          {%- for item in nav.forms %}
-          <a class="sui-command-item" href="{{ item.url }}"{% if item.id == "forms" %} data-keywords="forms form input text password number tags"{% endif %}{% if item.id == "toggles" %} data-keywords="toggles checkbox radio switch check"{% endif %}>{{ item.name }}</a>
+          <div class="sui-command-group-label">{{ group.label }}</div>
+          {%- for item in nav[group.key] %}
+          <a class="sui-command-item" href="{{ item.url }}"{% if item.id == "forms" %} data-keywords="forms form input text password number tags"{% endif %}{% if item.id == "toggles" %} data-keywords="toggles checkbox radio switch check"{% endif %}{% if item.id == "chatbubble" %} data-keywords="chat message bubble conversation"{% endif %}{% if item.id == "colorpicker" %} data-keywords="color picker swatch spectrum"{% endif %}{% if item.id == "fileupload" %} data-keywords="file upload drop zone drag"{% endif %}{% if item.id == "radialprogress" %} data-keywords="radial progress circle ring percentage"{% endif %}{% if item.id == "statcard" %} data-keywords="stat card metric kpi statistic"{% endif %}{% if item.id == "datatable" %} data-keywords="data table sort filter paginate"{% endif %}{% if item.id == "dragdrop" %} data-keywords="drag drop sortable kanban"{% endif %}{% if item.id == "hovercard" %} data-keywords="hover card popup preview"{% endif %}{% if item.id == "inputotp" %} data-keywords="input otp code verification pin"{% endif %}{% if item.id == "togglegroup" %} data-keywords="toggle group segment button"{% endif %}{% if item.id == "contextmenu" %} data-keywords="context menu right click"{% endif %}{% if item.id == "buttongroup" %} data-keywords="button group joined"{% endif %}{% if item.id == "scrollarea" %} data-keywords="scroll area scrollbar overflow"{% endif %}{% if item.id == "loadingoverlay" %} data-keywords="loading overlay spinner blocking"{% endif %}{% if item.id == "lightbox" %} data-keywords="image lightbox gallery zoom preview"{% endif %}{% if item.id == "speeddial" %} data-keywords="speed dial fab floating action button"{% endif %}{% if item.id == "diff" %} data-keywords="diff compare slider before after"{% endif %}{% if item.id == "treeview" %} data-keywords="tree view hierarchy folder file"{% endif %}>{{ item.name }}</a>
           {%- endfor %}
         </div>
-        <div class="sui-command-group">
-          <div class="sui-command-group-label">Components</div>
-          {%- for item in nav.components %}
-          <a class="sui-command-item" href="{{ item.url }}"{% if item.id == "chatbubble" %} data-keywords="chat message bubble conversation"{% endif %}{% if item.id == "colorpicker" %} data-keywords="color picker swatch spectrum"{% endif %}{% if item.id == "fileupload" %} data-keywords="file upload drop zone drag"{% endif %}{% if item.id == "radialprogress" %} data-keywords="radial progress circle ring percentage"{% endif %}{% if item.id == "statcard" %} data-keywords="stat card metric kpi statistic"{% endif %}{% if item.id == "datatable" %} data-keywords="data table sort filter paginate"{% endif %}{% if item.id == "dragdrop" %} data-keywords="drag drop sortable kanban"{% endif %}{% if item.id == "hovercard" %} data-keywords="hover card popup preview"{% endif %}{% if item.id == "inputotp" %} data-keywords="input otp code verification pin"{% endif %}{% if item.id == "togglegroup" %} data-keywords="toggle group segment button"{% endif %}{% if item.id == "contextmenu" %} data-keywords="context menu right click"{% endif %}{% if item.id == "buttongroup" %} data-keywords="button group joined"{% endif %}{% if item.id == "scrollarea" %} data-keywords="scroll area scrollbar overflow"{% endif %}>{{ item.name }}</a>
-          {%- endfor %}
-        </div>
-        <div class="sui-command-group">
-          <div class="sui-command-group-label">Utilities</div>
-          {%- for item in nav.utilities %}
-          <a class="sui-command-item" href="{{ item.url }}">{{ item.name }}</a>
-          {%- endfor %}
-        </div>
+        {%- endfor %}
         <div class="sui-command-empty" style="display:none;">No results found.</div>
       </div>
     </div>

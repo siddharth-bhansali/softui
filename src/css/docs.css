@@ -221,9 +221,12 @@
   text-transform: uppercase;
   letter-spacing: 1px;
   color: var(--sui-text-light);
-  padding: 16px 12px 6px;
+  padding: 14px 12px 6px;
 }
-.pg-sidebar-cat:first-child { padding-top: 0; }
+
+.pg-sidebar-cat:first-child {
+  padding-top: 0;
+}
 .pg-sidebar-link {
   display: block;
   padding: 7px 12px;

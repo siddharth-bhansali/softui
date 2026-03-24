@@ -5,19 +5,22 @@ layout: base.njk
 
   <!-- Left Sidebar -->
   <aside class="docs-pg-sidebar">
-    <div class="pg-sidebar-cat">Forms</div>
-    {%- for item in nav.forms %}
+    {% set groups = [
+      { key: "forms", label: "Forms" },
+      { key: "general", label: "General" },
+      { key: "dataDisplay", label: "Data Display" },
+      { key: "feedback", label: "Feedback" },
+      { key: "navigation", label: "Navigation" },
+      { key: "overlays", label: "Overlays" },
+      { key: "layout", label: "Layout" },
+      { key: "media", label: "Media" },
+      { key: "utilities", label: "Utilities" }
+    ] %}
+    {%- for group in groups %}
+    <div class="pg-sidebar-cat">{{ group.label }}</div>
+    {%- for item in nav[group.key] %}
     <a class="pg-sidebar-link{% if item.id == componentId %} active{% endif %}" href="{{ item.url }}">{{ item.name }}</a>
     {%- endfor %}
-
-    <div class="pg-sidebar-cat">Components</div>
-    {%- for item in nav.components %}
-    <a class="pg-sidebar-link{% if item.id == componentId %} active{% endif %}" href="{{ item.url }}">{{ item.name }}</a>
-    {%- endfor %}
-
-    <div class="pg-sidebar-cat">Utilities</div>
-    {%- for item in nav.utilities %}
-    <a class="pg-sidebar-link{% if item.id == componentId %} active{% endif %}" href="{{ item.url }}">{{ item.name }}</a>
     {%- endfor %}
   </aside>
 
