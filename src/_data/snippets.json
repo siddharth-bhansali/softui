@@ -329,6 +329,11 @@
       "code": "<div class=\"sui-radial\" data-value=\"75\">\n  <svg viewBox=\"0 0 100 100\">\n    <circle class=\"sui-radial-track\" cx=\"50\" cy=\"50\" r=\"40\"/>\n    <circle class=\"sui-radial-fill\" cx=\"50\" cy=\"50\" r=\"40\"/>\n  </svg>\n  <span class=\"sui-radial-value\">75%</span>\n</div>"
     },
     {
+      "id": "loadingoverlay",
+      "label": "Loading Overlay",
+      "code": "<div class=\"sui-card\" style=\"position:relative;padding:20px;\">\n  <h4>Dashboard</h4>\n  <p>Revenue: $12,450</p>\n  <div class=\"sui-loading-overlay active\">\n    <div class=\"sui-spinner sui-spinner-primary\" role=\"status\" aria-label=\"Loading\"></div>\n    <span class=\"sui-loading-overlay-text\">Loading...</span>\n  </div>\n</div>"
+    },
+    {
       "id": "lightbox",
       "label": "Image Lightbox",
       "code": "<div class=\"sui-lightbox-grid\" style=\"max-width:400px;\">\n  <div class=\"sui-lightbox-thumb\" data-caption=\"Purple gradient\">\n    <img src=\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='400'%3E%3Crect fill='%235B54E0' width='600' height='400'/%3E%3Ctext x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' fill='white' font-size='24' font-family='sans-serif'%3E1%3C/text%3E%3C/svg%3E\" alt=\"Image 1\">\n  </div>\n  <div class=\"sui-lightbox-thumb\" data-caption=\"Green gradient\">\n    <img src=\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='400'%3E%3Crect fill='%232DCE89' width='600' height='400'/%3E%3Ctext x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' fill='white' font-size='24' font-family='sans-serif'%3E2%3C/text%3E%3C/svg%3E\" alt=\"Image 2\">\n  </div>\n</div>"

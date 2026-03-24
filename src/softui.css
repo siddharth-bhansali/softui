@@ -11352,3 +11352,57 @@ a.sui-btn-warning:visited {
   font-size: 13px;
   font-weight: 600;
 }
+
+/* =========================================
+   Loading Overlay
+   ========================================= */
+.sui-loading-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  background: rgba(var(--sui-bg-rgb, 230, 232, 240), 0.8);
+  border-radius: inherit;
+  z-index: 10;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.25s ease, visibility 0.25s ease;
+}
+
+.sui-loading-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.sui-loading-overlay-text {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--sui-text-muted);
+}
+
+/* Blur variant */
+.sui-loading-blur {
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  background: rgba(var(--sui-bg-rgb, 230, 232, 240), 0.5);
+}
+
+/* Fullscreen */
+.sui-loading-fullscreen {
+  position: fixed;
+  inset: 0;
+  border-radius: 0;
+  z-index: 1200;
+}
+
+/* Dark mode support */
+[data-theme="dark"] .sui-loading-overlay {
+  background: rgba(27, 29, 42, 0.8);
+}
+
+[data-theme="dark"] .sui-loading-blur {
+  background: rgba(27, 29, 42, 0.5);
+}

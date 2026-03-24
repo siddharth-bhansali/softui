@@ -1,0 +1,313 @@
+---
+layout: component.njk
+title: Loading Overlay
+description: Full-container overlay with spinner for blocking UI during async operations. Supports blur, text, fullscreen, and color variants.
+componentId: loadingoverlay
+hasControls: false
+requiresJs: true
+toc:
+  - Default
+  - With Text
+  - Spinner Variants
+  - Blur
+  - Colors
+  - Fullscreen
+---
+
+<!-- Default -->
+<div class="pg-section" id="section-1">
+  <h3 class="pg-section-title">Default</h3>
+  <div class="pg-section-row">
+    <div style="display:flex;flex-wrap:wrap;gap:24px;">
+      <div class="sui-card" style="position:relative;width:300px;padding:20px;">
+        <h4 style="margin-bottom:8px;">Dashboard</h4>
+        <p style="font-size:13px;color:var(--sui-text-muted);">Revenue this month: $12,450</p>
+        <p style="font-size:13px;color:var(--sui-text-muted);">Active users: 1,283</p>
+        <div class="sui-loading-overlay active">
+          <div class="sui-spinner sui-spinner-primary" role="status" aria-label="Loading"></div>
+        </div>
+      </div>
+      <div class="sui-card" style="position:relative;width:300px;padding:20px;">
+        <h4 style="margin-bottom:8px;">Analytics</h4>
+        <p style="font-size:13px;color:var(--sui-text-muted);">Page views: 45,200</p>
+        <p style="font-size:13px;color:var(--sui-text-muted);">Bounce rate: 32%</p>
+      </div>
+    </div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;!-- Parent needs position:relative --&gt;
+&lt;div class="sui-card" style="position:relative;"&gt;
+  &lt;h4&gt;Dashboard&lt;/h4&gt;
+  &lt;p&gt;Revenue this month: $12,450&lt;/p&gt;
+
+  &lt;!-- Add .active to show the overlay --&gt;
+  &lt;div class="sui-loading-overlay active"&gt;
+    &lt;div class="sui-spinner sui-spinner-primary" role="status" aria-label="Loading"&gt;&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- Toggle with JavaScript --&gt;
+&lt;script&gt;
+  // Show
+  overlay.classList.add('active');
+  // Hide
+  overlay.classList.remove('active');
+&lt;/script&gt;</pre></div>
+  </div>
+</div>
+
+<!-- With Text -->
+<div class="pg-section" id="section-2">
+  <h3 class="pg-section-title">With Text</h3>
+  <div class="pg-section-row">
+    <div style="display:flex;flex-wrap:wrap;gap:24px;">
+      <div class="sui-card" style="position:relative;width:300px;padding:20px;">
+        <h4 style="margin-bottom:8px;">User Profile</h4>
+        <p style="font-size:13px;color:var(--sui-text-muted);">Name: John Doe</p>
+        <p style="font-size:13px;color:var(--sui-text-muted);">Email: john@example.com</p>
+        <p style="font-size:13px;color:var(--sui-text-muted);">Role: Admin</p>
+        <div class="sui-loading-overlay active">
+          <div class="sui-spinner sui-spinner-primary" role="status" aria-label="Loading"></div>
+          <span class="sui-loading-overlay-text">Loading...</span>
+        </div>
+      </div>
+      <div class="sui-card" style="position:relative;width:300px;padding:20px;">
+        <h4 style="margin-bottom:8px;">Settings</h4>
+        <p style="font-size:13px;color:var(--sui-text-muted);">Theme: Dark</p>
+        <p style="font-size:13px;color:var(--sui-text-muted);">Language: English</p>
+        <p style="font-size:13px;color:var(--sui-text-muted);">Notifications: On</p>
+        <div class="sui-loading-overlay active">
+          <div class="sui-spinner sui-spinner-primary" role="status" aria-label="Loading"></div>
+          <span class="sui-loading-overlay-text">Saving changes...</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-card" style="position:relative;"&gt;
+  &lt;!-- card content --&gt;
+  &lt;div class="sui-loading-overlay active"&gt;
+    &lt;div class="sui-spinner sui-spinner-primary" role="status" aria-label="Loading"&gt;&lt;/div&gt;
+    &lt;span class="sui-loading-overlay-text"&gt;Loading...&lt;/span&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Spinner Variants -->
+<div class="pg-section" id="section-3">
+  <h3 class="pg-section-title">Spinner Variants</h3>
+  <div class="pg-section-row">
+    <div style="display:flex;flex-wrap:wrap;gap:16px;">
+      <div style="text-align:center;">
+        <div class="sui-card" style="position:relative;width:140px;height:100px;padding:16px;">
+          <div class="sui-loading-overlay active">
+            <div class="sui-spinner sui-spinner-primary" role="status" aria-label="Loading"></div>
+          </div>
+        </div>
+        <div style="font-size:11px;color:var(--sui-text-muted);margin-top:6px;">Default</div>
+      </div>
+      <div style="text-align:center;">
+        <div class="sui-card" style="position:relative;width:140px;height:100px;padding:16px;">
+          <div class="sui-loading-overlay active">
+            <div class="sui-spinner sui-spinner-primary sui-spinner-wobble" role="status" aria-label="Loading"></div>
+          </div>
+        </div>
+        <div style="font-size:11px;color:var(--sui-text-muted);margin-top:6px;">Wobble</div>
+      </div>
+      <div style="text-align:center;">
+        <div class="sui-card" style="position:relative;width:140px;height:100px;padding:16px;">
+          <div class="sui-loading-overlay active">
+            <div class="sui-spinner-elastic sui-spinner-primary" role="status" aria-label="Loading"><svg viewBox="0 0 50 50"><circle cx="25" cy="25" r="20"/></svg></div>
+          </div>
+        </div>
+        <div style="font-size:11px;color:var(--sui-text-muted);margin-top:6px;">Elastic</div>
+      </div>
+      <div style="text-align:center;">
+        <div class="sui-card" style="position:relative;width:140px;height:100px;padding:16px;">
+          <div class="sui-loading-overlay active">
+            <div class="sui-spinner-grow sui-spinner-primary" role="status" aria-label="Loading"></div>
+          </div>
+        </div>
+        <div style="font-size:11px;color:var(--sui-text-muted);margin-top:6px;">Growing</div>
+      </div>
+      <div style="text-align:center;">
+        <div class="sui-card" style="position:relative;width:140px;height:100px;padding:16px;">
+          <div class="sui-loading-overlay active">
+            <div class="sui-spinner-pulse sui-spinner-primary" role="status" aria-label="Loading"></div>
+          </div>
+        </div>
+        <div style="font-size:11px;color:var(--sui-text-muted);margin-top:6px;">Pulse</div>
+      </div>
+      <div style="text-align:center;">
+        <div class="sui-card" style="position:relative;width:140px;height:100px;padding:16px;">
+          <div class="sui-loading-overlay active">
+            <div class="sui-spinner-dots sui-spinner-primary" role="status" aria-label="Loading"><span></span><span></span><span></span></div>
+          </div>
+        </div>
+        <div style="font-size:11px;color:var(--sui-text-muted);margin-top:6px;">Dots</div>
+      </div>
+    </div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;!-- Use any sui-spinner variant inside the overlay --&gt;
+
+&lt;!-- Default --&gt;
+&lt;div class="sui-loading-overlay active"&gt;
+  &lt;div class="sui-spinner sui-spinner-primary" role="status" aria-label="Loading"&gt;&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- Wobble --&gt;
+&lt;div class="sui-loading-overlay active"&gt;
+  &lt;div class="sui-spinner sui-spinner-wobble" role="status" aria-label="Loading"&gt;&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- Elastic --&gt;
+&lt;div class="sui-loading-overlay active"&gt;
+  &lt;div class="sui-spinner sui-spinner-elastic" role="status" aria-label="Loading"&gt;
+    &lt;svg viewBox="0 0 40 40"&gt;&lt;circle cx="20" cy="20" r="18"/&gt;&lt;/svg&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- Growing --&gt;
+&lt;div class="sui-loading-overlay active"&gt;
+  &lt;div class="sui-spinner sui-spinner-grow" role="status" aria-label="Loading"&gt;&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- Pulse --&gt;
+&lt;div class="sui-loading-overlay active"&gt;
+  &lt;div class="sui-spinner sui-spinner-pulse" role="status" aria-label="Loading"&gt;&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- Dots --&gt;
+&lt;div class="sui-loading-overlay active"&gt;
+  &lt;div class="sui-spinner-dots sui-spinner-primary" role="status" aria-label="Loading"&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;/div&gt;
+&lt;/div&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Blur -->
+<div class="pg-section" id="section-4">
+  <h3 class="pg-section-title">Blur</h3>
+  <div class="pg-section-row">
+    <div style="display:flex;flex-wrap:wrap;gap:24px;">
+      <div class="sui-card" style="position:relative;width:300px;padding:20px;">
+        <h4 style="margin-bottom:8px;">Order Summary</h4>
+        <p style="font-size:13px;color:var(--sui-text-muted);">Items: 3</p>
+        <p style="font-size:13px;color:var(--sui-text-muted);">Subtotal: $89.97</p>
+        <p style="font-size:13px;color:var(--sui-text-muted);">Shipping: $4.99</p>
+        <p style="font-size:13px;font-weight:700;margin-top:8px;">Total: $94.96</p>
+        <div class="sui-loading-overlay sui-loading-blur active">
+          <div class="sui-spinner sui-spinner-primary" role="status" aria-label="Loading"></div>
+          <span class="sui-loading-overlay-text">Processing payment...</span>
+        </div>
+      </div>
+      <div class="sui-card" style="position:relative;width:300px;padding:20px;">
+        <h4 style="margin-bottom:8px;">Inventory</h4>
+        <p style="font-size:13px;color:var(--sui-text-muted);">In stock: 142</p>
+        <p style="font-size:13px;color:var(--sui-text-muted);">Reserved: 28</p>
+        <p style="font-size:13px;color:var(--sui-text-muted);">Low stock: 5</p>
+        <p style="font-size:13px;color:var(--sui-text-muted);">Out of stock: 2</p>
+        <div class="sui-loading-overlay sui-loading-blur active">
+          <div class="sui-spinner sui-spinner-primary" role="status" aria-label="Loading"></div>
+          <span class="sui-loading-overlay-text">Syncing inventory...</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-card" style="position:relative;"&gt;
+  &lt;!-- card content --&gt;
+  &lt;div class="sui-loading-overlay sui-loading-blur active"&gt;
+    &lt;div class="sui-spinner sui-spinner-primary" role="status" aria-label="Loading"&gt;&lt;/div&gt;
+    &lt;span class="sui-loading-overlay-text"&gt;Processing payment...&lt;/span&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Colors -->
+<div class="pg-section" id="section-5">
+  <h3 class="pg-section-title">Colors</h3>
+  <div class="pg-section-row">
+    <div style="display:flex;flex-wrap:wrap;gap:24px;">
+      <div class="sui-card" style="position:relative;width:200px;padding:20px;text-align:center;">
+        <p style="font-size:13px;color:var(--sui-text-muted);">Primary</p>
+        <div class="sui-loading-overlay active">
+          <div class="sui-spinner sui-spinner-primary" role="status" aria-label="Loading"></div>
+        </div>
+      </div>
+      <div class="sui-card" style="position:relative;width:200px;padding:20px;text-align:center;">
+        <p style="font-size:13px;color:var(--sui-text-muted);">Success</p>
+        <div class="sui-loading-overlay active">
+          <div class="sui-spinner sui-spinner-success" role="status" aria-label="Loading"></div>
+        </div>
+      </div>
+      <div class="sui-card" style="position:relative;width:200px;padding:20px;text-align:center;">
+        <p style="font-size:13px;color:var(--sui-text-muted);">Danger</p>
+        <div class="sui-loading-overlay active">
+          <div class="sui-spinner sui-spinner-danger" role="status" aria-label="Loading"></div>
+        </div>
+      </div>
+      <div class="sui-card" style="position:relative;width:200px;padding:20px;text-align:center;">
+        <p style="font-size:13px;color:var(--sui-text-muted);">Dots</p>
+        <div class="sui-loading-overlay active">
+          <div class="sui-spinner-dots sui-spinner-primary" role="status" aria-label="Loading"><span></span><span></span><span></span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;!-- Use any sui-spinner variant inside the overlay --&gt;
+&lt;div class="sui-loading-overlay active"&gt;
+  &lt;div class="sui-spinner sui-spinner-primary" role="status" aria-label="Loading"&gt;&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="sui-loading-overlay active"&gt;
+  &lt;div class="sui-spinner sui-spinner-success" role="status" aria-label="Loading"&gt;&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="sui-loading-overlay active"&gt;
+  &lt;div class="sui-spinner sui-spinner-danger" role="status" aria-label="Loading"&gt;&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="sui-loading-overlay active"&gt;
+  &lt;div class="sui-spinner-dots sui-spinner-primary" role="status" aria-label="Loading"&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;/div&gt;
+&lt;/div&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Fullscreen -->
+<div class="pg-section" id="section-6">
+  <h3 class="pg-section-title">Fullscreen</h3>
+  <div class="pg-section-row">
+    <button class="sui-btn sui-btn-primary" onclick="document.getElementById('demoFullscreenLoader').classList.add('active');setTimeout(function(){document.getElementById('demoFullscreenLoader').classList.remove('active');},2000);">Show Fullscreen Loader (2s)</button>
+    <div class="sui-loading-overlay sui-loading-fullscreen sui-loading-blur" id="demoFullscreenLoader">
+      <div class="sui-spinner sui-spinner-primary" role="status" aria-label="Loading" style="width:40px;height:40px;"></div>
+      <span class="sui-loading-overlay-text">Loading application...</span>
+    </div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;!-- Fullscreen overlay — covers entire viewport --&gt;
+&lt;div class="sui-loading-overlay sui-loading-fullscreen sui-loading-blur active"&gt;
+  &lt;div class="sui-spinner sui-spinner-primary" role="status" aria-label="Loading" style="width:40px;height:40px;"&gt;&lt;/div&gt;
+  &lt;span class="sui-loading-overlay-text"&gt;Loading application...&lt;/span&gt;
+&lt;/div&gt;
+
+&lt;script&gt;
+  // Show fullscreen loader
+  document.getElementById('loader').classList.add('active');
+
+  // Hide after async operation
+  fetch('/api/data').then(function() {
+    document.getElementById('loader').classList.remove('active');
+  });
+&lt;/script&gt;</pre></div>
+  </div>
+</div>
