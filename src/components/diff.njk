@@ -1,0 +1,90 @@
+---
+layout: component.njk
+title: Diff
+description: Image compare slider for before/after comparisons with draggable divider, labels, and vertical mode.
+componentId: diff
+hasControls: false
+requiresJs: true
+toc:
+  - Default
+  - With Labels
+  - Vertical
+---
+
+{% set imgBefore %}data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='400'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0%25' stop-color='%231B1D2A'/%3E%3Cstop offset='100%25' stop-color='%236C757D'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect fill='url(%23g)' width='600' height='400'/%3E%3Ctext x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' fill='white' font-size='28' font-family='sans-serif' font-weight='700'%3EBefore%3C/text%3E%3C/svg%3E{% endset %}
+{% set imgAfter %}data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='400'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0%25' stop-color='%235B54E0'/%3E%3Cstop offset='100%25' stop-color='%2336A3F7'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect fill='url(%23g)' width='600' height='400'/%3E%3Ctext x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' fill='white' font-size='28' font-family='sans-serif' font-weight='700'%3EAfter%3C/text%3E%3C/svg%3E{% endset %}
+{% set imgOld %}data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='400'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0%25' stop-color='%23E74C6F'/%3E%3Cstop offset='100%25' stop-color='%23F5A623'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect fill='url(%23g)' width='600' height='400'/%3E%3Ctext x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' fill='white' font-size='28' font-family='sans-serif' font-weight='700'%3EOld Design%3C/text%3E%3C/svg%3E{% endset %}
+{% set imgNew %}data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='400'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0%25' stop-color='%232DCE89'/%3E%3Cstop offset='100%25' stop-color='%2336A3F7'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect fill='url(%23g)' width='600' height='400'/%3E%3Ctext x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' fill='white' font-size='28' font-family='sans-serif' font-weight='700'%3ENew Design%3C/text%3E%3C/svg%3E{% endset %}
+
+<!-- Default -->
+<div class="pg-section" id="section-1">
+  <h3 class="pg-section-title">Default</h3>
+  <div class="pg-section-row">
+    <div class="sui-diff" data-sui-diff style="max-width:500px;">
+      <img class="sui-diff-before" src="{{ imgBefore }}" alt="Before">
+      <img class="sui-diff-after" src="{{ imgAfter }}" alt="After">
+      <div class="sui-diff-handle"><div class="sui-diff-handle-arrows"><svg viewBox="0 0 6 10"><path d="M6 0L0 5l6 5z"/></svg><svg viewBox="0 0 6 10"><path d="M0 0l6 5-6 5z"/></svg></div></div>
+    </div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-diff" data-sui-diff&gt;
+  &lt;img class="sui-diff-before" src="before.jpg" alt="Before"&gt;
+  &lt;img class="sui-diff-after" src="after.jpg" alt="After"&gt;
+  &lt;div class="sui-diff-handle"&gt;&lt;div class="sui-diff-handle-arrows"&gt;&lt;svg viewBox="0 0 6 10"&gt;&lt;path d="M6 0L0 5l6 5z"/&gt;&lt;/svg&gt;&lt;svg viewBox="0 0 6 10"&gt;&lt;path d="M0 0l6 5-6 5z"/&gt;&lt;/svg&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- Drag the handle left/right to compare --&gt;
+&lt;!-- Touch supported on mobile --&gt;</pre></div>
+  </div>
+</div>
+
+<!-- With Labels -->
+<div class="pg-section" id="section-2">
+  <h3 class="pg-section-title">With Labels</h3>
+  <div class="pg-section-row">
+    <div class="sui-diff" data-sui-diff style="max-width:500px;">
+      <img class="sui-diff-before" src="{{ imgOld }}" alt="Old Design">
+      <img class="sui-diff-after" src="{{ imgNew }}" alt="New Design">
+      <div class="sui-diff-handle"><div class="sui-diff-handle-arrows"><svg viewBox="0 0 6 10"><path d="M6 0L0 5l6 5z"/></svg><svg viewBox="0 0 6 10"><path d="M0 0l6 5-6 5z"/></svg></div></div>
+      <span class="sui-diff-label-before">Before</span>
+      <span class="sui-diff-label-after">After</span>
+    </div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-diff" data-sui-diff&gt;
+  &lt;img class="sui-diff-before" src="old-design.jpg" alt="Old Design"&gt;
+  &lt;img class="sui-diff-after" src="new-design.jpg" alt="New Design"&gt;
+  &lt;div class="sui-diff-handle"&gt;&lt;div class="sui-diff-handle-arrows"&gt;&lt;svg viewBox="0 0 6 10"&gt;&lt;path d="M6 0L0 5l6 5z"/&gt;&lt;/svg&gt;&lt;svg viewBox="0 0 6 10"&gt;&lt;path d="M0 0l6 5-6 5z"/&gt;&lt;/svg&gt;&lt;/div&gt;&lt;/div&gt;
+  &lt;span class="sui-diff-label-before"&gt;Before&lt;/span&gt;
+  &lt;span class="sui-diff-label-after"&gt;After&lt;/span&gt;
+&lt;/div&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Vertical -->
+<div class="pg-section" id="section-3">
+  <h3 class="pg-section-title">Vertical</h3>
+  <div class="pg-section-row">
+    <div class="sui-diff sui-diff-vertical" data-sui-diff style="max-width:500px;">
+      <img class="sui-diff-before" src="{{ imgBefore }}" alt="Before">
+      <img class="sui-diff-after" src="{{ imgAfter }}" alt="After">
+      <div class="sui-diff-handle"><div class="sui-diff-handle-arrows"><svg viewBox="0 0 10 6"><path d="M0 6l5-6 5 6z"/></svg><svg viewBox="0 0 10 6"><path d="M0 0l5 6 5-6z"/></svg></div></div>
+      <span class="sui-diff-label-before">Before</span>
+      <span class="sui-diff-label-after">After</span>
+    </div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-diff sui-diff-vertical" data-sui-diff&gt;
+  &lt;img class="sui-diff-before" src="before.jpg" alt="Before"&gt;
+  &lt;img class="sui-diff-after" src="after.jpg" alt="After"&gt;
+  &lt;div class="sui-diff-handle"&gt;&lt;div class="sui-diff-handle-arrows"&gt;&lt;svg viewBox="0 0 6 10"&gt;&lt;path d="M6 0L0 5l6 5z"/&gt;&lt;/svg&gt;&lt;svg viewBox="0 0 6 10"&gt;&lt;path d="M0 0l6 5-6 5z"/&gt;&lt;/svg&gt;&lt;/div&gt;&lt;/div&gt;
+  &lt;span class="sui-diff-label-before"&gt;Before&lt;/span&gt;
+  &lt;span class="sui-diff-label-after"&gt;After&lt;/span&gt;
+&lt;/div&gt;
+
+&lt;!-- Drag the handle up/down --&gt;</pre></div>
+  </div>
+</div>

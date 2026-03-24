@@ -11406,3 +11406,131 @@ a.sui-btn-warning:visited {
 [data-theme="dark"] .sui-loading-blur {
   background: rgba(27, 29, 42, 0.5);
 }
+
+/* =========================================
+   Diff — Image Compare Slider
+   ========================================= */
+.sui-diff {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--sui-radius);
+  box-shadow: var(--sui-shadow-raised-sm);
+  cursor: ew-resize;
+  user-select: none;
+}
+
+.sui-diff .sui-diff-after {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.sui-diff .sui-diff-before {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: left;
+  z-index: 1;
+  clip-path: inset(0 50% 0 0);
+}
+
+.sui-diff-handle {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 3px;
+  background: #fff;
+  z-index: 2;
+  transform: translateX(-50%);
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.3);
+}
+
+.sui-diff-handle::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.sui-diff-handle-arrows {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  z-index: 1;
+}
+
+.sui-diff-handle-arrows svg {
+  width: 8px;
+  height: 12px;
+  fill: var(--sui-text-muted);
+}
+
+/* Labels */
+.sui-diff-label-before,
+.sui-diff-label-after {
+  position: absolute;
+  bottom: 12px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #fff;
+  background: rgba(0, 0, 0, 0.5);
+  padding: 4px 10px;
+  border-radius: var(--sui-radius-sm);
+  z-index: 3;
+}
+
+.sui-diff-label-before {
+  left: 12px;
+}
+
+.sui-diff-label-after {
+  right: 12px;
+}
+
+/* Vertical mode */
+.sui-diff-vertical {
+  cursor: ns-resize;
+}
+
+.sui-diff-vertical .sui-diff-before {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top;
+  clip-path: inset(0 0 50% 0);
+}
+
+.sui-diff-vertical .sui-diff-handle {
+  top: 50%;
+  left: 0;
+  right: 0;
+  bottom: auto;
+  width: 100%;
+  height: 3px;
+  transform: translateY(-50%);
+}
+
+.sui-diff-vertical .sui-diff-handle-arrows {
+  flex-direction: column;
+  gap: 4px;
+}
+
+.sui-diff-vertical .sui-diff-handle-arrows svg {
+  width: 12px;
+  height: 8px;
+}
+

@@ -3772,6 +3772,64 @@ const SoftUI = (() => {
   });
 
   // =========================================
+  // Diff — Image Compare Slider
+  // =========================================
+  function initDiffSliders() {
+    document.querySelectorAll('.sui-diff[data-sui-diff]').forEach(function(diff) {
+      if (diff.dataset.suiDiffInit) return;
+      diff.dataset.suiDiffInit = '1';
+      var handle = diff.querySelector('.sui-diff-handle');
+      var before = diff.querySelector('.sui-diff-before');
+      if (!handle || !before) return;
+      var isVertical = diff.classList.contains('sui-diff-vertical');
+
+      function onMove(e) {
+        e.preventDefault();
+        var rect = diff.getBoundingClientRect();
+        var pos;
+        if (isVertical) {
+          var clientY = e.touches ? e.touches[0].clientY : e.clientY;
+          pos = Math.max(0, Math.min(1, (clientY - rect.top) / rect.height));
+          var pct = (pos * 100);
+          before.style.clipPath = 'inset(0 0 ' + (100 - pct) + '% 0)';
+          handle.style.top = pct + '%';
+        } else {
+          var clientX = e.touches ? e.touches[0].clientX : e.clientX;
+          pos = Math.max(0, Math.min(1, (clientX - rect.left) / rect.width));
+          var pct = (pos * 100);
+          before.style.clipPath = 'inset(0 ' + (100 - pct) + '% 0 0)';
+          handle.style.left = pct + '%';
+        }
+      }
+
+      function onDown(e) {
+        e.preventDefault();
+        onMove(e);
+        document.addEventListener('mousemove', onMove);
+        document.addEventListener('mouseup', onUp);
+        document.addEventListener('touchmove', onMove, { passive: false });
+        document.addEventListener('touchend', onUp);
+      }
+
+      function onUp() {
+        document.removeEventListener('mousemove', onMove);
+        document.removeEventListener('mouseup', onUp);
+        document.removeEventListener('touchmove', onMove);
+        document.removeEventListener('touchend', onUp);
+      }
+
+      diff.addEventListener('mousedown', onDown);
+      diff.addEventListener('touchstart', onDown, { passive: false });
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initDiffSliders);
+  } else {
+    initDiffSliders();
+  }
+
+  // =========================================
   // Speed Dial
   // =========================================
   document.addEventListener('click', function(e) {

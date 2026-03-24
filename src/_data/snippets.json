@@ -329,6 +329,11 @@
       "code": "<div class=\"sui-radial\" data-value=\"75\">\n  <svg viewBox=\"0 0 100 100\">\n    <circle class=\"sui-radial-track\" cx=\"50\" cy=\"50\" r=\"40\"/>\n    <circle class=\"sui-radial-fill\" cx=\"50\" cy=\"50\" r=\"40\"/>\n  </svg>\n  <span class=\"sui-radial-value\">75%</span>\n</div>"
     },
     {
+      "id": "diff",
+      "label": "Diff",
+      "code": "<div class=\"sui-diff\" data-sui-diff style=\"max-width:500px;\">\n  <img class=\"sui-diff-before\" src=\"before.jpg\" alt=\"Before\">\n  <img class=\"sui-diff-after\" src=\"after.jpg\" alt=\"After\">\n  <div class=\"sui-diff-handle\"></div>\n  <span class=\"sui-diff-label-before\">Before</span>\n  <span class=\"sui-diff-label-after\">After</span>\n</div>"
+    },
+    {
       "id": "loadingoverlay",
       "label": "Loading Overlay",
       "code": "<div class=\"sui-card\" style=\"position:relative;padding:20px;\">\n  <h4>Dashboard</h4>\n  <p>Revenue: $12,450</p>\n  <div class=\"sui-loading-overlay active\">\n    <div class=\"sui-spinner sui-spinner-primary\" role=\"status\" aria-label=\"Loading\"></div>\n    <span class=\"sui-loading-overlay-text\">Loading...</span>\n  </div>\n</div>"

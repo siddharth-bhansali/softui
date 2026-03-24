@@ -18,6 +18,7 @@
     { "id": "chatbubble", "name": "Chat Bubble", "url": "/components/chatbubble/" },
     { "id": "dock", "name": "Dock", "url": "/components/dock/" },
     { "id": "colorpicker", "name": "Color Picker", "url": "/components/colorpicker/" },
+    { "id": "diff", "name": "Diff", "url": "/components/diff/" },
     { "id": "lightbox", "name": "Image Lightbox", "url": "/components/lightbox/" },
     { "id": "loadingoverlay", "name": "Loading Overlay", "url": "/components/loadingoverlay/" },
     { "id": "fileupload", "name": "File Upload", "url": "/components/fileupload/" },
