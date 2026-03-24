@@ -814,7 +814,7 @@ a.sui-btn-warning:visited {
 }
 
 .sui-table tbody tr:hover {
-  background: var(--sui-bg);
+  background: rgba(91, 84, 224, 0.04);
 }
 
 /* Table inside card — inherit card's surface */
@@ -2622,6 +2622,15 @@ a.sui-btn-warning:visited {
    =========================================== */
 .sui-table-inset {
   box-shadow: var(--sui-shadow-inset);
+  overflow: hidden;
+}
+
+.sui-table-inset tbody tr:hover {
+  background: none;
+}
+
+.sui-table-inset tbody tr:hover td {
+  background: rgba(91, 84, 224, 0.04);
 }
 
 /* ===========================================
