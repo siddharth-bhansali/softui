@@ -1094,14 +1094,15 @@ a.sui-btn-warning:visited {
    Modal / Dialog
    =========================================== */
 .sui-modal-backdrop {
+  --sui-modal-blur: 6px;
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
   background: rgba(0, 0, 0, 0.3);
-  backdrop-filter: blur(6px);
-  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(var(--sui-modal-blur));
+  -webkit-backdrop-filter: blur(var(--sui-modal-blur));
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1116,10 +1117,16 @@ a.sui-btn-warning:visited {
   visibility: visible;
 }
 
+.sui-modal-blur-none { --sui-modal-blur: 0px; }
+.sui-modal-blur-sm { --sui-modal-blur: 3px; }
+.sui-modal-blur-md { --sui-modal-blur: 6px; }
+.sui-modal-blur-lg { --sui-modal-blur: 12px; }
+.sui-modal-blur-xl { --sui-modal-blur: 20px; }
+
 .sui-modal {
   background: var(--sui-bg);
   border-radius: var(--sui-radius-lg);
-  box-shadow: var(--sui-shadow-raised-lg);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15), 0 2px 8px rgba(0, 0, 0, 0.1);
   width: 90%;
   max-width: 520px;
   max-height: 85vh;

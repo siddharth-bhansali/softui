@@ -141,6 +141,36 @@
     </div>
   </div>
 
+  <!-- Blur demo modals -->
+  <div class="sui-modal-backdrop sui-modal-blur-none" id="demoBlurNone" role="dialog" aria-modal="true">
+    <div class="sui-modal">
+      <div class="sui-modal-header"><h3>No Blur</h3><button class="sui-modal-close" aria-label="Close"></button></div>
+      <div class="sui-modal-body"><p>This modal has no backdrop blur. The background is visible but dimmed.</p></div>
+      <div class="sui-modal-footer"><button class="sui-btn sui-btn-sm" onclick="SoftUI.modal('#demoBlurNone').close()">Close</button></div>
+    </div>
+  </div>
+  <div class="sui-modal-backdrop sui-modal-blur-sm" id="demoBlurSm" role="dialog" aria-modal="true">
+    <div class="sui-modal">
+      <div class="sui-modal-header"><h3>Small Blur</h3><button class="sui-modal-close" aria-label="Close"></button></div>
+      <div class="sui-modal-body"><p>A subtle 3px backdrop blur. Content behind is slightly softened.</p></div>
+      <div class="sui-modal-footer"><button class="sui-btn sui-btn-sm" onclick="SoftUI.modal('#demoBlurSm').close()">Close</button></div>
+    </div>
+  </div>
+  <div class="sui-modal-backdrop sui-modal-blur-lg" id="demoBlurLg" role="dialog" aria-modal="true">
+    <div class="sui-modal">
+      <div class="sui-modal-header"><h3>Large Blur</h3><button class="sui-modal-close" aria-label="Close"></button></div>
+      <div class="sui-modal-body"><p>A heavy 12px backdrop blur. Background is barely recognizable.</p></div>
+      <div class="sui-modal-footer"><button class="sui-btn sui-btn-sm" onclick="SoftUI.modal('#demoBlurLg').close()">Close</button></div>
+    </div>
+  </div>
+  <div class="sui-modal-backdrop sui-modal-blur-xl" id="demoBlurXl" role="dialog" aria-modal="true">
+    <div class="sui-modal">
+      <div class="sui-modal-header"><h3>Extra Large Blur</h3><button class="sui-modal-close" aria-label="Close"></button></div>
+      <div class="sui-modal-body"><p>Maximum 20px blur. Background is fully frosted.</p></div>
+      <div class="sui-modal-footer"><button class="sui-btn sui-btn-sm" onclick="SoftUI.modal('#demoBlurXl').close()">Close</button></div>
+    </div>
+  </div>
+
   <!-- Sheet demos -->
   <div class="sui-sheet-backdrop" id="demoSheet" role="dialog" aria-modal="true" aria-label="Default Sheet">
     <div class="sui-sheet sui-sheet-right">

@@ -13,6 +13,7 @@ toc:
   - Scrollable Modal
   - Static Backdrop
   - Alert Dialog
+  - Backdrop Blur
 ---
 
 <div class="pg-section" id="section-1">
@@ -201,5 +202,46 @@ SoftUI.modal('#myModal').close();
     &lt;/div&gt;
   &lt;/div&gt;
 &lt;/div&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Backdrop Blur -->
+<div class="pg-section" id="section-8">
+  <h3 class="pg-section-title">Backdrop Blur</h3>
+  <div class="pg-section-row" style="gap:12px;flex-wrap:wrap;">
+    <button class="sui-btn" onclick="SoftUI.modal('#demoBlurNone').open()">No Blur</button>
+    <button class="sui-btn" onclick="SoftUI.modal('#demoBlurSm').open()">Small (3px)</button>
+    <button class="sui-btn sui-btn-primary" onclick="SoftUI.modal('#demoModal').open()">Default (6px)</button>
+    <button class="sui-btn" onclick="SoftUI.modal('#demoBlurLg').open()">Large (12px)</button>
+    <button class="sui-btn" onclick="SoftUI.modal('#demoBlurXl').open()">XL (20px)</button>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;!-- No blur --&gt;
+&lt;div class="sui-modal-backdrop sui-modal-blur-none" id="myModal"&gt;
+  &lt;div class="sui-modal"&gt;...&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- Small blur (3px) --&gt;
+&lt;div class="sui-modal-backdrop sui-modal-blur-sm" id="myModal"&gt;
+  &lt;div class="sui-modal"&gt;...&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- Default blur (6px) — no class needed --&gt;
+&lt;div class="sui-modal-backdrop" id="myModal"&gt;
+  &lt;div class="sui-modal"&gt;...&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- Large blur (12px) --&gt;
+&lt;div class="sui-modal-backdrop sui-modal-blur-lg" id="myModal"&gt;
+  &lt;div class="sui-modal"&gt;...&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- Extra large blur (20px) --&gt;
+&lt;div class="sui-modal-backdrop sui-modal-blur-xl" id="myModal"&gt;
+  &lt;div class="sui-modal"&gt;...&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- Available classes: sui-modal-blur-none, sui-modal-blur-sm, sui-modal-blur-md, sui-modal-blur-lg, sui-modal-blur-xl --&gt;</pre></div>
   </div>
 </div>
