@@ -3646,6 +3646,39 @@ const SoftUI = (() => {
   }, true);
 
   // =========================================
+  // Speed Dial
+  // =========================================
+  document.addEventListener('click', function(e) {
+    var trigger = e.target.closest('.sui-speed-dial-trigger');
+    if (trigger) {
+      var dial = trigger.closest('.sui-speed-dial');
+      dial.classList.toggle('open');
+      return;
+    }
+    var action = e.target.closest('.sui-speed-dial-action');
+    if (action) {
+      var dial = action.closest('.sui-speed-dial');
+      dial.classList.remove('open');
+      return;
+    }
+    // Close all open dials when clicking outside
+    document.querySelectorAll('.sui-speed-dial.open').forEach(function(d) {
+      d.classList.remove('open');
+    });
+  });
+
+  // Hover mode
+  document.addEventListener('mouseenter', function(e) {
+    var dial = e.target.closest('.sui-speed-dial-hover');
+    if (dial) dial.classList.add('open');
+  }, true);
+
+  document.addEventListener('mouseleave', function(e) {
+    var dial = e.target.closest('.sui-speed-dial-hover');
+    if (dial) dial.classList.remove('open');
+  }, true);
+
+  // =========================================
   // Tree View
   // =========================================
   document.addEventListener('click', function(e) {

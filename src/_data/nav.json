@@ -21,6 +21,7 @@
     { "id": "fileupload", "name": "File Upload", "url": "/components/fileupload/" },
     { "id": "radialprogress", "name": "Radial Progress", "url": "/components/radialprogress/" },
     { "id": "rating", "name": "Rating", "url": "/components/rating/" },
+    { "id": "speeddial", "name": "Speed Dial", "url": "/components/speeddial/" },
     { "id": "statcard", "name": "Stat Card", "url": "/components/statcard/" },
     { "id": "swap", "name": "Swap", "url": "/components/swap/" },
     { "id": "timeline", "name": "Timeline", "url": "/components/timeline/" },

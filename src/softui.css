@@ -10837,3 +10837,277 @@ a.sui-btn-warning:visited {
   border-radius: var(--sui-radius);
   padding: 10px;
 }
+
+/* =========================================
+   Speed Dial / FAB
+   ========================================= */
+.sui-speed-dial {
+  position: fixed;
+  z-index: 900;
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: center;
+  gap: 12px;
+}
+
+/* Relative mode for demos */
+.sui-speed-dial-relative {
+  position: relative;
+}
+
+/* Positions */
+.sui-speed-dial-br { bottom: 24px; right: 24px; }
+.sui-speed-dial-bl { bottom: 24px; left: 24px; }
+.sui-speed-dial-tr { top: 24px; right: 24px; }
+.sui-speed-dial-tl { top: 24px; left: 24px; }
+
+/* Trigger button */
+.sui-speed-dial-trigger {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  border: none;
+  background: var(--sui-primary);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(91, 84, 224, 0.4);
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.2s ease;
+  padding: 0;
+  font: inherit;
+  outline: none;
+  z-index: 1;
+}
+
+.sui-speed-dial-trigger svg {
+  width: 24px;
+  height: 24px;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.sui-speed-dial-trigger:hover {
+  box-shadow: 0 6px 20px rgba(91, 84, 224, 0.5);
+  transform: scale(1.05);
+}
+
+.sui-speed-dial.open .sui-speed-dial-trigger svg {
+  transform: rotate(45deg);
+}
+
+/* Actions container */
+.sui-speed-dial-actions {
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: center;
+  gap: 10px;
+  opacity: 0;
+  transform: translateY(10px) scale(0.8);
+  pointer-events: none;
+  transition: opacity 0.25s ease, transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.sui-speed-dial.open .sui-speed-dial-actions {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  pointer-events: auto;
+}
+
+/* Individual action */
+.sui-speed-dial-action {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: none;
+  background: var(--sui-bg);
+  box-shadow: var(--sui-shadow-raised-sm);
+  color: var(--sui-text);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  padding: 0;
+  font: inherit;
+  outline: none;
+  position: relative;
+}
+
+.sui-speed-dial-action svg {
+  width: 18px;
+  height: 18px;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.sui-speed-dial-action:hover {
+  transform: scale(1.1);
+  box-shadow: var(--sui-shadow-raised);
+}
+
+/* Staggered animation */
+.sui-speed-dial.open .sui-speed-dial-action:nth-child(1) { transition-delay: 0.03s; }
+.sui-speed-dial.open .sui-speed-dial-action:nth-child(2) { transition-delay: 0.06s; }
+.sui-speed-dial.open .sui-speed-dial-action:nth-child(3) { transition-delay: 0.09s; }
+.sui-speed-dial.open .sui-speed-dial-action:nth-child(4) { transition-delay: 0.12s; }
+.sui-speed-dial.open .sui-speed-dial-action:nth-child(5) { transition-delay: 0.15s; }
+
+/* Labels */
+.sui-speed-dial-action[data-label]::before {
+  content: attr(data-label);
+  position: absolute;
+  right: calc(100% + 10px);
+  top: 50%;
+  transform: translateY(-50%) scale(0.8);
+  background: var(--sui-text);
+  color: var(--sui-bg);
+  font-size: 12px;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: var(--sui-radius-sm);
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.15s ease, transform 0.15s ease;
+}
+
+.sui-speed-dial-action[data-label]:hover::before {
+  opacity: 1;
+  transform: translateY(-50%) scale(1);
+}
+
+/* Left-side labels (for right-positioned dials) */
+.sui-speed-dial-bl .sui-speed-dial-action[data-label]::before,
+.sui-speed-dial-tl .sui-speed-dial-action[data-label]::before {
+  right: auto;
+  left: calc(100% + 10px);
+}
+
+/* Direction: down */
+.sui-speed-dial-down {
+  flex-direction: column;
+}
+
+.sui-speed-dial-down .sui-speed-dial-actions {
+  flex-direction: column;
+  transform: translateY(-10px) scale(0.8);
+}
+
+.sui-speed-dial-down.open .sui-speed-dial-actions {
+  transform: translateY(0) scale(1);
+}
+
+/* Direction: left */
+.sui-speed-dial-left {
+  flex-direction: row-reverse;
+}
+
+.sui-speed-dial-left .sui-speed-dial-actions {
+  flex-direction: row-reverse;
+  transform: translateX(-10px) scale(0.8);
+}
+
+.sui-speed-dial-left.open .sui-speed-dial-actions {
+  transform: translateX(0) scale(1);
+}
+
+.sui-speed-dial-left .sui-speed-dial-action[data-label]::before {
+  right: auto;
+  left: auto;
+  top: auto;
+  bottom: calc(100% + 10px);
+  left: 50%;
+  transform: translateX(-50%) scale(0.8);
+}
+
+.sui-speed-dial-left .sui-speed-dial-action[data-label]:hover::before {
+  transform: translateX(-50%) scale(1);
+}
+
+/* Direction: right */
+.sui-speed-dial-right {
+  flex-direction: row;
+}
+
+.sui-speed-dial-right .sui-speed-dial-actions {
+  flex-direction: row;
+  transform: translateX(10px) scale(0.8);
+}
+
+.sui-speed-dial-right.open .sui-speed-dial-actions {
+  transform: translateX(0) scale(1);
+}
+
+.sui-speed-dial-right .sui-speed-dial-action[data-label]::before {
+  right: auto;
+  left: auto;
+  top: auto;
+  bottom: calc(100% + 10px);
+  left: 50%;
+  transform: translateX(-50%) scale(0.8);
+}
+
+.sui-speed-dial-right .sui-speed-dial-action[data-label]:hover::before {
+  transform: translateX(-50%) scale(1);
+}
+
+/* Color variants */
+.sui-speed-dial-success .sui-speed-dial-trigger {
+  background: var(--sui-success);
+  box-shadow: 0 4px 14px rgba(45, 206, 137, 0.4);
+}
+
+.sui-speed-dial-danger .sui-speed-dial-trigger {
+  background: var(--sui-danger);
+  box-shadow: 0 4px 14px rgba(231, 76, 111, 0.4);
+}
+
+/* Sizes */
+.sui-speed-dial-sm .sui-speed-dial-trigger {
+  width: 42px;
+  height: 42px;
+}
+
+.sui-speed-dial-sm .sui-speed-dial-trigger svg {
+  width: 20px;
+  height: 20px;
+}
+
+.sui-speed-dial-sm .sui-speed-dial-action {
+  width: 34px;
+  height: 34px;
+}
+
+.sui-speed-dial-sm .sui-speed-dial-action svg {
+  width: 15px;
+  height: 15px;
+}
+
+.sui-speed-dial-lg .sui-speed-dial-trigger {
+  width: 62px;
+  height: 62px;
+}
+
+.sui-speed-dial-lg .sui-speed-dial-trigger svg {
+  width: 28px;
+  height: 28px;
+}
+
+.sui-speed-dial-lg .sui-speed-dial-action {
+  width: 48px;
+  height: 48px;
+}
+
+.sui-speed-dial-lg .sui-speed-dial-action svg {
+  width: 22px;
+  height: 22px;
+}
