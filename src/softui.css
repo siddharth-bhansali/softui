@@ -5073,26 +5073,25 @@ a.sui-btn-warning:visited {
    Custom Scrollbar (global)
    =========================================== */
 * {
-  scrollbar-width: thin;
-  scrollbar-color: var(--sui-text-light) var(--sui-bg-dark);
 }
-*::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
 }
-*::-webkit-scrollbar-track {
-  background: var(--sui-bg-dark);
-  border-radius: var(--sui-radius-full);
+::-webkit-scrollbar-track {
+  background: transparent;
 }
-*::-webkit-scrollbar-thumb {
+::-webkit-scrollbar-thumb {
   background: var(--sui-text-light);
-  border-radius: var(--sui-radius-full);
+  border-radius: 3px;
+  border: 1px solid transparent;
+  background-clip: content-box;
 }
-*::-webkit-scrollbar-thumb:hover {
+::-webkit-scrollbar-thumb:hover {
   background: var(--sui-text-muted);
 }
-*::-webkit-scrollbar-corner {
-  background: transparent;
+::-webkit-scrollbar-corner {
+  display: none;
 }
 
 /* ===========================================
