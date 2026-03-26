@@ -909,7 +909,8 @@ const SoftUI = (() => {
 
         items.forEach(function(item) {
           var text = item.textContent.toLowerCase();
-          var match = !query || text.indexOf(query) !== -1;
+          var keywords = (item.getAttribute('data-keywords') || '').toLowerCase();
+          var match = !query || text.indexOf(query) !== -1 || keywords.indexOf(query) !== -1;
           item.hidden = !match;
           if (match) anyVisible = true;
         });
@@ -2874,5 +2875,1052 @@ const SoftUI = (() => {
     });
   }
 
-  return { modal, sheet, toast, carousel };
+  // =========================================
+  // Sidebar — collapsible toggle
+  // =========================================
+  document.addEventListener('click', function(e) {
+    var btn = e.target.closest('[data-sidebar-toggle]');
+    if (!btn) return;
+    var sidebar = btn.closest('.sui-sidebar');
+    if (sidebar) {
+      sidebar.classList.toggle('sui-sidebar-collapsed');
+    }
+  });
+
+  function sidebar(selector) {
+    var el = typeof selector === 'string' ? document.querySelector(selector) : selector;
+    if (!el) return null;
+
+    function collapse() { el.classList.add('sui-sidebar-collapsed'); }
+    function expand() { el.classList.remove('sui-sidebar-collapsed'); }
+    function toggle() { el.classList.toggle('sui-sidebar-collapsed'); }
+    function isCollapsed() { return el.classList.contains('sui-sidebar-collapsed'); }
+
+    return { collapse: collapse, expand: expand, toggle: toggle, isCollapsed: isCollapsed, el: el };
+  }
+
+  // =========================================
+  // Rating
+  // =========================================
+  function ratingIsHalf(star, e) {
+    var rect = star.getBoundingClientRect();
+    return e.clientX < rect.left + rect.width / 2;
+  }
+
+  function ratingEnsureDualSvg(star) {
+    var svgs = star.querySelectorAll('svg');
+    if (svgs.length < 2) {
+      var clone = svgs[0].cloneNode(true);
+      star.appendChild(clone);
+    }
+  }
+
+  function ratingResetSvg(star) {
+    var svgs = star.querySelectorAll('svg');
+    if (svgs.length > 1) {
+      for (var i = svgs.length - 1; i > 0; i--) { svgs[i].remove(); }
+    }
+  }
+
+  document.addEventListener('click', function(e) {
+    var star = e.target.closest('.sui-rating:not(.sui-rating-readonly) .sui-rating-star');
+    if (!star) return;
+    var rating = star.closest('.sui-rating');
+    var stars = Array.from(rating.querySelectorAll('.sui-rating-star'));
+    var index = stars.indexOf(star);
+    var allowHalf = rating.classList.contains('sui-rating-half');
+    var isHalf = allowHalf && ratingIsHalf(star, e);
+    var value = isHalf ? index + 0.5 : index + 1;
+    stars.forEach(function(s, i) {
+      s.classList.remove('active', 'half', 'hover', 'hover-half');
+      ratingResetSvg(s);
+      if (i < index) {
+        s.classList.add('active');
+      } else if (i === index) {
+        if (isHalf) {
+          ratingEnsureDualSvg(s);
+          s.classList.add('half');
+        } else {
+          s.classList.add('active');
+        }
+      }
+    });
+    rating.setAttribute('data-value', value);
+    rating.dispatchEvent(new CustomEvent('sui-rating-change', { detail: { value: value } }));
+  });
+
+  document.addEventListener('mousemove', function(e) {
+    var star = e.target.closest('.sui-rating:not(.sui-rating-readonly) .sui-rating-star');
+    if (!star) return;
+    var rating = star.closest('.sui-rating');
+    var stars = Array.from(rating.querySelectorAll('.sui-rating-star'));
+    var index = stars.indexOf(star);
+    var allowHalf = rating.classList.contains('sui-rating-half');
+    var isHalf = allowHalf && ratingIsHalf(star, e);
+    stars.forEach(function(s, i) {
+      s.classList.remove('hover', 'hover-half');
+      ratingResetSvg(s);
+      if (i < index) {
+        s.classList.add('hover');
+      } else if (i === index) {
+        if (isHalf) {
+          ratingEnsureDualSvg(s);
+          s.classList.add('hover-half');
+        } else {
+          s.classList.add('hover');
+        }
+      }
+    });
+  });
+
+  document.addEventListener('mouseout', function(e) {
+    var star = e.target.closest('.sui-rating:not(.sui-rating-readonly) .sui-rating-star');
+    if (!star) return;
+    var rating = star.closest('.sui-rating');
+    var stars = Array.from(rating.querySelectorAll('.sui-rating-star'));
+    stars.forEach(function(s) {
+      s.classList.remove('hover', 'hover-half');
+      if (!s.classList.contains('half')) { ratingResetSvg(s); }
+    });
+  });
+
+  // =========================================
+  // Color Picker
+  // =========================================
+  document.addEventListener('click', function(e) {
+    var swatch = e.target.closest('.sui-color-picker .sui-color-swatch');
+    if (!swatch) return;
+    var picker = swatch.closest('.sui-color-picker');
+    picker.querySelectorAll('.sui-color-swatch').forEach(function(s) {
+      s.classList.remove('active');
+    });
+    swatch.classList.add('active');
+    var color = swatch.getAttribute('data-color') || swatch.style.background || swatch.style.backgroundColor;
+    picker.setAttribute('data-value', color);
+    picker.dispatchEvent(new CustomEvent('sui-color-change', { detail: { color: color } }));
+  });
+
+  // =========================================
+  // Color Spectrum Picker
+  // =========================================
+  function initSpectrumPickers() {
+    var pickers = document.querySelectorAll('.sui-color-spectrum');
+    pickers.forEach(function(picker) { initSpectrum(picker); });
+  }
+
+  function initSpectrum(picker) {
+    var canvasWrap = picker.querySelector('.sui-color-spectrum-canvas');
+    var canvas = canvasWrap.querySelector('canvas');
+    var ctx = canvas.getContext('2d');
+    var cursor = canvasWrap.querySelector('.sui-color-spectrum-cursor');
+    var hueBar = picker.querySelector('.sui-color-spectrum-hue');
+    var hueCursor = picker.querySelector('.sui-color-spectrum-hue-cursor');
+    var preview = picker.querySelector('.sui-color-spectrum-preview');
+    var hexInput = picker.querySelector('.sui-color-spectrum-hex input');
+    var rInput = picker.querySelector('input[data-channel="r"]');
+    var gInput = picker.querySelector('input[data-channel="g"]');
+    var bInput = picker.querySelector('input[data-channel="b"]');
+
+    var hue = 0, sat = 1, val = 1;
+
+    function resizeCanvas() {
+      canvas.width = canvasWrap.offsetWidth;
+      canvas.height = canvasWrap.offsetHeight;
+      drawSatVal();
+    }
+
+    function hsvToRgb(h, s, v) {
+      var i = Math.floor(h / 60) % 6;
+      var f = h / 60 - Math.floor(h / 60);
+      var p = v * (1 - s);
+      var q = v * (1 - f * s);
+      var t = v * (1 - (1 - f) * s);
+      var r, g, b;
+      switch (i) {
+        case 0: r = v; g = t; b = p; break;
+        case 1: r = q; g = v; b = p; break;
+        case 2: r = p; g = v; b = t; break;
+        case 3: r = p; g = q; b = v; break;
+        case 4: r = t; g = p; b = v; break;
+        case 5: r = v; g = p; b = q; break;
+      }
+      return [Math.round(r * 255), Math.round(g * 255), Math.round(b * 255)];
+    }
+
+    function rgbToHex(r, g, b) {
+      return '#' + ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1);
+    }
+
+    function hexToRgb(hex) {
+      hex = hex.replace('#', '');
+      if (hex.length === 3) hex = hex[0]+hex[0]+hex[1]+hex[1]+hex[2]+hex[2];
+      var n = parseInt(hex, 16);
+      return [(n >> 16) & 255, (n >> 8) & 255, n & 255];
+    }
+
+    function rgbToHsv(r, g, b) {
+      r /= 255; g /= 255; b /= 255;
+      var max = Math.max(r, g, b), min = Math.min(r, g, b);
+      var h, s, v = max;
+      var d = max - min;
+      s = max === 0 ? 0 : d / max;
+      if (max === min) { h = 0; }
+      else {
+        switch (max) {
+          case r: h = (g - b) / d + (g < b ? 6 : 0); break;
+          case g: h = (b - r) / d + 2; break;
+          case b: h = (r - g) / d + 4; break;
+        }
+        h *= 60;
+      }
+      return [h, s, v];
+    }
+
+    function drawSatVal() {
+      var w = canvas.width, h = canvas.height;
+      var hueRgb = hsvToRgb(hue, 1, 1);
+      var hueColor = 'rgb(' + hueRgb[0] + ',' + hueRgb[1] + ',' + hueRgb[2] + ')';
+      ctx.fillStyle = hueColor;
+      ctx.fillRect(0, 0, w, h);
+      var whiteGrad = ctx.createLinearGradient(0, 0, w, 0);
+      whiteGrad.addColorStop(0, 'rgba(255,255,255,1)');
+      whiteGrad.addColorStop(1, 'rgba(255,255,255,0)');
+      ctx.fillStyle = whiteGrad;
+      ctx.fillRect(0, 0, w, h);
+      var blackGrad = ctx.createLinearGradient(0, 0, 0, h);
+      blackGrad.addColorStop(0, 'rgba(0,0,0,0)');
+      blackGrad.addColorStop(1, 'rgba(0,0,0,1)');
+      ctx.fillStyle = blackGrad;
+      ctx.fillRect(0, 0, w, h);
+    }
+
+    function updateUI() {
+      var rgb = hsvToRgb(hue, sat, val);
+      var hex = rgbToHex(rgb[0], rgb[1], rgb[2]);
+      if (preview) preview.style.background = hex;
+      if (hexInput) hexInput.value = hex.toUpperCase().slice(1);
+      if (rInput) rInput.value = rgb[0];
+      if (gInput) gInput.value = rgb[1];
+      if (bInput) bInput.value = rgb[2];
+
+      cursor.style.left = (sat * 100) + '%';
+      cursor.style.top = ((1 - val) * 100) + '%';
+
+      var hueRgb = hsvToRgb(hue, 1, 1);
+      hueCursor.style.left = (hue / 360 * 100) + '%';
+      hueCursor.style.background = 'rgb(' + hueRgb[0] + ',' + hueRgb[1] + ',' + hueRgb[2] + ')';
+
+      picker.setAttribute('data-value', hex);
+      picker.dispatchEvent(new CustomEvent('sui-color-change', { detail: { hex: hex, rgb: rgb } }));
+    }
+
+    // Canvas drag
+    function onCanvasMove(e) {
+      var rect = canvasWrap.getBoundingClientRect();
+      var x = (e.touches ? e.touches[0].clientX : e.clientX) - rect.left;
+      var y = (e.touches ? e.touches[0].clientY : e.clientY) - rect.top;
+      sat = Math.max(0, Math.min(1, x / rect.width));
+      val = Math.max(0, Math.min(1, 1 - y / rect.height));
+      updateUI();
+    }
+
+    canvasWrap.addEventListener('mousedown', function(e) {
+      e.preventDefault();
+      onCanvasMove(e);
+      function move(ev) { onCanvasMove(ev); }
+      function up() { document.removeEventListener('mousemove', move); document.removeEventListener('mouseup', up); }
+      document.addEventListener('mousemove', move);
+      document.addEventListener('mouseup', up);
+    });
+
+    canvasWrap.addEventListener('touchstart', function(e) {
+      e.preventDefault();
+      onCanvasMove(e);
+      function move(ev) { ev.preventDefault(); onCanvasMove(ev); }
+      function up() { document.removeEventListener('touchmove', move); document.removeEventListener('touchend', up); }
+      document.addEventListener('touchmove', move, { passive: false });
+      document.addEventListener('touchend', up);
+    }, { passive: false });
+
+    // Hue drag
+    function onHueMove(e) {
+      var rect = hueBar.getBoundingClientRect();
+      var x = (e.touches ? e.touches[0].clientX : e.clientX) - rect.left;
+      hue = Math.max(0, Math.min(360, x / rect.width * 360));
+      drawSatVal();
+      updateUI();
+    }
+
+    hueBar.addEventListener('mousedown', function(e) {
+      e.preventDefault();
+      onHueMove(e);
+      function move(ev) { onHueMove(ev); }
+      function up() { document.removeEventListener('mousemove', move); document.removeEventListener('mouseup', up); }
+      document.addEventListener('mousemove', move);
+      document.addEventListener('mouseup', up);
+    });
+
+    hueBar.addEventListener('touchstart', function(e) {
+      e.preventDefault();
+      onHueMove(e);
+      function move(ev) { ev.preventDefault(); onHueMove(ev); }
+      function up() { document.removeEventListener('touchmove', move); document.removeEventListener('touchend', up); }
+      document.addEventListener('touchmove', move, { passive: false });
+      document.addEventListener('touchend', up);
+    }, { passive: false });
+
+    // Hex input
+    if (hexInput) {
+      hexInput.addEventListener('input', function() {
+        var v = hexInput.value.replace('#', '');
+        if (v.length === 6 && /^[0-9A-Fa-f]{6}$/.test(v)) {
+          var rgb = hexToRgb(v);
+          var hsv = rgbToHsv(rgb[0], rgb[1], rgb[2]);
+          hue = hsv[0]; sat = hsv[1]; val = hsv[2];
+          drawSatVal();
+          updateUI();
+        }
+      });
+    }
+
+    // RGB inputs
+    function onRgbInput() {
+      var r = parseInt(rInput.value) || 0;
+      var g = parseInt(gInput.value) || 0;
+      var b = parseInt(bInput.value) || 0;
+      r = Math.max(0, Math.min(255, r));
+      g = Math.max(0, Math.min(255, g));
+      b = Math.max(0, Math.min(255, b));
+      var hsv = rgbToHsv(r, g, b);
+      hue = hsv[0]; sat = hsv[1]; val = hsv[2];
+      drawSatVal();
+      updateUI();
+    }
+
+    if (rInput) rInput.addEventListener('input', onRgbInput);
+    if (gInput) gInput.addEventListener('input', onRgbInput);
+    if (bInput) bInput.addEventListener('input', onRgbInput);
+
+    // Init from data-color attribute or default
+    var initColor = picker.getAttribute('data-color') || '#5B54E0';
+    var initRgb = hexToRgb(initColor);
+    var initHsv = rgbToHsv(initRgb[0], initRgb[1], initRgb[2]);
+    hue = initHsv[0]; sat = initHsv[1]; val = initHsv[2];
+
+    resizeCanvas();
+    updateUI();
+    window.addEventListener('resize', resizeCanvas);
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initSpectrumPickers);
+  } else {
+    initSpectrumPickers();
+  }
+
+  // =========================================
+  // File Upload
+  // =========================================
+  function formatFileSize(bytes) {
+    if (bytes < 1024) return bytes + ' B';
+    if (bytes < 1048576) return (bytes / 1024).toFixed(1) + ' KB';
+    return (bytes / 1048576).toFixed(1) + ' MB';
+  }
+
+  var fileIcons = {
+    file: '<svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>',
+    image: '<svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>',
+    pdf: '<svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="9" y1="15" x2="15" y2="15"/><line x1="9" y1="18" x2="13" y2="18"/><line x1="9" y1="12" x2="11" y2="12"/></svg>',
+    video: '<svg viewBox="0 0 24 24"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>',
+    audio: '<svg viewBox="0 0 24 24"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>',
+    code: '<svg viewBox="0 0 24 24"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>',
+    archive: '<svg viewBox="0 0 24 24"><path d="M21 8v13H3V8"/><path d="M1 3h22v5H1z"/><path d="M10 12h4"/></svg>',
+    spreadsheet: '<svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="8" y1="13" x2="16" y2="13"/><line x1="8" y1="17" x2="16" y2="17"/><line x1="12" y1="9" x2="12" y2="21"/></svg>'
+  };
+
+  function getFileType(file) {
+    var type = file.type || '';
+    var ext = file.name.split('.').pop().toLowerCase();
+    if (type.startsWith('image/')) return 'image';
+    if (type === 'application/pdf' || ext === 'pdf') return 'pdf';
+    if (type.startsWith('video/')) return 'video';
+    if (type.startsWith('audio/')) return 'audio';
+    if (/^(js|ts|jsx|tsx|html|css|json|xml|py|rb|go|rs|java|c|cpp|php|sh|yml|yaml)$/.test(ext)) return 'code';
+    if (/^(zip|rar|7z|tar|gz|bz2)$/.test(ext)) return 'archive';
+    if (/^(csv|xlsx|xls|ods)$/.test(ext)) return 'spreadsheet';
+    return 'file';
+  }
+
+  function getFileIcon(file) {
+    return fileIcons[getFileType(file)];
+  }
+
+  function getFileIconClass(file) {
+    return 'sui-file-item-icon-' + getFileType(file);
+  }
+
+  function getOrCreateContainer(zone, cls) {
+    var wrap = zone.closest('.sui-file-upload-wrap');
+    if (!wrap) {
+      wrap = document.createElement('div');
+      wrap.className = 'sui-file-upload-wrap';
+      zone.parentNode.insertBefore(wrap, zone);
+      wrap.appendChild(zone);
+    }
+    var container = wrap.querySelector('.' + cls);
+    if (!container) {
+      container = document.createElement('div');
+      container.className = cls;
+      wrap.appendChild(container);
+    }
+    return container;
+  }
+
+  function renderFileList(zone, files, append) {
+    var container = getOrCreateContainer(zone, 'sui-file-list');
+    if (!append) container.innerHTML = '';
+    for (var i = 0; i < files.length; i++) {
+      var f = files[i];
+      var item = document.createElement('div');
+      item.className = 'sui-file-item';
+      item.innerHTML =
+        '<div class="sui-file-item-icon ' + getFileIconClass(f) + '">' + getFileIcon(f) + '</div>' +
+        '<div class="sui-file-item-info">' +
+          '<div class="sui-file-item-name">' + f.name + '</div>' +
+          '<div class="sui-file-item-size">' + formatFileSize(f.size) + '</div>' +
+        '</div>' +
+        '<button class="sui-file-item-remove" aria-label="Remove">&times;</button>';
+      container.appendChild(item);
+    }
+  }
+
+  function renderFileProgress(zone, files, append) {
+    var container = getOrCreateContainer(zone, 'sui-file-list');
+    if (!append) container.innerHTML = '';
+    for (var i = 0; i < files.length; i++) {
+      var f = files[i];
+      var item = document.createElement('div');
+      item.className = 'sui-file-item';
+      item.innerHTML =
+        '<div class="sui-file-item-icon ' + getFileIconClass(f) + '">' + getFileIcon(f) + '</div>' +
+        '<div class="sui-file-item-info sui-file-item-progress">' +
+          '<div style="display:flex;justify-content:space-between;align-items:center;">' +
+            '<div class="sui-file-item-name">' + f.name + '</div>' +
+            '<span class="sui-file-item-status sui-file-item-status-uploading">0%</span>' +
+          '</div>' +
+          '<div class="sui-progress sui-progress-sm"><div class="sui-progress-bar sui-progress-primary" style="width:0%;"></div></div>' +
+        '</div>' +
+        '<button class="sui-file-item-remove" aria-label="Remove">&times;</button>';
+      container.appendChild(item);
+      simulateProgress(item);
+    }
+  }
+
+  function simulateProgress(item) {
+    var bar = item.querySelector('.sui-progress-bar');
+    var status = item.querySelector('.sui-file-item-status');
+    var pct = 0;
+    var interval = setInterval(function() {
+      pct += Math.floor(Math.random() * 15) + 5;
+      if (pct >= 100) {
+        pct = 100;
+        clearInterval(interval);
+        bar.style.width = '100%';
+        bar.className = 'sui-progress-bar sui-progress-success';
+        status.className = 'sui-file-item-status sui-file-item-status-complete';
+        status.textContent = '\u2713';
+      } else {
+        bar.style.width = pct + '%';
+        status.textContent = pct + '%';
+      }
+    }, 300 + Math.random() * 200);
+  }
+
+  function renderFilePreview(zone, files, append) {
+    var container = getOrCreateContainer(zone, 'sui-file-preview-grid');
+    if (!append) container.innerHTML = '';
+    for (var i = 0; i < files.length; i++) {
+      var f = files[i];
+      if (!f.type || !f.type.startsWith('image/')) continue;
+      var item = document.createElement('div');
+      item.className = 'sui-file-preview-item';
+      item.innerHTML =
+        '<img alt="' + f.name + '">' +
+        '<button class="sui-file-preview-item-remove" aria-label="Remove">&times;</button>';
+      container.appendChild(item);
+      (function(img, file) {
+        var reader = new FileReader();
+        reader.onload = function(e) { img.src = e.target.result; };
+        reader.readAsDataURL(file);
+      })(item.querySelector('img'), f);
+    }
+  }
+
+  // Delegated change on file inputs
+  document.addEventListener('change', function(e) {
+    if (!e.target.matches('.sui-file-upload input[type="file"]')) return;
+    var input = e.target;
+    var zone = input.closest('.sui-file-upload');
+    if (!zone) return;
+    var files = Array.from(input.files);
+    if (!files.length) return;
+    var mode = zone.getAttribute('data-sui-upload') || 'list';
+    if (mode === 'preview') {
+      renderFilePreview(zone, files);
+    } else if (mode === 'progress') {
+      renderFileProgress(zone, files);
+    } else {
+      renderFileList(zone, files);
+    }
+    input.value = '';
+  });
+
+  // Delegated remove clicks
+  document.addEventListener('click', function(e) {
+    var removeBtn = e.target.closest('.sui-file-item-remove, .sui-file-preview-item-remove');
+    if (!removeBtn) return;
+    var item = removeBtn.closest('.sui-file-item, .sui-file-preview-item');
+    if (item) item.remove();
+  });
+
+  // Dragover styling
+  document.addEventListener('dragover', function(e) {
+    var zone = e.target.closest('.sui-file-upload');
+    if (!zone) return;
+    e.preventDefault();
+    zone.classList.add('sui-file-upload-dragover');
+  });
+
+  document.addEventListener('dragleave', function(e) {
+    var zone = e.target.closest('.sui-file-upload');
+    if (!zone) return;
+    zone.classList.remove('sui-file-upload-dragover');
+  });
+
+  document.addEventListener('drop', function(e) {
+    var zone = e.target.closest('.sui-file-upload');
+    if (!zone) return;
+    e.preventDefault();
+    zone.classList.remove('sui-file-upload-dragover');
+    var files = Array.from(e.dataTransfer.files);
+    if (!files.length) return;
+    var mode = zone.getAttribute('data-sui-upload') || 'list';
+    if (mode === 'preview') {
+      renderFilePreview(zone, files, true);
+    } else if (mode === 'progress') {
+      renderFileProgress(zone, files, true);
+    } else {
+      renderFileList(zone, files, true);
+    }
+  });
+
+  // =========================================
+  // Radial Progress
+  // =========================================
+  function initRadialProgress() {
+    var radials = document.querySelectorAll('.sui-radial[data-value]');
+    radials.forEach(function(el) {
+      var fill = el.querySelector('.sui-radial-fill');
+      if (!fill) return;
+      var value = parseFloat(el.getAttribute('data-value')) || 0;
+      value = Math.max(0, Math.min(100, value));
+      var circumference = parseFloat(fill.getAttribute('stroke-dasharray') || fill.style.strokeDasharray);
+      if (!circumference) {
+        var r = fill.getAttribute('r');
+        circumference = 2 * Math.PI * parseFloat(r);
+      }
+      fill.style.strokeDasharray = circumference;
+      fill.style.strokeDashoffset = circumference;
+      var valueEl = el.querySelector('.sui-radial-value');
+      var duration = el.classList.contains('sui-radial-animated') ? 1200 : 600;
+
+      requestAnimationFrame(function() {
+        requestAnimationFrame(function() {
+          var offset = circumference - (value / 100) * circumference;
+          fill.style.strokeDashoffset = offset;
+
+          if (valueEl) {
+            var start = performance.now();
+            function tick(now) {
+              var elapsed = now - start;
+              var progress = Math.min(elapsed / duration, 1);
+              var current = Math.round(progress * value);
+              valueEl.textContent = current + '%';
+              if (progress < 1) requestAnimationFrame(tick);
+            }
+            requestAnimationFrame(tick);
+          }
+        });
+      });
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initRadialProgress);
+  } else {
+    initRadialProgress();
+  }
+
+  // =========================================
+  // Number Input
+  // =========================================
+  document.addEventListener('click', function(e) {
+    var btn = e.target.closest('.sui-number-input-btn');
+    if (!btn) return;
+    var wrap = btn.closest('.sui-number-input');
+    var input = wrap.querySelector('input[type="number"]');
+    if (!input) return;
+    var step = parseFloat(input.step) || 1;
+    var min = input.min !== '' ? parseFloat(input.min) : -Infinity;
+    var max = input.max !== '' ? parseFloat(input.max) : Infinity;
+    var val = parseFloat(input.value) || 0;
+    if (btn.getAttribute('data-action') === 'decrement') {
+      val = Math.max(min, val - step);
+    } else {
+      val = Math.min(max, val + step);
+    }
+    input.value = val;
+    input.dispatchEvent(new Event('change', { bubbles: true }));
+  });
+
+  // =========================================
+  // Password Toggle
+  // =========================================
+  document.addEventListener('click', function(e) {
+    var btn = e.target.closest('.sui-password-toggle');
+    if (!btn) return;
+    e.stopPropagation();
+    var wrap = btn.closest('.sui-password-input');
+    var input = wrap.querySelector('input');
+    if (!input) return;
+    var isPassword = input.type === 'password';
+    input.type = isPassword ? 'text' : 'password';
+    btn.classList.toggle('active');
+  }, true);
+
+  // =========================================
+  // Tags Input
+  // =========================================
+  document.addEventListener('keydown', function(e) {
+    var input = e.target.closest('.sui-tags-input-field');
+    if (!input) return;
+    var wrap = input.closest('.sui-tags-input');
+    if (e.key === 'Enter' || e.key === ',') {
+      e.preventDefault();
+      var val = input.value.trim().replace(/,$/, '');
+      if (!val) return;
+      var tag = document.createElement('span');
+      tag.className = 'sui-chip';
+      tag.textContent = val;
+      var closeBtn = document.createElement('button');
+      closeBtn.className = 'sui-chip-close';
+      closeBtn.setAttribute('aria-label', 'Remove');
+      tag.appendChild(closeBtn);
+      wrap.insertBefore(tag, input);
+      input.value = '';
+    } else if (e.key === 'Backspace' && !input.value) {
+      var tags = wrap.querySelectorAll('.sui-chip');
+      if (tags.length) tags[tags.length - 1].remove();
+    }
+  });
+
+  document.addEventListener('click', function(e) {
+    var dismiss = e.target.closest('.sui-tags-input .sui-chip-close');
+    if (dismiss) {
+      dismiss.closest('.sui-chip').remove();
+      return;
+    }
+    var wrap = e.target.closest('.sui-tags-input');
+    if (wrap) {
+      var input = wrap.querySelector('.sui-tags-input-field');
+      if (input) input.focus();
+    }
+  });
+
+  // =========================================
+  // Swap
+  // =========================================
+  // Lock slide swap dimensions so absolute children don't collapse container
+  function initSlideSwaps() {
+    document.querySelectorAll('.sui-swap-slide, .sui-swap-slide-x').forEach(function(swap) {
+      if (swap.dataset.suiSlideInit) return;
+      var children = swap.querySelectorAll('.sui-swap-on, .sui-swap-off, .sui-swap-state');
+      var maxW = 0, maxH = 0;
+      children.forEach(function(c) {
+        var prev = c.style.cssText;
+        c.style.position = 'relative';
+        c.style.opacity = '1';
+        c.style.transform = 'none';
+        maxW = Math.max(maxW, c.offsetWidth);
+        maxH = Math.max(maxH, c.offsetHeight);
+        c.style.cssText = prev;
+      });
+      if (maxW) swap.style.width = maxW + 'px';
+      if (maxH) swap.style.height = maxH + 'px';
+      swap.dataset.suiSlideInit = '1';
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initSlideSwaps);
+  } else {
+    initSlideSwaps();
+  }
+
+  document.addEventListener('click', function(e) {
+    var swap = e.target.closest('.sui-swap');
+    if (!swap) return;
+    if (swap.classList.contains('sui-swap-cycle')) {
+      var states = Array.from(swap.querySelectorAll('.sui-swap-state'));
+      var current = states.findIndex(function(s) { return s.classList.contains('active'); });
+      var next = (current + 1) % states.length;
+      states.forEach(function(s) { s.classList.remove('active'); });
+      states[next].classList.add('active');
+      swap.setAttribute('data-state', next);
+      swap.dispatchEvent(new CustomEvent('sui-swap-change', { detail: { state: next, total: states.length } }));
+    } else {
+      swap.classList.toggle('active');
+      swap.dispatchEvent(new CustomEvent('sui-swap-change', { detail: { active: swap.classList.contains('active') } }));
+    }
+  });
+
+  // =========================================
+  // Dock — magnification effect
+  // =========================================
+  var dockMaxScale = 1.5;
+  var dockRange = 3;
+
+  document.addEventListener('mousemove', function(e) {
+    var dock = e.target.closest('.sui-dock');
+    if (!dock) return;
+    if (dock.classList.contains('sui-dock-no-scale')) return;
+    var iconOnly = dock.classList.contains('sui-dock-icon-scale');
+    var items = Array.from(dock.querySelectorAll('.sui-dock-item'));
+    var isVertical = dock.classList.contains('sui-dock-vertical');
+
+    items.forEach(function(item) {
+      var rect = item.getBoundingClientRect();
+      var center = isVertical
+        ? rect.top + rect.height / 2
+        : rect.left + rect.width / 2;
+      var mouse = isVertical ? e.clientY : e.clientX;
+      var baseSize = dock.classList.contains('sui-dock-sm') ? 32
+        : dock.classList.contains('sui-dock-lg') ? 52 : 40;
+      var dist = Math.abs(mouse - center) / baseSize;
+
+      if (dist < dockRange) {
+        var scale = dockMaxScale - (dist / dockRange) * (dockMaxScale - 1);
+        if (iconOnly) {
+          item.style.width = '';
+          item.style.height = '';
+          var svg = item.querySelector('svg');
+          if (svg) svg.style.transform = 'scale(' + scale + ')';
+        } else {
+          var newSize = Math.round(baseSize * scale);
+          item.style.width = newSize + 'px';
+          item.style.height = newSize + 'px';
+        }
+      } else {
+        item.style.width = '';
+        item.style.height = '';
+        if (iconOnly) {
+          var svg = item.querySelector('svg');
+          if (svg) svg.style.transform = '';
+        }
+      }
+    });
+  });
+
+  document.addEventListener('mouseleave', function(e) {
+    if (!e.target.classList || !e.target.classList.contains('sui-dock')) return;
+    var iconOnly = e.target.classList.contains('sui-dock-icon-scale');
+    var items = e.target.querySelectorAll('.sui-dock-item');
+    items.forEach(function(item) {
+      item.style.width = '';
+      item.style.height = '';
+      if (iconOnly) {
+        var svg = item.querySelector('svg');
+        if (svg) svg.style.transform = '';
+      }
+    });
+  }, true);
+
+  // =========================================
+  // Image Lightbox
+  // =========================================
+  var lightboxOverlay = null;
+  var lightboxImages = [];
+  var lightboxIndex = 0;
+
+  function createLightbox() {
+    if (lightboxOverlay) return;
+    lightboxOverlay = document.createElement('div');
+    lightboxOverlay.className = 'sui-lightbox-overlay';
+    lightboxOverlay.innerHTML =
+      '<button class="sui-lightbox-close" aria-label="Close">&times;</button>' +
+      '<span class="sui-lightbox-counter"></span>' +
+      '<button class="sui-lightbox-prev" aria-label="Previous"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></button>' +
+      '<button class="sui-lightbox-next" aria-label="Next"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></button>' +
+      '<img src="" alt="">' +
+      '<div class="sui-lightbox-caption"></div>';
+    document.body.appendChild(lightboxOverlay);
+
+    lightboxOverlay.querySelector('.sui-lightbox-close').addEventListener('click', closeLightbox);
+    lightboxOverlay.querySelector('.sui-lightbox-prev').addEventListener('click', function() { showLightboxImage(lightboxIndex - 1); });
+    lightboxOverlay.querySelector('.sui-lightbox-next').addEventListener('click', function() { showLightboxImage(lightboxIndex + 1); });
+    lightboxOverlay.addEventListener('click', function(e) {
+      if (e.target === lightboxOverlay) closeLightbox();
+      if (e.target.tagName === 'IMG') {
+        lightboxOverlay.classList.toggle('zoomed');
+      }
+    });
+    document.addEventListener('keydown', function(e) {
+      if (!lightboxOverlay || !lightboxOverlay.classList.contains('open')) return;
+      if (e.key === 'Escape') closeLightbox();
+      if (e.key === 'ArrowLeft') showLightboxImage(lightboxIndex - 1);
+      if (e.key === 'ArrowRight') showLightboxImage(lightboxIndex + 1);
+    });
+  }
+
+  function openLightbox(images, index) {
+    createLightbox();
+    lightboxImages = images;
+    lightboxIndex = index || 0;
+    showLightboxImage(lightboxIndex);
+    lightboxOverlay.classList.add('open');
+    lightboxOverlay.classList.remove('zoomed');
+    document.body.style.overflow = 'hidden';
+    var hasMultiple = images.length > 1;
+    lightboxOverlay.querySelector('.sui-lightbox-prev').style.display = hasMultiple ? '' : 'none';
+    lightboxOverlay.querySelector('.sui-lightbox-next').style.display = hasMultiple ? '' : 'none';
+    lightboxOverlay.querySelector('.sui-lightbox-counter').style.display = hasMultiple ? '' : 'none';
+  }
+
+  function closeLightbox() {
+    if (lightboxOverlay) {
+      lightboxOverlay.classList.remove('open', 'zoomed');
+      document.body.style.overflow = '';
+    }
+  }
+
+  function showLightboxImage(idx) {
+    if (lightboxImages.length === 0) return;
+    lightboxIndex = (idx + lightboxImages.length) % lightboxImages.length;
+    var item = lightboxImages[lightboxIndex];
+    var img = lightboxOverlay.querySelector('img');
+    var caption = lightboxOverlay.querySelector('.sui-lightbox-caption');
+    var counter = lightboxOverlay.querySelector('.sui-lightbox-counter');
+    img.src = item.src;
+    img.alt = item.alt || '';
+    caption.textContent = item.caption || '';
+    caption.style.display = item.caption ? '' : 'none';
+    counter.textContent = (lightboxIndex + 1) + ' / ' + lightboxImages.length;
+    lightboxOverlay.classList.remove('zoomed');
+  }
+
+  // Vertical gallery — click side thumb to update main
+  document.addEventListener('click', function(e) {
+    var thumb = e.target.closest('.sui-lightbox-vertical-strip .sui-lightbox-thumb');
+    if (!thumb) return;
+    var gallery = thumb.closest('.sui-lightbox-vertical');
+    var main = gallery.querySelector('.sui-lightbox-vertical-main img');
+    var img = thumb.querySelector('img');
+    if (main && img) {
+      main.src = thumb.getAttribute('data-src') || img.src;
+      main.alt = thumb.getAttribute('data-alt') || img.alt;
+    }
+    gallery.querySelectorAll('.sui-lightbox-vertical-strip .sui-lightbox-thumb').forEach(function(t) { t.classList.remove('active'); });
+    thumb.classList.add('active');
+  });
+
+  // Click main image in vertical gallery to open lightbox
+  document.addEventListener('click', function(e) {
+    var main = e.target.closest('.sui-lightbox-vertical-main');
+    if (!main) return;
+    var gallery = main.closest('.sui-lightbox-vertical');
+    var thumbs = Array.from(gallery.querySelectorAll('.sui-lightbox-vertical-strip .sui-lightbox-thumb'));
+    var images = thumbs.map(function(t) {
+      var img = t.querySelector('img');
+      return {
+        src: t.getAttribute('data-src') || (img ? img.src : ''),
+        alt: t.getAttribute('data-alt') || (img ? img.alt : ''),
+        caption: t.getAttribute('data-caption') || ''
+      };
+    });
+    var activeIdx = thumbs.findIndex(function(t) { return t.classList.contains('active'); });
+    openLightbox(images, activeIdx >= 0 ? activeIdx : 0);
+  });
+
+  // Click on thumbnail
+  document.addEventListener('click', function(e) {
+    var thumb = e.target.closest('.sui-lightbox-thumb');
+    if (!thumb) return;
+    // Skip if inside vertical strip (handled above)
+    if (thumb.closest('.sui-lightbox-vertical-strip')) return;
+    var grid = thumb.closest('.sui-lightbox-grid');
+    var thumbs = grid ? Array.from(grid.querySelectorAll('.sui-lightbox-thumb')) : [thumb];
+    var images = thumbs.map(function(t) {
+      var img = t.querySelector('img');
+      return {
+        src: t.getAttribute('data-src') || (img ? img.src : ''),
+        alt: t.getAttribute('data-alt') || (img ? img.alt : ''),
+        caption: t.getAttribute('data-caption') || ''
+      };
+    });
+    var index = thumbs.indexOf(thumb);
+    openLightbox(images, index);
+  });
+
+  // =========================================
+  // Diff — Image Compare Slider
+  // =========================================
+  function initDiffSliders() {
+    document.querySelectorAll('.sui-diff[data-sui-diff]').forEach(function(diff) {
+      if (diff.dataset.suiDiffInit) return;
+      diff.dataset.suiDiffInit = '1';
+      var handle = diff.querySelector('.sui-diff-handle');
+      var before = diff.querySelector('.sui-diff-before');
+      if (!handle || !before) return;
+      var isVertical = diff.classList.contains('sui-diff-vertical');
+
+      function onMove(e) {
+        e.preventDefault();
+        var rect = diff.getBoundingClientRect();
+        var pos;
+        if (isVertical) {
+          var clientY = e.touches ? e.touches[0].clientY : e.clientY;
+          pos = Math.max(0, Math.min(1, (clientY - rect.top) / rect.height));
+          var pct = (pos * 100);
+          before.style.clipPath = 'inset(0 0 ' + (100 - pct) + '% 0)';
+          handle.style.top = pct + '%';
+        } else {
+          var clientX = e.touches ? e.touches[0].clientX : e.clientX;
+          pos = Math.max(0, Math.min(1, (clientX - rect.left) / rect.width));
+          var pct = (pos * 100);
+          before.style.clipPath = 'inset(0 ' + (100 - pct) + '% 0 0)';
+          handle.style.left = pct + '%';
+        }
+      }
+
+      function onDown(e) {
+        e.preventDefault();
+        onMove(e);
+        document.addEventListener('mousemove', onMove);
+        document.addEventListener('mouseup', onUp);
+        document.addEventListener('touchmove', onMove, { passive: false });
+        document.addEventListener('touchend', onUp);
+      }
+
+      function onUp() {
+        document.removeEventListener('mousemove', onMove);
+        document.removeEventListener('mouseup', onUp);
+        document.removeEventListener('touchmove', onMove);
+        document.removeEventListener('touchend', onUp);
+      }
+
+      diff.addEventListener('mousedown', onDown);
+      diff.addEventListener('touchstart', onDown, { passive: false });
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initDiffSliders);
+  } else {
+    initDiffSliders();
+  }
+
+  // =========================================
+  // Speed Dial
+  // =========================================
+  document.addEventListener('click', function(e) {
+    var trigger = e.target.closest('.sui-speed-dial-trigger');
+    if (trigger) {
+      var dial = trigger.closest('.sui-speed-dial');
+      dial.classList.toggle('open');
+      return;
+    }
+    var action = e.target.closest('.sui-speed-dial-action');
+    if (action) {
+      var dial = action.closest('.sui-speed-dial');
+      dial.classList.remove('open');
+      return;
+    }
+    // Close all open dials when clicking outside
+    document.querySelectorAll('.sui-speed-dial.open').forEach(function(d) {
+      d.classList.remove('open');
+    });
+  });
+
+  // Hover mode
+  document.addEventListener('mouseenter', function(e) {
+    var dial = e.target.closest('.sui-speed-dial-hover');
+    if (dial) dial.classList.add('open');
+  }, true);
+
+  document.addEventListener('mouseleave', function(e) {
+    var dial = e.target.closest('.sui-speed-dial-hover');
+    if (dial) dial.classList.remove('open');
+  }, true);
+
+  // =========================================
+  // Tree View
+  // =========================================
+  document.addEventListener('click', function(e) {
+    var label = e.target.closest('.sui-tree-label');
+    if (!label) return;
+    if (e.target.closest('.sui-checkbox')) return;
+    var item = label.closest('.sui-tree-item');
+    var children = item.querySelector('.sui-tree-children');
+    if (children) {
+      item.classList.toggle('expanded');
+    }
+  });
+
+  // Tree checkbox propagation
+  document.addEventListener('change', function(e) {
+    if (!e.target.closest('.sui-tree .sui-checkbox input')) return;
+    var checkbox = e.target;
+    var item = checkbox.closest('.sui-tree-item');
+    var checked = checkbox.checked;
+
+    // Propagate down — check/uncheck all children
+    var childBoxes = item.querySelectorAll('.sui-tree-children .sui-checkbox input');
+    childBoxes.forEach(function(cb) {
+      cb.checked = checked;
+      cb.indeterminate = false;
+    });
+
+    // Propagate up — update parent state
+    updateTreeParent(item);
+  });
+
+  function updateTreeParent(item) {
+    var parentChildren = item.closest('.sui-tree-children');
+    if (!parentChildren) return;
+    var parentItem = parentChildren.closest('.sui-tree-item');
+    if (!parentItem) return;
+    var parentCb = parentItem.querySelector(':scope > .sui-tree-label .sui-checkbox input');
+    if (!parentCb) return;
+
+    var siblings = parentChildren.querySelectorAll(':scope > .sui-tree-item > .sui-tree-label .sui-checkbox input');
+    var total = siblings.length;
+    var checkedCount = 0;
+    siblings.forEach(function(cb) { if (cb.checked) checkedCount++; });
+
+    if (checkedCount === 0) {
+      parentCb.checked = false;
+      parentCb.indeterminate = false;
+    } else if (checkedCount === total) {
+      parentCb.checked = true;
+      parentCb.indeterminate = false;
+    } else {
+      parentCb.checked = false;
+      parentCb.indeterminate = true;
+    }
+
+    // Continue up the tree
+    updateTreeParent(parentItem);
+  }
+
+  return { modal, sheet, toast, carousel, sidebar };
 })();
