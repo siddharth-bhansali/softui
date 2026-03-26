@@ -71,6 +71,7 @@
     { "id": "lightbox", "name": "Image Lightbox", "url": "/components/lightbox/" },
     { "id": "diff", "name": "Diff", "url": "/components/diff/" },
     { "id": "chatbubble", "name": "Chat Bubble", "url": "/components/chatbubble/" },
+    { "id": "stack", "name": "Stack", "url": "/components/stack/" },
     { "id": "swap", "name": "Swap", "url": "/components/swap/" },
     { "id": "togglegroup", "name": "Toggle Group", "url": "/components/togglegroup/" }
   ],
