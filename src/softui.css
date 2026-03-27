@@ -11600,3 +11600,156 @@ a.sui-btn-warning:visited {
 .sui-stack-hover.sui-stack-fanned:hover > *:nth-child(3) { transform: rotate(6deg) translate(calc(var(--sui-stack-gap) * var(--sui-stack-spread) * 0.9), calc(var(--sui-stack-spread) * -10px)); opacity: 1; }
 .sui-stack-hover.sui-stack-fanned:hover > *:nth-child(4) { transform: rotate(10deg) translate(calc(var(--sui-stack-gap) * var(--sui-stack-spread) * 1.8), calc(var(--sui-stack-spread) * -20px)); opacity: 1; }
 
+/* =========================================
+   Copy Button
+   ========================================= */
+.sui-copy {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--sui-bg);
+  box-shadow: var(--sui-shadow-raised-sm);
+  border-radius: var(--sui-radius-sm);
+  padding: 8px 12px;
+  font-size: 14px;
+  font-family: var(--sui-font-mono);
+  color: var(--sui-text);
+}
+
+.sui-copy-text {
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.sui-copy-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border: none;
+  background: var(--sui-bg);
+  box-shadow: var(--sui-shadow-raised-sm);
+  border-radius: var(--sui-radius-xs);
+  cursor: pointer;
+  color: var(--sui-text-muted);
+  padding: 0;
+  flex-shrink: 0;
+  transition: var(--sui-transition);
+}
+
+.sui-copy-btn svg {
+  width: 16px;
+  height: 16px;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.sui-copy-btn:hover {
+  color: var(--sui-primary);
+  box-shadow: var(--sui-shadow-raised);
+}
+
+.sui-copy-btn.copied {
+  color: var(--sui-success);
+}
+
+/* Inline — just the icon button, no wrapper */
+.sui-copy-inline {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border: none;
+  background: none;
+  cursor: pointer;
+  color: var(--sui-text-muted);
+  padding: 0;
+  border-radius: var(--sui-radius-xs);
+  transition: var(--sui-transition);
+}
+
+.sui-copy-inline svg {
+  width: 16px;
+  height: 16px;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.sui-copy-inline:hover {
+  color: var(--sui-primary);
+  background: rgba(91, 84, 224, 0.06);
+}
+
+.sui-copy-inline.copied {
+  color: var(--sui-success);
+}
+
+/* With input */
+.sui-copy-input {
+  display: flex;
+  align-items: center;
+  gap: 0;
+}
+
+.sui-copy-input .sui-input {
+  border-radius: var(--sui-radius-sm) 0 0 var(--sui-radius-sm);
+  font-family: var(--sui-font-mono);
+}
+
+.sui-copy-input .sui-copy-btn {
+  border-radius: 0 var(--sui-radius-sm) var(--sui-radius-sm) 0;
+  height: auto;
+  align-self: stretch;
+  width: 40px;
+}
+
+/* Sizes */
+.sui-copy-sm {
+  padding: 6px 10px;
+  font-size: 12px;
+}
+
+.sui-copy-sm .sui-copy-btn {
+  width: 24px;
+  height: 24px;
+}
+
+.sui-copy-sm .sui-copy-btn svg {
+  width: 13px;
+  height: 13px;
+}
+
+.sui-copy-lg {
+  padding: 12px 16px;
+  font-size: 16px;
+}
+
+.sui-copy-lg .sui-copy-btn {
+  width: 34px;
+  height: 34px;
+}
+
+.sui-copy-lg .sui-copy-btn svg {
+  width: 18px;
+  height: 18px;
+}
+
+/* Inset */
+.sui-copy-inset {
+  box-shadow: var(--sui-shadow-inset-sm);
+}
+
+.sui-copy-inset .sui-copy-btn {
+  box-shadow: var(--sui-shadow-raised-sm);
+}
+

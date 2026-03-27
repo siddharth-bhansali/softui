@@ -1,0 +1,187 @@
+---
+layout: component.njk
+title: Copy Button
+description: Click-to-copy button with clipboard icon and visual feedback. Supports inline, input field, sizes, and inset variants.
+componentId: copybutton
+hasControls: false
+requiresJs: true
+toc:
+  - Default
+  - Inline
+  - With Input
+  - Sizes
+  - Inset
+---
+
+{% set clipSvg %}<svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>{% endset %}
+
+<!-- Default -->
+<div class="pg-section" id="section-1">
+  <h3 class="pg-section-title">Default</h3>
+  <div class="pg-section-row">
+    <div style="display:flex;flex-direction:column;gap:12px;max-width:400px;">
+      <div class="sui-copy">
+        <span class="sui-copy-text">npm install softui-css</span>
+        <button class="sui-copy-btn" data-sui-copy>{{ clipSvg | safe }}</button>
+      </div>
+      <div class="sui-copy">
+        <span class="sui-copy-text">https://softui-css.netlify.app</span>
+        <button class="sui-copy-btn" data-sui-copy>{{ clipSvg | safe }}</button>
+      </div>
+      <div class="sui-copy">
+        <span class="sui-copy-text">sk-1234-abcd-5678-efgh-9012</span>
+        <button class="sui-copy-btn" data-sui-copy>{{ clipSvg | safe }}</button>
+      </div>
+    </div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-copy"&gt;
+  &lt;span class="sui-copy-text"&gt;npm install softui-css&lt;/span&gt;
+  &lt;button class="sui-copy-btn" data-sui-copy&gt;
+    &lt;svg viewBox="0 0 24 24"&gt;&lt;rect x="9" y="9" width="13" height="13" rx="2" ry="2"/&gt;&lt;path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/&gt;&lt;/svg&gt;
+  &lt;/button&gt;
+&lt;/div&gt;
+
+&lt;!-- Click the button — icon swaps to checkmark for 1.5s --&gt;
+&lt;!-- Text is auto-read from .sui-copy-text sibling --&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Inline -->
+<div class="pg-section" id="section-2">
+  <h3 class="pg-section-title">Inline</h3>
+  <div class="pg-section-row">
+    <div style="display:flex;flex-wrap:wrap;gap:24px;align-items:center;">
+      <div style="display:flex;align-items:center;gap:6px;">
+        <code style="font-size:13px;">sk-1234-abcd-5678</code>
+        <button class="sui-copy-inline" data-sui-copy="sk-1234-abcd-5678">{{ clipSvg | safe }}</button>
+      </div>
+      <div style="display:flex;align-items:center;gap:6px;">
+        <span style="font-size:13px;">Invite code: <strong>SOFTUI2026</strong></span>
+        <button class="sui-copy-inline" data-sui-copy="SOFTUI2026">{{ clipSvg | safe }}</button>
+      </div>
+    </div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;!-- Inline — just the icon, pass text via data-sui-copy --&gt;
+&lt;code&gt;sk-1234-abcd-5678&lt;/code&gt;
+&lt;button class="sui-copy-inline" data-sui-copy="sk-1234-abcd-5678"&gt;
+  &lt;svg viewBox="0 0 24 24"&gt;&lt;rect x="9" y="9" width="13" height="13" rx="2" ry="2"/&gt;&lt;path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/&gt;&lt;/svg&gt;
+&lt;/button&gt;
+
+&lt;!-- data-sui-copy="text" copies that exact string --&gt;
+&lt;!-- Without data-sui-copy value, reads from .sui-copy-text sibling --&gt;</pre></div>
+  </div>
+</div>
+
+<!-- With Input -->
+<div class="pg-section" id="section-3">
+  <h3 class="pg-section-title">With Input</h3>
+  <div class="pg-section-row">
+    <div style="display:flex;flex-direction:column;gap:12px;max-width:400px;">
+      <div class="sui-copy-input">
+        <input type="text" class="sui-input" value="https://softui-css.netlify.app" readonly>
+        <button class="sui-copy-btn" data-sui-copy>{{ clipSvg | safe }}</button>
+      </div>
+      <div class="sui-copy-input">
+        <input type="text" class="sui-input" value="bun add softui-css" readonly>
+        <button class="sui-copy-btn" data-sui-copy>{{ clipSvg | safe }}</button>
+      </div>
+    </div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-copy-input"&gt;
+  &lt;input type="text" class="sui-input" value="https://softui-css.netlify.app" readonly&gt;
+  &lt;button class="sui-copy-btn" data-sui-copy&gt;
+    &lt;svg viewBox="0 0 24 24"&gt;&lt;rect x="9" y="9" width="13" height="13" rx="2" ry="2"/&gt;&lt;path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/&gt;&lt;/svg&gt;
+  &lt;/button&gt;
+&lt;/div&gt;
+
+&lt;!-- Auto-reads value from the .sui-input sibling --&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Sizes -->
+<div class="pg-section" id="section-4">
+  <h3 class="pg-section-title">Sizes</h3>
+  <div class="pg-section-row">
+    <div style="display:flex;flex-direction:column;gap:12px;max-width:400px;">
+      <div>
+        <div style="font-size:12px;color:var(--sui-text-muted);margin-bottom:6px;">Small</div>
+        <div class="sui-copy sui-copy-sm">
+          <span class="sui-copy-text">npm install softui-css</span>
+          <button class="sui-copy-btn" data-sui-copy>{{ clipSvg | safe }}</button>
+        </div>
+      </div>
+      <div>
+        <div style="font-size:12px;color:var(--sui-text-muted);margin-bottom:6px;">Default</div>
+        <div class="sui-copy">
+          <span class="sui-copy-text">npm install softui-css</span>
+          <button class="sui-copy-btn" data-sui-copy>{{ clipSvg | safe }}</button>
+        </div>
+      </div>
+      <div>
+        <div style="font-size:12px;color:var(--sui-text-muted);margin-bottom:6px;">Large</div>
+        <div class="sui-copy sui-copy-lg">
+          <span class="sui-copy-text">npm install softui-css</span>
+          <button class="sui-copy-btn" data-sui-copy>{{ clipSvg | safe }}</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;!-- Small --&gt;
+&lt;div class="sui-copy sui-copy-sm"&gt;
+  &lt;span class="sui-copy-text"&gt;npm install softui-css&lt;/span&gt;
+  &lt;button class="sui-copy-btn" data-sui-copy&gt;
+    &lt;svg viewBox="0 0 24 24"&gt;&lt;rect x="9" y="9" width="13" height="13" rx="2" ry="2"/&gt;&lt;path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/&gt;&lt;/svg&gt;
+  &lt;/button&gt;
+&lt;/div&gt;
+
+&lt;!-- Default --&gt;
+&lt;div class="sui-copy"&gt;
+  &lt;span class="sui-copy-text"&gt;npm install softui-css&lt;/span&gt;
+  &lt;button class="sui-copy-btn" data-sui-copy&gt;
+    &lt;svg viewBox="0 0 24 24"&gt;&lt;rect x="9" y="9" width="13" height="13" rx="2" ry="2"/&gt;&lt;path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/&gt;&lt;/svg&gt;
+  &lt;/button&gt;
+&lt;/div&gt;
+
+&lt;!-- Large --&gt;
+&lt;div class="sui-copy sui-copy-lg"&gt;
+  &lt;span class="sui-copy-text"&gt;npm install softui-css&lt;/span&gt;
+  &lt;button class="sui-copy-btn" data-sui-copy&gt;
+    &lt;svg viewBox="0 0 24 24"&gt;&lt;rect x="9" y="9" width="13" height="13" rx="2" ry="2"/&gt;&lt;path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/&gt;&lt;/svg&gt;
+  &lt;/button&gt;
+&lt;/div&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Inset -->
+<div class="pg-section" id="section-5">
+  <h3 class="pg-section-title">Inset</h3>
+  <div class="pg-section-row">
+    <div style="display:flex;flex-direction:column;gap:12px;max-width:400px;">
+      <div class="sui-copy sui-copy-inset">
+        <span class="sui-copy-text">npm install softui-css</span>
+        <button class="sui-copy-btn" data-sui-copy>{{ clipSvg | safe }}</button>
+      </div>
+      <div class="sui-copy sui-copy-inset">
+        <span class="sui-copy-text">sk-1234-abcd-5678-efgh-9012</span>
+        <button class="sui-copy-btn" data-sui-copy>{{ clipSvg | safe }}</button>
+      </div>
+    </div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-copy sui-copy-inset"&gt;
+  &lt;span class="sui-copy-text"&gt;npm install softui-css&lt;/span&gt;
+  &lt;button class="sui-copy-btn" data-sui-copy&gt;
+    &lt;svg viewBox="0 0 24 24"&gt;&lt;rect x="9" y="9" width="13" height="13" rx="2" ry="2"/&gt;&lt;path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/&gt;&lt;/svg&gt;
+  &lt;/button&gt;
+&lt;/div&gt;</pre></div>
+  </div>
+</div>
