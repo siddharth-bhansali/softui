@@ -1,0 +1,314 @@
+---
+layout: component.njk
+title: Phone Mockup
+description: Container styled like a smartphone with notch, dynamic island, status bar, and home indicator. For app showcases and demos.
+componentId: phonemockup
+hasControls: false
+toc:
+  - Notch
+  - Dynamic Island
+  - Teardrop
+  - Punch Hole
+  - With Content
+  - Colors
+  - Small
+---
+
+{% set placeholderApp %}data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='260' height='520'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='0.5' y2='1'%3E%3Cstop offset='0%25' stop-color='%235B54E0'/%3E%3Cstop offset='100%25' stop-color='%2336A3F7'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect fill='url(%23g)' width='260' height='520'/%3E%3Ctext x='50%25' y='46%25' dominant-baseline='middle' text-anchor='middle' fill='white' font-size='22' font-family='sans-serif' font-weight='800'%3ESoftUI%3C/text%3E%3Ctext x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' fill='rgba(255,255,255,0.7)' font-size='12' font-family='sans-serif' font-weight='500'%3EMobile App%3C/text%3E%3C/svg%3E{% endset %}
+
+<!-- Notch -->
+<div class="pg-section" id="section-1">
+  <h3 class="pg-section-title">Notch</h3>
+  <div class="pg-section-row">
+    <div style="display:flex;flex-wrap:wrap;gap:32px;justify-content:center;">
+      <div class="sui-phone">
+        <div class="sui-phone-screen sui-phone-notch">
+          <div class="sui-phone-status">
+            <span>9:41</span>
+            <span>&#9679;&#9679;&#9679;</span>
+          </div>
+          <div style="padding:60px 20px 20px;text-align:center;">
+            <h3 style="font-size:18px;margin-bottom:8px;">Welcome</h3>
+            <p style="font-size:12px;color:var(--sui-text-muted);">This is a phone mockup with a notch.</p>
+            <button class="sui-btn sui-btn-primary sui-btn-sm" style="margin-top:16px;">Get Started</button>
+          </div>
+          <div class="sui-phone-home"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-phone"&gt;
+  &lt;div class="sui-phone-screen sui-phone-notch"&gt;
+    &lt;div class="sui-phone-status"&gt;
+      &lt;span&gt;9:41&lt;/span&gt;
+      &lt;span&gt;&amp;#9679;&amp;#9679;&amp;#9679;&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;div style="padding:60px 20px 20px;"&gt;
+      &lt;h3&gt;Welcome&lt;/h3&gt;
+      &lt;p&gt;Your app content here.&lt;/p&gt;
+    &lt;/div&gt;
+    &lt;div class="sui-phone-home"&gt;&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Dynamic Island -->
+<div class="pg-section" id="section-2">
+  <h3 class="pg-section-title">Dynamic Island</h3>
+  <div class="pg-section-row">
+    <div style="display:flex;flex-wrap:wrap;gap:32px;justify-content:center;">
+      <div class="sui-phone">
+        <div class="sui-phone-screen sui-phone-island">
+          <div class="sui-phone-status">
+            <span>9:41</span>
+            <span>&#9679;&#9679;&#9679;</span>
+          </div>
+          <div style="padding:60px 20px 20px;text-align:center;">
+            <h3 style="font-size:18px;margin-bottom:8px;">Dynamic Island</h3>
+            <p style="font-size:12px;color:var(--sui-text-muted);">Modern pill-shaped cutout.</p>
+            <button class="sui-btn sui-btn-primary sui-btn-sm" style="margin-top:16px;">Continue</button>
+          </div>
+          <div class="sui-phone-home"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-phone"&gt;
+  &lt;div class="sui-phone-screen sui-phone-island"&gt;
+    &lt;div class="sui-phone-status"&gt;
+      &lt;span&gt;9:41&lt;/span&gt;
+      &lt;span&gt;&amp;#9679;&amp;#9679;&amp;#9679;&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;div style="padding:60px 20px 20px;"&gt;
+      &lt;!-- Your content here --&gt;
+    &lt;/div&gt;
+    &lt;div class="sui-phone-home"&gt;&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Teardrop -->
+<div class="pg-section" id="section-3">
+  <h3 class="pg-section-title">Teardrop</h3>
+  <div class="pg-section-row">
+    <div style="display:flex;flex-wrap:wrap;gap:32px;justify-content:center;">
+      <div class="sui-phone sui-phone-sm">
+        <div class="sui-phone-screen sui-phone-teardrop">
+          <div class="sui-phone-status">
+            <span>9:41</span>
+            <span>&#9679;&#9679;&#9679;</span>
+          </div>
+          <div style="padding:50px 16px 16px;text-align:center;">
+            <h4 style="font-size:14px;margin-bottom:6px;">Teardrop</h4>
+            <p style="font-size:11px;color:var(--sui-text-muted);">Small water-drop cutout.</p>
+          </div>
+          <div class="sui-phone-home"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-phone"&gt;
+  &lt;div class="sui-phone-screen sui-phone-teardrop"&gt;
+    &lt;div class="sui-phone-status"&gt;
+      &lt;span&gt;9:41&lt;/span&gt;
+      &lt;span&gt;&amp;#9679;&amp;#9679;&amp;#9679;&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;div style="padding:50px 16px 16px;"&gt;
+      &lt;!-- Your content here --&gt;
+    &lt;/div&gt;
+    &lt;div class="sui-phone-home"&gt;&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Punch Hole -->
+<div class="pg-section" id="section-4">
+  <h3 class="pg-section-title">Punch Hole</h3>
+  <div class="pg-section-row">
+    <div style="display:flex;flex-wrap:wrap;gap:32px;justify-content:center;">
+      <div>
+        <div style="font-size:12px;color:var(--sui-text-muted);margin-bottom:8px;text-align:center;">Single</div>
+        <div class="sui-phone sui-phone-sm">
+          <div class="sui-phone-screen sui-phone-punch">
+            <div class="sui-phone-status">
+              <span>9:41</span>
+              <span>&#9679;&#9679;&#9679;</span>
+            </div>
+            <div style="padding:50px 16px 16px;text-align:center;">
+              <p style="font-size:11px;color:var(--sui-text-muted);">Single punch hole</p>
+            </div>
+            <div class="sui-phone-home"></div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div style="font-size:12px;color:var(--sui-text-muted);margin-bottom:8px;text-align:center;">Double</div>
+        <div class="sui-phone sui-phone-sm">
+          <div class="sui-phone-screen sui-phone-punch-double">
+            <div class="sui-phone-status">
+              <span>9:41</span>
+              <span>&#9679;&#9679;&#9679;</span>
+            </div>
+            <div style="padding:50px 16px 16px;text-align:center;">
+              <p style="font-size:11px;color:var(--sui-text-muted);">Double punch hole</p>
+            </div>
+            <div class="sui-phone-home"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;!-- Single punch hole --&gt;
+&lt;div class="sui-phone"&gt;
+  &lt;div class="sui-phone-screen sui-phone-punch"&gt;
+    &lt;!-- content --&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- Double punch hole --&gt;
+&lt;div class="sui-phone"&gt;
+  &lt;div class="sui-phone-screen sui-phone-punch-double"&gt;
+    &lt;!-- content --&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</pre></div>
+  </div>
+</div>
+
+<!-- With Content -->
+<div class="pg-section" id="section-5">
+  <h3 class="pg-section-title">With Content</h3>
+  <div class="pg-section-row">
+    <div style="display:flex;flex-wrap:wrap;gap:32px;justify-content:center;">
+      <div class="sui-phone">
+        <div class="sui-phone-screen sui-phone-island">
+          <img src="{{ placeholderApp }}" alt="App Screenshot">
+          <div class="sui-phone-home"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-phone"&gt;
+  &lt;div class="sui-phone-screen sui-phone-island"&gt;
+    &lt;img src="app-screenshot.png" alt="App Screenshot"&gt;
+    &lt;div class="sui-phone-home"&gt;&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Colors -->
+<div class="pg-section" id="section-6">
+  <h3 class="pg-section-title">Colors</h3>
+  <div class="pg-section-row">
+    <div style="display:flex;flex-wrap:wrap;gap:32px;justify-content:center;">
+      <div>
+        <div style="font-size:12px;color:var(--sui-text-muted);margin-bottom:8px;text-align:center;">Space Black</div>
+        <div class="sui-phone sui-phone-sm">
+          <div class="sui-phone-screen sui-phone-island">
+            <div style="padding:50px 16px 16px;text-align:center;">
+              <p style="font-size:11px;color:var(--sui-text-muted);">Default</p>
+            </div>
+            <div class="sui-phone-home"></div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div style="font-size:12px;color:var(--sui-text-muted);margin-bottom:8px;text-align:center;">Silver</div>
+        <div class="sui-phone sui-phone-white sui-phone-sm">
+          <div class="sui-phone-screen sui-phone-island">
+            <div style="padding:50px 16px 16px;text-align:center;">
+              <p style="font-size:11px;color:var(--sui-text-muted);">White</p>
+            </div>
+            <div class="sui-phone-home"></div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div style="font-size:12px;color:var(--sui-text-muted);margin-bottom:8px;text-align:center;">Gold</div>
+        <div class="sui-phone sui-phone-gold sui-phone-sm">
+          <div class="sui-phone-screen sui-phone-island">
+            <div style="padding:50px 16px 16px;text-align:center;">
+              <p style="font-size:11px;color:var(--sui-text-muted);">Gold</p>
+            </div>
+            <div class="sui-phone-home"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;!-- Space Black (default) --&gt;
+&lt;div class="sui-phone"&gt;
+  &lt;div class="sui-phone-screen sui-phone-island"&gt;...&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- Silver --&gt;
+&lt;div class="sui-phone sui-phone-white"&gt;
+  &lt;div class="sui-phone-screen sui-phone-island"&gt;...&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- Gold --&gt;
+&lt;div class="sui-phone sui-phone-gold"&gt;
+  &lt;div class="sui-phone-screen sui-phone-island"&gt;...&lt;/div&gt;
+&lt;/div&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Small -->
+<div class="pg-section" id="section-7">
+  <h3 class="pg-section-title">Small</h3>
+  <div class="pg-section-row">
+    <div style="display:flex;flex-wrap:wrap;gap:32px;align-items:flex-start;justify-content:center;">
+      <div>
+        <div style="font-size:12px;color:var(--sui-text-muted);margin-bottom:8px;text-align:center;">Small</div>
+        <div class="sui-phone sui-phone-sm">
+          <div class="sui-phone-screen sui-phone-island">
+            <img src="{{ placeholderApp }}" alt="App">
+            <div class="sui-phone-home"></div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div style="font-size:12px;color:var(--sui-text-muted);margin-bottom:8px;text-align:center;">Default</div>
+        <div class="sui-phone">
+          <div class="sui-phone-screen sui-phone-island">
+            <img src="{{ placeholderApp }}" alt="App">
+            <div class="sui-phone-home"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;!-- Small --&gt;
+&lt;div class="sui-phone sui-phone-sm"&gt;
+  &lt;div class="sui-phone-screen sui-phone-island"&gt;
+    &lt;img src="screenshot.png" alt="App"&gt;
+    &lt;div class="sui-phone-home"&gt;&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- Default --&gt;
+&lt;div class="sui-phone"&gt;
+  &lt;div class="sui-phone-screen sui-phone-island"&gt;
+    &lt;img src="screenshot.png" alt="App"&gt;
+    &lt;div class="sui-phone-home"&gt;&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</pre></div>
+  </div>
+</div>

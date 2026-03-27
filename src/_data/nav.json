@@ -74,6 +74,7 @@
     { "id": "chatbubble", "name": "Chat Bubble", "url": "/components/chatbubble/" },
     { "id": "browsermockup", "name": "Browser Mockup", "url": "/components/browsermockup/" },
     { "id": "marquee", "name": "Marquee", "url": "/components/marquee/" },
+    { "id": "phonemockup", "name": "Phone Mockup", "url": "/components/phonemockup/" },
     { "id": "stack", "name": "Stack", "url": "/components/stack/" },
     { "id": "swap", "name": "Swap", "url": "/components/swap/" },
     { "id": "textrotate", "name": "Text Rotate", "url": "/components/textrotate/" },
