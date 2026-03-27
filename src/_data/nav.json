@@ -72,6 +72,7 @@
     { "id": "lightbox", "name": "Image Lightbox", "url": "/components/lightbox/" },
     { "id": "diff", "name": "Diff", "url": "/components/diff/" },
     { "id": "chatbubble", "name": "Chat Bubble", "url": "/components/chatbubble/" },
+    { "id": "marquee", "name": "Marquee", "url": "/components/marquee/" },
     { "id": "stack", "name": "Stack", "url": "/components/stack/" },
     { "id": "swap", "name": "Swap", "url": "/components/swap/" },
     { "id": "textrotate", "name": "Text Rotate", "url": "/components/textrotate/" },

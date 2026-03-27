@@ -11889,3 +11889,115 @@ a.sui-btn-warning:visited {
 .sui-typewriter-warning { color: var(--sui-warning); }
 .sui-typewriter-info { color: var(--sui-info); }
 
+/* =========================================
+   Marquee
+   ========================================= */
+.sui-marquee {
+  overflow: hidden;
+  position: relative;
+  padding: 8px 0;
+}
+
+.sui-marquee-track {
+  display: flex;
+  width: max-content;
+  animation: sui-marquee 20s linear infinite;
+  gap: 24px;
+}
+
+@keyframes sui-marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* Reverse */
+.sui-marquee-reverse .sui-marquee-track {
+  animation-direction: reverse;
+}
+
+/* Speeds */
+.sui-marquee-slow .sui-marquee-track { animation-duration: 40s; }
+.sui-marquee-fast .sui-marquee-track { animation-duration: 10s; }
+
+/* Pause on hover */
+.sui-marquee-hover:hover .sui-marquee-track {
+  animation-play-state: paused;
+}
+
+/* Fade edges */
+.sui-marquee-fade::before,
+.sui-marquee-fade::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 60px;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.sui-marquee-fade::before {
+  left: 0;
+  background: linear-gradient(to right, var(--sui-bg), transparent);
+}
+
+.sui-marquee-fade::after {
+  right: 0;
+  background: linear-gradient(to left, var(--sui-bg), transparent);
+}
+
+/* Vertical */
+.sui-marquee-vertical {
+  overflow: hidden;
+  height: 200px;
+  padding: 0 8px;
+}
+
+.sui-marquee-vertical .sui-marquee-track {
+  flex-direction: column;
+  animation-name: sui-marquee-y;
+  width: auto;
+}
+
+@keyframes sui-marquee-y {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-50%); }
+}
+
+/* Items */
+.sui-marquee-item {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sui-marquee-logo {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 20px;
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--sui-text-muted);
+  white-space: nowrap;
+}
+
+.sui-marquee-card {
+  flex-shrink: 0;
+  background: var(--sui-bg);
+  box-shadow: var(--sui-shadow-raised-sm);
+  border-radius: var(--sui-radius);
+  padding: 16px 20px;
+  min-width: 200px;
+}
+
+.sui-marquee-text {
+  flex-shrink: 0;
+  padding: 0 24px;
+  font-size: 14px;
+  white-space: nowrap;
+  color: var(--sui-text-muted);
+}
+
