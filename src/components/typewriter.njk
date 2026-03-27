@@ -1,0 +1,168 @@
+---
+layout: component.njk
+title: Typewriter
+description: Text that appears character by character with a blinking cursor. Supports looping phrases, cursor styles, speeds, and colors.
+componentId: typewriter
+hasControls: false
+requiresJs: true
+toc:
+  - Default
+  - Loop
+  - Cursor Styles
+  - Speeds
+  - With Colors
+---
+
+<!-- Default -->
+<div class="pg-section" id="section-1">
+  <h3 class="pg-section-title">Default</h3>
+  <div class="pg-section-row">
+    <p style="font-size:22px;font-weight:700;color:var(--sui-text);">
+      <span class="sui-typewriter sui-typewriter-cursor" data-sui-typewriter>Welcome to SoftUI, a neumorphic CSS library.</span>
+    </p>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;p style="font-size:22px;font-weight:700;"&gt;
+  &lt;span class="sui-typewriter sui-typewriter-cursor" data-sui-typewriter&gt;Welcome to SoftUI, a neumorphic CSS library.&lt;/span&gt;
+&lt;/p&gt;
+
+&lt;!-- Types out the text content character by character --&gt;
+&lt;!-- sui-typewriter-cursor adds the blinking cursor --&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Loop -->
+<div class="pg-section" id="section-2">
+  <h3 class="pg-section-title">Loop</h3>
+  <div class="pg-section-row">
+    <div style="display:flex;flex-direction:column;gap:20px;">
+      <p style="font-size:22px;font-weight:700;color:var(--sui-text);">
+        I love
+        <span class="sui-typewriter sui-typewriter-cursor" data-sui-typewriter data-words="building websites|writing CSS|creating components|open source" data-loop></span>
+      </p>
+      <p style="font-size:20px;font-weight:600;color:var(--sui-text);">
+        npm install
+        <span class="sui-typewriter sui-typewriter-cursor sui-typewriter-primary" data-sui-typewriter data-words="softui-css|react|vue|svelte" data-loop></span>
+      </p>
+    </div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;p style="font-size:22px;font-weight:700;"&gt;
+  I love
+  &lt;span class="sui-typewriter sui-typewriter-cursor"
+    data-sui-typewriter
+    data-words="building websites|writing CSS|creating components|open source"
+    data-loop&gt;&lt;/span&gt;
+&lt;/p&gt;
+
+&lt;!-- data-words: pipe-separated phrases to cycle through --&gt;
+&lt;!-- data-loop: types, deletes, types next phrase, repeats --&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Cursor Styles -->
+<div class="pg-section" id="section-3">
+  <h3 class="pg-section-title">Cursor Styles</h3>
+  <div class="pg-section-row">
+    <div style="display:flex;flex-direction:column;gap:20px;">
+      <p style="font-size:20px;font-weight:600;color:var(--sui-text);">
+        Line cursor:
+        <span class="sui-typewriter sui-typewriter-cursor" data-sui-typewriter data-words="default cursor style" data-speed="60"></span>
+      </p>
+      <p style="font-size:20px;font-weight:600;color:var(--sui-text);">
+        Block cursor:
+        <span class="sui-typewriter sui-typewriter-cursor-block" data-sui-typewriter data-words="block cursor style" data-speed="60"></span>
+      </p>
+      <p style="font-size:20px;font-weight:600;color:var(--sui-text);">
+        Underscore cursor:
+        <span class="sui-typewriter sui-typewriter-cursor-underscore" data-sui-typewriter data-words="underscore cursor style" data-speed="60"></span>
+      </p>
+    </div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;!-- Line cursor (default) --&gt;
+&lt;span class="sui-typewriter sui-typewriter-cursor" data-sui-typewriter&gt;...&lt;/span&gt;
+
+&lt;!-- Block cursor --&gt;
+&lt;span class="sui-typewriter sui-typewriter-cursor-block" data-sui-typewriter&gt;...&lt;/span&gt;
+
+&lt;!-- Underscore cursor --&gt;
+&lt;span class="sui-typewriter sui-typewriter-cursor-underscore" data-sui-typewriter&gt;...&lt;/span&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Speeds -->
+<div class="pg-section" id="section-4">
+  <h3 class="pg-section-title">Speeds</h3>
+  <div class="pg-section-row">
+    <div style="display:flex;flex-direction:column;gap:20px;">
+      <p style="font-size:18px;font-weight:600;color:var(--sui-text);">
+        Slow (120ms):
+        <span class="sui-typewriter sui-typewriter-cursor" data-sui-typewriter data-words="This types slowly...|Notice the pace?" data-speed="120" data-loop></span>
+      </p>
+      <p style="font-size:18px;font-weight:600;color:var(--sui-text);">
+        Default (80ms):
+        <span class="sui-typewriter sui-typewriter-cursor" data-sui-typewriter data-words="This is the default speed.|A good balance." data-speed="80" data-loop></span>
+      </p>
+      <p style="font-size:18px;font-weight:600;color:var(--sui-text);">
+        Fast (30ms):
+        <span class="sui-typewriter sui-typewriter-cursor" data-sui-typewriter data-words="This types really fast!|Blink and you miss it." data-speed="30" data-loop></span>
+      </p>
+    </div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;!-- Slow --&gt;
+&lt;span class="sui-typewriter sui-typewriter-cursor" data-sui-typewriter data-speed="120"&gt;Slow text&lt;/span&gt;
+
+&lt;!-- Default --&gt;
+&lt;span class="sui-typewriter sui-typewriter-cursor" data-sui-typewriter&gt;Default speed&lt;/span&gt;
+
+&lt;!-- Fast --&gt;
+&lt;span class="sui-typewriter sui-typewriter-cursor" data-sui-typewriter data-speed="30"&gt;Fast text&lt;/span&gt;
+
+&lt;!-- data-speed: ms per character (default 80) --&gt;
+&lt;!-- data-delete-speed: ms per character when deleting (default 40) --&gt;
+&lt;!-- data-pause: ms to pause before deleting (default 1500) --&gt;</pre></div>
+  </div>
+</div>
+
+<!-- With Colors -->
+<div class="pg-section" id="section-5">
+  <h3 class="pg-section-title">With Colors</h3>
+  <div class="pg-section-row">
+    <div style="display:flex;flex-direction:column;gap:20px;">
+      <p style="font-size:22px;font-weight:700;color:var(--sui-text);">
+        Deploy to
+        <span class="sui-typewriter sui-typewriter-cursor sui-typewriter-primary" data-sui-typewriter data-words="production|staging|preview" data-loop></span>
+      </p>
+      <p style="font-size:22px;font-weight:700;color:var(--sui-text);">
+        Status:
+        <span class="sui-typewriter sui-typewriter-cursor-block sui-typewriter-success" data-sui-typewriter data-words="All systems operational" data-speed="50"></span>
+      </p>
+      <p style="font-size:22px;font-weight:700;color:var(--sui-text);">
+        Error:
+        <span class="sui-typewriter sui-typewriter-cursor sui-typewriter-danger" data-sui-typewriter data-words="Connection refused|Timeout exceeded|404 Not Found" data-loop data-pause="2000"></span>
+      </p>
+    </div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;!-- Primary --&gt;
+&lt;span class="sui-typewriter sui-typewriter-cursor sui-typewriter-primary"
+  data-sui-typewriter data-words="production|staging|preview" data-loop&gt;&lt;/span&gt;
+
+&lt;!-- Success --&gt;
+&lt;span class="sui-typewriter sui-typewriter-cursor-block sui-typewriter-success"
+  data-sui-typewriter data-words="All systems operational"&gt;&lt;/span&gt;
+
+&lt;!-- Danger --&gt;
+&lt;span class="sui-typewriter sui-typewriter-cursor sui-typewriter-danger"
+  data-sui-typewriter data-words="Connection refused|Timeout exceeded" data-loop&gt;&lt;/span&gt;
+
+&lt;!-- Color classes: sui-typewriter-primary, success, danger, warning, info --&gt;</pre></div>
+  </div>
+</div>

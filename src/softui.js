@@ -3772,6 +3772,75 @@ const SoftUI = (() => {
   });
 
   // =========================================
+  // Typewriter
+  // =========================================
+  function initTypewriters() {
+    document.querySelectorAll('[data-sui-typewriter]').forEach(function(el) {
+      if (el.dataset.suiTypewriterInit) return;
+      el.dataset.suiTypewriterInit = '1';
+      var words = el.getAttribute('data-words');
+      var speed = parseInt(el.getAttribute('data-speed')) || 80;
+      var deleteSpeed = parseInt(el.getAttribute('data-delete-speed')) || 40;
+      var pause = parseInt(el.getAttribute('data-pause')) || 1500;
+      var loop = el.hasAttribute('data-loop');
+
+      if (words) {
+        // Multiple phrases mode
+        var phrases = words.split('|').map(function(s) { return s.trim(); });
+        var phraseIdx = 0;
+        var charIdx = 0;
+        var deleting = false;
+
+        function tick() {
+          var current = phrases[phraseIdx];
+          if (!deleting) {
+            charIdx++;
+            el.textContent = current.substring(0, charIdx);
+            if (charIdx === current.length) {
+              if (!loop && phraseIdx === phrases.length - 1) return;
+              setTimeout(function() { deleting = true; tick(); }, pause);
+              return;
+            }
+            setTimeout(tick, speed);
+          } else {
+            charIdx--;
+            el.textContent = current.substring(0, charIdx);
+            if (charIdx === 0) {
+              deleting = false;
+              phraseIdx = (phraseIdx + 1) % phrases.length;
+              setTimeout(tick, speed);
+              return;
+            }
+            setTimeout(tick, deleteSpeed);
+          }
+        }
+
+        el.textContent = '';
+        setTimeout(tick, 500);
+      } else {
+        // Single text mode — type out existing content
+        var text = el.textContent;
+        el.textContent = '';
+        var i = 0;
+        function typeChar() {
+          if (i < text.length) {
+            el.textContent += text[i];
+            i++;
+            setTimeout(typeChar, speed);
+          }
+        }
+        setTimeout(typeChar, 500);
+      }
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initTypewriters);
+  } else {
+    initTypewriters();
+  }
+
+  // =========================================
   // Text Rotate
   // =========================================
   function initTextRotate() {

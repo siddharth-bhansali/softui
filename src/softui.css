@@ -11851,3 +11851,41 @@ a.sui-btn-warning:visited {
 .sui-text-rotate-warning .sui-text-rotate-word.active { color: var(--sui-warning); }
 .sui-text-rotate-info .sui-text-rotate-word.active { color: var(--sui-info); }
 
+/* =========================================
+   Typewriter
+   ========================================= */
+.sui-typewriter {
+  display: inline;
+}
+
+.sui-typewriter-cursor::after {
+  content: "|";
+  display: inline-block;
+  animation: sui-blink 0.7s step-end infinite;
+  margin-left: 1px;
+  font-weight: 400;
+}
+
+@keyframes sui-blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+/* Cursor variants */
+.sui-typewriter-cursor-block::after {
+  content: "\2588";
+  font-weight: 400;
+}
+
+.sui-typewriter-cursor-underscore::after {
+  content: "_";
+  font-weight: 700;
+}
+
+/* Colors */
+.sui-typewriter-primary { color: var(--sui-primary); }
+.sui-typewriter-success { color: var(--sui-success); }
+.sui-typewriter-danger { color: var(--sui-danger); }
+.sui-typewriter-warning { color: var(--sui-warning); }
+.sui-typewriter-info { color: var(--sui-info); }
+

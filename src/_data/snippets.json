@@ -344,6 +344,11 @@
       "code": "<div class=\"sui-card\" style=\"position:relative;padding:20px;\">\n  <h4>Dashboard</h4>\n  <p>Revenue: $12,450</p>\n  <div class=\"sui-loading-overlay active\">\n    <div class=\"sui-spinner sui-spinner-primary\" role=\"status\" aria-label=\"Loading\"></div>\n    <span class=\"sui-loading-overlay-text\">Loading...</span>\n  </div>\n</div>"
     },
     {
+      "id": "typewriter",
+      "label": "Typewriter",
+      "code": "<p style=\"font-size:22px;font-weight:700;\">\n  I love\n  <span class=\"sui-typewriter sui-typewriter-cursor sui-typewriter-primary\" data-sui-typewriter data-words=\"building websites|writing CSS|open source\" data-loop></span>\n</p>"
+    },
+    {
       "id": "textrotate",
       "label": "Text Rotate",
       "code": "<p style=\"font-size:24px;font-weight:700;\">\n  We build\n  <span class=\"sui-text-rotate sui-text-rotate-slide sui-text-rotate-primary\" data-sui-text-rotate data-interval=\"2000\">\n    <span class=\"sui-text-rotate-word\">beautiful</span>\n    <span class=\"sui-text-rotate-word\">modern</span>\n    <span class=\"sui-text-rotate-word\">stunning</span>\n  </span>\n  products.\n</p>"
