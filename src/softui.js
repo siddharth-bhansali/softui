@@ -4051,5 +4051,137 @@ const SoftUI = (() => {
     updateTreeParent(parentItem);
   }
 
-  return { modal, sheet, toast, carousel, sidebar };
+  // =========================================
+  // Tour / Walkthrough
+  // =========================================
+  function tour(steps, options) {
+    options = options || {};
+    var currentStep = 0;
+    var overlay, backdrop, spotlight, tooltip;
+    var padding = options.padding || 8;
+    var noOverlay = options.noOverlay || false;
+
+    function create() {
+      overlay = document.createElement('div');
+      overlay.className = 'sui-tour-overlay' + (noOverlay ? ' sui-tour-no-overlay' : '');
+      backdrop = document.createElement('div');
+      backdrop.className = 'sui-tour-backdrop';
+      spotlight = document.createElement('div');
+      spotlight.className = 'sui-tour-spotlight';
+      tooltip = document.createElement('div');
+      tooltip.className = 'sui-tour-tooltip';
+      overlay.appendChild(backdrop);
+      overlay.appendChild(spotlight);
+      overlay.appendChild(tooltip);
+      document.body.appendChild(overlay);
+
+      backdrop.addEventListener('click', close);
+    }
+
+    function show(idx) {
+      currentStep = idx;
+      var step = steps[idx];
+      var target = document.querySelector(step.target);
+
+      // Position spotlight
+      if (target) {
+        target.scrollIntoView({ block: 'center', behavior: 'smooth' });
+      }
+      // Delay positioning to let scroll finish
+      setTimeout(function() {
+      if (target && !noOverlay) {
+        var rect = target.getBoundingClientRect();
+        spotlight.style.top = (rect.top - padding) + 'px';
+        spotlight.style.left = (rect.left - padding) + 'px';
+        spotlight.style.width = (rect.width + padding * 2) + 'px';
+        spotlight.style.height = (rect.height + padding * 2) + 'px';
+      }
+
+      // Build tooltip content
+      var dotsHtml = '';
+      if (steps.length > 1) {
+        dotsHtml = '<div class="sui-tour-dots">';
+        for (var i = 0; i < steps.length; i++) {
+          dotsHtml += '<span class="sui-tour-dot' + (i === idx ? ' active' : '') + '"></span>';
+        }
+        dotsHtml += '</div>';
+      }
+
+      tooltip.innerHTML =
+        '<div class="sui-tour-tooltip-title">' + (step.title || '') + '</div>' +
+        '<div class="sui-tour-tooltip-desc">' + (step.description || '') + '</div>' +
+        '<div class="sui-tour-tooltip-footer">' +
+          dotsHtml +
+          '<div class="sui-tour-tooltip-actions">' +
+            (idx > 0 ? '<button class="sui-btn sui-btn-sm sui-tour-prev">Back</button>' : '<button class="sui-btn sui-btn-sm sui-tour-skip">Skip</button>') +
+            (idx < steps.length - 1 ? '<button class="sui-btn sui-btn-primary sui-btn-sm sui-tour-next">Next</button>' : '<button class="sui-btn sui-btn-primary sui-btn-sm sui-tour-done">Done</button>') +
+          '</div>' +
+        '</div>';
+
+      // Button handlers
+      var nextBtn = tooltip.querySelector('.sui-tour-next');
+      var prevBtn = tooltip.querySelector('.sui-tour-prev');
+      var skipBtn = tooltip.querySelector('.sui-tour-skip');
+      var doneBtn = tooltip.querySelector('.sui-tour-done');
+      if (nextBtn) nextBtn.addEventListener('click', function() { show(currentStep + 1); });
+      if (prevBtn) prevBtn.addEventListener('click', function() { show(currentStep - 1); });
+      if (skipBtn) skipBtn.addEventListener('click', close);
+      if (doneBtn) doneBtn.addEventListener('click', close);
+
+      // Position tooltip after scroll settles
+      if (target) {
+        var rect = target.getBoundingClientRect();
+        var pos = step.position || 'bottom';
+        var tooltipW = 300;
+        var centerX = rect.left + rect.width / 2 - tooltipW / 2;
+        var top, left;
+
+        tooltip.style.transform = '';
+
+        if (pos === 'bottom') {
+          top = rect.bottom + padding + 12;
+          left = centerX;
+        } else if (pos === 'top') {
+          top = rect.top - padding - 12;
+          left = centerX;
+          tooltip.style.transform = 'translateY(-100%)';
+        } else if (pos === 'left') {
+          top = rect.top + rect.height / 2;
+          left = rect.left - padding - tooltipW - 12;
+          tooltip.style.transform = 'translateY(-50%)';
+        } else if (pos === 'right') {
+          top = rect.top + rect.height / 2;
+          left = rect.right + padding + 12;
+          tooltip.style.transform = 'translateY(-50%)';
+        }
+
+        // Keep tooltip within viewport
+        left = Math.max(8, Math.min(left, window.innerWidth - tooltipW - 8));
+        top = Math.max(8, Math.min(top, window.innerHeight - 200));
+        tooltip.style.top = top + 'px';
+        tooltip.style.left = left + 'px';
+      }
+      }, 350);
+
+      overlay.classList.add('active');
+    }
+
+    function close() {
+      if (overlay) {
+        overlay.classList.remove('active');
+        setTimeout(function() {
+          if (overlay && overlay.parentNode) overlay.parentNode.removeChild(overlay);
+          overlay = null;
+        }, 300);
+      }
+      if (options.onComplete) options.onComplete();
+    }
+
+    create();
+    show(0);
+
+    return { next: function() { show(currentStep + 1); }, prev: function() { show(currentStep - 1); }, close: close, goTo: show };
+  }
+
+  return { modal, sheet, toast, carousel, sidebar, tour };
 })();

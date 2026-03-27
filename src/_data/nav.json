@@ -78,6 +78,7 @@
     { "id": "stack", "name": "Stack", "url": "/components/stack/" },
     { "id": "swap", "name": "Swap", "url": "/components/swap/" },
     { "id": "textrotate", "name": "Text Rotate", "url": "/components/textrotate/" },
+    { "id": "tour", "name": "Tour", "url": "/components/tour/" },
     { "id": "typewriter", "name": "Typewriter", "url": "/components/typewriter/" },
     { "id": "togglegroup", "name": "Toggle Group", "url": "/components/togglegroup/" }
   ],

@@ -12378,3 +12378,114 @@ a.sui-btn-warning:visited {
   transform: rotate(90deg);
 }
 
+/* =========================================
+   Tour / Walkthrough
+   ========================================= */
+
+/* Overlay with spotlight cutout */
+.sui-tour-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  pointer-events: none;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.sui-tour-overlay.active {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.sui-tour-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1;
+}
+
+/* Spotlight ring around target */
+.sui-tour-spotlight {
+  position: fixed;
+  border-radius: var(--sui-radius);
+  box-shadow: 0 0 0 9999px rgba(0, 0, 0, 0.5);
+  z-index: 2;
+  pointer-events: none;
+  transition: top 0.3s ease, left 0.3s ease, width 0.3s ease, height 0.3s ease;
+}
+
+/* Tooltip */
+.sui-tour-tooltip {
+  position: fixed;
+  z-index: 3;
+  background: var(--sui-bg);
+  border-radius: var(--sui-radius);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15), 0 2px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  width: 300px;
+  max-width: 90vw;
+  transition: top 0.3s ease, left 0.3s ease;
+}
+
+.sui-tour-tooltip-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--sui-text);
+  margin-bottom: 6px;
+}
+
+.sui-tour-tooltip-desc {
+  font-size: 13px;
+  color: var(--sui-text-muted);
+  line-height: 1.5;
+  margin-bottom: 16px;
+}
+
+.sui-tour-tooltip-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.sui-tour-tooltip-counter {
+  font-size: 12px;
+  color: var(--sui-text-light);
+  font-weight: 600;
+}
+
+.sui-tour-tooltip-actions {
+  display: flex;
+  gap: 8px;
+}
+
+/* Progress dots */
+.sui-tour-dots {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+
+.sui-tour-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--sui-bg-dark);
+  transition: background 0.2s ease;
+}
+
+.sui-tour-dot.active {
+  background: var(--sui-primary);
+}
+
+/* No overlay variant */
+.sui-tour-no-overlay .sui-tour-backdrop,
+.sui-tour-no-overlay .sui-tour-spotlight {
+  display: none;
+}
+
+.sui-tour-no-overlay .sui-tour-tooltip {
+  box-shadow: var(--sui-shadow-raised);
+}
+

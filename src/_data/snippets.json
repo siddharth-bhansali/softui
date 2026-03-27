@@ -359,6 +359,11 @@
       "code": "<div class=\"sui-marquee sui-marquee-fade sui-marquee-hover\">\n  <div class=\"sui-marquee-track\">\n    <div class=\"sui-marquee-logo\">Acme Inc</div>\n    <div class=\"sui-marquee-logo\">Globex</div>\n    <div class=\"sui-marquee-logo\">Initech</div>\n    <div class=\"sui-marquee-logo\">Umbrella</div>\n    <div class=\"sui-marquee-logo\">Acme Inc</div>\n    <div class=\"sui-marquee-logo\">Globex</div>\n    <div class=\"sui-marquee-logo\">Initech</div>\n    <div class=\"sui-marquee-logo\">Umbrella</div>\n  </div>\n</div>"
     },
     {
+      "id": "tour",
+      "label": "Tour",
+      "code": "<script>\nSoftUI.tour([\n  { target: '#step1', title: 'Welcome', description: 'This is the first step.', position: 'bottom' },\n  { target: '#step2', title: 'Features', description: 'Explore our features here.', position: 'right' },\n  { target: '#step3', title: 'Done!', description: 'You are all set.', position: 'top' }\n]);\n</script>"
+    },
+    {
       "id": "typewriter",
       "label": "Typewriter",
       "code": "<p style=\"font-size:22px;font-weight:700;\">\n  I love\n  <span class=\"sui-typewriter sui-typewriter-cursor sui-typewriter-primary\" data-sui-typewriter data-words=\"building websites|writing CSS|open source\" data-loop></span>\n</p>"
