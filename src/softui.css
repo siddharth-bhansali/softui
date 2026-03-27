@@ -12001,3 +12001,178 @@ a.sui-btn-warning:visited {
   color: var(--sui-text-muted);
 }
 
+/* =========================================
+   Browser Mockup
+   ========================================= */
+.sui-browser {
+  border-radius: var(--sui-radius-lg);
+  overflow: hidden;
+  box-shadow: var(--sui-shadow-raised);
+  background: var(--sui-bg);
+}
+
+.sui-browser-bar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  background: var(--sui-bg-dark);
+}
+
+.sui-browser-dots {
+  display: flex;
+  gap: 6px;
+  flex-shrink: 0;
+}
+
+.sui-browser-dots span {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.sui-browser-dots span:nth-child(1) { background: #E74C6F; }
+.sui-browser-dots span:nth-child(2) { background: #F5A623; }
+.sui-browser-dots span:nth-child(3) { background: #2DCE89; }
+
+.sui-browser-url {
+  flex: 1;
+  background: var(--sui-bg);
+  box-shadow: var(--sui-shadow-inset-sm);
+  border-radius: var(--sui-radius-full);
+  padding: 5px 14px;
+  font-size: 12px;
+  color: var(--sui-text-muted);
+  font-family: var(--sui-font);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.sui-browser-actions {
+  display: flex;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.sui-browser-actions svg {
+  width: 14px;
+  height: 14px;
+  stroke: var(--sui-text-light);
+  fill: none;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.sui-browser-body {
+  min-height: 120px;
+}
+
+.sui-browser-body img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* Tabs */
+.sui-browser-tabs {
+  display: flex;
+  align-items: flex-end;
+  gap: 2px;
+  padding: 8px 14px 0;
+  background: var(--sui-bg-dark);
+}
+
+.sui-browser-tab {
+  padding: 6px 16px;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--sui-text-muted);
+  border-radius: var(--sui-radius-sm) var(--sui-radius-sm) 0 0;
+  background: transparent;
+}
+
+.sui-browser-tab.active {
+  background: var(--sui-bg);
+  color: var(--sui-text);
+}
+
+.sui-browser-tabs + .sui-browser-bar {
+  padding-top: 8px;
+}
+
+/* Windows-style buttons (right side) */
+.sui-browser-win .sui-browser-bar {
+  position: relative;
+}
+
+.sui-browser-win .sui-browser-dots {
+  display: none;
+}
+
+.sui-browser-win-btns {
+  display: flex;
+  margin-left: auto;
+  flex-shrink: 0;
+}
+
+.sui-browser-win-btns button {
+  width: 28px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  padding: 0;
+}
+
+.sui-browser-win-btns button svg {
+  width: 10px;
+  height: 10px;
+  stroke: var(--sui-text-muted);
+  fill: none;
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.sui-browser-win-btns button:hover {
+  background: rgba(0, 0, 0, 0.06);
+}
+
+.sui-browser-win-btns button:last-child:hover {
+  background: #E74C6F;
+}
+
+.sui-browser-win-btns button:last-child:hover svg {
+  stroke: #fff;
+}
+
+/* Dark chrome */
+.sui-browser-dark .sui-browser-bar,
+.sui-browser-dark .sui-browser-tabs {
+  background: #1B1D2A;
+}
+
+.sui-browser-dark .sui-browser-url {
+  background: rgba(255, 255, 255, 0.08);
+  box-shadow: none;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.sui-browser-dark .sui-browser-actions svg {
+  stroke: rgba(255, 255, 255, 0.4);
+}
+
+.sui-browser-dark .sui-browser-tab {
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.sui-browser-dark .sui-browser-tab.active {
+  background: var(--sui-bg);
+  color: var(--sui-text);
+}
+

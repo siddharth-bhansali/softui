@@ -1,0 +1,239 @@
+---
+layout: component.njk
+title: Browser Mockup
+description: Container styled like a browser window with address bar, traffic light dots, tabs, and dark chrome. For product showcases and demos.
+componentId: browsermockup
+hasControls: false
+toc:
+  - Default
+  - With URL
+  - Windows Style
+  - With Tabs
+  - Dark Chrome
+  - With Content
+---
+
+{% set navSvgs %}<svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>{% endset %}
+
+<!-- Default -->
+<div class="pg-section" id="section-1">
+  <h3 class="pg-section-title">Default</h3>
+  <div class="pg-section-row">
+    <div class="sui-browser" style="max-width:500px;">
+      <div class="sui-browser-bar">
+        <div class="sui-browser-dots"><span></span><span></span><span></span></div>
+        <div class="sui-browser-url">softui-css.netlify.app</div>
+      </div>
+      <div class="sui-browser-body" style="padding:32px;text-align:center;">
+        <h3 style="margin-bottom:8px;">Hello World</h3>
+        <p style="font-size:13px;color:var(--sui-text-muted);">Your content goes here.</p>
+      </div>
+    </div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-browser"&gt;
+  &lt;div class="sui-browser-bar"&gt;
+    &lt;div class="sui-browser-dots"&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;/div&gt;
+    &lt;div class="sui-browser-url"&gt;softui-css.netlify.app&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="sui-browser-body"&gt;
+    &lt;!-- Your content here --&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</pre></div>
+  </div>
+</div>
+
+<!-- With URL -->
+<div class="pg-section" id="section-2">
+  <h3 class="pg-section-title">With URL</h3>
+  <div class="pg-section-row">
+    <div class="sui-browser" style="max-width:500px;">
+      <div class="sui-browser-bar">
+        <div class="sui-browser-dots"><span></span><span></span><span></span></div>
+        <div class="sui-browser-actions">{{ navSvgs | safe }}</div>
+        <div class="sui-browser-url">https://softui-css.netlify.app/components/buttons/</div>
+      </div>
+      <div class="sui-browser-body" style="padding:24px;display:flex;gap:8px;flex-wrap:wrap;">
+        <button class="sui-btn sui-btn-sm">Default</button>
+        <button class="sui-btn sui-btn-primary sui-btn-sm">Primary</button>
+        <button class="sui-btn sui-btn-success sui-btn-sm">Success</button>
+        <button class="sui-btn sui-btn-danger sui-btn-sm">Danger</button>
+      </div>
+    </div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-browser"&gt;
+  &lt;div class="sui-browser-bar"&gt;
+    &lt;div class="sui-browser-dots"&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;/div&gt;
+    &lt;div class="sui-browser-actions"&gt;
+      &lt;svg viewBox="0 0 24 24"&gt;&lt;polyline points="15 18 9 12 15 6"/&gt;&lt;/svg&gt;
+      &lt;svg viewBox="0 0 24 24"&gt;&lt;polyline points="9 18 15 12 9 6"/&gt;&lt;/svg&gt;
+    &lt;/div&gt;
+    &lt;div class="sui-browser-url"&gt;https://softui-css.netlify.app/components/buttons/&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="sui-browser-body"&gt;
+    &lt;button class="sui-btn sui-btn-primary sui-btn-sm"&gt;Primary&lt;/button&gt;
+    &lt;button class="sui-btn sui-btn-success sui-btn-sm"&gt;Success&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Windows Style -->
+<div class="pg-section" id="section-3">
+  <h3 class="pg-section-title">Windows Style</h3>
+  <div class="pg-section-row">
+    <div class="sui-browser sui-browser-win" style="max-width:500px;">
+      <div class="sui-browser-bar">
+        <div class="sui-browser-url">softui-css.netlify.app</div>
+        <div class="sui-browser-win-btns">
+          <button><svg viewBox="0 0 10 12"><line x1="1" y1="10" x2="9" y2="10"/></svg></button>
+          <button><svg viewBox="0 0 10 12"><rect x="1" y="3" width="8" height="8" rx="1"/></svg></button>
+          <button><svg viewBox="0 0 10 12"><line x1="1" y1="3" x2="9" y2="11"/><line x1="9" y1="3" x2="1" y2="11"/></svg></button>
+        </div>
+      </div>
+      <div class="sui-browser-body" style="padding:32px;text-align:center;">
+        <h3 style="margin-bottom:8px;">Windows Chrome</h3>
+        <p style="font-size:13px;color:var(--sui-text-muted);">Minimize, maximize, close on the right.</p>
+      </div>
+    </div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-browser sui-browser-win"&gt;
+  &lt;div class="sui-browser-bar"&gt;
+    &lt;div class="sui-browser-url"&gt;softui-css.netlify.app&lt;/div&gt;
+    &lt;div class="sui-browser-win-btns"&gt;
+      &lt;button&gt;&lt;svg viewBox="0 0 10 10"&gt;&lt;line x1="1" y1="5" x2="9" y2="5"/&gt;&lt;/svg&gt;&lt;/button&gt;
+      &lt;button&gt;&lt;svg viewBox="0 0 10 10"&gt;&lt;rect x="1" y="1" width="8" height="8" rx="1"/&gt;&lt;/svg&gt;&lt;/button&gt;
+      &lt;button&gt;&lt;svg viewBox="0 0 10 10"&gt;&lt;line x1="1" y1="1" x2="9" y2="9"/&gt;&lt;line x1="9" y1="1" x2="1" y2="9"/&gt;&lt;/svg&gt;&lt;/button&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="sui-browser-body"&gt;
+    &lt;!-- Your content here --&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</pre></div>
+  </div>
+</div>
+
+<!-- With Tabs -->
+<div class="pg-section" id="section-4">
+  <h3 class="pg-section-title">With Tabs</h3>
+  <div class="pg-section-row">
+    <div class="sui-browser" style="max-width:500px;">
+      <div class="sui-browser-tabs">
+        <div class="sui-browser-tab active">SoftUI Docs</div>
+        <div class="sui-browser-tab">GitHub</div>
+        <div class="sui-browser-tab">npm</div>
+      </div>
+      <div class="sui-browser-bar">
+        <div class="sui-browser-dots"><span></span><span></span><span></span></div>
+        <div class="sui-browser-url">softui-css.netlify.app</div>
+      </div>
+      <div class="sui-browser-body" style="padding:24px;">
+        <div class="sui-card" style="padding:16px;max-width:280px;">
+          <h4 style="font-size:14px;margin-bottom:6px;">Getting Started</h4>
+          <p style="font-size:12px;color:var(--sui-text-muted);">Install with npm, yarn, or CDN.</p>
+          <button class="sui-btn sui-btn-primary sui-btn-sm" style="margin-top:10px;">View Docs</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-browser"&gt;
+  &lt;div class="sui-browser-tabs"&gt;
+    &lt;div class="sui-browser-tab active"&gt;SoftUI Docs&lt;/div&gt;
+    &lt;div class="sui-browser-tab"&gt;GitHub&lt;/div&gt;
+    &lt;div class="sui-browser-tab"&gt;npm&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="sui-browser-bar"&gt;
+    &lt;div class="sui-browser-dots"&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;/div&gt;
+    &lt;div class="sui-browser-url"&gt;softui-css.netlify.app&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="sui-browser-body"&gt;
+    &lt;!-- Your content here --&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Dark Chrome -->
+<div class="pg-section" id="section-5">
+  <h3 class="pg-section-title">Dark Chrome</h3>
+  <div class="pg-section-row">
+    <div class="sui-browser sui-browser-dark" style="max-width:500px;">
+      <div class="sui-browser-tabs">
+        <div class="sui-browser-tab active">Dashboard</div>
+        <div class="sui-browser-tab">Analytics</div>
+      </div>
+      <div class="sui-browser-bar">
+        <div class="sui-browser-dots"><span></span><span></span><span></span></div>
+        <div class="sui-browser-actions">{{ navSvgs | safe }}</div>
+        <div class="sui-browser-url">app.cloudmetrics.io/dashboard</div>
+      </div>
+      <div class="sui-browser-body" style="padding:24px;display:flex;gap:12px;flex-wrap:wrap;">
+        <div class="sui-stat" style="flex:1;min-width:120px;">
+          <p class="sui-stat-label">Revenue</p>
+          <div class="sui-stat-value" style="font-size:20px;">$12,450</div>
+        </div>
+        <div class="sui-stat" style="flex:1;min-width:120px;">
+          <p class="sui-stat-label">Users</p>
+          <div class="sui-stat-value" style="font-size:20px;">1,283</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-browser sui-browser-dark"&gt;
+  &lt;div class="sui-browser-tabs"&gt;
+    &lt;div class="sui-browser-tab active"&gt;Dashboard&lt;/div&gt;
+    &lt;div class="sui-browser-tab"&gt;Analytics&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="sui-browser-bar"&gt;
+    &lt;div class="sui-browser-dots"&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;/div&gt;
+    &lt;div class="sui-browser-actions"&gt;
+      &lt;svg viewBox="0 0 24 24"&gt;&lt;polyline points="15 18 9 12 15 6"/&gt;&lt;/svg&gt;
+      &lt;svg viewBox="0 0 24 24"&gt;&lt;polyline points="9 18 15 12 9 6"/&gt;&lt;/svg&gt;
+    &lt;/div&gt;
+    &lt;div class="sui-browser-url"&gt;app.cloudmetrics.io/dashboard&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="sui-browser-body"&gt;
+    &lt;!-- Your content here --&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</pre></div>
+  </div>
+</div>
+
+<!-- With Content -->
+<div class="pg-section" id="section-6">
+  <h3 class="pg-section-title">With Content</h3>
+  <div class="pg-section-row">
+    <div class="sui-browser" style="max-width:500px;">
+      <div class="sui-browser-bar">
+        <div class="sui-browser-dots"><span></span><span></span><span></span></div>
+        <div class="sui-browser-url">softui-css.netlify.app</div>
+      </div>
+      <div class="sui-browser-body">
+        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='800' height='400'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0%25' stop-color='%235B54E0'/%3E%3Cstop offset='100%25' stop-color='%2336A3F7'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect fill='url(%23g)' width='800' height='400'/%3E%3Ctext x='50%25' y='46%25' dominant-baseline='middle' text-anchor='middle' fill='white' font-size='36' font-family='sans-serif' font-weight='800'%3ESoftUI%3C/text%3E%3Ctext x='50%25' y='58%25' dominant-baseline='middle' text-anchor='middle' fill='rgba(255,255,255,0.7)' font-size='16' font-family='sans-serif' font-weight='500'%3ENeumorphic CSS Library%3C/text%3E%3C/svg%3E" alt="SoftUI Hero">
+      </div>
+    </div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-browser"&gt;
+  &lt;div class="sui-browser-bar"&gt;
+    &lt;div class="sui-browser-dots"&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;/div&gt;
+    &lt;div class="sui-browser-url"&gt;softui-css.netlify.app&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="sui-browser-body"&gt;
+    &lt;img src="screenshot.png" alt="Screenshot"&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- The body accepts any content: images, components, HTML --&gt;</pre></div>
+  </div>
+</div>

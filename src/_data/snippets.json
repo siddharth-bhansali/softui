@@ -344,6 +344,11 @@
       "code": "<div class=\"sui-card\" style=\"position:relative;padding:20px;\">\n  <h4>Dashboard</h4>\n  <p>Revenue: $12,450</p>\n  <div class=\"sui-loading-overlay active\">\n    <div class=\"sui-spinner sui-spinner-primary\" role=\"status\" aria-label=\"Loading\"></div>\n    <span class=\"sui-loading-overlay-text\">Loading...</span>\n  </div>\n</div>"
     },
     {
+      "id": "browsermockup",
+      "label": "Browser Mockup",
+      "code": "<div class=\"sui-browser\" style=\"max-width:500px;\">\n  <div class=\"sui-browser-bar\">\n    <div class=\"sui-browser-dots\"><span></span><span></span><span></span></div>\n    <div class=\"sui-browser-url\">softui-css.netlify.app</div>\n  </div>\n  <div class=\"sui-browser-body\" style=\"padding:32px;text-align:center;\">\n    <h3>Hello World</h3>\n    <p style=\"color:var(--sui-text-muted);\">Your content goes here.</p>\n  </div>\n</div>"
+    },
+    {
       "id": "marquee",
       "label": "Marquee",
       "code": "<div class=\"sui-marquee sui-marquee-fade sui-marquee-hover\">\n  <div class=\"sui-marquee-track\">\n    <div class=\"sui-marquee-logo\">SoftUI</div>\n    <div class=\"sui-marquee-logo\">CloudMetrics</div>\n    <div class=\"sui-marquee-logo\">Ajackus</div>\n    <div class=\"sui-marquee-logo\">DevStack</div>\n    <div class=\"sui-marquee-logo\">SoftUI</div>\n    <div class=\"sui-marquee-logo\">CloudMetrics</div>\n    <div class=\"sui-marquee-logo\">Ajackus</div>\n    <div class=\"sui-marquee-logo\">DevStack</div>\n  </div>\n</div>"
