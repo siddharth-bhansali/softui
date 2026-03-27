@@ -298,6 +298,13 @@
       }
     })();
 
+    // Prevent tab focus on elements inside bento previews
+    document.querySelectorAll('.bento-preview').forEach(function(preview) {
+      preview.querySelectorAll('button, input, a, select, textarea, [tabindex]').forEach(function(el) {
+        el.setAttribute('tabindex', '-1');
+      });
+    });
+
     // Copy code
     function copyPgCode(btn) {
       const pre = btn.parentElement.querySelector('pre');
