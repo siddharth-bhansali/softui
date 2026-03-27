@@ -74,6 +74,7 @@
     { "id": "chatbubble", "name": "Chat Bubble", "url": "/components/chatbubble/" },
     { "id": "stack", "name": "Stack", "url": "/components/stack/" },
     { "id": "swap", "name": "Swap", "url": "/components/swap/" },
+    { "id": "textrotate", "name": "Text Rotate", "url": "/components/textrotate/" },
     { "id": "togglegroup", "name": "Toggle Group", "url": "/components/togglegroup/" }
   ],
   "utilities": [

@@ -3772,6 +3772,38 @@ const SoftUI = (() => {
   });
 
   // =========================================
+  // Text Rotate
+  // =========================================
+  function initTextRotate() {
+    document.querySelectorAll('[data-sui-text-rotate]').forEach(function(el) {
+      if (el.dataset.suiRotateInit) return;
+      el.dataset.suiRotateInit = '1';
+      var words = el.querySelectorAll('.sui-text-rotate-word');
+      if (words.length < 2) return;
+      var interval = parseInt(el.getAttribute('data-interval')) || 2000;
+      var index = 0;
+
+      words[0].classList.add('active');
+
+      setInterval(function() {
+        var current = words[index];
+        current.classList.remove('active');
+        current.classList.add('exit');
+        setTimeout(function() { current.classList.remove('exit'); }, 400);
+
+        index = (index + 1) % words.length;
+        words[index].classList.add('active');
+      }, interval);
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initTextRotate);
+  } else {
+    initTextRotate();
+  }
+
+  // =========================================
   // Copy Button
   // =========================================
   var clipboardSvg = '<svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>';

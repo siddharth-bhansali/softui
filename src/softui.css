@@ -11753,3 +11753,101 @@ a.sui-btn-warning:visited {
   box-shadow: var(--sui-shadow-raised-sm);
 }
 
+/* =========================================
+   Text Rotate
+   ========================================= */
+.sui-text-rotate {
+  display: inline-block;
+  position: relative;
+  vertical-align: bottom;
+}
+
+.sui-text-rotate-word {
+  display: inline-block;
+  position: absolute;
+  left: 0;
+  top: 0;
+  opacity: 0;
+  transition: opacity 0.4s ease, transform 0.4s ease;
+  white-space: nowrap;
+}
+
+.sui-text-rotate-word.active {
+  opacity: 1;
+  position: relative;
+  transform: none;
+}
+
+/* Fade (default) */
+.sui-text-rotate-fade .sui-text-rotate-word {
+  transform: none;
+}
+
+/* Slide up */
+.sui-text-rotate-slide .sui-text-rotate-word {
+  transform: translateY(100%);
+}
+
+.sui-text-rotate-slide .sui-text-rotate-word.active {
+  transform: translateY(0);
+}
+
+.sui-text-rotate-slide .sui-text-rotate-word.exit {
+  opacity: 0;
+  transform: translateY(-100%);
+}
+
+/* Slide down */
+.sui-text-rotate-slide-down .sui-text-rotate-word {
+  transform: translateY(-100%);
+}
+
+.sui-text-rotate-slide-down .sui-text-rotate-word.active {
+  transform: translateY(0);
+}
+
+.sui-text-rotate-slide-down .sui-text-rotate-word.exit {
+  opacity: 0;
+  transform: translateY(100%);
+}
+
+/* Flip */
+.sui-text-rotate-flip {
+  perspective: 300px;
+}
+
+.sui-text-rotate-flip .sui-text-rotate-word {
+  transform: rotateX(90deg);
+  transform-origin: center bottom;
+}
+
+.sui-text-rotate-flip .sui-text-rotate-word.active {
+  transform: rotateX(0deg);
+}
+
+.sui-text-rotate-flip .sui-text-rotate-word.exit {
+  opacity: 0;
+  transform: rotateX(-90deg);
+}
+
+/* Zoom */
+.sui-text-rotate-zoom .sui-text-rotate-word {
+  transform: scale(0);
+}
+
+.sui-text-rotate-zoom .sui-text-rotate-word.active {
+  transform: scale(1);
+}
+
+.sui-text-rotate-zoom .sui-text-rotate-word.exit {
+  opacity: 0;
+  transform: scale(1.5);
+}
+
+/* Color highlight on the rotating word */
+.sui-text-rotate-primary .sui-text-rotate-word.active { color: var(--sui-primary); }
+.sui-text-rotate-success .sui-text-rotate-word.active { color: var(--sui-success); }
+.sui-text-rotate-danger .sui-text-rotate-word.active { color: var(--sui-danger); }
+.sui-text-rotate-warning .sui-text-rotate-word.active { color: var(--sui-warning); }
+.sui-text-rotate-info .sui-text-rotate-word.active { color: var(--sui-info); }
+
