@@ -30,7 +30,7 @@
 
 ## Highlights
 
-| | |
+| Feature | Description |
 |---|---|
 | **60+ Components** | Buttons, Cards, Modals, Tables, Tabs, Calendar, Charts, and more |
 | **Dark Mode** | Add `data-theme="dark"` and everything adapts |
