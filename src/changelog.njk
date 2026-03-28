@@ -1,0 +1,160 @@
+---
+layout: base.njk
+title: Changelog
+permalink: /changelog/
+---
+<div class="docs-getstarted-page">
+
+  <h1 class="docs-getstarted-title">Changelog</h1>
+  <p class="docs-getstarted-desc">What's new in each version of SoftUI.</p>
+
+  <!-- 1.7.0 -->
+  <section class="docs-getstarted-section" id="v1.7.0">
+    <h2>v1.7.0</h2>
+    <p><strong>Utility Classes & New Components</strong></p>
+    <div class="docs-getstarted-code">
+<pre><code>New Components:
+  - Tour / Walkthrough — spotlight overlay with step-by-step tooltips
+  - Copy Button — click-to-copy with checkmark feedback
+  - Text Rotate — animated word cycling (fade, slide, flip, zoom)
+  - Typewriter — character-by-character typing with cursor styles
+  - Marquee — infinite scrolling logos, text, cards
+  - Browser Mockup — macOS/Windows chrome with tabs
+  - Phone Mockup — notch, dynamic island, teardrop, punch hole
+
+Utility Classes:
+  - Display: inline, inline-block, grid
+  - Position: relative, absolute, fixed, sticky + placement
+  - Sizing: width, max-width, height, min/max
+  - Overflow: hidden, auto, scroll, x/y variants
+  - Opacity: 0 through 100
+  - Z-Index: 0, 10, 20, 30, 40, 50
+  - Cursor: pointer, not-allowed, grab, move, text
+  - Visibility: visible, invisible, sr-only
+  - Pointer Events, User Select
+
+5 new utility docs pages.
+
+Fixes:
+  - Tour positioning and scroll-into-view
+  - Brand hover color fix
+  - Bento card tab focus (tabindex=-1 on preview elements)
+  - Mobile drawer removed from tab order when closed</code></pre>
+    </div>
+  </section>
+
+  <!-- 1.6.0 -->
+  <section class="docs-getstarted-section" id="v1.6.0">
+    <h2>v1.6.0</h2>
+    <p><strong>12 New Components & Major Docs Improvements</strong></p>
+    <div class="docs-getstarted-code">
+<pre><code>New Components:
+  - Tree View — hierarchical tree with icons, lines, tri-state checkboxes
+  - Speed Dial / FAB — floating action button with expandable actions
+  - Image Lightbox — grid, filmstrip, vertical gallery, captions, zoom
+  - Loading Overlay — spinner variants, blur, fullscreen
+  - Diff — image compare slider with draggable divider
+  - Stack — overlapping cards with fanned and hover spread
+
+Docs:
+  - Sidebar reorganized into 9 categorized groups
+  - Code of Conduct and Contributing guide added
+  - Raised container variants for Tree View, Rating, Color Picker, Swap
+
+Fixes:
+  - Table row hover blending with background
+  - Global scrollbar restyled (thin rounded pill, no arrows)
+  - Modal shadow reduced, backdrop blur variants added (none/sm/md/lg/xl)</code></pre>
+    </div>
+  </section>
+
+  <!-- 1.5.0 -->
+  <section class="docs-getstarted-section" id="v1.5.0">
+    <h2>v1.5.0</h2>
+    <p><strong>6 New Components, Form Enhancements & Search</strong></p>
+    <div class="docs-getstarted-code">
+<pre><code>New Components:
+  - Chat Bubble — sent/received messages with avatar, status, grouped
+  - Color Picker — swatches, spectrum picker (canvas + hue + RGB/hex)
+  - File Upload — drag-and-drop, file list, progress, image previews
+  - Radial Progress — SVG circle ring with animated count-up
+  - Dock — macOS-style icon bar with hover magnification
+  - Swap — animated toggle (rotate, flip, fade, slide) + multi-state cycle
+
+Form Enhancements:
+  - Password Input with eye toggle and validation rules
+  - Number Input with styled +/- buttons
+  - Tags Input (type to create chips)
+  - Cards → Empty State variant
+
+Docs:
+  - Cmd+K search with command palette
+  - JS requirement banners on 28 component pages
+  - Getting Started → JavaScript section
+  - Code block audit across 18 components (removed all ... placeholders)</code></pre>
+    </div>
+  </section>
+
+  <!-- 1.4.0 -->
+  <section class="docs-getstarted-section" id="v1.4.0">
+    <h2>v1.4.0</h2>
+    <p><strong>Rating Component</strong></p>
+    <div class="docs-getstarted-code">
+<pre><code>New Components:
+  - Rating — star/heart/custom icon rating with half-star support,
+    sizes, colors, read-only, inset
+
+Fixes:
+  - Timeline bento card connector alignment</code></pre>
+    </div>
+  </section>
+
+  <!-- 1.3.0 -->
+  <section class="docs-getstarted-section" id="v1.3.0">
+    <h2>v1.3.0</h2>
+    <p><strong>Stat Card Component</strong></p>
+    <div class="docs-getstarted-code">
+<pre><code>New Components:
+  - Stat Card — KPI display with value, label, trend arrow,
+    icon, progress, bordered, inset, flat, compact variants</code></pre>
+    </div>
+  </section>
+
+  <!-- 1.2.0 -->
+  <section class="docs-getstarted-section" id="v1.2.0">
+    <h2>v1.2.0</h2>
+    <p><strong>Sidebar, Timeline & Playground</strong></p>
+    <div class="docs-getstarted-code">
+<pre><code>New Components:
+  - Sidebar — collapsible app sidebar with nav links, groups, icons
+  - Timeline — vertical event timeline with dots, connectors, colors
+
+Docs:
+  - Playground page for live code editing
+  - Simplified snippet insertion (click to insert)
+
+Fixes:
+  - Tab panel border-radius on only-child cards</code></pre>
+    </div>
+  </section>
+
+  <!-- 1.0.x -->
+  <section class="docs-getstarted-section" id="v1.0.0">
+    <h2>v1.0.0 – v1.0.5</h2>
+    <p><strong>Initial Release</strong></p>
+    <div class="docs-getstarted-code">
+<pre><code>Core library with 44 components and 7 utility categories:
+  - Buttons, Cards, Badges, Alerts, Progress, Tables, Forms
+  - Modal, Sheet, Dropdown, Popover, Tooltip, Context Menu
+  - Tabs, Accordion, Carousel, Calendar, Chart, Data Table
+  - Navbar, Breadcrumbs, Pagination, Stepper, Kbd, Chip
+  - Skeleton, Spinner, Slider, Toggle Group, Input OTP
+  - Combobox, Command Palette, Resizable, Drag & Drop
+  - Scroll Area, Collapsible, Hover Card, Menubar
+  - Layout system (12-column grid, containers, flex utilities)
+  - Dark mode support
+  - Published to npm as softui-css</code></pre>
+    </div>
+  </section>
+
+</div>
