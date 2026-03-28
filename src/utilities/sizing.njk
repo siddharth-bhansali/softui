@@ -1,0 +1,141 @@
+---
+layout: component.njk
+title: Sizing
+description: Width, max-width, height, and min/max height utility classes for controlling element dimensions.
+componentId: sizing
+hasControls: false
+toc:
+  - Width
+  - Max Width
+  - Height
+---
+
+<!-- Width -->
+<div class="pg-section" id="section-1">
+  <h3 class="pg-section-title">Width</h3>
+  <div style="display:flex;flex-direction:column;gap:12px;">
+    <div>
+      <small style="display:block;margin-bottom:4px;color:var(--sui-text-muted);">sui-w-full (width: 100%)</small>
+      <div class="sui-inset" style="padding:10px;border-radius:8px;">
+        <div class="sui-w-full sui-raised" style="padding:10px 14px;border-radius:6px;text-align:center;">w-full</div>
+      </div>
+    </div>
+    <div>
+      <small style="display:block;margin-bottom:4px;color:var(--sui-text-muted);">sui-w-auto (width: auto)</small>
+      <div class="sui-inset" style="padding:10px;border-radius:8px;">
+        <div class="sui-w-auto sui-raised" style="padding:10px 14px;border-radius:6px;display:inline-block;">w-auto sizes to content</div>
+      </div>
+    </div>
+    <div>
+      <small style="display:block;margin-bottom:4px;color:var(--sui-text-muted);">sui-w-screen (width: 100vw)</small>
+      <div class="sui-inset" style="padding:10px;border-radius:8px;">
+        <div class="sui-raised" style="padding:10px 14px;border-radius:6px;text-align:center;">
+          <code>sui-w-screen</code> — spans the full viewport width
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-w-full"&gt;100% width&lt;/div&gt;
+&lt;div class="sui-w-auto"&gt;Auto width (content-sized)&lt;/div&gt;
+&lt;div class="sui-w-screen"&gt;100vw width&lt;/div&gt;
+&lt;div class="sui-min-w-0"&gt;min-width: 0 (useful for flex truncation)&lt;/div&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Max Width -->
+<div class="pg-section" id="section-2">
+  <h3 class="pg-section-title">Max Width</h3>
+  <div style="display:flex;flex-direction:column;gap:10px;">
+    <div>
+      <small style="display:block;margin-bottom:4px;color:var(--sui-text-muted);">sui-max-w-sm (320px)</small>
+      <div class="sui-max-w-sm sui-raised" style="padding:10px 14px;border-radius:6px;text-align:center;width:100%;">max-w-sm</div>
+    </div>
+    <div>
+      <small style="display:block;margin-bottom:4px;color:var(--sui-text-muted);">sui-max-w-md (480px)</small>
+      <div class="sui-max-w-md sui-raised" style="padding:10px 14px;border-radius:6px;text-align:center;width:100%;">max-w-md</div>
+    </div>
+    <div>
+      <small style="display:block;margin-bottom:4px;color:var(--sui-text-muted);">sui-max-w-lg (640px)</small>
+      <div class="sui-max-w-lg sui-raised" style="padding:10px 14px;border-radius:6px;text-align:center;width:100%;">max-w-lg</div>
+    </div>
+    <div>
+      <small style="display:block;margin-bottom:4px;color:var(--sui-text-muted);">sui-max-w-xl (800px)</small>
+      <div class="sui-max-w-xl sui-raised" style="padding:10px 14px;border-radius:6px;text-align:center;width:100%;">max-w-xl</div>
+    </div>
+    <div>
+      <small style="display:block;margin-bottom:4px;color:var(--sui-text-muted);">sui-max-w-2xl (1024px)</small>
+      <div class="sui-max-w-2xl sui-raised" style="padding:10px 14px;border-radius:6px;text-align:center;width:100%;">max-w-2xl</div>
+    </div>
+    <div>
+      <small style="display:block;margin-bottom:4px;color:var(--sui-text-muted);">sui-max-w-full (100%)</small>
+      <div class="sui-max-w-full sui-raised" style="padding:10px 14px;border-radius:6px;text-align:center;width:100%;">max-w-full</div>
+    </div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-max-w-sm"&gt;max-width: 320px&lt;/div&gt;
+&lt;div class="sui-max-w-md"&gt;max-width: 480px&lt;/div&gt;
+&lt;div class="sui-max-w-lg"&gt;max-width: 640px&lt;/div&gt;
+&lt;div class="sui-max-w-xl"&gt;max-width: 800px&lt;/div&gt;
+&lt;div class="sui-max-w-2xl"&gt;max-width: 1024px&lt;/div&gt;
+&lt;div class="sui-max-w-full"&gt;max-width: 100%&lt;/div&gt;
+&lt;div class="sui-max-w-none"&gt;max-width: none&lt;/div&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Height -->
+<div class="pg-section" id="section-3">
+  <h3 class="pg-section-title">Height</h3>
+  <div style="display:flex;flex-direction:column;gap:12px;">
+    <div>
+      <small style="display:block;margin-bottom:4px;color:var(--sui-text-muted);">Height utilities inside a fixed-height container (200px)</small>
+      <div class="sui-d-flex sui-gap-3 sui-inset" style="padding:10px;border-radius:8px;height:200px;">
+        <div class="sui-h-full sui-raised" style="width:80px;border-radius:6px;display:flex;align-items:center;justify-content:center;text-align:center;font-size:0.8rem;">
+          h-full<br>(100%)
+        </div>
+        <div class="sui-h-auto sui-raised" style="width:80px;border-radius:6px;display:flex;align-items:center;justify-content:center;text-align:center;padding:10px;font-size:0.8rem;">
+          h-auto
+        </div>
+        <div class="sui-raised" style="width:80px;height:50%;border-radius:6px;display:flex;align-items:center;justify-content:center;text-align:center;font-size:0.8rem;">
+          50%<br>(inline)
+        </div>
+      </div>
+    </div>
+    <div>
+      <small style="display:block;margin-bottom:4px;color:var(--sui-text-muted);">Viewport-relative heights (shown as descriptions)</small>
+      <div class="sui-d-flex sui-flex-wrap sui-gap-2" style="padding:0;">
+        <div class="sui-raised" style="padding:12px 16px;border-radius:8px;">
+          <code>sui-h-screen</code><br><small style="color:var(--sui-text-muted);">height: 100vh</small>
+        </div>
+        <div class="sui-raised" style="padding:12px 16px;border-radius:8px;">
+          <code>sui-min-h-screen</code><br><small style="color:var(--sui-text-muted);">min-height: 100vh</small>
+        </div>
+        <div class="sui-raised" style="padding:12px 16px;border-radius:8px;">
+          <code>sui-max-h-screen</code><br><small style="color:var(--sui-text-muted);">max-height: 100vh</small>
+        </div>
+        <div class="sui-raised" style="padding:12px 16px;border-radius:8px;">
+          <code>sui-min-h-full</code><br><small style="color:var(--sui-text-muted);">min-height: 100%</small>
+        </div>
+        <div class="sui-raised" style="padding:12px 16px;border-radius:8px;">
+          <code>sui-max-h-full</code><br><small style="color:var(--sui-text-muted);">max-height: 100%</small>
+        </div>
+        <div class="sui-raised" style="padding:12px 16px;border-radius:8px;">
+          <code>sui-min-h-0</code><br><small style="color:var(--sui-text-muted);">min-height: 0</small>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-h-full"&gt;height: 100%&lt;/div&gt;
+&lt;div class="sui-h-auto"&gt;height: auto&lt;/div&gt;
+&lt;div class="sui-h-screen"&gt;height: 100vh&lt;/div&gt;
+&lt;div class="sui-min-h-0"&gt;min-height: 0&lt;/div&gt;
+&lt;div class="sui-min-h-full"&gt;min-height: 100%&lt;/div&gt;
+&lt;div class="sui-min-h-screen"&gt;min-height: 100vh&lt;/div&gt;
+&lt;div class="sui-max-h-full"&gt;max-height: 100%&lt;/div&gt;
+&lt;div class="sui-max-h-screen"&gt;max-height: 100vh&lt;/div&gt;</pre></div>
+  </div>
+</div>

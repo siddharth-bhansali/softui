@@ -1,0 +1,224 @@
+---
+layout: component.njk
+title: Display
+description: Display, visibility, overflow, pointer-events, and user-select utility classes.
+componentId: display
+hasControls: false
+toc:
+  - Display
+  - Visibility
+  - Overflow
+  - Pointer Events
+  - User Select
+---
+
+<!-- Display -->
+<div class="pg-section" id="section-1">
+  <h3 class="pg-section-title">Display</h3>
+  <div style="display:flex;flex-direction:column;gap:12px;">
+    <div>
+      <small style="display:block;margin-bottom:4px;color:var(--sui-text-muted);">sui-d-block</small>
+      <div class="sui-inset" style="padding:10px;border-radius:8px;">
+        <div class="sui-d-block sui-raised" style="padding:10px 14px;border-radius:6px;text-align:center;">Block element (fills width)</div>
+      </div>
+    </div>
+    <div>
+      <small style="display:block;margin-bottom:4px;color:var(--sui-text-muted);">sui-d-inline</small>
+      <div class="sui-inset" style="padding:10px;border-radius:8px;">
+        <span class="sui-d-inline sui-raised" style="padding:6px 14px;border-radius:6px;">Inline A</span>
+        <span class="sui-d-inline sui-raised" style="padding:6px 14px;border-radius:6px;">Inline B</span>
+        <span class="sui-d-inline sui-raised" style="padding:6px 14px;border-radius:6px;">Inline C</span>
+      </div>
+    </div>
+    <div>
+      <small style="display:block;margin-bottom:4px;color:var(--sui-text-muted);">sui-d-inline-block</small>
+      <div class="sui-inset" style="padding:10px;border-radius:8px;">
+        <div class="sui-d-inline-block sui-raised" style="padding:10px 14px;border-radius:6px;">Inline-Block A</div>
+        <div class="sui-d-inline-block sui-raised" style="padding:10px 14px;border-radius:6px;">Inline-Block B</div>
+      </div>
+    </div>
+    <div>
+      <small style="display:block;margin-bottom:4px;color:var(--sui-text-muted);">sui-d-flex</small>
+      <div class="sui-d-flex sui-gap-2 sui-inset" style="padding:10px;border-radius:8px;">
+        <div class="sui-raised" style="padding:10px 14px;border-radius:6px;">Flex 1</div>
+        <div class="sui-raised" style="padding:10px 14px;border-radius:6px;">Flex 2</div>
+        <div class="sui-raised" style="padding:10px 14px;border-radius:6px;">Flex 3</div>
+      </div>
+    </div>
+    <div>
+      <small style="display:block;margin-bottom:4px;color:var(--sui-text-muted);">sui-d-inline-flex</small>
+      <div class="sui-inset" style="padding:10px;border-radius:8px;">
+        <div class="sui-d-inline-flex sui-gap-2">
+          <div class="sui-raised" style="padding:10px 14px;border-radius:6px;">A</div>
+          <div class="sui-raised" style="padding:10px 14px;border-radius:6px;">B</div>
+        </div>
+        <span style="margin-left:8px;color:var(--sui-text-muted);">&larr; inline-flex sits inline with text</span>
+      </div>
+    </div>
+    <div>
+      <small style="display:block;margin-bottom:4px;color:var(--sui-text-muted);">sui-d-grid</small>
+      <div class="sui-d-grid sui-gap-2 sui-inset" style="padding:10px;border-radius:8px;grid-template-columns:repeat(3,1fr);">
+        <div class="sui-raised" style="padding:10px 14px;border-radius:6px;text-align:center;">1</div>
+        <div class="sui-raised" style="padding:10px 14px;border-radius:6px;text-align:center;">2</div>
+        <div class="sui-raised" style="padding:10px 14px;border-radius:6px;text-align:center;">3</div>
+      </div>
+    </div>
+    <div>
+      <small style="display:block;margin-bottom:4px;color:var(--sui-text-muted);">sui-d-none</small>
+      <div class="sui-inset" style="padding:10px;border-radius:8px;">
+        <div class="sui-raised" style="padding:10px 14px;border-radius:6px;display:inline-block;">Visible</div>
+        <div class="sui-d-none sui-raised" style="padding:10px 14px;border-radius:6px;">Hidden (d-none)</div>
+        <span style="margin-left:8px;color:var(--sui-text-muted);">&larr; a hidden element exists here but is not rendered</span>
+      </div>
+    </div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-d-block"&gt;Block element&lt;/div&gt;
+&lt;span class="sui-d-inline"&gt;Inline element&lt;/span&gt;
+&lt;div class="sui-d-inline-block"&gt;Inline-block element&lt;/div&gt;
+&lt;div class="sui-d-flex"&gt;Flex container&lt;/div&gt;
+&lt;div class="sui-d-inline-flex"&gt;Inline flex container&lt;/div&gt;
+&lt;div class="sui-d-grid"&gt;Grid container&lt;/div&gt;
+&lt;div class="sui-d-none"&gt;Hidden element&lt;/div&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Visibility -->
+<div class="pg-section" id="section-2">
+  <h3 class="pg-section-title">Visibility</h3>
+  <div style="display:flex;flex-direction:column;gap:12px;">
+    <div>
+      <small style="display:block;margin-bottom:4px;color:var(--sui-text-muted);">sui-visible vs sui-invisible</small>
+      <div class="sui-d-flex sui-gap-2 sui-inset" style="padding:10px;border-radius:8px;">
+        <div class="sui-visible sui-raised" style="padding:10px 14px;border-radius:6px;">Visible</div>
+        <div class="sui-invisible sui-raised" style="padding:10px 14px;border-radius:6px;">Invisible</div>
+        <div class="sui-visible sui-raised" style="padding:10px 14px;border-radius:6px;">Visible</div>
+      </div>
+      <small style="display:block;margin-top:4px;color:var(--sui-text-muted);">The middle box is invisible but still takes up space (unlike d-none)</small>
+    </div>
+    <div>
+      <small style="display:block;margin-bottom:4px;color:var(--sui-text-muted);">sui-sr-only — visually hidden, accessible to screen readers</small>
+      <div class="sui-inset" style="padding:10px;border-radius:8px;">
+        <div class="sui-raised" style="padding:10px 14px;border-radius:6px;display:inline-block;">Visible label</div>
+        <span class="sui-sr-only">This text is only for screen readers</span>
+        <span style="margin-left:8px;color:var(--sui-text-muted);">&larr; screen-reader-only text exists here</span>
+      </div>
+    </div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;!-- visibility: visible --&gt;
+&lt;div class="sui-visible"&gt;Visible element&lt;/div&gt;
+
+&lt;!-- visibility: hidden (still takes up space) --&gt;
+&lt;div class="sui-invisible"&gt;Invisible element&lt;/div&gt;
+
+&lt;!-- Visually hidden, accessible to screen readers --&gt;
+&lt;span class="sui-sr-only"&gt;Screen reader only text&lt;/span&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Overflow -->
+<div class="pg-section" id="section-3">
+  <h3 class="pg-section-title">Overflow</h3>
+  <div style="display:flex;flex-direction:column;gap:12px;">
+    <div>
+      <small style="display:block;margin-bottom:4px;color:var(--sui-text-muted);">sui-overflow-hidden</small>
+      <div class="sui-overflow-hidden sui-inset" style="padding:10px;border-radius:8px;height:60px;">
+        <div style="color:var(--sui-text);">This container has overflow-hidden. The text below is clipped and not visible. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.</div>
+      </div>
+    </div>
+    <div>
+      <small style="display:block;margin-bottom:4px;color:var(--sui-text-muted);">sui-overflow-auto</small>
+      <div class="sui-overflow-auto sui-inset" style="padding:10px;border-radius:8px;height:60px;">
+        <div style="color:var(--sui-text);">This container has overflow-auto. A scrollbar appears when needed. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.</div>
+      </div>
+    </div>
+    <div>
+      <small style="display:block;margin-bottom:4px;color:var(--sui-text-muted);">sui-overflow-visible</small>
+      <div class="sui-overflow-visible sui-inset" style="padding:10px;border-radius:8px;height:60px;margin-bottom:40px;">
+        <div style="color:var(--sui-text);">This container has overflow-visible. Content overflows and is visible outside the box boundaries. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
+      </div>
+    </div>
+    <div>
+      <small style="display:block;margin-bottom:4px;color:var(--sui-text-muted);">sui-overflow-x-auto</small>
+      <div class="sui-overflow-x-auto sui-inset" style="padding:10px;border-radius:8px;">
+        <div style="white-space:nowrap;color:var(--sui-text);">This is a very long line of text that extends beyond the container width to demonstrate horizontal scrolling with sui-overflow-x-auto. It keeps going and going to ensure it overflows.</div>
+      </div>
+    </div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-overflow-hidden"&gt;Content is clipped&lt;/div&gt;
+&lt;div class="sui-overflow-auto"&gt;Scrollbar when needed&lt;/div&gt;
+&lt;div class="sui-overflow-visible"&gt;Content overflows visibly&lt;/div&gt;
+&lt;div class="sui-overflow-x-auto"&gt;Horizontal scroll&lt;/div&gt;
+&lt;div class="sui-overflow-y-auto"&gt;Vertical scroll&lt;/div&gt;
+&lt;div class="sui-overflow-x-hidden"&gt;Clip horizontal overflow&lt;/div&gt;
+&lt;div class="sui-overflow-y-hidden"&gt;Clip vertical overflow&lt;/div&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Pointer Events -->
+<div class="pg-section" id="section-4">
+  <h3 class="pg-section-title">Pointer Events</h3>
+  <div class="pg-section-row" style="gap:16px;">
+    <div style="text-align:center;">
+      <div class="sui-pointer-events-auto sui-raised" style="padding:16px 24px;border-radius:8px;cursor:pointer;">
+        <small style="color:var(--sui-text-muted);display:block;margin-bottom:4px;">sui-pointer-events-auto</small>
+        <span>Click me (works)</span>
+      </div>
+    </div>
+    <div style="text-align:center;">
+      <div class="sui-pointer-events-none sui-raised" style="padding:16px 24px;border-radius:8px;opacity:0.5;">
+        <small style="color:var(--sui-text-muted);display:block;margin-bottom:4px;">sui-pointer-events-none</small>
+        <span>Click me (disabled)</span>
+      </div>
+    </div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;!-- Element responds to pointer events (default) --&gt;
+&lt;div class="sui-pointer-events-auto"&gt;Clickable&lt;/div&gt;
+
+&lt;!-- Element ignores all pointer events --&gt;
+&lt;div class="sui-pointer-events-none"&gt;Not clickable&lt;/div&gt;</pre></div>
+  </div>
+</div>
+
+<!-- User Select -->
+<div class="pg-section" id="section-5">
+  <h3 class="pg-section-title">User Select</h3>
+  <div style="display:flex;flex-direction:column;gap:12px;">
+    <div>
+      <small style="display:block;margin-bottom:4px;color:var(--sui-text-muted);">sui-select-none — text cannot be selected</small>
+      <div class="sui-select-none sui-raised" style="padding:14px 18px;border-radius:8px;">
+        Try selecting this text — you cannot select it.
+      </div>
+    </div>
+    <div>
+      <small style="display:block;margin-bottom:4px;color:var(--sui-text-muted);">sui-select-text — text can be selected (default behavior)</small>
+      <div class="sui-select-text sui-raised" style="padding:14px 18px;border-radius:8px;">
+        Try selecting this text — normal selection works.
+      </div>
+    </div>
+    <div>
+      <small style="display:block;margin-bottom:4px;color:var(--sui-text-muted);">sui-select-all — all text is selected on click</small>
+      <div class="sui-select-all sui-raised" style="padding:14px 18px;border-radius:8px;">
+        Click anywhere on this text and all of it is selected at once.
+      </div>
+    </div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;!-- Prevent text selection --&gt;
+&lt;div class="sui-select-none"&gt;Cannot select this text&lt;/div&gt;
+
+&lt;!-- Allow text selection (default) --&gt;
+&lt;div class="sui-select-text"&gt;Selectable text&lt;/div&gt;
+
+&lt;!-- Select all text on click --&gt;
+&lt;div class="sui-select-all"&gt;Click to select all&lt;/div&gt;</pre></div>
+  </div>
+</div>

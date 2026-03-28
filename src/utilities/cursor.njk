@@ -1,0 +1,62 @@
+---
+layout: component.njk
+title: Cursor
+description: Cursor utility classes for changing the mouse cursor on hover.
+componentId: cursor
+hasControls: false
+toc:
+  - Cursor Types
+---
+
+<!-- Cursor Types -->
+<div class="pg-section" id="section-1">
+  <h3 class="pg-section-title">Cursor Types</h3>
+  <p style="color:var(--sui-text-muted);margin-bottom:16px;">Hover over each card to see the cursor change.</p>
+  <div class="pg-section-grid" style="grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:12px;">
+    <div class="sui-cursor-default sui-raised" style="padding:20px 16px;border-radius:8px;text-align:center;">
+      <div style="font-size:1.4rem;margin-bottom:8px;">&#128433;</div>
+      <code style="font-size:0.85rem;">sui-cursor-default</code>
+      <small style="display:block;margin-top:4px;color:var(--sui-text-muted);">cursor: default</small>
+    </div>
+    <div class="sui-cursor-pointer sui-raised" style="padding:20px 16px;border-radius:8px;text-align:center;">
+      <div style="font-size:1.4rem;margin-bottom:8px;">&#9757;</div>
+      <code style="font-size:0.85rem;">sui-cursor-pointer</code>
+      <small style="display:block;margin-top:4px;color:var(--sui-text-muted);">cursor: pointer</small>
+    </div>
+    <div class="sui-cursor-text sui-raised" style="padding:20px 16px;border-radius:8px;text-align:center;">
+      <div style="font-size:1.4rem;margin-bottom:8px;">&#9993;</div>
+      <code style="font-size:0.85rem;">sui-cursor-text</code>
+      <small style="display:block;margin-top:4px;color:var(--sui-text-muted);">cursor: text</small>
+    </div>
+    <div class="sui-cursor-move sui-raised" style="padding:20px 16px;border-radius:8px;text-align:center;">
+      <div style="font-size:1.4rem;margin-bottom:8px;">&#8596;</div>
+      <code style="font-size:0.85rem;">sui-cursor-move</code>
+      <small style="display:block;margin-top:4px;color:var(--sui-text-muted);">cursor: move</small>
+    </div>
+    <div class="sui-cursor-grab sui-raised" style="padding:20px 16px;border-radius:8px;text-align:center;">
+      <div style="font-size:1.4rem;margin-bottom:8px;">&#9995;</div>
+      <code style="font-size:0.85rem;">sui-cursor-grab</code>
+      <small style="display:block;margin-top:4px;color:var(--sui-text-muted);">cursor: grab</small>
+    </div>
+    <div class="sui-cursor-grabbing sui-raised" style="padding:20px 16px;border-radius:8px;text-align:center;">
+      <div style="font-size:1.4rem;margin-bottom:8px;">&#9994;</div>
+      <code style="font-size:0.85rem;">sui-cursor-grabbing</code>
+      <small style="display:block;margin-top:4px;color:var(--sui-text-muted);">cursor: grabbing</small>
+    </div>
+    <div class="sui-cursor-not-allowed sui-raised" style="padding:20px 16px;border-radius:8px;text-align:center;">
+      <div style="font-size:1.4rem;margin-bottom:8px;">&#128683;</div>
+      <code style="font-size:0.85rem;">sui-cursor-not-allowed</code>
+      <small style="display:block;margin-top:4px;color:var(--sui-text-muted);">cursor: not-allowed</small>
+    </div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-cursor-default"&gt;Default arrow cursor&lt;/div&gt;
+&lt;div class="sui-cursor-pointer"&gt;Pointer / hand cursor&lt;/div&gt;
+&lt;div class="sui-cursor-text"&gt;Text selection cursor&lt;/div&gt;
+&lt;div class="sui-cursor-move"&gt;Move / drag cursor&lt;/div&gt;
+&lt;div class="sui-cursor-grab"&gt;Grab cursor (open hand)&lt;/div&gt;
+&lt;div class="sui-cursor-grabbing"&gt;Grabbing cursor (closed hand)&lt;/div&gt;
+&lt;div class="sui-cursor-not-allowed"&gt;Not-allowed cursor&lt;/div&gt;</pre></div>
+  </div>
+</div>

@@ -5589,8 +5589,114 @@ a.sui-btn-warning:visited {
 .sui-gap-4 { gap: 24px !important; }
 .sui-gap-5 { gap: 48px !important; }
 
-/* Min-height viewport */
-.sui-min-vh-100 { min-height: 100vh !important; }
+/* --- Display --- */
+.sui-d-inline       { display: inline !important; }
+.sui-d-inline-block { display: inline-block !important; }
+.sui-d-grid         { display: grid !important; }
+
+/* --- Position --- */
+.sui-relative { position: relative !important; }
+.sui-absolute { position: absolute !important; }
+.sui-fixed    { position: fixed !important; }
+.sui-sticky   { position: sticky !important; top: 0; }
+
+.sui-inset-0 { inset: 0 !important; }
+.sui-top-0   { top: 0 !important; }
+.sui-right-0 { right: 0 !important; }
+.sui-bottom-0 { bottom: 0 !important; }
+.sui-left-0  { left: 0 !important; }
+
+/* --- Overflow --- */
+.sui-overflow-hidden  { overflow: hidden !important; }
+.sui-overflow-auto    { overflow: auto !important; }
+.sui-overflow-scroll  { overflow: scroll !important; }
+.sui-overflow-visible { overflow: visible !important; }
+.sui-overflow-x-auto  { overflow-x: auto !important; }
+.sui-overflow-y-auto  { overflow-y: auto !important; }
+.sui-overflow-x-hidden { overflow-x: hidden !important; }
+.sui-overflow-y-hidden { overflow-y: hidden !important; }
+
+/* --- Width --- */
+.sui-w-full  { width: 100% !important; }
+.sui-w-auto  { width: auto !important; }
+.sui-w-screen { width: 100vw !important; }
+.sui-max-w-sm  { max-width: 320px !important; }
+.sui-max-w-md  { max-width: 480px !important; }
+.sui-max-w-lg  { max-width: 640px !important; }
+.sui-max-w-xl  { max-width: 800px !important; }
+.sui-max-w-2xl { max-width: 1024px !important; }
+.sui-max-w-full { max-width: 100% !important; }
+.sui-max-w-none { max-width: none !important; }
+.sui-min-w-0    { min-width: 0 !important; }
+
+/* --- Height --- */
+.sui-h-full   { height: 100% !important; }
+.sui-h-auto   { height: auto !important; }
+.sui-h-screen { height: 100vh !important; }
+.sui-min-h-0      { min-height: 0 !important; }
+.sui-min-h-full   { min-height: 100% !important; }
+.sui-min-h-screen { min-height: 100vh !important; }
+.sui-min-vh-100   { min-height: 100vh !important; }
+.sui-max-h-full   { max-height: 100% !important; }
+.sui-max-h-screen { max-height: 100vh !important; }
+
+/* --- Opacity --- */
+.sui-opacity-0   { opacity: 0 !important; }
+.sui-opacity-5   { opacity: 0.05 !important; }
+.sui-opacity-10  { opacity: 0.1 !important; }
+.sui-opacity-20  { opacity: 0.2 !important; }
+.sui-opacity-25  { opacity: 0.25 !important; }
+.sui-opacity-30  { opacity: 0.3 !important; }
+.sui-opacity-40  { opacity: 0.4 !important; }
+.sui-opacity-50  { opacity: 0.5 !important; }
+.sui-opacity-60  { opacity: 0.6 !important; }
+.sui-opacity-70  { opacity: 0.7 !important; }
+.sui-opacity-75  { opacity: 0.75 !important; }
+.sui-opacity-80  { opacity: 0.8 !important; }
+.sui-opacity-90  { opacity: 0.9 !important; }
+.sui-opacity-100 { opacity: 1 !important; }
+
+/* --- Z-Index --- */
+.sui-z-0    { z-index: 0 !important; }
+.sui-z-10   { z-index: 10 !important; }
+.sui-z-20   { z-index: 20 !important; }
+.sui-z-30   { z-index: 30 !important; }
+.sui-z-40   { z-index: 40 !important; }
+.sui-z-50   { z-index: 50 !important; }
+.sui-z-auto { z-index: auto !important; }
+
+/* --- Cursor --- */
+.sui-cursor-pointer     { cursor: pointer !important; }
+.sui-cursor-default     { cursor: default !important; }
+.sui-cursor-not-allowed { cursor: not-allowed !important; }
+.sui-cursor-grab        { cursor: grab !important; }
+.sui-cursor-grabbing    { cursor: grabbing !important; }
+.sui-cursor-move        { cursor: move !important; }
+.sui-cursor-text        { cursor: text !important; }
+
+/* --- Visibility --- */
+.sui-visible   { visibility: visible !important; }
+.sui-invisible { visibility: hidden !important; }
+.sui-sr-only {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+/* --- Pointer Events --- */
+.sui-pointer-events-none { pointer-events: none !important; }
+.sui-pointer-events-auto { pointer-events: auto !important; }
+
+/* --- User Select --- */
+.sui-select-none { user-select: none !important; }
+.sui-select-text { user-select: text !important; }
+.sui-select-all  { user-select: all !important; }
 
 /* Auto margins */
 .sui-ms-auto { margin-left: auto !important; }

@@ -1,0 +1,136 @@
+---
+layout: component.njk
+title: Position
+description: Position, placement, and z-index utility classes for controlling element positioning.
+componentId: position
+hasControls: false
+toc:
+  - Position
+  - Placement
+  - Z-Index
+---
+
+<!-- Position -->
+<div class="pg-section" id="section-1">
+  <h3 class="pg-section-title">Position</h3>
+  <div style="display:flex;flex-direction:column;gap:16px;">
+    <div>
+      <small style="display:block;margin-bottom:4px;color:var(--sui-text-muted);">sui-relative + sui-absolute</small>
+      <div class="sui-relative sui-inset" style="padding:20px;border-radius:8px;height:120px;">
+        <div class="sui-raised" style="padding:10px 14px;border-radius:6px;display:inline-block;">Static content</div>
+        <div class="sui-absolute sui-raised" style="top:10px;right:10px;padding:10px 14px;border-radius:6px;background:var(--sui-primary);color:#fff;">
+          Absolute (top-right)
+        </div>
+        <div class="sui-absolute sui-raised" style="bottom:10px;left:10px;padding:10px 14px;border-radius:6px;background:var(--sui-primary);color:#fff;">
+          Absolute (bottom-left)
+        </div>
+      </div>
+      <small style="display:block;margin-top:4px;color:var(--sui-text-muted);">Absolute elements are positioned relative to the nearest positioned ancestor</small>
+    </div>
+    <div>
+      <small style="display:block;margin-bottom:4px;color:var(--sui-text-muted);">sui-sticky — sticks to the top when scrolling (scroll the container below)</small>
+      <div class="sui-inset sui-overflow-auto" style="padding:0;border-radius:8px;height:160px;">
+        <div class="sui-sticky sui-raised" style="top:0;padding:10px 14px;border-radius:0;z-index:10;background:var(--sui-primary);color:#fff;text-align:center;">
+          Sticky header
+        </div>
+        <div style="padding:14px;color:var(--sui-text);">
+          <p>Scroll down to see the sticky header stay at the top of this container.</p>
+          <p style="margin-top:8px;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+          <p style="margin-top:8px;">Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+          <p style="margin-top:8px;">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+          <p style="margin-top:8px;">Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;!-- Relative positioning (creates positioning context) --&gt;
+&lt;div class="sui-relative"&gt;
+  &lt;div class="sui-absolute" style="top:10px;right:10px;"&gt;
+    Positioned element
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- Fixed positioning (relative to viewport) --&gt;
+&lt;div class="sui-fixed" style="top:0;left:0;"&gt;Fixed to viewport&lt;/div&gt;
+
+&lt;!-- Sticky positioning (sticks on scroll) --&gt;
+&lt;div class="sui-sticky" style="top:0;"&gt;Sticky header&lt;/div&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Placement -->
+<div class="pg-section" id="section-2">
+  <h3 class="pg-section-title">Placement</h3>
+  <div style="display:flex;flex-direction:column;gap:16px;">
+    <div>
+      <small style="display:block;margin-bottom:4px;color:var(--sui-text-muted);">sui-inset-0 — stretches to fill parent</small>
+      <div class="sui-relative sui-inset" style="padding:0;border-radius:8px;height:100px;">
+        <div class="sui-absolute sui-inset-0" style="background:var(--sui-primary);opacity:0.15;border-radius:8px;"></div>
+        <div class="sui-absolute" style="top:50%;left:50%;transform:translate(-50%,-50%);color:var(--sui-text);">sui-inset-0 overlay</div>
+      </div>
+    </div>
+    <div>
+      <small style="display:block;margin-bottom:4px;color:var(--sui-text-muted);">Individual placement utilities</small>
+      <div class="sui-relative sui-inset" style="padding:10px;border-radius:8px;height:140px;">
+        <div class="sui-absolute sui-top-0 sui-left-0 sui-raised" style="padding:6px 12px;border-radius:6px;margin:8px;font-size:0.8rem;">top-0 left-0</div>
+        <div class="sui-absolute sui-top-0 sui-right-0 sui-raised" style="padding:6px 12px;border-radius:6px;margin:8px;font-size:0.8rem;">top-0 right-0</div>
+        <div class="sui-absolute sui-bottom-0 sui-left-0 sui-raised" style="padding:6px 12px;border-radius:6px;margin:8px;font-size:0.8rem;">bottom-0 left-0</div>
+        <div class="sui-absolute sui-bottom-0 sui-right-0 sui-raised" style="padding:6px 12px;border-radius:6px;margin:8px;font-size:0.8rem;">bottom-0 right-0</div>
+      </div>
+    </div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;!-- Fill entire parent --&gt;
+&lt;div class="sui-relative"&gt;
+  &lt;div class="sui-absolute sui-inset-0"&gt;Overlay&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- Individual sides --&gt;
+&lt;div class="sui-relative"&gt;
+  &lt;div class="sui-absolute sui-top-0 sui-left-0"&gt;Top-left&lt;/div&gt;
+  &lt;div class="sui-absolute sui-top-0 sui-right-0"&gt;Top-right&lt;/div&gt;
+  &lt;div class="sui-absolute sui-bottom-0 sui-left-0"&gt;Bottom-left&lt;/div&gt;
+  &lt;div class="sui-absolute sui-bottom-0 sui-right-0"&gt;Bottom-right&lt;/div&gt;
+&lt;/div&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Z-Index -->
+<div class="pg-section" id="section-3">
+  <h3 class="pg-section-title">Z-Index</h3>
+  <div class="pg-section-row">
+    <div class="sui-relative" style="height:180px;width:100%;max-width:500px;">
+      <div class="sui-absolute sui-z-0 sui-raised" style="top:0;left:0;width:120px;height:120px;border-radius:8px;display:flex;align-items:center;justify-content:center;background:var(--sui-primary);color:#fff;opacity:0.9;">
+        z-0
+      </div>
+      <div class="sui-absolute sui-z-10 sui-raised" style="top:20px;left:40px;width:120px;height:120px;border-radius:8px;display:flex;align-items:center;justify-content:center;background:var(--sui-success);color:#fff;opacity:0.9;">
+        z-10
+      </div>
+      <div class="sui-absolute sui-z-20 sui-raised" style="top:40px;left:80px;width:120px;height:120px;border-radius:8px;display:flex;align-items:center;justify-content:center;background:var(--sui-warning);color:#fff;opacity:0.9;">
+        z-20
+      </div>
+      <div class="sui-absolute sui-z-30 sui-raised" style="top:20px;left:120px;width:120px;height:120px;border-radius:8px;display:flex;align-items:center;justify-content:center;background:var(--sui-danger);color:#fff;opacity:0.9;">
+        z-30
+      </div>
+      <div class="sui-absolute sui-z-40 sui-raised" style="top:0;left:160px;width:120px;height:120px;border-radius:8px;display:flex;align-items:center;justify-content:center;background:var(--sui-info);color:#fff;opacity:0.9;">
+        z-40
+      </div>
+      <div class="sui-absolute sui-z-50 sui-raised" style="top:50px;left:200px;width:120px;height:120px;border-radius:8px;display:flex;align-items:center;justify-content:center;background:var(--sui-secondary);color:#fff;opacity:0.9;">
+        z-50
+      </div>
+    </div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-z-0"&gt;z-index: 0&lt;/div&gt;
+&lt;div class="sui-z-10"&gt;z-index: 10&lt;/div&gt;
+&lt;div class="sui-z-20"&gt;z-index: 20&lt;/div&gt;
+&lt;div class="sui-z-30"&gt;z-index: 30&lt;/div&gt;
+&lt;div class="sui-z-40"&gt;z-index: 40&lt;/div&gt;
+&lt;div class="sui-z-50"&gt;z-index: 50&lt;/div&gt;
+&lt;div class="sui-z-auto"&gt;z-index: auto&lt;/div&gt;</pre></div>
+  </div>
+</div>
