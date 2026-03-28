@@ -85,6 +85,7 @@ body {
   color: var(--sui-text);
   font-size: 15px;
   line-height: 1.6;
+  opacity: 1;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   transition: background var(--sui-transition-base) ease, color var(--sui-transition-base) ease;

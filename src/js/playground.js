@@ -7,7 +7,7 @@
   var searchClear = document.getElementById('pg-search-clear');
   var snippetData = window.__PG_SNIPPETS__ || {};
   var debounceTimer = null;
-  var previewDark = false;
+  var previewDark = document.documentElement.getAttribute('data-theme') === 'dark';
 
   // Default starter code
   var DEFAULT_CODE =
@@ -64,6 +64,19 @@
 
     initResizer();
     initDragAndDrop();
+
+    // Sync preview theme toggle icon with initial state
+    if (previewDark) {
+      var btn = document.getElementById('pg-theme-toggle');
+      if (btn) {
+        var moonIcon = btn.querySelector('.pg-icon-moon');
+        var sunIcon = btn.querySelector('.pg-icon-sun');
+        var label = document.getElementById('pg-theme-label');
+        if (moonIcon) moonIcon.style.display = '';
+        if (sunIcon) sunIcon.style.display = 'none';
+        if (label) label.textContent = 'Dark Preview';
+      }
+    }
   }
 
   // ----- Preview -----

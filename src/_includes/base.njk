@@ -4,12 +4,15 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{% if title == "SoftUI" %}SoftUI{% else %}{{ title }} — SoftUI{% endif %}</title>
+  <style>body{opacity:0}</style>
+  <script>var t=localStorage.getItem('sui-theme');if(t==='dark'||(!t&&matchMedia('(prefers-color-scheme:dark)').matches))document.documentElement.setAttribute('data-theme','dark');</script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="/softui.css">
   <link rel="stylesheet" href="/css/docs.css">
+  <link rel="stylesheet" href="/css/playground.css">
   <script src="/softui.js"></script>
 </head>
 <body>
@@ -280,9 +283,7 @@
       localStorage.setItem('sui-theme', isDark ? 'light' : 'dark');
     }
     (function() {
-      const saved = localStorage.getItem('sui-theme');
-      if (saved === 'dark') {
-        document.documentElement.setAttribute('data-theme', 'dark');
+      if (document.documentElement.getAttribute('data-theme') === 'dark') {
         document.querySelector('.theme-icon').textContent = '\u2600';
       }
     })();
