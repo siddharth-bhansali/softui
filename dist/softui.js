@@ -576,6 +576,7 @@ const SoftUI = (() => {
     el.className = cls;
     el.setAttribute('role', 'alert');
     el.setAttribute('aria-live', 'polite');
+    el.setAttribute('aria-atomic', 'true');
 
     let html = '<div class="sui-toast-body">';
     if (opts.title) html += '<div class="sui-toast-title">' + opts.title + '</div>';
@@ -675,14 +676,29 @@ const SoftUI = (() => {
       });
     });
 
-    // Escape closes dropdowns
+    // Escape closes dropdowns, arrow keys navigate items
     document.addEventListener('keydown', (e) => {
       if (e.key === 'Escape') {
         document.querySelectorAll('.sui-dropdown.open, .sui-dropdown-split.open').forEach(d => {
           d.classList.remove('open');
           const t = d.querySelector('[data-sui-dropdown], .sui-dropdown-toggle');
-          if (t) t.setAttribute('aria-expanded', 'false');
+          if (t) { t.setAttribute('aria-expanded', 'false'); t.focus(); }
         });
+      }
+      if (e.key === 'ArrowDown' || e.key === 'ArrowUp') {
+        const openDD = document.querySelector('.sui-dropdown.open, .sui-dropdown-split.open');
+        if (!openDD) return;
+        const items = Array.from(openDD.querySelectorAll('.sui-dropdown-item:not(.disabled)'));
+        if (!items.length) return;
+        e.preventDefault();
+        const cur = items.indexOf(document.activeElement);
+        let next;
+        if (e.key === 'ArrowDown') {
+          next = cur < items.length - 1 ? cur + 1 : 0;
+        } else {
+          next = cur > 0 ? cur - 1 : items.length - 1;
+        }
+        items[next].focus();
       }
     });
   }

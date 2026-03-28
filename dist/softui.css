@@ -1,4 +1,4 @@
-/*! SoftUI v1.1.0 — A Neumorphic CSS Library */
+/*! SoftUI v1.8.0 — A Neumorphic CSS Library */
 
 /* ===========================================
    CSS Variables / Tokens
@@ -23,8 +23,8 @@
   --sui-info-hover: #146BAE;
 
   --sui-text: #2D3748;
-  --sui-text-muted: #8492A6;
-  --sui-text-light: #A0AEC0;
+  --sui-text-muted: #5A6A7E;
+  --sui-text-light: #6A7D94;
 
   --sui-radius-xs: 6px;
   --sui-radius: 16px;
@@ -59,7 +59,7 @@
 
   --sui-text: #E2E8F0;
   --sui-text-muted: #9BA5B8;
-  --sui-text-light: #7A8494;
+  --sui-text-light: #8A94A6;
 }
 [data-theme="dark"] .sui-badge-warning,
 [data-theme="dark"] .sui-btn-warning,
@@ -85,6 +85,7 @@ body {
   color: var(--sui-text);
   font-size: 15px;
   line-height: 1.6;
+  opacity: 1;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   transition: background var(--sui-transition-base) ease, color var(--sui-transition-base) ease;
@@ -130,6 +131,11 @@ a {
 }
 a:hover {
   color: var(--sui-primary-hover);
+}
+a:focus-visible {
+  outline: 2px solid var(--sui-primary);
+  outline-offset: 2px;
+  border-radius: 2px;
 }
 
 /* ===========================================
@@ -4827,7 +4833,7 @@ a.sui-btn-warning:visited {
   color: var(--sui-text-light);
 }
 
-.sui-combobox-input:focus {
+.sui-combobox-input:focus-visible {
   box-shadow: var(--sui-shadow-inset-sm), 0 0 0 2px rgba(124, 92, 252, 0.2);
 }
 
@@ -8298,6 +8304,12 @@ a.sui-btn-warning:visited {
   color: var(--sui-text);
 }
 
+.sui-sidebar-nav li a:focus-visible,
+.sui-sidebar-nav li button:focus-visible {
+  outline: 2px solid var(--sui-primary);
+  outline-offset: -2px;
+}
+
 .sui-sidebar-nav li a.active,
 .sui-sidebar-nav li button.active {
   background: rgba(91, 84, 224, 0.1);
@@ -9835,7 +9847,7 @@ a.sui-btn-warning:visited {
   width: 100%;
 }
 
-.sui-color-spectrum-hex input:focus {
+.sui-color-spectrum-hex input:focus-visible {
   box-shadow: var(--sui-shadow-inset-sm), 0 0 0 2px var(--sui-primary);
 }
 
@@ -9867,7 +9879,7 @@ a.sui-btn-warning:visited {
   outline: none;
 }
 
-.sui-color-spectrum-rgb-field input:focus {
+.sui-color-spectrum-rgb-field input:focus-visible {
   box-shadow: var(--sui-shadow-inset-sm), 0 0 0 2px var(--sui-primary);
 }
 
@@ -12598,4 +12610,17 @@ a.sui-btn-warning:visited {
 .sui-tour-no-overlay .sui-tour-tooltip {
   box-shadow: var(--sui-shadow-raised);
 }
+
+/* ===========================================
+   Reduced Motion
+   =========================================== */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
 

@@ -288,16 +288,6 @@
       }
     })();
 
-    // Scroll sidebar to active item on page load
-    (function() {
-      const sidebar = document.querySelector('.docs-pg-sidebar');
-      if (sidebar) {
-        const active = sidebar.querySelector('.pg-sidebar-link.active');
-        if (active) {
-          active.scrollIntoView({ block: 'center', behavior: 'instant' });
-        }
-      }
-    })();
 
     // Prevent tab focus on elements inside bento previews
     document.querySelectorAll('.bento-preview').forEach(function(preview) {

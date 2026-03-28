@@ -8,6 +8,40 @@ permalink: /changelog/
   <h1 class="docs-getstarted-title">Changelog</h1>
   <p class="docs-getstarted-desc">What's new in each version of SoftUI.</p>
 
+  <!-- 1.8.0 -->
+  <section class="docs-getstarted-section" id="v1.8.0">
+    <h2>v1.8.0</h2>
+    <p><strong>Accessibility, Design Tokens & Quality of Life</strong></p>
+    <div class="docs-getstarted-code">
+<pre><code>Accessibility:
+  - prefers-reduced-motion — disables all animations/transitions
+  - Focus-visible on base links, sidebar nav, combobox, color picker
+  - Color contrast improved — text-muted and text-light darkened to pass WCAG AA
+  - Dropdown arrow key navigation (Up/Down to move, Escape returns focus)
+  - Modal code examples updated with role="dialog", aria-modal, aria-labelledby
+  - Table headers now include scope="col" in docs
+  - Toast aria-atomic="true" for screen readers
+
+Design Tokens:
+  - dist/tokens.json — all design values as JSON
+  - Documented in Theming guide with JS import and Tailwind examples
+
+Docs:
+  - Theming guide with full CSS variable reference
+  - Dark mode toggle with localStorage + system preference detection
+  - Changelog page with version history
+  - Framework integration (React, Vue, Svelte, Astro, Next.js)
+  - README updated with 60+ components and design tokens section
+
+Fixes:
+  - Page flash eliminated (inline opacity:0 until CSS loads)
+  - Early theme detection in head (no dark mode flash)
+  - Playground preview matches site theme by default
+  - Sidebar scroll-to-active removed (caused flash)
+  - Playground CSS moved to head (no FOUC)</code></pre>
+    </div>
+  </section>
+
   <!-- 1.7.0 -->
   <section class="docs-getstarted-section" id="v1.7.0">
     <h2>v1.7.0</h2>
