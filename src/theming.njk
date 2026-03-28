@@ -1,0 +1,287 @@
+---
+layout: base.njk
+title: Theming
+permalink: /theming/
+---
+<div class="docs-getstarted-page">
+
+  <h1 class="docs-getstarted-title">Theming</h1>
+  <p class="docs-getstarted-desc">Customize SoftUI to match your brand by overriding CSS custom properties. No build tools needed.</p>
+
+  <!-- How It Works -->
+  <section class="docs-getstarted-section" id="how-it-works">
+    <h2>How It Works</h2>
+    <p>SoftUI is built entirely on CSS custom properties (<code>--sui-*</code>). Override them on <code>:root</code> to change the look of every component at once.</p>
+    <div class="docs-getstarted-code">
+<pre><code>:root {
+  --sui-primary: #7C5CFC;         /* Your brand color */
+  --sui-radius: 12px;             /* Sharper or rounder corners */
+  --sui-font: 'Inter', sans-serif; /* Your font */
+}</code></pre>
+    </div>
+    <p style="margin-top:12px;">That's it. Every button, card, input, and component will update automatically.</p>
+  </section>
+
+  <!-- Colors -->
+  <section class="docs-getstarted-section" id="colors">
+    <h2>Colors</h2>
+    <p>The color system has 5 semantic colors, each with a hover variant.</p>
+    <div class="docs-getstarted-code">
+<pre><code>:root {
+  /* Primary — buttons, links, active states */
+  --sui-primary: #5B54E0;
+  --sui-primary-hover: #4A44C4;
+
+  /* Success — confirmations, positive actions */
+  --sui-success: #1FA96E;
+  --sui-success-hover: #178A59;
+
+  /* Danger — errors, destructive actions */
+  --sui-danger: #D03A5C;
+  --sui-danger-hover: #B42E4C;
+
+  /* Warning — caution, pending states */
+  --sui-warning: #F5A623;
+  --sui-warning-hover: #DB921A;
+
+  /* Info — informational, neutral highlights */
+  --sui-info: #1A82D4;
+  --sui-info-hover: #146BAE;
+}</code></pre>
+    </div>
+  </section>
+
+  <!-- Backgrounds -->
+  <section class="docs-getstarted-section" id="backgrounds">
+    <h2>Backgrounds & Surfaces</h2>
+    <p>Three background shades create the neumorphic depth. <code>bg</code> is the base, <code>bg-light</code> is slightly lighter, <code>bg-dark</code> is slightly darker.</p>
+    <div class="docs-getstarted-code">
+<pre><code>:root {
+  --sui-bg: #E4E9F0;       /* Base surface */
+  --sui-bg-light: #EDF1F7;  /* Lighter (raised highlights) */
+  --sui-bg-dark: #D1D9E6;   /* Darker (borders, tracks) */
+}</code></pre>
+    </div>
+    <p style="margin-top:12px;">These three values work together to create the soft shadow illusion. When changing them, keep them close in tone — the effect breaks if they're too far apart.</p>
+  </section>
+
+  <!-- Shadows -->
+  <section class="docs-getstarted-section" id="shadows">
+    <h2>Shadows</h2>
+    <p>Neumorphic shadows use two colors: a dark shadow (bottom-right) and a light shadow (top-left). These are combined into preset shadow values.</p>
+    <div class="docs-getstarted-code">
+<pre><code>:root {
+  /* Shadow colors */
+  --sui-shadow-light: #FFFFFF;
+  --sui-shadow-dark: #B8C0CC;
+
+  /* Raised (outward) shadows */
+  --sui-shadow-raised-sm: 3px 3px 8px var(--sui-shadow-dark),
+                          -3px -3px 8px var(--sui-shadow-light);
+  --sui-shadow-raised:    6px 6px 14px var(--sui-shadow-dark),
+                          -6px -6px 14px var(--sui-shadow-light);
+  --sui-shadow-raised-lg: 10px 10px 20px var(--sui-shadow-dark),
+                          -10px -10px 20px var(--sui-shadow-light);
+
+  /* Inset (pressed) shadows */
+  --sui-shadow-inset:    inset 3px 3px 8px var(--sui-shadow-dark),
+                         inset -3px -3px 8px var(--sui-shadow-light);
+  --sui-shadow-inset-sm: inset 2px 2px 5px var(--sui-shadow-dark),
+                         inset -2px -2px 5px var(--sui-shadow-light);
+}
+
+/* Tip: just changing --sui-shadow-light and --sui-shadow-dark
+   updates ALL shadows automatically */</code></pre>
+    </div>
+  </section>
+
+  <!-- Text -->
+  <section class="docs-getstarted-section" id="text">
+    <h2>Text Colors</h2>
+    <p>Three text color tiers for hierarchy.</p>
+    <div class="docs-getstarted-code">
+<pre><code>:root {
+  --sui-text: #2D3748;       /* Primary text — headings, body */
+  --sui-text-muted: #8492A6;  /* Secondary — descriptions, labels */
+  --sui-text-light: #A0AEC0;  /* Tertiary — hints, placeholders */
+}</code></pre>
+    </div>
+  </section>
+
+  <!-- Border Radius -->
+  <section class="docs-getstarted-section" id="radius">
+    <h2>Border Radius</h2>
+    <p>Five radius tokens control the roundness across all components.</p>
+    <div class="docs-getstarted-code">
+<pre><code>:root {
+  --sui-radius-xs: 6px;        /* Small elements (chips, badges) */
+  --sui-radius-sm: 10px;       /* Inputs, buttons */
+  --sui-radius: 16px;          /* Cards, modals */
+  --sui-radius-lg: 24px;       /* Large containers */
+  --sui-radius-full: 9999px;   /* Pills, circles */
+}
+
+/* Sharp look */
+:root {
+  --sui-radius-xs: 2px;
+  --sui-radius-sm: 4px;
+  --sui-radius: 6px;
+  --sui-radius-lg: 8px;
+}
+
+/* Extra round */
+:root {
+  --sui-radius-xs: 10px;
+  --sui-radius-sm: 14px;
+  --sui-radius: 20px;
+  --sui-radius-lg: 32px;
+}</code></pre>
+    </div>
+  </section>
+
+  <!-- Typography -->
+  <section class="docs-getstarted-section" id="typography">
+    <h2>Typography</h2>
+    <p>Change the font family used across all components.</p>
+    <div class="docs-getstarted-code">
+<pre><code>:root {
+  --sui-font: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont,
+              'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+}
+
+/* Use Inter */
+:root {
+  --sui-font: 'Inter', sans-serif;
+}
+
+/* Use system fonts only (no Google Fonts) */
+:root {
+  --sui-font: -apple-system, BlinkMacSystemFont, 'Segoe UI',
+              Roboto, Oxygen, Ubuntu, sans-serif;
+}
+
+/* Monospace font (used in Copy Button, Color Picker, code elements) */
+:root {
+  --sui-font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+}</code></pre>
+    </div>
+  </section>
+
+  <!-- Component Variables -->
+  <section class="docs-getstarted-section" id="component-vars">
+    <h2>Component Variables</h2>
+    <p>Some components expose their own CSS variables for fine-tuning.</p>
+    <div class="docs-getstarted-code">
+<pre><code>/* Modal — backdrop blur amount */
+.sui-modal-backdrop {
+  --sui-modal-blur: 6px;  /* or use classes: sui-modal-blur-none/sm/md/lg/xl */
+}
+
+/* Stack — hover spread distance and multiplier */
+.sui-stack-hover {
+  --sui-stack-gap: 180px;    /* base spread distance (match your card width) */
+  --sui-stack-spread: 0.6;   /* multiplier (0.15 to 1) */
+}</code></pre>
+    </div>
+  </section>
+
+  <!-- Transitions -->
+  <section class="docs-getstarted-section" id="transitions">
+    <h2>Transitions</h2>
+    <p>Three speed tokens for animation timing.</p>
+    <div class="docs-getstarted-code">
+<pre><code>:root {
+  --sui-transition-fast: 0.15s;  /* Hover states, toggles */
+  --sui-transition-base: 0.25s;  /* Most animations */
+  --sui-transition-slow: 0.35s;  /* Page transitions, modals */
+  --sui-transition: all var(--sui-transition-base) ease;
+}
+
+/* Snappier feel */
+:root {
+  --sui-transition-fast: 0.1s;
+  --sui-transition-base: 0.15s;
+  --sui-transition-slow: 0.25s;
+}
+
+/* Disable all transitions */
+:root {
+  --sui-transition-fast: 0s;
+  --sui-transition-base: 0s;
+  --sui-transition-slow: 0s;
+}</code></pre>
+    </div>
+  </section>
+
+  <!-- Dark Mode -->
+  <section class="docs-getstarted-section" id="dark-mode">
+    <h2>Dark Mode</h2>
+    <p>Dark mode overrides backgrounds, shadows, and text colors. Add <code>data-theme="dark"</code> to your <code>&lt;html&gt;</code> element.</p>
+    <div class="docs-getstarted-code">
+<pre><code>&lt;html data-theme="dark"&gt;
+
+/* Dark mode variables (already built-in) */
+[data-theme="dark"] {
+  --sui-bg: #2A2D35;
+  --sui-bg-light: #31343C;
+  --sui-bg-dark: #23262D;
+
+  --sui-shadow-light: #33363F;
+  --sui-shadow-dark: #1E2027;
+
+  --sui-text: #E2E8F0;
+  --sui-text-muted: #9BA5B8;
+  --sui-text-light: #7A8494;
+}
+
+/* Custom dark theme */
+[data-theme="dark"] {
+  --sui-bg: #1A1A2E;
+  --sui-bg-light: #222240;
+  --sui-bg-dark: #141427;
+  --sui-primary: #9B59B6;
+}</code></pre>
+    </div>
+  </section>
+
+  <!-- Full Example -->
+  <section class="docs-getstarted-section" id="example">
+    <h2>Full Example</h2>
+    <p>A complete brand override — just drop this in your CSS after importing SoftUI.</p>
+    <div class="docs-getstarted-code">
+<pre><code>/* My Brand Theme */
+:root {
+  /* Colors */
+  --sui-primary: #0066FF;
+  --sui-primary-hover: #0052CC;
+  --sui-success: #00C853;
+  --sui-danger: #FF1744;
+
+  /* Surfaces */
+  --sui-bg: #F0F2F5;
+  --sui-bg-light: #F8F9FA;
+  --sui-bg-dark: #E4E6EB;
+  --sui-shadow-light: #FFFFFF;
+  --sui-shadow-dark: #C8CCD4;
+
+  /* Typography */
+  --sui-font: 'Inter', sans-serif;
+  --sui-text: #1A1A1A;
+
+  /* Shape */
+  --sui-radius: 8px;
+  --sui-radius-sm: 4px;
+  --sui-radius-lg: 12px;
+
+  /* Speed */
+  --sui-transition-base: 0.2s;
+}</code></pre>
+    </div>
+  </section>
+
+  <div style="text-align:center;margin-top:48px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
+    <a href="/components/buttons/" class="sui-btn sui-btn-primary sui-btn-lg">Explore Components</a>
+    <a href="/changelog/" class="sui-btn sui-btn-outline sui-btn-lg">View Changelog</a>
+  </div>
+
+</div>
