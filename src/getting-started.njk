@@ -43,6 +43,52 @@ bun add softui-css</code></pre>
     <p style="margin-top:12px;font-size:14px;color:var(--sui-text-muted);">Components that need JS: Accordion, Calendar, Carousel, Chart, Collapsible, Color Picker, Combobox, Command, Context Menu, Data Table, Dock, Drag &amp; Drop, Dropdown, File Upload, Input OTP, Menubar, Modal, Popover, Rating, Resizable, Sheet, Sidebar, Slider, Swap, Tabs, Toggle Group, and form enhancements (Password Toggle, Number Input, Tags Input).</p>
   </section>
 
+  <!-- Frameworks -->
+  <section class="docs-getstarted-section" id="frameworks">
+    <h2>Using with Frameworks</h2>
+    <p>SoftUI is plain CSS — it works with any framework. Just import the styles and use the classes.</p>
+    <div class="docs-getstarted-code">
+<pre><code>/* React — import in your entry file (App.jsx or index.jsx) */
+import 'softui-css/dist/softui.min.css';
+import 'softui-css/dist/softui.min.js';
+
+function App() {
+  return (
+    &lt;button className="sui-btn sui-btn-primary"&gt;Click me&lt;/button&gt;
+  );
+}
+
+
+/* Vue — import in main.js */
+import 'softui-css/dist/softui.min.css';
+import 'softui-css/dist/softui.min.js';
+
+&lt;template&gt;
+  &lt;button class="sui-btn sui-btn-primary"&gt;Click me&lt;/button&gt;
+&lt;/template&gt;
+
+
+/* Svelte — import in +layout.svelte or app.html */
+import 'softui-css/dist/softui.min.css';
+import 'softui-css/dist/softui.min.js';
+
+&lt;button class="sui-btn sui-btn-primary"&gt;Click me&lt;/button&gt;
+
+
+/* Astro — import in your layout */
+---
+import 'softui-css/dist/softui.min.css';
+---
+&lt;script src="/node_modules/softui-css/dist/softui.min.js"&gt;&lt;/script&gt;
+
+
+/* Next.js — import in _app.js or layout.tsx */
+import 'softui-css/dist/softui.min.css';
+/* Add softui.min.js via Script component or next/script */</code></pre>
+    </div>
+    <p style="margin-top:12px;font-size:14px;color:var(--sui-text-muted);">Tip: For JS-dependent components (modals, dropdowns, etc.), make sure <code>softui.js</code> loads after the DOM is ready. In React/Vue/Svelte, the import handles this automatically.</p>
+  </section>
+
   <!-- Quick Start -->
   <section class="docs-getstarted-section" id="quickstart">
     <h2>Quick Start</h2>
