@@ -1,4 +1,4 @@
-/*! SoftUI v1.1.0 — A Neumorphic CSS Library */
+/*! SoftUI v1.7.0 — A Neumorphic CSS Library */
 
 /* ===========================================
    CSS Variables / Tokens
@@ -12598,4 +12598,5 @@ a.sui-btn-warning:visited {
 .sui-tour-no-overlay .sui-tour-tooltip {
   box-shadow: var(--sui-shadow-raised);
 }
+
 

@@ -319,6 +319,62 @@ permalink: /theming/
     </div>
   </section>
 
+  <!-- Design Tokens -->
+  <section class="docs-getstarted-section" id="tokens">
+    <h2>Design Tokens (JSON)</h2>
+    <p>SoftUI ships a <code>tokens.json</code> file with all design values. Use it to sync with Tailwind, Figma plugins, Style Dictionary, or your own design system.</p>
+    <div class="docs-getstarted-code">
+<pre><code>/* Import tokens in JavaScript */
+import tokens from 'softui-css/dist/tokens.json';
+
+console.log(tokens.colors.primary);     // "#5B54E0"
+console.log(tokens.radius.default);     // "16px"
+console.log(tokens.typography.font);    // "'Plus Jakarta Sans', ..."</code></pre>
+    </div>
+    <div class="docs-getstarted-code" style="margin-top:16px;">
+<pre><code>/* Use with Tailwind CSS */
+const tokens = require('softui-css/dist/tokens.json');
+
+module.exports = {
+  theme: {
+    extend: {
+      colors: {
+        primary: tokens.colors.primary,
+        success: tokens.colors.success,
+        danger: tokens.colors.danger,
+      },
+      borderRadius: {
+        soft: tokens.radius.default,
+        'soft-sm': tokens.radius.sm,
+        'soft-lg': tokens.radius.lg,
+      }
+    }
+  }
+};</code></pre>
+    </div>
+    <div class="docs-getstarted-code" style="margin-top:16px;">
+<pre><code>/* tokens.json structure */
+{
+  "colors": {
+    "primary": "#5B54E0",
+    "primary-hover": "#4A44C4",
+    "success": "#1FA96E",
+    "danger": "#D03A5C",
+    "warning": "#F5A623",
+    "info": "#1A82D4"
+  },
+  "backgrounds": { "bg": "#E4E9F0", "bg-light": "#EDF1F7", "bg-dark": "#D1D9E6" },
+  "backgrounds-dark": { "bg": "#2A2D35", "bg-light": "#31343C", "bg-dark": "#23262D" },
+  "text": { "text": "#2D3748", "text-muted": "#8492A6", "text-light": "#A0AEC0" },
+  "shadows": { "shadow-light": "#FFFFFF", "shadow-dark": "#B8C0CC" },
+  "radius": { "xs": "6px", "sm": "10px", "default": "16px", "lg": "24px", "full": "9999px" },
+  "typography": { "font": "...", "font-mono": "..." },
+  "transitions": { "fast": "0.15s", "base": "0.25s", "slow": "0.35s" }
+}</code></pre>
+    </div>
+    <p style="margin-top:12px;font-size:14px;color:var(--sui-text-muted);">The token file mirrors the CSS custom properties — if you override a variable, update the token too for consistency.</p>
+  </section>
+
   <div style="text-align:center;margin-top:48px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
     <a href="/components/buttons/" class="sui-btn sui-btn-primary sui-btn-lg">Explore Components</a>
     <a href="/changelog/" class="sui-btn sui-btn-outline sui-btn-lg">View Changelog</a>
