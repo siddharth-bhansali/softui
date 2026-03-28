@@ -244,6 +244,46 @@ permalink: /theming/
     </div>
   </section>
 
+  <!-- Dark Mode Toggle -->
+  <section class="docs-getstarted-section" id="dark-mode-toggle">
+    <h2>Dark Mode Toggle</h2>
+    <p>Add a toggle button and a few lines of JS to let users switch themes. This also respects system preference and persists the choice.</p>
+    <div class="docs-getstarted-code">
+<pre><code>&lt;!-- Toggle button --&gt;
+&lt;button onclick="toggleTheme()"&gt;Toggle Dark Mode&lt;/button&gt;
+
+&lt;script&gt;
+  function toggleTheme() {
+    var html = document.documentElement;
+    var isDark = html.getAttribute('data-theme') === 'dark';
+    html.setAttribute('data-theme', isDark ? 'light' : 'dark');
+    localStorage.setItem('sui-theme', isDark ? 'light' : 'dark');
+  }
+
+  // Restore saved preference on load
+  (function() {
+    var saved = localStorage.getItem('sui-theme');
+    if (saved) {
+      document.documentElement.setAttribute('data-theme', saved);
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+      document.documentElement.setAttribute('data-theme', 'dark');
+    }
+  })();
+
+  // Listen for system theme changes
+  window.matchMedia('(prefers-color-scheme: dark)')
+    .addEventListener('change', function(e) {
+      if (!localStorage.getItem('sui-theme')) {
+        document.documentElement.setAttribute(
+          'data-theme', e.matches ? 'dark' : 'light'
+        );
+      }
+    });
+&lt;/script&gt;</code></pre>
+    </div>
+    <p style="margin-top:12px;">Priority: saved user preference > system preference > default (light).</p>
+  </section>
+
   <!-- Full Example -->
   <section class="docs-getstarted-section" id="example">
     <h2>Full Example</h2>
