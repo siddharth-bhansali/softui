@@ -4078,18 +4078,30 @@ const SoftUI = (() => {
       backdrop.addEventListener('click', close);
     }
 
+    var firstShow = true;
+
     function show(idx) {
       currentStep = idx;
       var step = steps[idx];
       var target = document.querySelector(step.target);
 
-      // Position spotlight
-      if (target) {
-        target.scrollIntoView({ block: 'center', behavior: 'smooth' });
+      // Only hide on first show to avoid flash between steps
+      if (firstShow) {
+        spotlight.style.opacity = '0';
+        tooltip.style.opacity = '0';
+        firstShow = false;
       }
-      // Delay positioning to let scroll finish
+
+      // Scroll if element isn't comfortably in view (with margin for tooltip)
+      var needsScroll = false;
+      if (target) {
+        var r = target.getBoundingClientRect();
+        var margin = 120;
+        needsScroll = r.top < margin || r.bottom > window.innerHeight - margin;
+        if (needsScroll) target.scrollIntoView({ block: 'center', behavior: 'smooth' });
+      }
       setTimeout(function() {
-      if (target && !noOverlay) {
+      if (target) {
         var rect = target.getBoundingClientRect();
         spotlight.style.top = (rect.top - padding) + 'px';
         spotlight.style.left = (rect.left - padding) + 'px';
@@ -4161,7 +4173,10 @@ const SoftUI = (() => {
         tooltip.style.top = top + 'px';
         tooltip.style.left = left + 'px';
       }
-      }, 350);
+      // Reveal after positioning
+      spotlight.style.opacity = '1';
+      tooltip.style.opacity = '1';
+      }, needsScroll ? 350 : 50);
 
       overlay.classList.add('active');
     }

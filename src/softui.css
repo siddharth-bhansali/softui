@@ -12480,9 +12480,13 @@ a.sui-btn-warning:visited {
 }
 
 /* No overlay variant */
-.sui-tour-no-overlay .sui-tour-backdrop,
-.sui-tour-no-overlay .sui-tour-spotlight {
+.sui-tour-no-overlay .sui-tour-backdrop {
   display: none;
+}
+
+.sui-tour-no-overlay .sui-tour-spotlight {
+  background: transparent;
+  box-shadow: 0 0 0 3px var(--sui-primary), 0 0 0 6px rgba(91, 84, 224, 0.2);
 }
 
 .sui-tour-no-overlay .sui-tour-tooltip {
