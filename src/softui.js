@@ -154,6 +154,7 @@ const SoftUI = (() => {
 
     // Close button handler (any .sui-modal-close inside a backdrop)
     document.addEventListener('click', (e) => {
+      if (!e.target.closest) return;
       const closeBtn = e.target.closest('.sui-modal-close');
       if (!closeBtn) return;
 
@@ -3998,11 +3999,13 @@ const SoftUI = (() => {
 
   // Hover mode
   document.addEventListener('mouseenter', function(e) {
+    if (!e.target.closest) return;
     var dial = e.target.closest('.sui-speed-dial-hover');
     if (dial) dial.classList.add('open');
   }, true);
 
   document.addEventListener('mouseleave', function(e) {
+    if (!e.target.closest) return;
     var dial = e.target.closest('.sui-speed-dial-hover');
     if (dial) dial.classList.remove('open');
   }, true);
