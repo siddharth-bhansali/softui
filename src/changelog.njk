@@ -8,16 +8,25 @@ permalink: /changelog/
   <h1 class="docs-getstarted-title">Changelog</h1>
   <p class="docs-getstarted-desc">What's new in each version of SoftUI.</p>
 
-  <!-- 1.8.2 -->
-  <section class="docs-getstarted-section" id="v1.8.2">
-    <h2>v1.8.2</h2>
-    <p><strong>Chart Fixes & Focus States</strong></p>
+  <!-- 1.8.5 -->
+  <section class="docs-getstarted-section" id="v1.8.5">
+    <h2>v1.8.5</h2>
+    <p><strong>Dropdown No-Arrow, Chart Fixes & Dark Mode Flash Prevention</strong></p>
     <div class="docs-getstarted-code">
-<pre><code>Fixes:
-  - Horizontal bar chart: increase gap (8px → 20px) to prevent shadow overlap
+<pre><code>New:
+  - sui-dropdown-no-arrow — modifier to hide dropdown caret arrow
+    Works on .sui-dropdown wrapper or directly on .sui-dropdown-toggle
+
+Fixes:
+  - Horizontal bar chart: increase gap (8px → 14px) to prevent shadow overlap
   - Horizontal bar chart: widen label (60px → 80px) for longer text
-  - Horizontal bar chart: fixed-width value column (50px) for equal track lengths
-  - Password toggle: add :focus-visible outline for keyboard navigation</code></pre>
+  - Horizontal bar chart: fixed-width value column for equal track lengths
+  - Password toggle: add :focus-visible outline for keyboard navigation
+  - Fix e.target.closest TypeError on text nodes in speed dial hover
+
+Docs:
+  - Dark mode flash prevention guide in Getting Started
+  - Recommended inline opacity:0 + blocking theme detection script</code></pre>
     </div>
   </section>
 

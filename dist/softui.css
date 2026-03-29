@@ -1,4 +1,4 @@
-/*! SoftUI v1.8.4 — A Neumorphic CSS Library */
+/*! SoftUI v1.8.5 — A Neumorphic CSS Library */
 
 /* ===========================================
    CSS Variables / Tokens
@@ -3681,6 +3681,11 @@ a.sui-btn-warning:visited {
   transform: rotate(45deg);
   margin-left: 6px;
   vertical-align: 1px;
+}
+
+.sui-dropdown-no-arrow .sui-dropdown-toggle::after,
+.sui-dropdown-toggle.sui-dropdown-no-arrow::after {
+  display: none;
 }
 
 .sui-dropdown-split .sui-dropdown-toggle::after {

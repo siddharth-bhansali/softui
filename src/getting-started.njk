@@ -124,6 +124,19 @@ import 'softui-css/dist/softui.min.css';
     <div class="docs-getstarted-code">
 <pre><code>&lt;html data-theme="dark"&gt;</code></pre>
     </div>
+    <p style="margin-top:16px;">To prevent a flash of light mode when the page loads, add this blocking script in your <code>&lt;head&gt;</code> before any stylesheets:</p>
+    <div class="docs-getstarted-code">
+<pre><code>&lt;head&gt;
+  &lt;style&gt;body{opacity:0}&lt;/style&gt;
+  &lt;script&gt;
+    var t = localStorage.getItem('sui-theme');
+    if (t === 'dark' || (!t && matchMedia('(prefers-color-scheme:dark)').matches))
+      document.documentElement.setAttribute('data-theme', 'dark');
+  &lt;/script&gt;
+  &lt;link rel="stylesheet" href="softui.min.css"&gt;
+&lt;/head&gt;</code></pre>
+    </div>
+    <p style="margin-top:12px;font-size:14px;color:var(--sui-text-muted);">The inline <code>opacity:0</code> hides the page until SoftUI's CSS loads (which sets <code>opacity:1</code>), eliminating any flash. The script reads the saved theme preference before the first paint.</p>
   </section>
 
   <!-- Customization -->
