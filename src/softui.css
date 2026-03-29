@@ -7698,7 +7698,7 @@ a.sui-btn-warning:visited {
   align-items: stretch;
   height: auto;
   padding: 0;
-  gap: 8px;
+  gap: 20px;
 }
 
 .sui-chart-bar-col {
@@ -7797,7 +7797,7 @@ a.sui-btn-warning:visited {
   position: static;
   transform: none;
   text-align: right;
-  width: 60px;
+  width: 80px;
   flex-shrink: 0;
   font-size: 12px;
 }
@@ -7830,6 +7830,8 @@ a.sui-btn-warning:visited {
   transform: none;
   font-size: 12px;
   flex-shrink: 0;
+  width: 50px;
+  text-align: right;
 }
 
 /* Stacked bars */
