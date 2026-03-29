@@ -1,4 +1,4 @@
-/*! SoftUI v1.8.5 — A Neumorphic CSS Library */
+/*! SoftUI v1.8.6 — A Neumorphic CSS Library */
 
 /* ===========================================
    CSS Variables / Tokens
@@ -7699,6 +7699,7 @@ a.sui-btn-warning:visited {
 }
 
 .sui-chart-bars-horizontal {
+  display: flex;
   flex-direction: column;
   align-items: stretch;
   height: auto;
