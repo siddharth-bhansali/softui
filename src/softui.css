@@ -2205,6 +2205,12 @@ a.sui-btn-warning:visited {
   color: var(--sui-text);
 }
 
+.sui-password-toggle:focus-visible {
+  outline: 2px solid var(--sui-primary);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
 .sui-password-rules {
   display: flex;
   flex-direction: column;
