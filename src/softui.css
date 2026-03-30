@@ -463,6 +463,132 @@ a.sui-btn-warning:visited {
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%238B95A8' viewBox='0 0 16 16'%3E%3Cpath d='M8 11L3 6h10l-5 5z'/%3E%3C/svg%3E");
 }
 
+/* Styled Select (custom dropdown replacement for native <select>) */
+.sui-styled-select {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+}
+
+.sui-styled-select-trigger {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 10px 16px;
+  font-size: 14px;
+  font-family: var(--sui-font);
+  color: var(--sui-text);
+  background: var(--sui-bg);
+  border: none;
+  border-radius: var(--sui-radius-sm);
+  box-shadow: var(--sui-shadow-inset);
+  cursor: pointer;
+  outline: none;
+  text-align: left;
+  transition: box-shadow var(--sui-transition-fast);
+}
+
+.sui-styled-select-trigger::after {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-right: 2px solid var(--sui-text-muted);
+  border-bottom: 2px solid var(--sui-text-muted);
+  transform: rotate(45deg);
+  flex-shrink: 0;
+  margin-left: 12px;
+  transition: transform var(--sui-transition-fast);
+}
+
+.sui-styled-select.open .sui-styled-select-trigger::after {
+  transform: rotate(-135deg);
+}
+
+.sui-styled-select-trigger:focus-visible {
+  box-shadow: var(--sui-shadow-inset), 0 0 0 2px var(--sui-primary);
+}
+
+.sui-styled-select-value {
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.sui-styled-select-placeholder {
+  color: var(--sui-text-muted);
+}
+
+.sui-styled-select-menu {
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 0;
+  right: 0;
+  background: var(--sui-bg);
+  border-radius: var(--sui-radius-sm);
+  box-shadow: var(--sui-shadow-raised);
+  padding: 6px;
+  z-index: 100;
+  max-height: 240px;
+  overflow-y: auto;
+  display: none;
+}
+
+.sui-styled-select.open .sui-styled-select-menu {
+  display: block;
+}
+
+.sui-styled-select-option {
+  padding: 8px 12px;
+  font-size: 14px;
+  font-family: var(--sui-font);
+  color: var(--sui-text);
+  border-radius: var(--sui-radius-xs);
+  cursor: pointer;
+  transition: background var(--sui-transition-fast);
+  white-space: nowrap;
+}
+
+.sui-styled-select-option:hover {
+  background: rgba(91, 84, 224, 0.06);
+}
+
+[data-theme="dark"] .sui-styled-select-option:hover {
+  background: rgba(124, 107, 255, 0.1);
+}
+
+.sui-styled-select-option.selected {
+  color: var(--sui-primary);
+  font-weight: 600;
+  background: rgba(91, 84, 224, 0.08);
+}
+
+.sui-styled-select-option.focused {
+  background: rgba(91, 84, 224, 0.06);
+}
+
+/* Sizes */
+.sui-styled-select-sm .sui-styled-select-trigger {
+  padding: 7px 12px;
+  font-size: 13px;
+}
+
+.sui-styled-select-sm .sui-styled-select-option {
+  padding: 6px 10px;
+  font-size: 13px;
+}
+
+.sui-styled-select-lg .sui-styled-select-trigger {
+  padding: 14px 20px;
+  font-size: 16px;
+}
+
+.sui-styled-select-lg .sui-styled-select-option {
+  padding: 10px 14px;
+  font-size: 16px;
+}
+
 .sui-textarea {
   resize: vertical;
   min-height: 80px;
@@ -853,6 +979,10 @@ a.sui-btn-warning:visited {
   font-weight: 700;
   color: var(--sui-text);
   margin-right: auto;
+}
+
+.sui-navbar-brand:hover {
+  color: var(--sui-text);
 }
 
 .sui-navbar-links {
@@ -2725,6 +2855,56 @@ a.sui-btn-warning:visited {
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%23888'/%3E%3C/svg%3E");
   background-repeat: no-repeat;
   background-position: right 10px center;
+}
+
+/* Filter — native select fallback */
+select.sui-datatable-filter {
+  padding: 6px 28px 6px 10px;
+  font-size: 13px;
+  font-family: inherit;
+  color: var(--sui-text);
+  background: var(--sui-bg);
+  border: none;
+  border-radius: var(--sui-radius-xs);
+  box-shadow: var(--sui-shadow-raised-sm);
+  outline: none;
+  cursor: pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%23888'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  flex-shrink: 0;
+}
+
+/* Filter — styled dropdown */
+.sui-datatable-filter.sui-dropdown {
+  flex-shrink: 0;
+}
+
+.sui-datatable-filter .sui-dropdown-toggle {
+  padding: 6px 12px;
+  font-size: 13px;
+  font-family: inherit;
+  color: var(--sui-text);
+  background: var(--sui-bg);
+  border: none;
+  border-radius: var(--sui-radius-xs);
+  box-shadow: var(--sui-shadow-raised-sm);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.sui-datatable-filter .sui-dropdown-toggle::after {
+  width: 5px;
+  height: 5px;
+  border-width: 1.5px;
+  margin-left: 4px;
+}
+
+.sui-datatable-filter .sui-dropdown-menu {
+  min-width: max-content;
 }
 
 /* Sortable headers */

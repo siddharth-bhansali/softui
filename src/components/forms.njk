@@ -29,7 +29,7 @@ toc:
       </div>
       <div class="sui-form-group"><label class="sui-label">Email</label><input type="email" class="sui-input" placeholder="john@example.com"></div>
       <div class="sui-form-group"><label class="sui-label">Password</label><input type="password" class="sui-input" placeholder="Enter password"></div>
-      <div class="sui-form-group"><label class="sui-label">Country</label><select class="sui-input sui-select"><option>Select a country</option><option>United States</option><option>United Kingdom</option><option>Canada</option><option>Australia</option></select></div>
+      <div class="sui-form-group"><label class="sui-label">Country</label><div class="sui-styled-select" data-placeholder="Select a country"><button type="button" class="sui-styled-select-trigger"><span class="sui-styled-select-value sui-styled-select-placeholder">Select a country</span></button><div class="sui-styled-select-menu"><div class="sui-styled-select-option" data-value="us">United States</div><div class="sui-styled-select-option" data-value="uk">United Kingdom</div><div class="sui-styled-select-option" data-value="ca">Canada</div><div class="sui-styled-select-option" data-value="au">Australia</div></div></div></div>
       <div class="sui-form-group"><label class="sui-label">Bio</label><textarea class="sui-input sui-textarea" rows="3" placeholder="Tell us about yourself..."></textarea></div>
       <div class="sui-form-group"><label class="sui-label">Experience</label><input type="range" class="sui-range" min="0" max="100" value="60"></div>
       <button class="sui-btn sui-btn-primary sui-btn-block">Create Account</button>
@@ -59,10 +59,15 @@ toc:
   &lt;/div&gt;
   &lt;div class="sui-form-group"&gt;
     &lt;label class="sui-label"&gt;Country&lt;/label&gt;
-    &lt;select class="sui-input sui-select"&gt;
-      &lt;option&gt;Select a country&lt;/option&gt;
-      &lt;option&gt;United States&lt;/option&gt;
-    &lt;/select&gt;
+    &lt;div class="sui-styled-select" data-placeholder="Select a country"&gt;
+      &lt;button class="sui-styled-select-trigger"&gt;
+        &lt;span class="sui-styled-select-value sui-styled-select-placeholder"&gt;Select a country&lt;/span&gt;
+      &lt;/button&gt;
+      &lt;div class="sui-styled-select-menu"&gt;
+        &lt;div class="sui-styled-select-option" data-value="us"&gt;United States&lt;/div&gt;
+        &lt;div class="sui-styled-select-option" data-value="uk"&gt;United Kingdom&lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
   &lt;/div&gt;
   &lt;div class="sui-form-group"&gt;
     &lt;label class="sui-label"&gt;Bio&lt;/label&gt;
@@ -388,19 +393,23 @@ toc:
   <h3 class="pg-section-title">Select &amp; Textarea</h3>
   <div class="pg-section-row">
     <div style="max-width:400px;width:100%;">
-      <div class="sui-form-group"><label class="sui-label">Select</label><select class="sui-input sui-select"><option>Select an option</option><option>Option One</option><option>Option Two</option><option>Option Three</option></select></div>
+      <div class="sui-form-group"><label class="sui-label">Select</label><div class="sui-styled-select" data-placeholder="Select an option"><button type="button" class="sui-styled-select-trigger"><span class="sui-styled-select-value sui-styled-select-placeholder">Select an option</span></button><div class="sui-styled-select-menu"><div class="sui-styled-select-option" data-value="1">Option One</div><div class="sui-styled-select-option" data-value="2">Option Two</div><div class="sui-styled-select-option" data-value="3">Option Three</div></div></div></div>
       <div class="sui-form-group"><label class="sui-label">Textarea</label><textarea class="sui-input sui-textarea" rows="3" placeholder="Write something..."></textarea></div>
       <div class="sui-form-group"><label class="sui-label">Range Slider</label><input type="range" class="sui-range" min="0" max="100" value="50"></div>
     </div>
   </div>
   <div class="pg-code-wrap">
     <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
-    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;select class="sui-input sui-select"&gt;
-  &lt;option&gt;Select an option&lt;/option&gt;
-  &lt;option&gt;Option One&lt;/option&gt;
-  &lt;option&gt;Option Two&lt;/option&gt;
-  &lt;option&gt;Option Three&lt;/option&gt;
-&lt;/select&gt;
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-styled-select" data-placeholder="Select an option"&gt;
+  &lt;button class="sui-styled-select-trigger"&gt;
+    &lt;span class="sui-styled-select-value sui-styled-select-placeholder"&gt;Select an option&lt;/span&gt;
+  &lt;/button&gt;
+  &lt;div class="sui-styled-select-menu"&gt;
+    &lt;div class="sui-styled-select-option" data-value="1"&gt;Option One&lt;/div&gt;
+    &lt;div class="sui-styled-select-option" data-value="2"&gt;Option Two&lt;/div&gt;
+    &lt;div class="sui-styled-select-option" data-value="3"&gt;Option Three&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
 
 &lt;textarea class="sui-input sui-textarea" rows="3" placeholder="Write something..."&gt;&lt;/textarea&gt;
 

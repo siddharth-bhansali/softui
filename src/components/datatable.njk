@@ -10,6 +10,7 @@ toc:
   - Sortable
   - Searchable
   - Full Featured
+  - Filterable
   - Striped & Compact
 ---
 
@@ -261,11 +262,16 @@ toc:
         </div>
         <div class="sui-datatable-perpage">
           <span>Show</span>
-          <select>
-            <option value="5" selected>5</option>
-            <option value="10">10</option>
-            <option value="25">25</option>
-          </select>
+          <div class="sui-styled-select sui-styled-select-sm" data-value="5" style="width:70px;">
+            <button type="button" class="sui-styled-select-trigger">
+              <span class="sui-styled-select-value">5</span>
+            </button>
+            <div class="sui-styled-select-menu">
+              <div class="sui-styled-select-option selected" data-value="5">5</div>
+              <div class="sui-styled-select-option" data-value="10">10</div>
+              <div class="sui-styled-select-option" data-value="25">25</div>
+            </div>
+          </div>
           <span>entries</span>
         </div>
       </div>
@@ -323,11 +329,16 @@ toc:
     &lt;/div&gt;
     &lt;div class="sui-datatable-perpage"&gt;
       &lt;span&gt;Show&lt;/span&gt;
-      &lt;select&gt;
-        &lt;option value="5" selected&gt;5&lt;/option&gt;
-        &lt;option value="10"&gt;10&lt;/option&gt;
-        &lt;option value="25"&gt;25&lt;/option&gt;
-      &lt;/select&gt;
+      &lt;div class="sui-styled-select sui-styled-select-sm" data-value="5" style="width:70px;"&gt;
+        &lt;button class="sui-styled-select-trigger"&gt;
+          &lt;span class="sui-styled-select-value"&gt;5&lt;/span&gt;
+        &lt;/button&gt;
+        &lt;div class="sui-styled-select-menu"&gt;
+          &lt;div class="sui-styled-select-option selected" data-value="5"&gt;5&lt;/div&gt;
+          &lt;div class="sui-styled-select-option" data-value="10"&gt;10&lt;/div&gt;
+          &lt;div class="sui-styled-select-option" data-value="25"&gt;25&lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
       &lt;span&gt;entries&lt;/span&gt;
     &lt;/div&gt;
   &lt;/div&gt;
@@ -363,8 +374,117 @@ toc:
   </div>
 </div>
 
-<!-- Section 5 — Striped & Compact -->
+<!-- Section 5 — Filterable -->
 <div class="pg-section" id="section-5">
+  <h3 class="pg-section-title">Filterable</h3>
+  <p class="pg-section-desc">Add a <code>.sui-datatable-filter</code> select with <code>data-filter-attr</code> to filter rows by a data attribute. Works with search, sort, and pagination.</p>
+
+  <div class="pg-section-row">
+    <div class="sui-datatable">
+      <div class="sui-datatable-toolbar">
+        <div class="sui-datatable-search">
+          <svg class="sui-datatable-search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          <input type="text" placeholder="Search...">
+        </div>
+        <div class="sui-dropdown sui-datatable-filter" data-filter-attr="data-dept">
+          <button class="sui-dropdown-toggle" data-sui-dropdown aria-expanded="false" aria-haspopup="true">
+            <span class="sui-datatable-filter-label">All Departments</span>
+          </button>
+          <div class="sui-dropdown-menu" role="menu">
+            <button class="sui-dropdown-item active" data-value="" role="menuitem">All Departments</button>
+            <button class="sui-dropdown-item" data-value="engineering" role="menuitem">Engineering</button>
+            <button class="sui-dropdown-item" data-value="design" role="menuitem">Design</button>
+            <button class="sui-dropdown-item" data-value="marketing" role="menuitem">Marketing</button>
+            <button class="sui-dropdown-item" data-value="sales" role="menuitem">Sales</button>
+          </div>
+        </div>
+        <div class="sui-datatable-perpage">
+          <span>Show</span>
+          <div class="sui-styled-select sui-styled-select-sm" data-value="5" style="width:70px;">
+            <button type="button" class="sui-styled-select-trigger">
+              <span class="sui-styled-select-value">5</span>
+            </button>
+            <div class="sui-styled-select-menu">
+              <div class="sui-styled-select-option selected" data-value="5">5</div>
+              <div class="sui-styled-select-option" data-value="10">10</div>
+            </div>
+          </div>
+          <span>entries</span>
+        </div>
+      </div>
+      <div class="docs-table-wrap">
+        <table class="sui-table">
+          <thead>
+            <tr>
+              <th scope="col" data-sort="string">Name</th>
+              <th scope="col" data-sort="string">Department</th>
+              <th scope="col" data-sort="string">Role</th>
+              <th scope="col">Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr data-dept="engineering"><td>Sarah Johnson</td><td>Engineering</td><td>Senior Developer</td><td><span class="sui-badge sui-badge-success">Active</span></td></tr>
+            <tr data-dept="design"><td>Michael Brown</td><td>Design</td><td>UI Designer</td><td><span class="sui-badge sui-badge-success">Active</span></td></tr>
+            <tr data-dept="marketing"><td>Emily Wilson</td><td>Marketing</td><td>Content Lead</td><td><span class="sui-badge sui-badge-warning">On Leave</span></td></tr>
+            <tr data-dept="engineering"><td>James Taylor</td><td>Engineering</td><td>DevOps Engineer</td><td><span class="sui-badge sui-badge-success">Active</span></td></tr>
+            <tr data-dept="sales"><td>Lisa Anderson</td><td>Sales</td><td>Account Executive</td><td><span class="sui-badge sui-badge-success">Active</span></td></tr>
+            <tr data-dept="engineering"><td>Robert Garcia</td><td>Engineering</td><td>Frontend Developer</td><td><span class="sui-badge sui-badge-danger">Inactive</span></td></tr>
+            <tr data-dept="design"><td>Maria Lopez</td><td>Design</td><td>UX Researcher</td><td><span class="sui-badge sui-badge-success">Active</span></td></tr>
+            <tr data-dept="marketing"><td>Thomas White</td><td>Marketing</td><td>SEO Specialist</td><td><span class="sui-badge sui-badge-warning">On Leave</span></td></tr>
+            <tr data-dept="sales"><td>Jennifer Lee</td><td>Sales</td><td>Sales Manager</td><td><span class="sui-badge sui-badge-success">Active</span></td></tr>
+            <tr data-dept="engineering"><td>Daniel Clark</td><td>Engineering</td><td>Backend Developer</td><td><span class="sui-badge sui-badge-success">Active</span></td></tr>
+            <tr data-dept="design"><td>Anna Wright</td><td>Design</td><td>Brand Designer</td><td><span class="sui-badge sui-badge-success">Active</span></td></tr>
+            <tr data-dept="sales"><td>Chris Evans</td><td>Sales</td><td>BDR</td><td><span class="sui-badge sui-badge-success">Active</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="sui-datatable-footer">
+        <div class="sui-datatable-info"></div>
+        <div class="sui-datatable-pagination"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block">
+      <button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button>
+      <pre>&lt;div class="sui-datatable"&gt;
+  &lt;div class="sui-datatable-toolbar"&gt;
+    &lt;div class="sui-datatable-search"&gt;
+      &lt;input type="text" placeholder="Search..."&gt;
+    &lt;/div&gt;
+    &lt;div class="sui-dropdown sui-datatable-filter" data-filter-attr="data-dept"&gt;
+      &lt;button class="sui-dropdown-toggle" data-sui-dropdown&gt;
+        &lt;span class="sui-datatable-filter-label"&gt;All Departments&lt;/span&gt;
+      &lt;/button&gt;
+      &lt;div class="sui-dropdown-menu"&gt;
+        &lt;button class="sui-dropdown-item active" data-value=""&gt;All Departments&lt;/button&gt;
+        &lt;button class="sui-dropdown-item" data-value="engineering"&gt;Engineering&lt;/button&gt;
+        &lt;button class="sui-dropdown-item" data-value="design"&gt;Design&lt;/button&gt;
+        &lt;!-- more items --&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;table class="sui-table"&gt;
+    &lt;thead&gt;...&lt;/thead&gt;
+    &lt;tbody&gt;
+      &lt;tr data-dept="engineering"&gt;&lt;td&gt;Sarah Johnson&lt;/td&gt;...&lt;/tr&gt;
+      &lt;tr data-dept="design"&gt;&lt;td&gt;Michael Brown&lt;/td&gt;...&lt;/tr&gt;
+      &lt;!-- rows with data-dept matching filter options --&gt;
+    &lt;/tbody&gt;
+  &lt;/table&gt;
+  &lt;div class="sui-datatable-footer"&gt;
+    &lt;div class="sui-datatable-info"&gt;&lt;/div&gt;
+    &lt;div class="sui-datatable-pagination"&gt;&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</pre>
+    </div>
+  </div>
+</div>
+
+<!-- Section 6 — Striped & Compact -->
+<div class="pg-section" id="section-6">
   <h3 class="pg-section-title">Striped & Compact</h3>
   <p class="pg-section-desc">Combine with existing table variants like <code>.sui-table-striped</code> and <code>.sui-table-compact</code>.</p>
 
@@ -377,10 +497,15 @@ toc:
         </div>
         <div class="sui-datatable-perpage">
           <span>Show</span>
-          <select>
-            <option value="5" selected>5</option>
-            <option value="10">10</option>
-          </select>
+          <div class="sui-styled-select sui-styled-select-sm" data-value="5" style="width:70px;">
+            <button type="button" class="sui-styled-select-trigger">
+              <span class="sui-styled-select-value">5</span>
+            </button>
+            <div class="sui-styled-select-menu">
+              <div class="sui-styled-select-option selected" data-value="5">5</div>
+              <div class="sui-styled-select-option" data-value="10">10</div>
+            </div>
+          </div>
           <span>entries</span>
         </div>
       </div>
@@ -434,10 +559,15 @@ toc:
     &lt;/div&gt;
     &lt;div class="sui-datatable-perpage"&gt;
       &lt;span&gt;Show&lt;/span&gt;
-      &lt;select&gt;
-        &lt;option value="5" selected&gt;5&lt;/option&gt;
-        &lt;option value="10"&gt;10&lt;/option&gt;
-      &lt;/select&gt;
+      &lt;div class="sui-styled-select sui-styled-select-sm" data-value="5" style="width:70px;"&gt;
+        &lt;button class="sui-styled-select-trigger"&gt;
+          &lt;span class="sui-styled-select-value"&gt;5&lt;/span&gt;
+        &lt;/button&gt;
+        &lt;div class="sui-styled-select-menu"&gt;
+          &lt;div class="sui-styled-select-option selected" data-value="5"&gt;5&lt;/div&gt;
+          &lt;div class="sui-styled-select-option" data-value="10"&gt;10&lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
       &lt;span&gt;entries&lt;/span&gt;
     &lt;/div&gt;
   &lt;/div&gt;

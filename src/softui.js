@@ -294,6 +294,9 @@ const SoftUI = (() => {
     // Charts
     initCharts();
 
+    // Styled Selects
+    initStyledSelects();
+
     // Data Tables
     initDataTables();
 
@@ -2534,6 +2537,95 @@ const SoftUI = (() => {
     });
   }
 
+  function initStyledSelects() {
+    document.querySelectorAll('.sui-styled-select').forEach(function(sel) {
+      var trigger = sel.querySelector('.sui-styled-select-trigger');
+      var menu = sel.querySelector('.sui-styled-select-menu');
+      var valueEl = sel.querySelector('.sui-styled-select-value');
+      var options = sel.querySelectorAll('.sui-styled-select-option');
+      var placeholder = sel.getAttribute('data-placeholder') || '';
+      var focusIdx = -1;
+
+      if (!trigger || !menu) return;
+
+      // Set initial value
+      var selected = sel.querySelector('.sui-styled-select-option.selected');
+      if (selected && valueEl) {
+        valueEl.textContent = selected.textContent;
+        valueEl.classList.remove('sui-styled-select-placeholder');
+      } else if (valueEl && placeholder) {
+        valueEl.textContent = placeholder;
+        valueEl.classList.add('sui-styled-select-placeholder');
+      }
+
+      // Toggle menu
+      trigger.addEventListener('click', function(e) {
+        e.stopPropagation();
+        // Close other open selects
+        document.querySelectorAll('.sui-styled-select.open').forEach(function(s) {
+          if (s !== sel) s.classList.remove('open');
+        });
+        sel.classList.toggle('open');
+        if (sel.classList.contains('open')) {
+          // Focus selected or first option
+          focusIdx = -1;
+          options.forEach(function(o, i) { if (o.classList.contains('selected')) focusIdx = i; });
+        }
+      });
+
+      // Option click
+      options.forEach(function(opt, i) {
+        opt.addEventListener('click', function() {
+          options.forEach(function(o) { o.classList.remove('selected'); });
+          opt.classList.add('selected');
+          if (valueEl) {
+            valueEl.textContent = opt.textContent;
+            valueEl.classList.remove('sui-styled-select-placeholder');
+          }
+          sel.setAttribute('data-value', opt.getAttribute('data-value') || opt.textContent);
+          sel.classList.remove('open');
+          // Dispatch change event for datatable filter integration
+          sel.dispatchEvent(new Event('change', { bubbles: true }));
+          trigger.focus();
+        });
+      });
+
+      // Keyboard navigation
+      trigger.addEventListener('keydown', function(e) {
+        var isOpen = sel.classList.contains('open');
+        if (e.key === 'ArrowDown' || e.key === 'ArrowUp') {
+          e.preventDefault();
+          if (!isOpen) { sel.classList.add('open'); focusIdx = -1; }
+          if (e.key === 'ArrowDown') focusIdx = Math.min(focusIdx + 1, options.length - 1);
+          else focusIdx = Math.max(focusIdx - 1, 0);
+          options.forEach(function(o) { o.classList.remove('focused'); });
+          options[focusIdx].classList.add('focused');
+          options[focusIdx].scrollIntoView({ block: 'nearest' });
+        } else if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          if (isOpen && focusIdx >= 0) {
+            options[focusIdx].click();
+          } else {
+            sel.classList.toggle('open');
+          }
+        } else if (e.key === 'Escape') {
+          sel.classList.remove('open');
+          options.forEach(function(o) { o.classList.remove('focused'); });
+        }
+      });
+    });
+
+    // Close on outside click
+    document.addEventListener('click', function(e) {
+      if (!e.target.closest) return;
+      if (!e.target.closest('.sui-styled-select')) {
+        document.querySelectorAll('.sui-styled-select.open').forEach(function(s) {
+          s.classList.remove('open');
+        });
+      }
+    });
+  }
+
   function initDataTables() {
     document.querySelectorAll('.sui-datatable').forEach(function(dt) {
       var table = dt.querySelector('.sui-table');
@@ -2546,9 +2638,16 @@ const SoftUI = (() => {
       var filteredRows = allRows.slice();
       var currentPage = 1;
 
-      // Per-page selector
-      var perpageSelect = dt.querySelector('.sui-datatable-perpage select');
-      var perPage = perpageSelect ? parseInt(perpageSelect.value, 10) : allRows.length;
+      // Per-page selector (supports native <select> and .sui-styled-select)
+      var perpageNative = dt.querySelector('.sui-datatable-perpage select');
+      var perpageStyled = dt.querySelector('.sui-datatable-perpage .sui-styled-select');
+      var perpageSelect = perpageNative || perpageStyled;
+      function getPerpageValue() {
+        if (perpageNative) return parseInt(perpageNative.value, 10);
+        if (perpageStyled) return parseInt(perpageStyled.getAttribute('data-value') || '', 10);
+        return allRows.length;
+      }
+      var perPage = perpageSelect ? getPerpageValue() : allRows.length;
 
       // Info & pagination elements
       var infoEl = dt.querySelector('.sui-datatable-info');
@@ -2634,22 +2733,65 @@ const SoftUI = (() => {
         }
       }
 
-      // Search / filter
-      if (searchInput) {
-        searchInput.addEventListener('input', function() {
-          var query = searchInput.value.toLowerCase().trim();
-          filteredRows = allRows.filter(function(row) {
-            return row.textContent.toLowerCase().indexOf(query) !== -1;
-          });
-          currentPage = 1;
-          render();
-        });
+      // Filter elements (supports <select> and .sui-dropdown)
+      var filterEls = dt.querySelectorAll('.sui-datatable-filter');
+
+      function getFilterValue(el) {
+        if (el.tagName === 'SELECT') return el.value;
+        // Dropdown-based filter: read from active item
+        var active = el.querySelector('.sui-dropdown-item.active');
+        return active ? (active.getAttribute('data-value') || '') : '';
       }
+
+      function applyFilters() {
+        var query = searchInput ? searchInput.value.toLowerCase().trim() : '';
+        filteredRows = allRows.filter(function(row) {
+          if (query && row.textContent.toLowerCase().indexOf(query) === -1) return false;
+          var pass = true;
+          filterEls.forEach(function(el) {
+            var attr = el.getAttribute('data-filter-attr') || 'data-status';
+            var val = getFilterValue(el);
+            if (val && row.getAttribute(attr) !== val) pass = false;
+          });
+          return pass;
+        });
+        currentPage = 1;
+        render();
+      }
+
+      // Search input
+      if (searchInput) {
+        searchInput.addEventListener('input', applyFilters);
+      }
+
+      // Wire up filters
+      filterEls.forEach(function(el) {
+        if (el.tagName === 'SELECT') {
+          el.addEventListener('change', applyFilters);
+        } else {
+          // Dropdown-based filter
+          el.querySelectorAll('.sui-dropdown-item').forEach(function(item) {
+            item.addEventListener('click', function() {
+              // Update active state
+              el.querySelectorAll('.sui-dropdown-item').forEach(function(i) { i.classList.remove('active'); });
+              item.classList.add('active');
+              // Update label
+              var label = el.querySelector('.sui-datatable-filter-label');
+              if (label) label.textContent = item.textContent;
+              // Close dropdown
+              el.classList.remove('open');
+              var toggle = el.querySelector('.sui-dropdown-toggle');
+              if (toggle) toggle.setAttribute('aria-expanded', 'false');
+              applyFilters();
+            });
+          });
+        }
+      });
 
       // Per-page change
       if (perpageSelect) {
         perpageSelect.addEventListener('change', function() {
-          perPage = parseInt(perpageSelect.value, 10);
+          perPage = getPerpageValue();
           currentPage = 1;
           render();
         });
