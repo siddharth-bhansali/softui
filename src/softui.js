@@ -2797,35 +2797,44 @@ const SoftUI = (() => {
         });
       }
 
-      // Sortable headers
+      // Sortable headers (unsorted → asc → desc → unsorted)
       var ths = table.querySelectorAll('th[data-sort]');
       ths.forEach(function(th) {
         th.addEventListener('click', function() {
-          var col = th.getAttribute('data-sort');
           var colIndex = Array.prototype.indexOf.call(th.parentElement.children, th);
-          var type = col; // 'string' or 'number'
-          var dir = 'asc';
+          var type = th.getAttribute('data-sort');
 
+          // Cycle: unsorted → asc → desc → unsorted
+          var dir;
           if (th.classList.contains('sort-asc')) {
             dir = 'desc';
+          } else if (th.classList.contains('sort-desc')) {
+            dir = 'none';
+          } else {
+            dir = 'asc';
           }
 
           // Reset all headers
           ths.forEach(function(h) { h.classList.remove('sort-asc', 'sort-desc'); });
-          th.classList.add(dir === 'asc' ? 'sort-asc' : 'sort-desc');
 
-          filteredRows.sort(function(a, b) {
-            var aText = a.children[colIndex] ? a.children[colIndex].textContent.trim() : '';
-            var bText = b.children[colIndex] ? b.children[colIndex].textContent.trim() : '';
+          if (dir === 'none') {
+            // Restore original order within filtered set
+            filteredRows = allRows.filter(function(row) { return filteredRows.indexOf(row) !== -1; });
+          } else {
+            th.classList.add(dir === 'asc' ? 'sort-asc' : 'sort-desc');
+            filteredRows.sort(function(a, b) {
+              var aText = a.children[colIndex] ? a.children[colIndex].textContent.trim() : '';
+              var bText = b.children[colIndex] ? b.children[colIndex].textContent.trim() : '';
 
-            if (type === 'number') {
-              var aNum = parseFloat(aText.replace(/[^0-9.\-]/g, '')) || 0;
-              var bNum = parseFloat(bText.replace(/[^0-9.\-]/g, '')) || 0;
-              return dir === 'asc' ? aNum - bNum : bNum - aNum;
-            }
+              if (type === 'number') {
+                var aNum = parseFloat(aText.replace(/[^0-9.\-]/g, '')) || 0;
+                var bNum = parseFloat(bText.replace(/[^0-9.\-]/g, '')) || 0;
+                return dir === 'asc' ? aNum - bNum : bNum - aNum;
+              }
 
-            return dir === 'asc' ? aText.localeCompare(bText) : bText.localeCompare(aText);
-          });
+              return dir === 'asc' ? aText.localeCompare(bText) : bText.localeCompare(aText);
+            });
+          }
 
           // Re-append sorted rows to DOM
           filteredRows.forEach(function(row) { tbody.appendChild(row); });
