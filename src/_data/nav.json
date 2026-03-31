@@ -19,7 +19,8 @@
     { "id": "chip", "name": "Chip", "url": "/components/chip/" },
     { "id": "copybutton", "name": "Copy Button", "url": "/components/copybutton/" },
     { "id": "kbd", "name": "Kbd", "url": "/components/kbd/" },
-    { "id": "divider", "name": "Divider", "url": "/components/divider/" }
+    { "id": "divider", "name": "Divider", "url": "/components/divider/" },
+    { "id": "pricing", "name": "Pricing", "url": "/components/pricing/" }
   ],
   "dataDisplay": [
     { "id": "statcard", "name": "Stat Card", "url": "/components/statcard/" },

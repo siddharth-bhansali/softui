@@ -297,6 +297,9 @@ const SoftUI = (() => {
     // Styled Selects
     initStyledSelects();
 
+    // Selectable pricing
+    initSelectablePricing();
+
     // Data Tables
     initDataTables();
 
@@ -2532,6 +2535,20 @@ const SoftUI = (() => {
         });
         dot.addEventListener('mouseleave', function() {
           tip.classList.remove('visible');
+        });
+      });
+    });
+  }
+
+  function initSelectablePricing() {
+    document.querySelectorAll('.sui-pricing-selectable').forEach(function(container) {
+      var cards = container.querySelectorAll('.sui-pricing-card');
+      cards.forEach(function(card) {
+        card.addEventListener('click', function() {
+          cards.forEach(function(c) { c.classList.remove('selected'); });
+          card.classList.add('selected');
+          container.setAttribute('data-selected', card.getAttribute('data-plan') || '');
+          container.dispatchEvent(new Event('change', { bubbles: true }));
         });
       });
     });

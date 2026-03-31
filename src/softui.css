@@ -433,6 +433,16 @@ a.sui-btn-warning:visited {
   color: var(--sui-text-light);
 }
 
+.sui-input[type="number"] {
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
+.sui-input[type="number"]::-webkit-inner-spin-button,
+.sui-input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
 .sui-input:focus,
 .sui-input.sui-input-focus {
   box-shadow: var(--sui-shadow-inset), 0 0 0 3px rgba(91, 84, 224, 0.35);
@@ -1266,7 +1276,7 @@ a.sui-btn-warning:visited {
   width: 90%;
   max-width: 520px;
   max-height: 85vh;
-  overflow-y: auto;
+  overflow: visible;
   transform: translateY(20px) scale(0.97);
   transition: transform var(--sui-transition-base) ease;
 }
@@ -4488,10 +4498,11 @@ select.sui-datatable-filter {
 
 /* Calendar — Date Picker (popover trigger) */
 .sui-datepicker-trigger {
-  display: inline-flex;
+  display: flex;
   align-items: center;
   gap: 8px;
-  padding: 10px 14px;
+  width: 100%;
+  padding: 12px 18px;
   font-size: 14px;
   font-weight: 500;
   font-family: var(--sui-font);
@@ -4502,7 +4513,6 @@ select.sui-datatable-filter {
   box-shadow: var(--sui-shadow-inset);
   cursor: pointer;
   transition: var(--sui-transition);
-  min-width: 200px;
 }
 
 .sui-datepicker-trigger:hover {
@@ -4527,24 +4537,19 @@ select.sui-datatable-filter {
 
 .sui-datepicker {
   position: relative;
-  display: inline-block;
 }
 
 .sui-datepicker-popover {
   position: absolute;
   top: calc(100% + 8px);
   left: 50%;
-  transform: translateX(-50%) translateY(-6px);
+  transform: translateX(-50%);
   z-index: 500;
-  opacity: 0;
-  visibility: hidden;
-  transition: opacity var(--sui-transition-fast) ease, transform var(--sui-transition-fast) ease, visibility var(--sui-transition-fast);
+  display: none;
 }
 
 .sui-datepicker-popover.open {
-  opacity: 1;
-  visibility: visible;
-  transform: translateX(-50%) translateY(0);
+  display: block;
 }
 
 .sui-datepicker-popover .sui-calendar {
@@ -12804,6 +12809,211 @@ select.sui-datatable-filter {
 .sui-tour-no-overlay .sui-tour-tooltip {
   box-shadow: var(--sui-shadow-raised);
 }
+
+/* ===========================================
+   Pricing / Plan Cards
+   =========================================== */
+.sui-pricing {
+  display: flex;
+  gap: 20px;
+  align-items: stretch;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.sui-pricing-card {
+  background: var(--sui-bg);
+  border-radius: var(--sui-radius-lg);
+  box-shadow: var(--sui-shadow-raised);
+  padding: 32px 28px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  flex: 1;
+  min-width: 240px;
+  max-width: 340px;
+  position: relative;
+  transition: var(--sui-transition);
+}
+
+.sui-pricing-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--sui-shadow-raised-lg);
+}
+
+/* Featured / recommended plan */
+.sui-pricing-featured {
+  box-shadow: 0 0 0 3px var(--sui-primary), 0 0 16px rgba(91, 84, 224, 0.25);
+  z-index: 1;
+}
+
+.sui-pricing-featured:hover {
+  box-shadow: 0 0 0 3px var(--sui-primary), 0 0 20px rgba(91, 84, 224, 0.3);
+}
+
+.sui-pricing-badge {
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--sui-primary);
+  color: #fff;
+  font-size: 11px;
+  font-weight: 700;
+  font-family: var(--sui-font);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  padding: 4px 16px;
+  border-radius: var(--sui-radius-full);
+  white-space: nowrap;
+}
+
+.sui-pricing-name {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--sui-text);
+  margin: 0 0 4px;
+}
+
+.sui-pricing-desc {
+  font-size: 13px;
+  color: var(--sui-text-muted);
+  margin: 0 0 20px;
+}
+
+.sui-pricing-price {
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+  margin-bottom: 4px;
+}
+
+.sui-pricing-amount {
+  font-size: 42px;
+  font-weight: 800;
+  color: var(--sui-text);
+  line-height: 1;
+}
+
+.sui-pricing-currency {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--sui-text-muted);
+}
+
+.sui-pricing-period {
+  font-size: 13px;
+  color: var(--sui-text-muted);
+  margin-bottom: 24px;
+}
+
+.sui-pricing-features {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 28px;
+  width: 100%;
+  text-align: left;
+}
+
+.sui-pricing-features li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 0;
+  font-size: 14px;
+  color: var(--sui-text);
+  border-bottom: 1px solid var(--sui-bg-dark);
+}
+
+.sui-pricing-features li:last-child {
+  border-bottom: none;
+}
+
+.sui-pricing-features li::before {
+  content: '';
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: var(--sui-success);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23fff' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 10px;
+}
+
+.sui-pricing-features li.disabled {
+  color: var(--sui-text-light);
+  text-decoration: line-through;
+}
+
+.sui-pricing-features li.disabled::before {
+  background: var(--sui-bg-dark);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23888' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cline x1='18' y1='6' x2='6' y2='18'/%3E%3Cline x1='6' y1='6' x2='18' y2='18'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 10px;
+}
+
+.sui-pricing-cta {
+  margin-top: auto;
+  width: 100%;
+}
+
+/* Billing toggle */
+.sui-pricing-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 32px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--sui-text-muted);
+}
+
+.sui-pricing-toggle-active {
+  color: var(--sui-text);
+  font-weight: 600;
+}
+
+.sui-pricing-save {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--sui-success);
+  background: rgba(31, 169, 110, 0.1);
+  padding: 2px 8px;
+  border-radius: var(--sui-radius-full);
+}
+
+/* Inset variant */
+.sui-pricing-inset .sui-pricing-card {
+  box-shadow: var(--sui-shadow-inset);
+}
+
+.sui-pricing-inset .sui-pricing-card:hover {
+  box-shadow: var(--sui-shadow-inset);
+  transform: none;
+}
+
+.sui-pricing-inset .sui-pricing-featured {
+  box-shadow: var(--sui-shadow-inset), 0 0 0 3px var(--sui-primary);
+}
+
+/* Selectable variant */
+.sui-pricing-selectable .sui-pricing-card {
+  cursor: pointer;
+}
+
+.sui-pricing-selectable .sui-pricing-card.selected {
+  box-shadow: 0 0 0 3px var(--sui-primary), 0 0 16px rgba(91, 84, 224, 0.25);
+}
+
+.sui-pricing-selectable.sui-pricing-inset .sui-pricing-card.selected {
+  box-shadow: var(--sui-shadow-inset), 0 0 0 3px var(--sui-primary);
+}
+
 
 /* ===========================================
    Reduced Motion
