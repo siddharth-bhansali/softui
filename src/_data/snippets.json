@@ -7,8 +7,8 @@
     },
     {
       "id": "select",
-      "label": "Select",
-      "code": "<div class=\"sui-form-group\">\n  <label class=\"sui-label\">Country</label>\n  <select class=\"sui-input sui-select\">\n    <option>Select a country</option>\n    <option>United States</option>\n    <option>United Kingdom</option>\n    <option>Canada</option>\n  </select>\n</div>"
+      "label": "Styled Select",
+      "code": "<div class=\"sui-form-group\">\n  <label class=\"sui-label\">Country</label>\n  <div class=\"sui-styled-select\" data-placeholder=\"Select a country\">\n    <button type=\"button\" class=\"sui-styled-select-trigger\">\n      <span class=\"sui-styled-select-value sui-styled-select-placeholder\">Select a country</span>\n    </button>\n    <div class=\"sui-styled-select-menu\">\n      <div class=\"sui-styled-select-option\" data-value=\"us\">United States</div>\n      <div class=\"sui-styled-select-option\" data-value=\"uk\">United Kingdom</div>\n      <div class=\"sui-styled-select-option\" data-value=\"ca\">Canada</div>\n      <div class=\"sui-styled-select-option\" data-value=\"au\">Australia</div>\n    </div>\n  </div>\n</div>"
     },
     {
       "id": "textarea",
@@ -44,6 +44,21 @@
       "id": "combobox",
       "label": "Combobox",
       "code": "<div class=\"sui-combobox\">\n  <button type=\"button\" class=\"sui-combobox-trigger\">\n    <span class=\"sui-combobox-value placeholder\">Select framework...</span>\n    <span class=\"sui-combobox-arrow\"></span>\n  </button>\n  <div class=\"sui-combobox-content\">\n    <div class=\"sui-combobox-search\">\n      <input type=\"text\" class=\"sui-combobox-input\" placeholder=\"Search...\">\n    </div>\n    <div class=\"sui-combobox-list\">\n      <button type=\"button\" class=\"sui-combobox-item\">React</button>\n      <button type=\"button\" class=\"sui-combobox-item\">Vue</button>\n      <button type=\"button\" class=\"sui-combobox-item\">Angular</button>\n      <button type=\"button\" class=\"sui-combobox-item\">Svelte</button>\n    </div>\n  </div>\n</div>"
+    },
+    {
+      "id": "password-input",
+      "label": "Password Input",
+      "code": "<div class=\"sui-form-group\">\n  <label class=\"sui-label\">Password</label>\n  <div class=\"sui-password-input\">\n    <input type=\"password\" class=\"sui-input\" placeholder=\"Enter password\">\n    <button type=\"button\" class=\"sui-password-toggle sui-swap sui-swap-fade\" aria-label=\"Toggle password visibility\">\n      <span class=\"sui-swap-on\"><svg viewBox=\"0 0 24 24\"><path d=\"M17.94 17.94A10.07 10.07 0 0112 20c-7 0-11-8-11-8a18.45 18.45 0 015.06-5.94M9.9 4.24A9.12 9.12 0 0112 4c7 0 11 8 11 8a18.5 18.5 0 01-2.16 3.19m-6.72-1.07a3 3 0 11-4.24-4.24\"/><line x1=\"1\" y1=\"1\" x2=\"23\" y2=\"23\"/></svg></span>\n      <span class=\"sui-swap-off\"><svg viewBox=\"0 0 24 24\"><path d=\"M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z\"/><circle cx=\"12\" cy=\"12\" r=\"3\"/></svg></span>\n    </button>\n  </div>\n</div>"
+    },
+    {
+      "id": "number-input",
+      "label": "Number Input",
+      "code": "<div class=\"sui-form-group\">\n  <label class=\"sui-label\">Quantity</label>\n  <div class=\"sui-number-input\">\n    <button class=\"sui-number-btn sui-number-dec\" type=\"button\">−</button>\n    <input type=\"number\" class=\"sui-input\" value=\"1\" min=\"0\" max=\"100\">\n    <button class=\"sui-number-btn sui-number-inc\" type=\"button\">+</button>\n  </div>\n</div>"
+    },
+    {
+      "id": "tags-input",
+      "label": "Tags Input",
+      "code": "<div class=\"sui-form-group\">\n  <label class=\"sui-label\">Tags</label>\n  <div class=\"sui-tags-input\">\n    <span class=\"sui-tag\">Design<button class=\"sui-tag-close\"></button></span>\n    <span class=\"sui-tag\">CSS<button class=\"sui-tag-close\"></button></span>\n    <input type=\"text\" placeholder=\"Add tag...\">\n  </div>\n</div>"
     },
     {
       "id": "form-card",
@@ -427,6 +442,11 @@
       "id": "scroll-area",
       "label": "Scroll Area",
       "code": "<div class=\"sui-scroll-area sui-scroll-area-y\" style=\"height:200px;\">\n  <p>Scrollable content goes here. Add enough content to overflow.</p>\n  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>\n  <p>Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>\n  <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>\n  <p>Duis aute irure dolor in reprehenderit in voluptate velit.</p>\n  <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa.</p>\n  <p>Nemo enim ipsam voluptatem quia voluptas sit aspernatur.</p>\n  <p>Neque porro quisquam est qui dolorem ipsum quia dolor.</p>\n</div>"
+    },
+    {
+      "id": "pricing",
+      "label": "Pricing Cards",
+      "code": "<div class=\"sui-pricing\">\n  <div class=\"sui-pricing-card\">\n    <h3 class=\"sui-pricing-name\">Free</h3>\n    <p class=\"sui-pricing-desc\">For individuals</p>\n    <div class=\"sui-pricing-price\">\n      <span class=\"sui-pricing-currency\">$</span>\n      <span class=\"sui-pricing-amount\">0</span>\n    </div>\n    <div class=\"sui-pricing-period\">per month</div>\n    <ul class=\"sui-pricing-features\">\n      <li>1 project</li>\n      <li>500 MB storage</li>\n      <li class=\"disabled\">Priority support</li>\n    </ul>\n    <div class=\"sui-pricing-cta\">\n      <button class=\"sui-btn sui-btn-outline sui-btn-block\">Get Started</button>\n    </div>\n  </div>\n  <div class=\"sui-pricing-card sui-pricing-featured\">\n    <span class=\"sui-pricing-badge\">Most Popular</span>\n    <h3 class=\"sui-pricing-name\">Pro</h3>\n    <p class=\"sui-pricing-desc\">For growing teams</p>\n    <div class=\"sui-pricing-price\">\n      <span class=\"sui-pricing-currency\">$</span>\n      <span class=\"sui-pricing-amount\">29</span>\n    </div>\n    <div class=\"sui-pricing-period\">per month</div>\n    <ul class=\"sui-pricing-features\">\n      <li>Unlimited projects</li>\n      <li>50 GB storage</li>\n      <li>Priority support</li>\n    </ul>\n    <div class=\"sui-pricing-cta\">\n      <button class=\"sui-btn sui-btn-primary sui-btn-block\">Upgrade</button>\n    </div>\n  </div>\n  <div class=\"sui-pricing-card\">\n    <h3 class=\"sui-pricing-name\">Enterprise</h3>\n    <p class=\"sui-pricing-desc\">For organizations</p>\n    <div class=\"sui-pricing-price\">\n      <span class=\"sui-pricing-currency\">$</span>\n      <span class=\"sui-pricing-amount\">99</span>\n    </div>\n    <div class=\"sui-pricing-period\">per month</div>\n    <ul class=\"sui-pricing-features\">\n      <li>Unlimited everything</li>\n      <li>1 TB storage</li>\n      <li>Dedicated manager</li>\n    </ul>\n    <div class=\"sui-pricing-cta\">\n      <button class=\"sui-btn sui-btn-outline sui-btn-block\">Contact Sales</button>\n    </div>\n  </div>\n</div>"
     }
   ],
   "Utilities": [

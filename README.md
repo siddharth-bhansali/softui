@@ -32,7 +32,7 @@
 
 | Feature | Description |
 |---|---|
-| **60+ Components** | Buttons, Cards, Modals, Tables, Tabs, Calendar, Charts, and more |
+| **65+ Components** | Buttons, Cards, Modals, Tables, Tabs, Calendar, Charts, Pricing, and more |
 | **Dark Mode** | Add `data-theme="dark"` and everything adapts |
 | **Zero Dependencies** | Pure CSS + vanilla JS. No build step required |
 | **CSS Variables** | Fully customizable via custom properties |
@@ -94,9 +94,9 @@ That's it. Every component adapts automatically.
 
 ## Components
 
-**Forms** &mdash; Input, Select, Textarea, Toggle, Checkbox, Radio, Slider, OTP, Combobox, Color Picker, File Upload, Tags Input, Number Input, Password Input
+**Forms** &mdash; Input, Styled Select, Textarea, Toggle, Checkbox, Radio, Slider, OTP, Combobox, Color Picker, File Upload, Tags Input, Number Input, Password Input
 
-**General** &mdash; Buttons, Button Group, Card, Badge, Avatar, Chip, Divider, Kbd, Copy Button, Swap
+**General** &mdash; Buttons, Button Group, Card, Badge, Avatar, Chip, Divider, Kbd, Copy Button, Swap, Pricing
 
 **Data Display** &mdash; Table, Data Table, Chart, Stat Card, Timeline, Chat Bubble, Calendar, Tree View, Radial Progress, Rating
 
