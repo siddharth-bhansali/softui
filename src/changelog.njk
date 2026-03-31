@@ -8,6 +8,39 @@ permalink: /changelog/
   <h1 class="docs-getstarted-title">Changelog</h1>
   <p class="docs-getstarted-desc">What's new in each version of SoftUI.</p>
 
+  <!-- 1.9.0 -->
+  <section class="docs-getstarted-section" id="v1.9.0">
+    <h2>v1.9.0</h2>
+    <p><strong>Pricing Component, Styled Select, Data Table Enhancements</strong></p>
+    <div class="docs-getstarted-code">
+<pre><code>New Components:
+  - Pricing Cards — default, featured badge, billing toggle, selectable, inset
+  - Styled Select (.sui-styled-select) — custom dropdown replacement for native &lt;select&gt;
+    Supports sizes (sm/lg), placeholder, keyboard nav, data-value attribute
+
+New Features:
+  - Datatable filter dropdown (.sui-datatable-filter) — styled dropdown for row filtering
+  - Datatable sort reset — 3rd click restores original order (asc → desc → unsorted)
+  - Datatable per-page supports styled select
+  - Dropdown no-arrow (.sui-dropdown-no-arrow) — hide caret on any dropdown toggle
+  - Number input: hide native spin buttons on .sui-input[type="number"]
+
+Fixes:
+  - Modal overflow: default to overflow:visible (dropdowns/datepickers no longer clipped)
+  - Datepicker trigger: full width, matching input padding
+  - Datepicker popover: display:none when closed (no phantom space)
+  - Navbar brand hover stays text color
+  - Horizontal bar chart: display:flex fix, gap 14px, label 80px, value alignment
+  - e.target.closest TypeError on text nodes
+
+Docs:
+  - Pricing page with 4 sections
+  - Filterable section added to datatable
+  - All native &lt;select&gt; replaced with styled selects in forms and datatable docs
+  - All code blocks have full markup, no placeholders</code></pre>
+    </div>
+  </section>
+
   <!-- 1.8.5 -->
   <section class="docs-getstarted-section" id="v1.8.5">
     <h2>v1.8.5</h2>
