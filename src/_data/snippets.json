@@ -376,7 +376,7 @@
     {
       "id": "tour",
       "label": "Tour",
-      "code": "<script>\nSoftUI.tour([\n  { target: '#step1', title: 'Welcome', description: 'This is the first step.', position: 'bottom' },\n  { target: '#step2', title: 'Features', description: 'Explore our features here.', position: 'right' },\n  { target: '#step3', title: 'Done!', description: 'You are all set.', position: 'top' }\n]);\n</script>"
+      "code": "<div id=\"step1\" class=\"sui-btn sui-btn-primary\">Step 1</div>\n<div id=\"step2\" class=\"sui-btn\" style=\"margin-left:16px;\">Step 2</div>\n<div id=\"step3\" class=\"sui-btn\" style=\"margin-left:16px;\">Step 3</div>\n\n<!-- Call SoftUI.tour() from your own script -->\n<!-- SoftUI.tour([\n  { target: '#step1', title: 'Welcome', description: 'First step.', position: 'bottom' },\n  { target: '#step2', title: 'Features', description: 'Explore here.', position: 'right' },\n  { target: '#step3', title: 'Done!', description: 'All set.', position: 'top' }\n]); -->"
     },
     {
       "id": "typewriter",
