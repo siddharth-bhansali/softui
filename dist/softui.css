@@ -1275,7 +1275,6 @@ a.sui-btn-warning:visited {
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15), 0 2px 8px rgba(0, 0, 0, 0.1);
   width: 90%;
   max-width: 520px;
-  max-height: 85vh;
   overflow: visible;
   transform: translateY(20px) scale(0.97);
   transition: transform var(--sui-transition-base) ease;
@@ -1356,6 +1355,7 @@ a.sui-btn-warning:visited {
   gap: 12px;
   padding: 0 28px 24px;
 }
+
 
 /* Size variants */
 .sui-modal-sm { max-width: 380px; }
