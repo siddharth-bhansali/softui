@@ -8,92 +8,56 @@ permalink: /changelog/
   <h1 class="docs-getstarted-title">Changelog</h1>
   <p class="docs-getstarted-desc">What's new in each version of SoftUI.</p>
 
-  <!-- 1.9.0 -->
-  <section class="docs-getstarted-section" id="v1.9.0">
-    <h2>v1.9.0</h2>
-    <p><strong>Pricing Component, Styled Select, Data Table Enhancements</strong></p>
+  <!-- 1.10.0 -->
+  <section class="docs-getstarted-section" id="v1.10.0">
+    <h2>v1.10.0</h2>
+    <p><strong>Styled Select, Data Table Enhancements & Fixes</strong></p>
     <div class="docs-getstarted-code">
-<pre><code>New Components:
-  - Pricing Cards — default, featured badge, billing toggle, selectable, inset
-  - Styled Select (.sui-styled-select) — custom dropdown replacement for native &lt;select&gt;
-    Supports sizes (sm/lg), placeholder, keyboard nav, data-value attribute
-
-New Features:
-  - Datatable filter dropdown (.sui-datatable-filter) — styled dropdown for row filtering
-  - Datatable sort reset — 3rd click restores original order (asc → desc → unsorted)
-  - Datatable per-page supports styled select
-  - Dropdown no-arrow (.sui-dropdown-no-arrow) — hide caret on any dropdown toggle
-  - Number input: hide native spin buttons on .sui-input[type="number"]
+<pre><code>New:
+  - Styled Select — custom dropdown replacement for native &lt;select&gt;
+  - Data table filter dropdown for row filtering
+  - Data table sort reset (3-click cycle: asc → desc → unsorted)
+  - Dropdown no-arrow modifier
+  - Pricing selectable variant (click cards to select)
 
 Fixes:
-  - Modal overflow: default to overflow:visible (dropdowns/datepickers no longer clipped)
-  - Datepicker trigger: full width, matching input padding
-  - Datepicker popover: display:none when closed (no phantom space)
+  - Modals no longer clip dropdowns or datepickers
+  - Datepicker trigger matches input sizing
+  - Number input spin buttons hidden automatically
   - Navbar brand hover stays text color
-  - Horizontal bar chart: display:flex fix, gap 14px, label 80px, value alignment
-  - e.target.closest TypeError on text nodes
-
-Docs:
-  - Pricing page with 4 sections
-  - Filterable section added to datatable
-  - All native &lt;select&gt; replaced with styled selects in forms and datatable docs
-  - All code blocks have full markup, no placeholders</code></pre>
+  - Horizontal bar chart spacing and alignment
+  - Dark mode flash prevention guide in Getting Started</code></pre>
     </div>
   </section>
 
-  <!-- 1.8.5 -->
-  <section class="docs-getstarted-section" id="v1.8.5">
-    <h2>v1.8.5</h2>
-    <p><strong>Dropdown No-Arrow, Chart Fixes & Dark Mode Flash Prevention</strong></p>
+  <!-- 1.9.0 -->
+  <section class="docs-getstarted-section" id="v1.9.0">
+    <h2>v1.9.0</h2>
+    <p><strong>Pricing Component</strong></p>
     <div class="docs-getstarted-code">
-<pre><code>New:
-  - sui-dropdown-no-arrow — modifier to hide dropdown caret arrow
-    Works on .sui-dropdown wrapper or directly on .sui-dropdown-toggle
-
-Fixes:
-  - Horizontal bar chart: increase gap (8px → 14px) to prevent shadow overlap
-  - Horizontal bar chart: widen label (60px → 80px) for longer text
-  - Horizontal bar chart: fixed-width value column for equal track lengths
-  - Password toggle: add :focus-visible outline for keyboard navigation
-  - Fix e.target.closest TypeError on text nodes in speed dial hover
-
-Docs:
-  - Dark mode flash prevention guide in Getting Started
-  - Recommended inline opacity:0 + blocking theme detection script</code></pre>
+<pre><code>New Components:
+  - Pricing Cards — default, featured badge, billing toggle, inset</code></pre>
     </div>
   </section>
 
   <!-- 1.8.0 -->
   <section class="docs-getstarted-section" id="v1.8.0">
     <h2>v1.8.0</h2>
-    <p><strong>Accessibility, Design Tokens & Quality of Life</strong></p>
+    <p><strong>Accessibility, Design Tokens & Docs</strong></p>
     <div class="docs-getstarted-code">
 <pre><code>Accessibility:
-  - prefers-reduced-motion — disables all animations/transitions
-  - Focus-visible on base links, sidebar nav, combobox, color picker
-  - Color contrast improved — text-muted and text-light darkened to pass WCAG AA
-  - Dropdown arrow key navigation (Up/Down to move, Escape returns focus)
-  - Modal code examples updated with role="dialog", aria-modal, aria-labelledby
-  - Table headers now include scope="col" in docs
-  - Toast aria-atomic="true" for screen readers
+  - prefers-reduced-motion support
+  - Focus-visible states on links, sidebar nav, inputs
+  - Color contrast improved to WCAG AA
+  - Dropdown arrow key navigation
+  - Proper ARIA roles on modals and tables
 
-Design Tokens:
-  - dist/tokens.json — all design values as JSON
-  - Documented in Theming guide with JS import and Tailwind examples
-
-Docs:
-  - Theming guide with full CSS variable reference
-  - Dark mode toggle with localStorage + system preference detection
-  - Changelog page with version history
-  - Framework integration (React, Vue, Svelte, Astro, Next.js)
-  - README updated with 60+ components and design tokens section
-
-Fixes:
-  - Page flash eliminated (inline opacity:0 until CSS loads)
-  - Early theme detection in head (no dark mode flash)
-  - Playground preview matches site theme by default
-  - Sidebar scroll-to-active removed (caused flash)
-  - Playground CSS moved to head (no FOUC)</code></pre>
+New:
+  - Design tokens (dist/tokens.json)
+  - Theming guide with full variable reference
+  - Framework integration examples (React, Vue, Svelte, Astro, Next.js)
+  - Changelog page
+  - No-flash page loading (opacity:0 + early theme detection)</code></pre>
     </div>
   </section>
 
