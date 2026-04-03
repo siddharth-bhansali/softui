@@ -178,6 +178,16 @@ Not Supported:
     <p style="margin-top:12px;font-size:14px;color:var(--sui-text-muted);">SoftUI uses modern CSS features: custom properties, flexbox gap, <code>:focus-visible</code>, <code>conic-gradient</code>, and <code>prefers-reduced-motion</code>. All vendor prefixes are included where needed.</p>
   </section>
 
+  <!-- RTL Support -->
+  <section class="docs-getstarted-section" id="rtl">
+    <h2>RTL (Right-to-Left)</h2>
+    <p>SoftUI supports right-to-left languages like Arabic, Hebrew, and Farsi. Just add <code>dir="rtl"</code> to your <code>&lt;html&gt;</code> element.</p>
+    <div class="docs-getstarted-code">
+<pre><code>&lt;html lang="ar" dir="rtl"&gt;</code></pre>
+    </div>
+    <p style="margin-top:12px;font-size:14px;color:var(--sui-text-muted);">Utility classes (<code>sui-ml-*</code>, <code>sui-mr-*</code>, <code>sui-text-left/right</code>, <code>sui-offset-*</code>) use CSS logical properties and adapt automatically. Components like sheets, carousels, sidebars, breadcrumbs, dropdowns, and tooltips include <code>[dir="rtl"]</code> overrides to flip their positioning.</p>
+  </section>
+
   <div style="text-align:center;margin-top:48px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
     <a href="/components/buttons/" class="sui-btn sui-btn-primary sui-btn-lg">Explore Components</a>
     <a href="/changelog/" class="sui-btn sui-btn-outline sui-btn-lg">View Changelog</a>
