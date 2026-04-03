@@ -10,6 +10,8 @@ toc:
   - Checkboxes
   - Checkbox Colors
   - Radio Buttons
+  - Radio Cards
+  - Checkbox Cards
 ---
 
 <!-- Toggles -->
@@ -112,6 +114,144 @@ toc:
 
 &lt;label class="sui-radio sui-radio-success"&gt;&lt;input type="radio" name="demo-radio-color1" checked&gt;&lt;span class="sui-radio-mark"&gt;&lt;/span&gt;Success&lt;/label&gt;
 &lt;label class="sui-radio sui-radio-danger"&gt;&lt;input type="radio" name="demo-radio-color2" checked&gt;&lt;span class="sui-radio-mark"&gt;&lt;/span&gt;Danger&lt;/label&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Radio Cards -->
+<div class="pg-section" id="section-7">
+  <h3 class="pg-section-title">Radio Cards</h3>
+  <p class="pg-section-desc">Click an entire card to select. Uses a hidden radio input — only one can be selected at a time.</p>
+  <div class="pg-section-row">
+    <div style="display:flex;flex-direction:column;gap:12px;width:100%;max-width:400px;">
+      <label class="sui-radio-card">
+        <input type="radio" name="plan" value="starter" checked>
+        <div class="sui-radio-card-content">
+          <div>
+            <div class="sui-radio-card-title">Starter — $9/mo</div>
+            <div class="sui-radio-card-desc">5 projects, 5 GB storage, email support</div>
+          </div>
+        </div>
+      </label>
+      <label class="sui-radio-card">
+        <input type="radio" name="plan" value="pro">
+        <div class="sui-radio-card-content">
+          <div>
+            <div class="sui-radio-card-title">Pro — $29/mo</div>
+            <div class="sui-radio-card-desc">Unlimited projects, 50 GB storage, priority support</div>
+          </div>
+        </div>
+      </label>
+      <label class="sui-radio-card">
+        <input type="radio" name="plan" value="enterprise">
+        <div class="sui-radio-card-content">
+          <div>
+            <div class="sui-radio-card-title">Enterprise — $99/mo</div>
+            <div class="sui-radio-card-desc">Unlimited everything, dedicated account manager</div>
+          </div>
+        </div>
+      </label>
+    </div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;label class="sui-radio-card"&gt;
+  &lt;input type="radio" name="plan" value="starter" checked&gt;
+  &lt;div class="sui-radio-card-content"&gt;
+    &lt;div&gt;
+      &lt;div class="sui-radio-card-title"&gt;Starter — $9/mo&lt;/div&gt;
+      &lt;div class="sui-radio-card-desc"&gt;5 projects, 5 GB storage, email support&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/label&gt;
+
+&lt;label class="sui-radio-card"&gt;
+  &lt;input type="radio" name="plan" value="pro"&gt;
+  &lt;div class="sui-radio-card-content"&gt;
+    &lt;div&gt;
+      &lt;div class="sui-radio-card-title"&gt;Pro — $29/mo&lt;/div&gt;
+      &lt;div class="sui-radio-card-desc"&gt;Unlimited projects, 50 GB, priority support&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/label&gt;
+
+&lt;label class="sui-radio-card"&gt;
+  &lt;input type="radio" name="plan" value="enterprise"&gt;
+  &lt;div class="sui-radio-card-content"&gt;
+    &lt;div&gt;
+      &lt;div class="sui-radio-card-title"&gt;Enterprise — $99/mo&lt;/div&gt;
+      &lt;div class="sui-radio-card-desc"&gt;Unlimited everything, dedicated manager&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/label&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Checkbox Cards -->
+<div class="pg-section" id="section-8">
+  <h3 class="pg-section-title">Checkbox Cards</h3>
+  <p class="pg-section-desc">Same pattern but with checkboxes — multiple can be selected.</p>
+  <div class="pg-section-row">
+    <div style="display:flex;flex-direction:column;gap:12px;width:100%;max-width:400px;">
+      <label class="sui-checkbox-card">
+        <input type="checkbox" checked>
+        <div class="sui-checkbox-card-content">
+          <div>
+            <div class="sui-checkbox-card-title">Email Notifications</div>
+            <div class="sui-checkbox-card-desc">Receive order updates and promotions via email</div>
+          </div>
+        </div>
+      </label>
+      <label class="sui-checkbox-card">
+        <input type="checkbox" checked>
+        <div class="sui-checkbox-card-content">
+          <div>
+            <div class="sui-checkbox-card-title">Push Notifications</div>
+            <div class="sui-checkbox-card-desc">Get instant alerts on your device</div>
+          </div>
+        </div>
+      </label>
+      <label class="sui-checkbox-card">
+        <input type="checkbox">
+        <div class="sui-checkbox-card-content">
+          <div>
+            <div class="sui-checkbox-card-title">SMS Notifications</div>
+            <div class="sui-checkbox-card-desc">Text message alerts for critical updates</div>
+          </div>
+        </div>
+      </label>
+    </div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;label class="sui-checkbox-card"&gt;
+  &lt;input type="checkbox" checked&gt;
+  &lt;div class="sui-checkbox-card-content"&gt;
+    &lt;div&gt;
+      &lt;div class="sui-checkbox-card-title"&gt;Email Notifications&lt;/div&gt;
+      &lt;div class="sui-checkbox-card-desc"&gt;Receive order updates and promotions via email&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/label&gt;
+
+&lt;label class="sui-checkbox-card"&gt;
+  &lt;input type="checkbox" checked&gt;
+  &lt;div class="sui-checkbox-card-content"&gt;
+    &lt;div&gt;
+      &lt;div class="sui-checkbox-card-title"&gt;Push Notifications&lt;/div&gt;
+      &lt;div class="sui-checkbox-card-desc"&gt;Get instant alerts on your device&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/label&gt;
+
+&lt;label class="sui-checkbox-card"&gt;
+  &lt;input type="checkbox"&gt;
+  &lt;div class="sui-checkbox-card-content"&gt;
+    &lt;div&gt;
+      &lt;div class="sui-checkbox-card-title"&gt;SMS Notifications&lt;/div&gt;
+      &lt;div class="sui-checkbox-card-desc"&gt;Text message alerts for critical updates&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/label&gt;</pre></div>
   </div>
 </div>
 

@@ -2509,6 +2509,109 @@ a.sui-btn-warning:visited {
 }
 
 /* ===========================================
+   Radio Card / Checkbox Card
+   =========================================== */
+.sui-radio-card,
+.sui-checkbox-card {
+  position: relative;
+  display: block;
+  cursor: pointer;
+}
+
+.sui-radio-card input,
+.sui-checkbox-card input {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.sui-radio-card .sui-radio-card-content,
+.sui-checkbox-card .sui-checkbox-card-content {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 16px 20px;
+  background: var(--sui-bg);
+  border-radius: var(--sui-radius-sm);
+  box-shadow: var(--sui-shadow-raised-sm);
+  transition: box-shadow var(--sui-transition-fast), transform var(--sui-transition-fast);
+}
+
+.sui-radio-card:hover .sui-radio-card-content,
+.sui-checkbox-card:hover .sui-checkbox-card-content {
+  transform: translateY(-2px);
+  box-shadow: var(--sui-shadow-raised);
+}
+
+.sui-radio-card input:checked ~ .sui-radio-card-content,
+.sui-checkbox-card input:checked ~ .sui-checkbox-card-content {
+  box-shadow: 0 0 0 2px var(--sui-primary), var(--sui-shadow-raised-sm);
+}
+
+/* Check indicator */
+.sui-radio-card .sui-radio-card-content::before,
+.sui-checkbox-card .sui-checkbox-card-content::before {
+  content: '';
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  box-shadow: var(--sui-shadow-inset-sm);
+  background: var(--sui-bg);
+  background-repeat: no-repeat;
+  background-position: center;
+  transition: background-color var(--sui-transition-fast), box-shadow var(--sui-transition-fast);
+  margin-top: 2px;
+}
+
+.sui-checkbox-card .sui-checkbox-card-content::before {
+  border-radius: var(--sui-radius-xs);
+}
+
+.sui-radio-card input:checked ~ .sui-radio-card-content::before {
+  background-color: var(--sui-primary);
+  box-shadow: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 10 10'%3E%3Ccircle cx='5' cy='5' r='3' fill='%23fff'/%3E%3C/svg%3E");
+  background-size: 10px;
+}
+
+.sui-checkbox-card input:checked ~ .sui-checkbox-card-content::before {
+  background-color: var(--sui-primary);
+  box-shadow: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23fff' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'/%3E%3C/svg%3E");
+  background-size: 11px;
+}
+
+.sui-radio-card input:focus-visible ~ .sui-radio-card-content,
+.sui-checkbox-card input:focus-visible ~ .sui-checkbox-card-content {
+  outline: 2px solid var(--sui-primary);
+  outline-offset: 2px;
+}
+
+.sui-radio-card input:disabled ~ .sui-radio-card-content,
+.sui-checkbox-card input:disabled ~ .sui-checkbox-card-content {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Card body text */
+.sui-radio-card-title,
+.sui-checkbox-card-title {
+  font-weight: 600;
+  font-size: 14px;
+  color: var(--sui-text);
+  margin-bottom: 2px;
+}
+
+.sui-radio-card-desc,
+.sui-checkbox-card-desc {
+  font-size: 13px;
+  color: var(--sui-text-muted);
+}
+
+/* ===========================================
    Badges — Positioned (notification dot)
    =========================================== */
 .sui-badge-positioned {
