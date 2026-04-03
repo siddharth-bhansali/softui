@@ -154,6 +154,30 @@ import 'softui-css/dist/softui.min.css';
     <p style="margin-top:12px;">See the <a href="/theming/" style="color:var(--sui-primary);font-weight:600;">Theming Guide</a> for the full list of variables — colors, shadows, radius, fonts, transitions, and dark mode.</p>
   </section>
 
+  <!-- Browser Support -->
+  <section class="docs-getstarted-section" id="browsers">
+    <h2>Browser Support</h2>
+    <p>SoftUI works in all modern browsers. No polyfills needed.</p>
+    <div class="docs-getstarted-code">
+<pre><code>Fully Supported:
+  Chrome 90+          ✓
+  Edge 90+            ✓
+  Firefox 100+        ✓
+  Safari 15+          ✓
+  Opera 76+           ✓
+
+Partial Support:
+  Firefox &lt; 121       :has() selector not available (minor styling only)
+  Safari &lt; 15.4       backdrop-filter may need -webkit- prefix (already included)
+  iOS Safari 15+      ✓ (momentum scrolling included)
+  Android Chrome 90+  ✓
+
+Not Supported:
+  Internet Explorer   ✗ (uses CSS custom properties, flexbox gap, etc.)</code></pre>
+    </div>
+    <p style="margin-top:12px;font-size:14px;color:var(--sui-text-muted);">SoftUI uses modern CSS features: custom properties, flexbox gap, <code>:focus-visible</code>, <code>conic-gradient</code>, and <code>prefers-reduced-motion</code>. All vendor prefixes are included where needed.</p>
+  </section>
+
   <div style="text-align:center;margin-top:48px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
     <a href="/components/buttons/" class="sui-btn sui-btn-primary sui-btn-lg">Explore Components</a>
     <a href="/changelog/" class="sui-btn sui-btn-outline sui-btn-lg">View Changelog</a>
