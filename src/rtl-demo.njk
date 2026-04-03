@@ -1,0 +1,254 @@
+---
+layout: base.njk
+title: RTL Demo
+permalink: /rtl-demo/
+---
+<div dir="rtl" lang="ar" class="docs-getstarted-page" style="font-family:'Plus Jakarta Sans',sans-serif;">
+
+  <h1 class="docs-getstarted-title">عرض RTL</h1>
+  <p class="docs-getstarted-desc">مثال حي يعرض مكونات SoftUI بدعم كامل من اليمين إلى اليسار.</p>
+
+  <!-- Navbar -->
+  <section class="docs-getstarted-section" id="navbar">
+    <h2>شريط التنقل</h2>
+    <div class="sui-navbar" style="border-radius:var(--sui-radius);margin-bottom:0;">
+      <div class="sui-navbar-brand">SoftUI</div>
+      <div class="sui-navbar-links">
+        <a href="#" class="sui-navbar-link active">الرئيسية</a>
+        <a href="#" class="sui-navbar-link">المنتجات</a>
+        <a href="#" class="sui-navbar-link">الأسعار</a>
+      </div>
+      <button class="sui-btn sui-btn-primary sui-btn-sm">تسجيل الدخول</button>
+    </div>
+  </section>
+
+  <!-- Cards -->
+  <section class="docs-getstarted-section" id="cards">
+    <h2>بطاقات</h2>
+    <div class="sui-row sui-g-3">
+      <div class="sui-col-md-4">
+        <div class="sui-card" style="padding:20px;">
+          <div style="display:flex;align-items:center;gap:12px;margin-bottom:12px;">
+            <div class="sui-avatar sui-avatar-sm sui-avatar-status sui-avatar-status-online" style="background:var(--sui-primary);color:#fff;font-weight:600;">أ</div>
+            <div>
+              <div style="font-weight:700;">أحمد محمد</div>
+              <div style="font-size:12px;color:var(--sui-text-muted);">مطور واجهات أمامية</div>
+            </div>
+          </div>
+          <p style="font-size:13px;">مصمم ومطور متخصص في بناء واجهات مستخدم حديثة وسريعة الاستجابة.</p>
+          <div style="display:flex;gap:8px;margin-top:12px;">
+            <button class="sui-btn sui-btn-primary sui-btn-sm">متابعة</button>
+            <button class="sui-btn sui-btn-outline sui-btn-sm">رسالة</button>
+          </div>
+        </div>
+      </div>
+      <div class="sui-col-md-4">
+        <div class="sui-stat" style="text-align:center;">
+          <p class="sui-stat-label">إجمالي المبيعات</p>
+          <div class="sui-stat-value">٤٨,٢٩٥ ر.س</div>
+          <div class="sui-stat-trend">
+            <span class="sui-stat-change sui-stat-change-up">&#9650; ١٢.٥%</span>
+            <span style="font-size:12px;color:var(--sui-text-muted);">هذا الشهر</span>
+          </div>
+        </div>
+      </div>
+      <div class="sui-col-md-4">
+        <div class="sui-card sui-flat" style="padding:20px;">
+          <h4 style="margin:0 0 12px;font-size:15px;">حالة النظام</h4>
+          <div style="display:flex;align-items:center;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--sui-bg-dark);">
+            <span>الخادم الرئيسي</span>
+            <span class="sui-badge sui-badge-success">متصل</span>
+          </div>
+          <div style="display:flex;align-items:center;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--sui-bg-dark);">
+            <span>قاعدة البيانات</span>
+            <span class="sui-badge sui-badge-success">متصل</span>
+          </div>
+          <div style="display:flex;align-items:center;justify-content:space-between;padding:8px 0;">
+            <span>خدمة CDN</span>
+            <span class="sui-badge sui-badge-danger">متوقف</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Form -->
+  <section class="docs-getstarted-section" id="form">
+    <h2>نموذج</h2>
+    <div class="sui-card" style="padding:24px;max-width:500px;">
+      <h4 style="margin:0 0 16px;">تسجيل حساب جديد</h4>
+      <div class="sui-row sui-g-2" style="margin-bottom:12px;">
+        <div class="sui-col-12 sui-col-sm-6">
+          <div class="sui-form-group">
+            <label class="sui-label">الاسم الأول</label>
+            <input class="sui-input" type="text" placeholder="أحمد">
+          </div>
+        </div>
+        <div class="sui-col-12 sui-col-sm-6">
+          <div class="sui-form-group">
+            <label class="sui-label">اسم العائلة</label>
+            <input class="sui-input" type="text" placeholder="محمد">
+          </div>
+        </div>
+      </div>
+      <div class="sui-form-group" style="margin-bottom:12px;">
+        <label class="sui-label">البريد الإلكتروني</label>
+        <input class="sui-input" type="email" placeholder="ahmed@example.com">
+      </div>
+      <div class="sui-form-group" style="margin-bottom:12px;">
+        <label class="sui-label">كلمة المرور</label>
+        <input class="sui-input" type="password" placeholder="أدخل كلمة المرور">
+      </div>
+      <div class="sui-form-group" style="margin-bottom:16px;">
+        <label class="sui-label">الدولة</label>
+        <div class="sui-styled-select" data-placeholder="اختر دولة">
+          <button type="button" class="sui-styled-select-trigger">
+            <span class="sui-styled-select-value sui-styled-select-placeholder">اختر دولة</span>
+          </button>
+          <div class="sui-styled-select-menu">
+            <div class="sui-styled-select-option" data-value="sa">المملكة العربية السعودية</div>
+            <div class="sui-styled-select-option" data-value="ae">الإمارات العربية المتحدة</div>
+            <div class="sui-styled-select-option" data-value="eg">مصر</div>
+            <div class="sui-styled-select-option" data-value="jo">الأردن</div>
+          </div>
+        </div>
+      </div>
+      <label class="sui-checkbox" style="margin-bottom:16px;">
+        <input type="checkbox">
+        <span class="sui-check-mark"></span>
+        أوافق على الشروط والأحكام
+      </label>
+      <button class="sui-btn sui-btn-primary sui-btn-block">إنشاء حساب</button>
+    </div>
+  </section>
+
+  <!-- Breadcrumbs + Tabs -->
+  <section class="docs-getstarted-section" id="nav">
+    <h2>التنقل</h2>
+    <nav class="sui-breadcrumb" style="margin-bottom:20px;">
+      <div class="sui-breadcrumb-item"><a href="#">الرئيسية</a></div>
+      <div class="sui-breadcrumb-item"><a href="#">المنتجات</a></div>
+      <div class="sui-breadcrumb-item active">التفاصيل</div>
+    </nav>
+    <div class="sui-tabs">
+      <div class="sui-tab-list" role="tablist">
+        <button class="sui-tab active" role="tab" aria-selected="true" data-sui-tab="rtl-tab1">نظرة عامة</button>
+        <button class="sui-tab" role="tab" aria-selected="false" data-sui-tab="rtl-tab2">المواصفات</button>
+        <button class="sui-tab" role="tab" aria-selected="false" data-sui-tab="rtl-tab3">التقييمات</button>
+      </div>
+      <div class="sui-tab-panel active" id="rtl-tab1" role="tabpanel">
+        <div class="sui-card" style="padding:20px;">
+          <p>هذا هو محتوى علامة التبويب الأولى. يمكنك النقر على علامات التبويب الأخرى للتبديل بينها.</p>
+        </div>
+      </div>
+      <div class="sui-tab-panel" id="rtl-tab2" role="tabpanel">
+        <div class="sui-card" style="padding:20px;">
+          <p>محتوى المواصفات الفنية للمنتج.</p>
+        </div>
+      </div>
+      <div class="sui-tab-panel" id="rtl-tab3" role="tabpanel">
+        <div class="sui-card" style="padding:20px;">
+          <p>تقييمات المستخدمين وآرائهم.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Table -->
+  <section class="docs-getstarted-section" id="table">
+    <h2>جدول البيانات</h2>
+    <div class="sui-card" style="padding:0;overflow:hidden;">
+      <table class="sui-table" style="margin:0;">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">الاسم</th>
+            <th scope="col">البريد</th>
+            <th scope="col">الدور</th>
+            <th scope="col">الحالة</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>١</td><td>أحمد محمد</td><td>ahmed@example.com</td><td>مدير</td><td><span class="sui-badge sui-badge-success">نشط</span></td></tr>
+          <tr><td>٢</td><td>سارة أحمد</td><td>sara@example.com</td><td>محرر</td><td><span class="sui-badge sui-badge-success">نشط</span></td></tr>
+          <tr><td>٣</td><td>محمد علي</td><td>mohammed@example.com</td><td>مشاهد</td><td><span class="sui-badge sui-badge-warning">معلق</span></td></tr>
+          <tr><td>٤</td><td>فاطمة حسن</td><td>fatima@example.com</td><td>محرر</td><td><span class="sui-badge sui-badge-success">نشط</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- Alerts & Progress -->
+  <section class="docs-getstarted-section" id="feedback">
+    <h2>التنبيهات والتقدم</h2>
+    <div class="sui-alert sui-alert-info sui-alert-icon" style="margin-bottom:16px;">
+      <span class="sui-alert-icon-symbol">&#9432;</span>
+      <span class="sui-alert-content">تم تحديث النظام بنجاح. جميع الخدمات تعمل بشكل طبيعي.</span>
+    </div>
+    <div class="sui-alert sui-alert-filled sui-alert-warning" style="margin-bottom:20px;">
+      تحذير: سينتهي اشتراكك خلال ٧ أيام. يرجى التجديد.
+    </div>
+    <div style="margin-bottom:12px;">
+      <div style="display:flex;justify-content:space-between;margin-bottom:6px;font-size:13px;">
+        <span>مساحة التخزين</span>
+        <span>٧٥%</span>
+      </div>
+      <div class="sui-progress">
+        <div class="sui-progress-bar sui-progress-primary" style="width:75%;"></div>
+      </div>
+    </div>
+    <div>
+      <div style="display:flex;justify-content:space-between;margin-bottom:6px;font-size:13px;">
+        <span>استخدام الذاكرة</span>
+        <span>٤٢%</span>
+      </div>
+      <div class="sui-progress">
+        <div class="sui-progress-bar sui-progress-success" style="width:42%;"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Timeline -->
+  <section class="docs-getstarted-section" id="timeline">
+    <h2>الجدول الزمني</h2>
+    <div class="sui-timeline">
+      <div class="sui-timeline-item sui-timeline-success">
+        <div class="sui-timeline-separator">
+          <div class="sui-timeline-dot"></div>
+          <div class="sui-timeline-connector"></div>
+        </div>
+        <div class="sui-timeline-content">
+          <h6>تم إكمال الطلب</h6>
+          <p>تم تأكيد الدفع وإرسال الإيصال</p>
+          <small>٢٨ مارس ٢٠٢٦</small>
+        </div>
+      </div>
+      <div class="sui-timeline-item sui-timeline-info">
+        <div class="sui-timeline-separator">
+          <div class="sui-timeline-dot"></div>
+          <div class="sui-timeline-connector"></div>
+        </div>
+        <div class="sui-timeline-content">
+          <h6>قيد المعالجة</h6>
+          <p>تم بدء عملية الشحن</p>
+          <small>٢٧ مارس ٢٠٢٦</small>
+        </div>
+      </div>
+      <div class="sui-timeline-item">
+        <div class="sui-timeline-separator">
+          <div class="sui-timeline-dot"></div>
+        </div>
+        <div class="sui-timeline-content">
+          <h6>تم تقديم الطلب</h6>
+          <p>تم استلام الطلب من العميل</p>
+          <small>٢٦ مارس ٢٠٢٦</small>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div style="text-align:center;margin-top:48px;">
+    <a href="/getting-started/" class="sui-btn sui-btn-primary sui-btn-lg">البدء</a>
+  </div>
+
+</div>
