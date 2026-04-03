@@ -203,7 +203,8 @@
 /* =========================================
    Component Page Layout
    ========================================= */
-.docs-component {
+.docs-component,
+.docs-pg-layout {
   display: flex;
   min-height: calc(100vh - 60px);
 }
