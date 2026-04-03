@@ -13097,4 +13097,46 @@ select.sui-datatable-filter {
   }
 }
 
+/* ===========================================
+   Print Styles
+   =========================================== */
+@media print {
+  body {
+    background: #fff !important;
+    color: #000 !important;
+  }
+
+  .sui-navbar, .sui-sidebar, .sui-dock, .sui-speed-dial,
+  .sui-modal-backdrop, .sui-sheet-backdrop, .sui-toast-container,
+  .sui-tour-overlay, .sui-tour-tooltip, .sui-command-dialog,
+  .sui-tooltip, .sui-popover-content, .sui-dropdown-menu,
+  .sui-context-menu {
+    display: none !important;
+  }
+
+  *, *::before, *::after {
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+
+  .sui-card, .sui-stat, .sui-alert, .sui-table {
+    border: 1px solid #ddd !important;
+    break-inside: avoid;
+  }
+
+  .sui-btn {
+    border: 1px solid #999 !important;
+  }
+
+  a[href]::after {
+    content: " (" attr(href) ")";
+    font-size: 0.85em;
+    color: #666;
+  }
+
+  a.sui-btn::after, a.sui-navbar-link::after, a.sui-page-link::after {
+    content: none;
+  }
+}
+
 
