@@ -11,6 +11,8 @@
     "dev": "NODE_OPTIONS='--max-old-space-size=8192' bunx @11ty/eleventy --serve --incremental",
     "build": "bunx @11ty/eleventy",
     "build:min": "cleancss -o dist/softui.min.css src/softui.css && terser src/softui.js -o dist/softui.min.js --compress --mangle && node -e \"fs=require('fs');fs.copyFileSync('src/softui.css','dist/softui.css');fs.copyFileSync('src/softui.js','dist/softui.js')\"",
+    "lint": "eslint src/softui.js",
+    "lint:fix": "eslint --fix src/softui.js",
     "prepublishOnly": "npm run build:min"
   },
   "keywords": [
@@ -38,6 +40,7 @@
   "devDependencies": {
     "@11ty/eleventy": "^3.1.2",
     "clean-css-cli": "^5.6.3",
+    "eslint": "^10.1.0",
     "terser": "^5.46.0"
   }
 }

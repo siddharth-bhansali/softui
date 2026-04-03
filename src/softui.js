@@ -527,16 +527,16 @@ const SoftUI = (() => {
     });
 
     document.addEventListener('click', function(e) {
-      let trigger = e.target.closest('.sui-collapsible-trigger');
+      const trigger = e.target.closest('.sui-collapsible-trigger');
       if (!trigger) return;
 
-      let collapsible = trigger.closest('.sui-collapsible');
+      const collapsible = trigger.closest('.sui-collapsible');
       if (!collapsible) return;
 
-      let content = collapsible.querySelector('.sui-collapsible-content');
+      const content = collapsible.querySelector('.sui-collapsible-content');
       if (!content) return;
 
-      let isOpen = collapsible.classList.contains('open');
+      const isOpen = collapsible.classList.contains('open');
 
       if (isOpen) {
         collapsible.classList.remove('open');
@@ -731,9 +731,9 @@ const SoftUI = (() => {
       menu.style.top = '0px';
       menu.classList.add('open');
 
-      let rect = menu.getBoundingClientRect();
-      let vw = window.innerWidth;
-      let vh = window.innerHeight;
+      const rect = menu.getBoundingClientRect();
+      const vw = window.innerWidth;
+      const vh = window.innerHeight;
 
       if (x + rect.width > vw) x = vw - rect.width - 4;
       if (y + rect.height > vh) y = vh - rect.height - 4;
@@ -746,21 +746,21 @@ const SoftUI = (() => {
 
     // Right-click triggers
     document.addEventListener('contextmenu', function(e) {
-      let trigger = e.target.closest('[data-sui-context]');
+      const trigger = e.target.closest('[data-sui-context]');
       if (!trigger) return;
 
       e.preventDefault();
       closeAll();
 
-      let menuId = trigger.getAttribute('data-sui-context');
-      let menu = document.getElementById(menuId);
+      const menuId = trigger.getAttribute('data-sui-context');
+      const menu = document.getElementById(menuId);
       if (!menu) return;
 
       positionMenu(menu, e.clientX, e.clientY);
       openMenu = menu;
 
       // Focus first item for keyboard nav
-      let firstItem = menu.querySelector('.sui-context-item:not(.disabled), .sui-context-sub-trigger');
+      const firstItem = menu.querySelector('.sui-context-item:not(.disabled), .sui-context-sub-trigger');
       if (firstItem) firstItem.focus();
     });
 
@@ -773,15 +773,15 @@ const SoftUI = (() => {
 
     // Click on item closes (unless checkbox/radio)
     document.addEventListener('click', function(e) {
-      let item = e.target.closest('.sui-context-item');
+      const item = e.target.closest('.sui-context-item');
       if (!item || !openMenu) return;
       if (!item.closest('.sui-context-menu')) return;
 
       // Checkbox toggle
       if (item.hasAttribute('data-sui-context-check')) {
-        let check = item.querySelector('.sui-context-check');
+        const check = item.querySelector('.sui-context-check');
         if (check) {
-          let isChecked = check.textContent.trim() !== '';
+          const isChecked = check.textContent.trim() !== '';
           check.textContent = isChecked ? '' : '\u2713';
         }
         return; // Don't close on checkbox click
@@ -789,11 +789,11 @@ const SoftUI = (() => {
 
       // Radio toggle
       if (item.hasAttribute('data-sui-context-radio')) {
-        let group = item.getAttribute('data-sui-context-radio');
+        const group = item.getAttribute('data-sui-context-radio');
         openMenu.querySelectorAll('[data-sui-context-radio="' + group + '"] .sui-context-check').forEach(function(c) {
           c.textContent = '';
         });
-        let radio = item.querySelector('.sui-context-check');
+        const radio = item.querySelector('.sui-context-check');
         if (radio) radio.textContent = '\u2022';
         return; // Don't close on radio click
       }
@@ -806,13 +806,13 @@ const SoftUI = (() => {
 
     // Submenu hover
     document.addEventListener('mouseenter', function(e) {
-      let subTrigger = e.target.closest && e.target.closest('.sui-context-sub-trigger');
+      const subTrigger = e.target.closest && e.target.closest('.sui-context-sub-trigger');
       if (!subTrigger) return;
-      let sub = subTrigger.closest('.sui-context-sub');
+      const sub = subTrigger.closest('.sui-context-sub');
       if (!sub) return;
 
       // Close sibling subs
-      let parent = sub.parentElement;
+      const parent = sub.parentElement;
       if (parent) {
         parent.querySelectorAll(':scope > .sui-context-sub.open').forEach(function(s) {
           if (s !== sub) s.classList.remove('open');
@@ -822,7 +822,7 @@ const SoftUI = (() => {
     }, true);
 
     document.addEventListener('mouseleave', function(e) {
-      let sub = e.target.closest && e.target.closest('.sui-context-sub');
+      const sub = e.target.closest && e.target.closest('.sui-context-sub');
       if (!sub) return;
       // Only close if not moving into the sub-content
       setTimeout(function() {
@@ -836,7 +836,7 @@ const SoftUI = (() => {
     document.addEventListener('keydown', function(e) {
       if (e.key === 'Escape' && openMenu) {
         // If a sub is open, close it first
-        let openSub = openMenu.querySelector('.sui-context-sub.open');
+        const openSub = openMenu.querySelector('.sui-context-sub.open');
         if (openSub) {
           openSub.classList.remove('open');
           openSub.querySelector('.sui-context-sub-trigger').focus();
@@ -850,8 +850,8 @@ const SoftUI = (() => {
       // Arrow key navigation
       if (e.key === 'ArrowDown' || e.key === 'ArrowUp') {
         e.preventDefault();
-        let activeContainer = openMenu.querySelector('.sui-context-sub.open > .sui-context-sub-content') || openMenu;
-        let items = Array.from(activeContainer.querySelectorAll(':scope > .sui-context-item:not(.disabled), :scope > .sui-context-sub > .sui-context-sub-trigger'));
+        const activeContainer = openMenu.querySelector('.sui-context-sub.open > .sui-context-sub-content') || openMenu;
+        const items = Array.from(activeContainer.querySelectorAll(':scope > .sui-context-item:not(.disabled), :scope > .sui-context-sub > .sui-context-sub-trigger'));
         if (items.length === 0) return;
 
         let current = items.indexOf(document.activeElement);
@@ -865,12 +865,12 @@ const SoftUI = (() => {
 
       // ArrowRight opens submenu
       if (e.key === 'ArrowRight') {
-        let focused = document.activeElement;
+        const focused = document.activeElement;
         if (focused && focused.classList.contains('sui-context-sub-trigger')) {
-          let sub = focused.closest('.sui-context-sub');
+          const sub = focused.closest('.sui-context-sub');
           if (sub) {
             sub.classList.add('open');
-            let first = sub.querySelector('.sui-context-sub-content .sui-context-item:not(.disabled), .sui-context-sub-content .sui-context-sub-trigger');
+            const first = sub.querySelector('.sui-context-sub-content .sui-context-item:not(.disabled), .sui-context-sub-content .sui-context-sub-trigger');
             if (first) first.focus();
           }
         }
@@ -878,7 +878,7 @@ const SoftUI = (() => {
 
       // ArrowLeft closes submenu
       if (e.key === 'ArrowLeft') {
-        let openSub = document.activeElement && document.activeElement.closest('.sui-context-sub.open');
+        const openSub = document.activeElement && document.activeElement.closest('.sui-context-sub.open');
         if (openSub && openSub.closest('.sui-context-menu') === openMenu) {
           openSub.classList.remove('open');
           openSub.querySelector('.sui-context-sub-trigger').focus();
@@ -887,7 +887,7 @@ const SoftUI = (() => {
 
       // Enter activates
       if (e.key === 'Enter') {
-        let focused = document.activeElement;
+        const focused = document.activeElement;
         if (focused && (focused.classList.contains('sui-context-item') || focused.classList.contains('sui-context-sub-trigger'))) {
           focused.click();
         }
@@ -904,14 +904,14 @@ const SoftUI = (() => {
   // =========================================
   function initCommand() {
     document.querySelectorAll('.sui-command[data-sui-command]').forEach(function(cmd) {
-      let input = cmd.querySelector('.sui-command-input');
-      let list = cmd.querySelector('.sui-command-list');
-      let empty = cmd.querySelector('.sui-command-empty');
+      const input = cmd.querySelector('.sui-command-input');
+      const list = cmd.querySelector('.sui-command-list');
+      const empty = cmd.querySelector('.sui-command-empty');
       if (!input || !list) return;
 
-      let items = list.querySelectorAll('.sui-command-item');
-      let groups = list.querySelectorAll('.sui-command-group');
-      let separators = list.querySelectorAll('.sui-command-separator');
+      const items = list.querySelectorAll('.sui-command-item');
+      const groups = list.querySelectorAll('.sui-command-group');
+      const separators = list.querySelectorAll('.sui-command-separator');
       let focusedIndex = -1;
 
       function getVisibleItems() {
@@ -927,29 +927,29 @@ const SoftUI = (() => {
       }
 
       function filter() {
-        let query = input.value.toLowerCase().trim();
+        const query = input.value.toLowerCase().trim();
         let anyVisible = false;
 
         items.forEach(function(item) {
-          let text = item.textContent.toLowerCase();
-          let keywords = (item.getAttribute('data-keywords') || '').toLowerCase();
-          let match = !query || text.indexOf(query) !== -1 || keywords.indexOf(query) !== -1;
+          const text = item.textContent.toLowerCase();
+          const keywords = (item.getAttribute('data-keywords') || '').toLowerCase();
+          const match = !query || text.indexOf(query) !== -1 || keywords.indexOf(query) !== -1;
           item.hidden = !match;
           if (match) anyVisible = true;
         });
 
         // Hide groups with no visible items
         groups.forEach(function(group) {
-          let hasVisible = group.querySelector('.sui-command-item:not([hidden])');
+          const hasVisible = group.querySelector('.sui-command-item:not([hidden])');
           group.hidden = !hasVisible;
         });
 
         // Hide separators between hidden groups
         separators.forEach(function(sep) {
-          let next = sep.nextElementSibling;
-          let prev = sep.previousElementSibling;
-          let nextHidden = next && next.hidden;
-          let prevHidden = prev && prev.hidden;
+          const next = sep.nextElementSibling;
+          const prev = sep.previousElementSibling;
+          const nextHidden = next && next.hidden;
+          const prevHidden = prev && prev.hidden;
           sep.hidden = nextHidden || prevHidden;
         });
 
@@ -965,7 +965,7 @@ const SoftUI = (() => {
 
       // Keyboard nav
       cmd.addEventListener('keydown', function(e) {
-        let visibleItems = getVisibleItems();
+        const visibleItems = getVisibleItems();
 
         if (e.key === 'ArrowDown') {
           e.preventDefault();
@@ -990,14 +990,14 @@ const SoftUI = (() => {
       // Mouse hover updates focus
       items.forEach(function(item) {
         item.addEventListener('mouseenter', function() {
-          let visibleItems = getVisibleItems();
+          const visibleItems = getVisibleItems();
           focusedIndex = visibleItems.indexOf(item);
           updateFocus(visibleItems);
         });
       });
 
       // Initial focus on first item
-      let initial = getVisibleItems();
+      const initial = getVisibleItems();
       if (initial.length > 0) {
         focusedIndex = 0;
         updateFocus(initial);
@@ -1006,8 +1006,8 @@ const SoftUI = (() => {
 
     // Dialog mode — Cmd+K / Ctrl+K
     document.querySelectorAll('.sui-command-dialog').forEach(function(dialog) {
-      let cmd = dialog.querySelector('.sui-command');
-      let input = cmd ? cmd.querySelector('.sui-command-input') : null;
+      const cmd = dialog.querySelector('.sui-command');
+      const input = cmd ? cmd.querySelector('.sui-command-input') : null;
 
       function openDialog() {
         dialog.classList.add('open');
@@ -1025,7 +1025,7 @@ const SoftUI = (() => {
       }
 
       // Cmd+K / Ctrl+K to open
-      let shortcut = dialog.dataset.suiCommandKey || 'k';
+      const shortcut = dialog.dataset.suiCommandKey || 'k';
       document.addEventListener('keydown', function(e) {
         if ((e.metaKey || e.ctrlKey) && e.key === shortcut) {
           e.preventDefault();
@@ -1065,9 +1065,9 @@ const SoftUI = (() => {
   // Calendar
   // =========================================
   function initCalendar() {
-    let MONTHS = ['January','February','March','April','May','June','July','August','September','October','November','December'];
-    let MONTHS_SHORT = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
-    let DAYS = ['Su','Mo','Tu','We','Th','Fr','Sa'];
+    const MONTHS = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+    const MONTHS_SHORT = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+    const DAYS = ['Su','Mo','Tu','We','Th','Fr','Sa'];
 
     function daysInMonth(year, month) {
       return new Date(year, month + 1, 0).getDate();
@@ -1079,14 +1079,14 @@ const SoftUI = (() => {
 
     function between(d, start, end) {
       if (!start || !end) return false;
-      let t = d.getTime(), s = Math.min(start.getTime(), end.getTime()), e = Math.max(start.getTime(), end.getTime());
+      const t = d.getTime(), s = Math.min(start.getTime(), end.getTime()), e = Math.max(start.getTime(), end.getTime());
       return t > s && t < e;
     }
 
     function parseDate(str) {
       if (!str) return null;
       if (str === 'today') return new Date(new Date().setHours(0,0,0,0));
-      let parts = str.split('-');
+      const parts = str.split('-');
       if (parts.length === 3) return new Date(+parts[0], +parts[1] - 1, +parts[2]);
       return null;
     }
@@ -1094,8 +1094,8 @@ const SoftUI = (() => {
     function formatDate(d, includeTime, hour, minute, period) {
       let str = MONTHS[d.getMonth()].substring(0, 3) + ' ' + d.getDate() + ', ' + d.getFullYear();
       if (includeTime) {
-        let hh = (hour !== undefined && hour !== null) ? hour : 12;
-        let mm = (minute !== undefined && minute !== null) ? minute : 0;
+        const hh = (hour !== undefined && hour !== null) ? hour : 12;
+        const mm = (minute !== undefined && minute !== null) ? minute : 0;
         str += ' ' + pad(hh) + ':' + pad(mm);
         if (period) str += ' ' + period;
       }
@@ -1103,23 +1103,23 @@ const SoftUI = (() => {
     }
 
     document.querySelectorAll('.sui-calendar[data-sui-calendar]').forEach(function(cal) {
-      let mode = cal.dataset.suiCalendar || 'single';
-      let today = new Date();
+      const mode = cal.dataset.suiCalendar || 'single';
+      const today = new Date();
       today.setHours(0,0,0,0);
 
-      let minDate = parseDate(cal.dataset.suiMin);
-      let maxDate = parseDate(cal.dataset.suiMax);
+      const minDate = parseDate(cal.dataset.suiMin);
+      const maxDate = parseDate(cal.dataset.suiMax);
 
-      let disabledDays = [];
+      const disabledDays = [];
       if (cal.dataset.suiDisabled) {
         cal.dataset.suiDisabled.split(',').forEach(function(s) {
-          let d = parseDate(s.trim());
+          const d = parseDate(s.trim());
           if (d) disabledDays.push(d);
         });
       }
 
       function isDisabled(d) {
-        for (var i = 0; i < disabledDays.length; i++) {
+        for (let i = 0; i < disabledDays.length; i++) {
           if (sameDay(d, disabledDays[i])) return true;
         }
         if (minDate && d < minDate) return true;
@@ -1135,8 +1135,8 @@ const SoftUI = (() => {
       let yearPageStart = 0;
 
       // Time picker
-      let hasTime = cal.hasAttribute('data-sui-calendar-time');
-      let is24h = cal.getAttribute('data-sui-calendar-time') === '24h';
+      const hasTime = cal.hasAttribute('data-sui-calendar-time');
+      const is24h = cal.getAttribute('data-sui-calendar-time') === '24h';
       let timeHour = is24h ? 0 : 12, timeMinute = 0, timePeriod = 'AM';
       let timeRow = null, hourInput = null, minuteInput = null, periodBtn = null;
 
@@ -1146,7 +1146,7 @@ const SoftUI = (() => {
           timeRow = document.createElement('div');
           timeRow.className = 'sui-calendar-time';
 
-          let label = document.createElement('span');
+          const label = document.createElement('span');
           label.className = 'sui-calendar-time-label';
           label.textContent = 'Time';
           timeRow.appendChild(label);
@@ -1159,7 +1159,7 @@ const SoftUI = (() => {
           hourInput.setAttribute('aria-label', 'Hour');
           timeRow.appendChild(hourInput);
 
-          let sep = document.createElement('span');
+          const sep = document.createElement('span');
           sep.className = 'sui-calendar-time-sep';
           sep.textContent = ':';
           timeRow.appendChild(sep);
@@ -1181,7 +1181,7 @@ const SoftUI = (() => {
           }
 
           // Insert before clear button or append
-          let clearBtn = cal.querySelector('[data-sui-calendar-clear]');
+          const clearBtn = cal.querySelector('[data-sui-calendar-clear]');
           if (clearBtn) {
             cal.insertBefore(timeRow, clearBtn);
           } else {
@@ -1193,8 +1193,8 @@ const SoftUI = (() => {
           periodBtn = timeRow.querySelector('.sui-calendar-time-period');
         }
 
-        let hourMax = is24h ? 23 : 12;
-        let hourMin = is24h ? 0 : 1;
+        const hourMax = is24h ? 23 : 12;
+        const hourMin = is24h ? 0 : 1;
 
         function parseHour(v) {
           let n = parseInt(v, 10);
@@ -1207,10 +1207,10 @@ const SoftUI = (() => {
           if (n === 12) return { hour: 12, period: 'PM' };
           return { hour: n - 12, period: 'PM' };
         }
-        function clampMinute(v) { var n = parseInt(v, 10); if (isNaN(n) || n < 0) return 0; if (n > 59) return 59; return n; }
+        function clampMinute(v) { const n = parseInt(v, 10); if (isNaN(n) || n < 0) return 0; if (n > 59) return 59; return n; }
 
         hourInput.addEventListener('blur', function() {
-          let result = parseHour(this.value);
+          const result = parseHour(this.value);
           timeHour = result.hour;
           if (!is24h && result.period) {
             timePeriod = result.period;
@@ -1254,18 +1254,18 @@ const SoftUI = (() => {
       }
 
       let monthContainers = cal.querySelectorAll('.sui-calendar-month');
-      let isMultiMonth = monthContainers.length > 0;
+      const isMultiMonth = monthContainers.length > 0;
       if (!isMultiMonth) monthContainers = [cal];
 
-      let viewOffsets = [];
+      const viewOffsets = [];
       monthContainers.forEach(function(mc, i) { viewOffsets.push(i); });
 
       let viewYear = today.getFullYear();
       let viewMonth = today.getMonth();
 
-      let prevBtn = cal.querySelector('[data-sui-calendar-prev]');
-      let nextBtn = cal.querySelector('[data-sui-calendar-next]');
-      let titleEl = cal.querySelector('.sui-calendar-header .sui-calendar-title');
+      const prevBtn = cal.querySelector('[data-sui-calendar-prev]');
+      const nextBtn = cal.querySelector('[data-sui-calendar-next]');
+      const titleEl = cal.querySelector('.sui-calendar-header .sui-calendar-title');
 
       function renderDays() {
         viewMode = 'days';
@@ -1277,7 +1277,7 @@ const SoftUI = (() => {
           while (m < 0) { m += 12; y--; }
 
           // Title
-          let t = mc.querySelector('.sui-calendar-title');
+          const t = mc.querySelector('.sui-calendar-title');
           if (t) {
             if (idx === 0 && !isMultiMonth && t === titleEl) {
               t.textContent = MONTHS[m] + ' ' + y;
@@ -1287,24 +1287,24 @@ const SoftUI = (() => {
             }
           }
 
-          let grid = mc.querySelector('.sui-calendar-grid');
+          const grid = mc.querySelector('.sui-calendar-grid');
           if (!grid) return;
           grid.innerHTML = '';
           grid.style.gridTemplateColumns = 'repeat(7, 1fr)';
 
           DAYS.forEach(function(d) {
-            let lbl = document.createElement('div');
+            const lbl = document.createElement('div');
             lbl.className = 'sui-calendar-day-label';
             lbl.textContent = d;
             grid.appendChild(lbl);
           });
 
-          let firstDay = new Date(y, m, 1).getDay();
-          let total = daysInMonth(y, m);
+          const firstDay = new Date(y, m, 1).getDay();
+          const total = daysInMonth(y, m);
 
-          let prevTotal = daysInMonth(y, m - 1);
-          for (var p = firstDay - 1; p >= 0; p--) {
-            let btn = document.createElement('button');
+          const prevTotal = daysInMonth(y, m - 1);
+          for (let p = firstDay - 1; p >= 0; p--) {
+            const btn = document.createElement('button');
             btn.className = 'sui-calendar-day outside';
             btn.textContent = prevTotal - p;
             btn.type = 'button';
@@ -1312,9 +1312,9 @@ const SoftUI = (() => {
             grid.appendChild(btn);
           }
 
-          for (var d = 1; d <= total; d++) {
-            let date = new Date(y, m, d);
-            let btn = document.createElement('button');
+          for (let d = 1; d <= total; d++) {
+            const date = new Date(y, m, d);
+            const btn = document.createElement('button');
             btn.className = 'sui-calendar-day';
             btn.textContent = d;
             btn.type = 'button';
@@ -1335,7 +1335,7 @@ const SoftUI = (() => {
                 e.stopPropagation();
                 if (mode === 'single') {
                   selected = dt;
-                  let detail = { date: dt };
+                  const detail = { date: dt };
                   if (hasTime) { detail.hour = timeHour; detail.minute = timeMinute; detail.period = timePeriod; }
                   cal.dispatchEvent(new CustomEvent('sui-date-select', { detail: detail }));
                 } else if (mode === 'range') {
@@ -1355,10 +1355,10 @@ const SoftUI = (() => {
             grid.appendChild(btn);
           }
 
-          let totalCells = firstDay + total;
-          let remaining = totalCells % 7 === 0 ? 0 : 7 - (totalCells % 7);
-          for (var n = 1; n <= remaining; n++) {
-            let btn = document.createElement('button');
+          const totalCells = firstDay + total;
+          const remaining = totalCells % 7 === 0 ? 0 : 7 - (totalCells % 7);
+          for (let n = 1; n <= remaining; n++) {
+            const btn = document.createElement('button');
             btn.className = 'sui-calendar-day outside';
             btn.textContent = n;
             btn.type = 'button';
@@ -1379,13 +1379,13 @@ const SoftUI = (() => {
         }
 
         // Only render in first (or only) grid
-        let grid = monthContainers[0].querySelector('.sui-calendar-grid');
+        const grid = monthContainers[0].querySelector('.sui-calendar-grid');
         if (!grid) return;
         grid.innerHTML = '';
         grid.style.gridTemplateColumns = 'repeat(4, 1fr)';
 
-        for (var m = 0; m < 12; m++) {
-          let btn = document.createElement('button');
+        for (let m = 0; m < 12; m++) {
+          const btn = document.createElement('button');
           btn.className = 'sui-calendar-day';
           btn.textContent = MONTHS_SHORT[m];
           btn.type = 'button';
@@ -1408,20 +1408,20 @@ const SoftUI = (() => {
       function renderYears() {
         viewMode = 'years';
         if (timeRow) timeRow.style.display = 'none';
-        let start = yearPageStart;
-        let end = start + 11;
+        const start = yearPageStart;
+        const end = start + 11;
         if (titleEl) {
           titleEl.textContent = start + ' – ' + end;
           titleEl.style.cursor = 'default';
         }
 
-        let grid = monthContainers[0].querySelector('.sui-calendar-grid');
+        const grid = monthContainers[0].querySelector('.sui-calendar-grid');
         if (!grid) return;
         grid.innerHTML = '';
         grid.style.gridTemplateColumns = 'repeat(4, 1fr)';
 
-        for (var yr = start; yr <= end; yr++) {
-          let btn = document.createElement('button');
+        for (let yr = start; yr <= end; yr++) {
+          const btn = document.createElement('button');
           btn.className = 'sui-calendar-day';
           btn.textContent = yr;
           btn.type = 'button';
@@ -1442,9 +1442,9 @@ const SoftUI = (() => {
       }
 
       function updateClear() {
-        let clearBtn = cal.querySelector('[data-sui-calendar-clear]');
+        const clearBtn = cal.querySelector('[data-sui-calendar-clear]');
         if (clearBtn) {
-          let hasSelection = mode === 'single' ? !!selected : !!(rangeStart || rangeEnd);
+          const hasSelection = mode === 'single' ? !!selected : !!(rangeStart || rangeEnd);
           clearBtn.style.display = hasSelection ? '' : 'none';
         }
       }
@@ -1515,11 +1515,11 @@ const SoftUI = (() => {
       renderDays();
 
       // Date Picker integration
-      let picker = cal.closest('.sui-datepicker');
+      const picker = cal.closest('.sui-datepicker');
       if (picker) {
-        let trigger = picker.querySelector('.sui-datepicker-trigger');
-        let popover = picker.querySelector('.sui-datepicker-popover');
-        let placeholderEl = trigger ? trigger.querySelector('.sui-datepicker-placeholder') : null;
+        const trigger = picker.querySelector('.sui-datepicker-trigger');
+        const popover = picker.querySelector('.sui-datepicker-popover');
+        const placeholderEl = trigger ? trigger.querySelector('.sui-datepicker-placeholder') : null;
         if (placeholderEl) defaultPlaceholder = placeholderEl.textContent;
 
         if (trigger && popover) {
@@ -1537,13 +1537,13 @@ const SoftUI = (() => {
 
         cal.addEventListener('sui-date-select', function(e) {
           if (!trigger) return;
-          let span = trigger.querySelector('.sui-datepicker-value') || trigger.querySelector('.sui-datepicker-placeholder');
+          const span = trigger.querySelector('.sui-datepicker-value') || trigger.querySelector('.sui-datepicker-placeholder');
           if (mode === 'single' && e.detail.date) {
-            let text = formatDate(e.detail.date, hasTime, e.detail.hour, e.detail.minute, e.detail.is24h ? null : e.detail.period);
+            const text = formatDate(e.detail.date, hasTime, e.detail.hour, e.detail.minute, e.detail.is24h ? null : e.detail.period);
             if (span) { span.textContent = text; span.className = 'sui-datepicker-value'; }
             if (!hasTime && popover) popover.classList.remove('open');
           } else if (mode === 'range' && e.detail.start && e.detail.end) {
-            let text = formatDate(e.detail.start) + ' – ' + formatDate(e.detail.end);
+            const text = formatDate(e.detail.start) + ' – ' + formatDate(e.detail.end);
             if (span) { span.textContent = text; span.className = 'sui-datepicker-value'; }
             if (popover) popover.classList.remove('open');
           }
@@ -1551,7 +1551,7 @@ const SoftUI = (() => {
         });
 
         cal.addEventListener('sui-date-clear', function() {
-          let span = trigger.querySelector('.sui-datepicker-value') || trigger.querySelector('.sui-datepicker-placeholder');
+          const span = trigger.querySelector('.sui-datepicker-value') || trigger.querySelector('.sui-datepicker-placeholder');
           if (span) { span.textContent = defaultPlaceholder; span.className = 'sui-datepicker-placeholder'; }
           updateClear();
         });
@@ -1564,9 +1564,9 @@ const SoftUI = (() => {
   // =========================================
   function initTimePicker() {
     document.querySelectorAll('.sui-timepicker[data-sui-timepicker]').forEach(function(tp) {
-      let is24h = tp.getAttribute('data-sui-timepicker') === '24h';
-      let hourMax = is24h ? 23 : 12;
-      let hourMin = is24h ? 0 : 1;
+      const is24h = tp.getAttribute('data-sui-timepicker') === '24h';
+      const hourMax = is24h ? 23 : 12;
+      const hourMin = is24h ? 0 : 1;
       let tHour = is24h ? 0 : 12, tMinute = 0, tPeriod = 'AM';
 
       let hInput = tp.querySelectorAll('.sui-calendar-time-input')[0];
@@ -1575,7 +1575,7 @@ const SoftUI = (() => {
 
       if (!hInput || !mInput) {
         // Auto-build the UI
-        let label = document.createElement('span');
+        const label = document.createElement('span');
         label.className = 'sui-calendar-time-label';
         label.textContent = 'Time';
         tp.appendChild(label);
@@ -1588,7 +1588,7 @@ const SoftUI = (() => {
         hInput.setAttribute('aria-label', 'Hour');
         tp.appendChild(hInput);
 
-        let sep = document.createElement('span');
+        const sep = document.createElement('span');
         sep.className = 'sui-calendar-time-sep';
         sep.textContent = ':';
         tp.appendChild(sep);
@@ -1620,14 +1620,14 @@ const SoftUI = (() => {
         if (n === 12) return { hour: 12, period: 'PM' };
         return { hour: n - 12, period: 'PM' };
       }
-      function clampM(v) { var n = parseInt(v, 10); if (isNaN(n) || n < 0) return 0; if (n > 59) return 59; return n; }
+      function clampM(v) { const n = parseInt(v, 10); if (isNaN(n) || n < 0) return 0; if (n > 59) return 59; return n; }
 
       function fireChange() {
         tp.dispatchEvent(new CustomEvent('sui-time-change', { detail: { hour: tHour, minute: tMinute, period: is24h ? null : tPeriod, is24h: is24h } }));
       }
 
       hInput.addEventListener('blur', function() {
-        let result = parseH(this.value);
+        const result = parseH(this.value);
         tHour = result.hour;
         if (!is24h && result.period) { tPeriod = result.period; if (pBtn) pBtn.textContent = tPeriod; }
         this.value = pad(tHour);
@@ -1685,9 +1685,9 @@ const SoftUI = (() => {
     }
 
     document.addEventListener('click', function(e) {
-      let trigger = e.target.closest('.sui-menubar-trigger');
+      const trigger = e.target.closest('.sui-menubar-trigger');
       if (trigger) {
-        let menu = trigger.closest('.sui-menubar-menu');
+        const menu = trigger.closest('.sui-menubar-menu');
         if (menu.classList.contains('open')) {
           closeAllMenus(menu.closest('.sui-menubar'));
         } else {
@@ -1698,10 +1698,10 @@ const SoftUI = (() => {
       }
 
       // Submenu triggers
-      let subTrigger = e.target.closest('.sui-menubar-sub-trigger');
+      const subTrigger = e.target.closest('.sui-menubar-sub-trigger');
       if (subTrigger) {
-        let sub = subTrigger.closest('.sui-menubar-sub');
-        let isOpen = sub.classList.contains('open');
+        const sub = subTrigger.closest('.sui-menubar-sub');
+        const isOpen = sub.classList.contains('open');
         // Close sibling subs
         sub.parentElement.querySelectorAll('.sui-menubar-sub.open').forEach(function(s) {
           s.classList.remove('open');
@@ -1712,9 +1712,9 @@ const SoftUI = (() => {
       }
 
       // Clicking a menubar item closes the menu
-      let item = e.target.closest('.sui-menubar-item');
+      const item = e.target.closest('.sui-menubar-item');
       if (item && item.closest('.sui-menubar')) {
-        let bar = item.closest('.sui-menubar');
+        const bar = item.closest('.sui-menubar');
         closeAllMenus(bar);
         return;
       }
@@ -1728,9 +1728,9 @@ const SoftUI = (() => {
     // Hover to switch menus when one is already open
     document.addEventListener('mouseenter', function(e) {
       if (!menubarOpen) return;
-      let trigger = e.target.closest ? e.target.closest('.sui-menubar-trigger') : null;
+      const trigger = e.target.closest ? e.target.closest('.sui-menubar-trigger') : null;
       if (!trigger) return;
-      let menu = trigger.closest('.sui-menubar-menu');
+      const menu = trigger.closest('.sui-menubar-menu');
       if (menu && !menu.classList.contains('open')) {
         openMenu(menu);
       }
@@ -1764,15 +1764,15 @@ const SoftUI = (() => {
   // =========================================
   function initCombobox() {
     document.querySelectorAll('.sui-combobox').forEach(function(combo) {
-      let trigger = combo.querySelector('.sui-combobox-trigger');
-      let content = combo.querySelector('.sui-combobox-content');
-      let input = combo.querySelector('.sui-combobox-input');
-      let items = combo.querySelectorAll('.sui-combobox-item');
-      let valueEl = combo.querySelector('.sui-combobox-value');
-      let chipsEl = combo.querySelector('.sui-combobox-chips');
-      let emptyEl = combo.querySelector('.sui-combobox-empty');
-      let clearBtn = combo.querySelector('.sui-combobox-clear');
-      let isMultiple = combo.classList.contains('sui-combobox-multiple');
+      const trigger = combo.querySelector('.sui-combobox-trigger');
+      const content = combo.querySelector('.sui-combobox-content');
+      const input = combo.querySelector('.sui-combobox-input');
+      const items = combo.querySelectorAll('.sui-combobox-item');
+      const valueEl = combo.querySelector('.sui-combobox-value');
+      const chipsEl = combo.querySelector('.sui-combobox-chips');
+      const emptyEl = combo.querySelector('.sui-combobox-empty');
+      const clearBtn = combo.querySelector('.sui-combobox-clear');
+      const isMultiple = combo.classList.contains('sui-combobox-multiple');
       let placeholder = valueEl ? valueEl.textContent : '';
       if (chipsEl) placeholder = chipsEl.textContent.trim();
 
@@ -1797,11 +1797,11 @@ const SoftUI = (() => {
       }
 
       function filterItems(query) {
-        let q = query.toLowerCase();
+        const q = query.toLowerCase();
         let visibleCount = 0;
         items.forEach(function(item) {
-          let text = item.textContent.toLowerCase();
-          let match = !q || text.indexOf(q) !== -1;
+          const text = item.textContent.toLowerCase();
+          const match = !q || text.indexOf(q) !== -1;
           item.style.display = match ? '' : 'none';
           if (match) visibleCount++;
         });
@@ -1825,7 +1825,7 @@ const SoftUI = (() => {
 
       function updateClear() {
         if (!clearBtn) return;
-        let hasSelection = combo.querySelectorAll('.sui-combobox-item.selected').length > 0;
+        const hasSelection = combo.querySelectorAll('.sui-combobox-item.selected').length > 0;
         clearBtn.classList.toggle('visible', hasSelection);
       }
 
@@ -1842,9 +1842,9 @@ const SoftUI = (() => {
       function updateChips() {
         if (!chipsEl) return;
         chipsEl.innerHTML = '';
-        let selectedItems = combo.querySelectorAll('.sui-combobox-item.selected');
+        const selectedItems = combo.querySelectorAll('.sui-combobox-item.selected');
         if (selectedItems.length === 0) {
-          let ph = document.createElement('span');
+          const ph = document.createElement('span');
           ph.className = 'placeholder';
           ph.textContent = placeholder;
           chipsEl.appendChild(ph);
@@ -1852,10 +1852,10 @@ const SoftUI = (() => {
           return;
         }
         selectedItems.forEach(function(item) {
-          let chip = document.createElement('span');
+          const chip = document.createElement('span');
           chip.className = 'sui-combobox-chip';
           chip.textContent = item.getAttribute('data-value') || item.textContent.trim();
-          let remove = document.createElement('span');
+          const remove = document.createElement('span');
           remove.className = 'sui-combobox-chip-remove';
           remove.innerHTML = '&#10005;';
           remove.addEventListener('click', function(e) {
@@ -1935,19 +1935,19 @@ const SoftUI = (() => {
   // =========================================
   function initResizable() {
     document.querySelectorAll('.sui-resizable').forEach(function(container) {
-      let isVertical = container.classList.contains('sui-resizable-vertical');
-      let handles = container.querySelectorAll(':scope > .sui-resizable-handle');
+      const isVertical = container.classList.contains('sui-resizable-vertical');
+      const handles = container.querySelectorAll(':scope > .sui-resizable-handle');
 
       // Initialize panels with flex-grow from data-size or equal split
-      let panels = Array.from(container.querySelectorAll(':scope > .sui-resizable-panel'));
+      const panels = Array.from(container.querySelectorAll(':scope > .sui-resizable-panel'));
       panels.forEach(function(p) {
-        let size = parseFloat(p.getAttribute('data-size')) || (100 / panels.length);
+        const size = parseFloat(p.getAttribute('data-size')) || (100 / panels.length);
         p.style.flexGrow = size;
       });
 
       handles.forEach(function(handle) {
-        let prevPanel = handle.previousElementSibling;
-        let nextPanel = handle.nextElementSibling;
+        const prevPanel = handle.previousElementSibling;
+        const nextPanel = handle.nextElementSibling;
         if (!prevPanel || !nextPanel) return;
 
         handle.setAttribute('tabindex', '0');
@@ -1963,13 +1963,13 @@ const SoftUI = (() => {
         }
 
         function resize(delta) {
-          let prevG = getGrow(prevPanel);
-          let nextG = getGrow(nextPanel);
-          let total = prevG + nextG;
-          let prevMin = getMin(prevPanel);
-          let nextMin = getMin(nextPanel);
-          let newPrev = Math.max(prevMin, Math.min(total - nextMin, prevG + delta));
-          let newNext = total - newPrev;
+          const prevG = getGrow(prevPanel);
+          const nextG = getGrow(nextPanel);
+          const total = prevG + nextG;
+          const prevMin = getMin(prevPanel);
+          const nextMin = getMin(nextPanel);
+          const newPrev = Math.max(prevMin, Math.min(total - nextMin, prevG + delta));
+          const newNext = total - newPrev;
           prevPanel.style.flexGrow = newPrev;
           nextPanel.style.flexGrow = newNext;
         }
@@ -1979,27 +1979,27 @@ const SoftUI = (() => {
           handle.focus();
           handle.classList.add('dragging');
 
-          let prevG = getGrow(prevPanel);
-          let nextG = getGrow(nextPanel);
-          let totalG = prevG + nextG;
+          const prevG = getGrow(prevPanel);
+          const nextG = getGrow(nextPanel);
+          const totalG = prevG + nextG;
 
           // Measure actual pixel sizes of the two panels
-          let prevPx = isVertical ? prevPanel.offsetHeight : prevPanel.offsetWidth;
-          let nextPx = isVertical ? nextPanel.offsetHeight : nextPanel.offsetWidth;
-          let pairPx = prevPx + nextPx;
-          let startPos = isVertical ? e.clientY : e.clientX;
+          const prevPx = isVertical ? prevPanel.offsetHeight : prevPanel.offsetWidth;
+          const nextPx = isVertical ? nextPanel.offsetHeight : nextPanel.offsetWidth;
+          const pairPx = prevPx + nextPx;
+          const startPos = isVertical ? e.clientY : e.clientX;
 
-          let prevMin = getMin(prevPanel);
-          let nextMin = getMin(nextPanel);
+          const prevMin = getMin(prevPanel);
+          const nextMin = getMin(nextPanel);
 
           function onPointerMove(ev) {
-            let pos = isVertical ? ev.clientY : ev.clientX;
+            const pos = isVertical ? ev.clientY : ev.clientX;
             let delta = pos - startPos;
             // Clamp delta so panels stay within 0..pairPx range
             delta = Math.max(-prevPx, Math.min(nextPx, delta));
-            let ratio = pairPx > 0 ? delta / pairPx : 0;
-            let newPrev = Math.max(prevMin, Math.min(totalG - nextMin, prevG + ratio * totalG));
-            let newNext = totalG - newPrev;
+            const ratio = pairPx > 0 ? delta / pairPx : 0;
+            const newPrev = Math.max(prevMin, Math.min(totalG - nextMin, prevG + ratio * totalG));
+            const newNext = totalG - newPrev;
             prevPanel.style.flexGrow = newPrev;
             nextPanel.style.flexGrow = newNext;
           }
@@ -2018,9 +2018,9 @@ const SoftUI = (() => {
 
         // Keyboard: Arrow keys resize, Home/End for extremes
         handle.addEventListener('keydown', function(e) {
-          let step = e.shiftKey ? 10 : 2;
-          let growKey = isVertical ? 'ArrowDown' : 'ArrowRight';
-          let shrinkKey = isVertical ? 'ArrowUp' : 'ArrowLeft';
+          const step = e.shiftKey ? 10 : 2;
+          const growKey = isVertical ? 'ArrowDown' : 'ArrowRight';
+          const shrinkKey = isVertical ? 'ArrowUp' : 'ArrowLeft';
 
           if (e.key === growKey) {
             e.preventDefault();
@@ -2144,13 +2144,13 @@ const SoftUI = (() => {
     document.querySelectorAll('.sui-otp[data-sui-otp]').forEach(function(otp) {
       if (otp.dataset.suiOtpDisabled !== undefined) return;
 
-      let slots = otp.querySelectorAll('.sui-otp-slot');
-      let len = slots.length;
-      let pattern = otp.dataset.suiOtpPattern || 'digits'; // "digits" or "alphanumeric"
-      let regex = pattern === 'alphanumeric' ? /^[a-zA-Z0-9]$/ : /^[0-9]$/;
+      const slots = otp.querySelectorAll('.sui-otp-slot');
+      const len = slots.length;
+      const pattern = otp.dataset.suiOtpPattern || 'digits'; // "digits" or "alphanumeric"
+      const regex = pattern === 'alphanumeric' ? /^[a-zA-Z0-9]$/ : /^[0-9]$/;
 
       // Create hidden input
-      let input = document.createElement('input');
+      const input = document.createElement('input');
       input.className = 'sui-otp-input';
       input.setAttribute('inputmode', pattern === 'alphanumeric' ? 'text' : 'numeric');
       input.setAttribute('autocomplete', 'one-time-code');
@@ -2159,14 +2159,14 @@ const SoftUI = (() => {
       otp.appendChild(input);
 
       function updateSlots() {
-        let val = input.value;
+        const val = input.value;
         slots.forEach(function(slot, i) {
           slot.textContent = val[i] || '';
           slot.classList.toggle('sui-otp-filled', !!val[i]);
           slot.classList.remove('sui-otp-active');
         });
         // Show cursor on current slot
-        let pos = Math.min(val.length, len - 1);
+        const pos = Math.min(val.length, len - 1);
         if (document.activeElement === input && val.length < len) {
           slots[pos].classList.add('sui-otp-active');
         } else if (document.activeElement === input && val.length === len) {
@@ -2177,7 +2177,7 @@ const SoftUI = (() => {
       input.addEventListener('input', function() {
         // Filter to allowed characters
         let filtered = '';
-        for (var i = 0; i < input.value.length && filtered.length < len; i++) {
+        for (let i = 0; i < input.value.length && filtered.length < len; i++) {
           if (regex.test(input.value[i])) {
             filtered += pattern === 'alphanumeric' ? input.value[i].toUpperCase() : input.value[i];
           }
@@ -2207,7 +2207,7 @@ const SoftUI = (() => {
           e.stopPropagation();
           input.focus();
           // Set cursor position
-          let pos = Math.min(i, input.value.length);
+          const pos = Math.min(i, input.value.length);
           input.setSelectionRange(pos, pos);
           updateSlots();
         });
@@ -2222,13 +2222,13 @@ const SoftUI = (() => {
   // =========================================
   function initToggleGroups() {
     document.querySelectorAll('.sui-toggle-group[data-sui-toggle]').forEach(function(group) {
-      let mode = group.dataset.suiToggle; // "single" or "multi"
-      let items = group.querySelectorAll('.sui-toggle-group-item:not([disabled])');
+      const mode = group.dataset.suiToggle; // "single" or "multi"
+      const items = group.querySelectorAll('.sui-toggle-group-item:not([disabled])');
 
       items.forEach(function(item) {
         item.addEventListener('click', function() {
           if (mode === 'single') {
-            let wasActive = item.classList.contains('active');
+            const wasActive = item.classList.contains('active');
             items.forEach(function(it) {
               it.classList.remove('active');
               it.setAttribute('aria-pressed', 'false');
@@ -2289,33 +2289,33 @@ const SoftUI = (() => {
     // Seamless loop: clone slides at both ends
     let cloneCount = 0;
     if (isSeamless && totalReal > visible) {
-      for (var i = totalReal - 1; i >= totalReal - visible; i--) {
-        let clone = realItems[i].cloneNode(true);
+      for (let i = totalReal - 1; i >= totalReal - visible; i--) {
+        const clone = realItems[i].cloneNode(true);
         clone.setAttribute('aria-hidden', 'true');
         track.insertBefore(clone, track.firstChild);
       }
-      for (var i = 0; i < visible; i++) {
-        let clone = realItems[i].cloneNode(true);
+      for (let i = 0; i < visible; i++) {
+        const clone = realItems[i].cloneNode(true);
         clone.setAttribute('aria-hidden', 'true');
         track.appendChild(clone);
       }
       cloneCount = visible;
     }
 
-    let allItems = Array.from(track.children);
+    const allItems = Array.from(track.children);
 
     function moveTo(displayIndex, animate) {
       if (animate === false) track.style.transition = 'none';
 
       if (isVertical) {
-        let vh = track.parentElement.offsetHeight;
-        let itemH = vh / visible;
+        const vh = track.parentElement.offsetHeight;
+        const itemH = vh / visible;
         allItems.forEach(function(it) { it.style.height = itemH + 'px'; });
         track.style.transform = 'translateY(-' + (displayIndex * itemH) + 'px)';
       } else {
-        let item = allItems[displayIndex];
-        let base = allItems[0];
-        let px = (item && base) ? item.offsetLeft - base.offsetLeft : 0;
+        const item = allItems[displayIndex];
+        const base = allItems[0];
+        const px = (item && base) ? item.offsetLeft - base.offsetLeft : 0;
         track.style.transform = 'translateX(-' + px + 'px)';
       }
 
@@ -2326,10 +2326,10 @@ const SoftUI = (() => {
     }
 
     function update(animate) {
-      let displayIndex = current + cloneCount;
+      const displayIndex = current + cloneCount;
       moveTo(displayIndex, animate);
 
-      let dotIndex = ((current % totalReal) + totalReal) % totalReal;
+      const dotIndex = ((current % totalReal) + totalReal) % totalReal;
       dots.forEach(function(d, i) { d.classList.toggle('active', i === dotIndex); });
 
       if (!isLoop) {
@@ -2435,45 +2435,45 @@ const SoftUI = (() => {
     document.querySelectorAll('.sui-chart-bar-col').forEach(function(col) {
       // Skip grouped bars (handled separately)
       if (col.querySelector('.sui-chart-bar-group')) return;
-      let fill = col.querySelector('.sui-chart-bar-fill');
+      const fill = col.querySelector('.sui-chart-bar-fill');
       if (!fill) return;
-      let val = parseFloat(fill.getAttribute('data-value'));
+      const val = parseFloat(fill.getAttribute('data-value'));
       if (isNaN(val)) return;
-      let max = parseFloat(fill.getAttribute('data-max')) || 100;
-      let pct = Math.min(100, Math.max(0, (val / max) * 100));
+      const max = parseFloat(fill.getAttribute('data-max')) || 100;
+      const pct = Math.min(100, Math.max(0, (val / max) * 100));
       fill.style.height = pct + '%';
     });
 
     // Grouped bars — set heights for each fill in a group
     document.querySelectorAll('.sui-chart-bar-group').forEach(function(group) {
       group.querySelectorAll('.sui-chart-bar-fill').forEach(function(fill) {
-        let val = parseFloat(fill.getAttribute('data-value'));
+        const val = parseFloat(fill.getAttribute('data-value'));
         if (isNaN(val)) return;
-        let max = parseFloat(fill.getAttribute('data-max')) || 100;
-        let pct = Math.min(100, Math.max(0, (val / max) * 100));
+        const max = parseFloat(fill.getAttribute('data-max')) || 100;
+        const pct = Math.min(100, Math.max(0, (val / max) * 100));
         fill.style.height = pct + '%';
       });
     });
 
     // Horizontal bars
     document.querySelectorAll('.sui-chart-bar-row').forEach(function(row) {
-      let fill = row.querySelector('.sui-chart-bar-fill');
+      const fill = row.querySelector('.sui-chart-bar-fill');
       if (!fill) return;
-      let val = parseFloat(fill.getAttribute('data-value'));
+      const val = parseFloat(fill.getAttribute('data-value'));
       if (isNaN(val)) return;
-      let max = parseFloat(fill.getAttribute('data-max')) || 100;
-      let pct = Math.min(100, Math.max(0, (val / max) * 100));
+      const max = parseFloat(fill.getAttribute('data-max')) || 100;
+      const pct = Math.min(100, Math.max(0, (val / max) * 100));
       fill.style.width = pct + '%';
     });
 
     // Stacked bars
     document.querySelectorAll('.sui-chart-bar-track-stacked').forEach(function(track) {
-      let fills = track.querySelectorAll('.sui-chart-bar-fill');
+      const fills = track.querySelectorAll('.sui-chart-bar-fill');
       let total = 0;
       fills.forEach(function(f) { total += parseFloat(f.getAttribute('data-value')) || 0; });
-      let max = parseFloat(track.getAttribute('data-max')) || total || 100;
+      const max = parseFloat(track.getAttribute('data-max')) || total || 100;
       fills.forEach(function(f) {
-        let v = parseFloat(f.getAttribute('data-value')) || 0;
+        const v = parseFloat(f.getAttribute('data-value')) || 0;
         f.style.height = ((v / max) * 100) + '%';
       });
     });
@@ -2481,15 +2481,15 @@ const SoftUI = (() => {
     // Donut / Pie charts — build conic-gradient from data-segments
     document.querySelectorAll('.sui-chart-donut[data-segments]').forEach(function(donut) {
       try {
-        let segments = JSON.parse(donut.getAttribute('data-segments'));
+        const segments = JSON.parse(donut.getAttribute('data-segments'));
         let total = 0;
         segments.forEach(function(s) { total += s.value; });
-        let stops = [];
+        const stops = [];
         let cumulative = 0;
         segments.forEach(function(s) {
-          let start = (cumulative / total) * 100;
+          const start = (cumulative / total) * 100;
           cumulative += s.value;
-          let end = (cumulative / total) * 100;
+          const end = (cumulative / total) * 100;
           stops.push(s.color + ' ' + start + '% ' + end + '%');
         });
         donut.style.background = 'conic-gradient(' + stops.join(', ') + ')';
@@ -2499,7 +2499,7 @@ const SoftUI = (() => {
     // Line / Area charts — measure path length for animation
     document.querySelectorAll('.sui-chart-line-wrap .chart-line').forEach(function(path) {
       if (path.getTotalLength) {
-        let len = path.getTotalLength();
+        const len = path.getTotalLength();
         path.style.setProperty('--line-length', len);
         path.style.strokeDasharray = len;
         path.style.strokeDashoffset = len;
@@ -2508,27 +2508,27 @@ const SoftUI = (() => {
 
     // SVG dot tooltips
     document.querySelectorAll('.sui-chart-line-wrap').forEach(function(wrap) {
-      let dots = wrap.querySelectorAll('.chart-dot[data-value]');
+      const dots = wrap.querySelectorAll('.chart-dot[data-value]');
       if (!dots.length) return;
 
-      let tip = document.createElement('div');
+      const tip = document.createElement('div');
       tip.className = 'sui-chart-tooltip';
       wrap.appendChild(tip);
 
       dots.forEach(function(dot) {
         dot.addEventListener('mouseenter', function() {
-          let val = dot.getAttribute('data-value');
+          const val = dot.getAttribute('data-value');
           tip.textContent = val;
-          let svg = wrap.querySelector('svg');
-          let svgRect = svg.getBoundingClientRect();
-          let wrapRect = wrap.getBoundingClientRect();
-          let cx = parseFloat(dot.getAttribute('cx'));
-          let cy = parseFloat(dot.getAttribute('cy'));
-          let viewBox = svg.viewBox.baseVal;
-          let scaleX = svgRect.width / viewBox.width;
-          let scaleY = svgRect.height / viewBox.height;
-          let px = (cx * scaleX) + (svgRect.left - wrapRect.left);
-          let py = (cy * scaleY) + (svgRect.top - wrapRect.top);
+          const svg = wrap.querySelector('svg');
+          const svgRect = svg.getBoundingClientRect();
+          const wrapRect = wrap.getBoundingClientRect();
+          const cx = parseFloat(dot.getAttribute('cx'));
+          const cy = parseFloat(dot.getAttribute('cy'));
+          const viewBox = svg.viewBox.baseVal;
+          const scaleX = svgRect.width / viewBox.width;
+          const scaleY = svgRect.height / viewBox.height;
+          const px = (cx * scaleX) + (svgRect.left - wrapRect.left);
+          const py = (cy * scaleY) + (svgRect.top - wrapRect.top);
           tip.style.left = px + 'px';
           tip.style.top = (py - 8) + 'px';
           tip.classList.add('visible');
@@ -2542,7 +2542,7 @@ const SoftUI = (() => {
 
   function initSelectablePricing() {
     document.querySelectorAll('.sui-pricing-selectable').forEach(function(container) {
-      let cards = container.querySelectorAll('.sui-pricing-card');
+      const cards = container.querySelectorAll('.sui-pricing-card');
       cards.forEach(function(card) {
         card.addEventListener('click', function() {
           cards.forEach(function(c) { c.classList.remove('selected'); });
@@ -2556,17 +2556,17 @@ const SoftUI = (() => {
 
   function initStyledSelects() {
     document.querySelectorAll('.sui-styled-select').forEach(function(sel) {
-      let trigger = sel.querySelector('.sui-styled-select-trigger');
-      let menu = sel.querySelector('.sui-styled-select-menu');
-      let valueEl = sel.querySelector('.sui-styled-select-value');
-      let options = sel.querySelectorAll('.sui-styled-select-option');
-      let placeholder = sel.getAttribute('data-placeholder') || '';
+      const trigger = sel.querySelector('.sui-styled-select-trigger');
+      const menu = sel.querySelector('.sui-styled-select-menu');
+      const valueEl = sel.querySelector('.sui-styled-select-value');
+      const options = sel.querySelectorAll('.sui-styled-select-option');
+      const placeholder = sel.getAttribute('data-placeholder') || '';
       let focusIdx = -1;
 
       if (!trigger || !menu) return;
 
       // Set initial value
-      let selected = sel.querySelector('.sui-styled-select-option.selected');
+      const selected = sel.querySelector('.sui-styled-select-option.selected');
       if (selected && valueEl) {
         valueEl.textContent = selected.textContent;
         valueEl.classList.remove('sui-styled-select-placeholder');
@@ -2609,7 +2609,7 @@ const SoftUI = (() => {
 
       // Keyboard navigation
       trigger.addEventListener('keydown', function(e) {
-        let isOpen = sel.classList.contains('open');
+        const isOpen = sel.classList.contains('open');
         if (e.key === 'ArrowDown' || e.key === 'ArrowUp') {
           e.preventDefault();
           if (!isOpen) { sel.classList.add('open'); focusIdx = -1; }
@@ -2645,20 +2645,20 @@ const SoftUI = (() => {
 
   function initDataTables() {
     document.querySelectorAll('.sui-datatable').forEach(function(dt) {
-      let table = dt.querySelector('.sui-table');
+      const table = dt.querySelector('.sui-table');
       if (!table) return;
 
-      let tbody = table.querySelector('tbody');
+      const tbody = table.querySelector('tbody');
       if (!tbody) return;
 
-      let allRows = Array.prototype.slice.call(tbody.querySelectorAll('tr'));
+      const allRows = Array.prototype.slice.call(tbody.querySelectorAll('tr'));
       let filteredRows = allRows.slice();
       let currentPage = 1;
 
       // Per-page selector (supports native <select> and .sui-styled-select)
-      let perpageNative = dt.querySelector('.sui-datatable-perpage select');
-      let perpageStyled = dt.querySelector('.sui-datatable-perpage .sui-styled-select');
-      let perpageSelect = perpageNative || perpageStyled;
+      const perpageNative = dt.querySelector('.sui-datatable-perpage select');
+      const perpageStyled = dt.querySelector('.sui-datatable-perpage .sui-styled-select');
+      const perpageSelect = perpageNative || perpageStyled;
       function getPerpageValue() {
         if (perpageNative) return parseInt(perpageNative.value, 10);
         if (perpageStyled) return parseInt(perpageStyled.getAttribute('data-value') || '', 10);
@@ -2667,24 +2667,24 @@ const SoftUI = (() => {
       let perPage = perpageSelect ? getPerpageValue() : allRows.length;
 
       // Info & pagination elements
-      let infoEl = dt.querySelector('.sui-datatable-info');
-      let paginationEl = dt.querySelector('.sui-datatable-pagination');
+      const infoEl = dt.querySelector('.sui-datatable-info');
+      const paginationEl = dt.querySelector('.sui-datatable-pagination');
 
       // Search input
-      let searchInput = dt.querySelector('.sui-datatable-search input');
+      const searchInput = dt.querySelector('.sui-datatable-search input');
 
       function render() {
-        let total = filteredRows.length;
-        let totalPages = perPage > 0 ? Math.ceil(total / perPage) : 1;
+        const total = filteredRows.length;
+        const totalPages = perPage > 0 ? Math.ceil(total / perPage) : 1;
         if (currentPage > totalPages) currentPage = totalPages;
         if (currentPage < 1) currentPage = 1;
 
-        let start = (currentPage - 1) * perPage;
-        let end = Math.min(start + perPage, total);
+        const start = (currentPage - 1) * perPage;
+        const end = Math.min(start + perPage, total);
 
         // Hide all rows, then show only current page
         allRows.forEach(function(row) { row.style.display = 'none'; });
-        for (var i = start; i < end; i++) {
+        for (let i = start; i < end; i++) {
           filteredRows[i].style.display = '';
         }
 
@@ -2694,7 +2694,7 @@ const SoftUI = (() => {
           if (!emptyRow) {
             emptyRow = document.createElement('tr');
             emptyRow.className = 'sui-datatable-empty-row';
-            let td = document.createElement('td');
+            const td = document.createElement('td');
             td.className = 'sui-datatable-empty';
             td.colSpan = table.querySelectorAll('thead th').length;
             td.textContent = 'No matching records found.';
@@ -2719,7 +2719,7 @@ const SoftUI = (() => {
         if (paginationEl) {
           paginationEl.innerHTML = '';
 
-          let prevBtn = document.createElement('button');
+          const prevBtn = document.createElement('button');
           prevBtn.textContent = '\u2039';
           prevBtn.disabled = currentPage <= 1;
           prevBtn.addEventListener('click', function() {
@@ -2727,9 +2727,9 @@ const SoftUI = (() => {
           });
           paginationEl.appendChild(prevBtn);
 
-          for (var p = 1; p <= totalPages; p++) {
+          for (let p = 1; p <= totalPages; p++) {
             (function(page) {
-              let btn = document.createElement('button');
+              const btn = document.createElement('button');
               btn.textContent = page;
               if (page === currentPage) btn.className = 'active';
               btn.addEventListener('click', function() {
@@ -2740,7 +2740,7 @@ const SoftUI = (() => {
             })(p);
           }
 
-          let nextBtn = document.createElement('button');
+          const nextBtn = document.createElement('button');
           nextBtn.textContent = '\u203A';
           nextBtn.disabled = currentPage >= totalPages;
           nextBtn.addEventListener('click', function() {
@@ -2751,23 +2751,23 @@ const SoftUI = (() => {
       }
 
       // Filter elements (supports <select> and .sui-dropdown)
-      let filterEls = dt.querySelectorAll('.sui-datatable-filter');
+      const filterEls = dt.querySelectorAll('.sui-datatable-filter');
 
       function getFilterValue(el) {
         if (el.tagName === 'SELECT') return el.value;
         // Dropdown-based filter: read from active item
-        let active = el.querySelector('.sui-dropdown-item.active');
+        const active = el.querySelector('.sui-dropdown-item.active');
         return active ? (active.getAttribute('data-value') || '') : '';
       }
 
       function applyFilters() {
-        let query = searchInput ? searchInput.value.toLowerCase().trim() : '';
+        const query = searchInput ? searchInput.value.toLowerCase().trim() : '';
         filteredRows = allRows.filter(function(row) {
           if (query && row.textContent.toLowerCase().indexOf(query) === -1) return false;
           let pass = true;
           filterEls.forEach(function(el) {
-            let attr = el.getAttribute('data-filter-attr') || 'data-status';
-            let val = getFilterValue(el);
+            const attr = el.getAttribute('data-filter-attr') || 'data-status';
+            const val = getFilterValue(el);
             if (val && row.getAttribute(attr) !== val) pass = false;
           });
           return pass;
@@ -2793,11 +2793,11 @@ const SoftUI = (() => {
               el.querySelectorAll('.sui-dropdown-item').forEach(function(i) { i.classList.remove('active'); });
               item.classList.add('active');
               // Update label
-              let label = el.querySelector('.sui-datatable-filter-label');
+              const label = el.querySelector('.sui-datatable-filter-label');
               if (label) label.textContent = item.textContent;
               // Close dropdown
               el.classList.remove('open');
-              let toggle = el.querySelector('.sui-dropdown-toggle');
+              const toggle = el.querySelector('.sui-dropdown-toggle');
               if (toggle) toggle.setAttribute('aria-expanded', 'false');
               applyFilters();
             });
@@ -2815,11 +2815,11 @@ const SoftUI = (() => {
       }
 
       // Sortable headers (unsorted → asc → desc → unsorted)
-      let ths = table.querySelectorAll('th[data-sort]');
+      const ths = table.querySelectorAll('th[data-sort]');
       ths.forEach(function(th) {
         th.addEventListener('click', function() {
-          let colIndex = Array.prototype.indexOf.call(th.parentElement.children, th);
-          let type = th.getAttribute('data-sort');
+          const colIndex = Array.prototype.indexOf.call(th.parentElement.children, th);
+          const type = th.getAttribute('data-sort');
 
           // Cycle: unsorted → asc → desc → unsorted
           let dir;
@@ -2840,12 +2840,12 @@ const SoftUI = (() => {
           } else {
             th.classList.add(dir === 'asc' ? 'sort-asc' : 'sort-desc');
             filteredRows.sort(function(a, b) {
-              let aText = a.children[colIndex] ? a.children[colIndex].textContent.trim() : '';
-              let bText = b.children[colIndex] ? b.children[colIndex].textContent.trim() : '';
+              const aText = a.children[colIndex] ? a.children[colIndex].textContent.trim() : '';
+              const bText = b.children[colIndex] ? b.children[colIndex].textContent.trim() : '';
 
               if (type === 'number') {
-                let aNum = parseFloat(aText.replace(/[^0-9.\-]/g, '')) || 0;
-                let bNum = parseFloat(bText.replace(/[^0-9.\-]/g, '')) || 0;
+                const aNum = parseFloat(aText.replace(/[^0-9.\-]/g, '')) || 0;
+                const bNum = parseFloat(bText.replace(/[^0-9.\-]/g, '')) || 0;
                 return dir === 'asc' ? aNum - bNum : bNum - aNum;
               }
 
@@ -2871,8 +2871,8 @@ const SoftUI = (() => {
       let dragItem = null;
 
       list.querySelectorAll('.sui-sortable-item').forEach(function(item) {
-        let handle = item.querySelector('.sui-sortable-handle');
-        let dragTarget = handle || item;
+        const handle = item.querySelector('.sui-sortable-handle');
+        const dragTarget = handle || item;
 
         dragTarget.setAttribute('draggable', 'true');
         if (handle) item.classList.add('has-handle');
@@ -2899,9 +2899,9 @@ const SoftUI = (() => {
           e.preventDefault();
           item.classList.remove('drag-over');
           if (!dragItem || dragItem === item) return;
-          let items = Array.prototype.slice.call(list.children);
-          let fromIndex = items.indexOf(dragItem);
-          let toIndex = items.indexOf(item);
+          const items = Array.prototype.slice.call(list.children);
+          const fromIndex = items.indexOf(dragItem);
+          const toIndex = items.indexOf(item);
           if (fromIndex < toIndex) {
             list.insertBefore(dragItem, item.nextSibling);
           } else {
@@ -2949,7 +2949,7 @@ const SoftUI = (() => {
 
           // Position among siblings
           if (!dragCard) return;
-          let afterEl = getDragAfterElement(col, e.clientY);
+          const afterEl = getDragAfterElement(col, e.clientY);
           if (afterEl) {
             col.insertBefore(dragCard, afterEl);
           } else {
@@ -2971,14 +2971,14 @@ const SoftUI = (() => {
     });
 
     function getDragAfterElement(container, y) {
-      let els = Array.prototype.slice.call(
+      const els = Array.prototype.slice.call(
         container.querySelectorAll('.sui-kanban-card:not(.dragging)')
       );
       let closest = null;
       let closestOffset = Number.NEGATIVE_INFINITY;
       els.forEach(function(el) {
-        let box = el.getBoundingClientRect();
-        let offset = y - box.top - box.height / 2;
+        const box = el.getBoundingClientRect();
+        const offset = y - box.top - box.height / 2;
         if (offset < 0 && offset > closestOffset) {
           closestOffset = offset;
           closest = el;
@@ -2990,7 +2990,7 @@ const SoftUI = (() => {
     // ── Drop Zone ──
     document.querySelectorAll('.sui-dropzone').forEach(function(zone) {
       // Click-to-upload: create hidden file input
-      let fileInput = document.createElement('input');
+      const fileInput = document.createElement('input');
       fileInput.type = 'file';
       fileInput.multiple = true;
       fileInput.style.display = 'none';
@@ -3002,7 +3002,7 @@ const SoftUI = (() => {
       });
 
       fileInput.addEventListener('change', function() {
-        let files = fileInput.files;
+        const files = fileInput.files;
         if (!files.length) return;
         let fileList = zone.querySelector('.sui-dropzone-files');
         if (!fileList) {
@@ -3011,7 +3011,7 @@ const SoftUI = (() => {
           zone.appendChild(fileList);
         }
         Array.prototype.slice.call(files).forEach(function(file) {
-          let item = document.createElement('div');
+          const item = document.createElement('div');
           item.className = 'sui-dropzone-file';
           item.innerHTML = '<span>' + file.name + '</span><button class="sui-dropzone-file-remove" type="button">&times;</button>';
           item.querySelector('.sui-dropzone-file-remove').addEventListener('click', function(ev) {
@@ -3038,7 +3038,7 @@ const SoftUI = (() => {
       zone.addEventListener('drop', function(e) {
         e.preventDefault();
         zone.classList.remove('drag-over');
-        let files = e.dataTransfer.files;
+        const files = e.dataTransfer.files;
         if (!files.length) return;
         let fileList = zone.querySelector('.sui-dropzone-files');
         if (!fileList) {
@@ -3047,7 +3047,7 @@ const SoftUI = (() => {
           zone.appendChild(fileList);
         }
         Array.prototype.slice.call(files).forEach(function(file) {
-          let item = document.createElement('div');
+          const item = document.createElement('div');
           item.className = 'sui-dropzone-file';
           item.innerHTML = '<span>' + file.name + '</span><button class="sui-dropzone-file-remove" type="button">&times;</button>';
           item.querySelector('.sui-dropzone-file-remove').addEventListener('click', function(ev) {
@@ -3064,16 +3064,16 @@ const SoftUI = (() => {
   // Sidebar — collapsible toggle
   // =========================================
   document.addEventListener('click', function(e) {
-    let btn = e.target.closest('[data-sidebar-toggle]');
+    const btn = e.target.closest('[data-sidebar-toggle]');
     if (!btn) return;
-    let sidebar = btn.closest('.sui-sidebar');
+    const sidebar = btn.closest('.sui-sidebar');
     if (sidebar) {
       sidebar.classList.toggle('sui-sidebar-collapsed');
     }
   });
 
   function sidebar(selector) {
-    let el = typeof selector === 'string' ? document.querySelector(selector) : selector;
+    const el = typeof selector === 'string' ? document.querySelector(selector) : selector;
     if (!el) return null;
 
     function collapse() { el.classList.add('sui-sidebar-collapsed'); }
@@ -3088,34 +3088,34 @@ const SoftUI = (() => {
   // Rating
   // =========================================
   function ratingIsHalf(star, e) {
-    let rect = star.getBoundingClientRect();
+    const rect = star.getBoundingClientRect();
     return e.clientX < rect.left + rect.width / 2;
   }
 
   function ratingEnsureDualSvg(star) {
-    let svgs = star.querySelectorAll('svg');
+    const svgs = star.querySelectorAll('svg');
     if (svgs.length < 2) {
-      let clone = svgs[0].cloneNode(true);
+      const clone = svgs[0].cloneNode(true);
       star.appendChild(clone);
     }
   }
 
   function ratingResetSvg(star) {
-    let svgs = star.querySelectorAll('svg');
+    const svgs = star.querySelectorAll('svg');
     if (svgs.length > 1) {
-      for (var i = svgs.length - 1; i > 0; i--) { svgs[i].remove(); }
+      for (let i = svgs.length - 1; i > 0; i--) { svgs[i].remove(); }
     }
   }
 
   document.addEventListener('click', function(e) {
-    let star = e.target.closest('.sui-rating:not(.sui-rating-readonly) .sui-rating-star');
+    const star = e.target.closest('.sui-rating:not(.sui-rating-readonly) .sui-rating-star');
     if (!star) return;
-    let rating = star.closest('.sui-rating');
-    let stars = Array.from(rating.querySelectorAll('.sui-rating-star'));
-    let index = stars.indexOf(star);
-    let allowHalf = rating.classList.contains('sui-rating-half');
-    let isHalf = allowHalf && ratingIsHalf(star, e);
-    let value = isHalf ? index + 0.5 : index + 1;
+    const rating = star.closest('.sui-rating');
+    const stars = Array.from(rating.querySelectorAll('.sui-rating-star'));
+    const index = stars.indexOf(star);
+    const allowHalf = rating.classList.contains('sui-rating-half');
+    const isHalf = allowHalf && ratingIsHalf(star, e);
+    const value = isHalf ? index + 0.5 : index + 1;
     stars.forEach(function(s, i) {
       s.classList.remove('active', 'half', 'hover', 'hover-half');
       ratingResetSvg(s);
@@ -3135,13 +3135,13 @@ const SoftUI = (() => {
   });
 
   document.addEventListener('mousemove', function(e) {
-    let star = e.target.closest('.sui-rating:not(.sui-rating-readonly) .sui-rating-star');
+    const star = e.target.closest('.sui-rating:not(.sui-rating-readonly) .sui-rating-star');
     if (!star) return;
-    let rating = star.closest('.sui-rating');
-    let stars = Array.from(rating.querySelectorAll('.sui-rating-star'));
-    let index = stars.indexOf(star);
-    let allowHalf = rating.classList.contains('sui-rating-half');
-    let isHalf = allowHalf && ratingIsHalf(star, e);
+    const rating = star.closest('.sui-rating');
+    const stars = Array.from(rating.querySelectorAll('.sui-rating-star'));
+    const index = stars.indexOf(star);
+    const allowHalf = rating.classList.contains('sui-rating-half');
+    const isHalf = allowHalf && ratingIsHalf(star, e);
     stars.forEach(function(s, i) {
       s.classList.remove('hover', 'hover-half');
       ratingResetSvg(s);
@@ -3159,10 +3159,10 @@ const SoftUI = (() => {
   });
 
   document.addEventListener('mouseout', function(e) {
-    let star = e.target.closest('.sui-rating:not(.sui-rating-readonly) .sui-rating-star');
+    const star = e.target.closest('.sui-rating:not(.sui-rating-readonly) .sui-rating-star');
     if (!star) return;
-    let rating = star.closest('.sui-rating');
-    let stars = Array.from(rating.querySelectorAll('.sui-rating-star'));
+    const rating = star.closest('.sui-rating');
+    const stars = Array.from(rating.querySelectorAll('.sui-rating-star'));
     stars.forEach(function(s) {
       s.classList.remove('hover', 'hover-half');
       if (!s.classList.contains('half')) { ratingResetSvg(s); }
@@ -3173,14 +3173,14 @@ const SoftUI = (() => {
   // Color Picker
   // =========================================
   document.addEventListener('click', function(e) {
-    let swatch = e.target.closest('.sui-color-picker .sui-color-swatch');
+    const swatch = e.target.closest('.sui-color-picker .sui-color-swatch');
     if (!swatch) return;
-    let picker = swatch.closest('.sui-color-picker');
+    const picker = swatch.closest('.sui-color-picker');
     picker.querySelectorAll('.sui-color-swatch').forEach(function(s) {
       s.classList.remove('active');
     });
     swatch.classList.add('active');
-    let color = swatch.getAttribute('data-color') || swatch.style.background || swatch.style.backgroundColor;
+    const color = swatch.getAttribute('data-color') || swatch.style.background || swatch.style.backgroundColor;
     picker.setAttribute('data-value', color);
     picker.dispatchEvent(new CustomEvent('sui-color-change', { detail: { color: color } }));
   });
@@ -3189,22 +3189,22 @@ const SoftUI = (() => {
   // Color Spectrum Picker
   // =========================================
   function initSpectrumPickers() {
-    let pickers = document.querySelectorAll('.sui-color-spectrum');
+    const pickers = document.querySelectorAll('.sui-color-spectrum');
     pickers.forEach(function(picker) { initSpectrum(picker); });
   }
 
   function initSpectrum(picker) {
-    let canvasWrap = picker.querySelector('.sui-color-spectrum-canvas');
-    let canvas = canvasWrap.querySelector('canvas');
-    let ctx = canvas.getContext('2d');
-    let cursor = canvasWrap.querySelector('.sui-color-spectrum-cursor');
-    let hueBar = picker.querySelector('.sui-color-spectrum-hue');
-    let hueCursor = picker.querySelector('.sui-color-spectrum-hue-cursor');
-    let preview = picker.querySelector('.sui-color-spectrum-preview');
-    let hexInput = picker.querySelector('.sui-color-spectrum-hex input');
-    let rInput = picker.querySelector('input[data-channel="r"]');
-    let gInput = picker.querySelector('input[data-channel="g"]');
-    let bInput = picker.querySelector('input[data-channel="b"]');
+    const canvasWrap = picker.querySelector('.sui-color-spectrum-canvas');
+    const canvas = canvasWrap.querySelector('canvas');
+    const ctx = canvas.getContext('2d');
+    const cursor = canvasWrap.querySelector('.sui-color-spectrum-cursor');
+    const hueBar = picker.querySelector('.sui-color-spectrum-hue');
+    const hueCursor = picker.querySelector('.sui-color-spectrum-hue-cursor');
+    const preview = picker.querySelector('.sui-color-spectrum-preview');
+    const hexInput = picker.querySelector('.sui-color-spectrum-hex input');
+    const rInput = picker.querySelector('input[data-channel="r"]');
+    const gInput = picker.querySelector('input[data-channel="g"]');
+    const bInput = picker.querySelector('input[data-channel="b"]');
 
     let hue = 0, sat = 1, val = 1;
 
@@ -3215,11 +3215,11 @@ const SoftUI = (() => {
     }
 
     function hsvToRgb(h, s, v) {
-      let i = Math.floor(h / 60) % 6;
-      let f = h / 60 - Math.floor(h / 60);
-      let p = v * (1 - s);
-      let q = v * (1 - f * s);
-      let t = v * (1 - (1 - f) * s);
+      const i = Math.floor(h / 60) % 6;
+      const f = h / 60 - Math.floor(h / 60);
+      const p = v * (1 - s);
+      const q = v * (1 - f * s);
+      const t = v * (1 - (1 - f) * s);
       let r, g, b;
       switch (i) {
         case 0: r = v; g = t; b = p; break;
@@ -3239,16 +3239,17 @@ const SoftUI = (() => {
     function hexToRgb(hex) {
       hex = hex.replace('#', '');
       if (hex.length === 3) hex = hex[0]+hex[0]+hex[1]+hex[1]+hex[2]+hex[2];
-      let n = parseInt(hex, 16);
+      const n = parseInt(hex, 16);
       return [(n >> 16) & 255, (n >> 8) & 255, n & 255];
     }
 
     function rgbToHsv(r, g, b) {
       r /= 255; g /= 255; b /= 255;
-      let max = Math.max(r, g, b), min = Math.min(r, g, b);
-      let h, s, v = max;
-      let d = max - min;
-      s = max === 0 ? 0 : d / max;
+      const max = Math.max(r, g, b), min = Math.min(r, g, b);
+      let h;
+      const v = max;
+      const d = max - min;
+      const s = max === 0 ? 0 : d / max;
       if (max === min) { h = 0; }
       else {
         switch (max) {
@@ -3262,17 +3263,17 @@ const SoftUI = (() => {
     }
 
     function drawSatVal() {
-      let w = canvas.width, h = canvas.height;
-      let hueRgb = hsvToRgb(hue, 1, 1);
-      let hueColor = 'rgb(' + hueRgb[0] + ',' + hueRgb[1] + ',' + hueRgb[2] + ')';
+      const w = canvas.width, h = canvas.height;
+      const hueRgb = hsvToRgb(hue, 1, 1);
+      const hueColor = 'rgb(' + hueRgb[0] + ',' + hueRgb[1] + ',' + hueRgb[2] + ')';
       ctx.fillStyle = hueColor;
       ctx.fillRect(0, 0, w, h);
-      let whiteGrad = ctx.createLinearGradient(0, 0, w, 0);
+      const whiteGrad = ctx.createLinearGradient(0, 0, w, 0);
       whiteGrad.addColorStop(0, 'rgba(255,255,255,1)');
       whiteGrad.addColorStop(1, 'rgba(255,255,255,0)');
       ctx.fillStyle = whiteGrad;
       ctx.fillRect(0, 0, w, h);
-      let blackGrad = ctx.createLinearGradient(0, 0, 0, h);
+      const blackGrad = ctx.createLinearGradient(0, 0, 0, h);
       blackGrad.addColorStop(0, 'rgba(0,0,0,0)');
       blackGrad.addColorStop(1, 'rgba(0,0,0,1)');
       ctx.fillStyle = blackGrad;
@@ -3280,8 +3281,8 @@ const SoftUI = (() => {
     }
 
     function updateUI() {
-      let rgb = hsvToRgb(hue, sat, val);
-      let hex = rgbToHex(rgb[0], rgb[1], rgb[2]);
+      const rgb = hsvToRgb(hue, sat, val);
+      const hex = rgbToHex(rgb[0], rgb[1], rgb[2]);
       if (preview) preview.style.background = hex;
       if (hexInput) hexInput.value = hex.toUpperCase().slice(1);
       if (rInput) rInput.value = rgb[0];
@@ -3291,7 +3292,7 @@ const SoftUI = (() => {
       cursor.style.left = (sat * 100) + '%';
       cursor.style.top = ((1 - val) * 100) + '%';
 
-      let hueRgb = hsvToRgb(hue, 1, 1);
+      const hueRgb = hsvToRgb(hue, 1, 1);
       hueCursor.style.left = (hue / 360 * 100) + '%';
       hueCursor.style.background = 'rgb(' + hueRgb[0] + ',' + hueRgb[1] + ',' + hueRgb[2] + ')';
 
@@ -3301,9 +3302,9 @@ const SoftUI = (() => {
 
     // Canvas drag
     function onCanvasMove(e) {
-      let rect = canvasWrap.getBoundingClientRect();
-      let x = (e.touches ? e.touches[0].clientX : e.clientX) - rect.left;
-      let y = (e.touches ? e.touches[0].clientY : e.clientY) - rect.top;
+      const rect = canvasWrap.getBoundingClientRect();
+      const x = (e.touches ? e.touches[0].clientX : e.clientX) - rect.left;
+      const y = (e.touches ? e.touches[0].clientY : e.clientY) - rect.top;
       sat = Math.max(0, Math.min(1, x / rect.width));
       val = Math.max(0, Math.min(1, 1 - y / rect.height));
       updateUI();
@@ -3329,8 +3330,8 @@ const SoftUI = (() => {
 
     // Hue drag
     function onHueMove(e) {
-      let rect = hueBar.getBoundingClientRect();
-      let x = (e.touches ? e.touches[0].clientX : e.clientX) - rect.left;
+      const rect = hueBar.getBoundingClientRect();
+      const x = (e.touches ? e.touches[0].clientX : e.clientX) - rect.left;
       hue = Math.max(0, Math.min(360, x / rect.width * 360));
       drawSatVal();
       updateUI();
@@ -3357,10 +3358,10 @@ const SoftUI = (() => {
     // Hex input
     if (hexInput) {
       hexInput.addEventListener('input', function() {
-        let v = hexInput.value.replace('#', '');
+        const v = hexInput.value.replace('#', '');
         if (v.length === 6 && /^[0-9A-Fa-f]{6}$/.test(v)) {
-          let rgb = hexToRgb(v);
-          let hsv = rgbToHsv(rgb[0], rgb[1], rgb[2]);
+          const rgb = hexToRgb(v);
+          const hsv = rgbToHsv(rgb[0], rgb[1], rgb[2]);
           hue = hsv[0]; sat = hsv[1]; val = hsv[2];
           drawSatVal();
           updateUI();
@@ -3376,7 +3377,7 @@ const SoftUI = (() => {
       r = Math.max(0, Math.min(255, r));
       g = Math.max(0, Math.min(255, g));
       b = Math.max(0, Math.min(255, b));
-      let hsv = rgbToHsv(r, g, b);
+      const hsv = rgbToHsv(r, g, b);
       hue = hsv[0]; sat = hsv[1]; val = hsv[2];
       drawSatVal();
       updateUI();
@@ -3387,9 +3388,9 @@ const SoftUI = (() => {
     if (bInput) bInput.addEventListener('input', onRgbInput);
 
     // Init from data-color attribute or default
-    let initColor = picker.getAttribute('data-color') || '#5B54E0';
-    let initRgb = hexToRgb(initColor);
-    let initHsv = rgbToHsv(initRgb[0], initRgb[1], initRgb[2]);
+    const initColor = picker.getAttribute('data-color') || '#5B54E0';
+    const initRgb = hexToRgb(initColor);
+    const initHsv = rgbToHsv(initRgb[0], initRgb[1], initRgb[2]);
     hue = initHsv[0]; sat = initHsv[1]; val = initHsv[2];
 
     resizeCanvas();
@@ -3412,7 +3413,7 @@ const SoftUI = (() => {
     return (bytes / 1048576).toFixed(1) + ' MB';
   }
 
-  let fileIcons = {
+  const fileIcons = {
     file: '<svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>',
     image: '<svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>',
     pdf: '<svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="9" y1="15" x2="15" y2="15"/><line x1="9" y1="18" x2="13" y2="18"/><line x1="9" y1="12" x2="11" y2="12"/></svg>',
@@ -3424,8 +3425,8 @@ const SoftUI = (() => {
   };
 
   function getFileType(file) {
-    let type = file.type || '';
-    let ext = file.name.split('.').pop().toLowerCase();
+    const type = file.type || '';
+    const ext = file.name.split('.').pop().toLowerCase();
     if (type.startsWith('image/')) return 'image';
     if (type === 'application/pdf' || ext === 'pdf') return 'pdf';
     if (type.startsWith('video/')) return 'video';
@@ -3462,11 +3463,11 @@ const SoftUI = (() => {
   }
 
   function renderFileList(zone, files, append) {
-    let container = getOrCreateContainer(zone, 'sui-file-list');
+    const container = getOrCreateContainer(zone, 'sui-file-list');
     if (!append) container.innerHTML = '';
-    for (var i = 0; i < files.length; i++) {
-      let f = files[i];
-      let item = document.createElement('div');
+    for (let i = 0; i < files.length; i++) {
+      const f = files[i];
+      const item = document.createElement('div');
       item.className = 'sui-file-item';
       item.innerHTML =
         '<div class="sui-file-item-icon ' + getFileIconClass(f) + '">' + getFileIcon(f) + '</div>' +
@@ -3480,11 +3481,11 @@ const SoftUI = (() => {
   }
 
   function renderFileProgress(zone, files, append) {
-    let container = getOrCreateContainer(zone, 'sui-file-list');
+    const container = getOrCreateContainer(zone, 'sui-file-list');
     if (!append) container.innerHTML = '';
-    for (var i = 0; i < files.length; i++) {
-      let f = files[i];
-      let item = document.createElement('div');
+    for (let i = 0; i < files.length; i++) {
+      const f = files[i];
+      const item = document.createElement('div');
       item.className = 'sui-file-item';
       item.innerHTML =
         '<div class="sui-file-item-icon ' + getFileIconClass(f) + '">' + getFileIcon(f) + '</div>' +
@@ -3502,10 +3503,10 @@ const SoftUI = (() => {
   }
 
   function simulateProgress(item) {
-    let bar = item.querySelector('.sui-progress-bar');
-    let status = item.querySelector('.sui-file-item-status');
+    const bar = item.querySelector('.sui-progress-bar');
+    const status = item.querySelector('.sui-file-item-status');
     let pct = 0;
-    let interval = setInterval(function() {
+    const interval = setInterval(function() {
       pct += Math.floor(Math.random() * 15) + 5;
       if (pct >= 100) {
         pct = 100;
@@ -3522,19 +3523,19 @@ const SoftUI = (() => {
   }
 
   function renderFilePreview(zone, files, append) {
-    let container = getOrCreateContainer(zone, 'sui-file-preview-grid');
+    const container = getOrCreateContainer(zone, 'sui-file-preview-grid');
     if (!append) container.innerHTML = '';
-    for (var i = 0; i < files.length; i++) {
-      let f = files[i];
+    for (let i = 0; i < files.length; i++) {
+      const f = files[i];
       if (!f.type || !f.type.startsWith('image/')) continue;
-      let item = document.createElement('div');
+      const item = document.createElement('div');
       item.className = 'sui-file-preview-item';
       item.innerHTML =
         '<img alt="' + f.name + '">' +
         '<button class="sui-file-preview-item-remove" aria-label="Remove">&times;</button>';
       container.appendChild(item);
       (function(img, file) {
-        let reader = new FileReader();
+        const reader = new FileReader();
         reader.onload = function(e) { img.src = e.target.result; };
         reader.readAsDataURL(file);
       })(item.querySelector('img'), f);
@@ -3544,12 +3545,12 @@ const SoftUI = (() => {
   // Delegated change on file inputs
   document.addEventListener('change', function(e) {
     if (!e.target.matches('.sui-file-upload input[type="file"]')) return;
-    let input = e.target;
-    let zone = input.closest('.sui-file-upload');
+    const input = e.target;
+    const zone = input.closest('.sui-file-upload');
     if (!zone) return;
-    let files = Array.from(input.files);
+    const files = Array.from(input.files);
     if (!files.length) return;
-    let mode = zone.getAttribute('data-sui-upload') || 'list';
+    const mode = zone.getAttribute('data-sui-upload') || 'list';
     if (mode === 'preview') {
       renderFilePreview(zone, files);
     } else if (mode === 'progress') {
@@ -3562,34 +3563,34 @@ const SoftUI = (() => {
 
   // Delegated remove clicks
   document.addEventListener('click', function(e) {
-    let removeBtn = e.target.closest('.sui-file-item-remove, .sui-file-preview-item-remove');
+    const removeBtn = e.target.closest('.sui-file-item-remove, .sui-file-preview-item-remove');
     if (!removeBtn) return;
-    let item = removeBtn.closest('.sui-file-item, .sui-file-preview-item');
+    const item = removeBtn.closest('.sui-file-item, .sui-file-preview-item');
     if (item) item.remove();
   });
 
   // Dragover styling
   document.addEventListener('dragover', function(e) {
-    let zone = e.target.closest('.sui-file-upload');
+    const zone = e.target.closest('.sui-file-upload');
     if (!zone) return;
     e.preventDefault();
     zone.classList.add('sui-file-upload-dragover');
   });
 
   document.addEventListener('dragleave', function(e) {
-    let zone = e.target.closest('.sui-file-upload');
+    const zone = e.target.closest('.sui-file-upload');
     if (!zone) return;
     zone.classList.remove('sui-file-upload-dragover');
   });
 
   document.addEventListener('drop', function(e) {
-    let zone = e.target.closest('.sui-file-upload');
+    const zone = e.target.closest('.sui-file-upload');
     if (!zone) return;
     e.preventDefault();
     zone.classList.remove('sui-file-upload-dragover');
-    let files = Array.from(e.dataTransfer.files);
+    const files = Array.from(e.dataTransfer.files);
     if (!files.length) return;
-    let mode = zone.getAttribute('data-sui-upload') || 'list';
+    const mode = zone.getAttribute('data-sui-upload') || 'list';
     if (mode === 'preview') {
       renderFilePreview(zone, files, true);
     } else if (mode === 'progress') {
@@ -3603,33 +3604,33 @@ const SoftUI = (() => {
   // Radial Progress
   // =========================================
   function initRadialProgress() {
-    let radials = document.querySelectorAll('.sui-radial[data-value]');
+    const radials = document.querySelectorAll('.sui-radial[data-value]');
     radials.forEach(function(el) {
-      let fill = el.querySelector('.sui-radial-fill');
+      const fill = el.querySelector('.sui-radial-fill');
       if (!fill) return;
       let value = parseFloat(el.getAttribute('data-value')) || 0;
       value = Math.max(0, Math.min(100, value));
       let circumference = parseFloat(fill.getAttribute('stroke-dasharray') || fill.style.strokeDasharray);
       if (!circumference) {
-        let r = fill.getAttribute('r');
+        const r = fill.getAttribute('r');
         circumference = 2 * Math.PI * parseFloat(r);
       }
       fill.style.strokeDasharray = circumference;
       fill.style.strokeDashoffset = circumference;
-      let valueEl = el.querySelector('.sui-radial-value');
-      let duration = el.classList.contains('sui-radial-animated') ? 1200 : 600;
+      const valueEl = el.querySelector('.sui-radial-value');
+      const duration = el.classList.contains('sui-radial-animated') ? 1200 : 600;
 
       requestAnimationFrame(function() {
         requestAnimationFrame(function() {
-          let offset = circumference - (value / 100) * circumference;
+          const offset = circumference - (value / 100) * circumference;
           fill.style.strokeDashoffset = offset;
 
           if (valueEl) {
-            let start = performance.now();
+            const start = performance.now();
             function tick(now) {
-              let elapsed = now - start;
-              let progress = Math.min(elapsed / duration, 1);
-              let current = Math.round(progress * value);
+              const elapsed = now - start;
+              const progress = Math.min(elapsed / duration, 1);
+              const current = Math.round(progress * value);
               valueEl.textContent = current + '%';
               if (progress < 1) requestAnimationFrame(tick);
             }
@@ -3650,14 +3651,14 @@ const SoftUI = (() => {
   // Number Input
   // =========================================
   document.addEventListener('click', function(e) {
-    let btn = e.target.closest('.sui-number-input-btn');
+    const btn = e.target.closest('.sui-number-input-btn');
     if (!btn) return;
-    let wrap = btn.closest('.sui-number-input');
-    let input = wrap.querySelector('input[type="number"]');
+    const wrap = btn.closest('.sui-number-input');
+    const input = wrap.querySelector('input[type="number"]');
     if (!input) return;
-    let step = parseFloat(input.step) || 1;
-    let min = input.min !== '' ? parseFloat(input.min) : -Infinity;
-    let max = input.max !== '' ? parseFloat(input.max) : Infinity;
+    const step = parseFloat(input.step) || 1;
+    const min = input.min !== '' ? parseFloat(input.min) : -Infinity;
+    const max = input.max !== '' ? parseFloat(input.max) : Infinity;
     let val = parseFloat(input.value) || 0;
     if (btn.getAttribute('data-action') === 'decrement') {
       val = Math.max(min, val - step);
@@ -3672,13 +3673,13 @@ const SoftUI = (() => {
   // Password Toggle
   // =========================================
   document.addEventListener('click', function(e) {
-    let btn = e.target.closest('.sui-password-toggle');
+    const btn = e.target.closest('.sui-password-toggle');
     if (!btn) return;
     e.stopPropagation();
-    let wrap = btn.closest('.sui-password-input');
-    let input = wrap.querySelector('input');
+    const wrap = btn.closest('.sui-password-input');
+    const input = wrap.querySelector('input');
     if (!input) return;
-    let isPassword = input.type === 'password';
+    const isPassword = input.type === 'password';
     input.type = isPassword ? 'text' : 'password';
     btn.classList.toggle('active');
   }, true);
@@ -3687,37 +3688,37 @@ const SoftUI = (() => {
   // Tags Input
   // =========================================
   document.addEventListener('keydown', function(e) {
-    let input = e.target.closest('.sui-tags-input-field');
+    const input = e.target.closest('.sui-tags-input-field');
     if (!input) return;
-    let wrap = input.closest('.sui-tags-input');
+    const wrap = input.closest('.sui-tags-input');
     if (e.key === 'Enter' || e.key === ',') {
       e.preventDefault();
-      let val = input.value.trim().replace(/,$/, '');
+      const val = input.value.trim().replace(/,$/, '');
       if (!val) return;
-      let tag = document.createElement('span');
+      const tag = document.createElement('span');
       tag.className = 'sui-chip';
       tag.textContent = val;
-      let closeBtn = document.createElement('button');
+      const closeBtn = document.createElement('button');
       closeBtn.className = 'sui-chip-close';
       closeBtn.setAttribute('aria-label', 'Remove');
       tag.appendChild(closeBtn);
       wrap.insertBefore(tag, input);
       input.value = '';
     } else if (e.key === 'Backspace' && !input.value) {
-      let tags = wrap.querySelectorAll('.sui-chip');
+      const tags = wrap.querySelectorAll('.sui-chip');
       if (tags.length) tags[tags.length - 1].remove();
     }
   });
 
   document.addEventListener('click', function(e) {
-    let dismiss = e.target.closest('.sui-tags-input .sui-chip-close');
+    const dismiss = e.target.closest('.sui-tags-input .sui-chip-close');
     if (dismiss) {
       dismiss.closest('.sui-chip').remove();
       return;
     }
-    let wrap = e.target.closest('.sui-tags-input');
+    const wrap = e.target.closest('.sui-tags-input');
     if (wrap) {
-      let input = wrap.querySelector('.sui-tags-input-field');
+      const input = wrap.querySelector('.sui-tags-input-field');
       if (input) input.focus();
     }
   });
@@ -3729,10 +3730,10 @@ const SoftUI = (() => {
   function initSlideSwaps() {
     document.querySelectorAll('.sui-swap-slide, .sui-swap-slide-x').forEach(function(swap) {
       if (swap.dataset.suiSlideInit) return;
-      let children = swap.querySelectorAll('.sui-swap-on, .sui-swap-off, .sui-swap-state');
+      const children = swap.querySelectorAll('.sui-swap-on, .sui-swap-off, .sui-swap-state');
       let maxW = 0, maxH = 0;
       children.forEach(function(c) {
-        let prev = c.style.cssText;
+        const prev = c.style.cssText;
         c.style.position = 'relative';
         c.style.opacity = '1';
         c.style.transform = 'none';
@@ -3753,12 +3754,12 @@ const SoftUI = (() => {
   }
 
   document.addEventListener('click', function(e) {
-    let swap = e.target.closest('.sui-swap');
+    const swap = e.target.closest('.sui-swap');
     if (!swap) return;
     if (swap.classList.contains('sui-swap-cycle')) {
-      let states = Array.from(swap.querySelectorAll('.sui-swap-state'));
-      let current = states.findIndex(function(s) { return s.classList.contains('active'); });
-      let next = (current + 1) % states.length;
+      const states = Array.from(swap.querySelectorAll('.sui-swap-state'));
+      const current = states.findIndex(function(s) { return s.classList.contains('active'); });
+      const next = (current + 1) % states.length;
       states.forEach(function(s) { s.classList.remove('active'); });
       states[next].classList.add('active');
       swap.setAttribute('data-state', next);
@@ -3772,36 +3773,36 @@ const SoftUI = (() => {
   // =========================================
   // Dock — magnification effect
   // =========================================
-  let dockMaxScale = 1.5;
-  let dockRange = 3;
+  const dockMaxScale = 1.5;
+  const dockRange = 3;
 
   document.addEventListener('mousemove', function(e) {
-    let dock = e.target.closest('.sui-dock');
+    const dock = e.target.closest('.sui-dock');
     if (!dock) return;
     if (dock.classList.contains('sui-dock-no-scale')) return;
-    let iconOnly = dock.classList.contains('sui-dock-icon-scale');
-    let items = Array.from(dock.querySelectorAll('.sui-dock-item'));
-    let isVertical = dock.classList.contains('sui-dock-vertical');
+    const iconOnly = dock.classList.contains('sui-dock-icon-scale');
+    const items = Array.from(dock.querySelectorAll('.sui-dock-item'));
+    const isVertical = dock.classList.contains('sui-dock-vertical');
 
     items.forEach(function(item) {
-      let rect = item.getBoundingClientRect();
-      let center = isVertical
+      const rect = item.getBoundingClientRect();
+      const center = isVertical
         ? rect.top + rect.height / 2
         : rect.left + rect.width / 2;
-      let mouse = isVertical ? e.clientY : e.clientX;
-      let baseSize = dock.classList.contains('sui-dock-sm') ? 32
+      const mouse = isVertical ? e.clientY : e.clientX;
+      const baseSize = dock.classList.contains('sui-dock-sm') ? 32
         : dock.classList.contains('sui-dock-lg') ? 52 : 40;
-      let dist = Math.abs(mouse - center) / baseSize;
+      const dist = Math.abs(mouse - center) / baseSize;
 
       if (dist < dockRange) {
-        let scale = dockMaxScale - (dist / dockRange) * (dockMaxScale - 1);
+        const scale = dockMaxScale - (dist / dockRange) * (dockMaxScale - 1);
         if (iconOnly) {
           item.style.width = '';
           item.style.height = '';
-          let svg = item.querySelector('svg');
+          const svg = item.querySelector('svg');
           if (svg) svg.style.transform = 'scale(' + scale + ')';
         } else {
-          let newSize = Math.round(baseSize * scale);
+          const newSize = Math.round(baseSize * scale);
           item.style.width = newSize + 'px';
           item.style.height = newSize + 'px';
         }
@@ -3809,7 +3810,7 @@ const SoftUI = (() => {
         item.style.width = '';
         item.style.height = '';
         if (iconOnly) {
-          let svg = item.querySelector('svg');
+          const svg = item.querySelector('svg');
           if (svg) svg.style.transform = '';
         }
       }
@@ -3818,13 +3819,13 @@ const SoftUI = (() => {
 
   document.addEventListener('mouseleave', function(e) {
     if (!e.target.classList || !e.target.classList.contains('sui-dock')) return;
-    let iconOnly = e.target.classList.contains('sui-dock-icon-scale');
-    let items = e.target.querySelectorAll('.sui-dock-item');
+    const iconOnly = e.target.classList.contains('sui-dock-icon-scale');
+    const items = e.target.querySelectorAll('.sui-dock-item');
     items.forEach(function(item) {
       item.style.width = '';
       item.style.height = '';
       if (iconOnly) {
-        let svg = item.querySelector('svg');
+        const svg = item.querySelector('svg');
         if (svg) svg.style.transform = '';
       }
     });
@@ -3875,7 +3876,7 @@ const SoftUI = (() => {
     lightboxOverlay.classList.add('open');
     lightboxOverlay.classList.remove('zoomed');
     document.body.style.overflow = 'hidden';
-    let hasMultiple = images.length > 1;
+    const hasMultiple = images.length > 1;
     lightboxOverlay.querySelector('.sui-lightbox-prev').style.display = hasMultiple ? '' : 'none';
     lightboxOverlay.querySelector('.sui-lightbox-next').style.display = hasMultiple ? '' : 'none';
     lightboxOverlay.querySelector('.sui-lightbox-counter').style.display = hasMultiple ? '' : 'none';
@@ -3891,10 +3892,10 @@ const SoftUI = (() => {
   function showLightboxImage(idx) {
     if (lightboxImages.length === 0) return;
     lightboxIndex = (idx + lightboxImages.length) % lightboxImages.length;
-    let item = lightboxImages[lightboxIndex];
-    let img = lightboxOverlay.querySelector('img');
-    let caption = lightboxOverlay.querySelector('.sui-lightbox-caption');
-    let counter = lightboxOverlay.querySelector('.sui-lightbox-counter');
+    const item = lightboxImages[lightboxIndex];
+    const img = lightboxOverlay.querySelector('img');
+    const caption = lightboxOverlay.querySelector('.sui-lightbox-caption');
+    const counter = lightboxOverlay.querySelector('.sui-lightbox-counter');
     img.src = item.src;
     img.alt = item.alt || '';
     caption.textContent = item.caption || '';
@@ -3905,11 +3906,11 @@ const SoftUI = (() => {
 
   // Vertical gallery — click side thumb to update main
   document.addEventListener('click', function(e) {
-    let thumb = e.target.closest('.sui-lightbox-vertical-strip .sui-lightbox-thumb');
+    const thumb = e.target.closest('.sui-lightbox-vertical-strip .sui-lightbox-thumb');
     if (!thumb) return;
-    let gallery = thumb.closest('.sui-lightbox-vertical');
-    let main = gallery.querySelector('.sui-lightbox-vertical-main img');
-    let img = thumb.querySelector('img');
+    const gallery = thumb.closest('.sui-lightbox-vertical');
+    const main = gallery.querySelector('.sui-lightbox-vertical-main img');
+    const img = thumb.querySelector('img');
     if (main && img) {
       main.src = thumb.getAttribute('data-src') || img.src;
       main.alt = thumb.getAttribute('data-alt') || img.alt;
@@ -3920,39 +3921,39 @@ const SoftUI = (() => {
 
   // Click main image in vertical gallery to open lightbox
   document.addEventListener('click', function(e) {
-    let main = e.target.closest('.sui-lightbox-vertical-main');
+    const main = e.target.closest('.sui-lightbox-vertical-main');
     if (!main) return;
-    let gallery = main.closest('.sui-lightbox-vertical');
-    let thumbs = Array.from(gallery.querySelectorAll('.sui-lightbox-vertical-strip .sui-lightbox-thumb'));
-    let images = thumbs.map(function(t) {
-      let img = t.querySelector('img');
+    const gallery = main.closest('.sui-lightbox-vertical');
+    const thumbs = Array.from(gallery.querySelectorAll('.sui-lightbox-vertical-strip .sui-lightbox-thumb'));
+    const images = thumbs.map(function(t) {
+      const img = t.querySelector('img');
       return {
         src: t.getAttribute('data-src') || (img ? img.src : ''),
         alt: t.getAttribute('data-alt') || (img ? img.alt : ''),
         caption: t.getAttribute('data-caption') || ''
       };
     });
-    let activeIdx = thumbs.findIndex(function(t) { return t.classList.contains('active'); });
+    const activeIdx = thumbs.findIndex(function(t) { return t.classList.contains('active'); });
     openLightbox(images, activeIdx >= 0 ? activeIdx : 0);
   });
 
   // Click on thumbnail
   document.addEventListener('click', function(e) {
-    let thumb = e.target.closest('.sui-lightbox-thumb');
+    const thumb = e.target.closest('.sui-lightbox-thumb');
     if (!thumb) return;
     // Skip if inside vertical strip (handled above)
     if (thumb.closest('.sui-lightbox-vertical-strip')) return;
-    let grid = thumb.closest('.sui-lightbox-grid');
-    let thumbs = grid ? Array.from(grid.querySelectorAll('.sui-lightbox-thumb')) : [thumb];
-    let images = thumbs.map(function(t) {
-      let img = t.querySelector('img');
+    const grid = thumb.closest('.sui-lightbox-grid');
+    const thumbs = grid ? Array.from(grid.querySelectorAll('.sui-lightbox-thumb')) : [thumb];
+    const images = thumbs.map(function(t) {
+      const img = t.querySelector('img');
       return {
         src: t.getAttribute('data-src') || (img ? img.src : ''),
         alt: t.getAttribute('data-alt') || (img ? img.alt : ''),
         caption: t.getAttribute('data-caption') || ''
       };
     });
-    let index = thumbs.indexOf(thumb);
+    const index = thumbs.indexOf(thumb);
     openLightbox(images, index);
   });
 
@@ -3963,21 +3964,21 @@ const SoftUI = (() => {
     document.querySelectorAll('[data-sui-typewriter]').forEach(function(el) {
       if (el.dataset.suiTypewriterInit) return;
       el.dataset.suiTypewriterInit = '1';
-      let words = el.getAttribute('data-words');
-      let speed = parseInt(el.getAttribute('data-speed')) || 80;
-      let deleteSpeed = parseInt(el.getAttribute('data-delete-speed')) || 40;
-      let pause = parseInt(el.getAttribute('data-pause')) || 1500;
-      let loop = el.hasAttribute('data-loop');
+      const words = el.getAttribute('data-words');
+      const speed = parseInt(el.getAttribute('data-speed')) || 80;
+      const deleteSpeed = parseInt(el.getAttribute('data-delete-speed')) || 40;
+      const pause = parseInt(el.getAttribute('data-pause')) || 1500;
+      const loop = el.hasAttribute('data-loop');
 
       if (words) {
         // Multiple phrases mode
-        let phrases = words.split('|').map(function(s) { return s.trim(); });
+        const phrases = words.split('|').map(function(s) { return s.trim(); });
         let phraseIdx = 0;
         let charIdx = 0;
         let deleting = false;
 
         function tick() {
-          let current = phrases[phraseIdx];
+          const current = phrases[phraseIdx];
           if (!deleting) {
             charIdx++;
             el.textContent = current.substring(0, charIdx);
@@ -4004,7 +4005,7 @@ const SoftUI = (() => {
         setTimeout(tick, 500);
       } else {
         // Single text mode — type out existing content
-        let text = el.textContent;
+        const text = el.textContent;
         el.textContent = '';
         let i = 0;
         function typeChar() {
@@ -4032,15 +4033,15 @@ const SoftUI = (() => {
     document.querySelectorAll('[data-sui-text-rotate]').forEach(function(el) {
       if (el.dataset.suiRotateInit) return;
       el.dataset.suiRotateInit = '1';
-      let words = el.querySelectorAll('.sui-text-rotate-word');
+      const words = el.querySelectorAll('.sui-text-rotate-word');
       if (words.length < 2) return;
-      let interval = parseInt(el.getAttribute('data-interval')) || 2000;
+      const interval = parseInt(el.getAttribute('data-interval')) || 2000;
       let index = 0;
 
       words[0].classList.add('active');
 
       setInterval(function() {
-        let current = words[index];
+        const current = words[index];
         current.classList.remove('active');
         current.classList.add('exit');
         setTimeout(function() { current.classList.remove('exit'); }, 400);
@@ -4060,18 +4061,18 @@ const SoftUI = (() => {
   // =========================================
   // Copy Button
   // =========================================
-  let clipboardSvg = '<svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>';
-  let checkSvg = '<svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>';
+  const clipboardSvg = '<svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>';
+  const checkSvg = '<svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>';
 
   document.addEventListener('click', function(e) {
-    let btn = e.target.closest('[data-sui-copy]');
+    const btn = e.target.closest('[data-sui-copy]');
     if (!btn) return;
     let text = btn.getAttribute('data-sui-copy');
     if (!text) {
-      let wrap = btn.closest('.sui-copy, .sui-copy-input');
+      const wrap = btn.closest('.sui-copy, .sui-copy-input');
       if (wrap) {
-        let textEl = wrap.querySelector('.sui-copy-text');
-        let inputEl = wrap.querySelector('.sui-input');
+        const textEl = wrap.querySelector('.sui-copy-text');
+        const inputEl = wrap.querySelector('.sui-input');
         text = textEl ? textEl.textContent : inputEl ? inputEl.value : '';
       }
     }
@@ -4092,25 +4093,25 @@ const SoftUI = (() => {
     document.querySelectorAll('.sui-diff[data-sui-diff]').forEach(function(diff) {
       if (diff.dataset.suiDiffInit) return;
       diff.dataset.suiDiffInit = '1';
-      let handle = diff.querySelector('.sui-diff-handle');
-      let before = diff.querySelector('.sui-diff-before');
+      const handle = diff.querySelector('.sui-diff-handle');
+      const before = diff.querySelector('.sui-diff-before');
       if (!handle || !before) return;
-      let isVertical = diff.classList.contains('sui-diff-vertical');
+      const isVertical = diff.classList.contains('sui-diff-vertical');
 
       function onMove(e) {
         e.preventDefault();
-        let rect = diff.getBoundingClientRect();
+        const rect = diff.getBoundingClientRect();
         let pos;
         if (isVertical) {
-          let clientY = e.touches ? e.touches[0].clientY : e.clientY;
+          const clientY = e.touches ? e.touches[0].clientY : e.clientY;
           pos = Math.max(0, Math.min(1, (clientY - rect.top) / rect.height));
-          let pct = (pos * 100);
+          const pct = (pos * 100);
           before.style.clipPath = 'inset(0 0 ' + (100 - pct) + '% 0)';
           handle.style.top = pct + '%';
         } else {
-          let clientX = e.touches ? e.touches[0].clientX : e.clientX;
+          const clientX = e.touches ? e.touches[0].clientX : e.clientX;
           pos = Math.max(0, Math.min(1, (clientX - rect.left) / rect.width));
-          let pct = (pos * 100);
+          const pct = (pos * 100);
           before.style.clipPath = 'inset(0 ' + (100 - pct) + '% 0 0)';
           handle.style.left = pct + '%';
         }
@@ -4147,15 +4148,15 @@ const SoftUI = (() => {
   // Speed Dial
   // =========================================
   document.addEventListener('click', function(e) {
-    let trigger = e.target.closest('.sui-speed-dial-trigger');
+    const trigger = e.target.closest('.sui-speed-dial-trigger');
     if (trigger) {
-      let dial = trigger.closest('.sui-speed-dial');
+      const dial = trigger.closest('.sui-speed-dial');
       dial.classList.toggle('open');
       return;
     }
-    let action = e.target.closest('.sui-speed-dial-action');
+    const action = e.target.closest('.sui-speed-dial-action');
     if (action) {
-      let dial = action.closest('.sui-speed-dial');
+      const dial = action.closest('.sui-speed-dial');
       dial.classList.remove('open');
       return;
     }
@@ -4168,13 +4169,13 @@ const SoftUI = (() => {
   // Hover mode
   document.addEventListener('mouseenter', function(e) {
     if (!e.target.closest) return;
-    let dial = e.target.closest('.sui-speed-dial-hover');
+    const dial = e.target.closest('.sui-speed-dial-hover');
     if (dial) dial.classList.add('open');
   }, true);
 
   document.addEventListener('mouseleave', function(e) {
     if (!e.target.closest) return;
-    let dial = e.target.closest('.sui-speed-dial-hover');
+    const dial = e.target.closest('.sui-speed-dial-hover');
     if (dial) dial.classList.remove('open');
   }, true);
 
@@ -4182,11 +4183,11 @@ const SoftUI = (() => {
   // Tree View
   // =========================================
   document.addEventListener('click', function(e) {
-    let label = e.target.closest('.sui-tree-label');
+    const label = e.target.closest('.sui-tree-label');
     if (!label) return;
     if (e.target.closest('.sui-checkbox')) return;
-    let item = label.closest('.sui-tree-item');
-    let children = item.querySelector('.sui-tree-children');
+    const item = label.closest('.sui-tree-item');
+    const children = item.querySelector('.sui-tree-children');
     if (children) {
       item.classList.toggle('expanded');
     }
@@ -4195,12 +4196,12 @@ const SoftUI = (() => {
   // Tree checkbox propagation
   document.addEventListener('change', function(e) {
     if (!e.target.closest('.sui-tree .sui-checkbox input')) return;
-    let checkbox = e.target;
-    let item = checkbox.closest('.sui-tree-item');
-    let checked = checkbox.checked;
+    const checkbox = e.target;
+    const item = checkbox.closest('.sui-tree-item');
+    const checked = checkbox.checked;
 
     // Propagate down — check/uncheck all children
-    let childBoxes = item.querySelectorAll('.sui-tree-children .sui-checkbox input');
+    const childBoxes = item.querySelectorAll('.sui-tree-children .sui-checkbox input');
     childBoxes.forEach(function(cb) {
       cb.checked = checked;
       cb.indeterminate = false;
@@ -4211,15 +4212,15 @@ const SoftUI = (() => {
   });
 
   function updateTreeParent(item) {
-    let parentChildren = item.closest('.sui-tree-children');
+    const parentChildren = item.closest('.sui-tree-children');
     if (!parentChildren) return;
-    let parentItem = parentChildren.closest('.sui-tree-item');
+    const parentItem = parentChildren.closest('.sui-tree-item');
     if (!parentItem) return;
-    let parentCb = parentItem.querySelector(':scope > .sui-tree-label .sui-checkbox input');
+    const parentCb = parentItem.querySelector(':scope > .sui-tree-label .sui-checkbox input');
     if (!parentCb) return;
 
-    let siblings = parentChildren.querySelectorAll(':scope > .sui-tree-item > .sui-tree-label .sui-checkbox input');
-    let total = siblings.length;
+    const siblings = parentChildren.querySelectorAll(':scope > .sui-tree-item > .sui-tree-label .sui-checkbox input');
+    const total = siblings.length;
     let checkedCount = 0;
     siblings.forEach(function(cb) { if (cb.checked) checkedCount++; });
 
@@ -4245,8 +4246,8 @@ const SoftUI = (() => {
     options = options || {};
     let currentStep = 0;
     let overlay, backdrop, spotlight, tooltip;
-    let padding = options.padding || 8;
-    let noOverlay = options.noOverlay || false;
+    const padding = options.padding || 8;
+    const noOverlay = options.noOverlay || false;
 
     function create() {
       overlay = document.createElement('div');
@@ -4269,8 +4270,8 @@ const SoftUI = (() => {
 
     function show(idx) {
       currentStep = idx;
-      let step = steps[idx];
-      let target = document.querySelector(step.target);
+      const step = steps[idx];
+      const target = document.querySelector(step.target);
 
       // Only hide on first show to avoid flash between steps
       if (firstShow) {
@@ -4282,14 +4283,14 @@ const SoftUI = (() => {
       // Scroll if element isn't comfortably in view (with margin for tooltip)
       let needsScroll = false;
       if (target) {
-        let r = target.getBoundingClientRect();
-        let margin = 120;
+        const r = target.getBoundingClientRect();
+        const margin = 120;
         needsScroll = r.top < margin || r.bottom > window.innerHeight - margin;
         if (needsScroll) target.scrollIntoView({ block: 'center', behavior: 'smooth' });
       }
       setTimeout(function() {
       if (target) {
-        let rect = target.getBoundingClientRect();
+        const rect = target.getBoundingClientRect();
         spotlight.style.top = (rect.top - padding) + 'px';
         spotlight.style.left = (rect.left - padding) + 'px';
         spotlight.style.width = (rect.width + padding * 2) + 'px';
@@ -4300,7 +4301,7 @@ const SoftUI = (() => {
       let dotsHtml = '';
       if (steps.length > 1) {
         dotsHtml = '<div class="sui-tour-dots">';
-        for (var i = 0; i < steps.length; i++) {
+        for (let i = 0; i < steps.length; i++) {
           dotsHtml += '<span class="sui-tour-dot' + (i === idx ? ' active' : '') + '"></span>';
         }
         dotsHtml += '</div>';
@@ -4318,10 +4319,10 @@ const SoftUI = (() => {
         '</div>';
 
       // Button handlers
-      let nextBtn = tooltip.querySelector('.sui-tour-next');
-      let prevBtn = tooltip.querySelector('.sui-tour-prev');
-      let skipBtn = tooltip.querySelector('.sui-tour-skip');
-      let doneBtn = tooltip.querySelector('.sui-tour-done');
+      const nextBtn = tooltip.querySelector('.sui-tour-next');
+      const prevBtn = tooltip.querySelector('.sui-tour-prev');
+      const skipBtn = tooltip.querySelector('.sui-tour-skip');
+      const doneBtn = tooltip.querySelector('.sui-tour-done');
       if (nextBtn) nextBtn.addEventListener('click', function() { show(currentStep + 1); });
       if (prevBtn) prevBtn.addEventListener('click', function() { show(currentStep - 1); });
       if (skipBtn) skipBtn.addEventListener('click', close);
@@ -4329,10 +4330,10 @@ const SoftUI = (() => {
 
       // Position tooltip after scroll settles
       if (target) {
-        let rect = target.getBoundingClientRect();
-        let pos = step.position || 'bottom';
-        let tooltipW = 300;
-        let centerX = rect.left + rect.width / 2 - tooltipW / 2;
+        const rect = target.getBoundingClientRect();
+        const pos = step.position || 'bottom';
+        const tooltipW = 300;
+        const centerX = rect.left + rect.width / 2 - tooltipW / 2;
         let top, left;
 
         tooltip.style.transform = '';
