@@ -2493,7 +2493,7 @@ const SoftUI = (() => {
           stops.push(s.color + ' ' + start + '% ' + end + '%');
         });
         donut.style.background = 'conic-gradient(' + stops.join(', ') + ')';
-      } catch(e) {}
+      } catch(_) {}
     });
 
     // Line / Area charts — measure path length for animation
@@ -4077,7 +4077,7 @@ const SoftUI = (() => {
       }
     }
     if (!text) return;
-    try { navigator.clipboard.writeText(text.trim()); } catch (err) {}
+    try { navigator.clipboard.writeText(text.trim()); } catch (_) {}
     btn.classList.add('copied');
     btn.innerHTML = checkSvg;
     setTimeout(function() {

@@ -41,7 +41,7 @@ export default [
     rules: {
       "prefer-const": "error",
       "no-var": "error",
-      "no-unused-vars": ["warn", { args: "none" }],
+      "no-unused-vars": ["warn", { args: "none", varsIgnorePattern: "^(_|SoftUI$)", caughtErrorsIgnorePattern: "^_" }],
       "eqeqeq": ["error", "always", { null: "ignore" }],
       "no-undef": "error"
     }
