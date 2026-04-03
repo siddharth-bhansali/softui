@@ -527,16 +527,16 @@ const SoftUI = (() => {
     });
 
     document.addEventListener('click', function(e) {
-      var trigger = e.target.closest('.sui-collapsible-trigger');
+      let trigger = e.target.closest('.sui-collapsible-trigger');
       if (!trigger) return;
 
-      var collapsible = trigger.closest('.sui-collapsible');
+      let collapsible = trigger.closest('.sui-collapsible');
       if (!collapsible) return;
 
-      var content = collapsible.querySelector('.sui-collapsible-content');
+      let content = collapsible.querySelector('.sui-collapsible-content');
       if (!content) return;
 
-      var isOpen = collapsible.classList.contains('open');
+      let isOpen = collapsible.classList.contains('open');
 
       if (isOpen) {
         collapsible.classList.remove('open');
@@ -714,7 +714,7 @@ const SoftUI = (() => {
   // Context Menu
   // =========================================
   function initContextMenu() {
-    var openMenu = null;
+    let openMenu = null;
 
     function closeAll() {
       if (openMenu) {
@@ -731,9 +731,9 @@ const SoftUI = (() => {
       menu.style.top = '0px';
       menu.classList.add('open');
 
-      var rect = menu.getBoundingClientRect();
-      var vw = window.innerWidth;
-      var vh = window.innerHeight;
+      let rect = menu.getBoundingClientRect();
+      let vw = window.innerWidth;
+      let vh = window.innerHeight;
 
       if (x + rect.width > vw) x = vw - rect.width - 4;
       if (y + rect.height > vh) y = vh - rect.height - 4;
@@ -746,21 +746,21 @@ const SoftUI = (() => {
 
     // Right-click triggers
     document.addEventListener('contextmenu', function(e) {
-      var trigger = e.target.closest('[data-sui-context]');
+      let trigger = e.target.closest('[data-sui-context]');
       if (!trigger) return;
 
       e.preventDefault();
       closeAll();
 
-      var menuId = trigger.getAttribute('data-sui-context');
-      var menu = document.getElementById(menuId);
+      let menuId = trigger.getAttribute('data-sui-context');
+      let menu = document.getElementById(menuId);
       if (!menu) return;
 
       positionMenu(menu, e.clientX, e.clientY);
       openMenu = menu;
 
       // Focus first item for keyboard nav
-      var firstItem = menu.querySelector('.sui-context-item:not(.disabled), .sui-context-sub-trigger');
+      let firstItem = menu.querySelector('.sui-context-item:not(.disabled), .sui-context-sub-trigger');
       if (firstItem) firstItem.focus();
     });
 
@@ -773,15 +773,15 @@ const SoftUI = (() => {
 
     // Click on item closes (unless checkbox/radio)
     document.addEventListener('click', function(e) {
-      var item = e.target.closest('.sui-context-item');
+      let item = e.target.closest('.sui-context-item');
       if (!item || !openMenu) return;
       if (!item.closest('.sui-context-menu')) return;
 
       // Checkbox toggle
       if (item.hasAttribute('data-sui-context-check')) {
-        var check = item.querySelector('.sui-context-check');
+        let check = item.querySelector('.sui-context-check');
         if (check) {
-          var isChecked = check.textContent.trim() !== '';
+          let isChecked = check.textContent.trim() !== '';
           check.textContent = isChecked ? '' : '\u2713';
         }
         return; // Don't close on checkbox click
@@ -789,11 +789,11 @@ const SoftUI = (() => {
 
       // Radio toggle
       if (item.hasAttribute('data-sui-context-radio')) {
-        var group = item.getAttribute('data-sui-context-radio');
+        let group = item.getAttribute('data-sui-context-radio');
         openMenu.querySelectorAll('[data-sui-context-radio="' + group + '"] .sui-context-check').forEach(function(c) {
           c.textContent = '';
         });
-        var radio = item.querySelector('.sui-context-check');
+        let radio = item.querySelector('.sui-context-check');
         if (radio) radio.textContent = '\u2022';
         return; // Don't close on radio click
       }
@@ -806,13 +806,13 @@ const SoftUI = (() => {
 
     // Submenu hover
     document.addEventListener('mouseenter', function(e) {
-      var subTrigger = e.target.closest && e.target.closest('.sui-context-sub-trigger');
+      let subTrigger = e.target.closest && e.target.closest('.sui-context-sub-trigger');
       if (!subTrigger) return;
-      var sub = subTrigger.closest('.sui-context-sub');
+      let sub = subTrigger.closest('.sui-context-sub');
       if (!sub) return;
 
       // Close sibling subs
-      var parent = sub.parentElement;
+      let parent = sub.parentElement;
       if (parent) {
         parent.querySelectorAll(':scope > .sui-context-sub.open').forEach(function(s) {
           if (s !== sub) s.classList.remove('open');
@@ -822,7 +822,7 @@ const SoftUI = (() => {
     }, true);
 
     document.addEventListener('mouseleave', function(e) {
-      var sub = e.target.closest && e.target.closest('.sui-context-sub');
+      let sub = e.target.closest && e.target.closest('.sui-context-sub');
       if (!sub) return;
       // Only close if not moving into the sub-content
       setTimeout(function() {
@@ -836,7 +836,7 @@ const SoftUI = (() => {
     document.addEventListener('keydown', function(e) {
       if (e.key === 'Escape' && openMenu) {
         // If a sub is open, close it first
-        var openSub = openMenu.querySelector('.sui-context-sub.open');
+        let openSub = openMenu.querySelector('.sui-context-sub.open');
         if (openSub) {
           openSub.classList.remove('open');
           openSub.querySelector('.sui-context-sub-trigger').focus();
@@ -850,11 +850,11 @@ const SoftUI = (() => {
       // Arrow key navigation
       if (e.key === 'ArrowDown' || e.key === 'ArrowUp') {
         e.preventDefault();
-        var activeContainer = openMenu.querySelector('.sui-context-sub.open > .sui-context-sub-content') || openMenu;
-        var items = Array.from(activeContainer.querySelectorAll(':scope > .sui-context-item:not(.disabled), :scope > .sui-context-sub > .sui-context-sub-trigger'));
+        let activeContainer = openMenu.querySelector('.sui-context-sub.open > .sui-context-sub-content') || openMenu;
+        let items = Array.from(activeContainer.querySelectorAll(':scope > .sui-context-item:not(.disabled), :scope > .sui-context-sub > .sui-context-sub-trigger'));
         if (items.length === 0) return;
 
-        var current = items.indexOf(document.activeElement);
+        let current = items.indexOf(document.activeElement);
         if (e.key === 'ArrowDown') {
           current = current < items.length - 1 ? current + 1 : 0;
         } else {
@@ -865,12 +865,12 @@ const SoftUI = (() => {
 
       // ArrowRight opens submenu
       if (e.key === 'ArrowRight') {
-        var focused = document.activeElement;
+        let focused = document.activeElement;
         if (focused && focused.classList.contains('sui-context-sub-trigger')) {
-          var sub = focused.closest('.sui-context-sub');
+          let sub = focused.closest('.sui-context-sub');
           if (sub) {
             sub.classList.add('open');
-            var first = sub.querySelector('.sui-context-sub-content .sui-context-item:not(.disabled), .sui-context-sub-content .sui-context-sub-trigger');
+            let first = sub.querySelector('.sui-context-sub-content .sui-context-item:not(.disabled), .sui-context-sub-content .sui-context-sub-trigger');
             if (first) first.focus();
           }
         }
@@ -878,7 +878,7 @@ const SoftUI = (() => {
 
       // ArrowLeft closes submenu
       if (e.key === 'ArrowLeft') {
-        var openSub = document.activeElement && document.activeElement.closest('.sui-context-sub.open');
+        let openSub = document.activeElement && document.activeElement.closest('.sui-context-sub.open');
         if (openSub && openSub.closest('.sui-context-menu') === openMenu) {
           openSub.classList.remove('open');
           openSub.querySelector('.sui-context-sub-trigger').focus();
@@ -887,7 +887,7 @@ const SoftUI = (() => {
 
       // Enter activates
       if (e.key === 'Enter') {
-        var focused = document.activeElement;
+        let focused = document.activeElement;
         if (focused && (focused.classList.contains('sui-context-item') || focused.classList.contains('sui-context-sub-trigger'))) {
           focused.click();
         }
@@ -904,15 +904,15 @@ const SoftUI = (() => {
   // =========================================
   function initCommand() {
     document.querySelectorAll('.sui-command[data-sui-command]').forEach(function(cmd) {
-      var input = cmd.querySelector('.sui-command-input');
-      var list = cmd.querySelector('.sui-command-list');
-      var empty = cmd.querySelector('.sui-command-empty');
+      let input = cmd.querySelector('.sui-command-input');
+      let list = cmd.querySelector('.sui-command-list');
+      let empty = cmd.querySelector('.sui-command-empty');
       if (!input || !list) return;
 
-      var items = list.querySelectorAll('.sui-command-item');
-      var groups = list.querySelectorAll('.sui-command-group');
-      var separators = list.querySelectorAll('.sui-command-separator');
-      var focusedIndex = -1;
+      let items = list.querySelectorAll('.sui-command-item');
+      let groups = list.querySelectorAll('.sui-command-group');
+      let separators = list.querySelectorAll('.sui-command-separator');
+      let focusedIndex = -1;
 
       function getVisibleItems() {
         return Array.from(list.querySelectorAll('.sui-command-item:not([hidden])'));
@@ -927,29 +927,29 @@ const SoftUI = (() => {
       }
 
       function filter() {
-        var query = input.value.toLowerCase().trim();
-        var anyVisible = false;
+        let query = input.value.toLowerCase().trim();
+        let anyVisible = false;
 
         items.forEach(function(item) {
-          var text = item.textContent.toLowerCase();
-          var keywords = (item.getAttribute('data-keywords') || '').toLowerCase();
-          var match = !query || text.indexOf(query) !== -1 || keywords.indexOf(query) !== -1;
+          let text = item.textContent.toLowerCase();
+          let keywords = (item.getAttribute('data-keywords') || '').toLowerCase();
+          let match = !query || text.indexOf(query) !== -1 || keywords.indexOf(query) !== -1;
           item.hidden = !match;
           if (match) anyVisible = true;
         });
 
         // Hide groups with no visible items
         groups.forEach(function(group) {
-          var hasVisible = group.querySelector('.sui-command-item:not([hidden])');
+          let hasVisible = group.querySelector('.sui-command-item:not([hidden])');
           group.hidden = !hasVisible;
         });
 
         // Hide separators between hidden groups
         separators.forEach(function(sep) {
-          var next = sep.nextElementSibling;
-          var prev = sep.previousElementSibling;
-          var nextHidden = next && next.hidden;
-          var prevHidden = prev && prev.hidden;
+          let next = sep.nextElementSibling;
+          let prev = sep.previousElementSibling;
+          let nextHidden = next && next.hidden;
+          let prevHidden = prev && prev.hidden;
           sep.hidden = nextHidden || prevHidden;
         });
 
@@ -965,7 +965,7 @@ const SoftUI = (() => {
 
       // Keyboard nav
       cmd.addEventListener('keydown', function(e) {
-        var visibleItems = getVisibleItems();
+        let visibleItems = getVisibleItems();
 
         if (e.key === 'ArrowDown') {
           e.preventDefault();
@@ -990,14 +990,14 @@ const SoftUI = (() => {
       // Mouse hover updates focus
       items.forEach(function(item) {
         item.addEventListener('mouseenter', function() {
-          var visibleItems = getVisibleItems();
+          let visibleItems = getVisibleItems();
           focusedIndex = visibleItems.indexOf(item);
           updateFocus(visibleItems);
         });
       });
 
       // Initial focus on first item
-      var initial = getVisibleItems();
+      let initial = getVisibleItems();
       if (initial.length > 0) {
         focusedIndex = 0;
         updateFocus(initial);
@@ -1006,8 +1006,8 @@ const SoftUI = (() => {
 
     // Dialog mode — Cmd+K / Ctrl+K
     document.querySelectorAll('.sui-command-dialog').forEach(function(dialog) {
-      var cmd = dialog.querySelector('.sui-command');
-      var input = cmd ? cmd.querySelector('.sui-command-input') : null;
+      let cmd = dialog.querySelector('.sui-command');
+      let input = cmd ? cmd.querySelector('.sui-command-input') : null;
 
       function openDialog() {
         dialog.classList.add('open');
@@ -1025,7 +1025,7 @@ const SoftUI = (() => {
       }
 
       // Cmd+K / Ctrl+K to open
-      var shortcut = dialog.dataset.suiCommandKey || 'k';
+      let shortcut = dialog.dataset.suiCommandKey || 'k';
       document.addEventListener('keydown', function(e) {
         if ((e.metaKey || e.ctrlKey) && e.key === shortcut) {
           e.preventDefault();
@@ -1065,9 +1065,9 @@ const SoftUI = (() => {
   // Calendar
   // =========================================
   function initCalendar() {
-    var MONTHS = ['January','February','March','April','May','June','July','August','September','October','November','December'];
-    var MONTHS_SHORT = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
-    var DAYS = ['Su','Mo','Tu','We','Th','Fr','Sa'];
+    let MONTHS = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+    let MONTHS_SHORT = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+    let DAYS = ['Su','Mo','Tu','We','Th','Fr','Sa'];
 
     function daysInMonth(year, month) {
       return new Date(year, month + 1, 0).getDate();
@@ -1079,23 +1079,23 @@ const SoftUI = (() => {
 
     function between(d, start, end) {
       if (!start || !end) return false;
-      var t = d.getTime(), s = Math.min(start.getTime(), end.getTime()), e = Math.max(start.getTime(), end.getTime());
+      let t = d.getTime(), s = Math.min(start.getTime(), end.getTime()), e = Math.max(start.getTime(), end.getTime());
       return t > s && t < e;
     }
 
     function parseDate(str) {
       if (!str) return null;
       if (str === 'today') return new Date(new Date().setHours(0,0,0,0));
-      var parts = str.split('-');
+      let parts = str.split('-');
       if (parts.length === 3) return new Date(+parts[0], +parts[1] - 1, +parts[2]);
       return null;
     }
 
     function formatDate(d, includeTime, hour, minute, period) {
-      var str = MONTHS[d.getMonth()].substring(0, 3) + ' ' + d.getDate() + ', ' + d.getFullYear();
+      let str = MONTHS[d.getMonth()].substring(0, 3) + ' ' + d.getDate() + ', ' + d.getFullYear();
       if (includeTime) {
-        var hh = (hour !== undefined && hour !== null) ? hour : 12;
-        var mm = (minute !== undefined && minute !== null) ? minute : 0;
+        let hh = (hour !== undefined && hour !== null) ? hour : 12;
+        let mm = (minute !== undefined && minute !== null) ? minute : 0;
         str += ' ' + pad(hh) + ':' + pad(mm);
         if (period) str += ' ' + period;
       }
@@ -1103,17 +1103,17 @@ const SoftUI = (() => {
     }
 
     document.querySelectorAll('.sui-calendar[data-sui-calendar]').forEach(function(cal) {
-      var mode = cal.dataset.suiCalendar || 'single';
-      var today = new Date();
+      let mode = cal.dataset.suiCalendar || 'single';
+      let today = new Date();
       today.setHours(0,0,0,0);
 
-      var minDate = parseDate(cal.dataset.suiMin);
-      var maxDate = parseDate(cal.dataset.suiMax);
+      let minDate = parseDate(cal.dataset.suiMin);
+      let maxDate = parseDate(cal.dataset.suiMax);
 
-      var disabledDays = [];
+      let disabledDays = [];
       if (cal.dataset.suiDisabled) {
         cal.dataset.suiDisabled.split(',').forEach(function(s) {
-          var d = parseDate(s.trim());
+          let d = parseDate(s.trim());
           if (d) disabledDays.push(d);
         });
       }
@@ -1127,18 +1127,18 @@ const SoftUI = (() => {
         return false;
       }
 
-      var selected = null;
-      var rangeStart = null;
-      var rangeEnd = null;
-      var defaultPlaceholder = '';
-      var viewMode = 'days'; // 'days', 'months', 'years'
-      var yearPageStart = 0;
+      let selected = null;
+      let rangeStart = null;
+      let rangeEnd = null;
+      let defaultPlaceholder = '';
+      let viewMode = 'days'; // 'days', 'months', 'years'
+      let yearPageStart = 0;
 
       // Time picker
-      var hasTime = cal.hasAttribute('data-sui-calendar-time');
-      var is24h = cal.getAttribute('data-sui-calendar-time') === '24h';
-      var timeHour = is24h ? 0 : 12, timeMinute = 0, timePeriod = 'AM';
-      var timeRow = null, hourInput = null, minuteInput = null, periodBtn = null;
+      let hasTime = cal.hasAttribute('data-sui-calendar-time');
+      let is24h = cal.getAttribute('data-sui-calendar-time') === '24h';
+      let timeHour = is24h ? 0 : 12, timeMinute = 0, timePeriod = 'AM';
+      let timeRow = null, hourInput = null, minuteInput = null, periodBtn = null;
 
       if (hasTime) {
         timeRow = cal.querySelector('.sui-calendar-time');
@@ -1146,7 +1146,7 @@ const SoftUI = (() => {
           timeRow = document.createElement('div');
           timeRow.className = 'sui-calendar-time';
 
-          var label = document.createElement('span');
+          let label = document.createElement('span');
           label.className = 'sui-calendar-time-label';
           label.textContent = 'Time';
           timeRow.appendChild(label);
@@ -1159,7 +1159,7 @@ const SoftUI = (() => {
           hourInput.setAttribute('aria-label', 'Hour');
           timeRow.appendChild(hourInput);
 
-          var sep = document.createElement('span');
+          let sep = document.createElement('span');
           sep.className = 'sui-calendar-time-sep';
           sep.textContent = ':';
           timeRow.appendChild(sep);
@@ -1181,7 +1181,7 @@ const SoftUI = (() => {
           }
 
           // Insert before clear button or append
-          var clearBtn = cal.querySelector('[data-sui-calendar-clear]');
+          let clearBtn = cal.querySelector('[data-sui-calendar-clear]');
           if (clearBtn) {
             cal.insertBefore(timeRow, clearBtn);
           } else {
@@ -1193,11 +1193,11 @@ const SoftUI = (() => {
           periodBtn = timeRow.querySelector('.sui-calendar-time-period');
         }
 
-        var hourMax = is24h ? 23 : 12;
-        var hourMin = is24h ? 0 : 1;
+        let hourMax = is24h ? 23 : 12;
+        let hourMin = is24h ? 0 : 1;
 
         function parseHour(v) {
-          var n = parseInt(v, 10);
+          let n = parseInt(v, 10);
           if (isNaN(n) || n < 0) n = 0;
           if (n > 23) n = 23;
           if (is24h) return { hour: n };
@@ -1210,7 +1210,7 @@ const SoftUI = (() => {
         function clampMinute(v) { var n = parseInt(v, 10); if (isNaN(n) || n < 0) return 0; if (n > 59) return 59; return n; }
 
         hourInput.addEventListener('blur', function() {
-          var result = parseHour(this.value);
+          let result = parseHour(this.value);
           timeHour = result.hour;
           if (!is24h && result.period) {
             timePeriod = result.period;
@@ -1253,31 +1253,31 @@ const SoftUI = (() => {
         }
       }
 
-      var monthContainers = cal.querySelectorAll('.sui-calendar-month');
-      var isMultiMonth = monthContainers.length > 0;
+      let monthContainers = cal.querySelectorAll('.sui-calendar-month');
+      let isMultiMonth = monthContainers.length > 0;
       if (!isMultiMonth) monthContainers = [cal];
 
-      var viewOffsets = [];
+      let viewOffsets = [];
       monthContainers.forEach(function(mc, i) { viewOffsets.push(i); });
 
-      var viewYear = today.getFullYear();
-      var viewMonth = today.getMonth();
+      let viewYear = today.getFullYear();
+      let viewMonth = today.getMonth();
 
-      var prevBtn = cal.querySelector('[data-sui-calendar-prev]');
-      var nextBtn = cal.querySelector('[data-sui-calendar-next]');
-      var titleEl = cal.querySelector('.sui-calendar-header .sui-calendar-title');
+      let prevBtn = cal.querySelector('[data-sui-calendar-prev]');
+      let nextBtn = cal.querySelector('[data-sui-calendar-next]');
+      let titleEl = cal.querySelector('.sui-calendar-header .sui-calendar-title');
 
       function renderDays() {
         viewMode = 'days';
         if (timeRow) timeRow.style.display = '';
         monthContainers.forEach(function(mc, idx) {
-          var m = viewMonth + viewOffsets[idx];
-          var y = viewYear;
+          let m = viewMonth + viewOffsets[idx];
+          let y = viewYear;
           while (m > 11) { m -= 12; y++; }
           while (m < 0) { m += 12; y--; }
 
           // Title
-          var t = mc.querySelector('.sui-calendar-title');
+          let t = mc.querySelector('.sui-calendar-title');
           if (t) {
             if (idx === 0 && !isMultiMonth && t === titleEl) {
               t.textContent = MONTHS[m] + ' ' + y;
@@ -1287,24 +1287,24 @@ const SoftUI = (() => {
             }
           }
 
-          var grid = mc.querySelector('.sui-calendar-grid');
+          let grid = mc.querySelector('.sui-calendar-grid');
           if (!grid) return;
           grid.innerHTML = '';
           grid.style.gridTemplateColumns = 'repeat(7, 1fr)';
 
           DAYS.forEach(function(d) {
-            var lbl = document.createElement('div');
+            let lbl = document.createElement('div');
             lbl.className = 'sui-calendar-day-label';
             lbl.textContent = d;
             grid.appendChild(lbl);
           });
 
-          var firstDay = new Date(y, m, 1).getDay();
-          var total = daysInMonth(y, m);
+          let firstDay = new Date(y, m, 1).getDay();
+          let total = daysInMonth(y, m);
 
-          var prevTotal = daysInMonth(y, m - 1);
+          let prevTotal = daysInMonth(y, m - 1);
           for (var p = firstDay - 1; p >= 0; p--) {
-            var btn = document.createElement('button');
+            let btn = document.createElement('button');
             btn.className = 'sui-calendar-day outside';
             btn.textContent = prevTotal - p;
             btn.type = 'button';
@@ -1313,8 +1313,8 @@ const SoftUI = (() => {
           }
 
           for (var d = 1; d <= total; d++) {
-            var date = new Date(y, m, d);
-            var btn = document.createElement('button');
+            let date = new Date(y, m, d);
+            let btn = document.createElement('button');
             btn.className = 'sui-calendar-day';
             btn.textContent = d;
             btn.type = 'button';
@@ -1335,7 +1335,7 @@ const SoftUI = (() => {
                 e.stopPropagation();
                 if (mode === 'single') {
                   selected = dt;
-                  var detail = { date: dt };
+                  let detail = { date: dt };
                   if (hasTime) { detail.hour = timeHour; detail.minute = timeMinute; detail.period = timePeriod; }
                   cal.dispatchEvent(new CustomEvent('sui-date-select', { detail: detail }));
                 } else if (mode === 'range') {
@@ -1355,10 +1355,10 @@ const SoftUI = (() => {
             grid.appendChild(btn);
           }
 
-          var totalCells = firstDay + total;
-          var remaining = totalCells % 7 === 0 ? 0 : 7 - (totalCells % 7);
+          let totalCells = firstDay + total;
+          let remaining = totalCells % 7 === 0 ? 0 : 7 - (totalCells % 7);
           for (var n = 1; n <= remaining; n++) {
-            var btn = document.createElement('button');
+            let btn = document.createElement('button');
             btn.className = 'sui-calendar-day outside';
             btn.textContent = n;
             btn.type = 'button';
@@ -1379,13 +1379,13 @@ const SoftUI = (() => {
         }
 
         // Only render in first (or only) grid
-        var grid = monthContainers[0].querySelector('.sui-calendar-grid');
+        let grid = monthContainers[0].querySelector('.sui-calendar-grid');
         if (!grid) return;
         grid.innerHTML = '';
         grid.style.gridTemplateColumns = 'repeat(4, 1fr)';
 
         for (var m = 0; m < 12; m++) {
-          var btn = document.createElement('button');
+          let btn = document.createElement('button');
           btn.className = 'sui-calendar-day';
           btn.textContent = MONTHS_SHORT[m];
           btn.type = 'button';
@@ -1408,20 +1408,20 @@ const SoftUI = (() => {
       function renderYears() {
         viewMode = 'years';
         if (timeRow) timeRow.style.display = 'none';
-        var start = yearPageStart;
-        var end = start + 11;
+        let start = yearPageStart;
+        let end = start + 11;
         if (titleEl) {
           titleEl.textContent = start + ' – ' + end;
           titleEl.style.cursor = 'default';
         }
 
-        var grid = monthContainers[0].querySelector('.sui-calendar-grid');
+        let grid = monthContainers[0].querySelector('.sui-calendar-grid');
         if (!grid) return;
         grid.innerHTML = '';
         grid.style.gridTemplateColumns = 'repeat(4, 1fr)';
 
         for (var yr = start; yr <= end; yr++) {
-          var btn = document.createElement('button');
+          let btn = document.createElement('button');
           btn.className = 'sui-calendar-day';
           btn.textContent = yr;
           btn.type = 'button';
@@ -1442,9 +1442,9 @@ const SoftUI = (() => {
       }
 
       function updateClear() {
-        var clearBtn = cal.querySelector('[data-sui-calendar-clear]');
+        let clearBtn = cal.querySelector('[data-sui-calendar-clear]');
         if (clearBtn) {
-          var hasSelection = mode === 'single' ? !!selected : !!(rangeStart || rangeEnd);
+          let hasSelection = mode === 'single' ? !!selected : !!(rangeStart || rangeEnd);
           clearBtn.style.display = hasSelection ? '' : 'none';
         }
       }
@@ -1515,11 +1515,11 @@ const SoftUI = (() => {
       renderDays();
 
       // Date Picker integration
-      var picker = cal.closest('.sui-datepicker');
+      let picker = cal.closest('.sui-datepicker');
       if (picker) {
-        var trigger = picker.querySelector('.sui-datepicker-trigger');
-        var popover = picker.querySelector('.sui-datepicker-popover');
-        var placeholderEl = trigger ? trigger.querySelector('.sui-datepicker-placeholder') : null;
+        let trigger = picker.querySelector('.sui-datepicker-trigger');
+        let popover = picker.querySelector('.sui-datepicker-popover');
+        let placeholderEl = trigger ? trigger.querySelector('.sui-datepicker-placeholder') : null;
         if (placeholderEl) defaultPlaceholder = placeholderEl.textContent;
 
         if (trigger && popover) {
@@ -1537,13 +1537,13 @@ const SoftUI = (() => {
 
         cal.addEventListener('sui-date-select', function(e) {
           if (!trigger) return;
-          var span = trigger.querySelector('.sui-datepicker-value') || trigger.querySelector('.sui-datepicker-placeholder');
+          let span = trigger.querySelector('.sui-datepicker-value') || trigger.querySelector('.sui-datepicker-placeholder');
           if (mode === 'single' && e.detail.date) {
-            var text = formatDate(e.detail.date, hasTime, e.detail.hour, e.detail.minute, e.detail.is24h ? null : e.detail.period);
+            let text = formatDate(e.detail.date, hasTime, e.detail.hour, e.detail.minute, e.detail.is24h ? null : e.detail.period);
             if (span) { span.textContent = text; span.className = 'sui-datepicker-value'; }
             if (!hasTime && popover) popover.classList.remove('open');
           } else if (mode === 'range' && e.detail.start && e.detail.end) {
-            var text = formatDate(e.detail.start) + ' – ' + formatDate(e.detail.end);
+            let text = formatDate(e.detail.start) + ' – ' + formatDate(e.detail.end);
             if (span) { span.textContent = text; span.className = 'sui-datepicker-value'; }
             if (popover) popover.classList.remove('open');
           }
@@ -1551,7 +1551,7 @@ const SoftUI = (() => {
         });
 
         cal.addEventListener('sui-date-clear', function() {
-          var span = trigger.querySelector('.sui-datepicker-value') || trigger.querySelector('.sui-datepicker-placeholder');
+          let span = trigger.querySelector('.sui-datepicker-value') || trigger.querySelector('.sui-datepicker-placeholder');
           if (span) { span.textContent = defaultPlaceholder; span.className = 'sui-datepicker-placeholder'; }
           updateClear();
         });
@@ -1564,18 +1564,18 @@ const SoftUI = (() => {
   // =========================================
   function initTimePicker() {
     document.querySelectorAll('.sui-timepicker[data-sui-timepicker]').forEach(function(tp) {
-      var is24h = tp.getAttribute('data-sui-timepicker') === '24h';
-      var hourMax = is24h ? 23 : 12;
-      var hourMin = is24h ? 0 : 1;
-      var tHour = is24h ? 0 : 12, tMinute = 0, tPeriod = 'AM';
+      let is24h = tp.getAttribute('data-sui-timepicker') === '24h';
+      let hourMax = is24h ? 23 : 12;
+      let hourMin = is24h ? 0 : 1;
+      let tHour = is24h ? 0 : 12, tMinute = 0, tPeriod = 'AM';
 
-      var hInput = tp.querySelectorAll('.sui-calendar-time-input')[0];
-      var mInput = tp.querySelectorAll('.sui-calendar-time-input')[1];
-      var pBtn = tp.querySelector('.sui-calendar-time-period');
+      let hInput = tp.querySelectorAll('.sui-calendar-time-input')[0];
+      let mInput = tp.querySelectorAll('.sui-calendar-time-input')[1];
+      let pBtn = tp.querySelector('.sui-calendar-time-period');
 
       if (!hInput || !mInput) {
         // Auto-build the UI
-        var label = document.createElement('span');
+        let label = document.createElement('span');
         label.className = 'sui-calendar-time-label';
         label.textContent = 'Time';
         tp.appendChild(label);
@@ -1588,7 +1588,7 @@ const SoftUI = (() => {
         hInput.setAttribute('aria-label', 'Hour');
         tp.appendChild(hInput);
 
-        var sep = document.createElement('span');
+        let sep = document.createElement('span');
         sep.className = 'sui-calendar-time-sep';
         sep.textContent = ':';
         tp.appendChild(sep);
@@ -1611,7 +1611,7 @@ const SoftUI = (() => {
       }
 
       function parseH(v) {
-        var n = parseInt(v, 10);
+        let n = parseInt(v, 10);
         if (isNaN(n) || n < 0) n = 0;
         if (n > 23) n = 23;
         if (is24h) return { hour: n };
@@ -1627,7 +1627,7 @@ const SoftUI = (() => {
       }
 
       hInput.addEventListener('blur', function() {
-        var result = parseH(this.value);
+        let result = parseH(this.value);
         tHour = result.hour;
         if (!is24h && result.period) { tPeriod = result.period; if (pBtn) pBtn.textContent = tPeriod; }
         this.value = pad(tHour);
@@ -1661,7 +1661,7 @@ const SoftUI = (() => {
   // Menubar
   // =========================================
   function initMenubar() {
-    var menubarOpen = false;
+    let menubarOpen = false;
 
     function closeAllMenus(bar) {
       bar.querySelectorAll('.sui-menubar-menu.open').forEach(function(m) {
@@ -1685,9 +1685,9 @@ const SoftUI = (() => {
     }
 
     document.addEventListener('click', function(e) {
-      var trigger = e.target.closest('.sui-menubar-trigger');
+      let trigger = e.target.closest('.sui-menubar-trigger');
       if (trigger) {
-        var menu = trigger.closest('.sui-menubar-menu');
+        let menu = trigger.closest('.sui-menubar-menu');
         if (menu.classList.contains('open')) {
           closeAllMenus(menu.closest('.sui-menubar'));
         } else {
@@ -1698,10 +1698,10 @@ const SoftUI = (() => {
       }
 
       // Submenu triggers
-      var subTrigger = e.target.closest('.sui-menubar-sub-trigger');
+      let subTrigger = e.target.closest('.sui-menubar-sub-trigger');
       if (subTrigger) {
-        var sub = subTrigger.closest('.sui-menubar-sub');
-        var isOpen = sub.classList.contains('open');
+        let sub = subTrigger.closest('.sui-menubar-sub');
+        let isOpen = sub.classList.contains('open');
         // Close sibling subs
         sub.parentElement.querySelectorAll('.sui-menubar-sub.open').forEach(function(s) {
           s.classList.remove('open');
@@ -1712,9 +1712,9 @@ const SoftUI = (() => {
       }
 
       // Clicking a menubar item closes the menu
-      var item = e.target.closest('.sui-menubar-item');
+      let item = e.target.closest('.sui-menubar-item');
       if (item && item.closest('.sui-menubar')) {
-        var bar = item.closest('.sui-menubar');
+        let bar = item.closest('.sui-menubar');
         closeAllMenus(bar);
         return;
       }
@@ -1728,9 +1728,9 @@ const SoftUI = (() => {
     // Hover to switch menus when one is already open
     document.addEventListener('mouseenter', function(e) {
       if (!menubarOpen) return;
-      var trigger = e.target.closest ? e.target.closest('.sui-menubar-trigger') : null;
+      let trigger = e.target.closest ? e.target.closest('.sui-menubar-trigger') : null;
       if (!trigger) return;
-      var menu = trigger.closest('.sui-menubar-menu');
+      let menu = trigger.closest('.sui-menubar-menu');
       if (menu && !menu.classList.contains('open')) {
         openMenu(menu);
       }
@@ -1764,16 +1764,16 @@ const SoftUI = (() => {
   // =========================================
   function initCombobox() {
     document.querySelectorAll('.sui-combobox').forEach(function(combo) {
-      var trigger = combo.querySelector('.sui-combobox-trigger');
-      var content = combo.querySelector('.sui-combobox-content');
-      var input = combo.querySelector('.sui-combobox-input');
-      var items = combo.querySelectorAll('.sui-combobox-item');
-      var valueEl = combo.querySelector('.sui-combobox-value');
-      var chipsEl = combo.querySelector('.sui-combobox-chips');
-      var emptyEl = combo.querySelector('.sui-combobox-empty');
-      var clearBtn = combo.querySelector('.sui-combobox-clear');
-      var isMultiple = combo.classList.contains('sui-combobox-multiple');
-      var placeholder = valueEl ? valueEl.textContent : '';
+      let trigger = combo.querySelector('.sui-combobox-trigger');
+      let content = combo.querySelector('.sui-combobox-content');
+      let input = combo.querySelector('.sui-combobox-input');
+      let items = combo.querySelectorAll('.sui-combobox-item');
+      let valueEl = combo.querySelector('.sui-combobox-value');
+      let chipsEl = combo.querySelector('.sui-combobox-chips');
+      let emptyEl = combo.querySelector('.sui-combobox-empty');
+      let clearBtn = combo.querySelector('.sui-combobox-clear');
+      let isMultiple = combo.classList.contains('sui-combobox-multiple');
+      let placeholder = valueEl ? valueEl.textContent : '';
       if (chipsEl) placeholder = chipsEl.textContent.trim();
 
       if (!trigger || !content) return;
@@ -1797,18 +1797,18 @@ const SoftUI = (() => {
       }
 
       function filterItems(query) {
-        var q = query.toLowerCase();
-        var visibleCount = 0;
+        let q = query.toLowerCase();
+        let visibleCount = 0;
         items.forEach(function(item) {
-          var text = item.textContent.toLowerCase();
-          var match = !q || text.indexOf(q) !== -1;
+          let text = item.textContent.toLowerCase();
+          let match = !q || text.indexOf(q) !== -1;
           item.style.display = match ? '' : 'none';
           if (match) visibleCount++;
         });
         // Show/hide groups based on visible children
         combo.querySelectorAll('.sui-combobox-label').forEach(function(label) {
-          var next = label.nextElementSibling;
-          var hasVisible = false;
+          let next = label.nextElementSibling;
+          let hasVisible = false;
           while (next && !next.classList.contains('sui-combobox-label') && !next.classList.contains('sui-combobox-separator')) {
             if (next.classList.contains('sui-combobox-item') && next.style.display !== 'none') hasVisible = true;
             next = next.nextElementSibling;
@@ -1825,7 +1825,7 @@ const SoftUI = (() => {
 
       function updateClear() {
         if (!clearBtn) return;
-        var hasSelection = combo.querySelectorAll('.sui-combobox-item.selected').length > 0;
+        let hasSelection = combo.querySelectorAll('.sui-combobox-item.selected').length > 0;
         clearBtn.classList.toggle('visible', hasSelection);
       }
 
@@ -1842,9 +1842,9 @@ const SoftUI = (() => {
       function updateChips() {
         if (!chipsEl) return;
         chipsEl.innerHTML = '';
-        var selectedItems = combo.querySelectorAll('.sui-combobox-item.selected');
+        let selectedItems = combo.querySelectorAll('.sui-combobox-item.selected');
         if (selectedItems.length === 0) {
-          var ph = document.createElement('span');
+          let ph = document.createElement('span');
           ph.className = 'placeholder';
           ph.textContent = placeholder;
           chipsEl.appendChild(ph);
@@ -1852,10 +1852,10 @@ const SoftUI = (() => {
           return;
         }
         selectedItems.forEach(function(item) {
-          var chip = document.createElement('span');
+          let chip = document.createElement('span');
           chip.className = 'sui-combobox-chip';
           chip.textContent = item.getAttribute('data-value') || item.textContent.trim();
-          var remove = document.createElement('span');
+          let remove = document.createElement('span');
           remove.className = 'sui-combobox-chip-remove';
           remove.innerHTML = '&#10005;';
           remove.addEventListener('click', function(e) {
@@ -1935,19 +1935,19 @@ const SoftUI = (() => {
   // =========================================
   function initResizable() {
     document.querySelectorAll('.sui-resizable').forEach(function(container) {
-      var isVertical = container.classList.contains('sui-resizable-vertical');
-      var handles = container.querySelectorAll(':scope > .sui-resizable-handle');
+      let isVertical = container.classList.contains('sui-resizable-vertical');
+      let handles = container.querySelectorAll(':scope > .sui-resizable-handle');
 
       // Initialize panels with flex-grow from data-size or equal split
-      var panels = Array.from(container.querySelectorAll(':scope > .sui-resizable-panel'));
+      let panels = Array.from(container.querySelectorAll(':scope > .sui-resizable-panel'));
       panels.forEach(function(p) {
-        var size = parseFloat(p.getAttribute('data-size')) || (100 / panels.length);
+        let size = parseFloat(p.getAttribute('data-size')) || (100 / panels.length);
         p.style.flexGrow = size;
       });
 
       handles.forEach(function(handle) {
-        var prevPanel = handle.previousElementSibling;
-        var nextPanel = handle.nextElementSibling;
+        let prevPanel = handle.previousElementSibling;
+        let nextPanel = handle.nextElementSibling;
         if (!prevPanel || !nextPanel) return;
 
         handle.setAttribute('tabindex', '0');
@@ -1963,13 +1963,13 @@ const SoftUI = (() => {
         }
 
         function resize(delta) {
-          var prevG = getGrow(prevPanel);
-          var nextG = getGrow(nextPanel);
-          var total = prevG + nextG;
-          var prevMin = getMin(prevPanel);
-          var nextMin = getMin(nextPanel);
-          var newPrev = Math.max(prevMin, Math.min(total - nextMin, prevG + delta));
-          var newNext = total - newPrev;
+          let prevG = getGrow(prevPanel);
+          let nextG = getGrow(nextPanel);
+          let total = prevG + nextG;
+          let prevMin = getMin(prevPanel);
+          let nextMin = getMin(nextPanel);
+          let newPrev = Math.max(prevMin, Math.min(total - nextMin, prevG + delta));
+          let newNext = total - newPrev;
           prevPanel.style.flexGrow = newPrev;
           nextPanel.style.flexGrow = newNext;
         }
@@ -1979,27 +1979,27 @@ const SoftUI = (() => {
           handle.focus();
           handle.classList.add('dragging');
 
-          var prevG = getGrow(prevPanel);
-          var nextG = getGrow(nextPanel);
-          var totalG = prevG + nextG;
+          let prevG = getGrow(prevPanel);
+          let nextG = getGrow(nextPanel);
+          let totalG = prevG + nextG;
 
           // Measure actual pixel sizes of the two panels
-          var prevPx = isVertical ? prevPanel.offsetHeight : prevPanel.offsetWidth;
-          var nextPx = isVertical ? nextPanel.offsetHeight : nextPanel.offsetWidth;
-          var pairPx = prevPx + nextPx;
-          var startPos = isVertical ? e.clientY : e.clientX;
+          let prevPx = isVertical ? prevPanel.offsetHeight : prevPanel.offsetWidth;
+          let nextPx = isVertical ? nextPanel.offsetHeight : nextPanel.offsetWidth;
+          let pairPx = prevPx + nextPx;
+          let startPos = isVertical ? e.clientY : e.clientX;
 
-          var prevMin = getMin(prevPanel);
-          var nextMin = getMin(nextPanel);
+          let prevMin = getMin(prevPanel);
+          let nextMin = getMin(nextPanel);
 
           function onPointerMove(ev) {
-            var pos = isVertical ? ev.clientY : ev.clientX;
-            var delta = pos - startPos;
+            let pos = isVertical ? ev.clientY : ev.clientX;
+            let delta = pos - startPos;
             // Clamp delta so panels stay within 0..pairPx range
             delta = Math.max(-prevPx, Math.min(nextPx, delta));
-            var ratio = pairPx > 0 ? delta / pairPx : 0;
-            var newPrev = Math.max(prevMin, Math.min(totalG - nextMin, prevG + ratio * totalG));
-            var newNext = totalG - newPrev;
+            let ratio = pairPx > 0 ? delta / pairPx : 0;
+            let newPrev = Math.max(prevMin, Math.min(totalG - nextMin, prevG + ratio * totalG));
+            let newNext = totalG - newPrev;
             prevPanel.style.flexGrow = newPrev;
             nextPanel.style.flexGrow = newNext;
           }
@@ -2018,9 +2018,9 @@ const SoftUI = (() => {
 
         // Keyboard: Arrow keys resize, Home/End for extremes
         handle.addEventListener('keydown', function(e) {
-          var step = e.shiftKey ? 10 : 2;
-          var growKey = isVertical ? 'ArrowDown' : 'ArrowRight';
-          var shrinkKey = isVertical ? 'ArrowUp' : 'ArrowLeft';
+          let step = e.shiftKey ? 10 : 2;
+          let growKey = isVertical ? 'ArrowDown' : 'ArrowRight';
+          let shrinkKey = isVertical ? 'ArrowUp' : 'ArrowLeft';
 
           if (e.key === growKey) {
             e.preventDefault();
@@ -2144,13 +2144,13 @@ const SoftUI = (() => {
     document.querySelectorAll('.sui-otp[data-sui-otp]').forEach(function(otp) {
       if (otp.dataset.suiOtpDisabled !== undefined) return;
 
-      var slots = otp.querySelectorAll('.sui-otp-slot');
-      var len = slots.length;
-      var pattern = otp.dataset.suiOtpPattern || 'digits'; // "digits" or "alphanumeric"
-      var regex = pattern === 'alphanumeric' ? /^[a-zA-Z0-9]$/ : /^[0-9]$/;
+      let slots = otp.querySelectorAll('.sui-otp-slot');
+      let len = slots.length;
+      let pattern = otp.dataset.suiOtpPattern || 'digits'; // "digits" or "alphanumeric"
+      let regex = pattern === 'alphanumeric' ? /^[a-zA-Z0-9]$/ : /^[0-9]$/;
 
       // Create hidden input
-      var input = document.createElement('input');
+      let input = document.createElement('input');
       input.className = 'sui-otp-input';
       input.setAttribute('inputmode', pattern === 'alphanumeric' ? 'text' : 'numeric');
       input.setAttribute('autocomplete', 'one-time-code');
@@ -2159,14 +2159,14 @@ const SoftUI = (() => {
       otp.appendChild(input);
 
       function updateSlots() {
-        var val = input.value;
+        let val = input.value;
         slots.forEach(function(slot, i) {
           slot.textContent = val[i] || '';
           slot.classList.toggle('sui-otp-filled', !!val[i]);
           slot.classList.remove('sui-otp-active');
         });
         // Show cursor on current slot
-        var pos = Math.min(val.length, len - 1);
+        let pos = Math.min(val.length, len - 1);
         if (document.activeElement === input && val.length < len) {
           slots[pos].classList.add('sui-otp-active');
         } else if (document.activeElement === input && val.length === len) {
@@ -2176,7 +2176,7 @@ const SoftUI = (() => {
 
       input.addEventListener('input', function() {
         // Filter to allowed characters
-        var filtered = '';
+        let filtered = '';
         for (var i = 0; i < input.value.length && filtered.length < len; i++) {
           if (regex.test(input.value[i])) {
             filtered += pattern === 'alphanumeric' ? input.value[i].toUpperCase() : input.value[i];
@@ -2207,7 +2207,7 @@ const SoftUI = (() => {
           e.stopPropagation();
           input.focus();
           // Set cursor position
-          var pos = Math.min(i, input.value.length);
+          let pos = Math.min(i, input.value.length);
           input.setSelectionRange(pos, pos);
           updateSlots();
         });
@@ -2222,13 +2222,13 @@ const SoftUI = (() => {
   // =========================================
   function initToggleGroups() {
     document.querySelectorAll('.sui-toggle-group[data-sui-toggle]').forEach(function(group) {
-      var mode = group.dataset.suiToggle; // "single" or "multi"
-      var items = group.querySelectorAll('.sui-toggle-group-item:not([disabled])');
+      let mode = group.dataset.suiToggle; // "single" or "multi"
+      let items = group.querySelectorAll('.sui-toggle-group-item:not([disabled])');
 
       items.forEach(function(item) {
         item.addEventListener('click', function() {
           if (mode === 'single') {
-            var wasActive = item.classList.contains('active');
+            let wasActive = item.classList.contains('active');
             items.forEach(function(it) {
               it.classList.remove('active');
               it.setAttribute('aria-pressed', 'false');
@@ -2290,32 +2290,32 @@ const SoftUI = (() => {
     let cloneCount = 0;
     if (isSeamless && totalReal > visible) {
       for (var i = totalReal - 1; i >= totalReal - visible; i--) {
-        var clone = realItems[i].cloneNode(true);
+        let clone = realItems[i].cloneNode(true);
         clone.setAttribute('aria-hidden', 'true');
         track.insertBefore(clone, track.firstChild);
       }
       for (var i = 0; i < visible; i++) {
-        var clone = realItems[i].cloneNode(true);
+        let clone = realItems[i].cloneNode(true);
         clone.setAttribute('aria-hidden', 'true');
         track.appendChild(clone);
       }
       cloneCount = visible;
     }
 
-    var allItems = Array.from(track.children);
+    let allItems = Array.from(track.children);
 
     function moveTo(displayIndex, animate) {
       if (animate === false) track.style.transition = 'none';
 
       if (isVertical) {
-        var vh = track.parentElement.offsetHeight;
-        var itemH = vh / visible;
+        let vh = track.parentElement.offsetHeight;
+        let itemH = vh / visible;
         allItems.forEach(function(it) { it.style.height = itemH + 'px'; });
         track.style.transform = 'translateY(-' + (displayIndex * itemH) + 'px)';
       } else {
-        var item = allItems[displayIndex];
-        var base = allItems[0];
-        var px = (item && base) ? item.offsetLeft - base.offsetLeft : 0;
+        let item = allItems[displayIndex];
+        let base = allItems[0];
+        let px = (item && base) ? item.offsetLeft - base.offsetLeft : 0;
         track.style.transform = 'translateX(-' + px + 'px)';
       }
 
@@ -2326,10 +2326,10 @@ const SoftUI = (() => {
     }
 
     function update(animate) {
-      var displayIndex = current + cloneCount;
+      let displayIndex = current + cloneCount;
       moveTo(displayIndex, animate);
 
-      var dotIndex = ((current % totalReal) + totalReal) % totalReal;
+      let dotIndex = ((current % totalReal) + totalReal) % totalReal;
       dots.forEach(function(d, i) { d.classList.toggle('active', i === dotIndex); });
 
       if (!isLoop) {
@@ -2435,45 +2435,45 @@ const SoftUI = (() => {
     document.querySelectorAll('.sui-chart-bar-col').forEach(function(col) {
       // Skip grouped bars (handled separately)
       if (col.querySelector('.sui-chart-bar-group')) return;
-      var fill = col.querySelector('.sui-chart-bar-fill');
+      let fill = col.querySelector('.sui-chart-bar-fill');
       if (!fill) return;
-      var val = parseFloat(fill.getAttribute('data-value'));
+      let val = parseFloat(fill.getAttribute('data-value'));
       if (isNaN(val)) return;
-      var max = parseFloat(fill.getAttribute('data-max')) || 100;
-      var pct = Math.min(100, Math.max(0, (val / max) * 100));
+      let max = parseFloat(fill.getAttribute('data-max')) || 100;
+      let pct = Math.min(100, Math.max(0, (val / max) * 100));
       fill.style.height = pct + '%';
     });
 
     // Grouped bars — set heights for each fill in a group
     document.querySelectorAll('.sui-chart-bar-group').forEach(function(group) {
       group.querySelectorAll('.sui-chart-bar-fill').forEach(function(fill) {
-        var val = parseFloat(fill.getAttribute('data-value'));
+        let val = parseFloat(fill.getAttribute('data-value'));
         if (isNaN(val)) return;
-        var max = parseFloat(fill.getAttribute('data-max')) || 100;
-        var pct = Math.min(100, Math.max(0, (val / max) * 100));
+        let max = parseFloat(fill.getAttribute('data-max')) || 100;
+        let pct = Math.min(100, Math.max(0, (val / max) * 100));
         fill.style.height = pct + '%';
       });
     });
 
     // Horizontal bars
     document.querySelectorAll('.sui-chart-bar-row').forEach(function(row) {
-      var fill = row.querySelector('.sui-chart-bar-fill');
+      let fill = row.querySelector('.sui-chart-bar-fill');
       if (!fill) return;
-      var val = parseFloat(fill.getAttribute('data-value'));
+      let val = parseFloat(fill.getAttribute('data-value'));
       if (isNaN(val)) return;
-      var max = parseFloat(fill.getAttribute('data-max')) || 100;
-      var pct = Math.min(100, Math.max(0, (val / max) * 100));
+      let max = parseFloat(fill.getAttribute('data-max')) || 100;
+      let pct = Math.min(100, Math.max(0, (val / max) * 100));
       fill.style.width = pct + '%';
     });
 
     // Stacked bars
     document.querySelectorAll('.sui-chart-bar-track-stacked').forEach(function(track) {
-      var fills = track.querySelectorAll('.sui-chart-bar-fill');
-      var total = 0;
+      let fills = track.querySelectorAll('.sui-chart-bar-fill');
+      let total = 0;
       fills.forEach(function(f) { total += parseFloat(f.getAttribute('data-value')) || 0; });
-      var max = parseFloat(track.getAttribute('data-max')) || total || 100;
+      let max = parseFloat(track.getAttribute('data-max')) || total || 100;
       fills.forEach(function(f) {
-        var v = parseFloat(f.getAttribute('data-value')) || 0;
+        let v = parseFloat(f.getAttribute('data-value')) || 0;
         f.style.height = ((v / max) * 100) + '%';
       });
     });
@@ -2481,15 +2481,15 @@ const SoftUI = (() => {
     // Donut / Pie charts — build conic-gradient from data-segments
     document.querySelectorAll('.sui-chart-donut[data-segments]').forEach(function(donut) {
       try {
-        var segments = JSON.parse(donut.getAttribute('data-segments'));
-        var total = 0;
+        let segments = JSON.parse(donut.getAttribute('data-segments'));
+        let total = 0;
         segments.forEach(function(s) { total += s.value; });
-        var stops = [];
-        var cumulative = 0;
+        let stops = [];
+        let cumulative = 0;
         segments.forEach(function(s) {
-          var start = (cumulative / total) * 100;
+          let start = (cumulative / total) * 100;
           cumulative += s.value;
-          var end = (cumulative / total) * 100;
+          let end = (cumulative / total) * 100;
           stops.push(s.color + ' ' + start + '% ' + end + '%');
         });
         donut.style.background = 'conic-gradient(' + stops.join(', ') + ')';
@@ -2499,7 +2499,7 @@ const SoftUI = (() => {
     // Line / Area charts — measure path length for animation
     document.querySelectorAll('.sui-chart-line-wrap .chart-line').forEach(function(path) {
       if (path.getTotalLength) {
-        var len = path.getTotalLength();
+        let len = path.getTotalLength();
         path.style.setProperty('--line-length', len);
         path.style.strokeDasharray = len;
         path.style.strokeDashoffset = len;
@@ -2508,27 +2508,27 @@ const SoftUI = (() => {
 
     // SVG dot tooltips
     document.querySelectorAll('.sui-chart-line-wrap').forEach(function(wrap) {
-      var dots = wrap.querySelectorAll('.chart-dot[data-value]');
+      let dots = wrap.querySelectorAll('.chart-dot[data-value]');
       if (!dots.length) return;
 
-      var tip = document.createElement('div');
+      let tip = document.createElement('div');
       tip.className = 'sui-chart-tooltip';
       wrap.appendChild(tip);
 
       dots.forEach(function(dot) {
         dot.addEventListener('mouseenter', function() {
-          var val = dot.getAttribute('data-value');
+          let val = dot.getAttribute('data-value');
           tip.textContent = val;
-          var svg = wrap.querySelector('svg');
-          var svgRect = svg.getBoundingClientRect();
-          var wrapRect = wrap.getBoundingClientRect();
-          var cx = parseFloat(dot.getAttribute('cx'));
-          var cy = parseFloat(dot.getAttribute('cy'));
-          var viewBox = svg.viewBox.baseVal;
-          var scaleX = svgRect.width / viewBox.width;
-          var scaleY = svgRect.height / viewBox.height;
-          var px = (cx * scaleX) + (svgRect.left - wrapRect.left);
-          var py = (cy * scaleY) + (svgRect.top - wrapRect.top);
+          let svg = wrap.querySelector('svg');
+          let svgRect = svg.getBoundingClientRect();
+          let wrapRect = wrap.getBoundingClientRect();
+          let cx = parseFloat(dot.getAttribute('cx'));
+          let cy = parseFloat(dot.getAttribute('cy'));
+          let viewBox = svg.viewBox.baseVal;
+          let scaleX = svgRect.width / viewBox.width;
+          let scaleY = svgRect.height / viewBox.height;
+          let px = (cx * scaleX) + (svgRect.left - wrapRect.left);
+          let py = (cy * scaleY) + (svgRect.top - wrapRect.top);
           tip.style.left = px + 'px';
           tip.style.top = (py - 8) + 'px';
           tip.classList.add('visible');
@@ -2542,7 +2542,7 @@ const SoftUI = (() => {
 
   function initSelectablePricing() {
     document.querySelectorAll('.sui-pricing-selectable').forEach(function(container) {
-      var cards = container.querySelectorAll('.sui-pricing-card');
+      let cards = container.querySelectorAll('.sui-pricing-card');
       cards.forEach(function(card) {
         card.addEventListener('click', function() {
           cards.forEach(function(c) { c.classList.remove('selected'); });
@@ -2556,17 +2556,17 @@ const SoftUI = (() => {
 
   function initStyledSelects() {
     document.querySelectorAll('.sui-styled-select').forEach(function(sel) {
-      var trigger = sel.querySelector('.sui-styled-select-trigger');
-      var menu = sel.querySelector('.sui-styled-select-menu');
-      var valueEl = sel.querySelector('.sui-styled-select-value');
-      var options = sel.querySelectorAll('.sui-styled-select-option');
-      var placeholder = sel.getAttribute('data-placeholder') || '';
-      var focusIdx = -1;
+      let trigger = sel.querySelector('.sui-styled-select-trigger');
+      let menu = sel.querySelector('.sui-styled-select-menu');
+      let valueEl = sel.querySelector('.sui-styled-select-value');
+      let options = sel.querySelectorAll('.sui-styled-select-option');
+      let placeholder = sel.getAttribute('data-placeholder') || '';
+      let focusIdx = -1;
 
       if (!trigger || !menu) return;
 
       // Set initial value
-      var selected = sel.querySelector('.sui-styled-select-option.selected');
+      let selected = sel.querySelector('.sui-styled-select-option.selected');
       if (selected && valueEl) {
         valueEl.textContent = selected.textContent;
         valueEl.classList.remove('sui-styled-select-placeholder');
@@ -2609,7 +2609,7 @@ const SoftUI = (() => {
 
       // Keyboard navigation
       trigger.addEventListener('keydown', function(e) {
-        var isOpen = sel.classList.contains('open');
+        let isOpen = sel.classList.contains('open');
         if (e.key === 'ArrowDown' || e.key === 'ArrowUp') {
           e.preventDefault();
           if (!isOpen) { sel.classList.add('open'); focusIdx = -1; }
@@ -2645,42 +2645,42 @@ const SoftUI = (() => {
 
   function initDataTables() {
     document.querySelectorAll('.sui-datatable').forEach(function(dt) {
-      var table = dt.querySelector('.sui-table');
+      let table = dt.querySelector('.sui-table');
       if (!table) return;
 
-      var tbody = table.querySelector('tbody');
+      let tbody = table.querySelector('tbody');
       if (!tbody) return;
 
-      var allRows = Array.prototype.slice.call(tbody.querySelectorAll('tr'));
-      var filteredRows = allRows.slice();
-      var currentPage = 1;
+      let allRows = Array.prototype.slice.call(tbody.querySelectorAll('tr'));
+      let filteredRows = allRows.slice();
+      let currentPage = 1;
 
       // Per-page selector (supports native <select> and .sui-styled-select)
-      var perpageNative = dt.querySelector('.sui-datatable-perpage select');
-      var perpageStyled = dt.querySelector('.sui-datatable-perpage .sui-styled-select');
-      var perpageSelect = perpageNative || perpageStyled;
+      let perpageNative = dt.querySelector('.sui-datatable-perpage select');
+      let perpageStyled = dt.querySelector('.sui-datatable-perpage .sui-styled-select');
+      let perpageSelect = perpageNative || perpageStyled;
       function getPerpageValue() {
         if (perpageNative) return parseInt(perpageNative.value, 10);
         if (perpageStyled) return parseInt(perpageStyled.getAttribute('data-value') || '', 10);
         return allRows.length;
       }
-      var perPage = perpageSelect ? getPerpageValue() : allRows.length;
+      let perPage = perpageSelect ? getPerpageValue() : allRows.length;
 
       // Info & pagination elements
-      var infoEl = dt.querySelector('.sui-datatable-info');
-      var paginationEl = dt.querySelector('.sui-datatable-pagination');
+      let infoEl = dt.querySelector('.sui-datatable-info');
+      let paginationEl = dt.querySelector('.sui-datatable-pagination');
 
       // Search input
-      var searchInput = dt.querySelector('.sui-datatable-search input');
+      let searchInput = dt.querySelector('.sui-datatable-search input');
 
       function render() {
-        var total = filteredRows.length;
-        var totalPages = perPage > 0 ? Math.ceil(total / perPage) : 1;
+        let total = filteredRows.length;
+        let totalPages = perPage > 0 ? Math.ceil(total / perPage) : 1;
         if (currentPage > totalPages) currentPage = totalPages;
         if (currentPage < 1) currentPage = 1;
 
-        var start = (currentPage - 1) * perPage;
-        var end = Math.min(start + perPage, total);
+        let start = (currentPage - 1) * perPage;
+        let end = Math.min(start + perPage, total);
 
         // Hide all rows, then show only current page
         allRows.forEach(function(row) { row.style.display = 'none'; });
@@ -2689,12 +2689,12 @@ const SoftUI = (() => {
         }
 
         // Show empty message if no results
-        var emptyRow = tbody.querySelector('.sui-datatable-empty-row');
+        let emptyRow = tbody.querySelector('.sui-datatable-empty-row');
         if (total === 0) {
           if (!emptyRow) {
             emptyRow = document.createElement('tr');
             emptyRow.className = 'sui-datatable-empty-row';
-            var td = document.createElement('td');
+            let td = document.createElement('td');
             td.className = 'sui-datatable-empty';
             td.colSpan = table.querySelectorAll('thead th').length;
             td.textContent = 'No matching records found.';
@@ -2719,7 +2719,7 @@ const SoftUI = (() => {
         if (paginationEl) {
           paginationEl.innerHTML = '';
 
-          var prevBtn = document.createElement('button');
+          let prevBtn = document.createElement('button');
           prevBtn.textContent = '\u2039';
           prevBtn.disabled = currentPage <= 1;
           prevBtn.addEventListener('click', function() {
@@ -2729,7 +2729,7 @@ const SoftUI = (() => {
 
           for (var p = 1; p <= totalPages; p++) {
             (function(page) {
-              var btn = document.createElement('button');
+              let btn = document.createElement('button');
               btn.textContent = page;
               if (page === currentPage) btn.className = 'active';
               btn.addEventListener('click', function() {
@@ -2740,7 +2740,7 @@ const SoftUI = (() => {
             })(p);
           }
 
-          var nextBtn = document.createElement('button');
+          let nextBtn = document.createElement('button');
           nextBtn.textContent = '\u203A';
           nextBtn.disabled = currentPage >= totalPages;
           nextBtn.addEventListener('click', function() {
@@ -2751,23 +2751,23 @@ const SoftUI = (() => {
       }
 
       // Filter elements (supports <select> and .sui-dropdown)
-      var filterEls = dt.querySelectorAll('.sui-datatable-filter');
+      let filterEls = dt.querySelectorAll('.sui-datatable-filter');
 
       function getFilterValue(el) {
         if (el.tagName === 'SELECT') return el.value;
         // Dropdown-based filter: read from active item
-        var active = el.querySelector('.sui-dropdown-item.active');
+        let active = el.querySelector('.sui-dropdown-item.active');
         return active ? (active.getAttribute('data-value') || '') : '';
       }
 
       function applyFilters() {
-        var query = searchInput ? searchInput.value.toLowerCase().trim() : '';
+        let query = searchInput ? searchInput.value.toLowerCase().trim() : '';
         filteredRows = allRows.filter(function(row) {
           if (query && row.textContent.toLowerCase().indexOf(query) === -1) return false;
-          var pass = true;
+          let pass = true;
           filterEls.forEach(function(el) {
-            var attr = el.getAttribute('data-filter-attr') || 'data-status';
-            var val = getFilterValue(el);
+            let attr = el.getAttribute('data-filter-attr') || 'data-status';
+            let val = getFilterValue(el);
             if (val && row.getAttribute(attr) !== val) pass = false;
           });
           return pass;
@@ -2793,11 +2793,11 @@ const SoftUI = (() => {
               el.querySelectorAll('.sui-dropdown-item').forEach(function(i) { i.classList.remove('active'); });
               item.classList.add('active');
               // Update label
-              var label = el.querySelector('.sui-datatable-filter-label');
+              let label = el.querySelector('.sui-datatable-filter-label');
               if (label) label.textContent = item.textContent;
               // Close dropdown
               el.classList.remove('open');
-              var toggle = el.querySelector('.sui-dropdown-toggle');
+              let toggle = el.querySelector('.sui-dropdown-toggle');
               if (toggle) toggle.setAttribute('aria-expanded', 'false');
               applyFilters();
             });
@@ -2815,14 +2815,14 @@ const SoftUI = (() => {
       }
 
       // Sortable headers (unsorted → asc → desc → unsorted)
-      var ths = table.querySelectorAll('th[data-sort]');
+      let ths = table.querySelectorAll('th[data-sort]');
       ths.forEach(function(th) {
         th.addEventListener('click', function() {
-          var colIndex = Array.prototype.indexOf.call(th.parentElement.children, th);
-          var type = th.getAttribute('data-sort');
+          let colIndex = Array.prototype.indexOf.call(th.parentElement.children, th);
+          let type = th.getAttribute('data-sort');
 
           // Cycle: unsorted → asc → desc → unsorted
-          var dir;
+          let dir;
           if (th.classList.contains('sort-asc')) {
             dir = 'desc';
           } else if (th.classList.contains('sort-desc')) {
@@ -2840,12 +2840,12 @@ const SoftUI = (() => {
           } else {
             th.classList.add(dir === 'asc' ? 'sort-asc' : 'sort-desc');
             filteredRows.sort(function(a, b) {
-              var aText = a.children[colIndex] ? a.children[colIndex].textContent.trim() : '';
-              var bText = b.children[colIndex] ? b.children[colIndex].textContent.trim() : '';
+              let aText = a.children[colIndex] ? a.children[colIndex].textContent.trim() : '';
+              let bText = b.children[colIndex] ? b.children[colIndex].textContent.trim() : '';
 
               if (type === 'number') {
-                var aNum = parseFloat(aText.replace(/[^0-9.\-]/g, '')) || 0;
-                var bNum = parseFloat(bText.replace(/[^0-9.\-]/g, '')) || 0;
+                let aNum = parseFloat(aText.replace(/[^0-9.\-]/g, '')) || 0;
+                let bNum = parseFloat(bText.replace(/[^0-9.\-]/g, '')) || 0;
                 return dir === 'asc' ? aNum - bNum : bNum - aNum;
               }
 
@@ -2868,11 +2868,11 @@ const SoftUI = (() => {
   function initDragDrop() {
     // ── Sortable Lists ──
     document.querySelectorAll('.sui-sortable').forEach(function(list) {
-      var dragItem = null;
+      let dragItem = null;
 
       list.querySelectorAll('.sui-sortable-item').forEach(function(item) {
-        var handle = item.querySelector('.sui-sortable-handle');
-        var dragTarget = handle || item;
+        let handle = item.querySelector('.sui-sortable-handle');
+        let dragTarget = handle || item;
 
         dragTarget.setAttribute('draggable', 'true');
         if (handle) item.classList.add('has-handle');
@@ -2899,9 +2899,9 @@ const SoftUI = (() => {
           e.preventDefault();
           item.classList.remove('drag-over');
           if (!dragItem || dragItem === item) return;
-          var items = Array.prototype.slice.call(list.children);
-          var fromIndex = items.indexOf(dragItem);
-          var toIndex = items.indexOf(item);
+          let items = Array.prototype.slice.call(list.children);
+          let fromIndex = items.indexOf(dragItem);
+          let toIndex = items.indexOf(item);
           if (fromIndex < toIndex) {
             list.insertBefore(dragItem, item.nextSibling);
           } else {
@@ -2921,7 +2921,7 @@ const SoftUI = (() => {
 
     // ── Kanban ──
     document.querySelectorAll('.sui-kanban').forEach(function(kanban) {
-      var dragCard = null;
+      let dragCard = null;
 
       kanban.querySelectorAll('.sui-kanban-card').forEach(function(card) {
         card.setAttribute('draggable', 'true');
@@ -2949,7 +2949,7 @@ const SoftUI = (() => {
 
           // Position among siblings
           if (!dragCard) return;
-          var afterEl = getDragAfterElement(col, e.clientY);
+          let afterEl = getDragAfterElement(col, e.clientY);
           if (afterEl) {
             col.insertBefore(dragCard, afterEl);
           } else {
@@ -2971,14 +2971,14 @@ const SoftUI = (() => {
     });
 
     function getDragAfterElement(container, y) {
-      var els = Array.prototype.slice.call(
+      let els = Array.prototype.slice.call(
         container.querySelectorAll('.sui-kanban-card:not(.dragging)')
       );
-      var closest = null;
-      var closestOffset = Number.NEGATIVE_INFINITY;
+      let closest = null;
+      let closestOffset = Number.NEGATIVE_INFINITY;
       els.forEach(function(el) {
-        var box = el.getBoundingClientRect();
-        var offset = y - box.top - box.height / 2;
+        let box = el.getBoundingClientRect();
+        let offset = y - box.top - box.height / 2;
         if (offset < 0 && offset > closestOffset) {
           closestOffset = offset;
           closest = el;
@@ -2990,7 +2990,7 @@ const SoftUI = (() => {
     // ── Drop Zone ──
     document.querySelectorAll('.sui-dropzone').forEach(function(zone) {
       // Click-to-upload: create hidden file input
-      var fileInput = document.createElement('input');
+      let fileInput = document.createElement('input');
       fileInput.type = 'file';
       fileInput.multiple = true;
       fileInput.style.display = 'none';
@@ -3002,16 +3002,16 @@ const SoftUI = (() => {
       });
 
       fileInput.addEventListener('change', function() {
-        var files = fileInput.files;
+        let files = fileInput.files;
         if (!files.length) return;
-        var fileList = zone.querySelector('.sui-dropzone-files');
+        let fileList = zone.querySelector('.sui-dropzone-files');
         if (!fileList) {
           fileList = document.createElement('div');
           fileList.className = 'sui-dropzone-files';
           zone.appendChild(fileList);
         }
         Array.prototype.slice.call(files).forEach(function(file) {
-          var item = document.createElement('div');
+          let item = document.createElement('div');
           item.className = 'sui-dropzone-file';
           item.innerHTML = '<span>' + file.name + '</span><button class="sui-dropzone-file-remove" type="button">&times;</button>';
           item.querySelector('.sui-dropzone-file-remove').addEventListener('click', function(ev) {
@@ -3038,16 +3038,16 @@ const SoftUI = (() => {
       zone.addEventListener('drop', function(e) {
         e.preventDefault();
         zone.classList.remove('drag-over');
-        var files = e.dataTransfer.files;
+        let files = e.dataTransfer.files;
         if (!files.length) return;
-        var fileList = zone.querySelector('.sui-dropzone-files');
+        let fileList = zone.querySelector('.sui-dropzone-files');
         if (!fileList) {
           fileList = document.createElement('div');
           fileList.className = 'sui-dropzone-files';
           zone.appendChild(fileList);
         }
         Array.prototype.slice.call(files).forEach(function(file) {
-          var item = document.createElement('div');
+          let item = document.createElement('div');
           item.className = 'sui-dropzone-file';
           item.innerHTML = '<span>' + file.name + '</span><button class="sui-dropzone-file-remove" type="button">&times;</button>';
           item.querySelector('.sui-dropzone-file-remove').addEventListener('click', function(ev) {
@@ -3064,16 +3064,16 @@ const SoftUI = (() => {
   // Sidebar — collapsible toggle
   // =========================================
   document.addEventListener('click', function(e) {
-    var btn = e.target.closest('[data-sidebar-toggle]');
+    let btn = e.target.closest('[data-sidebar-toggle]');
     if (!btn) return;
-    var sidebar = btn.closest('.sui-sidebar');
+    let sidebar = btn.closest('.sui-sidebar');
     if (sidebar) {
       sidebar.classList.toggle('sui-sidebar-collapsed');
     }
   });
 
   function sidebar(selector) {
-    var el = typeof selector === 'string' ? document.querySelector(selector) : selector;
+    let el = typeof selector === 'string' ? document.querySelector(selector) : selector;
     if (!el) return null;
 
     function collapse() { el.classList.add('sui-sidebar-collapsed'); }
@@ -3088,34 +3088,34 @@ const SoftUI = (() => {
   // Rating
   // =========================================
   function ratingIsHalf(star, e) {
-    var rect = star.getBoundingClientRect();
+    let rect = star.getBoundingClientRect();
     return e.clientX < rect.left + rect.width / 2;
   }
 
   function ratingEnsureDualSvg(star) {
-    var svgs = star.querySelectorAll('svg');
+    let svgs = star.querySelectorAll('svg');
     if (svgs.length < 2) {
-      var clone = svgs[0].cloneNode(true);
+      let clone = svgs[0].cloneNode(true);
       star.appendChild(clone);
     }
   }
 
   function ratingResetSvg(star) {
-    var svgs = star.querySelectorAll('svg');
+    let svgs = star.querySelectorAll('svg');
     if (svgs.length > 1) {
       for (var i = svgs.length - 1; i > 0; i--) { svgs[i].remove(); }
     }
   }
 
   document.addEventListener('click', function(e) {
-    var star = e.target.closest('.sui-rating:not(.sui-rating-readonly) .sui-rating-star');
+    let star = e.target.closest('.sui-rating:not(.sui-rating-readonly) .sui-rating-star');
     if (!star) return;
-    var rating = star.closest('.sui-rating');
-    var stars = Array.from(rating.querySelectorAll('.sui-rating-star'));
-    var index = stars.indexOf(star);
-    var allowHalf = rating.classList.contains('sui-rating-half');
-    var isHalf = allowHalf && ratingIsHalf(star, e);
-    var value = isHalf ? index + 0.5 : index + 1;
+    let rating = star.closest('.sui-rating');
+    let stars = Array.from(rating.querySelectorAll('.sui-rating-star'));
+    let index = stars.indexOf(star);
+    let allowHalf = rating.classList.contains('sui-rating-half');
+    let isHalf = allowHalf && ratingIsHalf(star, e);
+    let value = isHalf ? index + 0.5 : index + 1;
     stars.forEach(function(s, i) {
       s.classList.remove('active', 'half', 'hover', 'hover-half');
       ratingResetSvg(s);
@@ -3135,13 +3135,13 @@ const SoftUI = (() => {
   });
 
   document.addEventListener('mousemove', function(e) {
-    var star = e.target.closest('.sui-rating:not(.sui-rating-readonly) .sui-rating-star');
+    let star = e.target.closest('.sui-rating:not(.sui-rating-readonly) .sui-rating-star');
     if (!star) return;
-    var rating = star.closest('.sui-rating');
-    var stars = Array.from(rating.querySelectorAll('.sui-rating-star'));
-    var index = stars.indexOf(star);
-    var allowHalf = rating.classList.contains('sui-rating-half');
-    var isHalf = allowHalf && ratingIsHalf(star, e);
+    let rating = star.closest('.sui-rating');
+    let stars = Array.from(rating.querySelectorAll('.sui-rating-star'));
+    let index = stars.indexOf(star);
+    let allowHalf = rating.classList.contains('sui-rating-half');
+    let isHalf = allowHalf && ratingIsHalf(star, e);
     stars.forEach(function(s, i) {
       s.classList.remove('hover', 'hover-half');
       ratingResetSvg(s);
@@ -3159,10 +3159,10 @@ const SoftUI = (() => {
   });
 
   document.addEventListener('mouseout', function(e) {
-    var star = e.target.closest('.sui-rating:not(.sui-rating-readonly) .sui-rating-star');
+    let star = e.target.closest('.sui-rating:not(.sui-rating-readonly) .sui-rating-star');
     if (!star) return;
-    var rating = star.closest('.sui-rating');
-    var stars = Array.from(rating.querySelectorAll('.sui-rating-star'));
+    let rating = star.closest('.sui-rating');
+    let stars = Array.from(rating.querySelectorAll('.sui-rating-star'));
     stars.forEach(function(s) {
       s.classList.remove('hover', 'hover-half');
       if (!s.classList.contains('half')) { ratingResetSvg(s); }
@@ -3173,14 +3173,14 @@ const SoftUI = (() => {
   // Color Picker
   // =========================================
   document.addEventListener('click', function(e) {
-    var swatch = e.target.closest('.sui-color-picker .sui-color-swatch');
+    let swatch = e.target.closest('.sui-color-picker .sui-color-swatch');
     if (!swatch) return;
-    var picker = swatch.closest('.sui-color-picker');
+    let picker = swatch.closest('.sui-color-picker');
     picker.querySelectorAll('.sui-color-swatch').forEach(function(s) {
       s.classList.remove('active');
     });
     swatch.classList.add('active');
-    var color = swatch.getAttribute('data-color') || swatch.style.background || swatch.style.backgroundColor;
+    let color = swatch.getAttribute('data-color') || swatch.style.background || swatch.style.backgroundColor;
     picker.setAttribute('data-value', color);
     picker.dispatchEvent(new CustomEvent('sui-color-change', { detail: { color: color } }));
   });
@@ -3189,24 +3189,24 @@ const SoftUI = (() => {
   // Color Spectrum Picker
   // =========================================
   function initSpectrumPickers() {
-    var pickers = document.querySelectorAll('.sui-color-spectrum');
+    let pickers = document.querySelectorAll('.sui-color-spectrum');
     pickers.forEach(function(picker) { initSpectrum(picker); });
   }
 
   function initSpectrum(picker) {
-    var canvasWrap = picker.querySelector('.sui-color-spectrum-canvas');
-    var canvas = canvasWrap.querySelector('canvas');
-    var ctx = canvas.getContext('2d');
-    var cursor = canvasWrap.querySelector('.sui-color-spectrum-cursor');
-    var hueBar = picker.querySelector('.sui-color-spectrum-hue');
-    var hueCursor = picker.querySelector('.sui-color-spectrum-hue-cursor');
-    var preview = picker.querySelector('.sui-color-spectrum-preview');
-    var hexInput = picker.querySelector('.sui-color-spectrum-hex input');
-    var rInput = picker.querySelector('input[data-channel="r"]');
-    var gInput = picker.querySelector('input[data-channel="g"]');
-    var bInput = picker.querySelector('input[data-channel="b"]');
+    let canvasWrap = picker.querySelector('.sui-color-spectrum-canvas');
+    let canvas = canvasWrap.querySelector('canvas');
+    let ctx = canvas.getContext('2d');
+    let cursor = canvasWrap.querySelector('.sui-color-spectrum-cursor');
+    let hueBar = picker.querySelector('.sui-color-spectrum-hue');
+    let hueCursor = picker.querySelector('.sui-color-spectrum-hue-cursor');
+    let preview = picker.querySelector('.sui-color-spectrum-preview');
+    let hexInput = picker.querySelector('.sui-color-spectrum-hex input');
+    let rInput = picker.querySelector('input[data-channel="r"]');
+    let gInput = picker.querySelector('input[data-channel="g"]');
+    let bInput = picker.querySelector('input[data-channel="b"]');
 
-    var hue = 0, sat = 1, val = 1;
+    let hue = 0, sat = 1, val = 1;
 
     function resizeCanvas() {
       canvas.width = canvasWrap.offsetWidth;
@@ -3215,12 +3215,12 @@ const SoftUI = (() => {
     }
 
     function hsvToRgb(h, s, v) {
-      var i = Math.floor(h / 60) % 6;
-      var f = h / 60 - Math.floor(h / 60);
-      var p = v * (1 - s);
-      var q = v * (1 - f * s);
-      var t = v * (1 - (1 - f) * s);
-      var r, g, b;
+      let i = Math.floor(h / 60) % 6;
+      let f = h / 60 - Math.floor(h / 60);
+      let p = v * (1 - s);
+      let q = v * (1 - f * s);
+      let t = v * (1 - (1 - f) * s);
+      let r, g, b;
       switch (i) {
         case 0: r = v; g = t; b = p; break;
         case 1: r = q; g = v; b = p; break;
@@ -3239,15 +3239,15 @@ const SoftUI = (() => {
     function hexToRgb(hex) {
       hex = hex.replace('#', '');
       if (hex.length === 3) hex = hex[0]+hex[0]+hex[1]+hex[1]+hex[2]+hex[2];
-      var n = parseInt(hex, 16);
+      let n = parseInt(hex, 16);
       return [(n >> 16) & 255, (n >> 8) & 255, n & 255];
     }
 
     function rgbToHsv(r, g, b) {
       r /= 255; g /= 255; b /= 255;
-      var max = Math.max(r, g, b), min = Math.min(r, g, b);
-      var h, s, v = max;
-      var d = max - min;
+      let max = Math.max(r, g, b), min = Math.min(r, g, b);
+      let h, s, v = max;
+      let d = max - min;
       s = max === 0 ? 0 : d / max;
       if (max === min) { h = 0; }
       else {
@@ -3262,17 +3262,17 @@ const SoftUI = (() => {
     }
 
     function drawSatVal() {
-      var w = canvas.width, h = canvas.height;
-      var hueRgb = hsvToRgb(hue, 1, 1);
-      var hueColor = 'rgb(' + hueRgb[0] + ',' + hueRgb[1] + ',' + hueRgb[2] + ')';
+      let w = canvas.width, h = canvas.height;
+      let hueRgb = hsvToRgb(hue, 1, 1);
+      let hueColor = 'rgb(' + hueRgb[0] + ',' + hueRgb[1] + ',' + hueRgb[2] + ')';
       ctx.fillStyle = hueColor;
       ctx.fillRect(0, 0, w, h);
-      var whiteGrad = ctx.createLinearGradient(0, 0, w, 0);
+      let whiteGrad = ctx.createLinearGradient(0, 0, w, 0);
       whiteGrad.addColorStop(0, 'rgba(255,255,255,1)');
       whiteGrad.addColorStop(1, 'rgba(255,255,255,0)');
       ctx.fillStyle = whiteGrad;
       ctx.fillRect(0, 0, w, h);
-      var blackGrad = ctx.createLinearGradient(0, 0, 0, h);
+      let blackGrad = ctx.createLinearGradient(0, 0, 0, h);
       blackGrad.addColorStop(0, 'rgba(0,0,0,0)');
       blackGrad.addColorStop(1, 'rgba(0,0,0,1)');
       ctx.fillStyle = blackGrad;
@@ -3280,8 +3280,8 @@ const SoftUI = (() => {
     }
 
     function updateUI() {
-      var rgb = hsvToRgb(hue, sat, val);
-      var hex = rgbToHex(rgb[0], rgb[1], rgb[2]);
+      let rgb = hsvToRgb(hue, sat, val);
+      let hex = rgbToHex(rgb[0], rgb[1], rgb[2]);
       if (preview) preview.style.background = hex;
       if (hexInput) hexInput.value = hex.toUpperCase().slice(1);
       if (rInput) rInput.value = rgb[0];
@@ -3291,7 +3291,7 @@ const SoftUI = (() => {
       cursor.style.left = (sat * 100) + '%';
       cursor.style.top = ((1 - val) * 100) + '%';
 
-      var hueRgb = hsvToRgb(hue, 1, 1);
+      let hueRgb = hsvToRgb(hue, 1, 1);
       hueCursor.style.left = (hue / 360 * 100) + '%';
       hueCursor.style.background = 'rgb(' + hueRgb[0] + ',' + hueRgb[1] + ',' + hueRgb[2] + ')';
 
@@ -3301,9 +3301,9 @@ const SoftUI = (() => {
 
     // Canvas drag
     function onCanvasMove(e) {
-      var rect = canvasWrap.getBoundingClientRect();
-      var x = (e.touches ? e.touches[0].clientX : e.clientX) - rect.left;
-      var y = (e.touches ? e.touches[0].clientY : e.clientY) - rect.top;
+      let rect = canvasWrap.getBoundingClientRect();
+      let x = (e.touches ? e.touches[0].clientX : e.clientX) - rect.left;
+      let y = (e.touches ? e.touches[0].clientY : e.clientY) - rect.top;
       sat = Math.max(0, Math.min(1, x / rect.width));
       val = Math.max(0, Math.min(1, 1 - y / rect.height));
       updateUI();
@@ -3329,8 +3329,8 @@ const SoftUI = (() => {
 
     // Hue drag
     function onHueMove(e) {
-      var rect = hueBar.getBoundingClientRect();
-      var x = (e.touches ? e.touches[0].clientX : e.clientX) - rect.left;
+      let rect = hueBar.getBoundingClientRect();
+      let x = (e.touches ? e.touches[0].clientX : e.clientX) - rect.left;
       hue = Math.max(0, Math.min(360, x / rect.width * 360));
       drawSatVal();
       updateUI();
@@ -3357,10 +3357,10 @@ const SoftUI = (() => {
     // Hex input
     if (hexInput) {
       hexInput.addEventListener('input', function() {
-        var v = hexInput.value.replace('#', '');
+        let v = hexInput.value.replace('#', '');
         if (v.length === 6 && /^[0-9A-Fa-f]{6}$/.test(v)) {
-          var rgb = hexToRgb(v);
-          var hsv = rgbToHsv(rgb[0], rgb[1], rgb[2]);
+          let rgb = hexToRgb(v);
+          let hsv = rgbToHsv(rgb[0], rgb[1], rgb[2]);
           hue = hsv[0]; sat = hsv[1]; val = hsv[2];
           drawSatVal();
           updateUI();
@@ -3370,13 +3370,13 @@ const SoftUI = (() => {
 
     // RGB inputs
     function onRgbInput() {
-      var r = parseInt(rInput.value) || 0;
-      var g = parseInt(gInput.value) || 0;
-      var b = parseInt(bInput.value) || 0;
+      let r = parseInt(rInput.value) || 0;
+      let g = parseInt(gInput.value) || 0;
+      let b = parseInt(bInput.value) || 0;
       r = Math.max(0, Math.min(255, r));
       g = Math.max(0, Math.min(255, g));
       b = Math.max(0, Math.min(255, b));
-      var hsv = rgbToHsv(r, g, b);
+      let hsv = rgbToHsv(r, g, b);
       hue = hsv[0]; sat = hsv[1]; val = hsv[2];
       drawSatVal();
       updateUI();
@@ -3387,9 +3387,9 @@ const SoftUI = (() => {
     if (bInput) bInput.addEventListener('input', onRgbInput);
 
     // Init from data-color attribute or default
-    var initColor = picker.getAttribute('data-color') || '#5B54E0';
-    var initRgb = hexToRgb(initColor);
-    var initHsv = rgbToHsv(initRgb[0], initRgb[1], initRgb[2]);
+    let initColor = picker.getAttribute('data-color') || '#5B54E0';
+    let initRgb = hexToRgb(initColor);
+    let initHsv = rgbToHsv(initRgb[0], initRgb[1], initRgb[2]);
     hue = initHsv[0]; sat = initHsv[1]; val = initHsv[2];
 
     resizeCanvas();
@@ -3412,7 +3412,7 @@ const SoftUI = (() => {
     return (bytes / 1048576).toFixed(1) + ' MB';
   }
 
-  var fileIcons = {
+  let fileIcons = {
     file: '<svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>',
     image: '<svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>',
     pdf: '<svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="9" y1="15" x2="15" y2="15"/><line x1="9" y1="18" x2="13" y2="18"/><line x1="9" y1="12" x2="11" y2="12"/></svg>',
@@ -3424,8 +3424,8 @@ const SoftUI = (() => {
   };
 
   function getFileType(file) {
-    var type = file.type || '';
-    var ext = file.name.split('.').pop().toLowerCase();
+    let type = file.type || '';
+    let ext = file.name.split('.').pop().toLowerCase();
     if (type.startsWith('image/')) return 'image';
     if (type === 'application/pdf' || ext === 'pdf') return 'pdf';
     if (type.startsWith('video/')) return 'video';
@@ -3445,14 +3445,14 @@ const SoftUI = (() => {
   }
 
   function getOrCreateContainer(zone, cls) {
-    var wrap = zone.closest('.sui-file-upload-wrap');
+    let wrap = zone.closest('.sui-file-upload-wrap');
     if (!wrap) {
       wrap = document.createElement('div');
       wrap.className = 'sui-file-upload-wrap';
       zone.parentNode.insertBefore(wrap, zone);
       wrap.appendChild(zone);
     }
-    var container = wrap.querySelector('.' + cls);
+    let container = wrap.querySelector('.' + cls);
     if (!container) {
       container = document.createElement('div');
       container.className = cls;
@@ -3462,11 +3462,11 @@ const SoftUI = (() => {
   }
 
   function renderFileList(zone, files, append) {
-    var container = getOrCreateContainer(zone, 'sui-file-list');
+    let container = getOrCreateContainer(zone, 'sui-file-list');
     if (!append) container.innerHTML = '';
     for (var i = 0; i < files.length; i++) {
-      var f = files[i];
-      var item = document.createElement('div');
+      let f = files[i];
+      let item = document.createElement('div');
       item.className = 'sui-file-item';
       item.innerHTML =
         '<div class="sui-file-item-icon ' + getFileIconClass(f) + '">' + getFileIcon(f) + '</div>' +
@@ -3480,11 +3480,11 @@ const SoftUI = (() => {
   }
 
   function renderFileProgress(zone, files, append) {
-    var container = getOrCreateContainer(zone, 'sui-file-list');
+    let container = getOrCreateContainer(zone, 'sui-file-list');
     if (!append) container.innerHTML = '';
     for (var i = 0; i < files.length; i++) {
-      var f = files[i];
-      var item = document.createElement('div');
+      let f = files[i];
+      let item = document.createElement('div');
       item.className = 'sui-file-item';
       item.innerHTML =
         '<div class="sui-file-item-icon ' + getFileIconClass(f) + '">' + getFileIcon(f) + '</div>' +
@@ -3502,10 +3502,10 @@ const SoftUI = (() => {
   }
 
   function simulateProgress(item) {
-    var bar = item.querySelector('.sui-progress-bar');
-    var status = item.querySelector('.sui-file-item-status');
-    var pct = 0;
-    var interval = setInterval(function() {
+    let bar = item.querySelector('.sui-progress-bar');
+    let status = item.querySelector('.sui-file-item-status');
+    let pct = 0;
+    let interval = setInterval(function() {
       pct += Math.floor(Math.random() * 15) + 5;
       if (pct >= 100) {
         pct = 100;
@@ -3522,19 +3522,19 @@ const SoftUI = (() => {
   }
 
   function renderFilePreview(zone, files, append) {
-    var container = getOrCreateContainer(zone, 'sui-file-preview-grid');
+    let container = getOrCreateContainer(zone, 'sui-file-preview-grid');
     if (!append) container.innerHTML = '';
     for (var i = 0; i < files.length; i++) {
-      var f = files[i];
+      let f = files[i];
       if (!f.type || !f.type.startsWith('image/')) continue;
-      var item = document.createElement('div');
+      let item = document.createElement('div');
       item.className = 'sui-file-preview-item';
       item.innerHTML =
         '<img alt="' + f.name + '">' +
         '<button class="sui-file-preview-item-remove" aria-label="Remove">&times;</button>';
       container.appendChild(item);
       (function(img, file) {
-        var reader = new FileReader();
+        let reader = new FileReader();
         reader.onload = function(e) { img.src = e.target.result; };
         reader.readAsDataURL(file);
       })(item.querySelector('img'), f);
@@ -3544,12 +3544,12 @@ const SoftUI = (() => {
   // Delegated change on file inputs
   document.addEventListener('change', function(e) {
     if (!e.target.matches('.sui-file-upload input[type="file"]')) return;
-    var input = e.target;
-    var zone = input.closest('.sui-file-upload');
+    let input = e.target;
+    let zone = input.closest('.sui-file-upload');
     if (!zone) return;
-    var files = Array.from(input.files);
+    let files = Array.from(input.files);
     if (!files.length) return;
-    var mode = zone.getAttribute('data-sui-upload') || 'list';
+    let mode = zone.getAttribute('data-sui-upload') || 'list';
     if (mode === 'preview') {
       renderFilePreview(zone, files);
     } else if (mode === 'progress') {
@@ -3562,34 +3562,34 @@ const SoftUI = (() => {
 
   // Delegated remove clicks
   document.addEventListener('click', function(e) {
-    var removeBtn = e.target.closest('.sui-file-item-remove, .sui-file-preview-item-remove');
+    let removeBtn = e.target.closest('.sui-file-item-remove, .sui-file-preview-item-remove');
     if (!removeBtn) return;
-    var item = removeBtn.closest('.sui-file-item, .sui-file-preview-item');
+    let item = removeBtn.closest('.sui-file-item, .sui-file-preview-item');
     if (item) item.remove();
   });
 
   // Dragover styling
   document.addEventListener('dragover', function(e) {
-    var zone = e.target.closest('.sui-file-upload');
+    let zone = e.target.closest('.sui-file-upload');
     if (!zone) return;
     e.preventDefault();
     zone.classList.add('sui-file-upload-dragover');
   });
 
   document.addEventListener('dragleave', function(e) {
-    var zone = e.target.closest('.sui-file-upload');
+    let zone = e.target.closest('.sui-file-upload');
     if (!zone) return;
     zone.classList.remove('sui-file-upload-dragover');
   });
 
   document.addEventListener('drop', function(e) {
-    var zone = e.target.closest('.sui-file-upload');
+    let zone = e.target.closest('.sui-file-upload');
     if (!zone) return;
     e.preventDefault();
     zone.classList.remove('sui-file-upload-dragover');
-    var files = Array.from(e.dataTransfer.files);
+    let files = Array.from(e.dataTransfer.files);
     if (!files.length) return;
-    var mode = zone.getAttribute('data-sui-upload') || 'list';
+    let mode = zone.getAttribute('data-sui-upload') || 'list';
     if (mode === 'preview') {
       renderFilePreview(zone, files, true);
     } else if (mode === 'progress') {
@@ -3603,33 +3603,33 @@ const SoftUI = (() => {
   // Radial Progress
   // =========================================
   function initRadialProgress() {
-    var radials = document.querySelectorAll('.sui-radial[data-value]');
+    let radials = document.querySelectorAll('.sui-radial[data-value]');
     radials.forEach(function(el) {
-      var fill = el.querySelector('.sui-radial-fill');
+      let fill = el.querySelector('.sui-radial-fill');
       if (!fill) return;
-      var value = parseFloat(el.getAttribute('data-value')) || 0;
+      let value = parseFloat(el.getAttribute('data-value')) || 0;
       value = Math.max(0, Math.min(100, value));
-      var circumference = parseFloat(fill.getAttribute('stroke-dasharray') || fill.style.strokeDasharray);
+      let circumference = parseFloat(fill.getAttribute('stroke-dasharray') || fill.style.strokeDasharray);
       if (!circumference) {
-        var r = fill.getAttribute('r');
+        let r = fill.getAttribute('r');
         circumference = 2 * Math.PI * parseFloat(r);
       }
       fill.style.strokeDasharray = circumference;
       fill.style.strokeDashoffset = circumference;
-      var valueEl = el.querySelector('.sui-radial-value');
-      var duration = el.classList.contains('sui-radial-animated') ? 1200 : 600;
+      let valueEl = el.querySelector('.sui-radial-value');
+      let duration = el.classList.contains('sui-radial-animated') ? 1200 : 600;
 
       requestAnimationFrame(function() {
         requestAnimationFrame(function() {
-          var offset = circumference - (value / 100) * circumference;
+          let offset = circumference - (value / 100) * circumference;
           fill.style.strokeDashoffset = offset;
 
           if (valueEl) {
-            var start = performance.now();
+            let start = performance.now();
             function tick(now) {
-              var elapsed = now - start;
-              var progress = Math.min(elapsed / duration, 1);
-              var current = Math.round(progress * value);
+              let elapsed = now - start;
+              let progress = Math.min(elapsed / duration, 1);
+              let current = Math.round(progress * value);
               valueEl.textContent = current + '%';
               if (progress < 1) requestAnimationFrame(tick);
             }
@@ -3650,15 +3650,15 @@ const SoftUI = (() => {
   // Number Input
   // =========================================
   document.addEventListener('click', function(e) {
-    var btn = e.target.closest('.sui-number-input-btn');
+    let btn = e.target.closest('.sui-number-input-btn');
     if (!btn) return;
-    var wrap = btn.closest('.sui-number-input');
-    var input = wrap.querySelector('input[type="number"]');
+    let wrap = btn.closest('.sui-number-input');
+    let input = wrap.querySelector('input[type="number"]');
     if (!input) return;
-    var step = parseFloat(input.step) || 1;
-    var min = input.min !== '' ? parseFloat(input.min) : -Infinity;
-    var max = input.max !== '' ? parseFloat(input.max) : Infinity;
-    var val = parseFloat(input.value) || 0;
+    let step = parseFloat(input.step) || 1;
+    let min = input.min !== '' ? parseFloat(input.min) : -Infinity;
+    let max = input.max !== '' ? parseFloat(input.max) : Infinity;
+    let val = parseFloat(input.value) || 0;
     if (btn.getAttribute('data-action') === 'decrement') {
       val = Math.max(min, val - step);
     } else {
@@ -3672,13 +3672,13 @@ const SoftUI = (() => {
   // Password Toggle
   // =========================================
   document.addEventListener('click', function(e) {
-    var btn = e.target.closest('.sui-password-toggle');
+    let btn = e.target.closest('.sui-password-toggle');
     if (!btn) return;
     e.stopPropagation();
-    var wrap = btn.closest('.sui-password-input');
-    var input = wrap.querySelector('input');
+    let wrap = btn.closest('.sui-password-input');
+    let input = wrap.querySelector('input');
     if (!input) return;
-    var isPassword = input.type === 'password';
+    let isPassword = input.type === 'password';
     input.type = isPassword ? 'text' : 'password';
     btn.classList.toggle('active');
   }, true);
@@ -3687,37 +3687,37 @@ const SoftUI = (() => {
   // Tags Input
   // =========================================
   document.addEventListener('keydown', function(e) {
-    var input = e.target.closest('.sui-tags-input-field');
+    let input = e.target.closest('.sui-tags-input-field');
     if (!input) return;
-    var wrap = input.closest('.sui-tags-input');
+    let wrap = input.closest('.sui-tags-input');
     if (e.key === 'Enter' || e.key === ',') {
       e.preventDefault();
-      var val = input.value.trim().replace(/,$/, '');
+      let val = input.value.trim().replace(/,$/, '');
       if (!val) return;
-      var tag = document.createElement('span');
+      let tag = document.createElement('span');
       tag.className = 'sui-chip';
       tag.textContent = val;
-      var closeBtn = document.createElement('button');
+      let closeBtn = document.createElement('button');
       closeBtn.className = 'sui-chip-close';
       closeBtn.setAttribute('aria-label', 'Remove');
       tag.appendChild(closeBtn);
       wrap.insertBefore(tag, input);
       input.value = '';
     } else if (e.key === 'Backspace' && !input.value) {
-      var tags = wrap.querySelectorAll('.sui-chip');
+      let tags = wrap.querySelectorAll('.sui-chip');
       if (tags.length) tags[tags.length - 1].remove();
     }
   });
 
   document.addEventListener('click', function(e) {
-    var dismiss = e.target.closest('.sui-tags-input .sui-chip-close');
+    let dismiss = e.target.closest('.sui-tags-input .sui-chip-close');
     if (dismiss) {
       dismiss.closest('.sui-chip').remove();
       return;
     }
-    var wrap = e.target.closest('.sui-tags-input');
+    let wrap = e.target.closest('.sui-tags-input');
     if (wrap) {
-      var input = wrap.querySelector('.sui-tags-input-field');
+      let input = wrap.querySelector('.sui-tags-input-field');
       if (input) input.focus();
     }
   });
@@ -3729,10 +3729,10 @@ const SoftUI = (() => {
   function initSlideSwaps() {
     document.querySelectorAll('.sui-swap-slide, .sui-swap-slide-x').forEach(function(swap) {
       if (swap.dataset.suiSlideInit) return;
-      var children = swap.querySelectorAll('.sui-swap-on, .sui-swap-off, .sui-swap-state');
-      var maxW = 0, maxH = 0;
+      let children = swap.querySelectorAll('.sui-swap-on, .sui-swap-off, .sui-swap-state');
+      let maxW = 0, maxH = 0;
       children.forEach(function(c) {
-        var prev = c.style.cssText;
+        let prev = c.style.cssText;
         c.style.position = 'relative';
         c.style.opacity = '1';
         c.style.transform = 'none';
@@ -3753,12 +3753,12 @@ const SoftUI = (() => {
   }
 
   document.addEventListener('click', function(e) {
-    var swap = e.target.closest('.sui-swap');
+    let swap = e.target.closest('.sui-swap');
     if (!swap) return;
     if (swap.classList.contains('sui-swap-cycle')) {
-      var states = Array.from(swap.querySelectorAll('.sui-swap-state'));
-      var current = states.findIndex(function(s) { return s.classList.contains('active'); });
-      var next = (current + 1) % states.length;
+      let states = Array.from(swap.querySelectorAll('.sui-swap-state'));
+      let current = states.findIndex(function(s) { return s.classList.contains('active'); });
+      let next = (current + 1) % states.length;
       states.forEach(function(s) { s.classList.remove('active'); });
       states[next].classList.add('active');
       swap.setAttribute('data-state', next);
@@ -3772,36 +3772,36 @@ const SoftUI = (() => {
   // =========================================
   // Dock — magnification effect
   // =========================================
-  var dockMaxScale = 1.5;
-  var dockRange = 3;
+  let dockMaxScale = 1.5;
+  let dockRange = 3;
 
   document.addEventListener('mousemove', function(e) {
-    var dock = e.target.closest('.sui-dock');
+    let dock = e.target.closest('.sui-dock');
     if (!dock) return;
     if (dock.classList.contains('sui-dock-no-scale')) return;
-    var iconOnly = dock.classList.contains('sui-dock-icon-scale');
-    var items = Array.from(dock.querySelectorAll('.sui-dock-item'));
-    var isVertical = dock.classList.contains('sui-dock-vertical');
+    let iconOnly = dock.classList.contains('sui-dock-icon-scale');
+    let items = Array.from(dock.querySelectorAll('.sui-dock-item'));
+    let isVertical = dock.classList.contains('sui-dock-vertical');
 
     items.forEach(function(item) {
-      var rect = item.getBoundingClientRect();
-      var center = isVertical
+      let rect = item.getBoundingClientRect();
+      let center = isVertical
         ? rect.top + rect.height / 2
         : rect.left + rect.width / 2;
-      var mouse = isVertical ? e.clientY : e.clientX;
-      var baseSize = dock.classList.contains('sui-dock-sm') ? 32
+      let mouse = isVertical ? e.clientY : e.clientX;
+      let baseSize = dock.classList.contains('sui-dock-sm') ? 32
         : dock.classList.contains('sui-dock-lg') ? 52 : 40;
-      var dist = Math.abs(mouse - center) / baseSize;
+      let dist = Math.abs(mouse - center) / baseSize;
 
       if (dist < dockRange) {
-        var scale = dockMaxScale - (dist / dockRange) * (dockMaxScale - 1);
+        let scale = dockMaxScale - (dist / dockRange) * (dockMaxScale - 1);
         if (iconOnly) {
           item.style.width = '';
           item.style.height = '';
-          var svg = item.querySelector('svg');
+          let svg = item.querySelector('svg');
           if (svg) svg.style.transform = 'scale(' + scale + ')';
         } else {
-          var newSize = Math.round(baseSize * scale);
+          let newSize = Math.round(baseSize * scale);
           item.style.width = newSize + 'px';
           item.style.height = newSize + 'px';
         }
@@ -3809,7 +3809,7 @@ const SoftUI = (() => {
         item.style.width = '';
         item.style.height = '';
         if (iconOnly) {
-          var svg = item.querySelector('svg');
+          let svg = item.querySelector('svg');
           if (svg) svg.style.transform = '';
         }
       }
@@ -3818,13 +3818,13 @@ const SoftUI = (() => {
 
   document.addEventListener('mouseleave', function(e) {
     if (!e.target.classList || !e.target.classList.contains('sui-dock')) return;
-    var iconOnly = e.target.classList.contains('sui-dock-icon-scale');
-    var items = e.target.querySelectorAll('.sui-dock-item');
+    let iconOnly = e.target.classList.contains('sui-dock-icon-scale');
+    let items = e.target.querySelectorAll('.sui-dock-item');
     items.forEach(function(item) {
       item.style.width = '';
       item.style.height = '';
       if (iconOnly) {
-        var svg = item.querySelector('svg');
+        let svg = item.querySelector('svg');
         if (svg) svg.style.transform = '';
       }
     });
@@ -3833,9 +3833,9 @@ const SoftUI = (() => {
   // =========================================
   // Image Lightbox
   // =========================================
-  var lightboxOverlay = null;
-  var lightboxImages = [];
-  var lightboxIndex = 0;
+  let lightboxOverlay = null;
+  let lightboxImages = [];
+  let lightboxIndex = 0;
 
   function createLightbox() {
     if (lightboxOverlay) return;
@@ -3875,7 +3875,7 @@ const SoftUI = (() => {
     lightboxOverlay.classList.add('open');
     lightboxOverlay.classList.remove('zoomed');
     document.body.style.overflow = 'hidden';
-    var hasMultiple = images.length > 1;
+    let hasMultiple = images.length > 1;
     lightboxOverlay.querySelector('.sui-lightbox-prev').style.display = hasMultiple ? '' : 'none';
     lightboxOverlay.querySelector('.sui-lightbox-next').style.display = hasMultiple ? '' : 'none';
     lightboxOverlay.querySelector('.sui-lightbox-counter').style.display = hasMultiple ? '' : 'none';
@@ -3891,10 +3891,10 @@ const SoftUI = (() => {
   function showLightboxImage(idx) {
     if (lightboxImages.length === 0) return;
     lightboxIndex = (idx + lightboxImages.length) % lightboxImages.length;
-    var item = lightboxImages[lightboxIndex];
-    var img = lightboxOverlay.querySelector('img');
-    var caption = lightboxOverlay.querySelector('.sui-lightbox-caption');
-    var counter = lightboxOverlay.querySelector('.sui-lightbox-counter');
+    let item = lightboxImages[lightboxIndex];
+    let img = lightboxOverlay.querySelector('img');
+    let caption = lightboxOverlay.querySelector('.sui-lightbox-caption');
+    let counter = lightboxOverlay.querySelector('.sui-lightbox-counter');
     img.src = item.src;
     img.alt = item.alt || '';
     caption.textContent = item.caption || '';
@@ -3905,11 +3905,11 @@ const SoftUI = (() => {
 
   // Vertical gallery — click side thumb to update main
   document.addEventListener('click', function(e) {
-    var thumb = e.target.closest('.sui-lightbox-vertical-strip .sui-lightbox-thumb');
+    let thumb = e.target.closest('.sui-lightbox-vertical-strip .sui-lightbox-thumb');
     if (!thumb) return;
-    var gallery = thumb.closest('.sui-lightbox-vertical');
-    var main = gallery.querySelector('.sui-lightbox-vertical-main img');
-    var img = thumb.querySelector('img');
+    let gallery = thumb.closest('.sui-lightbox-vertical');
+    let main = gallery.querySelector('.sui-lightbox-vertical-main img');
+    let img = thumb.querySelector('img');
     if (main && img) {
       main.src = thumb.getAttribute('data-src') || img.src;
       main.alt = thumb.getAttribute('data-alt') || img.alt;
@@ -3920,39 +3920,39 @@ const SoftUI = (() => {
 
   // Click main image in vertical gallery to open lightbox
   document.addEventListener('click', function(e) {
-    var main = e.target.closest('.sui-lightbox-vertical-main');
+    let main = e.target.closest('.sui-lightbox-vertical-main');
     if (!main) return;
-    var gallery = main.closest('.sui-lightbox-vertical');
-    var thumbs = Array.from(gallery.querySelectorAll('.sui-lightbox-vertical-strip .sui-lightbox-thumb'));
-    var images = thumbs.map(function(t) {
-      var img = t.querySelector('img');
+    let gallery = main.closest('.sui-lightbox-vertical');
+    let thumbs = Array.from(gallery.querySelectorAll('.sui-lightbox-vertical-strip .sui-lightbox-thumb'));
+    let images = thumbs.map(function(t) {
+      let img = t.querySelector('img');
       return {
         src: t.getAttribute('data-src') || (img ? img.src : ''),
         alt: t.getAttribute('data-alt') || (img ? img.alt : ''),
         caption: t.getAttribute('data-caption') || ''
       };
     });
-    var activeIdx = thumbs.findIndex(function(t) { return t.classList.contains('active'); });
+    let activeIdx = thumbs.findIndex(function(t) { return t.classList.contains('active'); });
     openLightbox(images, activeIdx >= 0 ? activeIdx : 0);
   });
 
   // Click on thumbnail
   document.addEventListener('click', function(e) {
-    var thumb = e.target.closest('.sui-lightbox-thumb');
+    let thumb = e.target.closest('.sui-lightbox-thumb');
     if (!thumb) return;
     // Skip if inside vertical strip (handled above)
     if (thumb.closest('.sui-lightbox-vertical-strip')) return;
-    var grid = thumb.closest('.sui-lightbox-grid');
-    var thumbs = grid ? Array.from(grid.querySelectorAll('.sui-lightbox-thumb')) : [thumb];
-    var images = thumbs.map(function(t) {
-      var img = t.querySelector('img');
+    let grid = thumb.closest('.sui-lightbox-grid');
+    let thumbs = grid ? Array.from(grid.querySelectorAll('.sui-lightbox-thumb')) : [thumb];
+    let images = thumbs.map(function(t) {
+      let img = t.querySelector('img');
       return {
         src: t.getAttribute('data-src') || (img ? img.src : ''),
         alt: t.getAttribute('data-alt') || (img ? img.alt : ''),
         caption: t.getAttribute('data-caption') || ''
       };
     });
-    var index = thumbs.indexOf(thumb);
+    let index = thumbs.indexOf(thumb);
     openLightbox(images, index);
   });
 
@@ -3963,21 +3963,21 @@ const SoftUI = (() => {
     document.querySelectorAll('[data-sui-typewriter]').forEach(function(el) {
       if (el.dataset.suiTypewriterInit) return;
       el.dataset.suiTypewriterInit = '1';
-      var words = el.getAttribute('data-words');
-      var speed = parseInt(el.getAttribute('data-speed')) || 80;
-      var deleteSpeed = parseInt(el.getAttribute('data-delete-speed')) || 40;
-      var pause = parseInt(el.getAttribute('data-pause')) || 1500;
-      var loop = el.hasAttribute('data-loop');
+      let words = el.getAttribute('data-words');
+      let speed = parseInt(el.getAttribute('data-speed')) || 80;
+      let deleteSpeed = parseInt(el.getAttribute('data-delete-speed')) || 40;
+      let pause = parseInt(el.getAttribute('data-pause')) || 1500;
+      let loop = el.hasAttribute('data-loop');
 
       if (words) {
         // Multiple phrases mode
-        var phrases = words.split('|').map(function(s) { return s.trim(); });
-        var phraseIdx = 0;
-        var charIdx = 0;
-        var deleting = false;
+        let phrases = words.split('|').map(function(s) { return s.trim(); });
+        let phraseIdx = 0;
+        let charIdx = 0;
+        let deleting = false;
 
         function tick() {
-          var current = phrases[phraseIdx];
+          let current = phrases[phraseIdx];
           if (!deleting) {
             charIdx++;
             el.textContent = current.substring(0, charIdx);
@@ -4004,9 +4004,9 @@ const SoftUI = (() => {
         setTimeout(tick, 500);
       } else {
         // Single text mode — type out existing content
-        var text = el.textContent;
+        let text = el.textContent;
         el.textContent = '';
-        var i = 0;
+        let i = 0;
         function typeChar() {
           if (i < text.length) {
             el.textContent += text[i];
@@ -4032,15 +4032,15 @@ const SoftUI = (() => {
     document.querySelectorAll('[data-sui-text-rotate]').forEach(function(el) {
       if (el.dataset.suiRotateInit) return;
       el.dataset.suiRotateInit = '1';
-      var words = el.querySelectorAll('.sui-text-rotate-word');
+      let words = el.querySelectorAll('.sui-text-rotate-word');
       if (words.length < 2) return;
-      var interval = parseInt(el.getAttribute('data-interval')) || 2000;
-      var index = 0;
+      let interval = parseInt(el.getAttribute('data-interval')) || 2000;
+      let index = 0;
 
       words[0].classList.add('active');
 
       setInterval(function() {
-        var current = words[index];
+        let current = words[index];
         current.classList.remove('active');
         current.classList.add('exit');
         setTimeout(function() { current.classList.remove('exit'); }, 400);
@@ -4060,18 +4060,18 @@ const SoftUI = (() => {
   // =========================================
   // Copy Button
   // =========================================
-  var clipboardSvg = '<svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>';
-  var checkSvg = '<svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>';
+  let clipboardSvg = '<svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>';
+  let checkSvg = '<svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>';
 
   document.addEventListener('click', function(e) {
-    var btn = e.target.closest('[data-sui-copy]');
+    let btn = e.target.closest('[data-sui-copy]');
     if (!btn) return;
-    var text = btn.getAttribute('data-sui-copy');
+    let text = btn.getAttribute('data-sui-copy');
     if (!text) {
-      var wrap = btn.closest('.sui-copy, .sui-copy-input');
+      let wrap = btn.closest('.sui-copy, .sui-copy-input');
       if (wrap) {
-        var textEl = wrap.querySelector('.sui-copy-text');
-        var inputEl = wrap.querySelector('.sui-input');
+        let textEl = wrap.querySelector('.sui-copy-text');
+        let inputEl = wrap.querySelector('.sui-input');
         text = textEl ? textEl.textContent : inputEl ? inputEl.value : '';
       }
     }
@@ -4092,25 +4092,25 @@ const SoftUI = (() => {
     document.querySelectorAll('.sui-diff[data-sui-diff]').forEach(function(diff) {
       if (diff.dataset.suiDiffInit) return;
       diff.dataset.suiDiffInit = '1';
-      var handle = diff.querySelector('.sui-diff-handle');
-      var before = diff.querySelector('.sui-diff-before');
+      let handle = diff.querySelector('.sui-diff-handle');
+      let before = diff.querySelector('.sui-diff-before');
       if (!handle || !before) return;
-      var isVertical = diff.classList.contains('sui-diff-vertical');
+      let isVertical = diff.classList.contains('sui-diff-vertical');
 
       function onMove(e) {
         e.preventDefault();
-        var rect = diff.getBoundingClientRect();
-        var pos;
+        let rect = diff.getBoundingClientRect();
+        let pos;
         if (isVertical) {
-          var clientY = e.touches ? e.touches[0].clientY : e.clientY;
+          let clientY = e.touches ? e.touches[0].clientY : e.clientY;
           pos = Math.max(0, Math.min(1, (clientY - rect.top) / rect.height));
-          var pct = (pos * 100);
+          let pct = (pos * 100);
           before.style.clipPath = 'inset(0 0 ' + (100 - pct) + '% 0)';
           handle.style.top = pct + '%';
         } else {
-          var clientX = e.touches ? e.touches[0].clientX : e.clientX;
+          let clientX = e.touches ? e.touches[0].clientX : e.clientX;
           pos = Math.max(0, Math.min(1, (clientX - rect.left) / rect.width));
-          var pct = (pos * 100);
+          let pct = (pos * 100);
           before.style.clipPath = 'inset(0 ' + (100 - pct) + '% 0 0)';
           handle.style.left = pct + '%';
         }
@@ -4147,15 +4147,15 @@ const SoftUI = (() => {
   // Speed Dial
   // =========================================
   document.addEventListener('click', function(e) {
-    var trigger = e.target.closest('.sui-speed-dial-trigger');
+    let trigger = e.target.closest('.sui-speed-dial-trigger');
     if (trigger) {
-      var dial = trigger.closest('.sui-speed-dial');
+      let dial = trigger.closest('.sui-speed-dial');
       dial.classList.toggle('open');
       return;
     }
-    var action = e.target.closest('.sui-speed-dial-action');
+    let action = e.target.closest('.sui-speed-dial-action');
     if (action) {
-      var dial = action.closest('.sui-speed-dial');
+      let dial = action.closest('.sui-speed-dial');
       dial.classList.remove('open');
       return;
     }
@@ -4168,13 +4168,13 @@ const SoftUI = (() => {
   // Hover mode
   document.addEventListener('mouseenter', function(e) {
     if (!e.target.closest) return;
-    var dial = e.target.closest('.sui-speed-dial-hover');
+    let dial = e.target.closest('.sui-speed-dial-hover');
     if (dial) dial.classList.add('open');
   }, true);
 
   document.addEventListener('mouseleave', function(e) {
     if (!e.target.closest) return;
-    var dial = e.target.closest('.sui-speed-dial-hover');
+    let dial = e.target.closest('.sui-speed-dial-hover');
     if (dial) dial.classList.remove('open');
   }, true);
 
@@ -4182,11 +4182,11 @@ const SoftUI = (() => {
   // Tree View
   // =========================================
   document.addEventListener('click', function(e) {
-    var label = e.target.closest('.sui-tree-label');
+    let label = e.target.closest('.sui-tree-label');
     if (!label) return;
     if (e.target.closest('.sui-checkbox')) return;
-    var item = label.closest('.sui-tree-item');
-    var children = item.querySelector('.sui-tree-children');
+    let item = label.closest('.sui-tree-item');
+    let children = item.querySelector('.sui-tree-children');
     if (children) {
       item.classList.toggle('expanded');
     }
@@ -4195,12 +4195,12 @@ const SoftUI = (() => {
   // Tree checkbox propagation
   document.addEventListener('change', function(e) {
     if (!e.target.closest('.sui-tree .sui-checkbox input')) return;
-    var checkbox = e.target;
-    var item = checkbox.closest('.sui-tree-item');
-    var checked = checkbox.checked;
+    let checkbox = e.target;
+    let item = checkbox.closest('.sui-tree-item');
+    let checked = checkbox.checked;
 
     // Propagate down — check/uncheck all children
-    var childBoxes = item.querySelectorAll('.sui-tree-children .sui-checkbox input');
+    let childBoxes = item.querySelectorAll('.sui-tree-children .sui-checkbox input');
     childBoxes.forEach(function(cb) {
       cb.checked = checked;
       cb.indeterminate = false;
@@ -4211,16 +4211,16 @@ const SoftUI = (() => {
   });
 
   function updateTreeParent(item) {
-    var parentChildren = item.closest('.sui-tree-children');
+    let parentChildren = item.closest('.sui-tree-children');
     if (!parentChildren) return;
-    var parentItem = parentChildren.closest('.sui-tree-item');
+    let parentItem = parentChildren.closest('.sui-tree-item');
     if (!parentItem) return;
-    var parentCb = parentItem.querySelector(':scope > .sui-tree-label .sui-checkbox input');
+    let parentCb = parentItem.querySelector(':scope > .sui-tree-label .sui-checkbox input');
     if (!parentCb) return;
 
-    var siblings = parentChildren.querySelectorAll(':scope > .sui-tree-item > .sui-tree-label .sui-checkbox input');
-    var total = siblings.length;
-    var checkedCount = 0;
+    let siblings = parentChildren.querySelectorAll(':scope > .sui-tree-item > .sui-tree-label .sui-checkbox input');
+    let total = siblings.length;
+    let checkedCount = 0;
     siblings.forEach(function(cb) { if (cb.checked) checkedCount++; });
 
     if (checkedCount === 0) {
@@ -4243,10 +4243,10 @@ const SoftUI = (() => {
   // =========================================
   function tour(steps, options) {
     options = options || {};
-    var currentStep = 0;
-    var overlay, backdrop, spotlight, tooltip;
-    var padding = options.padding || 8;
-    var noOverlay = options.noOverlay || false;
+    let currentStep = 0;
+    let overlay, backdrop, spotlight, tooltip;
+    let padding = options.padding || 8;
+    let noOverlay = options.noOverlay || false;
 
     function create() {
       overlay = document.createElement('div');
@@ -4265,12 +4265,12 @@ const SoftUI = (() => {
       backdrop.addEventListener('click', close);
     }
 
-    var firstShow = true;
+    let firstShow = true;
 
     function show(idx) {
       currentStep = idx;
-      var step = steps[idx];
-      var target = document.querySelector(step.target);
+      let step = steps[idx];
+      let target = document.querySelector(step.target);
 
       // Only hide on first show to avoid flash between steps
       if (firstShow) {
@@ -4280,16 +4280,16 @@ const SoftUI = (() => {
       }
 
       // Scroll if element isn't comfortably in view (with margin for tooltip)
-      var needsScroll = false;
+      let needsScroll = false;
       if (target) {
-        var r = target.getBoundingClientRect();
-        var margin = 120;
+        let r = target.getBoundingClientRect();
+        let margin = 120;
         needsScroll = r.top < margin || r.bottom > window.innerHeight - margin;
         if (needsScroll) target.scrollIntoView({ block: 'center', behavior: 'smooth' });
       }
       setTimeout(function() {
       if (target) {
-        var rect = target.getBoundingClientRect();
+        let rect = target.getBoundingClientRect();
         spotlight.style.top = (rect.top - padding) + 'px';
         spotlight.style.left = (rect.left - padding) + 'px';
         spotlight.style.width = (rect.width + padding * 2) + 'px';
@@ -4297,7 +4297,7 @@ const SoftUI = (() => {
       }
 
       // Build tooltip content
-      var dotsHtml = '';
+      let dotsHtml = '';
       if (steps.length > 1) {
         dotsHtml = '<div class="sui-tour-dots">';
         for (var i = 0; i < steps.length; i++) {
@@ -4318,10 +4318,10 @@ const SoftUI = (() => {
         '</div>';
 
       // Button handlers
-      var nextBtn = tooltip.querySelector('.sui-tour-next');
-      var prevBtn = tooltip.querySelector('.sui-tour-prev');
-      var skipBtn = tooltip.querySelector('.sui-tour-skip');
-      var doneBtn = tooltip.querySelector('.sui-tour-done');
+      let nextBtn = tooltip.querySelector('.sui-tour-next');
+      let prevBtn = tooltip.querySelector('.sui-tour-prev');
+      let skipBtn = tooltip.querySelector('.sui-tour-skip');
+      let doneBtn = tooltip.querySelector('.sui-tour-done');
       if (nextBtn) nextBtn.addEventListener('click', function() { show(currentStep + 1); });
       if (prevBtn) prevBtn.addEventListener('click', function() { show(currentStep - 1); });
       if (skipBtn) skipBtn.addEventListener('click', close);
@@ -4329,11 +4329,11 @@ const SoftUI = (() => {
 
       // Position tooltip after scroll settles
       if (target) {
-        var rect = target.getBoundingClientRect();
-        var pos = step.position || 'bottom';
-        var tooltipW = 300;
-        var centerX = rect.left + rect.width / 2 - tooltipW / 2;
-        var top, left;
+        let rect = target.getBoundingClientRect();
+        let pos = step.position || 'bottom';
+        let tooltipW = 300;
+        let centerX = rect.left + rect.width / 2 - tooltipW / 2;
+        let top, left;
 
         tooltip.style.transform = '';
 

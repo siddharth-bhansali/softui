@@ -447,6 +447,46 @@
       "id": "pricing",
       "label": "Pricing Cards",
       "code": "<div class=\"sui-pricing\">\n  <div class=\"sui-pricing-card\">\n    <h3 class=\"sui-pricing-name\">Free</h3>\n    <p class=\"sui-pricing-desc\">For individuals</p>\n    <div class=\"sui-pricing-price\">\n      <span class=\"sui-pricing-currency\">$</span>\n      <span class=\"sui-pricing-amount\">0</span>\n    </div>\n    <div class=\"sui-pricing-period\">per month</div>\n    <ul class=\"sui-pricing-features\">\n      <li>1 project</li>\n      <li>500 MB storage</li>\n      <li class=\"disabled\">Priority support</li>\n    </ul>\n    <div class=\"sui-pricing-cta\">\n      <button class=\"sui-btn sui-btn-outline sui-btn-block\">Get Started</button>\n    </div>\n  </div>\n  <div class=\"sui-pricing-card sui-pricing-featured\">\n    <span class=\"sui-pricing-badge\">Most Popular</span>\n    <h3 class=\"sui-pricing-name\">Pro</h3>\n    <p class=\"sui-pricing-desc\">For growing teams</p>\n    <div class=\"sui-pricing-price\">\n      <span class=\"sui-pricing-currency\">$</span>\n      <span class=\"sui-pricing-amount\">29</span>\n    </div>\n    <div class=\"sui-pricing-period\">per month</div>\n    <ul class=\"sui-pricing-features\">\n      <li>Unlimited projects</li>\n      <li>50 GB storage</li>\n      <li>Priority support</li>\n    </ul>\n    <div class=\"sui-pricing-cta\">\n      <button class=\"sui-btn sui-btn-primary sui-btn-block\">Upgrade</button>\n    </div>\n  </div>\n  <div class=\"sui-pricing-card\">\n    <h3 class=\"sui-pricing-name\">Enterprise</h3>\n    <p class=\"sui-pricing-desc\">For organizations</p>\n    <div class=\"sui-pricing-price\">\n      <span class=\"sui-pricing-currency\">$</span>\n      <span class=\"sui-pricing-amount\">99</span>\n    </div>\n    <div class=\"sui-pricing-period\">per month</div>\n    <ul class=\"sui-pricing-features\">\n      <li>Unlimited everything</li>\n      <li>1 TB storage</li>\n      <li>Dedicated manager</li>\n    </ul>\n    <div class=\"sui-pricing-cta\">\n      <button class=\"sui-btn sui-btn-outline sui-btn-block\">Contact Sales</button>\n    </div>\n  </div>\n</div>"
+    },
+    {
+      "id": "card-image",
+      "label": "Image Card",
+      "code": "<div class=\"sui-card\" style=\"max-width:320px;overflow:hidden;\">\n  <div style=\"height:160px;background:linear-gradient(135deg,var(--sui-primary),#7C5CFC);border-radius:var(--sui-radius) var(--sui-radius) 0 0;\"></div>\n  <div style=\"padding:20px;\">\n    <h4 style=\"margin:0 0 8px;\">Card Title</h4>\n    <p class=\"sui-text-muted\" style=\"font-size:13px;\">A card with an image header and content below.</p>\n    <button class=\"sui-btn sui-btn-primary sui-btn-sm sui-mt-3\">Read More</button>\n  </div>\n</div>"
+    },
+    {
+      "id": "card-empty",
+      "label": "Empty State",
+      "code": "<div class=\"sui-card sui-card-empty\" style=\"max-width:400px;padding:40px;text-align:center;\">\n  <div style=\"font-size:48px;margin-bottom:12px;\">&#128466;</div>\n  <h4 style=\"margin:0 0 8px;\">No items yet</h4>\n  <p class=\"sui-text-muted\" style=\"margin:0 0 16px;font-size:13px;\">Get started by creating your first item.</p>\n  <button class=\"sui-btn sui-btn-primary sui-btn-sm\">Create Item</button>\n</div>"
+    },
+    {
+      "id": "table-striped",
+      "label": "Striped Table",
+      "code": "<table class=\"sui-table sui-table-striped\">\n  <thead>\n    <tr>\n      <th scope=\"col\">#</th>\n      <th scope=\"col\">Name</th>\n      <th scope=\"col\">Email</th>\n      <th scope=\"col\">Role</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr><td>1</td><td>Alice</td><td>alice@example.com</td><td>Admin</td></tr>\n    <tr><td>2</td><td>Bob</td><td>bob@example.com</td><td>Editor</td></tr>\n    <tr><td>3</td><td>Carol</td><td>carol@example.com</td><td>Viewer</td></tr>\n    <tr><td>4</td><td>Dave</td><td>dave@example.com</td><td>Editor</td></tr>\n  </tbody>\n</table>"
+    },
+    {
+      "id": "container",
+      "label": "Container",
+      "code": "<div class=\"sui-container\">\n  <div class=\"sui-card sui-p-4\">\n    <h4>Inside a Container</h4>\n    <p class=\"sui-text-muted\">The container centers content with responsive max-widths.</p>\n  </div>\n</div>"
+    },
+    {
+      "id": "responsive-grid",
+      "label": "Responsive Grid",
+      "code": "<div class=\"sui-row sui-g-3\">\n  <div class=\"sui-col-12 sui-col-sm-6 sui-col-lg-3\">\n    <div class=\"sui-card sui-inset sui-p-3 sui-text-center\">1</div>\n  </div>\n  <div class=\"sui-col-12 sui-col-sm-6 sui-col-lg-3\">\n    <div class=\"sui-card sui-inset sui-p-3 sui-text-center\">2</div>\n  </div>\n  <div class=\"sui-col-12 sui-col-sm-6 sui-col-lg-3\">\n    <div class=\"sui-card sui-inset sui-p-3 sui-text-center\">3</div>\n  </div>\n  <div class=\"sui-col-12 sui-col-sm-6 sui-col-lg-3\">\n    <div class=\"sui-card sui-inset sui-p-3 sui-text-center\">4</div>\n  </div>\n</div>"
+    },
+    {
+      "id": "donut-chart",
+      "label": "Donut Chart",
+      "code": "<div class=\"sui-chart\" style=\"align-items:center;width:auto;\">\n  <p class=\"sui-chart-title\">Storage Used</p>\n  <div class=\"sui-chart-donut-wrap\">\n    <div class=\"sui-chart-donut\" data-segments='[{\"value\":72,\"color\":\"var(--sui-primary)\"},{\"value\":28,\"color\":\"var(--sui-bg-dark)\"}]'>\n      <div class=\"sui-chart-donut-hole\">\n        <span class=\"sui-chart-donut-hole-value\">72%</span>\n        <span class=\"sui-chart-donut-hole-label\">Used</span>\n      </div>\n    </div>\n  </div>\n</div>"
+    },
+    {
+      "id": "horizontal-bar",
+      "label": "Horizontal Bar Chart",
+      "code": "<div class=\"sui-chart\">\n  <p class=\"sui-chart-title\">Browser Usage</p>\n  <div class=\"sui-chart-bars-horizontal\">\n    <div class=\"sui-chart-bar-row\">\n      <span class=\"sui-chart-bar-label\">Chrome</span>\n      <div class=\"sui-chart-bar-track\"><div class=\"sui-chart-bar-fill sui-chart-bar-primary\" data-value=\"65\" data-max=\"100\"></div></div>\n      <span class=\"sui-chart-bar-value\">65%</span>\n    </div>\n    <div class=\"sui-chart-bar-row\">\n      <span class=\"sui-chart-bar-label\">Safari</span>\n      <div class=\"sui-chart-bar-track\"><div class=\"sui-chart-bar-fill sui-chart-bar-success\" data-value=\"19\" data-max=\"100\"></div></div>\n      <span class=\"sui-chart-bar-value\">19%</span>\n    </div>\n    <div class=\"sui-chart-bar-row\">\n      <span class=\"sui-chart-bar-label\">Firefox</span>\n      <div class=\"sui-chart-bar-track\"><div class=\"sui-chart-bar-fill sui-chart-bar-warning\" data-value=\"8\" data-max=\"100\"></div></div>\n      <span class=\"sui-chart-bar-value\">8%</span>\n    </div>\n  </div>\n</div>"
+    },
+    {
+      "id": "datepicker",
+      "label": "Date Picker",
+      "code": "<div class=\"sui-datepicker\">\n  <button class=\"sui-datepicker-trigger\" type=\"button\">\n    <svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><rect x=\"3\" y=\"4\" width=\"18\" height=\"18\" rx=\"2\" ry=\"2\"/><line x1=\"16\" y1=\"2\" x2=\"16\" y2=\"6\"/><line x1=\"8\" y1=\"2\" x2=\"8\" y2=\"6\"/><line x1=\"3\" y1=\"10\" x2=\"21\" y2=\"10\"/></svg>\n    <span class=\"sui-datepicker-placeholder\">Pick a date</span>\n  </button>\n  <div class=\"sui-datepicker-popover\">\n    <div class=\"sui-calendar\" data-sui-calendar=\"single\">\n      <div class=\"sui-calendar-header\">\n        <button class=\"sui-calendar-nav-btn\" data-sui-calendar-prev type=\"button\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"15 18 9 12 15 6\"/></svg></button>\n        <div class=\"sui-calendar-title\"></div>\n        <button class=\"sui-calendar-nav-btn\" data-sui-calendar-next type=\"button\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"9 18 15 12 9 6\"/></svg></button>\n      </div>\n      <div class=\"sui-calendar-grid\"></div>\n      <button class=\"sui-calendar-clear\" data-sui-calendar-clear type=\"button\">Clear</button>\n    </div>\n  </div>\n</div>"
     }
   ],
   "Utilities": [
@@ -479,6 +519,36 @@
       "id": "dark-mode",
       "label": "Dark Mode",
       "code": "<!-- Add to your <html> tag to enable dark mode -->\n<!-- <html data-theme=\"dark\"> -->\n\n<div class=\"sui-card sui-p-4\" style=\"max-width:340px;\">\n  <h4 style=\"margin-bottom:8px;\">Theme Aware</h4>\n  <p class=\"sui-text-muted\">This card adapts automatically to light and dark themes.</p>\n  <button class=\"sui-btn sui-btn-primary sui-mt-3\">Action</button>\n</div>"
+    },
+    {
+      "id": "border-radius",
+      "label": "Border Radius",
+      "code": "<div style=\"display:flex;gap:16px;flex-wrap:wrap;\">\n  <div class=\"sui-card sui-p-3 sui-text-center sui-radius-xs\" style=\"width:100px;\">xs</div>\n  <div class=\"sui-card sui-p-3 sui-text-center sui-radius-sm\" style=\"width:100px;\">sm</div>\n  <div class=\"sui-card sui-p-3 sui-text-center\" style=\"width:100px;\">default</div>\n  <div class=\"sui-card sui-p-3 sui-text-center sui-radius-lg\" style=\"width:100px;\">lg</div>\n  <div class=\"sui-card sui-p-3 sui-text-center sui-radius-full\" style=\"width:100px;\">full</div>\n</div>"
+    },
+    {
+      "id": "aspect-ratio",
+      "label": "Aspect Ratio",
+      "code": "<div style=\"display:flex;gap:16px;flex-wrap:wrap;\">\n  <div class=\"sui-aspect-1-1\" style=\"width:100px;background:var(--sui-bg-dark);border-radius:var(--sui-radius-sm);display:flex;align-items:center;justify-content:center;font-size:12px;color:var(--sui-text-muted);\">1:1</div>\n  <div class=\"sui-aspect-16-9\" style=\"width:160px;background:var(--sui-bg-dark);border-radius:var(--sui-radius-sm);display:flex;align-items:center;justify-content:center;font-size:12px;color:var(--sui-text-muted);\">16:9</div>\n  <div class=\"sui-aspect-4-3\" style=\"width:120px;background:var(--sui-bg-dark);border-radius:var(--sui-radius-sm);display:flex;align-items:center;justify-content:center;font-size:12px;color:var(--sui-text-muted);\">4:3</div>\n</div>"
+    },
+    {
+      "id": "display",
+      "label": "Display Utilities",
+      "code": "<div class=\"sui-d-flex sui-gap-2 sui-mb-3\">\n  <span class=\"sui-badge sui-badge-primary\">Flex</span>\n  <span class=\"sui-badge sui-badge-success\">Items</span>\n  <span class=\"sui-badge sui-badge-info\">In Row</span>\n</div>\n<div class=\"sui-d-inline-block sui-p-3 sui-card sui-mr-2\">Inline Block 1</div>\n<div class=\"sui-d-inline-block sui-p-3 sui-card\">Inline Block 2</div>"
+    },
+    {
+      "id": "position",
+      "label": "Position Utilities",
+      "code": "<div class=\"sui-position-relative sui-card sui-p-5\" style=\"min-height:120px;\">\n  <span class=\"sui-badge sui-badge-primary sui-position-absolute\" style=\"top:8px;right:8px;\">Badge</span>\n  <p class=\"sui-text-muted\">Relative container with absolutely positioned badge.</p>\n</div>"
+    },
+    {
+      "id": "overflow",
+      "label": "Overflow & Sizing",
+      "code": "<div class=\"sui-card sui-p-3 sui-overflow-hidden\" style=\"max-height:100px;max-width:300px;\">\n  <p>This content is clipped because the container has overflow:hidden and a max-height of 100px. Try removing sui-overflow-hidden to see the difference.</p>\n  <p>More content that overflows the container bounds.</p>\n</div>"
+    },
+    {
+      "id": "opacity",
+      "label": "Opacity",
+      "code": "<div style=\"display:flex;gap:12px;flex-wrap:wrap;\">\n  <div class=\"sui-card sui-p-3 sui-text-center sui-opacity-100\" style=\"width:80px;\">100</div>\n  <div class=\"sui-card sui-p-3 sui-text-center sui-opacity-75\" style=\"width:80px;\">75</div>\n  <div class=\"sui-card sui-p-3 sui-text-center sui-opacity-50\" style=\"width:80px;\">50</div>\n  <div class=\"sui-card sui-p-3 sui-text-center sui-opacity-25\" style=\"width:80px;\">25</div>\n</div>"
     }
   ]
 }
