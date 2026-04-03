@@ -185,7 +185,26 @@ Not Supported:
     <div class="docs-getstarted-code">
 <pre><code>&lt;html lang="ar" dir="rtl"&gt;</code></pre>
     </div>
-    <p style="margin-top:12px;font-size:14px;color:var(--sui-text-muted);">Utility classes (<code>sui-ml-*</code>, <code>sui-mr-*</code>, <code>sui-text-left/right</code>, <code>sui-offset-*</code>) use CSS logical properties and adapt automatically. Components like sheets, carousels, sidebars, breadcrumbs, dropdowns, and tooltips include <code>[dir="rtl"]</code> overrides to flip their positioning.</p>
+    <p style="margin-top:16px;font-size:14px;color:var(--sui-text-muted);">Utility classes (<code>sui-ml-*</code>, <code>sui-mr-*</code>, <code>sui-text-left/right</code>, <code>sui-offset-*</code>) use CSS logical properties and adapt automatically. Components like sheets, carousels, sidebars, breadcrumbs, dropdowns, and tooltips include <code>[dir="rtl"]</code> overrides to flip their positioning.</p>
+    <div dir="rtl" lang="ar" style="margin-top:20px;">
+      <div class="sui-card sui-raised" style="padding:20px;max-width:400px;">
+        <div style="display:flex;align-items:center;gap:12px;margin-bottom:16px;">
+          <div class="sui-avatar sui-avatar-sm" style="background:var(--sui-primary);color:#fff;font-weight:600;">م</div>
+          <div>
+            <div style="font-weight:700;">مرحبا بالعالم</div>
+            <div style="font-size:13px;color:var(--sui-text-muted);">هذا مثال على دعم RTL</div>
+          </div>
+        </div>
+        <div class="sui-form-group" style="margin-bottom:12px;">
+          <label class="sui-label">البريد الإلكتروني</label>
+          <input class="sui-input" type="email" placeholder="example@email.com">
+        </div>
+        <div style="display:flex;gap:8px;">
+          <button class="sui-btn sui-btn-primary">إرسال</button>
+          <button class="sui-btn sui-btn-outline">إلغاء</button>
+        </div>
+      </div>
+    </div>
   </section>
 
   <div style="text-align:center;margin-top:48px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
