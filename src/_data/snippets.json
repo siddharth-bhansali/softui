@@ -279,6 +279,11 @@
       "code": "<div class=\"sui-sheet-backdrop\" id=\"mySheet\" role=\"dialog\" aria-modal=\"true\">\n  <div class=\"sui-sheet sui-sheet-right\">\n    <div class=\"sui-sheet-header\">\n      <h3>Sheet Title</h3>\n      <button class=\"sui-sheet-close\" aria-label=\"Close\"></button>\n    </div>\n    <div class=\"sui-sheet-body\">\n      <p>Sheet content here.</p>\n    </div>\n    <div class=\"sui-sheet-footer\">\n      <button class=\"sui-btn sui-btn-sm\" onclick=\"SoftUI.sheet('#mySheet').close()\">Cancel</button>\n      <button class=\"sui-btn sui-btn-primary sui-btn-sm\">Save</button>\n    </div>\n  </div>\n</div>\n\n<button class=\"sui-btn\" onclick=\"SoftUI.sheet('#mySheet').open()\">Open Sheet</button>"
     },
     {
+      "id": "drawer",
+      "label": "Drawer",
+      "code": "<div class=\"sui-sheet-backdrop sui-drawer\" id=\"myDrawer\">\n  <div class=\"sui-sheet sui-sheet-bottom\">\n    <div class=\"sui-drawer-handle\"></div>\n    <div class=\"sui-sheet-header\">\n      <h3>Drawer</h3>\n      <button class=\"sui-sheet-close\" aria-label=\"Close\"></button>\n    </div>\n    <div class=\"sui-sheet-body\">\n      <p style=\"margin-bottom:16px;\">This is a bottom drawer. Drag the handle down to dismiss it, or click outside.</p>\n      <div class=\"sui-form-group\" style=\"margin-bottom:12px;\">\n        <label class=\"sui-label\">Quick Note</label>\n        <textarea class=\"sui-input sui-textarea\" rows=\"3\" placeholder=\"Write something...\"></textarea>\n      </div>\n      <button class=\"sui-btn sui-btn-primary sui-btn-block\">Save</button>\n    </div>\n  </div>\n</div>\n\n<button class=\"sui-btn\" onclick=\"SoftUI.sheet('#myDrawer').open()\">Open Drawer</button>"
+    },
+    {
       "id": "carousel",
       "label": "Carousel",
       "code": "<div class=\"sui-carousel\" id=\"myCarousel\">\n  <div class=\"sui-carousel-track\">\n    <div class=\"sui-carousel-item\" style=\"height:140px;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,var(--sui-primary),var(--sui-info));\"><span style=\"font-size:32px;font-weight:700;color:#fff;\">1</span></div>\n    <div class=\"sui-carousel-item\" style=\"height:140px;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,var(--sui-info),var(--sui-success));\"><span style=\"font-size:32px;font-weight:700;color:#fff;\">2</span></div>\n    <div class=\"sui-carousel-item\" style=\"height:140px;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,var(--sui-success),var(--sui-warning));\"><span style=\"font-size:32px;font-weight:700;color:#fff;\">3</span></div>\n  </div>\n  <button class=\"sui-carousel-prev\" aria-label=\"Previous\"></button>\n  <button class=\"sui-carousel-next\" aria-label=\"Next\"></button>\n</div>"
@@ -490,6 +495,11 @@
     }
   ],
   "Utilities": [
+    {
+      "id": "typography",
+      "label": "Typography",
+      "code": "<h1>Heading One</h1>\n<h2>Heading Two</h2>\n<h3>Heading Three</h3>\n<p class=\"sui-lead\">Lead paragraph — larger introductory text for sections.</p>\n<p>Regular paragraph with <strong>bold</strong>, <em>italic</em>, and <code>inline code</code>.</p>\n<blockquote class=\"sui-blockquote\">\n  <p>A well-styled blockquote for highlighting important text.</p>\n</blockquote>\n<ul>\n  <li>Unordered list item</li>\n  <li>Another item</li>\n</ul>"
+    },
     {
       "id": "grid",
       "label": "Grid Layout",

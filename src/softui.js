@@ -300,6 +300,9 @@ const SoftUI = (() => {
     // Selectable pricing
     initSelectablePricing();
 
+    // Drawers
+    initDrawers();
+
     // Data Tables
     initDataTables();
 
@@ -2640,6 +2643,77 @@ const SoftUI = (() => {
           s.classList.remove('open');
         });
       }
+    });
+  }
+
+  function initDrawers() {
+    document.querySelectorAll('.sui-drawer').forEach(function(backdrop) {
+      const panel = backdrop.querySelector('.sui-sheet-bottom');
+      const handle = backdrop.querySelector('.sui-drawer-handle');
+      if (!panel || !handle) return;
+
+      let startY = 0;
+      let startHeight = 0;
+      let dragging = false;
+
+      function onStart(e) {
+        dragging = true;
+        startY = e.touches ? e.touches[0].clientY : e.clientY;
+        startHeight = panel.getBoundingClientRect().height;
+        panel.style.transition = 'none';
+        document.body.style.userSelect = 'none';
+      }
+
+      function onMove(e) {
+        if (!dragging) return;
+        const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+        const delta = startY - clientY;
+        const newHeight = Math.max(0, startHeight + delta);
+        const maxHeight = window.innerHeight * 0.85;
+        panel.style.height = Math.min(newHeight, maxHeight) + 'px';
+      }
+
+      function onEnd() {
+        if (!dragging) return;
+        dragging = false;
+        panel.style.transition = '';
+        document.body.style.userSelect = '';
+
+        const currentHeight = panel.getBoundingClientRect().height;
+        const vh = window.innerHeight;
+
+        // Snap points or dismiss
+        const snapPoints = backdrop.getAttribute('data-snap');
+        if (snapPoints) {
+          const points = snapPoints.split(',').map(function(p) { return parseFloat(p) / 100 * vh; });
+          points.push(0); // dismiss point
+          let closest = points[0];
+          let minDist = Math.abs(currentHeight - closest);
+          points.forEach(function(p) {
+            const dist = Math.abs(currentHeight - p);
+            if (dist < minDist) { minDist = dist; closest = p; }
+          });
+          if (closest === 0) {
+            SoftUI.sheet(backdrop).close();
+            panel.style.height = '';
+          } else {
+            panel.style.height = closest + 'px';
+          }
+        } else {
+          // No snap points — dismiss if dragged below 30% of starting height
+          if (currentHeight < startHeight * 0.3) {
+            SoftUI.sheet(backdrop).close();
+            panel.style.height = '';
+          }
+        }
+      }
+
+      handle.addEventListener('mousedown', onStart);
+      handle.addEventListener('touchstart', onStart, { passive: true });
+      document.addEventListener('mousemove', onMove);
+      document.addEventListener('touchmove', onMove, { passive: false });
+      document.addEventListener('mouseup', onEnd);
+      document.addEventListener('touchend', onEnd);
     });
   }
 

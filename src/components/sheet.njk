@@ -12,6 +12,7 @@ toc:
   - Size Variants
   - Sheet with Form
   - Static Backdrop
+  - Drawer
 ---
 
 <!-- Default (Right) -->
@@ -246,5 +247,97 @@ toc:
     &lt;/div&gt;
   &lt;/div&gt;
 &lt;/div&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Drawer -->
+<div class="pg-section" id="section-7">
+  <h3 class="pg-section-title">Drawer</h3>
+  <p class="pg-section-desc">A mobile-first bottom panel with a drag handle. Swipe down to dismiss. Add <code>data-snap="25,50,85"</code> for height snap points (percentages of viewport).</p>
+  <div class="pg-section-row" style="gap:12px;flex-wrap:wrap;">
+    <button class="sui-btn" onclick="SoftUI.sheet('#demoDrawer').open()">Open Drawer</button>
+    <button class="sui-btn" onclick="SoftUI.sheet('#demoDrawerSnap').open()">With Snap Points</button>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;!-- Basic Drawer --&gt;
+&lt;div class="sui-sheet-backdrop sui-drawer" id="myDrawer"&gt;
+  &lt;div class="sui-sheet sui-sheet-bottom"&gt;
+    &lt;div class="sui-drawer-handle"&gt;&lt;/div&gt;
+    &lt;div class="sui-sheet-header"&gt;
+      &lt;h3&gt;Drawer&lt;/h3&gt;
+      &lt;button class="sui-sheet-close" aria-label="Close"&gt;&lt;/button&gt;
+    &lt;/div&gt;
+    &lt;div class="sui-sheet-body"&gt;
+      &lt;p style="margin-bottom:16px;"&gt;This is a bottom drawer. Drag the handle down to dismiss it, or click outside.&lt;/p&gt;
+      &lt;div class="sui-form-group" style="margin-bottom:12px;"&gt;
+        &lt;label class="sui-label"&gt;Quick Note&lt;/label&gt;
+        &lt;textarea class="sui-input sui-textarea" rows="3" placeholder="Write something..."&gt;&lt;/textarea&gt;
+      &lt;/div&gt;
+      &lt;button class="sui-btn sui-btn-primary sui-btn-block"&gt;Save&lt;/button&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- With snap points (25%, 50%, 85% of viewport) --&gt;
+&lt;div class="sui-sheet-backdrop sui-drawer" data-snap="25,50,85" id="snapDrawer"&gt;
+  &lt;div class="sui-sheet sui-sheet-bottom"&gt;
+    &lt;div class="sui-drawer-handle"&gt;&lt;/div&gt;
+    &lt;div class="sui-sheet-header"&gt;
+      &lt;h3&gt;Snap Points&lt;/h3&gt;
+      &lt;button class="sui-sheet-close" aria-label="Close"&gt;&lt;/button&gt;
+    &lt;/div&gt;
+    &lt;div class="sui-sheet-body"&gt;
+      &lt;p style="margin-bottom:16px;"&gt;Drag the handle to snap to 25%, 50%, or 85% of the viewport height. Drag below 25% to dismiss.&lt;/p&gt;
+      &lt;div class="sui-alert sui-alert-info" style="margin-bottom:12px;"&gt;Try dragging up and down — it snaps to the nearest point.&lt;/div&gt;
+      &lt;ul style="color:var(--sui-text-muted);font-size:14px;padding-left:20px;"&gt;
+        &lt;li style="margin-bottom:8px;"&gt;25% — Peek view&lt;/li&gt;
+        &lt;li style="margin-bottom:8px;"&gt;50% — Half screen&lt;/li&gt;
+        &lt;li&gt;85% — Full content&lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+SoftUI.sheet('#myDrawer').open();
+SoftUI.sheet('#myDrawer').close();</pre></div>
+  </div>
+</div>
+
+<!-- Drawer Demos -->
+<div class="sui-sheet-backdrop sui-drawer" id="demoDrawer">
+  <div class="sui-sheet sui-sheet-bottom">
+    <div class="sui-drawer-handle"></div>
+    <div class="sui-sheet-header">
+      <h3>Drawer</h3>
+      <button class="sui-sheet-close" aria-label="Close"></button>
+    </div>
+    <div class="sui-sheet-body">
+      <p style="margin-bottom:16px;">This is a bottom drawer. Drag the handle down to dismiss it, or click outside.</p>
+      <div class="sui-form-group" style="margin-bottom:12px;">
+        <label class="sui-label">Quick Note</label>
+        <textarea class="sui-input sui-textarea" rows="3" placeholder="Write something..."></textarea>
+      </div>
+      <button class="sui-btn sui-btn-primary sui-btn-block">Save</button>
+    </div>
+  </div>
+</div>
+
+<div class="sui-sheet-backdrop sui-drawer" id="demoDrawerSnap" data-snap="25,50,85">
+  <div class="sui-sheet sui-sheet-bottom">
+    <div class="sui-drawer-handle"></div>
+    <div class="sui-sheet-header">
+      <h3>Snap Points</h3>
+      <button class="sui-sheet-close" aria-label="Close"></button>
+    </div>
+    <div class="sui-sheet-body">
+      <p style="margin-bottom:16px;">Drag the handle to snap to 25%, 50%, or 85% of the viewport height. Drag below 25% to dismiss.</p>
+      <div class="sui-alert sui-alert-info" style="margin-bottom:12px;">Try dragging up and down — it snaps to the nearest point.</div>
+      <ul style="color:var(--sui-text-muted);font-size:14px;padding-left:20px;">
+        <li style="margin-bottom:8px;">25% — Peek view</li>
+        <li style="margin-bottom:8px;">50% — Half screen</li>
+        <li>85% — Full content</li>
+      </ul>
+    </div>
   </div>
 </div>

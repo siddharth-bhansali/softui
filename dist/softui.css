@@ -7000,6 +7000,39 @@ select.sui-datatable-filter {
 .sui-sheet-backdrop.sui-sheet-static.sui-sheet-shake .sui-sheet-top   { transform: translateY(8px); }
 .sui-sheet-backdrop.sui-sheet-static.sui-sheet-shake .sui-sheet-bottom { transform: translateY(-8px); }
 
+/* Drawer (bottom sheet with drag handle) */
+.sui-drawer .sui-sheet-bottom {
+  height: auto;
+  max-height: 85vh;
+  transition: transform var(--sui-transition-base) ease;
+}
+
+.sui-drawer-handle {
+  display: flex;
+  justify-content: center;
+  padding: 10px 0 6px;
+  cursor: grab;
+}
+
+.sui-drawer-handle::after {
+  content: '';
+  width: 36px;
+  height: 4px;
+  border-radius: var(--sui-radius-full);
+  background: var(--sui-bg-dark);
+}
+
+.sui-drawer-handle:active { cursor: grabbing; }
+
+/* Drawer snap points */
+.sui-drawer .sui-sheet-bottom.sui-drawer-snap-half {
+  height: 50vh;
+}
+
+.sui-drawer .sui-sheet-bottom.sui-drawer-snap-full {
+  height: 85vh;
+}
+
 /* ==============================
    Popover
    ============================== */
