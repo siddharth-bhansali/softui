@@ -556,6 +556,11 @@
       "code": "<div class=\"sui-card sui-p-3 sui-overflow-hidden\" style=\"max-height:100px;max-width:300px;\">\n  <p>This content is clipped because the container has overflow:hidden and a max-height of 100px. Try removing sui-overflow-hidden to see the difference.</p>\n  <p>More content that overflows the container bounds.</p>\n</div>"
     },
     {
+      "id": "mask",
+      "label": "Mask Shapes",
+      "code": "<div style=\"display:flex;gap:20px;flex-wrap:wrap;\">\n  <div class=\"sui-mask sui-mask-circle\" style=\"width:80px;height:80px;background:var(--sui-primary);\"></div>\n  <div class=\"sui-mask sui-mask-star\" style=\"width:80px;height:80px;background:var(--sui-warning);\"></div>\n  <div class=\"sui-mask sui-mask-heart\" style=\"width:80px;height:80px;background:var(--sui-danger);\"></div>\n  <div class=\"sui-mask sui-mask-hexagon\" style=\"width:80px;height:80px;background:var(--sui-success);\"></div>\n  <div class=\"sui-mask sui-mask-diamond\" style=\"width:80px;height:80px;background:var(--sui-info);\"></div>\n  <div class=\"sui-mask sui-mask-shield\" style=\"width:80px;height:80px;background:var(--sui-primary);\"></div>\n</div>"
+    },
+    {
       "id": "opacity",
       "label": "Opacity",
       "code": "<div style=\"display:flex;gap:12px;flex-wrap:wrap;\">\n  <div class=\"sui-card sui-p-3 sui-text-center sui-opacity-100\" style=\"width:80px;\">100</div>\n  <div class=\"sui-card sui-p-3 sui-text-center sui-opacity-75\" style=\"width:80px;\">75</div>\n  <div class=\"sui-card sui-p-3 sui-text-center sui-opacity-50\" style=\"width:80px;\">50</div>\n  <div class=\"sui-card sui-p-3 sui-text-center sui-opacity-25\" style=\"width:80px;\">25</div>\n</div>"

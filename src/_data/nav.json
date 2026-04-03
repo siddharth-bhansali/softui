@@ -95,6 +95,7 @@
     { "id": "position", "name": "Position", "url": "/utilities/position/" },
     { "id": "sizing", "name": "Sizing", "url": "/utilities/sizing/" },
     { "id": "opacity", "name": "Opacity", "url": "/utilities/opacity/" },
-    { "id": "cursor", "name": "Cursor", "url": "/utilities/cursor/" }
+    { "id": "cursor", "name": "Cursor", "url": "/utilities/cursor/" },
+    { "id": "mask", "name": "Mask", "url": "/utilities/mask/" }
   ]
 }

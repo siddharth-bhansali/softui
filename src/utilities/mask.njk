@@ -1,0 +1,135 @@
+---
+layout: component.njk
+title: Mask
+description: CSS clip-path utility classes to crop elements into shapes.
+componentId: mask
+hasControls: false
+requiresJs: false
+toc:
+  - Shapes
+  - With Images
+  - With Colors
+---
+
+<!-- Shapes -->
+<div class="pg-section" id="section-1">
+  <h3 class="pg-section-title">Shapes</h3>
+  <p class="pg-section-desc">Add <code>sui-mask</code> and a shape class to clip any element. Works on images, divs, avatars — anything.</p>
+  <div class="pg-section-row" style="gap:24px;flex-wrap:wrap;">
+    <div style="text-align:center;">
+      <div class="sui-mask sui-mask-circle" style="width:80px;height:80px;background:var(--sui-primary);"></div>
+      <div style="font-size:12px;color:var(--sui-text-muted);margin-top:8px;">circle</div>
+    </div>
+    <div style="text-align:center;">
+      <div class="sui-mask sui-mask-squircle" style="width:80px;height:80px;background:var(--sui-primary);"></div>
+      <div style="font-size:12px;color:var(--sui-text-muted);margin-top:8px;">squircle</div>
+    </div>
+    <div style="text-align:center;">
+      <div class="sui-mask sui-mask-star" style="width:80px;height:80px;background:var(--sui-warning);"></div>
+      <div style="font-size:12px;color:var(--sui-text-muted);margin-top:8px;">star</div>
+    </div>
+    <div style="text-align:center;">
+      <div class="sui-mask sui-mask-heart" style="width:80px;height:80px;background:var(--sui-danger);"></div>
+      <div style="font-size:12px;color:var(--sui-text-muted);margin-top:8px;">heart</div>
+    </div>
+    <div style="text-align:center;">
+      <div class="sui-mask sui-mask-diamond" style="width:80px;height:80px;background:var(--sui-info);"></div>
+      <div style="font-size:12px;color:var(--sui-text-muted);margin-top:8px;">diamond</div>
+    </div>
+    <div style="text-align:center;">
+      <div class="sui-mask sui-mask-hexagon" style="width:80px;height:80px;background:var(--sui-success);"></div>
+      <div style="font-size:12px;color:var(--sui-text-muted);margin-top:8px;">hexagon</div>
+    </div>
+    <div style="text-align:center;">
+      <div class="sui-mask sui-mask-triangle" style="width:80px;height:80px;background:var(--sui-primary);"></div>
+      <div style="font-size:12px;color:var(--sui-text-muted);margin-top:8px;">triangle</div>
+    </div>
+    <div style="text-align:center;">
+      <div class="sui-mask sui-mask-pentagon" style="width:80px;height:80px;background:var(--sui-warning);"></div>
+      <div style="font-size:12px;color:var(--sui-text-muted);margin-top:8px;">pentagon</div>
+    </div>
+    <div style="text-align:center;">
+      <div class="sui-mask sui-mask-octagon" style="width:80px;height:80px;background:var(--sui-danger);"></div>
+      <div style="font-size:12px;color:var(--sui-text-muted);margin-top:8px;">octagon</div>
+    </div>
+    <div style="text-align:center;">
+      <div class="sui-mask sui-mask-cross" style="width:80px;height:80px;background:var(--sui-info);"></div>
+      <div style="font-size:12px;color:var(--sui-text-muted);margin-top:8px;">cross</div>
+    </div>
+    <div style="text-align:center;">
+      <div class="sui-mask sui-mask-shield" style="width:80px;height:80px;background:var(--sui-success);"></div>
+      <div style="font-size:12px;color:var(--sui-text-muted);margin-top:8px;">shield</div>
+    </div>
+    <div style="text-align:center;">
+      <div class="sui-mask sui-mask-parallelogram" style="width:80px;height:80px;background:var(--sui-primary);"></div>
+      <div style="font-size:12px;color:var(--sui-text-muted);margin-top:8px;">parallelogram</div>
+    </div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-mask sui-mask-circle" style="width:80px;height:80px;background:var(--sui-primary);"&gt;&lt;/div&gt;
+&lt;div class="sui-mask sui-mask-squircle" style="width:80px;height:80px;background:var(--sui-primary);"&gt;&lt;/div&gt;
+&lt;div class="sui-mask sui-mask-star" style="width:80px;height:80px;background:var(--sui-warning);"&gt;&lt;/div&gt;
+&lt;div class="sui-mask sui-mask-heart" style="width:80px;height:80px;background:var(--sui-danger);"&gt;&lt;/div&gt;
+&lt;div class="sui-mask sui-mask-diamond" style="width:80px;height:80px;background:var(--sui-info);"&gt;&lt;/div&gt;
+&lt;div class="sui-mask sui-mask-hexagon" style="width:80px;height:80px;background:var(--sui-success);"&gt;&lt;/div&gt;
+&lt;div class="sui-mask sui-mask-triangle" style="width:80px;height:80px;background:var(--sui-primary);"&gt;&lt;/div&gt;
+&lt;div class="sui-mask sui-mask-pentagon" style="width:80px;height:80px;background:var(--sui-warning);"&gt;&lt;/div&gt;
+&lt;div class="sui-mask sui-mask-octagon" style="width:80px;height:80px;background:var(--sui-danger);"&gt;&lt;/div&gt;
+&lt;div class="sui-mask sui-mask-cross" style="width:80px;height:80px;background:var(--sui-info);"&gt;&lt;/div&gt;
+&lt;div class="sui-mask sui-mask-shield" style="width:80px;height:80px;background:var(--sui-success);"&gt;&lt;/div&gt;
+&lt;div class="sui-mask sui-mask-parallelogram" style="width:80px;height:80px;background:var(--sui-primary);"&gt;&lt;/div&gt;</pre></div>
+  </div>
+</div>
+
+<!-- With Images -->
+<div class="pg-section" id="section-2">
+  <h3 class="pg-section-title">With Images</h3>
+  <p class="pg-section-desc">Clip images into shapes. Works with any <code>&lt;img&gt;</code> or element with a background image.</p>
+  <div class="pg-section-row" style="gap:24px;flex-wrap:wrap;">
+    <div style="text-align:center;">
+      <div class="sui-mask sui-mask-squircle" style="width:100px;height:100px;background:linear-gradient(135deg,var(--sui-primary),#7C5CFC);"></div>
+      <div style="font-size:12px;color:var(--sui-text-muted);margin-top:8px;">squircle</div>
+    </div>
+    <div style="text-align:center;">
+      <div class="sui-mask sui-mask-hexagon" style="width:100px;height:100px;background:linear-gradient(135deg,var(--sui-success),#2DD4A8);"></div>
+      <div style="font-size:12px;color:var(--sui-text-muted);margin-top:8px;">hexagon</div>
+    </div>
+    <div style="text-align:center;">
+      <div class="sui-mask sui-mask-star" style="width:100px;height:100px;background:linear-gradient(135deg,var(--sui-warning),#FFD700);"></div>
+      <div style="font-size:12px;color:var(--sui-text-muted);margin-top:8px;">star</div>
+    </div>
+    <div style="text-align:center;">
+      <div class="sui-mask sui-mask-shield" style="width:100px;height:100px;background:linear-gradient(135deg,var(--sui-danger),#FF6B6B);"></div>
+      <div style="font-size:12px;color:var(--sui-text-muted);margin-top:8px;">shield</div>
+    </div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-mask sui-mask-squircle" style="width:100px;height:100px;background:linear-gradient(135deg,var(--sui-primary),#7C5CFC);"&gt;&lt;/div&gt;
+&lt;div class="sui-mask sui-mask-hexagon" style="width:100px;height:100px;background:linear-gradient(135deg,var(--sui-success),#2DD4A8);"&gt;&lt;/div&gt;
+&lt;div class="sui-mask sui-mask-star" style="width:100px;height:100px;background:linear-gradient(135deg,var(--sui-warning),#FFD700);"&gt;&lt;/div&gt;
+&lt;div class="sui-mask sui-mask-shield" style="width:100px;height:100px;background:linear-gradient(135deg,var(--sui-danger),#FF6B6B);"&gt;&lt;/div&gt;</pre></div>
+  </div>
+</div>
+
+<!-- With Colors -->
+<div class="pg-section" id="section-3">
+  <h3 class="pg-section-title">With Colors</h3>
+  <p class="pg-section-desc">Combine with SoftUI color variables for themed shapes.</p>
+  <div class="pg-section-row" style="gap:16px;flex-wrap:wrap;">
+    <div class="sui-mask sui-mask-hexagon" style="width:60px;height:60px;background:var(--sui-primary);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:18px;">1</div>
+    <div class="sui-mask sui-mask-hexagon" style="width:60px;height:60px;background:var(--sui-success);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:18px;">2</div>
+    <div class="sui-mask sui-mask-hexagon" style="width:60px;height:60px;background:var(--sui-warning);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:18px;">3</div>
+    <div class="sui-mask sui-mask-hexagon" style="width:60px;height:60px;background:var(--sui-danger);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:18px;">4</div>
+    <div class="sui-mask sui-mask-hexagon" style="width:60px;height:60px;background:var(--sui-info);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:18px;">5</div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-mask sui-mask-hexagon" style="width:60px;height:60px;background:var(--sui-primary);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:18px;"&gt;1&lt;/div&gt;
+&lt;div class="sui-mask sui-mask-hexagon" style="width:60px;height:60px;background:var(--sui-success);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:18px;"&gt;2&lt;/div&gt;
+&lt;div class="sui-mask sui-mask-hexagon" style="width:60px;height:60px;background:var(--sui-warning);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:18px;"&gt;3&lt;/div&gt;
+&lt;div class="sui-mask sui-mask-hexagon" style="width:60px;height:60px;background:var(--sui-danger);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:18px;"&gt;4&lt;/div&gt;
+&lt;div class="sui-mask sui-mask-hexagon" style="width:60px;height:60px;background:var(--sui-info);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:18px;"&gt;5&lt;/div&gt;</pre></div>
+  </div>
+</div>
