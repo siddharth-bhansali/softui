@@ -1,0 +1,152 @@
+---
+layout: component.njk
+title: Result
+description: Full-page feedback states for success, error, warning, info, and 404 pages.
+componentId: result
+hasControls: false
+requiresJs: false
+toc:
+  - Success
+  - Error
+  - Warning
+  - 404 Not Found
+  - Inset
+---
+
+<!-- Success -->
+<div class="pg-section" id="section-1">
+  <h3 class="pg-section-title">Success</h3>
+  <div class="pg-section-row">
+    <div class="sui-result sui-result-success sui-card" style="width:100%;max-width:500px;">
+      <div class="sui-result-icon">&#10003;</div>
+      <h2 class="sui-result-title">Payment Successful</h2>
+      <p class="sui-result-desc">Your payment of $299.00 has been processed. A confirmation email has been sent to john@example.com.</p>
+      <div class="sui-result-actions">
+        <button class="sui-btn sui-btn-primary">View Order</button>
+        <button class="sui-btn sui-btn-outline">Back to Home</button>
+      </div>
+    </div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-result sui-result-success sui-card"&gt;
+  &lt;div class="sui-result-icon"&gt;&amp;#10003;&lt;/div&gt;
+  &lt;h2 class="sui-result-title"&gt;Payment Successful&lt;/h2&gt;
+  &lt;p class="sui-result-desc"&gt;Your payment of $299.00 has been processed. A confirmation email has been sent to john@example.com.&lt;/p&gt;
+  &lt;div class="sui-result-actions"&gt;
+    &lt;button class="sui-btn sui-btn-primary"&gt;View Order&lt;/button&gt;
+    &lt;button class="sui-btn sui-btn-outline"&gt;Back to Home&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Error -->
+<div class="pg-section" id="section-2">
+  <h3 class="pg-section-title">Error</h3>
+  <div class="pg-section-row">
+    <div class="sui-result sui-result-error sui-card" style="width:100%;max-width:500px;">
+      <div class="sui-result-icon">&#10007;</div>
+      <h2 class="sui-result-title">Something Went Wrong</h2>
+      <p class="sui-result-desc">We couldn't process your request. Please try again or contact support if the issue persists.</p>
+      <div class="sui-result-actions">
+        <button class="sui-btn sui-btn-danger">Try Again</button>
+        <button class="sui-btn sui-btn-outline">Contact Support</button>
+      </div>
+    </div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-result sui-result-error sui-card"&gt;
+  &lt;div class="sui-result-icon"&gt;&amp;#10007;&lt;/div&gt;
+  &lt;h2 class="sui-result-title"&gt;Something Went Wrong&lt;/h2&gt;
+  &lt;p class="sui-result-desc"&gt;We couldn't process your request. Please try again or contact support if the issue persists.&lt;/p&gt;
+  &lt;div class="sui-result-actions"&gt;
+    &lt;button class="sui-btn sui-btn-danger"&gt;Try Again&lt;/button&gt;
+    &lt;button class="sui-btn sui-btn-outline"&gt;Contact Support&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Warning -->
+<div class="pg-section" id="section-3">
+  <h3 class="pg-section-title">Warning</h3>
+  <div class="pg-section-row">
+    <div class="sui-result sui-result-warning sui-card" style="width:100%;max-width:500px;">
+      <div class="sui-result-icon">&#9888;</div>
+      <h2 class="sui-result-title">Account Suspended</h2>
+      <p class="sui-result-desc">Your account has been temporarily suspended due to unusual activity. Please verify your identity to restore access.</p>
+      <div class="sui-result-actions">
+        <button class="sui-btn sui-btn-warning">Verify Identity</button>
+        <button class="sui-btn sui-btn-outline">Learn More</button>
+      </div>
+    </div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-result sui-result-warning sui-card"&gt;
+  &lt;div class="sui-result-icon"&gt;&amp;#9888;&lt;/div&gt;
+  &lt;h2 class="sui-result-title"&gt;Account Suspended&lt;/h2&gt;
+  &lt;p class="sui-result-desc"&gt;Your account has been temporarily suspended due to unusual activity. Please verify your identity to restore access.&lt;/p&gt;
+  &lt;div class="sui-result-actions"&gt;
+    &lt;button class="sui-btn sui-btn-warning"&gt;Verify Identity&lt;/button&gt;
+    &lt;button class="sui-btn sui-btn-outline"&gt;Learn More&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</pre></div>
+  </div>
+</div>
+
+<!-- 404 -->
+<div class="pg-section" id="section-4">
+  <h3 class="pg-section-title">404 Not Found</h3>
+  <div class="pg-section-row">
+    <div class="sui-result sui-result-404 sui-card" style="width:100%;max-width:500px;">
+      <div class="sui-result-icon">&#128269;</div>
+      <h2 class="sui-result-title">Page Not Found</h2>
+      <p class="sui-result-desc">The page you're looking for doesn't exist or has been moved. Check the URL or go back to the homepage.</p>
+      <div class="sui-result-actions">
+        <button class="sui-btn sui-btn-primary">Go Home</button>
+        <button class="sui-btn sui-btn-outline">Go Back</button>
+      </div>
+    </div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-result sui-result-404 sui-card"&gt;
+  &lt;div class="sui-result-icon"&gt;&amp;#128269;&lt;/div&gt;
+  &lt;h2 class="sui-result-title"&gt;Page Not Found&lt;/h2&gt;
+  &lt;p class="sui-result-desc"&gt;The page you're looking for doesn't exist or has been moved. Check the URL or go back to the homepage.&lt;/p&gt;
+  &lt;div class="sui-result-actions"&gt;
+    &lt;button class="sui-btn sui-btn-primary"&gt;Go Home&lt;/button&gt;
+    &lt;button class="sui-btn sui-btn-outline"&gt;Go Back&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Inset -->
+<div class="pg-section" id="section-5">
+  <h3 class="pg-section-title">Inset</h3>
+  <div class="pg-section-row">
+    <div class="sui-result sui-result-info sui-result-inset" style="width:100%;max-width:500px;">
+      <div class="sui-result-icon">&#9432;</div>
+      <h2 class="sui-result-title">Email Verified</h2>
+      <p class="sui-result-desc">Your email address has been successfully verified. You can now access all features.</p>
+      <div class="sui-result-actions">
+        <button class="sui-btn sui-btn-info">Continue</button>
+      </div>
+    </div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-result sui-result-info sui-result-inset"&gt;
+  &lt;div class="sui-result-icon"&gt;&amp;#9432;&lt;/div&gt;
+  &lt;h2 class="sui-result-title"&gt;Email Verified&lt;/h2&gt;
+  &lt;p class="sui-result-desc"&gt;Your email address has been successfully verified. You can now access all features.&lt;/p&gt;
+  &lt;div class="sui-result-actions"&gt;
+    &lt;button class="sui-btn sui-btn-info"&gt;Continue&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</pre></div>
+  </div>
+</div>

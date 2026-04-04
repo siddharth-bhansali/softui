@@ -37,7 +37,8 @@
     { "id": "toast", "name": "Toast", "url": "/components/toast/" },
     { "id": "progress", "name": "Progress", "url": "/components/progress/" },
     { "id": "spinner", "name": "Spinner", "url": "/components/spinner/" },
-    { "id": "loadingoverlay", "name": "Loading Overlay", "url": "/components/loadingoverlay/" }
+    { "id": "loadingoverlay", "name": "Loading Overlay", "url": "/components/loadingoverlay/" },
+    { "id": "result", "name": "Result", "url": "/components/result/" }
   ],
   "navigation": [
     { "id": "navbar", "name": "Navbar", "url": "/components/navbar/" },

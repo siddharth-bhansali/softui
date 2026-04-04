@@ -364,6 +364,11 @@
       "code": "<div class=\"sui-card\" style=\"position:relative;padding:20px;\">\n  <h4>Dashboard</h4>\n  <p>Revenue: $12,450</p>\n  <div class=\"sui-loading-overlay active\">\n    <div class=\"sui-spinner sui-spinner-primary\" role=\"status\" aria-label=\"Loading\"></div>\n    <span class=\"sui-loading-overlay-text\">Loading...</span>\n  </div>\n</div>"
     },
     {
+      "id": "result",
+      "label": "Result Page",
+      "code": "<div class=\"sui-result sui-result-success sui-card\" style=\"max-width:500px;\">\n  <div class=\"sui-result-icon\">&#10003;</div>\n  <h2 class=\"sui-result-title\">Payment Successful</h2>\n  <p class=\"sui-result-desc\">Your payment of $299.00 has been processed. A confirmation email has been sent to john@example.com.</p>\n  <div class=\"sui-result-actions\">\n    <button class=\"sui-btn sui-btn-primary\">View Order</button>\n    <button class=\"sui-btn sui-btn-outline\">Back to Home</button>\n  </div>\n</div>"
+    },
+    {
       "id": "phonemockup",
       "label": "Phone Mockup",
       "code": "<div class=\"sui-phone\">\n  <div class=\"sui-phone-screen sui-phone-island\">\n    <div class=\"sui-phone-status\">\n      <span>9:41</span>\n      <span>&#9679;&#9679;&#9679;</span>\n    </div>\n    <div style=\"padding:60px 20px 20px;text-align:center;\">\n      <h3>Welcome</h3>\n      <p>Your app content here.</p>\n    </div>\n    <div class=\"sui-phone-home\"></div>\n  </div>\n</div>"
