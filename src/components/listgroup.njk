@@ -1,0 +1,279 @@
+---
+layout: component.njk
+title: List Group
+description: Styled lists with items, badges, icons, active states, and actions.
+componentId: listgroup
+hasControls: false
+requiresJs: false
+toc:
+  - Default
+  - With Badges
+  - With Descriptions
+  - Active & Disabled
+  - Raised
+  - Bordered
+  - Inset
+---
+
+<!-- Default -->
+<div class="pg-section" id="section-1">
+  <h3 class="pg-section-title">Default</h3>
+  <div class="pg-section-row">
+    <div class="sui-list-group" style="max-width:400px;width:100%;">
+      <a href="#" class="sui-list-group-item">Dashboard</a>
+      <a href="#" class="sui-list-group-item">Analytics</a>
+      <a href="#" class="sui-list-group-item">Settings</a>
+      <a href="#" class="sui-list-group-item">Help Center</a>
+    </div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-list-group"&gt;
+  &lt;a href="#" class="sui-list-group-item"&gt;Dashboard&lt;/a&gt;
+  &lt;a href="#" class="sui-list-group-item"&gt;Analytics&lt;/a&gt;
+  &lt;a href="#" class="sui-list-group-item"&gt;Settings&lt;/a&gt;
+  &lt;a href="#" class="sui-list-group-item"&gt;Help Center&lt;/a&gt;
+&lt;/div&gt;</pre></div>
+  </div>
+</div>
+
+<!-- With Badges -->
+<div class="pg-section" id="section-2">
+  <h3 class="pg-section-title">With Badges</h3>
+  <div class="pg-section-row">
+    <div class="sui-list-group sui-list-group-raised" style="max-width:400px;width:100%;">
+      <a href="#" class="sui-list-group-item">
+        <div class="sui-list-group-content">Inbox</div>
+        <span class="sui-list-group-action"><span class="sui-badge sui-badge-primary sui-badge-pill">12</span></span>
+      </a>
+      <a href="#" class="sui-list-group-item">
+        <div class="sui-list-group-content">Drafts</div>
+        <span class="sui-list-group-action"><span class="sui-badge sui-badge-pill">3</span></span>
+      </a>
+      <a href="#" class="sui-list-group-item">
+        <div class="sui-list-group-content">Sent</div>
+      </a>
+      <a href="#" class="sui-list-group-item">
+        <div class="sui-list-group-content">Spam</div>
+        <span class="sui-list-group-action"><span class="sui-badge sui-badge-danger sui-badge-pill">7</span></span>
+      </a>
+    </div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-list-group sui-list-group-raised"&gt;
+  &lt;a href="#" class="sui-list-group-item"&gt;
+    &lt;div class="sui-list-group-content"&gt;Inbox&lt;/div&gt;
+    &lt;span class="sui-list-group-action"&gt;&lt;span class="sui-badge sui-badge-primary sui-badge-pill"&gt;12&lt;/span&gt;&lt;/span&gt;
+  &lt;/a&gt;
+  &lt;a href="#" class="sui-list-group-item"&gt;
+    &lt;div class="sui-list-group-content"&gt;Drafts&lt;/div&gt;
+    &lt;span class="sui-list-group-action"&gt;&lt;span class="sui-badge sui-badge-pill"&gt;3&lt;/span&gt;&lt;/span&gt;
+  &lt;/a&gt;
+  &lt;a href="#" class="sui-list-group-item"&gt;
+    &lt;div class="sui-list-group-content"&gt;Sent&lt;/div&gt;
+  &lt;/a&gt;
+  &lt;a href="#" class="sui-list-group-item"&gt;
+    &lt;div class="sui-list-group-content"&gt;Spam&lt;/div&gt;
+    &lt;span class="sui-list-group-action"&gt;&lt;span class="sui-badge sui-badge-danger sui-badge-pill"&gt;7&lt;/span&gt;&lt;/span&gt;
+  &lt;/a&gt;
+&lt;/div&gt;</pre></div>
+  </div>
+</div>
+
+<!-- With Descriptions -->
+<div class="pg-section" id="section-3">
+  <h3 class="pg-section-title">With Descriptions</h3>
+  <div class="pg-section-row">
+    <div class="sui-list-group sui-list-group-raised" style="max-width:400px;width:100%;">
+      <a href="#" class="sui-list-group-item">
+        <div class="sui-avatar sui-avatar-sm" style="background:var(--sui-primary);color:#fff;font-weight:600;flex-shrink:0;">SK</div>
+        <div class="sui-list-group-content">
+          <div class="sui-list-group-title">Sarah Kim</div>
+          <div class="sui-list-group-desc">Hey, are we still on for the meeting?</div>
+        </div>
+        <span class="sui-list-group-action" style="font-size:11px;color:var(--sui-text-muted);">2m ago</span>
+      </a>
+      <a href="#" class="sui-list-group-item">
+        <div class="sui-avatar sui-avatar-sm" style="background:var(--sui-success);color:#fff;font-weight:600;flex-shrink:0;">MR</div>
+        <div class="sui-list-group-content">
+          <div class="sui-list-group-title">Mike Ross</div>
+          <div class="sui-list-group-desc">The new designs look great!</div>
+        </div>
+        <span class="sui-list-group-action" style="font-size:11px;color:var(--sui-text-muted);">1h ago</span>
+      </a>
+      <a href="#" class="sui-list-group-item">
+        <div class="sui-avatar sui-avatar-sm" style="background:var(--sui-warning);color:#fff;font-weight:600;flex-shrink:0;">AL</div>
+        <div class="sui-list-group-content">
+          <div class="sui-list-group-title">Anna Lee</div>
+          <div class="sui-list-group-desc">Can you review the PR when you get a chance?</div>
+        </div>
+        <span class="sui-list-group-action" style="font-size:11px;color:var(--sui-text-muted);">3h ago</span>
+      </a>
+    </div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-list-group sui-list-group-raised"&gt;
+  &lt;a href="#" class="sui-list-group-item"&gt;
+    &lt;div class="sui-avatar sui-avatar-sm" style="background:var(--sui-primary);color:#fff;font-weight:600;"&gt;SK&lt;/div&gt;
+    &lt;div class="sui-list-group-content"&gt;
+      &lt;div class="sui-list-group-title"&gt;Sarah Kim&lt;/div&gt;
+      &lt;div class="sui-list-group-desc"&gt;Hey, are we still on for the meeting?&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;span class="sui-list-group-action" style="font-size:11px;color:var(--sui-text-muted);"&gt;2m ago&lt;/span&gt;
+  &lt;/a&gt;
+  &lt;a href="#" class="sui-list-group-item"&gt;
+    &lt;div class="sui-avatar sui-avatar-sm" style="background:var(--sui-success);color:#fff;font-weight:600;"&gt;MR&lt;/div&gt;
+    &lt;div class="sui-list-group-content"&gt;
+      &lt;div class="sui-list-group-title"&gt;Mike Ross&lt;/div&gt;
+      &lt;div class="sui-list-group-desc"&gt;The new designs look great!&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;span class="sui-list-group-action" style="font-size:11px;color:var(--sui-text-muted);"&gt;1h ago&lt;/span&gt;
+  &lt;/a&gt;
+  &lt;a href="#" class="sui-list-group-item"&gt;
+    &lt;div class="sui-avatar sui-avatar-sm" style="background:var(--sui-warning);color:#fff;font-weight:600;"&gt;AL&lt;/div&gt;
+    &lt;div class="sui-list-group-content"&gt;
+      &lt;div class="sui-list-group-title"&gt;Anna Lee&lt;/div&gt;
+      &lt;div class="sui-list-group-desc"&gt;Can you review the PR when you get a chance?&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;span class="sui-list-group-action" style="font-size:11px;color:var(--sui-text-muted);"&gt;3h ago&lt;/span&gt;
+  &lt;/a&gt;
+&lt;/div&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Active & Disabled -->
+<div class="pg-section" id="section-4">
+  <h3 class="pg-section-title">Active & Disabled</h3>
+  <div class="pg-section-row">
+    <div class="sui-list-group sui-list-group-raised" style="max-width:400px;width:100%;">
+      <a href="#" class="sui-list-group-item active">Dashboard</a>
+      <a href="#" class="sui-list-group-item">Analytics</a>
+      <a href="#" class="sui-list-group-item disabled">Billing (coming soon)</a>
+      <a href="#" class="sui-list-group-item">Settings</a>
+    </div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-list-group sui-list-group-raised"&gt;
+  &lt;a href="#" class="sui-list-group-item active"&gt;Dashboard&lt;/a&gt;
+  &lt;a href="#" class="sui-list-group-item"&gt;Analytics&lt;/a&gt;
+  &lt;a href="#" class="sui-list-group-item disabled"&gt;Billing (coming soon)&lt;/a&gt;
+  &lt;a href="#" class="sui-list-group-item"&gt;Settings&lt;/a&gt;
+&lt;/div&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Raised -->
+<div class="pg-section" id="section-5">
+  <h3 class="pg-section-title">Raised</h3>
+  <p class="pg-section-desc">Use <code>&lt;a&gt;</code> or <code>&lt;button&gt;</code> elements for clickable items with hover states. Add chevrons to indicate navigation.</p>
+  <div class="pg-section-row">
+    <div class="sui-list-group sui-list-group-raised" style="max-width:400px;width:100%;">
+      <div class="sui-dropdown" style="display:block;">
+        <a class="sui-list-group-item sui-dropdown-toggle sui-dropdown-no-arrow" data-sui-dropdown style="cursor:pointer;">
+          <div class="sui-list-group-content">General</div>
+          <span class="sui-list-group-action" style="color:var(--sui-text-muted);">&#9654;</span>
+        </a>
+        <div class="sui-dropdown-menu" role="menu" style="left:100%;top:0;min-width:180px;">
+          <a class="sui-dropdown-item" role="menuitem" href="#">Language</a>
+          <a class="sui-dropdown-item" role="menuitem" href="#">Timezone</a>
+          <a class="sui-dropdown-item" role="menuitem" href="#">Theme</a>
+        </div>
+      </div>
+      <a href="#" class="sui-list-group-item">
+        <div class="sui-list-group-content">Notifications</div>
+        <span class="sui-list-group-action"><span class="sui-badge sui-badge-danger sui-badge-pill">3</span></span>
+      </a>
+      <div class="sui-dropdown" style="display:block;">
+        <a class="sui-list-group-item sui-dropdown-toggle sui-dropdown-no-arrow" data-sui-dropdown style="cursor:pointer;">
+          <div class="sui-list-group-content">Privacy</div>
+          <span class="sui-list-group-action" style="color:var(--sui-text-muted);">&#9654;</span>
+        </a>
+        <div class="sui-dropdown-menu" role="menu" style="left:100%;top:0;min-width:180px;">
+          <a class="sui-dropdown-item" role="menuitem" href="#">Password</a>
+          <a class="sui-dropdown-item" role="menuitem" href="#">Two-Factor Auth</a>
+          <a class="sui-dropdown-item" role="menuitem" href="#">Sessions</a>
+        </div>
+      </div>
+      <a href="#" class="sui-list-group-item" style="color:var(--sui-danger);">
+        <div class="sui-list-group-content">Delete Account</div>
+      </a>
+    </div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-list-group sui-list-group-raised"&gt;
+  &lt;div class="sui-dropdown" style="display:block;"&gt;
+    &lt;a class="sui-list-group-item sui-dropdown-toggle sui-dropdown-no-arrow" data-sui-dropdown style="cursor:pointer;"&gt;
+      &lt;div class="sui-list-group-content"&gt;General&lt;/div&gt;
+      &lt;span class="sui-list-group-action" style="color:var(--sui-text-muted);"&gt;&amp;#9654;&lt;/span&gt;
+    &lt;/a&gt;
+    &lt;div class="sui-dropdown-menu" role="menu" style="left:100%;top:0;min-width:180px;"&gt;
+      &lt;a class="sui-dropdown-item" role="menuitem" href="#"&gt;Language&lt;/a&gt;
+      &lt;a class="sui-dropdown-item" role="menuitem" href="#"&gt;Timezone&lt;/a&gt;
+      &lt;a class="sui-dropdown-item" role="menuitem" href="#"&gt;Theme&lt;/a&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;a href="#" class="sui-list-group-item"&gt;
+    &lt;div class="sui-list-group-content"&gt;Notifications&lt;/div&gt;
+    &lt;span class="sui-list-group-action"&gt;&lt;span class="sui-badge sui-badge-danger sui-badge-pill"&gt;3&lt;/span&gt;&lt;/span&gt;
+  &lt;/a&gt;
+  &lt;div class="sui-dropdown" style="display:block;"&gt;
+    &lt;a class="sui-list-group-item sui-dropdown-toggle sui-dropdown-no-arrow" data-sui-dropdown style="cursor:pointer;"&gt;
+      &lt;div class="sui-list-group-content"&gt;Privacy&lt;/div&gt;
+      &lt;span class="sui-list-group-action" style="color:var(--sui-text-muted);"&gt;&amp;#9654;&lt;/span&gt;
+    &lt;/a&gt;
+    &lt;div class="sui-dropdown-menu" role="menu" style="left:100%;top:0;min-width:180px;"&gt;
+      &lt;a class="sui-dropdown-item" role="menuitem" href="#"&gt;Password&lt;/a&gt;
+      &lt;a class="sui-dropdown-item" role="menuitem" href="#"&gt;Two-Factor Auth&lt;/a&gt;
+      &lt;a class="sui-dropdown-item" role="menuitem" href="#"&gt;Sessions&lt;/a&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;a href="#" class="sui-list-group-item" style="color:var(--sui-danger);"&gt;
+    &lt;div class="sui-list-group-content"&gt;Delete Account&lt;/div&gt;
+  &lt;/a&gt;
+&lt;/div&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Bordered -->
+<div class="pg-section" id="section-6">
+  <h3 class="pg-section-title">Bordered</h3>
+  <div class="pg-section-row">
+    <div class="sui-list-group sui-list-group-bordered" style="max-width:400px;width:100%;">
+      <a href="#" class="sui-list-group-item">Profile</a>
+      <a href="#" class="sui-list-group-item">Security</a>
+      <a href="#" class="sui-list-group-item">Integrations</a>
+    </div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-list-group sui-list-group-bordered"&gt;
+  &lt;a href="#" class="sui-list-group-item"&gt;Profile&lt;/a&gt;
+  &lt;a href="#" class="sui-list-group-item"&gt;Security&lt;/a&gt;
+  &lt;a href="#" class="sui-list-group-item"&gt;Integrations&lt;/a&gt;
+&lt;/div&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Inset -->
+<div class="pg-section" id="section-7">
+  <h3 class="pg-section-title">Inset</h3>
+  <div class="pg-section-row">
+    <div class="sui-list-group sui-list-group-inset" style="max-width:400px;width:100%;">
+      <a href="#" class="sui-list-group-item">Account</a>
+      <a href="#" class="sui-list-group-item">Appearance</a>
+      <a href="#" class="sui-list-group-item">Language</a>
+    </div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-list-group sui-list-group-inset"&gt;
+  &lt;a href="#" class="sui-list-group-item"&gt;Account&lt;/a&gt;
+  &lt;a href="#" class="sui-list-group-item"&gt;Appearance&lt;/a&gt;
+  &lt;a href="#" class="sui-list-group-item"&gt;Language&lt;/a&gt;
+&lt;/div&gt;</pre></div>
+  </div>
+</div>

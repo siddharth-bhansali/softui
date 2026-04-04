@@ -364,6 +364,11 @@
       "code": "<div class=\"sui-card\" style=\"position:relative;padding:20px;\">\n  <h4>Dashboard</h4>\n  <p>Revenue: $12,450</p>\n  <div class=\"sui-loading-overlay active\">\n    <div class=\"sui-spinner sui-spinner-primary\" role=\"status\" aria-label=\"Loading\"></div>\n    <span class=\"sui-loading-overlay-text\">Loading...</span>\n  </div>\n</div>"
     },
     {
+      "id": "listgroup",
+      "label": "List Group",
+      "code": "<div class=\"sui-list-group sui-list-group-raised\" style=\"max-width:400px;\">\n  <a href=\"#\" class=\"sui-list-group-item\">\n    <div class=\"sui-list-group-content\">Inbox</div>\n    <span class=\"sui-list-group-action\"><span class=\"sui-badge sui-badge-primary sui-badge-pill\">12</span></span>\n  </a>\n  <a href=\"#\" class=\"sui-list-group-item\">\n    <div class=\"sui-list-group-content\">Drafts</div>\n    <span class=\"sui-list-group-action\"><span class=\"sui-badge sui-badge-pill\">3</span></span>\n  </a>\n  <a href=\"#\" class=\"sui-list-group-item\">\n    <div class=\"sui-list-group-content\">Sent</div>\n  </a>\n  <a href=\"#\" class=\"sui-list-group-item\">\n    <div class=\"sui-list-group-content\">Spam</div>\n    <span class=\"sui-list-group-action\"><span class=\"sui-badge sui-badge-danger sui-badge-pill\">7</span></span>\n  </a>\n</div>"
+    },
+    {
       "id": "descriptions",
       "label": "Descriptions",
       "code": "<div class=\"sui-desc sui-desc-raised\" style=\"max-width:500px;\">\n  <h3 class=\"sui-desc-title\">User Profile</h3>\n  <div class=\"sui-desc-row\">\n    <div class=\"sui-desc-label\">Name</div>\n    <div class=\"sui-desc-value\">John Doe</div>\n  </div>\n  <div class=\"sui-desc-row\">\n    <div class=\"sui-desc-label\">Email</div>\n    <div class=\"sui-desc-value\">john.doe@example.com</div>\n  </div>\n  <div class=\"sui-desc-row\">\n    <div class=\"sui-desc-label\">Role</div>\n    <div class=\"sui-desc-value\"><span class=\"sui-badge sui-badge-primary sui-badge-pill\">Admin</span></div>\n  </div>\n  <div class=\"sui-desc-row\">\n    <div class=\"sui-desc-label\">Status</div>\n    <div class=\"sui-desc-value\"><span class=\"sui-badge sui-badge-success\">Active</span></div>\n  </div>\n</div>"

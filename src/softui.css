@@ -1,4 +1,4 @@
-/*! SoftUI v1.12.0 — A Neumorphic CSS Library */
+/*! SoftUI v1.13.0 — A Neumorphic CSS Library */
 
 /* ===========================================
    CSS Variables / Tokens
@@ -13302,6 +13302,111 @@ select.sui-datatable-filter {
 
 .sui-result-inset .sui-result-icon {
   box-shadow: var(--sui-shadow-inset-sm);
+}
+
+/* ===========================================
+   List Group
+   =========================================== */
+.sui-list-group {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  border-radius: var(--sui-radius-sm);
+}
+
+.sui-list-group-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  font-size: 14px;
+  color: var(--sui-text);
+  border-bottom: 1px solid var(--sui-bg-dark);
+  transition: background var(--sui-transition-fast);
+  text-decoration: none;
+}
+
+.sui-list-group-item:last-child {
+  border-bottom: none;
+}
+
+a.sui-list-group-item:hover,
+button.sui-list-group-item:hover {
+  background: rgba(91, 84, 224, 0.04);
+  cursor: pointer;
+}
+
+[data-theme="dark"] a.sui-list-group-item:hover,
+[data-theme="dark"] button.sui-list-group-item:hover {
+  background: rgba(124, 107, 255, 0.08);
+}
+
+.sui-list-group-item.active {
+  background: rgba(91, 84, 224, 0.08);
+  color: var(--sui-primary);
+  font-weight: 600;
+}
+
+.sui-list-group-item.disabled {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+/* Content area */
+.sui-list-group-content {
+  flex: 1;
+  min-width: 0;
+}
+
+.sui-list-group-title {
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.sui-list-group-desc {
+  font-size: 12px;
+  color: var(--sui-text-muted);
+  margin-top: 2px;
+}
+
+/* Icon */
+.sui-list-group-icon {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  color: var(--sui-text-muted);
+}
+
+.sui-list-group-item.active .sui-list-group-icon {
+  color: var(--sui-primary);
+}
+
+/* Action (right side) */
+.sui-list-group-action {
+  margin-inline-start: auto;
+  flex-shrink: 0;
+}
+
+/* Raised variant */
+.sui-list-group-raised {
+  box-shadow: var(--sui-shadow-raised);
+  background: var(--sui-bg);
+}
+
+/* Bordered variant */
+.sui-list-group-bordered {
+  border: 1px solid var(--sui-bg-dark);
+}
+
+/* Inset variant */
+.sui-list-group-inset {
+  box-shadow: var(--sui-shadow-inset);
+  background: var(--sui-bg);
+}
+
+/* Flush variant (no outer border/radius) */
+.sui-list-group-flush {
+  border-radius: 0;
 }
 
 /* ===========================================

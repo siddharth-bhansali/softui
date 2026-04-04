@@ -21,7 +21,8 @@
     { "id": "kbd", "name": "Kbd", "url": "/components/kbd/" },
     { "id": "divider", "name": "Divider", "url": "/components/divider/" },
     { "id": "pricing", "name": "Pricing", "url": "/components/pricing/" },
-    { "id": "hero", "name": "Hero", "url": "/components/hero/" }
+    { "id": "hero", "name": "Hero", "url": "/components/hero/" },
+    { "id": "listgroup", "name": "List Group", "url": "/components/listgroup/" }
   ],
   "dataDisplay": [
     { "id": "statcard", "name": "Stat Card", "url": "/components/statcard/" },
