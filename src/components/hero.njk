@@ -1,0 +1,221 @@
+---
+layout: component.njk
+title: Hero
+description: Landing page banner sections with title, subtitle, CTA buttons, and visual variants.
+componentId: hero
+hasControls: false
+requiresJs: false
+toc:
+  - Default
+  - Small
+  - Large
+  - Raised
+  - Bordered
+  - Inset
+  - Gradient
+  - With Accent
+---
+
+<!-- Default -->
+<div class="pg-section" id="section-1">
+  <h3 class="pg-section-title">Default</h3>
+  <div class="pg-section-row">
+    <div class="sui-hero" style="width:100%;">
+      <h1 class="sui-hero-title">Build Beautiful Interfaces</h1>
+      <p class="sui-hero-subtitle">A neumorphic CSS library with soft shadows, muted palettes, and tactile depth. Zero dependencies. Dark mode built in.</p>
+      <div class="sui-hero-actions">
+        <button class="sui-btn sui-btn-primary sui-btn-lg">Get Started</button>
+        <button class="sui-btn sui-btn-outline sui-btn-lg">View Demo</button>
+      </div>
+    </div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-hero"&gt;
+  &lt;h1 class="sui-hero-title"&gt;Build Beautiful Interfaces&lt;/h1&gt;
+  &lt;p class="sui-hero-subtitle"&gt;A neumorphic CSS library with soft shadows, muted palettes, and tactile depth. Zero dependencies. Dark mode built in.&lt;/p&gt;
+  &lt;div class="sui-hero-actions"&gt;
+    &lt;button class="sui-btn sui-btn-primary sui-btn-lg"&gt;Get Started&lt;/button&gt;
+    &lt;button class="sui-btn sui-btn-outline sui-btn-lg"&gt;View Demo&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Small -->
+<div class="pg-section" id="section-2">
+  <h3 class="pg-section-title">Small</h3>
+  <div class="pg-section-row">
+    <div class="sui-hero sui-hero-sm" style="width:100%;">
+      <h1 class="sui-hero-title">Welcome Back</h1>
+      <p class="sui-hero-subtitle">Pick up where you left off. Your dashboard is ready.</p>
+      <div class="sui-hero-actions">
+        <button class="sui-btn sui-btn-primary">Go to Dashboard</button>
+      </div>
+    </div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-hero sui-hero-sm"&gt;
+  &lt;h1 class="sui-hero-title"&gt;Welcome Back&lt;/h1&gt;
+  &lt;p class="sui-hero-subtitle"&gt;Pick up where you left off. Your dashboard is ready.&lt;/p&gt;
+  &lt;div class="sui-hero-actions"&gt;
+    &lt;button class="sui-btn sui-btn-primary"&gt;Go to Dashboard&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Large -->
+<div class="pg-section" id="section-3">
+  <h3 class="pg-section-title">Large</h3>
+  <div class="pg-section-row">
+    <div class="sui-hero sui-hero-lg" style="width:100%;">
+      <h1 class="sui-hero-title">Ship Faster</h1>
+      <p class="sui-hero-subtitle">68+ neumorphic components, ready to drop in. No build tools, no configuration, no JavaScript required for most components.</p>
+      <div class="sui-hero-actions">
+        <button class="sui-btn sui-btn-primary sui-btn-lg">Start Building</button>
+        <button class="sui-btn sui-btn-outline sui-btn-lg">Browse Components</button>
+      </div>
+    </div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-hero sui-hero-lg"&gt;
+  &lt;h1 class="sui-hero-title"&gt;Ship Faster&lt;/h1&gt;
+  &lt;p class="sui-hero-subtitle"&gt;68+ neumorphic components, ready to drop in. No build tools, no configuration, no JavaScript required for most components.&lt;/p&gt;
+  &lt;div class="sui-hero-actions"&gt;
+    &lt;button class="sui-btn sui-btn-primary sui-btn-lg"&gt;Start Building&lt;/button&gt;
+    &lt;button class="sui-btn sui-btn-outline sui-btn-lg"&gt;Browse Components&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Raised -->
+<div class="pg-section" id="section-4">
+  <h3 class="pg-section-title">Raised</h3>
+  <div class="pg-section-row">
+    <div class="sui-hero sui-hero-raised" style="width:100%;">
+      <h1 class="sui-hero-title">Pricing That Scales</h1>
+      <p class="sui-hero-subtitle">Start free, upgrade when you need. No surprises, no hidden fees.</p>
+      <div class="sui-hero-actions">
+        <button class="sui-btn sui-btn-primary">View Plans</button>
+        <button class="sui-btn sui-btn-outline">Compare Features</button>
+      </div>
+    </div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-hero sui-hero-raised"&gt;
+  &lt;h1 class="sui-hero-title"&gt;Pricing That Scales&lt;/h1&gt;
+  &lt;p class="sui-hero-subtitle"&gt;Start free, upgrade when you need. No surprises, no hidden fees.&lt;/p&gt;
+  &lt;div class="sui-hero-actions"&gt;
+    &lt;button class="sui-btn sui-btn-primary"&gt;View Plans&lt;/button&gt;
+    &lt;button class="sui-btn sui-btn-outline"&gt;Compare Features&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Bordered -->
+<div class="pg-section" id="section-5">
+  <h3 class="pg-section-title">Bordered</h3>
+  <div class="pg-section-row">
+    <div class="sui-hero sui-hero-bordered" style="width:100%;">
+      <h1 class="sui-hero-title">Open Source</h1>
+      <p class="sui-hero-subtitle">Free forever. MIT licensed. Contribute on GitHub.</p>
+      <div class="sui-hero-actions">
+        <button class="sui-btn sui-btn-primary">View on GitHub</button>
+        <button class="sui-btn sui-btn-outline">Read the License</button>
+      </div>
+    </div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-hero sui-hero-bordered"&gt;
+  &lt;h1 class="sui-hero-title"&gt;Open Source&lt;/h1&gt;
+  &lt;p class="sui-hero-subtitle"&gt;Free forever. MIT licensed. Contribute on GitHub.&lt;/p&gt;
+  &lt;div class="sui-hero-actions"&gt;
+    &lt;button class="sui-btn sui-btn-primary"&gt;View on GitHub&lt;/button&gt;
+    &lt;button class="sui-btn sui-btn-outline"&gt;Read the License&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Inset -->
+<div class="pg-section" id="section-6">
+  <h3 class="pg-section-title">Inset</h3>
+  <div class="pg-section-row">
+    <div class="sui-hero sui-hero-inset" style="width:100%;">
+      <h1 class="sui-hero-title">Developer Experience</h1>
+      <p class="sui-hero-subtitle">Drop in a CDN link and start building. No npm, no webpack, no config files.</p>
+      <div class="sui-hero-actions">
+        <button class="sui-btn sui-btn-primary">Quick Start</button>
+        <button class="sui-btn sui-btn-outline">See Examples</button>
+      </div>
+    </div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-hero sui-hero-inset"&gt;
+  &lt;h1 class="sui-hero-title"&gt;Developer Experience&lt;/h1&gt;
+  &lt;p class="sui-hero-subtitle"&gt;Drop in a CDN link and start building. No npm, no webpack, no config files.&lt;/p&gt;
+  &lt;div class="sui-hero-actions"&gt;
+    &lt;button class="sui-btn sui-btn-primary"&gt;Quick Start&lt;/button&gt;
+    &lt;button class="sui-btn sui-btn-outline"&gt;See Examples&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Gradient -->
+<div class="pg-section" id="section-7">
+  <h3 class="pg-section-title">Gradient</h3>
+  <div class="pg-section-row">
+    <div class="sui-hero sui-hero-gradient" style="width:100%;">
+      <h1 class="sui-hero-title">Join 10,000+ Developers</h1>
+      <p class="sui-hero-subtitle">The fastest growing neumorphic component library. Open source, forever free.</p>
+      <div class="sui-hero-actions">
+        <button class="sui-btn sui-btn-primary sui-btn-lg">Get Started Free</button>
+      </div>
+    </div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-hero sui-hero-gradient"&gt;
+  &lt;h1 class="sui-hero-title"&gt;Join 10,000+ Developers&lt;/h1&gt;
+  &lt;p class="sui-hero-subtitle"&gt;The fastest growing neumorphic component library. Open source, forever free.&lt;/p&gt;
+  &lt;div class="sui-hero-actions"&gt;
+    &lt;button class="sui-btn sui-btn-primary sui-btn-lg"&gt;Get Started Free&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</pre></div>
+  </div>
+</div>
+
+<!-- With Accent -->
+<div class="pg-section" id="section-8">
+  <h3 class="pg-section-title">With Accent</h3>
+  <div class="pg-section-row">
+    <div class="sui-hero sui-hero-accent" style="width:100%;">
+      <h1 class="sui-hero-title">Documentation</h1>
+      <p class="sui-hero-subtitle">Everything you need to build with SoftUI. Guides, API references, and examples.</p>
+      <div class="sui-hero-actions">
+        <button class="sui-btn sui-btn-primary">Read the Docs</button>
+        <button class="sui-btn sui-btn-outline">View on GitHub</button>
+      </div>
+    </div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-hero sui-hero-accent"&gt;
+  &lt;h1 class="sui-hero-title"&gt;Documentation&lt;/h1&gt;
+  &lt;p class="sui-hero-subtitle"&gt;Everything you need to build with SoftUI. Guides, API references, and examples.&lt;/p&gt;
+  &lt;div class="sui-hero-actions"&gt;
+    &lt;button class="sui-btn sui-btn-primary"&gt;Read the Docs&lt;/button&gt;
+    &lt;button class="sui-btn sui-btn-outline"&gt;View on GitHub&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</pre></div>
+  </div>
+</div>

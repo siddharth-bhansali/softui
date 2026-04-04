@@ -364,6 +364,11 @@
       "code": "<div class=\"sui-card\" style=\"position:relative;padding:20px;\">\n  <h4>Dashboard</h4>\n  <p>Revenue: $12,450</p>\n  <div class=\"sui-loading-overlay active\">\n    <div class=\"sui-spinner sui-spinner-primary\" role=\"status\" aria-label=\"Loading\"></div>\n    <span class=\"sui-loading-overlay-text\">Loading...</span>\n  </div>\n</div>"
     },
     {
+      "id": "hero",
+      "label": "Hero Section",
+      "code": "<div class=\"sui-hero sui-hero-raised\">\n  <h1 class=\"sui-hero-title\">Build Beautiful Interfaces</h1>\n  <p class=\"sui-hero-subtitle\">A neumorphic CSS library with soft shadows, muted palettes, and tactile depth. Zero dependencies. Dark mode built in.</p>\n  <div class=\"sui-hero-actions\">\n    <button class=\"sui-btn sui-btn-primary sui-btn-lg\">Get Started</button>\n    <button class=\"sui-btn sui-btn-outline sui-btn-lg\">View Demo</button>\n  </div>\n</div>"
+    },
+    {
       "id": "result",
       "label": "Result Page",
       "code": "<div class=\"sui-result sui-result-success sui-card\" style=\"max-width:500px;\">\n  <div class=\"sui-result-icon\">&#10003;</div>\n  <h2 class=\"sui-result-title\">Payment Successful</h2>\n  <p class=\"sui-result-desc\">Your payment of $299.00 has been processed. A confirmation email has been sent to john@example.com.</p>\n  <div class=\"sui-result-actions\">\n    <button class=\"sui-btn sui-btn-primary\">View Order</button>\n    <button class=\"sui-btn sui-btn-outline\">Back to Home</button>\n  </div>\n</div>"

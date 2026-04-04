@@ -13305,6 +13305,121 @@ select.sui-datatable-filter {
 }
 
 /* ===========================================
+   Hero Section
+   =========================================== */
+.sui-hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 64px 24px;
+}
+
+.sui-hero-title {
+  font-size: 3rem;
+  font-weight: 800;
+  color: var(--sui-text);
+  margin: 0 0 12px;
+  line-height: 1.15;
+  letter-spacing: -0.5px;
+}
+
+.sui-hero-subtitle {
+  font-size: 1.125rem;
+  color: var(--sui-text-muted);
+  max-width: 560px;
+  margin: 0 0 32px;
+  line-height: 1.6;
+}
+
+.sui-hero-actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+/* Sizes */
+.sui-hero-sm {
+  padding: 40px 24px;
+}
+
+.sui-hero-sm .sui-hero-title {
+  font-size: 2rem;
+}
+
+.sui-hero-sm .sui-hero-subtitle {
+  font-size: 1rem;
+  margin-bottom: 24px;
+}
+
+.sui-hero-lg {
+  padding: 96px 24px;
+}
+
+.sui-hero-lg .sui-hero-title {
+  font-size: 4rem;
+}
+
+.sui-hero-lg .sui-hero-subtitle {
+  font-size: 1.25rem;
+  max-width: 640px;
+}
+
+/* Raised variant */
+.sui-hero-raised {
+  background: var(--sui-bg);
+  border-radius: var(--sui-radius-lg);
+  box-shadow: var(--sui-shadow-raised);
+}
+
+/* Gradient background */
+.sui-hero-gradient {
+  background: linear-gradient(135deg, var(--sui-bg) 0%, var(--sui-bg-light) 100%);
+  border-radius: var(--sui-radius-lg);
+}
+
+/* With accent line */
+.sui-hero-accent .sui-hero-title {
+  position: relative;
+  padding-bottom: 16px;
+  margin-bottom: 20px;
+}
+
+.sui-hero-accent .sui-hero-title::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 4px;
+  border-radius: var(--sui-radius-full);
+  background: var(--sui-primary);
+}
+
+/* Bordered variant */
+.sui-hero-bordered {
+  border: 1px solid var(--sui-bg-dark);
+  border-radius: var(--sui-radius-lg);
+}
+
+/* Inset variant */
+.sui-hero-inset {
+  background: var(--sui-bg);
+  border-radius: var(--sui-radius-lg);
+  box-shadow: var(--sui-shadow-inset);
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .sui-hero-title { font-size: 2rem; }
+  .sui-hero-lg .sui-hero-title { font-size: 2.5rem; }
+  .sui-hero { padding: 40px 16px; }
+  .sui-hero-lg { padding: 56px 16px; }
+}
+
+/* ===========================================
    Reduced Motion
    =========================================== */
 @media (prefers-reduced-motion: reduce) {
