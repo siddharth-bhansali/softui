@@ -364,6 +364,11 @@
       "code": "<div class=\"sui-card\" style=\"position:relative;padding:20px;\">\n  <h4>Dashboard</h4>\n  <p>Revenue: $12,450</p>\n  <div class=\"sui-loading-overlay active\">\n    <div class=\"sui-spinner sui-spinner-primary\" role=\"status\" aria-label=\"Loading\"></div>\n    <span class=\"sui-loading-overlay-text\">Loading...</span>\n  </div>\n</div>"
     },
     {
+      "id": "descriptions",
+      "label": "Descriptions",
+      "code": "<div class=\"sui-desc sui-desc-raised\" style=\"max-width:500px;\">\n  <h3 class=\"sui-desc-title\">User Profile</h3>\n  <div class=\"sui-desc-row\">\n    <div class=\"sui-desc-label\">Name</div>\n    <div class=\"sui-desc-value\">John Doe</div>\n  </div>\n  <div class=\"sui-desc-row\">\n    <div class=\"sui-desc-label\">Email</div>\n    <div class=\"sui-desc-value\">john.doe@example.com</div>\n  </div>\n  <div class=\"sui-desc-row\">\n    <div class=\"sui-desc-label\">Role</div>\n    <div class=\"sui-desc-value\"><span class=\"sui-badge sui-badge-primary sui-badge-pill\">Admin</span></div>\n  </div>\n  <div class=\"sui-desc-row\">\n    <div class=\"sui-desc-label\">Status</div>\n    <div class=\"sui-desc-value\"><span class=\"sui-badge sui-badge-success\">Active</span></div>\n  </div>\n</div>"
+    },
+    {
       "id": "hero",
       "label": "Hero Section",
       "code": "<div class=\"sui-hero sui-hero-raised\">\n  <h1 class=\"sui-hero-title\">Build Beautiful Interfaces</h1>\n  <p class=\"sui-hero-subtitle\">A neumorphic CSS library with soft shadows, muted palettes, and tactile depth. Zero dependencies. Dark mode built in.</p>\n  <div class=\"sui-hero-actions\">\n    <button class=\"sui-btn sui-btn-primary sui-btn-lg\">Get Started</button>\n    <button class=\"sui-btn sui-btn-outline sui-btn-lg\">View Demo</button>\n  </div>\n</div>"

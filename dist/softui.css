@@ -13305,6 +13305,129 @@ select.sui-datatable-filter {
 }
 
 /* ===========================================
+   Descriptions (key-value display)
+   =========================================== */
+.sui-desc {
+  width: 100%;
+}
+
+.sui-desc-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--sui-text);
+  margin: 0 0 16px;
+}
+
+.sui-desc-row {
+  display: flex;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--sui-bg-dark);
+  gap: 16px;
+}
+
+.sui-desc-row:last-child {
+  border-bottom: none;
+}
+
+.sui-desc-label {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--sui-text-muted);
+  width: 160px;
+  flex-shrink: 0;
+}
+
+.sui-desc-value {
+  font-size: 14px;
+  color: var(--sui-text);
+  flex: 1;
+}
+
+/* Bordered variant */
+.sui-desc-bordered {
+  border: 1px solid var(--sui-bg-dark);
+  border-radius: var(--sui-radius-sm);
+  overflow: hidden;
+}
+
+.sui-desc-bordered .sui-desc-title {
+  padding: 14px 20px;
+  margin: 0;
+  border-bottom: 1px solid var(--sui-bg-dark);
+  background: var(--sui-bg-light);
+}
+
+.sui-desc-bordered .sui-desc-row {
+  padding: 12px 20px;
+}
+
+/* Raised variant */
+.sui-desc-raised {
+  background: var(--sui-bg);
+  border-radius: var(--sui-radius-sm);
+  box-shadow: var(--sui-shadow-raised);
+  overflow: hidden;
+}
+
+.sui-desc-raised .sui-desc-title {
+  padding: 14px 20px;
+  margin: 0;
+  border-bottom: 1px solid var(--sui-bg-dark);
+}
+
+.sui-desc-raised .sui-desc-row {
+  padding: 12px 20px;
+}
+
+/* Inset variant */
+.sui-desc-inset {
+  background: var(--sui-bg);
+  border-radius: var(--sui-radius-sm);
+  box-shadow: var(--sui-shadow-inset);
+  overflow: hidden;
+}
+
+.sui-desc-inset .sui-desc-title {
+  padding: 14px 20px;
+  margin: 0;
+  border-bottom: 1px solid var(--sui-bg-dark);
+}
+
+.sui-desc-inset .sui-desc-row {
+  padding: 12px 20px;
+}
+
+/* Striped variant */
+.sui-desc-striped .sui-desc-row:nth-child(even) {
+  background: var(--sui-bg-light);
+}
+
+/* Horizontal layout (grid) */
+.sui-desc-horizontal {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+}
+
+.sui-desc-horizontal .sui-desc-row {
+  border-bottom: 1px solid var(--sui-bg-dark);
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .sui-desc-row {
+    flex-direction: column;
+    gap: 4px;
+  }
+  .sui-desc-label {
+    width: auto;
+  }
+  .sui-desc-horizontal {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ===========================================
    Hero Section
    =========================================== */
 .sui-hero {

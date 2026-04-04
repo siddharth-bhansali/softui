@@ -1,0 +1,305 @@
+---
+layout: component.njk
+title: Descriptions
+description: Styled key-value displays for detail pages, profiles, and settings.
+componentId: descriptions
+hasControls: false
+requiresJs: false
+toc:
+  - Default
+  - Bordered
+  - Raised
+  - Inset
+  - Striped
+---
+
+<!-- Default -->
+<div class="pg-section" id="section-1">
+  <h3 class="pg-section-title">Default</h3>
+  <div class="pg-section-row">
+    <div class="sui-desc" style="max-width:500px;">
+      <h3 class="sui-desc-title">User Profile</h3>
+      <div class="sui-desc-row">
+        <div class="sui-desc-label">Name</div>
+        <div class="sui-desc-value">John Doe</div>
+      </div>
+      <div class="sui-desc-row">
+        <div class="sui-desc-label">Email</div>
+        <div class="sui-desc-value">john.doe@example.com</div>
+      </div>
+      <div class="sui-desc-row">
+        <div class="sui-desc-label">Role</div>
+        <div class="sui-desc-value"><span class="sui-badge sui-badge-primary sui-badge-pill">Admin</span></div>
+      </div>
+      <div class="sui-desc-row">
+        <div class="sui-desc-label">Joined</div>
+        <div class="sui-desc-value">March 15, 2025</div>
+      </div>
+      <div class="sui-desc-row">
+        <div class="sui-desc-label">Status</div>
+        <div class="sui-desc-value"><span class="sui-badge sui-badge-success">Active</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-desc"&gt;
+  &lt;h3 class="sui-desc-title"&gt;User Profile&lt;/h3&gt;
+  &lt;div class="sui-desc-row"&gt;
+    &lt;div class="sui-desc-label"&gt;Name&lt;/div&gt;
+    &lt;div class="sui-desc-value"&gt;John Doe&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="sui-desc-row"&gt;
+    &lt;div class="sui-desc-label"&gt;Email&lt;/div&gt;
+    &lt;div class="sui-desc-value"&gt;john.doe@example.com&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="sui-desc-row"&gt;
+    &lt;div class="sui-desc-label"&gt;Role&lt;/div&gt;
+    &lt;div class="sui-desc-value"&gt;&lt;span class="sui-badge sui-badge-primary sui-badge-pill"&gt;Admin&lt;/span&gt;&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="sui-desc-row"&gt;
+    &lt;div class="sui-desc-label"&gt;Joined&lt;/div&gt;
+    &lt;div class="sui-desc-value"&gt;March 15, 2025&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="sui-desc-row"&gt;
+    &lt;div class="sui-desc-label"&gt;Status&lt;/div&gt;
+    &lt;div class="sui-desc-value"&gt;&lt;span class="sui-badge sui-badge-success"&gt;Active&lt;/span&gt;&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Bordered -->
+<div class="pg-section" id="section-2">
+  <h3 class="pg-section-title">Bordered</h3>
+  <div class="pg-section-row">
+    <div class="sui-desc sui-desc-bordered" style="max-width:500px;">
+      <h3 class="sui-desc-title">Order Details</h3>
+      <div class="sui-desc-row">
+        <div class="sui-desc-label">Order ID</div>
+        <div class="sui-desc-value" style="font-weight:600;">#1284</div>
+      </div>
+      <div class="sui-desc-row">
+        <div class="sui-desc-label">Customer</div>
+        <div class="sui-desc-value">Sarah Kim</div>
+      </div>
+      <div class="sui-desc-row">
+        <div class="sui-desc-label">Product</div>
+        <div class="sui-desc-value">Pro Subscription</div>
+      </div>
+      <div class="sui-desc-row">
+        <div class="sui-desc-label">Amount</div>
+        <div class="sui-desc-value" style="font-weight:600;">$299.00</div>
+      </div>
+      <div class="sui-desc-row">
+        <div class="sui-desc-label">Status</div>
+        <div class="sui-desc-value"><span class="sui-badge sui-badge-success">Completed</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-desc sui-desc-bordered"&gt;
+  &lt;h3 class="sui-desc-title"&gt;Order Details&lt;/h3&gt;
+  &lt;div class="sui-desc-row"&gt;
+    &lt;div class="sui-desc-label"&gt;Order ID&lt;/div&gt;
+    &lt;div class="sui-desc-value" style="font-weight:600;"&gt;#1284&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="sui-desc-row"&gt;
+    &lt;div class="sui-desc-label"&gt;Customer&lt;/div&gt;
+    &lt;div class="sui-desc-value"&gt;Sarah Kim&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="sui-desc-row"&gt;
+    &lt;div class="sui-desc-label"&gt;Product&lt;/div&gt;
+    &lt;div class="sui-desc-value"&gt;Pro Subscription&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="sui-desc-row"&gt;
+    &lt;div class="sui-desc-label"&gt;Amount&lt;/div&gt;
+    &lt;div class="sui-desc-value" style="font-weight:600;"&gt;$299.00&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="sui-desc-row"&gt;
+    &lt;div class="sui-desc-label"&gt;Status&lt;/div&gt;
+    &lt;div class="sui-desc-value"&gt;&lt;span class="sui-badge sui-badge-success"&gt;Completed&lt;/span&gt;&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Raised -->
+<div class="pg-section" id="section-3">
+  <h3 class="pg-section-title">Raised</h3>
+  <div class="pg-section-row">
+    <div class="sui-desc sui-desc-raised" style="max-width:500px;">
+      <h3 class="sui-desc-title">Server Info</h3>
+      <div class="sui-desc-row">
+        <div class="sui-desc-label">Hostname</div>
+        <div class="sui-desc-value"><code>app-prod-01</code></div>
+      </div>
+      <div class="sui-desc-row">
+        <div class="sui-desc-label">IP Address</div>
+        <div class="sui-desc-value"><code>192.168.1.42</code></div>
+      </div>
+      <div class="sui-desc-row">
+        <div class="sui-desc-label">Uptime</div>
+        <div class="sui-desc-value">47 days, 12 hours</div>
+      </div>
+      <div class="sui-desc-row">
+        <div class="sui-desc-label">CPU Usage</div>
+        <div class="sui-desc-value">
+          <div class="sui-progress sui-progress-sm" style="width:120px;display:inline-flex;vertical-align:middle;margin-right:8px;">
+            <div class="sui-progress-bar sui-progress-success" style="width:34%;"></div>
+          </div>
+          34%
+        </div>
+      </div>
+      <div class="sui-desc-row">
+        <div class="sui-desc-label">Status</div>
+        <div class="sui-desc-value"><span class="sui-badge sui-badge-success">Healthy</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-desc sui-desc-raised"&gt;
+  &lt;h3 class="sui-desc-title"&gt;Server Info&lt;/h3&gt;
+  &lt;div class="sui-desc-row"&gt;
+    &lt;div class="sui-desc-label"&gt;Hostname&lt;/div&gt;
+    &lt;div class="sui-desc-value"&gt;&lt;code&gt;app-prod-01&lt;/code&gt;&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="sui-desc-row"&gt;
+    &lt;div class="sui-desc-label"&gt;IP Address&lt;/div&gt;
+    &lt;div class="sui-desc-value"&gt;&lt;code&gt;192.168.1.42&lt;/code&gt;&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="sui-desc-row"&gt;
+    &lt;div class="sui-desc-label"&gt;Uptime&lt;/div&gt;
+    &lt;div class="sui-desc-value"&gt;47 days, 12 hours&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="sui-desc-row"&gt;
+    &lt;div class="sui-desc-label"&gt;CPU Usage&lt;/div&gt;
+    &lt;div class="sui-desc-value"&gt;
+      &lt;div class="sui-progress sui-progress-sm" style="width:120px;display:inline-flex;vertical-align:middle;margin-right:8px;"&gt;
+        &lt;div class="sui-progress-bar sui-progress-success" style="width:34%;"&gt;&lt;/div&gt;
+      &lt;/div&gt;
+      34%
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="sui-desc-row"&gt;
+    &lt;div class="sui-desc-label"&gt;Status&lt;/div&gt;
+    &lt;div class="sui-desc-value"&gt;&lt;span class="sui-badge sui-badge-success"&gt;Healthy&lt;/span&gt;&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Inset -->
+<div class="pg-section" id="section-4">
+  <h3 class="pg-section-title">Inset</h3>
+  <div class="pg-section-row">
+    <div class="sui-desc sui-desc-inset" style="max-width:500px;">
+      <h3 class="sui-desc-title">Subscription</h3>
+      <div class="sui-desc-row">
+        <div class="sui-desc-label">Plan</div>
+        <div class="sui-desc-value"><span class="sui-badge sui-badge-primary sui-badge-pill">Pro</span></div>
+      </div>
+      <div class="sui-desc-row">
+        <div class="sui-desc-label">Price</div>
+        <div class="sui-desc-value">$29/month</div>
+      </div>
+      <div class="sui-desc-row">
+        <div class="sui-desc-label">Billing Cycle</div>
+        <div class="sui-desc-value">Monthly</div>
+      </div>
+      <div class="sui-desc-row">
+        <div class="sui-desc-label">Next Payment</div>
+        <div class="sui-desc-value">April 15, 2026</div>
+      </div>
+    </div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-desc sui-desc-inset"&gt;
+  &lt;h3 class="sui-desc-title"&gt;Subscription&lt;/h3&gt;
+  &lt;div class="sui-desc-row"&gt;
+    &lt;div class="sui-desc-label"&gt;Plan&lt;/div&gt;
+    &lt;div class="sui-desc-value"&gt;&lt;span class="sui-badge sui-badge-primary sui-badge-pill"&gt;Pro&lt;/span&gt;&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="sui-desc-row"&gt;
+    &lt;div class="sui-desc-label"&gt;Price&lt;/div&gt;
+    &lt;div class="sui-desc-value"&gt;$29/month&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="sui-desc-row"&gt;
+    &lt;div class="sui-desc-label"&gt;Billing Cycle&lt;/div&gt;
+    &lt;div class="sui-desc-value"&gt;Monthly&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="sui-desc-row"&gt;
+    &lt;div class="sui-desc-label"&gt;Next Payment&lt;/div&gt;
+    &lt;div class="sui-desc-value"&gt;April 15, 2026&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Striped -->
+<div class="pg-section" id="section-5">
+  <h3 class="pg-section-title">Striped</h3>
+  <p class="pg-section-desc">Combine <code>sui-desc-striped</code> with any variant for alternating row backgrounds.</p>
+  <div class="pg-section-row">
+    <div class="sui-desc sui-desc-bordered sui-desc-striped" style="max-width:500px;">
+      <h3 class="sui-desc-title">Invoice #1284</h3>
+      <div class="sui-desc-row">
+        <div class="sui-desc-label">Customer</div>
+        <div class="sui-desc-value">Sarah Kim</div>
+      </div>
+      <div class="sui-desc-row">
+        <div class="sui-desc-label">Amount</div>
+        <div class="sui-desc-value" style="font-weight:600;">$299.00</div>
+      </div>
+      <div class="sui-desc-row">
+        <div class="sui-desc-label">Tax</div>
+        <div class="sui-desc-value">$26.91</div>
+      </div>
+      <div class="sui-desc-row">
+        <div class="sui-desc-label">Total</div>
+        <div class="sui-desc-value" style="font-weight:700;">$325.91</div>
+      </div>
+      <div class="sui-desc-row">
+        <div class="sui-desc-label">Date</div>
+        <div class="sui-desc-value">March 28, 2026</div>
+      </div>
+      <div class="sui-desc-row">
+        <div class="sui-desc-label">Status</div>
+        <div class="sui-desc-value"><span class="sui-badge sui-badge-success">Paid</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-desc sui-desc-bordered sui-desc-striped"&gt;
+  &lt;h3 class="sui-desc-title"&gt;Invoice #1284&lt;/h3&gt;
+  &lt;div class="sui-desc-row"&gt;
+    &lt;div class="sui-desc-label"&gt;Customer&lt;/div&gt;
+    &lt;div class="sui-desc-value"&gt;Sarah Kim&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="sui-desc-row"&gt;
+    &lt;div class="sui-desc-label"&gt;Amount&lt;/div&gt;
+    &lt;div class="sui-desc-value" style="font-weight:600;"&gt;$299.00&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="sui-desc-row"&gt;
+    &lt;div class="sui-desc-label"&gt;Tax&lt;/div&gt;
+    &lt;div class="sui-desc-value"&gt;$26.91&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="sui-desc-row"&gt;
+    &lt;div class="sui-desc-label"&gt;Total&lt;/div&gt;
+    &lt;div class="sui-desc-value" style="font-weight:700;"&gt;$325.91&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="sui-desc-row"&gt;
+    &lt;div class="sui-desc-label"&gt;Date&lt;/div&gt;
+    &lt;div class="sui-desc-value"&gt;March 28, 2026&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="sui-desc-row"&gt;
+    &lt;div class="sui-desc-label"&gt;Status&lt;/div&gt;
+    &lt;div class="sui-desc-value"&gt;&lt;span class="sui-badge sui-badge-success"&gt;Paid&lt;/span&gt;&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</pre></div>
+  </div>
+</div>
