@@ -303,6 +303,9 @@ const SoftUI = (() => {
     // Drawers
     initDrawers();
 
+    // Countdowns
+    initCountdowns();
+
     // Segmented Controls
     initSegmented();
 
@@ -2649,6 +2652,64 @@ const SoftUI = (() => {
           s.classList.remove('open');
         });
       }
+    });
+  }
+
+  function initCountdowns() {
+    document.querySelectorAll('.sui-countdown[data-date]').forEach(function(el) {
+      const dateStr = el.getAttribute('data-date');
+
+      // Support relative dates: "+2y", "+30d", "+2y5d", "+6h30m"
+      let target;
+      if (dateStr.startsWith('+')) {
+        target = new Date();
+        const parts = dateStr.slice(1).matchAll(/(\d+)([ydhms])/g);
+        for (const p of parts) {
+          const val = parseInt(p[1], 10);
+          const unit = p[2];
+          if (unit === 'y') target.setFullYear(target.getFullYear() + val);
+          else if (unit === 'd') target.setDate(target.getDate() + val);
+          else if (unit === 'h') target.setHours(target.getHours() + val);
+          else if (unit === 'm') target.setMinutes(target.getMinutes() + val);
+          else if (unit === 's') target.setSeconds(target.getSeconds() + val);
+        }
+        target = target.getTime();
+      } else {
+        target = new Date(dateStr).getTime();
+      }
+
+      const yearsEl = el.querySelector('[data-years]');
+      const daysEl = el.querySelector('[data-days]');
+      const hoursEl = el.querySelector('[data-hours]');
+      const minsEl = el.querySelector('[data-minutes]');
+      const secsEl = el.querySelector('[data-seconds]');
+
+      function update() {
+        const now = Date.now();
+        const diff = Math.max(0, target - now);
+        let remaining = diff;
+        const y = Math.floor(remaining / 31536000000);
+        remaining %= 31536000000;
+        const d = Math.floor(remaining / 86400000);
+        remaining %= 86400000;
+        const h = Math.floor(remaining / 3600000);
+        remaining %= 3600000;
+        const m = Math.floor(remaining / 60000);
+        remaining %= 60000;
+        const s = Math.floor(remaining / 1000);
+        if (yearsEl) yearsEl.textContent = String(y).padStart(2, '0');
+        if (daysEl) daysEl.textContent = String(d).padStart(2, '0');
+        if (hoursEl) hoursEl.textContent = String(h).padStart(2, '0');
+        if (minsEl) minsEl.textContent = String(m).padStart(2, '0');
+        if (secsEl) secsEl.textContent = String(s).padStart(2, '0');
+        if (diff === 0) {
+          clearInterval(timer);
+          el.dispatchEvent(new Event('countdown:end'));
+        }
+      }
+
+      update();
+      const timer = setInterval(update, 1000);
     });
   }
 

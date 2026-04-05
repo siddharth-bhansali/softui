@@ -1,0 +1,313 @@
+---
+layout: component.njk
+title: Countdown
+description: Animated countdown timers with days, hours, minutes, and seconds.
+componentId: countdown
+hasControls: false
+requiresJs: true
+toc:
+  - Default
+  - Primary
+  - Inset
+  - Bordered
+  - Small
+  - Large
+---
+
+<!-- Default -->
+<div class="pg-section" id="section-1">
+  <h3 class="pg-section-title">Default</h3>
+  <div class="pg-section-row">
+    <div class="sui-countdown" data-date="+2y5d">
+      <div class="sui-countdown-unit">
+        <div class="sui-countdown-value" data-years>00</div>
+        <span class="sui-countdown-label">Years</span>
+      </div>
+      <span class="sui-countdown-separator">:</span>
+      <div class="sui-countdown-unit">
+        <div class="sui-countdown-value" data-days>00</div>
+        <span class="sui-countdown-label">Days</span>
+      </div>
+      <span class="sui-countdown-separator">:</span>
+      <div class="sui-countdown-unit">
+        <div class="sui-countdown-value" data-hours>00</div>
+        <span class="sui-countdown-label">Hours</span>
+      </div>
+      <span class="sui-countdown-separator">:</span>
+      <div class="sui-countdown-unit">
+        <div class="sui-countdown-value" data-minutes>00</div>
+        <span class="sui-countdown-label">Minutes</span>
+      </div>
+      <span class="sui-countdown-separator">:</span>
+      <div class="sui-countdown-unit">
+        <div class="sui-countdown-value" data-seconds>00</div>
+        <span class="sui-countdown-label">Seconds</span>
+      </div>
+    </div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;!-- Absolute date --&gt;
+&lt;div class="sui-countdown" data-date="2028-12-31T00:00:00"&gt;
+
+&lt;!-- Relative date: +2y, +30d, +6h, +45m, +30s --&gt;
+&lt;div class="sui-countdown" data-date="+2y5d"&gt;
+  &lt;div class="sui-countdown-unit"&gt;
+    &lt;div class="sui-countdown-value" data-years&gt;00&lt;/div&gt;
+    &lt;span class="sui-countdown-label"&gt;Years&lt;/span&gt;
+  &lt;/div&gt;
+  &lt;span class="sui-countdown-separator"&gt;:&lt;/span&gt;
+  &lt;div class="sui-countdown-unit"&gt;
+    &lt;div class="sui-countdown-value" data-days&gt;00&lt;/div&gt;
+    &lt;span class="sui-countdown-label"&gt;Days&lt;/span&gt;
+  &lt;/div&gt;
+  &lt;span class="sui-countdown-separator"&gt;:&lt;/span&gt;
+  &lt;div class="sui-countdown-unit"&gt;
+    &lt;div class="sui-countdown-value" data-hours&gt;00&lt;/div&gt;
+    &lt;span class="sui-countdown-label"&gt;Hours&lt;/span&gt;
+  &lt;/div&gt;
+  &lt;span class="sui-countdown-separator"&gt;:&lt;/span&gt;
+  &lt;div class="sui-countdown-unit"&gt;
+    &lt;div class="sui-countdown-value" data-minutes&gt;00&lt;/div&gt;
+    &lt;span class="sui-countdown-label"&gt;Minutes&lt;/span&gt;
+  &lt;/div&gt;
+  &lt;span class="sui-countdown-separator"&gt;:&lt;/span&gt;
+  &lt;div class="sui-countdown-unit"&gt;
+    &lt;div class="sui-countdown-value" data-seconds&gt;00&lt;/div&gt;
+    &lt;span class="sui-countdown-label"&gt;Seconds&lt;/span&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- Listen for timer completion --&gt;
+&lt;script&gt;
+  document.querySelector('.sui-countdown')
+    .addEventListener('countdown:end', function() {
+      alert('Timer finished!');
+    });
+&lt;/script&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Primary -->
+<div class="pg-section" id="section-2">
+  <h3 class="pg-section-title">Primary</h3>
+  <div class="pg-section-row">
+    <div class="sui-countdown sui-countdown-primary" data-date="+2y5d">
+      <div class="sui-countdown-unit">
+        <div class="sui-countdown-value" data-days>00</div>
+        <span class="sui-countdown-label">Days</span>
+      </div>
+      <span class="sui-countdown-separator">:</span>
+      <div class="sui-countdown-unit">
+        <div class="sui-countdown-value" data-hours>00</div>
+        <span class="sui-countdown-label">Hours</span>
+      </div>
+      <span class="sui-countdown-separator">:</span>
+      <div class="sui-countdown-unit">
+        <div class="sui-countdown-value" data-minutes>00</div>
+        <span class="sui-countdown-label">Minutes</span>
+      </div>
+      <span class="sui-countdown-separator">:</span>
+      <div class="sui-countdown-unit">
+        <div class="sui-countdown-value" data-seconds>00</div>
+        <span class="sui-countdown-label">Seconds</span>
+      </div>
+    </div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-countdown sui-countdown-primary" data-date="2026-12-31T00:00:00"&gt;
+  &lt;div class="sui-countdown-unit"&gt;
+    &lt;div class="sui-countdown-value" data-days&gt;00&lt;/div&gt;
+    &lt;span class="sui-countdown-label"&gt;Days&lt;/span&gt;
+  &lt;/div&gt;
+  &lt;span class="sui-countdown-separator"&gt;:&lt;/span&gt;
+  &lt;div class="sui-countdown-unit"&gt;
+    &lt;div class="sui-countdown-value" data-hours&gt;00&lt;/div&gt;
+    &lt;span class="sui-countdown-label"&gt;Hours&lt;/span&gt;
+  &lt;/div&gt;
+  &lt;span class="sui-countdown-separator"&gt;:&lt;/span&gt;
+  &lt;div class="sui-countdown-unit"&gt;
+    &lt;div class="sui-countdown-value" data-minutes&gt;00&lt;/div&gt;
+    &lt;span class="sui-countdown-label"&gt;Minutes&lt;/span&gt;
+  &lt;/div&gt;
+  &lt;span class="sui-countdown-separator"&gt;:&lt;/span&gt;
+  &lt;div class="sui-countdown-unit"&gt;
+    &lt;div class="sui-countdown-value" data-seconds&gt;00&lt;/div&gt;
+    &lt;span class="sui-countdown-label"&gt;Seconds&lt;/span&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Inset -->
+<div class="pg-section" id="section-3">
+  <h3 class="pg-section-title">Inset</h3>
+  <div class="pg-section-row">
+    <div class="sui-countdown sui-countdown-inset" data-date="+2y5d">
+      <div class="sui-countdown-unit">
+        <div class="sui-countdown-value" data-days>00</div>
+        <span class="sui-countdown-label">Days</span>
+      </div>
+      <span class="sui-countdown-separator">:</span>
+      <div class="sui-countdown-unit">
+        <div class="sui-countdown-value" data-hours>00</div>
+        <span class="sui-countdown-label">Hours</span>
+      </div>
+      <span class="sui-countdown-separator">:</span>
+      <div class="sui-countdown-unit">
+        <div class="sui-countdown-value" data-minutes>00</div>
+        <span class="sui-countdown-label">Minutes</span>
+      </div>
+      <span class="sui-countdown-separator">:</span>
+      <div class="sui-countdown-unit">
+        <div class="sui-countdown-value" data-seconds>00</div>
+        <span class="sui-countdown-label">Seconds</span>
+      </div>
+    </div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-countdown sui-countdown-inset" data-date="2026-12-31T00:00:00"&gt;
+  &lt;!-- same structure as default --&gt;
+&lt;/div&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Bordered -->
+<div class="pg-section" id="section-4">
+  <h3 class="pg-section-title">Bordered</h3>
+  <div class="pg-section-row">
+    <div class="sui-countdown sui-countdown-bordered" data-date="+2y5d">
+      <div class="sui-countdown-unit">
+        <div class="sui-countdown-value" data-days>00</div>
+        <span class="sui-countdown-label">Days</span>
+      </div>
+      <span class="sui-countdown-separator">:</span>
+      <div class="sui-countdown-unit">
+        <div class="sui-countdown-value" data-hours>00</div>
+        <span class="sui-countdown-label">Hours</span>
+      </div>
+      <span class="sui-countdown-separator">:</span>
+      <div class="sui-countdown-unit">
+        <div class="sui-countdown-value" data-minutes>00</div>
+        <span class="sui-countdown-label">Minutes</span>
+      </div>
+      <span class="sui-countdown-separator">:</span>
+      <div class="sui-countdown-unit">
+        <div class="sui-countdown-value" data-seconds>00</div>
+        <span class="sui-countdown-label">Seconds</span>
+      </div>
+    </div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-countdown sui-countdown-bordered" data-date="2026-12-31T00:00:00"&gt;
+  &lt;!-- same structure as default --&gt;
+&lt;/div&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Small -->
+<div class="pg-section" id="section-5">
+  <h3 class="pg-section-title">Small</h3>
+  <div class="pg-section-row">
+    <div class="sui-countdown sui-countdown-sm" data-date="+2y5d">
+      <div class="sui-countdown-unit">
+        <div class="sui-countdown-value" data-days>00</div>
+        <span class="sui-countdown-label">Days</span>
+      </div>
+      <span class="sui-countdown-separator">:</span>
+      <div class="sui-countdown-unit">
+        <div class="sui-countdown-value" data-hours>00</div>
+        <span class="sui-countdown-label">Hours</span>
+      </div>
+      <span class="sui-countdown-separator">:</span>
+      <div class="sui-countdown-unit">
+        <div class="sui-countdown-value" data-minutes>00</div>
+        <span class="sui-countdown-label">Min</span>
+      </div>
+      <span class="sui-countdown-separator">:</span>
+      <div class="sui-countdown-unit">
+        <div class="sui-countdown-value" data-seconds>00</div>
+        <span class="sui-countdown-label">Sec</span>
+      </div>
+    </div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-countdown sui-countdown-sm" data-date="2026-12-31T00:00:00"&gt;
+  &lt;div class="sui-countdown-unit"&gt;
+    &lt;div class="sui-countdown-value" data-days&gt;00&lt;/div&gt;
+    &lt;span class="sui-countdown-label"&gt;Days&lt;/span&gt;
+  &lt;/div&gt;
+  &lt;span class="sui-countdown-separator"&gt;:&lt;/span&gt;
+  &lt;div class="sui-countdown-unit"&gt;
+    &lt;div class="sui-countdown-value" data-hours&gt;00&lt;/div&gt;
+    &lt;span class="sui-countdown-label"&gt;Hours&lt;/span&gt;
+  &lt;/div&gt;
+  &lt;span class="sui-countdown-separator"&gt;:&lt;/span&gt;
+  &lt;div class="sui-countdown-unit"&gt;
+    &lt;div class="sui-countdown-value" data-minutes&gt;00&lt;/div&gt;
+    &lt;span class="sui-countdown-label"&gt;Min&lt;/span&gt;
+  &lt;/div&gt;
+  &lt;span class="sui-countdown-separator"&gt;:&lt;/span&gt;
+  &lt;div class="sui-countdown-unit"&gt;
+    &lt;div class="sui-countdown-value" data-seconds&gt;00&lt;/div&gt;
+    &lt;span class="sui-countdown-label"&gt;Sec&lt;/span&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Large -->
+<div class="pg-section" id="section-6">
+  <h3 class="pg-section-title">Large</h3>
+  <div class="pg-section-row">
+    <div class="sui-countdown sui-countdown-lg sui-countdown-primary" data-date="+2y5d">
+      <div class="sui-countdown-unit">
+        <div class="sui-countdown-value" data-days>00</div>
+        <span class="sui-countdown-label">Days</span>
+      </div>
+      <span class="sui-countdown-separator">:</span>
+      <div class="sui-countdown-unit">
+        <div class="sui-countdown-value" data-hours>00</div>
+        <span class="sui-countdown-label">Hours</span>
+      </div>
+      <span class="sui-countdown-separator">:</span>
+      <div class="sui-countdown-unit">
+        <div class="sui-countdown-value" data-minutes>00</div>
+        <span class="sui-countdown-label">Minutes</span>
+      </div>
+      <span class="sui-countdown-separator">:</span>
+      <div class="sui-countdown-unit">
+        <div class="sui-countdown-value" data-seconds>00</div>
+        <span class="sui-countdown-label">Seconds</span>
+      </div>
+    </div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-countdown sui-countdown-lg sui-countdown-primary" data-date="2026-12-31T00:00:00"&gt;
+  &lt;div class="sui-countdown-unit"&gt;
+    &lt;div class="sui-countdown-value" data-days&gt;00&lt;/div&gt;
+    &lt;span class="sui-countdown-label"&gt;Days&lt;/span&gt;
+  &lt;/div&gt;
+  &lt;span class="sui-countdown-separator"&gt;:&lt;/span&gt;
+  &lt;div class="sui-countdown-unit"&gt;
+    &lt;div class="sui-countdown-value" data-hours&gt;00&lt;/div&gt;
+    &lt;span class="sui-countdown-label"&gt;Hours&lt;/span&gt;
+  &lt;/div&gt;
+  &lt;span class="sui-countdown-separator"&gt;:&lt;/span&gt;
+  &lt;div class="sui-countdown-unit"&gt;
+    &lt;div class="sui-countdown-value" data-minutes&gt;00&lt;/div&gt;
+    &lt;span class="sui-countdown-label"&gt;Minutes&lt;/span&gt;
+  &lt;/div&gt;
+  &lt;span class="sui-countdown-separator"&gt;:&lt;/span&gt;
+  &lt;div class="sui-countdown-unit"&gt;
+    &lt;div class="sui-countdown-value" data-seconds&gt;00&lt;/div&gt;
+    &lt;span class="sui-countdown-label"&gt;Seconds&lt;/span&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</pre></div>
+  </div>
+</div>

@@ -34,7 +34,8 @@
     { "id": "timeline", "name": "Timeline", "url": "/components/timeline/" },
     { "id": "treeview", "name": "Tree View", "url": "/components/treeview/" },
     { "id": "skeleton", "name": "Skeleton", "url": "/components/skeleton/" },
-    { "id": "descriptions", "name": "Descriptions", "url": "/components/descriptions/" }
+    { "id": "descriptions", "name": "Descriptions", "url": "/components/descriptions/" },
+    { "id": "countdown", "name": "Countdown", "url": "/components/countdown/" }
   ],
   "feedback": [
     { "id": "alerts", "name": "Alerts", "url": "/components/alerts/" },
