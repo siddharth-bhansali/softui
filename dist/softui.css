@@ -13648,6 +13648,74 @@ button.sui-list-group-item:hover {
 }
 
 /* ===========================================
+   Scrollspy
+   =========================================== */
+.sui-scrollspy {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sui-scrollspy a {
+  display: block;
+  padding: 6px 16px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--sui-text-muted);
+  text-decoration: none;
+  border-inline-start: 2px solid transparent;
+  border-radius: 0 var(--sui-radius-xs) var(--sui-radius-xs) 0;
+  transition: color var(--sui-transition-fast), border-color var(--sui-transition-fast), background var(--sui-transition-fast);
+}
+
+.sui-scrollspy a:hover {
+  color: var(--sui-text);
+}
+
+.sui-scrollspy a.active {
+  color: var(--sui-primary);
+  font-weight: 600;
+  border-inline-start-color: var(--sui-primary);
+  background: rgba(91, 84, 224, 0.06);
+}
+
+[data-theme="dark"] .sui-scrollspy a.active {
+  background: rgba(124, 107, 255, 0.1);
+}
+
+/* Horizontal variant */
+.sui-scrollspy-horizontal {
+  flex-direction: row;
+  gap: 0;
+}
+
+.sui-scrollspy-horizontal a {
+  border-inline-start: none;
+  border-bottom: 2px solid transparent;
+  border-radius: 0;
+  padding: 8px 16px;
+}
+
+.sui-scrollspy-horizontal a.active {
+  border-bottom-color: var(--sui-primary);
+  background: none;
+}
+
+/* Pill variant */
+.sui-scrollspy-pill a {
+  border-inline-start: none;
+  border-radius: var(--sui-radius-full);
+  padding: 6px 14px;
+}
+
+.sui-scrollspy-pill a.active {
+  background: rgba(91, 84, 224, 0.1);
+}
+
+/* ===========================================
    Countdown
    =========================================== */
 .sui-countdown {

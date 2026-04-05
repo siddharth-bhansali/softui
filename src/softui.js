@@ -303,6 +303,9 @@ const SoftUI = (() => {
     // Drawers
     initDrawers();
 
+    // Scrollspy
+    initScrollspy();
+
     // Countdowns
     initCountdowns();
 
@@ -2652,6 +2655,105 @@ const SoftUI = (() => {
           s.classList.remove('open');
         });
       }
+    });
+  }
+
+  function initScrollspy() {
+    document.querySelectorAll('[data-sui-scrollspy]').forEach(function(nav) {
+      const links = nav.querySelectorAll('a[href^="#"]');
+      if (!links.length) return;
+
+      const targetIds = [];
+      links.forEach(function(link) {
+        const id = link.getAttribute('href').slice(1);
+        if (id) targetIds.push(id);
+      });
+
+      // Find scroll container — either specified or auto-detect from first target's scrollable parent
+      const firstTarget = document.getElementById(targetIds[0]);
+      let scrollRoot = null;
+      if (firstTarget) {
+        let parent = firstTarget.parentElement;
+        while (parent && parent !== document.body) {
+          const style = getComputedStyle(parent);
+          if (style.overflowY === 'auto' || style.overflowY === 'scroll') {
+            scrollRoot = parent;
+            break;
+          }
+          parent = parent.parentElement;
+        }
+      }
+
+      const visibleSections = new Set();
+      let clickLock = false;
+
+      const observer = new IntersectionObserver(function(entries) {
+        if (clickLock) return;
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            visibleSections.add(entry.target.id);
+          } else {
+            visibleSections.delete(entry.target.id);
+          }
+        });
+        // Check if scrolled to bottom of container
+        let atBottom = false;
+        if (scrollRoot) {
+          atBottom = scrollRoot.scrollTop + scrollRoot.clientHeight >= scrollRoot.scrollHeight - 5;
+        } else {
+          atBottom = window.innerHeight + window.scrollY >= document.body.scrollHeight - 5;
+        }
+
+        if (atBottom && visibleSections.size > 0) {
+          // At bottom — pick the last visible section
+          for (let i = targetIds.length - 1; i >= 0; i--) {
+            if (visibleSections.has(targetIds[i])) {
+              links.forEach(function(l) { l.classList.remove('active'); });
+              const active = nav.querySelector('a[href="#' + targetIds[i] + '"]');
+              if (active) active.classList.add('active');
+              break;
+            }
+          }
+        } else {
+          // Pick the first visible section in document order
+          for (let i = 0; i < targetIds.length; i++) {
+            if (visibleSections.has(targetIds[i])) {
+              links.forEach(function(l) { l.classList.remove('active'); });
+              const active = nav.querySelector('a[href="#' + targetIds[i] + '"]');
+              if (active) active.classList.add('active');
+              break;
+            }
+          }
+        }
+      }, {
+        root: scrollRoot,
+        rootMargin: '0px 0px -30% 0px',
+        threshold: 0
+      });
+
+      targetIds.forEach(function(id) {
+        const el = document.getElementById(id);
+        if (el) observer.observe(el);
+      });
+
+      // Click to scroll and activate
+      links.forEach(function(link) {
+        link.addEventListener('click', function(e) {
+          e.preventDefault();
+          const id = link.getAttribute('href').slice(1);
+          const el = document.getElementById(id);
+          if (!el) return;
+          clickLock = true;
+          links.forEach(function(l) { l.classList.remove('active'); });
+          link.classList.add('active');
+          if (scrollRoot) {
+            scrollRoot.scrollTo({ top: el.offsetTop - scrollRoot.offsetTop, behavior: 'smooth' });
+          } else {
+            el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
+          setTimeout(function() { clickLock = false; }, 600);
+        });
+      });
     });
   }
 

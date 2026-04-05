@@ -54,7 +54,8 @@
     { "id": "stepper", "name": "Stepper", "url": "/components/stepper/" },
     { "id": "dock", "name": "Dock", "url": "/components/dock/" },
     { "id": "speeddial", "name": "Speed Dial", "url": "/components/speeddial/" },
-    { "id": "navmenu", "name": "Navigation Menu", "url": "/components/navmenu/" }
+    { "id": "navmenu", "name": "Navigation Menu", "url": "/components/navmenu/" },
+    { "id": "scrollspy", "name": "Scrollspy", "url": "/components/scrollspy/" }
   ],
   "overlays": [
     { "id": "modal", "name": "Modal", "url": "/components/modal/" },

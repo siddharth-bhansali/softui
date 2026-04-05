@@ -364,6 +364,11 @@
       "code": "<div class=\"sui-card\" style=\"position:relative;padding:20px;\">\n  <h4>Dashboard</h4>\n  <p>Revenue: $12,450</p>\n  <div class=\"sui-loading-overlay active\">\n    <div class=\"sui-spinner sui-spinner-primary\" role=\"status\" aria-label=\"Loading\"></div>\n    <span class=\"sui-loading-overlay-text\">Loading...</span>\n  </div>\n</div>"
     },
     {
+      "id": "scrollspy",
+      "label": "Scrollspy",
+      "code": "<div style=\"display:flex;gap:24px;\">\n  <nav class=\"sui-scrollspy\" data-sui-scrollspy style=\"min-width:140px;\">\n    <a href=\"#demo-intro\" class=\"active\">Introduction</a>\n    <a href=\"#demo-features\">Features</a>\n    <a href=\"#demo-install\">Installation</a>\n  </nav>\n  <div style=\"flex:1;\">\n    <div id=\"demo-intro\" style=\"margin-bottom:24px;\">\n      <h4>Introduction</h4>\n      <p>Content for the introduction section.</p>\n    </div>\n    <div id=\"demo-features\" style=\"margin-bottom:24px;\">\n      <h4>Features</h4>\n      <p>Content for the features section.</p>\n    </div>\n    <div id=\"demo-install\" style=\"margin-bottom:24px;\">\n      <h4>Installation</h4>\n      <p>Content for the installation section.</p>\n    </div>\n  </div>\n</div>"
+    },
+    {
       "id": "countdown",
       "label": "Countdown",
       "code": "<div class=\"sui-countdown\" data-date=\"2026-12-31T00:00:00\">\n  <div class=\"sui-countdown-unit\">\n    <div class=\"sui-countdown-value\" data-days>00</div>\n    <span class=\"sui-countdown-label\">Days</span>\n  </div>\n  <span class=\"sui-countdown-separator\">:</span>\n  <div class=\"sui-countdown-unit\">\n    <div class=\"sui-countdown-value\" data-hours>00</div>\n    <span class=\"sui-countdown-label\">Hours</span>\n  </div>\n  <span class=\"sui-countdown-separator\">:</span>\n  <div class=\"sui-countdown-unit\">\n    <div class=\"sui-countdown-value\" data-minutes>00</div>\n    <span class=\"sui-countdown-label\">Min</span>\n  </div>\n  <span class=\"sui-countdown-separator\">:</span>\n  <div class=\"sui-countdown-unit\">\n    <div class=\"sui-countdown-value\" data-seconds>00</div>\n    <span class=\"sui-countdown-label\">Sec</span>\n  </div>\n</div>"

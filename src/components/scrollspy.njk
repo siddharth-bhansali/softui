@@ -1,0 +1,174 @@
+---
+layout: component.njk
+title: Scrollspy
+description: Auto-highlight navigation links based on scroll position.
+componentId: scrollspy
+hasControls: false
+requiresJs: true
+toc:
+  - Default
+  - Horizontal
+  - Pill
+---
+
+<!-- Default -->
+<div class="pg-section" id="section-1">
+  <h3 class="pg-section-title">Default</h3>
+  <p class="pg-section-desc">Add <code>data-sui-scrollspy</code> to a nav element. Links with <code>href="#id"</code> auto-highlight as the matching section scrolls into view.</p>
+  <div class="pg-section-row">
+    <div style="display:flex;gap:24px;width:100%;">
+      <nav class="sui-scrollspy" data-sui-scrollspy style="position:sticky;top:80px;align-self:flex-start;min-width:160px;">
+        <a href="#spy-intro" class="active">Introduction</a>
+        <a href="#spy-features">Features</a>
+        <a href="#spy-install">Installation</a>
+        <a href="#spy-usage">Usage</a>
+        <a href="#spy-api">API Reference</a>
+      </nav>
+      <div style="flex:1;max-height:300px;overflow-y:auto;scroll-behavior:smooth;padding-right:8px;" id="spy-scroll-container">
+        <div id="spy-intro" style="margin-bottom:24px;">
+          <h4>Introduction</h4>
+          <p style="color:var(--sui-text-muted);font-size:14px;line-height:1.7;">SoftUI is a neumorphic CSS component library with soft shadows, muted palettes, and tactile depth. It includes 75+ components, dark mode support, and a small JS module for interactive behaviors. Built for modern web apps that want a distinctive, polished look without sacrificing usability.</p>
+        </div>
+        <div id="spy-features" style="margin-bottom:24px;">
+          <h4>Features</h4>
+          <p style="color:var(--sui-text-muted);font-size:14px;line-height:1.7;">Zero dependencies. Pure CSS with optional vanilla JS. Dark mode built in with CSS custom properties. Responsive grid system with 12 columns and breakpoints. Full accessibility support with ARIA attributes, focus-visible states, and prefers-reduced-motion. RTL support with CSS logical properties.</p>
+        </div>
+        <div id="spy-install" style="margin-bottom:24px;">
+          <h4>Installation</h4>
+          <p style="color:var(--sui-text-muted);font-size:14px;line-height:1.7;">Install via npm with <code>npm install softui-css</code> or use the CDN. No build tools required — just link the CSS and optionally the JS file. Works with React, Vue, Svelte, Astro, Next.js, and any HTML page. Import in your framework or add a link tag in your HTML head.</p>
+        </div>
+        <div id="spy-usage" style="margin-bottom:24px;">
+          <h4>Usage</h4>
+          <p style="color:var(--sui-text-muted);font-size:14px;line-height:1.7;">Add SoftUI classes to your HTML elements. Every component follows the <code>sui-</code> prefix convention. Customize with CSS custom properties — override colors, shadows, radius, fonts, and transitions on <code>:root</code> to theme everything at once. Use the Playground to experiment live.</p>
+        </div>
+        <div id="spy-api" style="margin-bottom:24px;">
+          <h4>API Reference</h4>
+          <p style="color:var(--sui-text-muted);font-size:14px;line-height:1.7;">Interactive components expose a JavaScript API via the global <code>SoftUI</code> object. Open modals with <code>SoftUI.modal('#id').open()</code>, show toasts with <code>SoftUI.toast()</code>, and control sheets, tabs, accordions, and more programmatically. All methods return the component instance for chaining.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div style="display:flex;gap:24px;"&gt;
+  &lt;nav class="sui-scrollspy" data-sui-scrollspy&gt;
+    &lt;a href="#intro" class="active"&gt;Introduction&lt;/a&gt;
+    &lt;a href="#features"&gt;Features&lt;/a&gt;
+    &lt;a href="#install"&gt;Installation&lt;/a&gt;
+    &lt;a href="#usage"&gt;Usage&lt;/a&gt;
+    &lt;a href="#api"&gt;API Reference&lt;/a&gt;
+  &lt;/nav&gt;
+  &lt;div style="flex:1;"&gt;
+    &lt;div id="intro"&gt;
+      &lt;h4&gt;Introduction&lt;/h4&gt;
+      &lt;p&gt;Content here...&lt;/p&gt;
+    &lt;/div&gt;
+    &lt;div id="features"&gt;
+      &lt;h4&gt;Features&lt;/h4&gt;
+      &lt;p&gt;Content here...&lt;/p&gt;
+    &lt;/div&gt;
+    &lt;div id="install"&gt;
+      &lt;h4&gt;Installation&lt;/h4&gt;
+      &lt;p&gt;Content here...&lt;/p&gt;
+    &lt;/div&gt;
+    &lt;div id="usage"&gt;
+      &lt;h4&gt;Usage&lt;/h4&gt;
+      &lt;p&gt;Content here...&lt;/p&gt;
+    &lt;/div&gt;
+    &lt;div id="api"&gt;
+      &lt;h4&gt;API Reference&lt;/h4&gt;
+      &lt;p&gt;Content here...&lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- Optional: set offset (default 100px) --&gt;
+&lt;nav class="sui-scrollspy" data-sui-scrollspy data-sui-scrollspy-offset="80"&gt;
+  ...
+&lt;/nav&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Horizontal -->
+<div class="pg-section" id="section-2">
+  <h3 class="pg-section-title">Horizontal</h3>
+  <div class="pg-section-row">
+    <div style="width:100%;">
+      <nav class="sui-scrollspy sui-scrollspy-horizontal" data-sui-scrollspy style="margin-bottom:16px;">
+        <a href="#spy2-overview" class="active">Overview</a>
+        <a href="#spy2-specs">Specs</a>
+        <a href="#spy2-reviews">Reviews</a>
+        <a href="#spy2-faq">FAQ</a>
+      </nav>
+      <div style="max-height:200px;overflow-y:auto;scroll-behavior:smooth;">
+        <div id="spy2-overview" style="margin-bottom:24px;">
+          <h4>Overview</h4>
+          <p style="color:var(--sui-text-muted);font-size:14px;line-height:1.7;">A comprehensive overview of the product. This section covers the main features, use cases, and benefits. Designed for teams of all sizes who need a reliable and scalable solution.</p>
+        </div>
+        <div id="spy2-specs" style="margin-bottom:24px;">
+          <h4>Specs</h4>
+          <p style="color:var(--sui-text-muted);font-size:14px;line-height:1.7;">Technical specifications including supported browsers, file sizes, performance benchmarks, and compatibility with major frameworks. Minified CSS is under 50KB gzipped.</p>
+        </div>
+        <div id="spy2-reviews" style="margin-bottom:24px;">
+          <h4>Reviews</h4>
+          <p style="color:var(--sui-text-muted);font-size:14px;line-height:1.7;">What developers are saying about the product. Highly rated for ease of use, visual quality, and comprehensive documentation. Used by thousands of developers worldwide.</p>
+        </div>
+        <div id="spy2-faq" style="margin-bottom:24px;">
+          <h4>FAQ</h4>
+          <p style="color:var(--sui-text-muted);font-size:14px;line-height:1.7;">Frequently asked questions about licensing, support, updates, and customization. The library is MIT licensed and free forever. Community support is available on GitHub.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;nav class="sui-scrollspy sui-scrollspy-horizontal" data-sui-scrollspy&gt;
+  &lt;a href="#overview" class="active"&gt;Overview&lt;/a&gt;
+  &lt;a href="#specs"&gt;Specs&lt;/a&gt;
+  &lt;a href="#reviews"&gt;Reviews&lt;/a&gt;
+  &lt;a href="#faq"&gt;FAQ&lt;/a&gt;
+&lt;/nav&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Pill -->
+<div class="pg-section" id="section-3">
+  <h3 class="pg-section-title">Pill</h3>
+  <div class="pg-section-row">
+    <div style="display:flex;gap:24px;width:100%;">
+      <nav class="sui-scrollspy sui-scrollspy-pill" data-sui-scrollspy style="position:sticky;top:80px;align-self:flex-start;min-width:160px;">
+        <a href="#spy3-about" class="active">About</a>
+        <a href="#spy3-team">Team</a>
+        <a href="#spy3-careers">Careers</a>
+        <a href="#spy3-contact">Contact</a>
+      </nav>
+      <div style="flex:1;max-height:250px;overflow-y:auto;scroll-behavior:smooth;">
+        <div id="spy3-about" style="margin-bottom:24px;">
+          <h4>About</h4>
+          <p style="color:var(--sui-text-muted);font-size:14px;line-height:1.7;">We are a team of designers and developers passionate about creating beautiful, accessible user interfaces. Our mission is to make neumorphic design accessible to everyone through open-source tools and comprehensive documentation.</p>
+        </div>
+        <div id="spy3-team" style="margin-bottom:24px;">
+          <h4>Team</h4>
+          <p style="color:var(--sui-text-muted);font-size:14px;line-height:1.7;">Our distributed team spans multiple time zones and brings together expertise in CSS architecture, JavaScript frameworks, accessibility, and design systems. We believe in shipping fast and iterating based on community feedback.</p>
+        </div>
+        <div id="spy3-careers" style="margin-bottom:24px;">
+          <h4>Careers</h4>
+          <p style="color:var(--sui-text-muted);font-size:14px;line-height:1.7;">We are always looking for talented individuals who share our passion for great UI. Check our GitHub for open issues labeled "good first issue" if you'd like to contribute to the project.</p>
+        </div>
+        <div id="spy3-contact" style="margin-bottom:24px;">
+          <h4>Contact</h4>
+          <p style="color:var(--sui-text-muted);font-size:14px;line-height:1.7;">Reach out via GitHub issues for bug reports and feature requests. For general questions, join our community discussions. We respond to all inquiries within 48 hours.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;nav class="sui-scrollspy sui-scrollspy-pill" data-sui-scrollspy&gt;
+  &lt;a href="#about" class="active"&gt;About&lt;/a&gt;
+  &lt;a href="#team"&gt;Team&lt;/a&gt;
+  &lt;a href="#careers"&gt;Careers&lt;/a&gt;
+  &lt;a href="#contact"&gt;Contact&lt;/a&gt;
+&lt;/nav&gt;</pre></div>
+  </div>
+</div>
