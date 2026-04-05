@@ -51,7 +51,8 @@
     { "id": "pagination", "name": "Pagination", "url": "/components/pagination/" },
     { "id": "stepper", "name": "Stepper", "url": "/components/stepper/" },
     { "id": "dock", "name": "Dock", "url": "/components/dock/" },
-    { "id": "speeddial", "name": "Speed Dial", "url": "/components/speeddial/" }
+    { "id": "speeddial", "name": "Speed Dial", "url": "/components/speeddial/" },
+    { "id": "navmenu", "name": "Navigation Menu", "url": "/components/navmenu/" }
   ],
   "overlays": [
     { "id": "modal", "name": "Modal", "url": "/components/modal/" },

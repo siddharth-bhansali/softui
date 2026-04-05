@@ -303,6 +303,9 @@ const SoftUI = (() => {
     // Drawers
     initDrawers();
 
+    // Navigation Menu
+    initNavMenu();
+
     // Data Tables
     initDataTables();
 
@@ -2641,6 +2644,66 @@ const SoftUI = (() => {
       if (!e.target.closest('.sui-styled-select')) {
         document.querySelectorAll('.sui-styled-select.open').forEach(function(s) {
           s.classList.remove('open');
+        });
+      }
+    });
+  }
+
+  function initNavMenu() {
+    // Toggle on click
+    document.addEventListener('click', function(e) {
+      if (!e.target.closest) return;
+      const trigger = e.target.closest('.sui-nav-menu-trigger');
+      if (trigger && !trigger.hasAttribute('href')) {
+        const item = trigger.closest('.sui-nav-menu-item');
+        if (!item) return;
+        // Close other open items
+        document.querySelectorAll('.sui-nav-menu-item.open').forEach(function(i) {
+          if (i !== item) i.classList.remove('open');
+        });
+        item.classList.toggle('open');
+        e.stopPropagation();
+        return;
+      }
+      // Click on sub-menu trigger (click mode)
+      const subLink = e.target.closest('.sui-nav-menu-sub > .sui-nav-menu-link');
+      if (subLink) {
+        const sub = subLink.closest('.sui-nav-menu-sub');
+        const panel = sub.closest('.sui-nav-menu-panel');
+        if (panel && panel.closest('.sui-nav-menu-sub-click')) {
+          e.preventDefault();
+          e.stopPropagation();
+          // Close sibling subs
+          panel.querySelectorAll('.sui-nav-menu-sub.open').forEach(function(s) {
+            if (s !== sub) s.classList.remove('open');
+          });
+          sub.classList.toggle('open');
+          return;
+        }
+      }
+
+      // Click on a nav-menu link closes everything
+      const link = e.target.closest('.sui-nav-menu-link');
+      if (link && link.closest('.sui-nav-menu-item')) {
+        document.querySelectorAll('.sui-nav-menu-item.open').forEach(function(i) {
+          i.classList.remove('open');
+        });
+        return;
+      }
+
+      // Click outside closes all
+      if (!e.target.closest('.sui-nav-menu-item')) {
+        document.querySelectorAll('.sui-nav-menu-item.open').forEach(function(i) {
+          i.classList.remove('open');
+        });
+      }
+    });
+
+    // Escape closes
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') {
+        document.querySelectorAll('.sui-nav-menu-item.open').forEach(function(i) {
+          i.classList.remove('open');
         });
       }
     });

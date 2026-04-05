@@ -13648,6 +13648,308 @@ button.sui-list-group-item:hover {
 }
 
 /* ===========================================
+   Navigation Menu
+   =========================================== */
+.sui-nav-menu {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sui-nav-menu-item {
+  position: relative;
+}
+
+.sui-nav-menu-trigger {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  font-size: 14px;
+  font-weight: 500;
+  font-family: var(--sui-font);
+  color: var(--sui-text-muted);
+  background: none;
+  border: none;
+  border-radius: var(--sui-radius-sm);
+  cursor: pointer;
+  transition: var(--sui-transition);
+  text-decoration: none;
+}
+
+.sui-nav-menu-trigger:hover {
+  color: var(--sui-text);
+  background: var(--sui-bg-dark);
+}
+
+.sui-nav-menu-trigger.active {
+  color: var(--sui-primary);
+  font-weight: 600;
+}
+
+/* Arrow */
+.sui-nav-menu-trigger::after {
+  content: '';
+  width: 5px;
+  height: 5px;
+  border-right: 1.5px solid currentColor;
+  border-bottom: 1.5px solid currentColor;
+  transform: rotate(45deg);
+  margin-top: 0px;
+  margin-inline-start: 4px;
+  transition: transform var(--sui-transition-fast);
+}
+
+.sui-nav-menu-item.open .sui-nav-menu-trigger::after {
+  transform: rotate(-135deg);
+  margin-top: 2px;
+}
+
+/* No arrow for plain links */
+a.sui-nav-menu-trigger::after {
+  display: none;
+}
+
+/* Panel (mega-menu dropdown) */
+.sui-nav-menu-panel {
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 0;
+  min-width: 240px;
+  background: var(--sui-bg);
+  border-radius: var(--sui-radius-sm);
+  box-shadow: var(--sui-shadow-raised);
+  padding: 12px;
+  display: none;
+  z-index: 100;
+}
+
+/* Invisible bridge to prevent hover gap */
+.sui-nav-menu-item > .sui-nav-menu-panel::before {
+  content: '';
+  position: absolute;
+  top: -10px;
+  left: 0;
+  right: 0;
+  height: 10px;
+}
+
+.sui-nav-menu-item.open .sui-nav-menu-panel {
+  display: block;
+}
+
+/* Wide panel (mega-menu) */
+.sui-nav-menu-panel-wide {
+  min-width: 480px;
+  display: none;
+}
+
+.sui-nav-menu-item.open .sui-nav-menu-panel-wide {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px;
+}
+
+/* Full-width panel */
+.sui-nav-menu-panel-full {
+  left: 0;
+  right: 0;
+  min-width: auto;
+  display: none;
+}
+
+.sui-nav-menu-item.open .sui-nav-menu-panel-full {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+}
+
+/* Panel link */
+.sui-nav-menu-link {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 10px 12px;
+  border-radius: var(--sui-radius-xs);
+  text-decoration: none;
+  color: var(--sui-text);
+  transition: background var(--sui-transition-fast);
+}
+
+.sui-nav-menu-link:hover {
+  background: rgba(91, 84, 224, 0.06);
+}
+
+[data-theme="dark"] .sui-nav-menu-link:hover {
+  background: rgba(124, 107, 255, 0.1);
+}
+
+.sui-nav-menu-link-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: var(--sui-radius-xs);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  flex-shrink: 0;
+  background: var(--sui-bg-dark);
+}
+
+.sui-nav-menu-link-text {
+  flex: 1;
+  min-width: 0;
+}
+
+.sui-nav-menu-link-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--sui-text);
+}
+
+.sui-nav-menu-link-desc {
+  font-size: 12px;
+  color: var(--sui-text-muted);
+  margin-top: 2px;
+}
+
+/* Group label inside panel */
+.sui-nav-menu-group-label {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--sui-text-muted);
+  padding: 8px 12px 4px;
+}
+
+/* Separator */
+.sui-nav-menu-separator {
+  height: 1px;
+  background: var(--sui-bg-dark);
+  margin: 6px 0;
+}
+
+/* Raised variant */
+.sui-nav-menu-raised {
+  background: var(--sui-bg);
+  border-radius: var(--sui-radius-sm);
+  box-shadow: var(--sui-shadow-raised);
+  padding: 6px 8px;
+}
+
+/* Bordered variant */
+.sui-nav-menu-bordered {
+  border: 1.5px solid var(--sui-bg-dark);
+  border-radius: var(--sui-radius-sm);
+  padding: 6px 8px;
+}
+
+/* Inset variant */
+.sui-nav-menu-inset {
+  background: var(--sui-bg);
+  border-radius: var(--sui-radius-sm);
+  box-shadow: var(--sui-shadow-inset);
+  padding: 6px 8px;
+}
+
+/* Hover to open */
+.sui-nav-menu-hover .sui-nav-menu-item:hover > .sui-nav-menu-panel,
+.sui-nav-menu-hover .sui-nav-menu-item:hover > .sui-nav-menu-panel-wide {
+  display: block;
+}
+
+.sui-nav-menu-hover .sui-nav-menu-item:hover > .sui-nav-menu-panel-wide {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px;
+}
+
+.sui-nav-menu-hover .sui-nav-menu-item:hover > .sui-nav-menu-trigger::after {
+  transform: rotate(-135deg);
+  margin-top: 2px;
+}
+
+/* Sub-menu (nested panel) */
+.sui-nav-menu-sub {
+  position: relative;
+}
+
+.sui-nav-menu-sub > .sui-nav-menu-panel {
+  position: absolute;
+  left: calc(100% + 4px);
+  top: -12px;
+  display: none;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity var(--sui-transition-fast);
+}
+
+.sui-nav-menu-sub:hover > .sui-nav-menu-panel,
+.sui-nav-menu-sub.open > .sui-nav-menu-panel {
+  display: block;
+  pointer-events: auto;
+  opacity: 1;
+}
+
+/* Click-only sub-menus (disable hover) */
+.sui-nav-menu-sub-click .sui-nav-menu-sub:hover > .sui-nav-menu-panel {
+  display: none;
+  pointer-events: none;
+  opacity: 0;
+}
+
+.sui-nav-menu-sub-click .sui-nav-menu-sub.open > .sui-nav-menu-panel {
+  display: block;
+  pointer-events: auto;
+  opacity: 1;
+}
+
+/* Invisible bridge for sub-menu gap */
+.sui-nav-menu-sub > .sui-nav-menu-panel::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -8px;
+  width: 8px;
+  height: 100%;
+}
+
+.sui-nav-menu-sub > .sui-nav-menu-link::after {
+  content: '›';
+  margin-inline-start: auto;
+  font-size: 16px;
+  color: var(--sui-text-muted);
+  line-height: 1;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .sui-nav-menu {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .sui-nav-menu-panel,
+  .sui-nav-menu-panel-wide,
+  .sui-nav-menu-item.open .sui-nav-menu-panel-wide {
+    position: static;
+    box-shadow: none;
+    grid-template-columns: 1fr;
+    padding: 0 0 0 16px;
+  }
+  .sui-nav-menu-panel-full,
+  .sui-nav-menu-item.open .sui-nav-menu-panel-full {
+    position: static;
+    box-shadow: none;
+    grid-template-columns: 1fr;
+    padding: 0 0 0 16px;
+  }
+}
+
+/* ===========================================
    Reduced Motion
    =========================================== */
 @media (prefers-reduced-motion: reduce) {
