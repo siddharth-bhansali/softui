@@ -13648,6 +13648,107 @@ button.sui-list-group-item:hover {
 }
 
 /* ===========================================
+   Segmented Control
+   =========================================== */
+.sui-segmented {
+  display: inline-flex;
+  background: var(--sui-bg);
+  border-radius: var(--sui-radius-full);
+  box-shadow: var(--sui-shadow-inset);
+  padding: 4px;
+  position: relative;
+  gap: 0;
+}
+
+.sui-segmented input {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.sui-segmented label {
+  position: relative;
+  z-index: 1;
+  padding: 8px 20px;
+  font-size: 14px;
+  font-weight: 500;
+  font-family: var(--sui-font);
+  color: var(--sui-text-muted);
+  cursor: pointer;
+  border-radius: var(--sui-radius-full);
+  transition: color var(--sui-transition-fast);
+  -webkit-user-select: none;
+  user-select: none;
+  white-space: nowrap;
+  text-align: center;
+}
+
+.sui-segmented input:checked + label {
+  color: var(--sui-text);
+  font-weight: 600;
+}
+
+.sui-segmented input:focus-visible + label {
+  outline: 2px solid var(--sui-primary);
+  outline-offset: 2px;
+}
+
+/* Sliding indicator */
+.sui-segmented-indicator {
+  position: absolute;
+  top: 4px;
+  bottom: 4px;
+  left: 0;
+  border-radius: var(--sui-radius-full);
+  background: var(--sui-bg);
+  box-shadow: var(--sui-shadow-raised-sm);
+  transition: left var(--sui-transition-base) ease, width var(--sui-transition-base) ease;
+  z-index: 0;
+}
+
+/* Primary color variant */
+.sui-segmented-primary input:checked + label {
+  color: #fff;
+}
+
+.sui-segmented-primary .sui-segmented-indicator {
+  background: var(--sui-primary);
+  box-shadow: 0 2px 8px rgba(91, 84, 224, 0.3);
+}
+
+/* Block (full width) */
+.sui-segmented-block {
+  display: flex;
+  width: 100%;
+}
+
+.sui-segmented-block label {
+  flex: 1;
+}
+
+/* Sizes */
+.sui-segmented-sm {
+  padding: 3px;
+}
+
+.sui-segmented-sm label {
+  padding: 5px 14px;
+  font-size: 13px;
+}
+
+.sui-segmented-lg label {
+  padding: 10px 28px;
+  font-size: 16px;
+}
+
+/* Disabled */
+.sui-segmented input:disabled + label {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+/* ===========================================
    Navigation Menu
    =========================================== */
 .sui-nav-menu {

@@ -1,0 +1,203 @@
+---
+layout: component.njk
+title: Segmented Control
+description: iOS-style toggle between options with a sliding indicator.
+componentId: segmented
+hasControls: false
+requiresJs: true
+toc:
+  - Default
+  - Primary
+  - Block (Full Width)
+  - Sizes
+  - Disabled
+---
+
+<!-- Default -->
+<div class="pg-section" id="section-1">
+  <h3 class="pg-section-title">Default</h3>
+  <div class="pg-section-row" style="gap:24px;flex-wrap:wrap;">
+    <div class="sui-segmented">
+      <div class="sui-segmented-indicator"></div>
+      <input type="radio" name="seg1" id="seg1-a" value="list" checked>
+      <label for="seg1-a">List</label>
+      <input type="radio" name="seg1" id="seg1-b" value="grid">
+      <label for="seg1-b">Grid</label>
+      <input type="radio" name="seg1" id="seg1-c" value="map">
+      <label for="seg1-c">Map</label>
+    </div>
+    <div class="sui-segmented">
+      <div class="sui-segmented-indicator"></div>
+      <input type="radio" name="seg2" id="seg2-a" value="all" checked>
+      <label for="seg2-a">All</label>
+      <input type="radio" name="seg2" id="seg2-b" value="active">
+      <label for="seg2-b">Active</label>
+      <input type="radio" name="seg2" id="seg2-c" value="archived">
+      <label for="seg2-c">Archived</label>
+    </div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-segmented"&gt;
+  &lt;div class="sui-segmented-indicator"&gt;&lt;/div&gt;
+  &lt;input type="radio" name="view" id="view-list" value="list" checked&gt;
+  &lt;label for="view-list"&gt;List&lt;/label&gt;
+  &lt;input type="radio" name="view" id="view-grid" value="grid"&gt;
+  &lt;label for="view-grid"&gt;Grid&lt;/label&gt;
+  &lt;input type="radio" name="view" id="view-map" value="map"&gt;
+  &lt;label for="view-map"&gt;Map&lt;/label&gt;
+&lt;/div&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Primary -->
+<div class="pg-section" id="section-2">
+  <h3 class="pg-section-title">Primary</h3>
+  <p class="pg-section-desc">Add <code>sui-segmented-primary</code> for a colored indicator.</p>
+  <div class="pg-section-row" style="gap:24px;flex-wrap:wrap;">
+    <div class="sui-segmented sui-segmented-primary">
+      <div class="sui-segmented-indicator"></div>
+      <input type="radio" name="seg3" id="seg3-a" value="monthly" checked>
+      <label for="seg3-a">Monthly</label>
+      <input type="radio" name="seg3" id="seg3-b" value="annual">
+      <label for="seg3-b">Annual</label>
+    </div>
+    <div class="sui-segmented sui-segmented-primary">
+      <div class="sui-segmented-indicator"></div>
+      <input type="radio" name="seg4" id="seg4-a" value="light" checked>
+      <label for="seg4-a">Light</label>
+      <input type="radio" name="seg4" id="seg4-b" value="dark">
+      <label for="seg4-b">Dark</label>
+      <input type="radio" name="seg4" id="seg4-c" value="system">
+      <label for="seg4-c">System</label>
+    </div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-segmented sui-segmented-primary"&gt;
+  &lt;div class="sui-segmented-indicator"&gt;&lt;/div&gt;
+  &lt;input type="radio" name="billing" id="billing-monthly" value="monthly" checked&gt;
+  &lt;label for="billing-monthly"&gt;Monthly&lt;/label&gt;
+  &lt;input type="radio" name="billing" id="billing-annual" value="annual"&gt;
+  &lt;label for="billing-annual"&gt;Annual&lt;/label&gt;
+&lt;/div&gt;
+
+&lt;div class="sui-segmented sui-segmented-primary"&gt;
+  &lt;div class="sui-segmented-indicator"&gt;&lt;/div&gt;
+  &lt;input type="radio" name="theme" id="theme-light" value="light" checked&gt;
+  &lt;label for="theme-light"&gt;Light&lt;/label&gt;
+  &lt;input type="radio" name="theme" id="theme-dark" value="dark"&gt;
+  &lt;label for="theme-dark"&gt;Dark&lt;/label&gt;
+  &lt;input type="radio" name="theme" id="theme-system" value="system"&gt;
+  &lt;label for="theme-system"&gt;System&lt;/label&gt;
+&lt;/div&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Block -->
+<div class="pg-section" id="section-3">
+  <h3 class="pg-section-title">Block (Full Width)</h3>
+  <div class="pg-section-row">
+    <div class="sui-segmented sui-segmented-block sui-segmented-primary" style="max-width:400px;width:100%;">
+      <div class="sui-segmented-indicator"></div>
+      <input type="radio" name="seg5" id="seg5-a" value="overview" checked>
+      <label for="seg5-a">Overview</label>
+      <input type="radio" name="seg5" id="seg5-b" value="analytics">
+      <label for="seg5-b">Analytics</label>
+      <input type="radio" name="seg5" id="seg5-c" value="reports">
+      <label for="seg5-c">Reports</label>
+    </div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-segmented sui-segmented-block sui-segmented-primary"&gt;
+  &lt;div class="sui-segmented-indicator"&gt;&lt;/div&gt;
+  &lt;input type="radio" name="tab" id="tab-overview" value="overview" checked&gt;
+  &lt;label for="tab-overview"&gt;Overview&lt;/label&gt;
+  &lt;input type="radio" name="tab" id="tab-analytics" value="analytics"&gt;
+  &lt;label for="tab-analytics"&gt;Analytics&lt;/label&gt;
+  &lt;input type="radio" name="tab" id="tab-reports" value="reports"&gt;
+  &lt;label for="tab-reports"&gt;Reports&lt;/label&gt;
+&lt;/div&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Sizes -->
+<div class="pg-section" id="section-4">
+  <h3 class="pg-section-title">Sizes</h3>
+  <div class="pg-section-row" style="gap:24px;flex-direction:column;align-items:flex-start;">
+    <div class="sui-segmented sui-segmented-sm">
+      <div class="sui-segmented-indicator"></div>
+      <input type="radio" name="seg6" id="seg6-a" value="a" checked>
+      <label for="seg6-a">Small</label>
+      <input type="radio" name="seg6" id="seg6-b" value="b">
+      <label for="seg6-b">Options</label>
+      <input type="radio" name="seg6" id="seg6-c" value="c">
+      <label for="seg6-c">Here</label>
+    </div>
+    <div class="sui-segmented">
+      <div class="sui-segmented-indicator"></div>
+      <input type="radio" name="seg7" id="seg7-a" value="a" checked>
+      <label for="seg7-a">Default</label>
+      <input type="radio" name="seg7" id="seg7-b" value="b">
+      <label for="seg7-b">Options</label>
+      <input type="radio" name="seg7" id="seg7-c" value="c">
+      <label for="seg7-c">Here</label>
+    </div>
+    <div class="sui-segmented sui-segmented-lg">
+      <div class="sui-segmented-indicator"></div>
+      <input type="radio" name="seg8" id="seg8-a" value="a" checked>
+      <label for="seg8-a">Large</label>
+      <input type="radio" name="seg8" id="seg8-b" value="b">
+      <label for="seg8-b">Options</label>
+      <input type="radio" name="seg8" id="seg8-c" value="c">
+      <label for="seg8-c">Here</label>
+    </div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-segmented sui-segmented-sm"&gt;
+  &lt;div class="sui-segmented-indicator"&gt;&lt;/div&gt;
+  &lt;input type="radio" name="size" id="size-a" value="a" checked&gt;
+  &lt;label for="size-a"&gt;Small&lt;/label&gt;
+  &lt;input type="radio" name="size" id="size-b" value="b"&gt;
+  &lt;label for="size-b"&gt;Options&lt;/label&gt;
+&lt;/div&gt;
+
+&lt;div class="sui-segmented"&gt;
+  &lt;!-- default size --&gt;
+&lt;/div&gt;
+
+&lt;div class="sui-segmented sui-segmented-lg"&gt;
+  &lt;!-- large size --&gt;
+&lt;/div&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Disabled -->
+<div class="pg-section" id="section-5">
+  <h3 class="pg-section-title">Disabled</h3>
+  <div class="pg-section-row">
+    <div class="sui-segmented sui-segmented-primary">
+      <div class="sui-segmented-indicator"></div>
+      <input type="radio" name="seg9" id="seg9-a" value="active" checked>
+      <label for="seg9-a">Active</label>
+      <input type="radio" name="seg9" id="seg9-b" value="paused">
+      <label for="seg9-b">Paused</label>
+      <input type="radio" name="seg9" id="seg9-c" value="stopped" disabled>
+      <label for="seg9-c">Stopped</label>
+    </div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-segmented sui-segmented-primary"&gt;
+  &lt;div class="sui-segmented-indicator"&gt;&lt;/div&gt;
+  &lt;input type="radio" name="status" id="status-active" value="active" checked&gt;
+  &lt;label for="status-active"&gt;Active&lt;/label&gt;
+  &lt;input type="radio" name="status" id="status-paused" value="paused"&gt;
+  &lt;label for="status-paused"&gt;Paused&lt;/label&gt;
+  &lt;input type="radio" name="status" id="status-stopped" value="stopped" disabled&gt;
+  &lt;label for="status-stopped"&gt;Stopped&lt;/label&gt;
+&lt;/div&gt;</pre></div>
+  </div>
+</div>

@@ -303,6 +303,9 @@ const SoftUI = (() => {
     // Drawers
     initDrawers();
 
+    // Segmented Controls
+    initSegmented();
+
     // Navigation Menu
     initNavMenu();
 
@@ -2646,6 +2649,33 @@ const SoftUI = (() => {
           s.classList.remove('open');
         });
       }
+    });
+  }
+
+  function initSegmented() {
+    document.querySelectorAll('.sui-segmented').forEach(function(seg) {
+      const indicator = seg.querySelector('.sui-segmented-indicator');
+      if (!indicator) return;
+
+      function updateIndicator() {
+        const checked = seg.querySelector('input:checked');
+        if (!checked) return;
+        const label = checked.nextElementSibling;
+        if (!label) return;
+        indicator.style.left = label.offsetLeft + 'px';
+        indicator.style.width = label.offsetWidth + 'px';
+      }
+
+      // Initial position
+      updateIndicator();
+
+      // Listen for changes
+      seg.querySelectorAll('input').forEach(function(input) {
+        input.addEventListener('change', updateIndicator);
+      });
+
+      // Recalculate on resize
+      window.addEventListener('resize', updateIndicator);
     });
   }
 

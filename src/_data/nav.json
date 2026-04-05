@@ -8,7 +8,8 @@
     { "id": "fileupload", "name": "File Upload", "url": "/components/fileupload/" },
     { "id": "inputotp", "name": "Input OTP", "url": "/components/inputotp/" },
     { "id": "combobox", "name": "Combobox", "url": "/components/combobox/" },
-    { "id": "calendar", "name": "Calendar", "url": "/components/calendar/" }
+    { "id": "calendar", "name": "Calendar", "url": "/components/calendar/" },
+    { "id": "segmented", "name": "Segmented Control", "url": "/components/segmented/" }
   ],
   "general": [
     { "id": "buttons", "name": "Buttons", "url": "/components/buttons/" },
