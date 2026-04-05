@@ -303,6 +303,9 @@ const SoftUI = (() => {
     // Drawers
     initDrawers();
 
+    // Editable Text
+    initEditable();
+
     // Scrollspy
     initScrollspy();
 
@@ -2655,6 +2658,60 @@ const SoftUI = (() => {
           s.classList.remove('open');
         });
       }
+    });
+  }
+
+  function initEditable() {
+    document.querySelectorAll('.sui-editable').forEach(function(el) {
+      const valueEl = el.querySelector('.sui-editable-value');
+      if (!valueEl) return;
+
+      el.addEventListener('click', function() {
+        if (el.querySelector('.sui-editable-input')) return; // Already editing
+
+        const currentText = valueEl.textContent;
+        const input = document.createElement('input');
+        input.className = 'sui-editable-input';
+        input.type = 'text';
+        input.value = currentText;
+        input.style.fontSize = getComputedStyle(valueEl).fontSize;
+        input.style.fontWeight = getComputedStyle(valueEl).fontWeight;
+
+        valueEl.style.display = 'none';
+        const icon = el.querySelector('.sui-editable-icon');
+        if (icon) icon.style.display = 'none';
+
+        el.insertBefore(input, valueEl);
+        input.focus();
+        input.select();
+
+        let cancelled = false;
+
+        function save() {
+          if (cancelled) return;
+          const newVal = input.value.trim() || currentText;
+          valueEl.textContent = newVal;
+          valueEl.style.display = '';
+          if (icon) icon.style.display = '';
+          input.remove();
+          el.dispatchEvent(new CustomEvent('editable:save', { detail: { value: newVal, previous: currentText } }));
+        }
+
+        function cancel() {
+          cancelled = true;
+          valueEl.style.display = '';
+          if (icon) icon.style.display = '';
+          input.remove();
+          el.dispatchEvent(new CustomEvent('editable:cancel'));
+        }
+
+        input.addEventListener('keydown', function(e) {
+          if (e.key === 'Enter') { e.preventDefault(); save(); }
+          if (e.key === 'Escape') { e.preventDefault(); cancel(); }
+        });
+
+        input.addEventListener('blur', save);
+      });
     });
   }
 

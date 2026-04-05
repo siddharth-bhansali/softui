@@ -1,0 +1,184 @@
+---
+layout: component.njk
+title: Editable Text
+description: Click-to-edit inline text with save on Enter/blur and cancel on Escape.
+componentId: editable
+hasControls: false
+requiresJs: true
+toc:
+  - Default
+  - Underline
+  - Sizes
+  - With Events
+---
+
+<!-- Default -->
+<div class="pg-section" id="section-1">
+  <h3 class="pg-section-title">Default</h3>
+  <p class="pg-section-desc">Click the text to edit. Press Enter or click away to save. Press Escape to cancel.</p>
+  <div class="pg-section-row" style="gap:8px;flex-direction:column;align-items:flex-start;">
+    <h4 style="margin:0 0 4px;font-size:13px;color:var(--sui-text-muted);">With icon</h4>
+    <div style="display:flex;align-items:center;gap:12px;">
+      <span style="font-size:13px;color:var(--sui-text-muted);width:60px;">Name:</span>
+      <div class="sui-editable">
+        <span class="sui-editable-value" style="font-weight:600;">John Doe</span>
+        <svg class="sui-editable-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+      </div>
+    </div>
+    <div style="display:flex;align-items:center;gap:12px;">
+      <span style="font-size:13px;color:var(--sui-text-muted);width:60px;">Email:</span>
+      <div class="sui-editable">
+        <span class="sui-editable-value">john.doe@example.com</span>
+        <svg class="sui-editable-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+      </div>
+    </div>
+    <h4 style="margin:12px 0 4px;font-size:13px;color:var(--sui-text-muted);">Without icon (hover border is the hint)</h4>
+    <div style="display:flex;align-items:center;gap:12px;">
+      <span style="font-size:13px;color:var(--sui-text-muted);width:60px;">Title:</span>
+      <div class="sui-editable">
+        <span class="sui-editable-value">Product Manager</span>
+      </div>
+    </div>
+    <div style="display:flex;align-items:center;gap:12px;">
+      <span style="font-size:13px;color:var(--sui-text-muted);width:60px;">City:</span>
+      <div class="sui-editable">
+        <span class="sui-editable-value">San Francisco</span>
+      </div>
+    </div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;!-- With edit icon --&gt;
+&lt;div class="sui-editable"&gt;
+  &lt;span class="sui-editable-value"&gt;John Doe&lt;/span&gt;
+  &lt;svg class="sui-editable-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"&gt;
+    &lt;path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/&gt;
+    &lt;path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/&gt;
+  &lt;/svg&gt;
+&lt;/div&gt;
+
+&lt;!-- Without icon (hover border is the hint) --&gt;
+&lt;div class="sui-editable"&gt;
+  &lt;span class="sui-editable-value"&gt;Product Manager&lt;/span&gt;
+&lt;/div&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Underline -->
+<div class="pg-section" id="section-2">
+  <h3 class="pg-section-title">Underline</h3>
+  <div class="pg-section-row" style="gap:8px;flex-direction:column;align-items:flex-start;">
+    <div style="display:flex;align-items:center;gap:12px;">
+      <span style="font-size:13px;color:var(--sui-text-muted);width:80px;">Company:</span>
+      <div class="sui-editable sui-editable-underline">
+        <span class="sui-editable-value" style="font-weight:600;">CloudMetrics Inc.</span>
+        <svg class="sui-editable-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+      </div>
+    </div>
+    <div style="display:flex;align-items:center;gap:12px;">
+      <span style="font-size:13px;color:var(--sui-text-muted);width:80px;">Website:</span>
+      <div class="sui-editable sui-editable-underline">
+        <span class="sui-editable-value">cloudmetrics.io</span>
+        <svg class="sui-editable-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+      </div>
+    </div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-editable sui-editable-underline"&gt;
+  &lt;span class="sui-editable-value"&gt;CloudMetrics Inc.&lt;/span&gt;
+  &lt;svg class="sui-editable-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"&gt;
+    &lt;path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/&gt;
+    &lt;path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/&gt;
+  &lt;/svg&gt;
+&lt;/div&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Sizes -->
+<div class="pg-section" id="section-3">
+  <h3 class="pg-section-title">Sizes</h3>
+  <div class="pg-section-row" style="gap:8px;flex-direction:column;align-items:flex-start;">
+    <div class="sui-editable sui-editable-sm">
+      <span class="sui-editable-value">Small editable text</span>
+      <svg class="sui-editable-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+    </div>
+    <div class="sui-editable">
+      <span class="sui-editable-value">Default editable text</span>
+      <svg class="sui-editable-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+    </div>
+    <div class="sui-editable sui-editable-lg">
+      <span class="sui-editable-value" style="font-weight:700;">Large editable text</span>
+      <svg class="sui-editable-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+    </div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-editable sui-editable-sm"&gt;
+  &lt;span class="sui-editable-value"&gt;Small editable text&lt;/span&gt;
+  &lt;svg class="sui-editable-icon" ...&gt;...&lt;/svg&gt;
+&lt;/div&gt;
+
+&lt;div class="sui-editable"&gt;
+  &lt;span class="sui-editable-value"&gt;Default editable text&lt;/span&gt;
+  &lt;svg class="sui-editable-icon" ...&gt;...&lt;/svg&gt;
+&lt;/div&gt;
+
+&lt;div class="sui-editable sui-editable-lg"&gt;
+  &lt;span class="sui-editable-value"&gt;Large editable text&lt;/span&gt;
+  &lt;svg class="sui-editable-icon" ...&gt;...&lt;/svg&gt;
+&lt;/div&gt;</pre></div>
+  </div>
+</div>
+
+<!-- With Events -->
+<div class="pg-section" id="section-4">
+  <h3 class="pg-section-title">With Events</h3>
+  <p class="pg-section-desc">Listen for <code>editable:save</code> and <code>editable:cancel</code> events.</p>
+  <div class="pg-section-row" style="gap:12px;flex-direction:column;align-items:flex-start;">
+    <div class="sui-editable" id="demo-editable-event">
+      <span class="sui-editable-value" style="font-weight:600;">Click me to edit</span>
+      <svg class="sui-editable-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+    </div>
+    <div id="editable-event-log" style="font-size:12px;color:var(--sui-text-muted);min-height:20px;"></div>
+  </div>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      var el = document.getElementById('demo-editable-event');
+      var log = document.getElementById('editable-event-log');
+      if (el && log) {
+        el.addEventListener('editable:save', function(e) {
+          log.textContent = 'Saved: "' + e.detail.value + '" (was "' + e.detail.previous + '")';
+          log.style.color = 'var(--sui-success)';
+        });
+        el.addEventListener('editable:cancel', function() {
+          log.textContent = 'Edit cancelled';
+          log.style.color = 'var(--sui-text-muted)';
+        });
+      }
+    });
+  </script>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-editable" id="myEditable"&gt;
+  &lt;span class="sui-editable-value"&gt;Click me to edit&lt;/span&gt;
+  &lt;svg class="sui-editable-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"&gt;
+    &lt;path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/&gt;
+    &lt;path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/&gt;
+  &lt;/svg&gt;
+&lt;/div&gt;
+
+&lt;script&gt;
+  document.getElementById('myEditable')
+    .addEventListener('editable:save', function(e) {
+      console.log('Saved:', e.detail.value);
+      console.log('Previous:', e.detail.previous);
+    });
+
+  document.getElementById('myEditable')
+    .addEventListener('editable:cancel', function() {
+      console.log('Edit cancelled');
+    });
+&lt;/script&gt;</pre></div>
+  </div>
+</div>

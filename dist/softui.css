@@ -1,4 +1,4 @@
-/*! SoftUI v1.13.0 — A Neumorphic CSS Library */
+/*! SoftUI v1.14.0 — A Neumorphic CSS Library */
 
 /* ===========================================
    CSS Variables / Tokens
@@ -13645,6 +13645,92 @@ button.sui-list-group-item:hover {
   .sui-hero-lg .sui-hero-title { font-size: 2.5rem; }
   .sui-hero { padding: 40px 16px; }
   .sui-hero-lg { padding: 56px 16px; }
+}
+
+/* ===========================================
+   Editable Text
+   =========================================== */
+.sui-editable {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  position: relative;
+}
+
+.sui-editable-value {
+  padding: 4px 8px;
+  border-radius: var(--sui-radius-xs);
+  border: 1.5px solid transparent;
+  transition: border-color var(--sui-transition-fast), background var(--sui-transition-fast);
+  min-width: 40px;
+}
+
+.sui-editable:hover .sui-editable-value {
+  border-color: var(--sui-bg-dark);
+  background: var(--sui-bg-light);
+}
+
+.sui-editable-icon {
+  width: 14px;
+  height: 14px;
+  color: var(--sui-text-muted);
+  opacity: 0;
+  transition: opacity var(--sui-transition-fast);
+  flex-shrink: 0;
+}
+
+.sui-editable:hover .sui-editable-icon {
+  opacity: 1;
+}
+
+.sui-editable-input {
+  padding: 4px 8px;
+  font-size: inherit;
+  font-family: var(--sui-font);
+  font-weight: inherit;
+  color: var(--sui-text);
+  background: var(--sui-bg);
+  border: 1.5px solid var(--sui-primary);
+  border-radius: var(--sui-radius-xs);
+  box-shadow: 0 0 0 3px rgba(91, 84, 224, 0.15);
+  outline: none;
+  width: 100%;
+  min-width: 80px;
+}
+
+.sui-editable-input:focus {
+  box-shadow: 0 0 0 3px rgba(91, 84, 224, 0.25);
+}
+
+/* Sizes */
+.sui-editable-sm { font-size: 13px; }
+.sui-editable-sm .sui-editable-value { padding: 2px 6px; }
+.sui-editable-sm .sui-editable-input { padding: 2px 6px; }
+
+.sui-editable-lg { font-size: 18px; }
+.sui-editable-lg .sui-editable-value { padding: 6px 10px; }
+.sui-editable-lg .sui-editable-input { padding: 6px 10px; }
+
+/* Underline variant */
+.sui-editable-underline .sui-editable-value {
+  border: none;
+  border-bottom: 1.5px dashed var(--sui-bg-dark);
+  border-radius: 0;
+  padding: 4px 2px;
+}
+
+.sui-editable-underline:hover .sui-editable-value {
+  border-bottom-color: var(--sui-primary);
+  background: none;
+}
+
+.sui-editable-underline .sui-editable-input {
+  border: none;
+  border-bottom: 1.5px solid var(--sui-primary);
+  border-radius: 0;
+  box-shadow: none;
+  padding: 4px 2px;
 }
 
 /* ===========================================
