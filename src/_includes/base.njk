@@ -3,7 +3,16 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{% if title == "SoftUI" %}SoftUI{% else %}{{ title }} — SoftUI{% endif %}</title>
+  <title>{% if title == "SoftUI" %}SoftUI — Neumorphic CSS Component Library{% else %}{{ title }} — SoftUI{% endif %}</title>
+  <meta name="description" content="{% if description %}{{ description }}{% else %}A neumorphic CSS component library with 77+ components, dark mode, and zero dependencies.{% endif %}">
+  <link rel="canonical" href="https://softui-css.netlify.app{{ page.url }}">
+  <meta property="og:title" content="{% if title == 'SoftUI' %}SoftUI — Neumorphic CSS Component Library{% else %}{{ title }} — SoftUI{% endif %}">
+  <meta property="og:description" content="{% if description %}{{ description }}{% else %}A neumorphic CSS component library with 77+ components, dark mode, and zero dependencies.{% endif %}">
+  <meta property="og:url" content="https://softui-css.netlify.app{{ page.url }}">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="{% if title == 'SoftUI' %}SoftUI — Neumorphic CSS Component Library{% else %}{{ title }} — SoftUI{% endif %}">
+  <meta name="twitter:description" content="{% if description %}{{ description }}{% else %}A neumorphic CSS component library with 77+ components, dark mode, and zero dependencies.{% endif %}">
   <style>body{opacity:0}</style>
   <script>var t=localStorage.getItem('sui-theme');if(t==='dark'||(!t&&matchMedia('(prefers-color-scheme:dark)').matches))document.documentElement.setAttribute('data-theme','dark');</script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
