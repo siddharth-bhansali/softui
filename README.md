@@ -34,7 +34,7 @@
 
 | Feature | Description |
 |---|---|
-| **68+ Components** | Buttons, Cards, Modals, Tables, Tabs, Calendar, Charts, Pricing, and more |
+| **77+ Components** | Buttons, Cards, Modals, Tables, Tabs, Calendar, Charts, Pricing, and more |
 | **Dark Mode** | Add `data-theme="dark"` and everything adapts |
 | **Zero Dependencies** | Pure CSS + vanilla JS. No build step required |
 | **CSS Variables** | Fully customizable via custom properties |
