@@ -18,12 +18,14 @@
   <a href="https://www.npmjs.com/package/softui-css"><img src="https://img.shields.io/npm/dm/softui-css?color=22c55e" alt="npm downloads"></a>
   <a href="https://github.com/siddharth-bhansali/softui/blob/main/LICENSE"><img src="https://img.shields.io/github/license/siddharth-bhansali/softui?color=f59e0b" alt="license"></a>
   <a href="https://softui-css.netlify.app"><img src="https://img.shields.io/badge/docs-live-5B54E0" alt="docs"></a>
+  <a href="https://buymeacoffee.com/siddharthbhansali"><img src="https://img.shields.io/badge/buy%20me%20a%20coffee-FFDD00?logo=buymeacoffee&logoColor=000" alt="buy me a coffee"></a>
 </p>
 
 <p align="center">
   <a href="https://softui-css.netlify.app"><strong>Documentation</strong></a> &nbsp;&middot;&nbsp;
   <a href="https://softui-demo.netlify.app"><strong>Live Demo</strong></a> &nbsp;&middot;&nbsp;
-  <a href="https://softui-css.netlify.app/playground/"><strong>Playground</strong></a>
+  <a href="https://softui-css.netlify.app/playground/"><strong>Playground</strong></a> &nbsp;&middot;&nbsp;
+  <a href="https://buymeacoffee.com/siddharthbhansali"><strong>Buy Me a Coffee ☕</strong></a>
 </p>
 
 ---

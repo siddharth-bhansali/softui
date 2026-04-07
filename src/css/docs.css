@@ -105,6 +105,33 @@
 }
 .docs-topbar-icon:hover { color: var(--sui-text); }
 
+.docs-bmc-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 12px;
+  font-size: 12px;
+  font-weight: 600;
+  font-family: var(--sui-font);
+  color: var(--sui-text-muted);
+  background: var(--sui-bg);
+  border: 1px solid var(--sui-bg-dark);
+  border-radius: var(--sui-radius-full);
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+.docs-bmc-btn:hover {
+  color: #FFDD00;
+  border-color: #FFDD00;
+}
+.docs-bmc-btn svg { flex-shrink: 0; }
+.docs-bmc-label { white-space: nowrap; }
+
+@media (max-width: 900px) {
+  .docs-bmc-label { display: none; }
+  .docs-bmc-btn { padding: 5px 8px; }
+}
+
 /* =========================================
    Hero
    ========================================= */
