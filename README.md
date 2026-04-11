@@ -38,7 +38,8 @@
 | **Dark Mode** | Add `data-theme="dark"` and everything adapts |
 | **Zero Dependencies** | Pure CSS + vanilla JS. No build step required |
 | **CSS Variables** | Fully customizable via custom properties |
-| **Design Tokens** | `tokens.json` for syncing with Tailwind, Figma, or any tool |
+| **RTL Support** | Right-to-left layout for Arabic, Hebrew, Farsi |
+| **Accessible** | WCAG AA contrast, focus-visible, prefers-reduced-motion, ARIA |
 | **Responsive Grid** | 12-column flexbox grid with breakpoints and gap utilities |
 | **Interactive Playground** | Write HTML and preview components live in the browser |
 
@@ -96,23 +97,23 @@ That's it. Every component adapts automatically.
 
 ## Components
 
-**Forms** &mdash; Input, Styled Select, Textarea, Toggle, Checkbox, Radio, Slider, OTP, Combobox, Color Picker, File Upload, Tags Input, Number Input, Password Input
+**Forms** &mdash; Input, Styled Select, Textarea, Toggle, Checkbox, Radio, Slider, OTP, Combobox, Color Picker, File Upload, Tags Input, Number Input, Password Input, Segmented Control, Editable Text, Radio Card, Checkbox Card
 
-**General** &mdash; Buttons, Button Group, Card, Badge, Avatar, Chip, Divider, Kbd, Copy Button, Swap, Pricing
+**General** &mdash; Buttons, Button Group, Card, Badge, Avatar, Chip, Divider, Kbd, Copy Button, Swap, Pricing, Hero, List Group
 
-**Data Display** &mdash; Table, Data Table, Chart, Stat Card, Timeline, Chat Bubble, Calendar, Tree View, Radial Progress, Rating
+**Data Display** &mdash; Table, Data Table, Chart, Stat Card, Timeline, Chat Bubble, Calendar, Tree View, Radial Progress, Rating, Descriptions, Countdown
 
-**Feedback** &mdash; Alert, Toast, Progress, Skeleton, Spinner, Loading Overlay
+**Feedback** &mdash; Alert, Toast, Progress, Skeleton, Spinner, Loading Overlay, Result
 
-**Navigation** &mdash; Navbar, Tabs, Breadcrumb, Pagination, Stepper, Menubar, Sidebar, Dock, Speed Dial, Tour
+**Navigation** &mdash; Navbar, Tabs, Breadcrumb, Pagination, Stepper, Menubar, Sidebar, Dock, Speed Dial, Tour, Navigation Menu, Scrollspy
 
-**Overlays** &mdash; Modal, Sheet, Dropdown, Popover, Hover Card, Tooltip, Context Menu, Command Palette, Image Lightbox
+**Overlays** &mdash; Modal, Sheet, Drawer, Dropdown, Popover, Hover Card, Tooltip, Context Menu, Command Palette, Image Lightbox
 
-**Layout** &mdash; Container, Grid, Flex utilities, Resizable, Scroll Area, Collapsible, Accordion, Carousel, Toggle Group, Drag & Drop
+**Layout** &mdash; Container, Grid, Flex utilities, Resizable, Scroll Area, Collapsible, Accordion, Drag & Drop
 
-**Media** &mdash; Diff, Stack, Browser Mockup, Phone Mockup, Marquee, Typewriter, Text Rotate
+**Media** &mdash; Carousel, Diff, Stack, Browser Mockup, Phone Mockup, Marquee, Typewriter, Text Rotate, Toggle Group
 
-**Utilities** &mdash; Shadows, Radius, Spacing, Text, Typography, Aspect Ratio, Display, Position, Sizing, Opacity, Cursor, Flex
+**Utilities** &mdash; Shadows, Radius, Spacing, Text, Typography, Aspect Ratio, Display, Position, Sizing, Opacity, Cursor, Flex, Mask
 
 > Browse all components at [softui-css.netlify.app](https://softui-css.netlify.app) or try them in the [Playground](https://softui-css.netlify.app/playground/).
 
