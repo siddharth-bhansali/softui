@@ -26,7 +26,7 @@ permalink: /theming/
   <!-- Colors -->
   <section class="docs-getstarted-section" id="colors">
     <h2>Colors</h2>
-    <p>The color system has 5 semantic colors, each with a hover variant.</p>
+    <p>The color system has 5 semantic colors, each with a hover variant. Fills, borders, shadows and icons use these base tokens.</p>
     <div class="docs-getstarted-code">
 <pre><code>:root {
   /* Primary — buttons, links, active states */
@@ -48,6 +48,30 @@ permalink: /theming/
   /* Info — informational, neutral highlights */
   --sui-info: #1A82D4;
   --sui-info-hover: #146BAE;
+}</code></pre>
+    </div>
+    <p style="margin-top:16px;"><strong>Text shades.</strong> Colored <em>text</em> (links, outline and ghost buttons, outline badges and chips, alerts, <code>.sui-text-*</code> utilities, active nav items) uses a separate <code>-text</code> token that reaches WCAG AA (4.5:1) on every background of the theme. Each theme block sets its own values — dark mode uses lighter shades.</p>
+    <div class="docs-getstarted-code">
+<pre><code>:root {
+  --sui-primary-text: #4D45DD;   --sui-primary-text-hover: #3A31DA;
+  --sui-success-text: #136A45;   --sui-success-text-hover: #115C3C;
+  --sui-danger-text: #AE2947;    --sui-danger-text-hover: #97243E;
+  --sui-warning-text: #825306;   --sui-warning-text-hover: #714805;
+  --sui-info-text: #13609D;      --sui-info-text-hover: #115388;
+
+  /* Text on a warning fill (buttons, badges, chips, filled alerts) */
+  --sui-warning-contrast: #2D3748;
+}</code></pre>
+    </div>
+    <p style="margin-top:12px;font-size:14px;color:var(--sui-text-muted);">If you override <code>--sui-primary</code> (or another semantic color), also set the matching <code>-text</code> token — on <code>:root</code> and on <code>[data-theme="dark"]</code> — to a shade with at least 4.5:1 contrast on <code>--sui-bg-dark</code>.</p>
+    <p style="margin-top:16px;"><strong>Tints and focus rings.</strong> Hover tints, glows and focus rings are mixed from the color tokens with <code>color-mix()</code>, so they follow your brand color automatically (Chrome/Edge 111+, Safari 16.2+, Firefox 113+). The focus ring has two optional overrides:</p>
+    <div class="docs-getstarted-code">
+<pre><code>:root {
+  /* Just the color (default: --sui-primary at 40%) */
+  --sui-focus-ring-color: color-mix(in srgb, #0066FF 50%, transparent);
+
+  /* Or the whole ring (default: 0 0 0 3px var(--sui-focus-ring-color)) */
+  --sui-focus-ring: 0 0 0 2px #fff, 0 0 0 4px #0066FF;
 }</code></pre>
     </div>
   </section>
@@ -146,8 +170,8 @@ permalink: /theming/
     <p>Change the font family used across all components.</p>
     <div class="docs-getstarted-code">
 <pre><code>:root {
-  --sui-font: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont,
-              'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+  --sui-font: 'Plus Jakarta Sans', 'Plus Jakarta Sans Variable', -apple-system,
+              BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
 }
 
 /* Use Inter */
@@ -161,9 +185,11 @@ permalink: /theming/
               Roboto, Oxygen, Ubuntu, sans-serif;
 }
 
-/* Monospace font (used in Copy Button, Color Picker, code elements) */
+/* Monospace font (code, kbd, shortcuts, OTP, Copy Button, Color Picker) */
 :root {
-  --sui-font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+  --sui-font-mono: 'JetBrains Mono', 'JetBrains Mono Variable', 'Fira Code',
+                   'Cascadia Code', ui-monospace, SFMono-Regular, Menlo,
+                   Consolas, monospace;
 }</code></pre>
     </div>
   </section>
@@ -233,6 +259,13 @@ permalink: /theming/
   --sui-text: #E2E8F0;
   --sui-text-muted: #9BA5B8;
   --sui-text-light: #8A94A6;
+
+  /* Colored text goes lighter in dark mode */
+  --sui-primary-text: #9894EC;   --sui-primary-text-hover: #ADAAF0;
+  --sui-success-text: #21B374;   --sui-success-text-hover: #25CA83;
+  --sui-danger-text: #E18197;    --sui-danger-text-hover: #E89DAE;
+  --sui-warning-text: #F5A623;   --sui-warning-text-hover: #F8BB55;
+  --sui-info-text: #4BA4E9;      --sui-info-text-hover: #73B8EE;
 }
 
 /* Custom dark theme */
@@ -241,15 +274,16 @@ permalink: /theming/
   --sui-bg-light: #222240;
   --sui-bg-dark: #141427;
   --sui-primary: #9B59B6;
+  --sui-primary-text: #C39BD3;
 }</code></pre>
     </div>
-    <p style="margin-top:16px;"><strong>Scoped themes.</strong> <code>data-theme</code> works on any element, not just <code>&lt;html&gt;</code>. Use <code>data-theme="dark"</code> or <code>data-theme="light"</code> on a section to give it its own theme. Pair it with <code>.sui-surface</code> so the section paints the matching background — see <a href="/getting-started/#existing-sites" style="color:var(--sui-primary);font-weight:600;">Using in an Existing Site</a>.</p>
+    <p style="margin-top:16px;"><strong>Scoped themes.</strong> <code>data-theme</code> works on any element, not just <code>&lt;html&gt;</code>. Use <code>data-theme="dark"</code> or <code>data-theme="light"</code> on a section to give it its own theme. Pair it with <code>.sui-surface</code> so the section paints the matching background — see <a href="/getting-started/#existing-sites" style="color:var(--sui-primary-text);font-weight:600;">Using in an Existing Site</a>.</p>
     <div class="docs-getstarted-code">
 <pre><code>&lt;section class="sui-surface" data-theme="dark"&gt;
   &lt;!-- Dark SoftUI components on a light page --&gt;
 &lt;/section&gt;</code></pre>
     </div>
-    <p style="margin-top:12px;font-size:14px;color:var(--sui-text-muted);">Scoped sections set their own color and shadow tokens. If you customize shadows, override them on <code>[data-theme]</code> as well as <code>:root</code>.</p>
+    <p style="margin-top:12px;font-size:14px;color:var(--sui-text-muted);">Scoped sections set their own background, shadow, text and component tokens (tints, select arrow, scrollbars), so a light section inside a dark page fully resets. If you customize these, override them on <code>[data-theme]</code> as well as <code>:root</code>.</p>
   </section>
 
   <!-- Dark Mode Toggle -->
@@ -302,6 +336,8 @@ permalink: /theming/
   /* Colors */
   --sui-primary: #0066FF;
   --sui-primary-hover: #0052CC;
+  --sui-primary-text: #0052CC;       /* AA on --sui-bg-dark */
+  --sui-primary-text-hover: #0043A8;
   --sui-success: #00C853;
   --sui-danger: #FF1744;
 
