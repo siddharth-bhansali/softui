@@ -34,7 +34,8 @@ All classes use the `sui-` prefix (e.g. `sui-btn`, `sui-card`, `sui-modal`).
 ## Features
 
 - 77+ components with neumorphic styling
-- Dark mode via `data-theme="dark"` on the html element
+- Dark mode via `data-theme="dark"` on the html element, or scoped to any section
+- Existing sites: components need the SoftUI background (`--sui-bg`). Wrap sections in `sui-surface`, or use `sui-flat` on components placed on your own background
 - CSS custom properties for full theming (--sui-primary, --sui-bg, --sui-radius, etc.)
 - RTL support via CSS logical properties and dir="rtl" overrides
 - Responsive 12-column grid with sm/md/lg/xl breakpoints
@@ -141,7 +142,8 @@ All classes use the `sui-` prefix (e.g. `sui-btn`, `sui-card`, `sui-modal`).
 - Toggle Group (`sui-toggle-group`) — group of toggleable buttons
 
 ### Utilities
-- Shadows: `sui-raised`, `sui-inset`, `sui-flat`, `sui-raised-sm`, `sui-raised-lg`
+- Shadows: `sui-raised`, `sui-inset`, `sui-flat` (no shadow + border, works on any background), `sui-raised-sm`, `sui-raised-lg`
+- Surface: `sui-surface` — paints the SoftUI background, text color, and font on a section (combine with `data-theme="dark"` for a scoped dark section)
 - Border Radius: `sui-radius-xs`, `sui-radius-sm`, `sui-radius`, `sui-radius-lg`, `sui-radius-full`
 - Spacing: `sui-p-{0-5}`, `sui-m-{0-5}`, `sui-mt-*`, `sui-mb-*`, `sui-ml-*`, `sui-mr-*`, `sui-mx-auto`
 - Text: `sui-text-center`, `sui-text-left`, `sui-text-right`, `sui-text-muted`, `sui-text-primary`, `sui-fw-bold`

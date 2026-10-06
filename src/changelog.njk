@@ -9,6 +9,28 @@ permalink: /changelog/
   <h1 class="docs-getstarted-title">Changelog</h1>
   <p class="docs-getstarted-desc">What's new in each version of SoftUI.</p>
 
+  <!-- 1.15.0 -->
+  <section class="docs-getstarted-section" id="v1.15.0">
+    <h2>v1.15.0</h2>
+    <p><strong>Existing-Site Support: Surface, Scoped Themes & Sturdier Flat</strong></p>
+    <div class="docs-getstarted-code">
+<pre><code>New:
+  - Surface (sui-surface) — paints the SoftUI background, text color, and
+    font on a section, so components render correctly inside existing sites
+  - Scoped themes — data-theme="dark" / "light" now works on any element,
+    not just &lt;html&gt; (shadow tokens re-resolve per section)
+
+Fixes:
+  - sui-flat now removes shadows on every component, including hover and
+    active states; keyboard focus keeps a visible ring
+
+Docs:
+  - "Using in an Existing Site" section on Getting Started
+  - Scoped themes on the Theming page
+  - "Flat on Any Background" demo on the Shadows page</code></pre>
+    </div>
+  </section>
+
   <!-- 1.14.0 -->
   <section class="docs-getstarted-section" id="v1.14.0">
     <h2>v1.14.0</h2>

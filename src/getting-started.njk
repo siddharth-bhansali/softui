@@ -119,6 +119,47 @@ import 'softui-css/dist/softui.min.css';
     </div>
   </section>
 
+  <!-- Existing Sites -->
+  <section class="docs-getstarted-section" id="existing-sites">
+    <h2>Using in an Existing Site</h2>
+    <p>Neumorphic shadows only work when components sit on the SoftUI background (<code>--sui-bg</code>). SoftUI paints <code>&lt;body&gt;</code> for you, but if your site has its own background, raised and inset shadows will look muddy or disappear.</p>
+    <div style="display:flex;gap:16px;flex-wrap:wrap;margin:16px 0;">
+      <div data-theme="light" style="flex:1;min-width:180px;background:#fff;color:var(--sui-text);padding:24px;border-radius:var(--sui-radius);border:1px solid var(--sui-bg-dark);">
+        <small style="display:block;margin-bottom:12px;color:var(--sui-text-muted);">On a white background</small>
+        <div class="sui-card" style="padding:16px;">Raised card</div>
+      </div>
+      <div class="sui-surface" style="flex:1;min-width:180px;padding:24px;border-radius:var(--sui-radius);border:1px solid var(--sui-bg-dark);">
+        <small style="display:block;margin-bottom:12px;color:var(--sui-text-muted);">Inside <code>.sui-surface</code></small>
+        <div class="sui-card" style="padding:16px;">Raised card</div>
+      </div>
+      <div data-theme="light" style="flex:1;min-width:180px;background:#fff;color:var(--sui-text);padding:24px;border-radius:var(--sui-radius);border:1px solid var(--sui-bg-dark);">
+        <small style="display:block;margin-bottom:12px;color:var(--sui-text-muted);">With <code>.sui-flat</code></small>
+        <div class="sui-card sui-flat" style="padding:16px;">Flat card</div>
+      </div>
+    </div>
+    <p>You have three options:</p>
+    <ul style="margin:8px 0 16px 20px;line-height:1.8;">
+      <li><strong>Whole page</strong> — let SoftUI style <code>&lt;body&gt;</code> (the default).</li>
+      <li><strong>A section</strong> — wrap it in <code>.sui-surface</code> to paint the SoftUI background, text color, and font.</li>
+      <li><strong>Individual components</strong> — add <code>.sui-flat</code> to drop the shadow and use a subtle border instead.</li>
+    </ul>
+    <div class="docs-getstarted-code">
+<pre><code>&lt;!-- A SoftUI section inside an existing page --&gt;
+&lt;section class="sui-surface sui-p-5"&gt;
+  &lt;div class="sui-card"&gt;...&lt;/div&gt;
+&lt;/section&gt;
+
+&lt;!-- A dark SoftUI section, even on a light page --&gt;
+&lt;section class="sui-surface sui-p-5" data-theme="dark"&gt;
+  &lt;div class="sui-card"&gt;...&lt;/div&gt;
+&lt;/section&gt;
+
+&lt;!-- A component on your own background --&gt;
+&lt;button class="sui-btn sui-flat"&gt;Save&lt;/button&gt;</code></pre>
+    </div>
+    <p style="margin-top:12px;font-size:14px;color:var(--sui-text-muted);"><code>data-theme</code> works on any element, so you can scope light or dark mode to a single section.</p>
+  </section>
+
   <!-- Dark Mode -->
   <section class="docs-getstarted-section" id="darkmode">
     <h2>Dark Mode</h2>
@@ -230,6 +271,7 @@ Not Supported:
   <a class="pg-toc-link" href="#javascript">JavaScript</a>
   <a class="pg-toc-link" href="#frameworks">Frameworks</a>
   <a class="pg-toc-link" href="#quickstart">Quick Start</a>
+  <a class="pg-toc-link" href="#existing-sites">Existing Sites</a>
   <a class="pg-toc-link" href="#darkmode">Dark Mode</a>
   <a class="pg-toc-link" href="#customize">Customization</a>
   <a class="pg-toc-link" href="#browsers">Browser Support</a>

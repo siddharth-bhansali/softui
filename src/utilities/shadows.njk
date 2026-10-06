@@ -6,6 +6,7 @@ componentId: shadows
 hasControls: false
 toc:
   - Shadow Classes
+  - Flat on Any Background
 ---
 
 <!-- Shadow Classes -->
@@ -35,5 +36,24 @@ toc:
 &lt;div class="sui-raised-lg"&gt;...&lt;/div&gt;
 &lt;div class="sui-inset"&gt;...&lt;/div&gt;
 &lt;div class="sui-flat"&gt;...&lt;/div&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Flat on Any Background -->
+<div class="pg-section" id="section-2">
+  <h3 class="pg-section-title">Flat on Any Background</h3>
+  <p style="margin-bottom:16px;color:var(--sui-text-muted);">Neumorphic shadows need the SoftUI background behind them. On your own background, add <code>.sui-flat</code> to remove the shadow — including on hover — and use a subtle border instead. Keyboard focus still shows a ring.</p>
+  <div data-theme="light" style="display:flex;gap:12px;flex-wrap:wrap;align-items:center;background:#fff;padding:24px;border-radius:var(--sui-radius);">
+    <button class="sui-btn sui-flat">Flat Button</button>
+    <button class="sui-btn sui-btn-primary sui-flat">Primary</button>
+    <input class="sui-input sui-flat" placeholder="Flat input" style="max-width:200px;">
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div data-theme="light" style="display:flex;gap:12px;flex-wrap:wrap;align-items:center;background:#fff;padding:24px;border-radius:var(--sui-radius);"&gt;
+  &lt;button class="sui-btn sui-flat"&gt;Flat Button&lt;/button&gt;
+  &lt;button class="sui-btn sui-btn-primary sui-flat"&gt;Primary&lt;/button&gt;
+  &lt;input class="sui-input sui-flat" placeholder="Flat input" style="max-width:200px;"&gt;
+&lt;/div&gt;</pre></div>
   </div>
 </div>

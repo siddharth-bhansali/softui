@@ -1,4 +1,4 @@
-/*! SoftUI v1.14.0 — A Neumorphic CSS Library */
+/*! SoftUI v1.15.0 — A Neumorphic CSS Library */
 
 /* ===========================================
    CSS Variables / Tokens
@@ -60,6 +60,33 @@
   --sui-text: #E2E8F0;
   --sui-text-muted: #9BA5B8;
   --sui-text-light: #8A94A6;
+
+  --sui-shadow-raised: 6px 6px 14px var(--sui-shadow-dark), -6px -6px 14px var(--sui-shadow-light);
+  --sui-shadow-raised-sm: 3px 3px 8px var(--sui-shadow-dark), -3px -3px 8px var(--sui-shadow-light);
+  --sui-shadow-raised-lg: 10px 10px 20px var(--sui-shadow-dark), -10px -10px 20px var(--sui-shadow-light);
+  --sui-shadow-inset: inset 3px 3px 8px var(--sui-shadow-dark), inset -3px -3px 8px var(--sui-shadow-light);
+  --sui-shadow-inset-sm: inset 2px 2px 5px var(--sui-shadow-dark), inset -2px -2px 5px var(--sui-shadow-light);
+}
+
+/* Scoped themes — data-theme on any element (not just <html>) re-resolves
+   the shadow tokens, so a dark section inside a light page (or vice versa) works */
+[data-theme="light"] {
+  --sui-bg: #E4E9F0;
+  --sui-bg-light: #EDF1F7;
+  --sui-bg-dark: #D1D9E6;
+
+  --sui-shadow-light: #FFFFFF;
+  --sui-shadow-dark: #B8C0CC;
+
+  --sui-text: #2D3748;
+  --sui-text-muted: #5A6A7E;
+  --sui-text-light: #6A7D94;
+
+  --sui-shadow-raised: 6px 6px 14px var(--sui-shadow-dark), -6px -6px 14px var(--sui-shadow-light);
+  --sui-shadow-raised-sm: 3px 3px 8px var(--sui-shadow-dark), -3px -3px 8px var(--sui-shadow-light);
+  --sui-shadow-raised-lg: 10px 10px 20px var(--sui-shadow-dark), -10px -10px 20px var(--sui-shadow-light);
+  --sui-shadow-inset: inset 3px 3px 8px var(--sui-shadow-dark), inset -3px -3px 8px var(--sui-shadow-light);
+  --sui-shadow-inset-sm: inset 2px 2px 5px var(--sui-shadow-dark), inset -2px -2px 5px var(--sui-shadow-light);
 }
 [data-theme="dark"] .sui-badge-warning,
 [data-theme="dark"] .sui-btn-warning,
@@ -89,6 +116,14 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   transition: background var(--sui-transition-base) ease, color var(--sui-transition-base) ease;
+}
+
+/* Surface — paints the SoftUI background on a section of an existing page,
+   so neumorphic shadows render correctly on sites with their own background */
+.sui-surface {
+  background: var(--sui-bg);
+  color: var(--sui-text);
+  font-family: var(--sui-font);
 }
 
 /* ===========================================
@@ -1065,7 +1100,8 @@ a.sui-btn-warning:visited {
 .sui-raised     { box-shadow: var(--sui-shadow-raised); }
 .sui-raised-lg  { box-shadow: var(--sui-shadow-raised-lg); }
 .sui-inset      { box-shadow: var(--sui-shadow-inset); }
-.sui-flat       { box-shadow: none; border: 1px solid var(--sui-bg-dark); }
+.sui-flat       { box-shadow: none !important; border: 1px solid var(--sui-bg-dark); }
+.sui-flat:focus-visible { box-shadow: 0 0 0 3px rgba(91, 84, 224, 0.4) !important; }
 .sui-pressed    { box-shadow: var(--sui-shadow-inset); }
 
 /* ===========================================

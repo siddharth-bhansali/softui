@@ -243,6 +243,13 @@ permalink: /theming/
   --sui-primary: #9B59B6;
 }</code></pre>
     </div>
+    <p style="margin-top:16px;"><strong>Scoped themes.</strong> <code>data-theme</code> works on any element, not just <code>&lt;html&gt;</code>. Use <code>data-theme="dark"</code> or <code>data-theme="light"</code> on a section to give it its own theme. Pair it with <code>.sui-surface</code> so the section paints the matching background — see <a href="/getting-started/#existing-sites" style="color:var(--sui-primary);font-weight:600;">Using in an Existing Site</a>.</p>
+    <div class="docs-getstarted-code">
+<pre><code>&lt;section class="sui-surface" data-theme="dark"&gt;
+  &lt;!-- Dark SoftUI components on a light page --&gt;
+&lt;/section&gt;</code></pre>
+    </div>
+    <p style="margin-top:12px;font-size:14px;color:var(--sui-text-muted);">Scoped sections set their own color and shadow tokens. If you customize shadows, override them on <code>[data-theme]</code> as well as <code>:root</code>.</p>
   </section>
 
   <!-- Dark Mode Toggle -->

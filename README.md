@@ -95,6 +95,25 @@ That's it. Every component adapts automatically.
 
 ---
 
+## Using in an Existing Site
+
+Neumorphic shadows need the SoftUI background (`--sui-bg`) behind them. SoftUI styles `<body>` for you. If your site has its own background, either wrap SoftUI sections in `.sui-surface`, or add `.sui-flat` to individual components:
+
+```html
+<!-- A SoftUI section inside an existing page -->
+<section class="sui-surface">
+  <div class="sui-card">...</div>
+</section>
+
+<!-- data-theme works on any element, so a section can be dark on a light page -->
+<section class="sui-surface" data-theme="dark">...</section>
+
+<!-- A component on your own background -->
+<button class="sui-btn sui-flat">Save</button>
+```
+
+---
+
 ## Components
 
 **Forms** &mdash; Input, Styled Select, Textarea, Toggle, Checkbox, Radio, Slider, OTP, Combobox, Color Picker, File Upload, Tags Input, Number Input, Password Input, Segmented Control, Editable Text, Radio Card, Checkbox Card
