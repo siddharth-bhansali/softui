@@ -212,7 +212,8 @@ toc:
   <h3 class="pg-section-title">Gutters</h3>
   <p style="margin-bottom:16px;color:var(--sui-text-muted);font-size:14px;">
     Control gutter (gap) sizes with <code>.sui-g-{0-5}</code>, <code>.sui-gx-{0-5}</code> (horizontal), and <code>.sui-gy-{0-5}</code> (vertical).
-    Values: 0=0, 1=4px, 2=8px, 3=16px, 4=24px (default), 5=48px.
+    Values: 0=0, 1=4px, 2=8px, 3=16px, 4=24px, 5=48px. Without a gutter class a row has a 24px horizontal gutter and no vertical gutter.
+    Vertical gutters (<code>.sui-g-*</code>, <code>.sui-gy-*</code>) separate wrapped lines of columns; the row pulls itself up by the same amount so the first line has no extra space above it.
   </p>
   <div class="pg-section-row">
     <div style="width:100%;">
@@ -241,7 +242,7 @@ toc:
         </div>
       </div>
       <p style="font-size:13px;font-weight:600;margin-bottom:8px;">Large gutter (<code>.sui-g-5</code>)</p>
-      <div class="sui-row sui-g-5">
+      <div class="sui-row sui-g-5" style="margin-bottom:20px;">
         <div class="sui-col-4">
           <div style="background:var(--sui-success);color:#fff;padding:12px;border-radius:8px;text-align:center;font-size:13px;font-weight:600;">col-4</div>
         </div>
@@ -250,6 +251,36 @@ toc:
         </div>
         <div class="sui-col-4">
           <div style="background:var(--sui-success);color:#fff;padding:12px;border-radius:8px;text-align:center;font-size:13px;font-weight:600;">col-4</div>
+        </div>
+      </div>
+      <p style="font-size:13px;font-weight:600;margin-bottom:8px;">Horizontal only (<code>.sui-gx-3</code>)</p>
+      <div class="sui-row sui-gx-3" style="margin-bottom:20px;">
+        <div class="sui-col-6">
+          <div style="background:var(--sui-primary);color:#fff;padding:12px;border-radius:8px;text-align:center;font-size:13px;font-weight:600;">col-6</div>
+        </div>
+        <div class="sui-col-6">
+          <div style="background:var(--sui-primary);color:#fff;padding:12px;border-radius:8px;text-align:center;font-size:13px;font-weight:600;">col-6</div>
+        </div>
+        <div class="sui-col-6">
+          <div style="background:var(--sui-primary);color:#fff;padding:12px;border-radius:8px;text-align:center;font-size:13px;font-weight:600;">col-6</div>
+        </div>
+        <div class="sui-col-6">
+          <div style="background:var(--sui-primary);color:#fff;padding:12px;border-radius:8px;text-align:center;font-size:13px;font-weight:600;">col-6</div>
+        </div>
+      </div>
+      <p style="font-size:13px;font-weight:600;margin-bottom:8px;">Vertical only (<code>.sui-gy-3</code>)</p>
+      <div class="sui-row sui-gy-3">
+        <div class="sui-col-6">
+          <div style="background:var(--sui-warning);color:var(--sui-warning-contrast);padding:12px;border-radius:8px;text-align:center;font-size:13px;font-weight:600;">col-6</div>
+        </div>
+        <div class="sui-col-6">
+          <div style="background:var(--sui-warning);color:var(--sui-warning-contrast);padding:12px;border-radius:8px;text-align:center;font-size:13px;font-weight:600;">col-6</div>
+        </div>
+        <div class="sui-col-6">
+          <div style="background:var(--sui-warning);color:var(--sui-warning-contrast);padding:12px;border-radius:8px;text-align:center;font-size:13px;font-weight:600;">col-6</div>
+        </div>
+        <div class="sui-col-6">
+          <div style="background:var(--sui-warning);color:var(--sui-warning-contrast);padding:12px;border-radius:8px;text-align:center;font-size:13px;font-weight:600;">col-6</div>
         </div>
       </div>
     </div>
@@ -277,18 +308,20 @@ toc:
   &lt;div class="sui-col-4"&gt;col-4&lt;/div&gt;
 &lt;/div&gt;
 
-&lt;!-- Horizontal only --&gt;
+&lt;!-- Horizontal only (16px between columns, none between lines) --&gt;
 &lt;div class="sui-row sui-gx-3"&gt;
-  &lt;div class="sui-col-4"&gt;col-4&lt;/div&gt;
-  &lt;div class="sui-col-4"&gt;col-4&lt;/div&gt;
-  &lt;div class="sui-col-4"&gt;col-4&lt;/div&gt;
+  &lt;div class="sui-col-6"&gt;col-6&lt;/div&gt;
+  &lt;div class="sui-col-6"&gt;col-6&lt;/div&gt;
+  &lt;div class="sui-col-6"&gt;col-6&lt;/div&gt;
+  &lt;div class="sui-col-6"&gt;col-6&lt;/div&gt;
 &lt;/div&gt;
 
-&lt;!-- Vertical only --&gt;
+&lt;!-- Vertical only (16px between wrapped lines, default 24px between columns) --&gt;
 &lt;div class="sui-row sui-gy-3"&gt;
-  &lt;div class="sui-col-4"&gt;col-4&lt;/div&gt;
-  &lt;div class="sui-col-4"&gt;col-4&lt;/div&gt;
-  &lt;div class="sui-col-4"&gt;col-4&lt;/div&gt;
+  &lt;div class="sui-col-6"&gt;col-6&lt;/div&gt;
+  &lt;div class="sui-col-6"&gt;col-6&lt;/div&gt;
+  &lt;div class="sui-col-6"&gt;col-6&lt;/div&gt;
+  &lt;div class="sui-col-6"&gt;col-6&lt;/div&gt;
 &lt;/div&gt;</pre></div>
   </div>
 </div>

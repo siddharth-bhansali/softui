@@ -49,6 +49,15 @@
   --sui-radius-lg: 24px;
   --sui-radius-full: 9999px;
 
+  --sui-space-0: 0;
+  --sui-space-1: 4px;
+  --sui-space-2: 8px;
+  --sui-space-3: 16px;
+  --sui-space-4: 24px;
+  --sui-space-5: 48px;
+  --sui-space-6: 64px;
+  --sui-space-7: 96px;
+
   --sui-font: 'Plus Jakarta Sans', 'Plus Jakarta Sans Variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
   --sui-font-mono: 'JetBrains Mono', 'JetBrains Mono Variable', 'Fira Code', 'Cascadia Code', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
 
@@ -1166,10 +1175,10 @@ a.sui-btn-warning:visited {
 /* ===========================================
    Utility: Border Radius
    =========================================== */
-.sui-rounded-sm   { border-radius: var(--sui-radius-sm); }
-.sui-rounded      { border-radius: var(--sui-radius); }
-.sui-rounded-lg   { border-radius: var(--sui-radius-lg); }
-.sui-rounded-full { border-radius: var(--sui-radius-full); }
+.sui-rounded-sm   { border-radius: var(--sui-radius-sm) !important; }
+.sui-rounded      { border-radius: var(--sui-radius) !important; }
+.sui-rounded-lg   { border-radius: var(--sui-radius-lg) !important; }
+.sui-rounded-full { border-radius: var(--sui-radius-full) !important; }
 
 /* ===========================================
    Utility: Aspect Ratio
@@ -1188,59 +1197,215 @@ a.sui-btn-warning:visited {
   object-fit: cover;
 }
 
-.sui-aspect-square   { aspect-ratio: 1 / 1; }
-.sui-aspect-video    { aspect-ratio: 16 / 9; }
-.sui-aspect-portrait { aspect-ratio: 9 / 16; }
-.sui-aspect-4-3      { aspect-ratio: 4 / 3; }
-.sui-aspect-3-2      { aspect-ratio: 3 / 2; }
-.sui-aspect-21-9     { aspect-ratio: 21 / 9; }
+.sui-aspect-square   { aspect-ratio: 1 / 1 !important; }
+.sui-aspect-video    { aspect-ratio: 16 / 9 !important; }
+.sui-aspect-portrait { aspect-ratio: 9 / 16 !important; }
+.sui-aspect-4-3      { aspect-ratio: 4 / 3 !important; }
+.sui-aspect-3-2      { aspect-ratio: 3 / 2 !important; }
+.sui-aspect-4-5      { aspect-ratio: 4 / 5 !important; }
+.sui-aspect-21-9     { aspect-ratio: 21 / 9 !important; }
+
+/* ===========================================
+   Utility: Images
+   =========================================== */
+/* Responsive image: never wider than its container, keeps its ratio, stays inline */
+.sui-img-fluid { max-width: 100%; height: auto; }
+
+/* Raised frame. Put it directly on the <img> (the image is clipped to the inner
+   radius automatically), or on a wrapper (figure/div) around an <img>. */
+.sui-img-frame {
+  display: inline-block;
+  max-width: 100%;
+  height: auto;
+  padding: 8px;
+  background: var(--sui-bg);
+  border-radius: var(--sui-radius);
+  box-shadow: var(--sui-shadow-raised);
+}
+.sui-img-frame > img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  border-radius: calc(var(--sui-radius) - 8px);
+}
 
 /* ===========================================
    Utility: Spacing
    =========================================== */
-.sui-p-0 { padding: 0; }
-.sui-p-1 { padding: 4px; }
-.sui-p-2 { padding: 8px; }
-.sui-p-3 { padding: 16px; }
-.sui-p-4 { padding: 24px; }
-.sui-p-5 { padding: 48px; }
+/* Scale 0-7 = 0/4/8/16/24/48/64/96px via --sui-space-*. Order matters:
+   shorthand, then axis, then single side, so e.g. sui-p-3 sui-pt-0 works. */
 
-.sui-m-0 { margin: 0; }
-.sui-m-1 { margin: 4px; }
-.sui-m-2 { margin: 8px; }
-.sui-m-3 { margin: 16px; }
-.sui-m-4 { margin: 24px; }
-.sui-m-5 { margin: 48px; }
+/* Padding: all sides */
+.sui-p-0  { padding: var(--sui-space-0) !important; }
+.sui-p-1  { padding: var(--sui-space-1) !important; }
+.sui-p-2  { padding: var(--sui-space-2) !important; }
+.sui-p-3  { padding: var(--sui-space-3) !important; }
+.sui-p-4  { padding: var(--sui-space-4) !important; }
+.sui-p-5  { padding: var(--sui-space-5) !important; }
+.sui-p-6  { padding: var(--sui-space-6) !important; }
+.sui-p-7  { padding: var(--sui-space-7) !important; }
 
-.sui-mt-0 { margin-top: 0; }     .sui-mt-1 { margin-top: 4px; }
-.sui-mt-2 { margin-top: 8px; }   .sui-mt-3 { margin-top: 16px; }
-.sui-mt-4 { margin-top: 24px; }  .sui-mt-5 { margin-top: 48px; }
+/* Padding: inline axis (start + end) */
+.sui-px-0 { padding-inline: var(--sui-space-0) !important; }
+.sui-px-1 { padding-inline: var(--sui-space-1) !important; }
+.sui-px-2 { padding-inline: var(--sui-space-2) !important; }
+.sui-px-3 { padding-inline: var(--sui-space-3) !important; }
+.sui-px-4 { padding-inline: var(--sui-space-4) !important; }
+.sui-px-5 { padding-inline: var(--sui-space-5) !important; }
+.sui-px-6 { padding-inline: var(--sui-space-6) !important; }
+.sui-px-7 { padding-inline: var(--sui-space-7) !important; }
 
-.sui-mb-0 { margin-bottom: 0; }     .sui-mb-1 { margin-bottom: 4px; }
-.sui-mb-2 { margin-bottom: 8px; }   .sui-mb-3 { margin-bottom: 16px; }
-.sui-mb-4 { margin-bottom: 24px; }  .sui-mb-5 { margin-bottom: 48px; }
+/* Padding: block axis (top + bottom) */
+.sui-py-0 { padding-block: var(--sui-space-0) !important; }
+.sui-py-1 { padding-block: var(--sui-space-1) !important; }
+.sui-py-2 { padding-block: var(--sui-space-2) !important; }
+.sui-py-3 { padding-block: var(--sui-space-3) !important; }
+.sui-py-4 { padding-block: var(--sui-space-4) !important; }
+.sui-py-5 { padding-block: var(--sui-space-5) !important; }
+.sui-py-6 { padding-block: var(--sui-space-6) !important; }
+.sui-py-7 { padding-block: var(--sui-space-7) !important; }
 
-.sui-ml-0 { margin-inline-start: 0; }     .sui-ml-1 { margin-inline-start: 4px; }
-.sui-ml-2 { margin-inline-start: 8px; }   .sui-ml-3 { margin-inline-start: 16px; }
-.sui-ml-4 { margin-inline-start: 24px; }  .sui-ml-5 { margin-inline-start: 48px; }
+/* Padding: top */
+.sui-pt-0 { padding-top: var(--sui-space-0) !important; }
+.sui-pt-1 { padding-top: var(--sui-space-1) !important; }
+.sui-pt-2 { padding-top: var(--sui-space-2) !important; }
+.sui-pt-3 { padding-top: var(--sui-space-3) !important; }
+.sui-pt-4 { padding-top: var(--sui-space-4) !important; }
+.sui-pt-5 { padding-top: var(--sui-space-5) !important; }
+.sui-pt-6 { padding-top: var(--sui-space-6) !important; }
+.sui-pt-7 { padding-top: var(--sui-space-7) !important; }
 
-.sui-mr-0 { margin-inline-end: 0; }     .sui-mr-1 { margin-inline-end: 4px; }
-.sui-mr-2 { margin-inline-end: 8px; }   .sui-mr-3 { margin-inline-end: 16px; }
-.sui-mr-4 { margin-inline-end: 24px; }  .sui-mr-5 { margin-inline-end: 48px; }
+/* Padding: bottom */
+.sui-pb-0 { padding-bottom: var(--sui-space-0) !important; }
+.sui-pb-1 { padding-bottom: var(--sui-space-1) !important; }
+.sui-pb-2 { padding-bottom: var(--sui-space-2) !important; }
+.sui-pb-3 { padding-bottom: var(--sui-space-3) !important; }
+.sui-pb-4 { padding-bottom: var(--sui-space-4) !important; }
+.sui-pb-5 { padding-bottom: var(--sui-space-5) !important; }
+.sui-pb-6 { padding-bottom: var(--sui-space-6) !important; }
+.sui-pb-7 { padding-bottom: var(--sui-space-7) !important; }
+
+/* Padding: inline-start (left in LTR, right in RTL) */
+.sui-ps-0 { padding-inline-start: var(--sui-space-0) !important; }
+.sui-ps-1 { padding-inline-start: var(--sui-space-1) !important; }
+.sui-ps-2 { padding-inline-start: var(--sui-space-2) !important; }
+.sui-ps-3 { padding-inline-start: var(--sui-space-3) !important; }
+.sui-ps-4 { padding-inline-start: var(--sui-space-4) !important; }
+.sui-ps-5 { padding-inline-start: var(--sui-space-5) !important; }
+.sui-ps-6 { padding-inline-start: var(--sui-space-6) !important; }
+.sui-ps-7 { padding-inline-start: var(--sui-space-7) !important; }
+
+/* Padding: inline-end (right in LTR, left in RTL) */
+.sui-pe-0 { padding-inline-end: var(--sui-space-0) !important; }
+.sui-pe-1 { padding-inline-end: var(--sui-space-1) !important; }
+.sui-pe-2 { padding-inline-end: var(--sui-space-2) !important; }
+.sui-pe-3 { padding-inline-end: var(--sui-space-3) !important; }
+.sui-pe-4 { padding-inline-end: var(--sui-space-4) !important; }
+.sui-pe-5 { padding-inline-end: var(--sui-space-5) !important; }
+.sui-pe-6 { padding-inline-end: var(--sui-space-6) !important; }
+.sui-pe-7 { padding-inline-end: var(--sui-space-7) !important; }
+
+/* Margin: all sides */
+.sui-m-0  { margin: var(--sui-space-0) !important; }
+.sui-m-1  { margin: var(--sui-space-1) !important; }
+.sui-m-2  { margin: var(--sui-space-2) !important; }
+.sui-m-3  { margin: var(--sui-space-3) !important; }
+.sui-m-4  { margin: var(--sui-space-4) !important; }
+.sui-m-5  { margin: var(--sui-space-5) !important; }
+.sui-m-6  { margin: var(--sui-space-6) !important; }
+.sui-m-7  { margin: var(--sui-space-7) !important; }
+
+/* Margin: inline axis (start + end) */
+.sui-mx-0 { margin-inline: var(--sui-space-0) !important; }
+.sui-mx-1 { margin-inline: var(--sui-space-1) !important; }
+.sui-mx-2 { margin-inline: var(--sui-space-2) !important; }
+.sui-mx-3 { margin-inline: var(--sui-space-3) !important; }
+.sui-mx-4 { margin-inline: var(--sui-space-4) !important; }
+.sui-mx-5 { margin-inline: var(--sui-space-5) !important; }
+.sui-mx-6 { margin-inline: var(--sui-space-6) !important; }
+.sui-mx-7 { margin-inline: var(--sui-space-7) !important; }
+
+/* Margin: block axis (top + bottom) */
+.sui-my-0 { margin-block: var(--sui-space-0) !important; }
+.sui-my-1 { margin-block: var(--sui-space-1) !important; }
+.sui-my-2 { margin-block: var(--sui-space-2) !important; }
+.sui-my-3 { margin-block: var(--sui-space-3) !important; }
+.sui-my-4 { margin-block: var(--sui-space-4) !important; }
+.sui-my-5 { margin-block: var(--sui-space-5) !important; }
+.sui-my-6 { margin-block: var(--sui-space-6) !important; }
+.sui-my-7 { margin-block: var(--sui-space-7) !important; }
+
+/* Margin: top */
+.sui-mt-0 { margin-top: var(--sui-space-0) !important; }
+.sui-mt-1 { margin-top: var(--sui-space-1) !important; }
+.sui-mt-2 { margin-top: var(--sui-space-2) !important; }
+.sui-mt-3 { margin-top: var(--sui-space-3) !important; }
+.sui-mt-4 { margin-top: var(--sui-space-4) !important; }
+.sui-mt-5 { margin-top: var(--sui-space-5) !important; }
+.sui-mt-6 { margin-top: var(--sui-space-6) !important; }
+.sui-mt-7 { margin-top: var(--sui-space-7) !important; }
+
+/* Margin: bottom */
+.sui-mb-0 { margin-bottom: var(--sui-space-0) !important; }
+.sui-mb-1 { margin-bottom: var(--sui-space-1) !important; }
+.sui-mb-2 { margin-bottom: var(--sui-space-2) !important; }
+.sui-mb-3 { margin-bottom: var(--sui-space-3) !important; }
+.sui-mb-4 { margin-bottom: var(--sui-space-4) !important; }
+.sui-mb-5 { margin-bottom: var(--sui-space-5) !important; }
+.sui-mb-6 { margin-bottom: var(--sui-space-6) !important; }
+.sui-mb-7 { margin-bottom: var(--sui-space-7) !important; }
+
+/* Margin: inline-start (left in LTR, right in RTL) */
+.sui-ms-0 { margin-inline-start: var(--sui-space-0) !important; }
+.sui-ms-1 { margin-inline-start: var(--sui-space-1) !important; }
+.sui-ms-2 { margin-inline-start: var(--sui-space-2) !important; }
+.sui-ms-3 { margin-inline-start: var(--sui-space-3) !important; }
+.sui-ms-4 { margin-inline-start: var(--sui-space-4) !important; }
+.sui-ms-5 { margin-inline-start: var(--sui-space-5) !important; }
+.sui-ms-6 { margin-inline-start: var(--sui-space-6) !important; }
+.sui-ms-7 { margin-inline-start: var(--sui-space-7) !important; }
+
+/* Margin: inline-end (right in LTR, left in RTL) */
+.sui-me-0 { margin-inline-end: var(--sui-space-0) !important; }
+.sui-me-1 { margin-inline-end: var(--sui-space-1) !important; }
+.sui-me-2 { margin-inline-end: var(--sui-space-2) !important; }
+.sui-me-3 { margin-inline-end: var(--sui-space-3) !important; }
+.sui-me-4 { margin-inline-end: var(--sui-space-4) !important; }
+.sui-me-5 { margin-inline-end: var(--sui-space-5) !important; }
+.sui-me-6 { margin-inline-end: var(--sui-space-6) !important; }
+.sui-me-7 { margin-inline-end: var(--sui-space-7) !important; }
+
+/* Legacy aliases: ml = ms (inline-start), mr = me (inline-end); flip in RTL */
+.sui-ml-0 { margin-inline-start: var(--sui-space-0) !important; }
+.sui-ml-1 { margin-inline-start: var(--sui-space-1) !important; }
+.sui-ml-2 { margin-inline-start: var(--sui-space-2) !important; }
+.sui-ml-3 { margin-inline-start: var(--sui-space-3) !important; }
+.sui-ml-4 { margin-inline-start: var(--sui-space-4) !important; }
+.sui-ml-5 { margin-inline-start: var(--sui-space-5) !important; }
+.sui-ml-6 { margin-inline-start: var(--sui-space-6) !important; }
+.sui-ml-7 { margin-inline-start: var(--sui-space-7) !important; }
+.sui-mr-0 { margin-inline-end: var(--sui-space-0) !important; }
+.sui-mr-1 { margin-inline-end: var(--sui-space-1) !important; }
+.sui-mr-2 { margin-inline-end: var(--sui-space-2) !important; }
+.sui-mr-3 { margin-inline-end: var(--sui-space-3) !important; }
+.sui-mr-4 { margin-inline-end: var(--sui-space-4) !important; }
+.sui-mr-5 { margin-inline-end: var(--sui-space-5) !important; }
+.sui-mr-6 { margin-inline-end: var(--sui-space-6) !important; }
+.sui-mr-7 { margin-inline-end: var(--sui-space-7) !important; }
 
 /* ===========================================
    Utility: Text
    =========================================== */
-.sui-text-center { text-align: center; }
-.sui-text-left   { text-align: start; }
-.sui-text-right  { text-align: end; }
+.sui-text-center { text-align: center !important; }
+.sui-text-left   { text-align: start !important; }
+.sui-text-right  { text-align: end !important; }
 
-.sui-text-muted   { color: var(--sui-text-muted); }
-.sui-text-primary { color: var(--sui-primary-text); }
-.sui-text-success { color: var(--sui-success-text); }
-.sui-text-danger  { color: var(--sui-danger-text); }
-.sui-text-warning { color: var(--sui-warning-text); }
-.sui-text-info    { color: var(--sui-info-text); }
+.sui-text-muted   { color: var(--sui-text-muted) !important; }
+.sui-text-primary { color: var(--sui-primary-text) !important; }
+.sui-text-success { color: var(--sui-success-text) !important; }
+.sui-text-danger  { color: var(--sui-danger-text) !important; }
+.sui-text-warning { color: var(--sui-warning-text) !important; }
+.sui-text-info    { color: var(--sui-info-text) !important; }
 
 /* ===========================================
    Utility: Typography
@@ -5919,9 +6084,8 @@ select.sui-datatable-filter {
 .sui-gy-4 { --sui-gutter-y: 24px; }
 .sui-gy-5 { --sui-gutter-y: 48px; }
 
-.sui-row[class*="sui-g-"],
-.sui-row[class*="sui-gx-"],
-.sui-row[class*="sui-gy-"] {
+/* Defaults at zero specificity so the .sui-g-N / .sui-gx-N / .sui-gy-N values win */
+:where(.sui-row[class*="sui-g-"], .sui-row[class*="sui-gx-"], .sui-row[class*="sui-gy-"]) {
   --sui-gutter-x: 24px;
   --sui-gutter-y: 0;
 }
@@ -5941,6 +6105,12 @@ select.sui-datatable-filter {
 .sui-row[class*="sui-g-"] > *,
 .sui-row[class*="sui-gy-"] > * {
   margin-top: var(--sui-gutter-y);
+}
+
+/* Pull the row up by one y-gutter so the first line has no extra space above it.
+   Zero specificity so margin utilities (sui-mt-*, sui-my-*) on the row still win. */
+:where(.sui-row[class*="sui-g-"], .sui-row[class*="sui-gy-"]) {
+  margin-top: calc(var(--sui-gutter-y) * -1);
 }
 
 /* ===========================================
@@ -5985,12 +6155,14 @@ select.sui-datatable-filter {
 .sui-flex-nowrap { flex-wrap: nowrap !important; }
 
 /* Gap */
-.sui-gap-0 { gap: 0 !important; }
-.sui-gap-1 { gap: 4px !important; }
-.sui-gap-2 { gap: 8px !important; }
-.sui-gap-3 { gap: 16px !important; }
-.sui-gap-4 { gap: 24px !important; }
-.sui-gap-5 { gap: 48px !important; }
+.sui-gap-0 { gap: var(--sui-space-0) !important; }
+.sui-gap-1 { gap: var(--sui-space-1) !important; }
+.sui-gap-2 { gap: var(--sui-space-2) !important; }
+.sui-gap-3 { gap: var(--sui-space-3) !important; }
+.sui-gap-4 { gap: var(--sui-space-4) !important; }
+.sui-gap-5 { gap: var(--sui-space-5) !important; }
+.sui-gap-6 { gap: var(--sui-space-6) !important; }
+.sui-gap-7 { gap: var(--sui-space-7) !important; }
 
 /* --- Display --- */
 .sui-d-inline       { display: inline !important; }
@@ -6101,10 +6273,17 @@ select.sui-datatable-filter {
 .sui-select-text { user-select: text !important; }
 .sui-select-all  { user-select: all !important; }
 
+/* --- Font --- */
+.sui-font-sans         { font-family: var(--sui-font) !important; }
+.sui-font-mono         { font-family: var(--sui-font-mono) !important; }
+.sui-tabular-nums      { font-variant-numeric: tabular-nums !important; }
+.sui-proportional-nums { font-variant-numeric: proportional-nums !important; }
+
 /* Auto margins */
 .sui-ms-auto { margin-inline-start: auto !important; }
 .sui-me-auto { margin-inline-end: auto !important; }
-.sui-mx-auto { margin-left: auto !important; margin-right: auto !important; }
+.sui-mx-auto { margin-inline: auto !important; }
+.sui-my-auto { margin-block: auto !important; }
 
 /* ===========================================
    Divider / Separator
