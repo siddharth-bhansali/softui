@@ -12834,7 +12834,24 @@ select.sui-datatable-filter:focus-visible {
 .sui-reveal-ready .sui-reveal.sui-revealed:not(.sui-reveal-done) {
   transition: opacity var(--sui-reveal-duration, 0.6s) ease var(--sui-delay, 0ms),
               translate var(--sui-reveal-duration, 0.6s) cubic-bezier(0.2, 0.7, 0.2, 1) var(--sui-delay, 0ms),
-              scale var(--sui-reveal-duration, 0.6s) cubic-bezier(0.2, 0.7, 0.2, 1) var(--sui-delay, 0ms);
+              scale var(--sui-reveal-duration, 0.6s) cubic-bezier(0.2, 0.7, 0.2, 1) var(--sui-delay, 0ms),
+              filter var(--sui-reveal-duration, 0.6s) ease var(--sui-delay, 0ms);
+}
+
+/* Speed — on the element or any ancestor */
+.sui-reveal-fast { --sui-reveal-duration: 0.3s; }
+.sui-reveal-slow { --sui-reveal-duration: 1.2s; }
+
+/* Effects that drop the default slide-up; listed before the directions so
+   -start/-end/-down can be combined with them */
+.sui-reveal-ready .sui-reveal.sui-reveal-blur {
+  translate: none;
+  filter: blur(var(--sui-reveal-blur, 8px));
+}
+
+.sui-reveal-ready .sui-reveal.sui-reveal-zoom-out {
+  translate: none;
+  scale: 1.08;
 }
 
 /* Directions — start/end follow the reading direction */
@@ -12865,12 +12882,19 @@ select.sui-datatable-filter:focus-visible {
   scale: none;
 }
 
+.sui-reveal-ready .sui-reveal.sui-reveal-blur.sui-revealed {
+  filter: none;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .sui-reveal-ready .sui-reveal {
     opacity: 1 !important;
     translate: none !important;
     scale: none !important;
     transition: none !important;
+  }
+  .sui-reveal-ready .sui-reveal.sui-reveal-blur {
+    filter: none !important;
   }
 }
 
@@ -12879,6 +12903,9 @@ select.sui-datatable-filter:focus-visible {
     opacity: 1 !important;
     translate: none !important;
     scale: none !important;
+  }
+  .sui-reveal.sui-reveal-blur {
+    filter: none !important;
   }
 }
 
@@ -14290,6 +14317,41 @@ select.sui-datatable-filter:focus-visible {
 .sui-footer-bordered { border-block-start: 1px solid var(--sui-bg-dark); }
 .sui-footer-raised { box-shadow: var(--sui-shadow-raised); }
 .sui-footer-inset { box-shadow: var(--sui-shadow-inset); }
+.sui-footer-tinted { background: var(--sui-bg-light); }
+
+/* Compact: :where() keeps the columns layout's own link padding and gap */
+.sui-footer-sm { padding-block: 16px; font-size: 0.8125rem; }
+.sui-footer-sm > :where(.sui-footer-inner) { gap: 12px; }
+.sui-footer-sm.sui-footer-columns .sui-footer-inner { gap: 20px; }
+.sui-footer-sm .sui-footer-brand { font-size: 1rem; }
+.sui-footer-sm :where(.sui-footer-link) { padding-block: 4px; padding-inline: 10px; }
+.sui-footer-sm .sui-footer-bottom { padding-block-start: 12px; }
+
+/* Social icons: round raised icon links */
+.sui-footer-social { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; list-style: none; margin: 0; padding: 0; }
+.sui-footer-social a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--sui-bg);
+  box-shadow: var(--sui-shadow-raised-sm);
+  color: var(--sui-text-muted);
+  text-decoration: none;
+  transition: color var(--sui-transition-fast) ease, box-shadow var(--sui-transition-fast) ease;
+}
+.sui-footer-social a:hover { color: var(--sui-primary-text); box-shadow: var(--sui-shadow-raised); }
+.sui-footer-social a:active { box-shadow: var(--sui-shadow-inset-sm); }
+.sui-footer-social a:focus-visible {
+  outline: none;
+  box-shadow: var(--sui-shadow-raised-sm), var(--sui-focus-ring, 0 0 0 3px var(--sui-focus-ring-color, color-mix(in srgb, var(--sui-primary) 40%, transparent)));
+}
+.sui-footer-social svg { width: 18px; height: 18px; }
+.sui-footer-sm .sui-footer-social { gap: 10px; }
+.sui-footer-sm .sui-footer-social a { width: 32px; height: 32px; }
+.sui-footer-sm .sui-footer-social svg { width: 15px; height: 15px; }
 
 @media (max-width: 600px) {
   .sui-footer { padding-inline: 16px; }
