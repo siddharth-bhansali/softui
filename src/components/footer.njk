@@ -1,0 +1,265 @@
+---
+layout: component.njk
+title: Footer
+description: Page footers with brand, links and copyright, in centred, split and multi-column layouts.
+componentId: footer
+hasControls: false
+requiresJs: false
+toc:
+  - Centered
+  - Split
+  - Columns
+  - Bordered, Raised & Inset
+  - Raised Links
+  - RTL
+---
+
+<!-- Centered -->
+<div class="pg-section" id="section-1">
+  <h3 class="pg-section-title">Centered</h3>
+  <p class="pg-section-desc">The default footer stacks its content in a centred column. Wrap content in <code>.sui-footer-inner</code> (max 1100px, centred). Footer links use the global focus outline.</p>
+  <div class="pg-section-row" style="display:block;">
+    <footer class="sui-footer">
+      <div class="sui-footer-inner">
+        <span class="sui-footer-brand">Acme</span>
+        <nav class="sui-footer-links" aria-label="Footer (centered demo)">
+          <a class="sui-footer-link" href="#">About</a>
+          <a class="sui-footer-link" href="#">Blog</a>
+          <a class="sui-footer-link" href="#">Contact</a>
+        </nav>
+        <span class="sui-footer-copy">&copy; 2026 Acme Inc.</span>
+      </div>
+    </footer>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;footer class="sui-footer"&gt;
+  &lt;div class="sui-footer-inner"&gt;
+    &lt;span class="sui-footer-brand"&gt;Acme&lt;/span&gt;
+    &lt;nav class="sui-footer-links" aria-label="Footer (centered demo)"&gt;
+      &lt;a class="sui-footer-link" href="#"&gt;About&lt;/a&gt;
+      &lt;a class="sui-footer-link" href="#"&gt;Blog&lt;/a&gt;
+      &lt;a class="sui-footer-link" href="#"&gt;Contact&lt;/a&gt;
+    &lt;/nav&gt;
+    &lt;span class="sui-footer-copy"&gt;&amp;copy; 2026 Acme Inc.&lt;/span&gt;
+  &lt;/div&gt;
+&lt;/footer&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Split -->
+<div class="pg-section" id="section-2">
+  <h3 class="pg-section-title">Split</h3>
+  <p class="pg-section-desc"><code>sui-footer-split</code> puts the brand at the inline start and the links at the inline end. It stacks and centres below 600px.</p>
+  <div class="pg-section-row" style="display:block;">
+    <footer class="sui-footer sui-footer-split">
+      <div class="sui-footer-inner">
+        <div class="sui-footer-brand">
+          Acme
+          <span class="sui-footer-tagline">Tools for small teams</span>
+        </div>
+        <nav class="sui-footer-links" aria-label="Footer (split demo)">
+          <a class="sui-footer-link" href="#">Privacy</a>
+          <a class="sui-footer-link" href="#">Terms</a>
+          <a class="sui-footer-link" href="#">Status</a>
+        </nav>
+      </div>
+    </footer>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;footer class="sui-footer sui-footer-split"&gt;
+  &lt;div class="sui-footer-inner"&gt;
+    &lt;div class="sui-footer-brand"&gt;
+      Acme
+      &lt;span class="sui-footer-tagline"&gt;Tools for small teams&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;nav class="sui-footer-links" aria-label="Footer (split demo)"&gt;
+      &lt;a class="sui-footer-link" href="#"&gt;Privacy&lt;/a&gt;
+      &lt;a class="sui-footer-link" href="#"&gt;Terms&lt;/a&gt;
+      &lt;a class="sui-footer-link" href="#"&gt;Status&lt;/a&gt;
+    &lt;/nav&gt;
+  &lt;/div&gt;
+&lt;/footer&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Columns -->
+<div class="pg-section" id="section-3">
+  <h3 class="pg-section-title">Columns</h3>
+  <p class="pg-section-desc"><code>sui-footer-columns</code> lays out a brand column and link columns (<code>.sui-footer-col</code> with a <code>.sui-footer-heading</code>) on a grid, with a full-width <code>.sui-footer-bottom</code> row. Columns wrap as space runs out; below 600px they sit two per row with the brand column (<code>.sui-footer-brand-col</code>) on top. <code>.sui-footer-heading</code> works on any heading level; pick the one that fits your page outline (usually <code>h2</code> in a site footer; <code>h4</code> here to sit under this section).</p>
+  <div class="pg-section-row" style="display:block;">
+    <footer class="sui-footer sui-footer-columns">
+      <div class="sui-footer-inner">
+        <div class="sui-footer-col sui-footer-brand-col">
+          <span class="sui-footer-brand">Acme</span>
+          <span class="sui-footer-tagline">Tools for small teams that ship.</span>
+        </div>
+        <div class="sui-footer-col">
+          <h4 class="sui-footer-heading">Product</h4>
+          <a class="sui-footer-link" href="#">Features</a>
+          <a class="sui-footer-link" href="#">Pricing</a>
+          <a class="sui-footer-link" href="#">Changelog</a>
+        </div>
+        <div class="sui-footer-col">
+          <h4 class="sui-footer-heading">Company</h4>
+          <a class="sui-footer-link" href="#">About</a>
+          <a class="sui-footer-link" href="#">Careers</a>
+          <a class="sui-footer-link" href="#">Contact</a>
+        </div>
+        <div class="sui-footer-bottom">
+          <span class="sui-footer-copy">&copy; 2026 Acme Inc.</span>
+          <nav class="sui-footer-links" aria-label="Legal">
+            <a class="sui-footer-link" href="#">Privacy</a>
+            <a class="sui-footer-link" href="#">Terms</a>
+          </nav>
+        </div>
+      </div>
+    </footer>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;footer class="sui-footer sui-footer-columns"&gt;
+  &lt;div class="sui-footer-inner"&gt;
+    &lt;div class="sui-footer-col sui-footer-brand-col"&gt;
+      &lt;span class="sui-footer-brand"&gt;Acme&lt;/span&gt;
+      &lt;span class="sui-footer-tagline"&gt;Tools for small teams that ship.&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;div class="sui-footer-col"&gt;
+      &lt;h4 class="sui-footer-heading"&gt;Product&lt;/h4&gt;
+      &lt;a class="sui-footer-link" href="#"&gt;Features&lt;/a&gt;
+      &lt;a class="sui-footer-link" href="#"&gt;Pricing&lt;/a&gt;
+      &lt;a class="sui-footer-link" href="#"&gt;Changelog&lt;/a&gt;
+    &lt;/div&gt;
+    &lt;div class="sui-footer-col"&gt;
+      &lt;h4 class="sui-footer-heading"&gt;Company&lt;/h4&gt;
+      &lt;a class="sui-footer-link" href="#"&gt;About&lt;/a&gt;
+      &lt;a class="sui-footer-link" href="#"&gt;Careers&lt;/a&gt;
+      &lt;a class="sui-footer-link" href="#"&gt;Contact&lt;/a&gt;
+    &lt;/div&gt;
+    &lt;div class="sui-footer-bottom"&gt;
+      &lt;span class="sui-footer-copy"&gt;&amp;copy; 2026 Acme Inc.&lt;/span&gt;
+      &lt;nav class="sui-footer-links" aria-label="Legal"&gt;
+        &lt;a class="sui-footer-link" href="#"&gt;Privacy&lt;/a&gt;
+        &lt;a class="sui-footer-link" href="#"&gt;Terms&lt;/a&gt;
+      &lt;/nav&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/footer&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Bordered, Raised & Inset -->
+<div class="pg-section" id="section-4">
+  <h3 class="pg-section-title">Bordered, Raised & Inset</h3>
+  <p class="pg-section-desc">Surface modifiers: <code>sui-footer-bordered</code> adds a top border, <code>sui-footer-raised</code> and <code>sui-footer-inset</code> add neumorphic depth.</p>
+  <div class="pg-section-row" style="display:block;">
+    <footer class="sui-footer sui-footer-split sui-footer-bordered">
+      <div class="sui-footer-inner">
+        <span class="sui-footer-brand">Bordered</span>
+        <span class="sui-footer-copy">&copy; 2026 Acme Inc.</span>
+      </div>
+    </footer>
+    <footer class="sui-footer sui-footer-split sui-footer-raised" style="border-radius:var(--sui-radius);margin-top:24px;">
+      <div class="sui-footer-inner">
+        <span class="sui-footer-brand">Raised</span>
+        <span class="sui-footer-copy">&copy; 2026 Acme Inc.</span>
+      </div>
+    </footer>
+    <footer class="sui-footer sui-footer-split sui-footer-inset" style="border-radius:var(--sui-radius);margin-top:24px;">
+      <div class="sui-footer-inner">
+        <span class="sui-footer-brand">Inset</span>
+        <span class="sui-footer-copy">&copy; 2026 Acme Inc.</span>
+      </div>
+    </footer>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;footer class="sui-footer sui-footer-split sui-footer-bordered"&gt;
+  &lt;div class="sui-footer-inner"&gt;
+    &lt;span class="sui-footer-brand"&gt;Bordered&lt;/span&gt;
+    &lt;span class="sui-footer-copy"&gt;&amp;copy; 2026 Acme Inc.&lt;/span&gt;
+  &lt;/div&gt;
+&lt;/footer&gt;
+&lt;footer class="sui-footer sui-footer-split sui-footer-raised" style="border-radius:var(--sui-radius);margin-top:24px;"&gt;
+  &lt;div class="sui-footer-inner"&gt;
+    &lt;span class="sui-footer-brand"&gt;Raised&lt;/span&gt;
+    &lt;span class="sui-footer-copy"&gt;&amp;copy; 2026 Acme Inc.&lt;/span&gt;
+  &lt;/div&gt;
+&lt;/footer&gt;
+&lt;footer class="sui-footer sui-footer-split sui-footer-inset" style="border-radius:var(--sui-radius);margin-top:24px;"&gt;
+  &lt;div class="sui-footer-inner"&gt;
+    &lt;span class="sui-footer-brand"&gt;Inset&lt;/span&gt;
+    &lt;span class="sui-footer-copy"&gt;&amp;copy; 2026 Acme Inc.&lt;/span&gt;
+  &lt;/div&gt;
+&lt;/footer&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Raised Links -->
+<div class="pg-section" id="section-5">
+  <h3 class="pg-section-title">Raised Links</h3>
+  <p class="pg-section-desc"><code>sui-footer-links-raised</code> turns footer links into raised pills. This is the footer used on this site.</p>
+  <div class="pg-section-row" style="display:block;">
+    <footer class="sui-footer sui-footer-split sui-footer-bordered">
+      <div class="sui-footer-inner">
+        <div class="sui-footer-brand">
+          Acme
+          <span class="sui-footer-tagline">Tools for small teams</span>
+        </div>
+        <nav class="sui-footer-links sui-footer-links-raised" aria-label="Footer (raised links demo)">
+          <a class="sui-footer-link" href="#"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>GitHub</a>
+          <a class="sui-footer-link" href="#">Docs</a>
+        </nav>
+      </div>
+    </footer>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;footer class="sui-footer sui-footer-split sui-footer-bordered"&gt;
+  &lt;div class="sui-footer-inner"&gt;
+    &lt;div class="sui-footer-brand"&gt;
+      Acme
+      &lt;span class="sui-footer-tagline"&gt;Tools for small teams&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;nav class="sui-footer-links sui-footer-links-raised" aria-label="Footer (raised links demo)"&gt;
+      &lt;a class="sui-footer-link" href="#"&gt;&lt;svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"&gt;&lt;path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/&gt;&lt;/svg&gt;GitHub&lt;/a&gt;
+      &lt;a class="sui-footer-link" href="#"&gt;Docs&lt;/a&gt;
+    &lt;/nav&gt;
+  &lt;/div&gt;
+&lt;/footer&gt;</pre></div>
+  </div>
+</div>
+
+<!-- RTL -->
+<div class="pg-section" id="section-6">
+  <h3 class="pg-section-title">RTL</h3>
+  <p class="pg-section-desc">The footer uses logical properties, so <code>dir="rtl"</code> mirrors it with no extra classes: the brand moves to the right and the links to the left.</p>
+  <div class="pg-section-row" style="display:block;">
+    <div dir="rtl">
+      <footer class="sui-footer sui-footer-split sui-footer-bordered">
+        <div class="sui-footer-inner">
+          <span class="sui-footer-brand">Acme</span>
+          <nav class="sui-footer-links" aria-label="Footer (RTL demo)">
+            <a class="sui-footer-link" href="#">Privacy</a>
+            <a class="sui-footer-link" href="#">Terms</a>
+          </nav>
+        </div>
+      </footer>
+    </div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div dir="rtl"&gt;
+  &lt;footer class="sui-footer sui-footer-split sui-footer-bordered"&gt;
+    &lt;div class="sui-footer-inner"&gt;
+      &lt;span class="sui-footer-brand"&gt;Acme&lt;/span&gt;
+      &lt;nav class="sui-footer-links" aria-label="Footer (RTL demo)"&gt;
+        &lt;a class="sui-footer-link" href="#"&gt;Privacy&lt;/a&gt;
+        &lt;a class="sui-footer-link" href="#"&gt;Terms&lt;/a&gt;
+      &lt;/nav&gt;
+    &lt;/div&gt;
+  &lt;/footer&gt;
+&lt;/div&gt;</pre></div>
+  </div>
+</div>

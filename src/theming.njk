@@ -74,6 +74,20 @@ permalink: /theming/
   --sui-focus-ring: 0 0 0 2px #fff, 0 0 0 4px #0066FF;
 }</code></pre>
     </div>
+    <p style="margin-top:16px;"><strong>Links.</strong> Bare <code>&lt;a&gt;</code>, <code>.sui-link</code>, <code>.sui-link-subtle</code> and <code>.sui-link-arrow</code> read three optional tokens. Unset, they fall back to <code>--sui-primary-text</code> / <code>--sui-primary-text-hover</code>, so they follow the theme (including scoped <code>data-theme</code> areas). If you set them, set them per theme like the <code>-text</code> tokens, and keep 4.5:1 contrast on every <code>--sui-bg*</code>.</p>
+    <div class="docs-getstarted-code">
+<pre><code>:root, [data-theme="light"] {
+  --sui-link: #0057B8;         /* default: var(--sui-primary-text) */
+  --sui-link-hover: #00428C;   /* default: var(--sui-primary-text-hover) */
+  /* Underline colour of .sui-link / -subtle / -muted at rest
+     (default: color-mix(in srgb, currentColor 40%, transparent)) */
+  --sui-link-underline: currentColor;
+}
+[data-theme="dark"] {
+  --sui-link: #7DB8FF;
+  --sui-link-hover: #A6CEFF;
+}</code></pre>
+    </div>
   </section>
 
   <!-- Backgrounds -->
@@ -208,6 +222,21 @@ permalink: /theming/
 .sui-stack-hover {
   --sui-stack-gap: 180px;    /* base spread distance (match your card width) */
   --sui-stack-spread: 0.6;   /* multiplier (0.15 to 1) */
+}
+
+/* Sections — vertical rhythm for .sui-section / .sui-section-header */
+:root {
+  --sui-section-space: 96px;     /* .sui-section padding (64px below 768px) */
+  --sui-section-space-sm: 64px;  /* .sui-section-sm, and .sui-section on mobile */
+  --sui-section-space-xs: 40px;  /* .sui-section-sm on mobile */
+  --sui-section-header-gap: 40px; /* space below .sui-section-header */
+}
+
+/* Heading accent bar — optional, defaults to var(--sui-primary).
+   Not declared on :root, so it follows --sui-primary wherever that is set;
+   set it on any ancestor, e.g. a lighter bar for more contrast on dark: */
+[data-theme="dark"] {
+  --sui-heading-accent: #8C86F0;
 }</code></pre>
     </div>
   </section>
@@ -284,6 +313,7 @@ permalink: /theming/
 &lt;/section&gt;</code></pre>
     </div>
     <p style="margin-top:12px;font-size:14px;color:var(--sui-text-muted);">Scoped sections set their own background, shadow, text and component tokens (tints, select arrow, scrollbars), so a light section inside a dark page fully resets. If you customize these, override them on <code>[data-theme]</code> as well as <code>:root</code>.</p>
+    <p style="margin-top:12px;font-size:14px;color:var(--sui-text-muted);"><strong>Dark theme on a darker page:</strong> on a background darker than <code>--sui-bg</code> (for example pure black), the light half of dark-mode shadows shows as a faint halo. Wrap the area in <code>.sui-surface</code> with <code>data-theme="dark"</code> so it gets the matching background, or use <code>.sui-flat-all</code>.</p>
   </section>
 
   <!-- Dark Mode Toggle -->

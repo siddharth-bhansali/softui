@@ -7,6 +7,7 @@ hasControls: false
 toc:
   - Shadow Classes
   - Flat on Any Background
+  - Flat Scope
 ---
 
 <!-- Shadow Classes -->
@@ -42,7 +43,7 @@ toc:
 <!-- Flat on Any Background -->
 <div class="pg-section" id="section-2">
   <h3 class="pg-section-title">Flat on Any Background</h3>
-  <p style="margin-bottom:16px;color:var(--sui-text-muted);">Neumorphic shadows need the SoftUI background behind them. On your own background, add <code>.sui-flat</code> to remove the shadow — including on hover — and use a subtle border instead. Keyboard focus still shows a ring.</p>
+  <p style="margin-bottom:16px;color:var(--sui-text-muted);">Neumorphic shadows need the SoftUI background behind them. On your own background, add <code>.sui-flat</code> to an element to remove that element's own shadow — including on hover — and use a subtle border instead. Keyboard focus still shows a ring. For components that draw shadows on inner parts (toggles, sliders), use the flat scope below.</p>
   <div data-theme="light" style="display:flex;gap:12px;flex-wrap:wrap;align-items:center;background:#fff;padding:24px;border-radius:var(--sui-radius);">
     <button class="sui-btn sui-flat">Flat Button</button>
     <button class="sui-btn sui-btn-primary sui-flat">Primary</button>
@@ -54,6 +55,32 @@ toc:
   &lt;button class="sui-btn sui-flat"&gt;Flat Button&lt;/button&gt;
   &lt;button class="sui-btn sui-btn-primary sui-flat"&gt;Primary&lt;/button&gt;
   &lt;input class="sui-input sui-flat" placeholder="Flat input" style="max-width:200px;"&gt;
+&lt;/div&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Flat Scope -->
+<div class="pg-section" id="section-3">
+  <h3 class="pg-section-title">Flat Scope</h3>
+  <p style="margin-bottom:16px;color:var(--sui-text-muted);"><code>.sui-flat</code> removes the shadow on the element itself. Toggles, range sliders and other components draw shadows on inner parts, so for a whole area on your own background use <code>.sui-flat-all</code> on the container: it swaps every neumorphic shadow inside for a hairline outline in <code>--sui-bg-dark</code>, so knobs and thumbs keep an edge. That outline is subtle (well under the 3:1 that WCAG 1.4.11 asks of control boundaries); for stronger contrast, redeclare <code>--sui-shadow-raised</code>, <code>-raised-sm</code>, <code>-raised-lg</code> as <code>0 0 0 1px var(--sui-text-light)</code> and <code>--sui-shadow-inset</code>, <code>-inset-sm</code> as <code>inset 0 0 0 1px var(--sui-text-light)</code> on your <code>.sui-flat-all</code> container. Coloured glows and the shadows on floating menus and modals are kept, and keyboard focus rings still show.</p>
+  <div class="sui-flat-all" data-theme="light" style="color:var(--sui-text);display:flex;gap:20px;flex-wrap:wrap;align-items:center;background:#fff;padding:24px;border-radius:var(--sui-radius);">
+    <div class="sui-card" style="padding:16px 20px;">Card</div>
+    <label class="sui-toggle"><input type="checkbox" checked aria-label="Notifications"><span class="sui-toggle-slider"></span></label>
+    <label class="sui-toggle"><input type="checkbox" aria-label="Dark mode"><span class="sui-toggle-slider"></span></label>
+    <input type="range" class="sui-range" aria-label="Volume" style="max-width:160px;">
+    <button class="sui-btn">Button</button>
+    <button class="sui-btn sui-btn-primary">Primary</button>
+  </div>
+  <p style="margin:16px 0 0;color:var(--sui-text-muted);"><strong>Dark theme on a darker page:</strong> on a background darker than <code>--sui-bg</code> (for example pure black), the light half of dark-mode shadows shows as a faint halo. Wrap the area in <code>.sui-surface</code> with <code>data-theme="dark"</code> so it gets the matching background, or use <code>.sui-flat-all</code>.</p>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-flat-all" data-theme="light" style="color:var(--sui-text);display:flex;gap:20px;flex-wrap:wrap;align-items:center;background:#fff;padding:24px;border-radius:var(--sui-radius);"&gt;
+  &lt;div class="sui-card" style="padding:16px 20px;"&gt;Card&lt;/div&gt;
+  &lt;label class="sui-toggle"&gt;&lt;input type="checkbox" checked aria-label="Notifications"&gt;&lt;span class="sui-toggle-slider"&gt;&lt;/span&gt;&lt;/label&gt;
+  &lt;label class="sui-toggle"&gt;&lt;input type="checkbox" aria-label="Dark mode"&gt;&lt;span class="sui-toggle-slider"&gt;&lt;/span&gt;&lt;/label&gt;
+  &lt;input type="range" class="sui-range" aria-label="Volume" style="max-width:160px;"&gt;
+  &lt;button class="sui-btn"&gt;Button&lt;/button&gt;
+  &lt;button class="sui-btn sui-btn-primary"&gt;Primary&lt;/button&gt;
 &lt;/div&gt;</pre></div>
   </div>
 </div>

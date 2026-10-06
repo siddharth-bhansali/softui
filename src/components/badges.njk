@@ -9,10 +9,11 @@ toc:
   - Pill
   - Sizes
   - Positioned
+  - Status Dot
 ---
 
 <!-- All Colors -->
-<div class="pg-section">
+<div class="pg-section" id="section-1">
   <h3 class="pg-section-title">All Colors</h3>
   <div class="pg-section-row">
     <span class="sui-badge">Default</span>
@@ -34,7 +35,7 @@ toc:
 </div>
 
 <!-- Outline -->
-<div class="pg-section">
+<div class="pg-section" id="section-2">
   <h3 class="pg-section-title">Outline</h3>
   <div class="pg-section-row">
     <span class="sui-badge sui-badge-outline">Default</span>
@@ -54,7 +55,7 @@ toc:
 </div>
 
 <!-- Pill -->
-<div class="pg-section">
+<div class="pg-section" id="section-3">
   <h3 class="pg-section-title">Pill</h3>
   <div class="pg-section-row">
     <span class="sui-badge sui-badge-pill">12</span>
@@ -70,7 +71,7 @@ toc:
 </div>
 
 <!-- Sizes -->
-<div class="pg-section">
+<div class="pg-section" id="section-4">
   <h3 class="pg-section-title">Sizes</h3>
   <div class="pg-section-row">
     <span class="sui-badge sui-badge-primary sui-badge-sm">Small</span>
@@ -86,8 +87,9 @@ toc:
 </div>
 
 <!-- Positioned -->
-<div class="pg-section">
+<div class="pg-section" id="section-5">
   <h3 class="pg-section-title">Positioned</h3>
+  <p class="pg-section-desc">An empty dot carries meaning by colour only, so give it <code>role="img"</code> and an <code>aria-label</code> describing what it signals.</p>
   <div class="pg-section-row" style="gap:16px;">
     <span class="sui-badge-positioned">
       <button class="sui-btn">Inbox</button>
@@ -95,11 +97,15 @@ toc:
     </span>
     <span class="sui-badge-positioned">
       <button class="sui-btn">Notifications</button>
-      <span class="sui-badge sui-badge-dot sui-badge-danger"></span>
+      <span class="sui-badge sui-badge-dot sui-badge-danger" role="img" aria-label="Unread notifications"></span>
     </span>
     <span class="sui-badge-positioned">
       <button class="sui-btn">Messages</button>
-      <span class="sui-badge sui-badge-dot sui-badge-success"></span>
+      <span class="sui-badge sui-badge-dot sui-badge-success" role="img" aria-label="New messages"></span>
+    </span>
+    <span class="sui-badge-positioned">
+      <button class="sui-btn">Updates</button>
+      <span class="sui-badge sui-badge-dot sui-badge-info" role="img" aria-label="New updates"></span>
     </span>
   </div>
   <div class="pg-code-wrap">
@@ -111,12 +117,58 @@ toc:
 
 &lt;span class="sui-badge-positioned"&gt;
   &lt;button class="sui-btn"&gt;Notifications&lt;/button&gt;
-  &lt;span class="sui-badge sui-badge-dot sui-badge-danger"&gt;&lt;/span&gt;
+  &lt;span class="sui-badge sui-badge-dot sui-badge-danger" role="img" aria-label="Unread notifications"&gt;&lt;/span&gt;
 &lt;/span&gt;
 
 &lt;span class="sui-badge-positioned"&gt;
   &lt;button class="sui-btn"&gt;Messages&lt;/button&gt;
-  &lt;span class="sui-badge sui-badge-dot sui-badge-success"&gt;&lt;/span&gt;
+  &lt;span class="sui-badge sui-badge-dot sui-badge-success" role="img" aria-label="New messages"&gt;&lt;/span&gt;
+&lt;/span&gt;
+
+&lt;span class="sui-badge-positioned"&gt;
+  &lt;button class="sui-btn"&gt;Updates&lt;/button&gt;
+  &lt;span class="sui-badge sui-badge-dot sui-badge-info" role="img" aria-label="New updates"&gt;&lt;/span&gt;
 &lt;/span&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Status Dot -->
+<div class="pg-section" id="section-6">
+  <h3 class="pg-section-title">Status Dot</h3>
+  <p class="pg-section-desc">An inline dot for presence and state. Pair it with visible text inside <code>.sui-status</code>, or give a standalone dot <code>role="img"</code> and an <code>aria-label</code>. Add <code>sui-status-dot-pulse</code> for a live ping (hidden when reduced motion is on). Set <code>--sui-status-color</code> or <code>--sui-status-size</code> on the dot or any ancestor for custom values.</p>
+  <div class="pg-section-row" style="gap:24px;">
+    <span class="sui-status"><span class="sui-status-dot sui-status-dot-success"></span>Online</span>
+    <span class="sui-status"><span class="sui-status-dot sui-status-dot-warning"></span>Away</span>
+    <span class="sui-status"><span class="sui-status-dot sui-status-dot-danger"></span>Busy</span>
+    <span class="sui-status"><span class="sui-status-dot sui-status-dot-info"></span>Syncing</span>
+    <span class="sui-status"><span class="sui-status-dot sui-status-dot-primary"></span>Active</span>
+    <span class="sui-status"><span class="sui-status-dot"></span>Offline</span>
+  </div>
+  <div class="pg-section-row" style="gap:24px;">
+    <span class="sui-status"><span class="sui-status-dot sui-status-dot-success sui-status-dot-pulse"></span>Live</span>
+    <span class="sui-status"><span class="sui-status-dot sui-status-dot-danger sui-status-dot-pulse"></span>Recording</span>
+    <span class="sui-status"><span class="sui-status-dot sui-status-dot-success sui-status-dot-sm"></span>Small</span>
+    <span class="sui-status"><span class="sui-status-dot sui-status-dot-success sui-status-dot-lg"></span>Large</span>
+    <span class="sui-status-dot sui-status-dot-success" role="img" aria-label="Online"></span>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;span class="sui-status"&gt;&lt;span class="sui-status-dot sui-status-dot-success"&gt;&lt;/span&gt;Online&lt;/span&gt;
+&lt;span class="sui-status"&gt;&lt;span class="sui-status-dot sui-status-dot-warning"&gt;&lt;/span&gt;Away&lt;/span&gt;
+&lt;span class="sui-status"&gt;&lt;span class="sui-status-dot sui-status-dot-danger"&gt;&lt;/span&gt;Busy&lt;/span&gt;
+&lt;span class="sui-status"&gt;&lt;span class="sui-status-dot sui-status-dot-info"&gt;&lt;/span&gt;Syncing&lt;/span&gt;
+&lt;span class="sui-status"&gt;&lt;span class="sui-status-dot sui-status-dot-primary"&gt;&lt;/span&gt;Active&lt;/span&gt;
+&lt;span class="sui-status"&gt;&lt;span class="sui-status-dot"&gt;&lt;/span&gt;Offline&lt;/span&gt;
+
+&lt;!-- Pulse --&gt;
+&lt;span class="sui-status"&gt;&lt;span class="sui-status-dot sui-status-dot-success sui-status-dot-pulse"&gt;&lt;/span&gt;Live&lt;/span&gt;
+&lt;span class="sui-status"&gt;&lt;span class="sui-status-dot sui-status-dot-danger sui-status-dot-pulse"&gt;&lt;/span&gt;Recording&lt;/span&gt;
+
+&lt;!-- Sizes --&gt;
+&lt;span class="sui-status"&gt;&lt;span class="sui-status-dot sui-status-dot-success sui-status-dot-sm"&gt;&lt;/span&gt;Small&lt;/span&gt;
+&lt;span class="sui-status"&gt;&lt;span class="sui-status-dot sui-status-dot-success sui-status-dot-lg"&gt;&lt;/span&gt;Large&lt;/span&gt;
+
+&lt;!-- Standalone: needs an accessible name --&gt;
+&lt;span class="sui-status-dot sui-status-dot-success" role="img" aria-label="Online"&gt;&lt;/span&gt;</pre></div>
   </div>
 </div>

@@ -1,0 +1,91 @@
+---
+layout: component.njk
+title: Section
+description: Page-section spacing, section headers with an action, and an accent bar for headings.
+componentId: section
+hasControls: false
+requiresJs: false
+toc:
+  - Section
+  - Section Header
+  - Heading Accent
+---
+
+<!-- Section -->
+<div class="pg-section" id="section-1">
+  <h3 class="pg-section-title">Section</h3>
+  <p class="pg-section-desc"><code>.sui-section</code> adds vertical padding from <code>--sui-section-space</code> (96px, 64px below 768px); <code>.sui-section-sm</code> uses <code>--sui-section-space-sm</code> (64px, 40px below 768px). Only block padding is set, so pair it with <code>.sui-container</code> for the sides and <code>.sui-surface</code> when the section sits on your own background.</p>
+  <div class="pg-section-row" style="display:block;">
+    <section class="sui-section sui-surface sui-inset" style="border-radius:var(--sui-radius-lg);">
+      <div class="sui-container">
+        <h2>Section content</h2>
+        <p>Vertical rhythm comes from the section; the container handles width and side padding.</p>
+      </div>
+    </section>
+    <section class="sui-section-sm sui-surface sui-inset" style="border-radius:var(--sui-radius-lg);margin-top:24px;">
+      <div class="sui-container">
+        <h2>Small section</h2>
+        <p>Use the small size for denser pages or nested bands.</p>
+      </div>
+    </section>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;section class="sui-section sui-surface sui-inset" style="border-radius:var(--sui-radius-lg);"&gt;
+  &lt;div class="sui-container"&gt;
+    &lt;h2&gt;Section content&lt;/h2&gt;
+    &lt;p&gt;Vertical rhythm comes from the section; the container handles width and side padding.&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/section&gt;
+&lt;section class="sui-section-sm sui-surface sui-inset" style="border-radius:var(--sui-radius-lg);margin-top:24px;"&gt;
+  &lt;div class="sui-container"&gt;
+    &lt;h2&gt;Small section&lt;/h2&gt;
+    &lt;p&gt;Use the small size for denser pages or nested bands.&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/section&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Section Header -->
+<div class="pg-section" id="section-2">
+  <h3 class="pg-section-title">Section Header</h3>
+  <p class="pg-section-desc">A title, an optional subtitle and an optional action. The action sits at the inline end and wraps below the title on narrow screens; in RTL it moves to the left.</p>
+  <div class="pg-section-row" style="display:block;">
+    <div class="sui-section-header">
+      <div>
+        <h2 class="sui-section-title">Latest articles</h2>
+        <p class="sui-section-subtitle">Guides, release notes and design deep-dives from the team.</p>
+      </div>
+      <a class="sui-btn sui-btn-sm sui-section-action" href="#">View all</a>
+    </div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-section-header"&gt;
+  &lt;div&gt;
+    &lt;h2 class="sui-section-title"&gt;Latest articles&lt;/h2&gt;
+    &lt;p class="sui-section-subtitle"&gt;Guides, release notes and design deep-dives from the team.&lt;/p&gt;
+  &lt;/div&gt;
+  &lt;a class="sui-btn sui-btn-sm sui-section-action" href="#"&gt;View all&lt;/a&gt;
+&lt;/div&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Heading Accent -->
+<div class="pg-section" id="section-3">
+  <h3 class="pg-section-title">Heading Accent</h3>
+  <p class="pg-section-desc"><code>.sui-heading-accent</code> draws a bar at the inline start of any heading. Inline markup and multi-line titles work, and the bar spans every line. It uses <code>--sui-primary</code>; set <code>--sui-heading-accent</code> on the heading or any ancestor to change it, for example a lighter shade for more contrast in dark mode.</p>
+  <div class="pg-section-row" style="display:block;">
+    <h2 class="sui-heading-accent">Our <em>selected</em> work</h2>
+    <h3 class="sui-heading-accent" style="max-width:420px;margin-top:24px;">A longer heading that wraps onto a second line keeps the bar beside both lines</h3>
+    <h3 class="sui-heading-accent" style="--sui-heading-accent:var(--sui-success);margin-top:24px;">Custom accent colour</h3>
+    <h3 class="sui-heading-accent" dir="rtl" style="margin-top:24px;">Right-to-left heading</h3>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;h2 class="sui-heading-accent"&gt;Our &lt;em&gt;selected&lt;/em&gt; work&lt;/h2&gt;
+&lt;h3 class="sui-heading-accent" style="max-width:420px;margin-top:24px;"&gt;A longer heading that wraps onto a second line keeps the bar beside both lines&lt;/h3&gt;
+&lt;h3 class="sui-heading-accent" style="--sui-heading-accent:var(--sui-success);margin-top:24px;"&gt;Custom accent colour&lt;/h3&gt;
+&lt;h3 class="sui-heading-accent" dir="rtl" style="margin-top:24px;"&gt;Right-to-left heading&lt;/h3&gt;</pre></div>
+  </div>
+</div>

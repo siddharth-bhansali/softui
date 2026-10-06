@@ -12,6 +12,7 @@ toc:
   - Inset
   - Flat
   - Compact
+  - With Footer
 ---
 
 <!-- Default -->
@@ -444,6 +445,62 @@ toc:
     &lt;span class="sui-stat-change sui-stat-change-up"&gt;&amp;#9650; 12.5%&lt;/span&gt;
     &lt;span&gt;vs last month&lt;/span&gt;
   &lt;/div&gt;
+&lt;/div&gt;</pre></div>
+  </div>
+</div>
+
+<!-- With Footer -->
+<div class="pg-section" id="section-8">
+  <h3 class="pg-section-title">With Footer</h3>
+  <p class="pg-section-desc">Add a <code>.sui-stat-footer</code> recessed pill below the value. Set <code>--sui-fill</code> (0&ndash;100%) to tint part of it, and pick a colour with <code>sui-stat-footer-success</code>, <code>-danger</code>, <code>-warning</code> or <code>-info</code>. Keep the percentage in the visible text. The fill starts at the inline start, so it grows from the right in RTL.</p>
+  <div class="pg-section-row">
+    <div style="display:flex;flex-wrap:wrap;gap:16px;">
+      <div class="sui-stat">
+        <p class="sui-stat-label">Storage</p>
+        <div class="sui-stat-value">45 GB</div>
+        <div class="sui-stat-footer" style="--sui-fill:45%"><span>Quota used</span><strong>45%</strong></div>
+      </div>
+      <div class="sui-stat">
+        <p class="sui-stat-label">Monthly Goal</p>
+        <div class="sui-stat-value">$36,000</div>
+        <div class="sui-stat-footer sui-stat-footer-success" style="--sui-fill:72%"><span>Target reached</span><strong>72%</strong></div>
+      </div>
+      <div class="sui-stat">
+        <p class="sui-stat-label">API Requests</p>
+        <div class="sui-stat-value">9.0M</div>
+        <div class="sui-stat-footer sui-stat-footer-danger" style="--sui-fill:90%"><span>Rate limit</span><strong>90%</strong></div>
+      </div>
+      <div class="sui-stat">
+        <p class="sui-stat-label">Active Users</p>
+        <div class="sui-stat-value">1,284</div>
+        <div class="sui-stat-footer"><span>Updated</span><strong>2 min ago</strong></div>
+      </div>
+    </div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-stat"&gt;
+  &lt;p class="sui-stat-label"&gt;Storage&lt;/p&gt;
+  &lt;div class="sui-stat-value"&gt;45 GB&lt;/div&gt;
+  &lt;div class="sui-stat-footer" style="--sui-fill:45%"&gt;&lt;span&gt;Quota used&lt;/span&gt;&lt;strong&gt;45%&lt;/strong&gt;&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="sui-stat"&gt;
+  &lt;p class="sui-stat-label"&gt;Monthly Goal&lt;/p&gt;
+  &lt;div class="sui-stat-value"&gt;$36,000&lt;/div&gt;
+  &lt;div class="sui-stat-footer sui-stat-footer-success" style="--sui-fill:72%"&gt;&lt;span&gt;Target reached&lt;/span&gt;&lt;strong&gt;72%&lt;/strong&gt;&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="sui-stat"&gt;
+  &lt;p class="sui-stat-label"&gt;API Requests&lt;/p&gt;
+  &lt;div class="sui-stat-value"&gt;9.0M&lt;/div&gt;
+  &lt;div class="sui-stat-footer sui-stat-footer-danger" style="--sui-fill:90%"&gt;&lt;span&gt;Rate limit&lt;/span&gt;&lt;strong&gt;90%&lt;/strong&gt;&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="sui-stat"&gt;
+  &lt;p class="sui-stat-label"&gt;Active Users&lt;/p&gt;
+  &lt;div class="sui-stat-value"&gt;1,284&lt;/div&gt;
+  &lt;div class="sui-stat-footer"&gt;&lt;span&gt;Updated&lt;/span&gt;&lt;strong&gt;2 min ago&lt;/strong&gt;&lt;/div&gt;
 &lt;/div&gt;</pre></div>
   </div>
 </div>

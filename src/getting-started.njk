@@ -137,11 +137,12 @@ import 'softui-css/dist/softui.min.css';
         <div class="sui-card sui-flat" style="padding:16px;">Flat card</div>
       </div>
     </div>
-    <p>You have three options:</p>
+    <p>You have four options:</p>
     <ul style="margin:8px 0 16px 20px;line-height:1.8;">
       <li><strong>Whole page</strong> — let SoftUI style <code>&lt;body&gt;</code> (the default).</li>
       <li><strong>A section</strong> — wrap it in <code>.sui-surface</code> to paint the SoftUI background, text color, and font.</li>
       <li><strong>Individual components</strong> — add <code>.sui-flat</code> to drop the shadow and use a subtle border instead.</li>
+      <li><strong>A whole area on your background</strong> — add <code>.sui-flat-all</code> to a container to replace every neumorphic shadow inside (including toggles and sliders) with a subtle outline.</li>
     </ul>
     <div class="docs-getstarted-code">
 <pre><code>&lt;!-- A SoftUI section inside an existing page --&gt;
@@ -155,9 +156,13 @@ import 'softui-css/dist/softui.min.css';
 &lt;/section&gt;
 
 &lt;!-- A component on your own background --&gt;
-&lt;button class="sui-btn sui-flat"&gt;Save&lt;/button&gt;</code></pre>
+&lt;button class="sui-btn sui-flat"&gt;Save&lt;/button&gt;
+
+&lt;!-- Every component in an area on your own background --&gt;
+&lt;div class="sui-flat-all"&gt;...&lt;/div&gt;</code></pre>
     </div>
     <p style="margin-top:12px;font-size:14px;color:var(--sui-text-muted);"><code>data-theme</code> works on any element, so you can scope light or dark mode to a single section.</p>
+    <p style="margin-top:12px;font-size:14px;color:var(--sui-text-muted);"><strong>Dark theme on a darker page:</strong> on a background darker than <code>--sui-bg</code> (for example pure black), the light half of dark-mode shadows shows as a faint halo. Wrap the area in <code>.sui-surface</code> with <code>data-theme="dark"</code> so it gets the matching background, or use <code>.sui-flat-all</code>.</p>
   </section>
 
   <!-- Dark Mode -->
