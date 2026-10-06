@@ -1,0 +1,55 @@
+---
+layout: component.njk
+title: Links
+description: Underlined text links for prose, subtle and muted variants, and an arrow link for calls to action.
+componentId: links
+hasControls: false
+requiresJs: false
+toc:
+  - Inline Link
+  - Subtle & Muted
+  - Arrow Link
+---
+
+<!-- Inline Link -->
+<div class="pg-section" id="section-1">
+  <h3 class="pg-section-title">Inline Link</h3>
+  <p class="pg-section-desc">A bare <code>&lt;a&gt;</code> is coloured but not underlined, so it suits navigation and components. Inside running text, add <code>.sui-link</code> so links are not marked by colour alone (WCAG 1.4.1). Colours come from <code>--sui-primary-text</code>, which meets 4.5:1 in light and dark themes.</p>
+  <div class="pg-section-row" style="display:block;">
+    <p style="max-width:560px;">Read the <a class="sui-link" href="#">getting started guide</a> to install SoftUI, then browse the <a class="sui-link" href="#">component gallery</a> for ready-made patterns.</p>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;p style="max-width:560px;"&gt;Read the &lt;a class="sui-link" href="#"&gt;getting started guide&lt;/a&gt; to install SoftUI, then browse the &lt;a class="sui-link" href="#"&gt;component gallery&lt;/a&gt; for ready-made patterns.&lt;/p&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Subtle & Muted -->
+<div class="pg-section" id="section-2">
+  <h3 class="pg-section-title">Subtle & Muted</h3>
+  <p class="pg-section-desc"><code>.sui-link-subtle</code> keeps the surrounding text colour and turns primary on hover. <code>.sui-link-muted</code> uses the muted text colour, for footnotes and secondary text. Both keep the underline. Each class is standalone; you do not need <code>.sui-link</code> as well.</p>
+  <div class="pg-section-row" style="display:block;">
+    <p style="max-width:560px;">Questions? See the <a class="sui-link-subtle" href="#">FAQ</a> or <a class="sui-link-subtle" href="#">contact support</a>.</p>
+    <p style="max-width:560px;"><small>Prices exclude tax. <a class="sui-link-muted" href="#">Terms apply</a>.</small></p>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;p style="max-width:560px;"&gt;Questions? See the &lt;a class="sui-link-subtle" href="#"&gt;FAQ&lt;/a&gt; or &lt;a class="sui-link-subtle" href="#"&gt;contact support&lt;/a&gt;.&lt;/p&gt;
+&lt;p style="max-width:560px;"&gt;&lt;small&gt;Prices exclude tax. &lt;a class="sui-link-muted" href="#"&gt;Terms apply&lt;/a&gt;.&lt;/small&gt;&lt;/p&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Arrow Link -->
+<div class="pg-section" id="section-3">
+  <h3 class="pg-section-title">Arrow Link</h3>
+  <p class="pg-section-desc"><code>.sui-link-arrow</code> is a standalone call to action with a trailing arrow that nudges forward on hover. The underline appears on hover and never runs under the arrow. In RTL the arrow points left; with reduced motion the nudge is instant.</p>
+  <div class="pg-section-row" style="display:block;">
+    <a class="sui-link-arrow" href="#">Read more</a>
+    <div dir="rtl" style="margin-top:16px;"><a class="sui-link-arrow" href="#">Read more (RTL)</a></div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;a class="sui-link-arrow" href="#"&gt;Read more&lt;/a&gt;
+&lt;div dir="rtl" style="margin-top:16px;"&gt;&lt;a class="sui-link-arrow" href="#"&gt;Read more (RTL)&lt;/a&gt;&lt;/div&gt;</pre></div>
+  </div>
+</div>

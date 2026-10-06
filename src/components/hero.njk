@@ -14,6 +14,8 @@ toc:
   - Inset
   - Gradient
   - With Accent
+  - Start Aligned
+  - Split
 ---
 
 <!-- Default -->
@@ -215,6 +217,70 @@ toc:
   &lt;div class="sui-hero-actions"&gt;
     &lt;button class="sui-btn sui-btn-primary"&gt;Read the Docs&lt;/button&gt;
     &lt;button class="sui-btn sui-btn-outline"&gt;View on GitHub&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Start Aligned -->
+<div class="pg-section" id="section-9">
+  <h3 class="pg-section-title">Start Aligned</h3>
+  <p class="pg-section-desc">Add <code>sui-hero-start</code> to align the title, subtitle, actions and accent line to the inline start (the right in RTL). Use it instead of <code>sui-text-left</code>, which cannot override the hero's centring.</p>
+  <div class="pg-section-row" style="display:block;">
+    <div class="sui-hero sui-hero-start sui-hero-accent">
+      <h1 class="sui-hero-title">Release Notes</h1>
+      <p class="sui-hero-subtitle">Every change, fix and new component, version by version. Subscribe to get updates in your inbox.</p>
+      <div class="sui-hero-actions">
+        <button class="sui-btn sui-btn-primary">Subscribe</button>
+        <button class="sui-btn sui-btn-outline">View on GitHub</button>
+      </div>
+    </div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-hero sui-hero-start sui-hero-accent"&gt;
+  &lt;h1 class="sui-hero-title"&gt;Release Notes&lt;/h1&gt;
+  &lt;p class="sui-hero-subtitle"&gt;Every change, fix and new component, version by version. Subscribe to get updates in your inbox.&lt;/p&gt;
+  &lt;div class="sui-hero-actions"&gt;
+    &lt;button class="sui-btn sui-btn-primary"&gt;Subscribe&lt;/button&gt;
+    &lt;button class="sui-btn sui-btn-outline"&gt;View on GitHub&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Split -->
+<div class="pg-section" id="section-10">
+  <h3 class="pg-section-title">Split</h3>
+  <p class="pg-section-desc"><code>sui-hero-split</code> puts text and media side by side from 992px and stacks them (text first) below that. Wrap the title, subtitle and actions in <code>.sui-hero-content</code> (required) and put an <code>&lt;img&gt;</code> or <code>&lt;video&gt;</code> in <code>.sui-hero-media</code>; it is sized to the column and rounded. The demo uses a placeholder box. Add <code>sui-hero-media-start</code> to put the media first on wide screens. Columns follow the writing direction, so RTL needs no extra class. Inline SVGs in the media slot need a <code>viewBox</code> to scale.</p>
+  <div class="pg-section-row" style="display:block;">
+    <div class="sui-hero sui-hero-split">
+      <div class="sui-hero-content">
+        <h1 class="sui-hero-title">Design That Feels Real</h1>
+        <p class="sui-hero-subtitle">Soft shadows and tactile depth for dashboards, landing pages and apps. Drop in one stylesheet and start building.</p>
+        <div class="sui-hero-actions">
+          <button class="sui-btn sui-btn-primary">Get Started</button>
+          <button class="sui-btn sui-btn-outline">Live Demo</button>
+        </div>
+      </div>
+      <div class="sui-hero-media">
+        <div class="sui-raised" style="aspect-ratio:4/3;border-radius:var(--sui-radius-lg);display:flex;align-items:center;justify-content:center;color:var(--sui-text-muted);font-weight:600;">Image or video</div>
+      </div>
+    </div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-hero sui-hero-split"&gt;
+  &lt;div class="sui-hero-content"&gt;
+    &lt;h1 class="sui-hero-title"&gt;Design That Feels Real&lt;/h1&gt;
+    &lt;p class="sui-hero-subtitle"&gt;Soft shadows and tactile depth for dashboards, landing pages and apps. Drop in one stylesheet and start building.&lt;/p&gt;
+    &lt;div class="sui-hero-actions"&gt;
+      &lt;button class="sui-btn sui-btn-primary"&gt;Get Started&lt;/button&gt;
+      &lt;button class="sui-btn sui-btn-outline"&gt;Live Demo&lt;/button&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="sui-hero-media"&gt;
+    &lt;div class="sui-raised" style="aspect-ratio:4/3;border-radius:var(--sui-radius-lg);display:flex;align-items:center;justify-content:center;color:var(--sui-text-muted);font-weight:600;"&gt;Image or video&lt;/div&gt;
   &lt;/div&gt;
 &lt;/div&gt;</pre></div>
   </div>

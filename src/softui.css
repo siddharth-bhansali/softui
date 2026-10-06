@@ -49,6 +49,11 @@
   --sui-radius-lg: 24px;
   --sui-radius-full: 9999px;
 
+  --sui-section-space: 96px;
+  --sui-section-space-sm: 64px;
+  --sui-section-space-xs: 40px;
+  --sui-section-header-gap: 40px;
+
   --sui-font: 'Plus Jakarta Sans', 'Plus Jakarta Sans Variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
   --sui-font-mono: 'JetBrains Mono', 'JetBrains Mono Variable', 'Fira Code', 'Cascadia Code', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
 
@@ -1143,8 +1148,11 @@ a.sui-btn-warning:visited {
 .sui-avatar-sm { width: 32px; height: 32px; font-size: 13px; }
 .sui-avatar-lg { width: 56px; height: 56px; font-size: 20px; }
 .sui-avatar-xl { width: 72px; height: 72px; font-size: 26px; }
+.sui-avatar-2xl { width: 120px; height: 120px; font-size: 42px; box-shadow: var(--sui-shadow-raised-lg); }
+.sui-avatar-3xl { width: 160px; height: 160px; font-size: 56px; box-shadow: var(--sui-shadow-raised-lg); }
 
 .sui-avatar-square { border-radius: var(--sui-radius-sm); }
+.sui-avatar-2xl.sui-avatar-square, .sui-avatar-3xl.sui-avatar-square { border-radius: var(--sui-radius); }
 
 .sui-avatar img {
   width: 100%;
@@ -2713,7 +2721,7 @@ a.sui-btn-warning:visited {
 .sui-badge-positioned .sui-badge {
   position: absolute;
   top: -6px;
-  right: -6px;
+  inset-inline-end: -6px;
   font-size: 10px;
   min-width: 18px;
   height: 18px;
@@ -2725,12 +2733,18 @@ a.sui-btn-warning:visited {
   line-height: 1;
 }
 
-.sui-badge-dot {
+/* Listed with the positioned selector (0,2,0) so the dot keeps its size
+   inside .sui-badge-positioned instead of becoming an 18px pill */
+.sui-badge-dot,
+.sui-badge-positioned .sui-badge-dot {
   position: absolute;
   top: -3px;
-  right: -3px;
+  inset-inline-end: -3px;
   width: 10px;
   height: 10px;
+  min-width: 0;
+  padding: 0;
+  font-size: 0;
   border-radius: 50%;
   border: 2px solid var(--sui-bg);
 }
@@ -2739,6 +2753,7 @@ a.sui-btn-warning:visited {
 .sui-badge-dot.sui-badge-success { background: var(--sui-success); }
 .sui-badge-dot.sui-badge-danger { background: var(--sui-danger); }
 .sui-badge-dot.sui-badge-warning { background: var(--sui-warning); }
+.sui-badge-dot.sui-badge-info { background: var(--sui-info); }
 
 /* ===========================================
    Badges — Outline Variants
@@ -3515,6 +3530,8 @@ select.sui-datatable-filter {
 .sui-avatar-sm.sui-avatar-status::after { width: 9px; height: 9px; border-width: 2px; bottom: 0; right: 0; }
 .sui-avatar-lg.sui-avatar-status::after { width: 14px; height: 14px; bottom: 2px; right: 2px; }
 .sui-avatar-xl.sui-avatar-status::after { width: 16px; height: 16px; bottom: 2px; right: 2px; }
+.sui-avatar-2xl.sui-avatar-status::after { width: 22px; height: 22px; border-width: 3px; bottom: 6px; right: 6px; }
+.sui-avatar-3xl.sui-avatar-status::after { width: 28px; height: 28px; border-width: 4px; bottom: 10px; right: 10px; }
 
 /* ===========================================
    Avatars — Inset
@@ -13211,6 +13228,288 @@ select.sui-datatable-filter {
 
 
 /* ===========================================
+   Flat Scope
+   Removes neumorphic shadows inside a container, including children and
+   pseudo-elements (toggle knobs, range thumbs), for use on your own
+   background. A hairline ring replaces depth so controls stay visible.
+   The composites are redeclared because they resolve where they are
+   declared. Coloured glows and overlay elevation (menus, modals) stay.
+   =========================================== */
+.sui-flat-all,
+.sui-flat-all [data-theme] {
+  --sui-shadow-light: transparent;
+  --sui-shadow-dark: transparent;
+  --sui-shadow-raised: 0 0 0 1px var(--sui-bg-dark);
+  --sui-shadow-raised-sm: 0 0 0 1px var(--sui-bg-dark);
+  --sui-shadow-raised-lg: 0 0 0 1px var(--sui-bg-dark);
+  --sui-shadow-inset: inset 0 0 0 1px var(--sui-bg-dark);
+  --sui-shadow-inset-sm: inset 0 0 0 1px var(--sui-bg-dark);
+}
+/* --sui-shadow-dark doubles as the connected-OTP divider colour */
+.sui-flat-all .sui-otp-connected .sui-otp-slot + .sui-otp-slot::before { background: var(--sui-bg-dark); }
+
+/* ===========================================
+   Typography — Display Headings (fluid)
+   =========================================== */
+.sui-display-1 { font-size: clamp(2.5rem, 1.5rem + 4vw, 4.5rem); font-weight: 800; letter-spacing: -0.03em; line-height: 1.1; color: var(--sui-text); }
+.sui-display-2 { font-size: clamp(2.25rem, 1.375rem + 3.5vw, 3.75rem); font-weight: 800; letter-spacing: -0.03em; line-height: 1.1; color: var(--sui-text); }
+.sui-display-3 { font-size: clamp(2rem, 1.25rem + 3vw, 3rem); font-weight: 700; letter-spacing: -0.025em; line-height: 1.15; color: var(--sui-text); }
+
+/* ===========================================
+   Links
+   Bare <a> is coloured but not underlined; use .sui-link for links inside
+   prose so they are not identified by colour alone (WCAG 1.4.1).
+   =========================================== */
+.sui-link,
+.sui-link-subtle,
+.sui-link-muted {
+  text-decoration: underline;
+  text-decoration-color: color-mix(in srgb, currentColor 40%, transparent);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.2em;
+}
+.sui-link { color: var(--sui-primary-text); cursor: pointer; }
+.sui-link:hover { color: var(--sui-primary-text-hover); text-decoration-color: currentColor; text-decoration-thickness: 2px; }
+.sui-link-subtle { color: inherit; }
+.sui-link-subtle:hover { color: var(--sui-primary-text-hover); text-decoration-color: currentColor; }
+.sui-link-muted { color: var(--sui-text-muted); }
+.sui-link-muted:hover { color: var(--sui-text); text-decoration-color: currentColor; }
+.sui-link-arrow { color: var(--sui-primary-text); font-weight: 600; text-decoration: none; text-underline-offset: 0.2em; }
+.sui-link-arrow::after { content: "\2192"; display: inline-block; margin-inline-start: 0.35em; transition: transform var(--sui-transition-base) ease; }
+.sui-link-arrow:hover { color: var(--sui-primary-text-hover); text-decoration: underline; }
+.sui-link-arrow:hover::after { transform: translateX(3px); }
+[dir="rtl"] .sui-link-arrow::after { content: "\2190"; }
+[dir="rtl"] .sui-link-arrow:hover::after { transform: translateX(-3px); }
+
+/* ===========================================
+   Layout — Sections
+   =========================================== */
+.sui-section    { padding-block: var(--sui-section-space); }
+.sui-section-sm { padding-block: var(--sui-section-space-sm); }
+.sui-section-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px 24px;
+  margin-block-end: var(--sui-section-header-gap);
+}
+.sui-section-title { font-size: 1.75rem; font-weight: 700; }
+.sui-section-subtitle { margin-block: 6px 0; color: var(--sui-text-muted); max-width: 60ch; }
+.sui-section-action { flex-shrink: 0; margin-inline-start: auto; }
+.sui-heading-accent { position: relative; padding-inline-start: 16px; }
+.sui-heading-accent::before {
+  content: '';
+  position: absolute;
+  inset-inline-start: 0;
+  inset-block: 0.15em;
+  inline-size: 4px;
+  border-radius: var(--sui-radius-full);
+  background: var(--sui-heading-accent, var(--sui-primary));
+}
+@media (max-width: 768px) {
+  .sui-section    { padding-block: var(--sui-section-space-sm); }
+  .sui-section-sm { padding-block: var(--sui-section-space-xs); }
+  .sui-section-header { margin-block-end: 28px; }
+  .sui-section-title { font-size: 1.5rem; }
+}
+
+/* ===========================================
+   Hero — Start-aligned and Split
+   (.sui-hero.* raises specificity: these rules sit before the Hero block)
+   =========================================== */
+.sui-hero.sui-hero-start { align-items: flex-start; text-align: start; }
+.sui-hero-start .sui-hero-actions { justify-content: flex-start; }
+
+.sui-hero.sui-hero-split {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 40px;
+  align-items: center;
+  text-align: start;
+}
+.sui-hero-content { display: flex; flex-direction: column; align-items: flex-start; min-width: 0; }
+.sui-hero-split .sui-hero-actions { justify-content: flex-start; }
+.sui-hero-media { min-width: 0; }
+.sui-hero-media > img,
+.sui-hero-media > video { display: block; max-width: 100%; height: auto; border-radius: var(--sui-radius-lg); }
+@media (min-width: 992px) {
+  .sui-hero.sui-hero-split { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 56px; }
+  .sui-hero-split.sui-hero-media-start .sui-hero-media { order: -1; }
+}
+
+/* Accent line follows the alignment */
+.sui-hero-start.sui-hero-accent .sui-hero-title::after,
+.sui-hero-split.sui-hero-accent .sui-hero-title::after { left: auto; inset-inline-start: 0; transform: none; }
+
+/* ===========================================
+   Stat Card — Footer (recessed pill, optional fill)
+   =========================================== */
+.sui-stat-footer {
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-top: 12px;
+  padding: 6px 12px;
+  min-height: 28px;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1.3;
+  color: var(--sui-text); /* not --sui-text-muted: muted fails AA on the tint */
+  background: var(--sui-bg);
+  border-radius: var(--sui-radius-full);
+  overflow: hidden;
+}
+.sui-stat-footer::before {
+  content: '';
+  position: absolute;
+  inset-block: 0;
+  inset-inline-start: 0;
+  width: var(--sui-fill, 0%);
+  max-width: 100%;
+  background: var(--sui-stat-footer-tint, color-mix(in srgb, var(--sui-primary) 14%, transparent));
+  border-radius: inherit;
+  z-index: -1;
+  transition: width 0.4s ease;
+  pointer-events: none;
+}
+.sui-stat-footer::after { /* inset shadow above the tint so the recess stays crisp */
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  box-shadow: var(--sui-shadow-inset-sm);
+  pointer-events: none;
+}
+.sui-stat-footer > * { min-width: 0; }
+.sui-stat-footer strong,
+.sui-stat-footer b { font-weight: 700; }
+.sui-stat-footer-primary { --sui-stat-footer-tint: color-mix(in srgb, var(--sui-primary) 14%, transparent); }
+.sui-stat-footer-success { --sui-stat-footer-tint: color-mix(in srgb, var(--sui-success) 18%, transparent); }
+.sui-stat-footer-danger  { --sui-stat-footer-tint: color-mix(in srgb, var(--sui-danger) 16%, transparent); }
+.sui-stat-footer-warning { --sui-stat-footer-tint: color-mix(in srgb, var(--sui-warning) 20%, transparent); }
+.sui-stat-footer-info    { --sui-stat-footer-tint: color-mix(in srgb, var(--sui-info) 18%, transparent); }
+.sui-stat-compact .sui-stat-footer { margin-top: 8px; padding: 4px 10px; min-height: 24px; font-size: 11px; }
+
+/* ===========================================
+   Status Dot (inline)
+   =========================================== */
+.sui-status-dot {
+  position: relative;
+  display: inline-block;
+  flex-shrink: 0;
+  vertical-align: middle;
+  width: var(--sui-status-size, 8px);
+  height: var(--sui-status-size, 8px);
+  border-radius: 50%;
+  background: var(--sui-status-color, var(--sui-text-light));
+}
+.sui-status-dot-primary { --sui-status-color: var(--sui-primary); }
+.sui-status-dot-success { --sui-status-color: var(--sui-success); }
+.sui-status-dot-warning { --sui-status-color: var(--sui-warning); }
+.sui-status-dot-danger  { --sui-status-color: var(--sui-danger); }
+.sui-status-dot-info    { --sui-status-color: var(--sui-info); }
+.sui-status-dot-sm { --sui-status-size: 6px; }
+.sui-status-dot-lg { --sui-status-size: 12px; }
+.sui-status-dot-pulse::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: var(--sui-status-color, var(--sui-text-light));
+  animation: sui-status-ping 1.5s cubic-bezier(0, 0, 0.2, 1) infinite;
+  pointer-events: none;
+}
+@keyframes sui-status-ping {
+  75%, 100% { transform: scale(2.5); opacity: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .sui-status-dot-pulse::after { animation: none; display: none; }
+}
+.sui-status { display: inline-flex; align-items: center; gap: 8px; font-size: 13px; color: var(--sui-text); }
+
+/* ===========================================
+   Footer
+   =========================================== */
+.sui-footer {
+  padding-block: 32px;
+  padding-inline: 24px;
+  color: var(--sui-text-muted);
+  font-size: 0.875rem;
+  background: var(--sui-bg);
+}
+.sui-footer-inner {
+  max-width: 1100px;
+  margin-inline: auto;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 20px;
+}
+.sui-footer-brand { display: flex; align-items: center; gap: 12px; font-weight: 800; font-size: 1.125rem; color: var(--sui-text); text-decoration: none; }
+.sui-footer-tagline { font-size: 0.8125rem; font-weight: 400; color: var(--sui-text-muted); }
+.sui-footer-links { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; list-style: none; margin: 0; padding: 0; }
+.sui-footer-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding-block: 8px;
+  padding-inline: 16px;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--sui-text-muted);
+  text-decoration: none;
+  border-radius: var(--sui-radius-xs);
+  transition: color var(--sui-transition-fast) ease, box-shadow var(--sui-transition-fast) ease;
+}
+.sui-footer-link:hover { color: var(--sui-text); }
+.sui-footer-links-raised .sui-footer-link { background: var(--sui-bg); box-shadow: var(--sui-shadow-raised-sm); }
+.sui-footer-links-raised .sui-footer-link:hover { box-shadow: var(--sui-shadow-raised); }
+.sui-footer-copy { font-size: 0.8125rem; color: var(--sui-text-muted); }
+
+.sui-footer-split .sui-footer-inner { flex-direction: row; justify-content: space-between; text-align: start; }
+
+.sui-footer-columns .sui-footer-inner {
+  display: grid;
+  grid-template-columns: minmax(200px, 1.5fr) repeat(auto-fit, minmax(140px, 1fr));
+  align-items: start;
+  justify-items: stretch;
+  text-align: start;
+  gap: 32px;
+}
+.sui-footer-col { display: flex; flex-direction: column; align-items: flex-start; gap: 8px; }
+.sui-footer-heading { font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--sui-text); margin-block: 0 4px; }
+.sui-footer-columns .sui-footer-link { padding: 0; }
+.sui-footer-columns .sui-footer-links { gap: 8px 16px; }
+.sui-footer-bottom {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 12px;
+  padding-block-start: 20px;
+  border-block-start: 1px solid var(--sui-bg-dark);
+}
+
+.sui-footer-bordered { border-block-start: 1px solid var(--sui-bg-dark); }
+.sui-footer-raised { box-shadow: var(--sui-shadow-raised); }
+.sui-footer-inset { box-shadow: var(--sui-shadow-inset); }
+
+@media (max-width: 600px) {
+  .sui-footer { padding-inline: 16px; }
+  .sui-footer-split .sui-footer-inner { flex-direction: column; text-align: center; }
+  .sui-footer-columns .sui-footer-inner { grid-template-columns: 1fr 1fr; }
+  .sui-footer-columns .sui-footer-brand-col { grid-column: 1 / -1; }
+}
+
+
+/* ===========================================
    RTL (Right-to-Left) Support
    =========================================== */
 
@@ -13249,6 +13548,11 @@ select.sui-datatable-filter {
 
 /* Avatar status dot */
 [dir="rtl"] .sui-avatar-status::after { right: auto; left: 1px; }
+[dir="rtl"] .sui-avatar-sm.sui-avatar-status::after { left: 0; }
+[dir="rtl"] .sui-avatar-lg.sui-avatar-status::after,
+[dir="rtl"] .sui-avatar-xl.sui-avatar-status::after { left: 2px; }
+[dir="rtl"] .sui-avatar-2xl.sui-avatar-status::after { left: 6px; }
+[dir="rtl"] .sui-avatar-3xl.sui-avatar-status::after { left: 10px; }
 
 /* Select arrow */
 [dir="rtl"] .sui-select { background-position: left 16px center; padding-right: 16px; padding-left: 40px; }
@@ -13581,7 +13885,7 @@ button.sui-list-group-item:hover {
 }
 
 .sui-hero-title {
-  font-size: 3rem;
+  font-size: clamp(2rem, 0.333rem + 7.111vw, 3rem); /* 32px at 375px -> 48px at 600px */
   font-weight: 800;
   color: var(--sui-text);
   margin: 0 0 12px;
@@ -13623,7 +13927,7 @@ button.sui-list-group-item:hover {
 }
 
 .sui-hero-lg .sui-hero-title {
-  font-size: 4rem;
+  font-size: clamp(2.5rem, 10.667vw, 4rem); /* 40px at 375px -> 64px at 600px */
 }
 
 .sui-hero-lg .sui-hero-subtitle {
@@ -13678,8 +13982,6 @@ button.sui-list-group-item:hover {
 
 /* Responsive */
 @media (max-width: 600px) {
-  .sui-hero-title { font-size: 2rem; }
-  .sui-hero-lg .sui-hero-title { font-size: 2.5rem; }
   .sui-hero { padding: 40px 16px; }
   .sui-hero-lg { padding: 56px 16px; }
 }
