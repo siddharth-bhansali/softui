@@ -34,17 +34,29 @@
       debounceTimer = setTimeout(updatePreview, 300);
     });
 
+    // Tab indents; Esc then Tab (or Shift+Tab) moves focus out, so the
+    // editor is never a keyboard trap (WCAG 2.1.2).
+    var tabEscape = false;
     editor.addEventListener('keydown', function (e) {
-      if (e.key === 'Tab') {
-        e.preventDefault();
-        var start = this.selectionStart;
-        var end = this.selectionEnd;
-        this.value = this.value.substring(0, start) + '  ' + this.value.substring(end);
-        this.selectionStart = this.selectionEnd = start + 2;
-        clearTimeout(debounceTimer);
-        debounceTimer = setTimeout(updatePreview, 300);
+      if (e.isComposing) return;
+      if (e.key === 'Escape') { tabEscape = true; return; }
+      if (e.key !== 'Tab') { tabEscape = false; return; }
+      if (tabEscape || e.shiftKey || e.ctrlKey || e.altKey || e.metaKey) {
+        tabEscape = false;
+        return;
       }
+      e.preventDefault();
+      var start = this.selectionStart;
+      var inserted = false;
+      try { inserted = document.execCommand('insertText', false, '  '); } catch (_) {}
+      if (!inserted) {
+        this.value = this.value.substring(0, start) + '  ' + this.value.substring(this.selectionEnd);
+        this.selectionStart = this.selectionEnd = start + 2;
+      }
+      clearTimeout(debounceTimer);
+      debounceTimer = setTimeout(updatePreview, 300);
     });
+    editor.addEventListener('blur', function () { tabEscape = false; });
 
     if (searchInput) {
       searchInput.addEventListener('input', function () {
@@ -92,7 +104,7 @@
       '<meta name="viewport" content="width=device-width, initial-scale=1.0">' +
       '<link rel="preconnect" href="https://fonts.googleapis.com">' +
       '<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>' +
-      '<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">' +
+      '<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">' +
       '<link rel="stylesheet" href="/softui.css">' +
       '<style>body{margin:0;padding:16px;font-family:var(--sui-font);background:var(--sui-bg);color:var(--sui-text);}</style>' +
       '</head>' +

@@ -60,13 +60,15 @@ permalink: /playground/
         <span id="pg-theme-label">Light Preview</span>
       </button>
       <div class="pg-toolbar-spacer"></div>
+      <span class="pg-editor-hint" aria-hidden="true"><kbd>Esc</kbd> then <kbd>Tab</kbd> to leave editor</span>
       <button class="pg-toolbar-btn" id="pg-share-btn" onclick="pgShare()">Share</button>
     </div>
 
     <!-- Split: Editor + Preview -->
     <div class="pg-panels">
       <div class="pg-editor-wrap">
-        <textarea id="pg-editor" class="pg-editor" spellcheck="false" placeholder="Write your HTML here..."></textarea>
+        <textarea id="pg-editor" class="pg-editor" spellcheck="false" placeholder="Write your HTML here..." aria-label="HTML editor" aria-describedby="pg-editor-hint"></textarea>
+        <p id="pg-editor-hint" class="sui-sr-only">Tab inserts two spaces. Press Escape, then Tab, to move focus out of the editor. Shift+Tab moves focus back.</p>
       </div>
       <div class="pg-resizer" id="pg-resizer"></div>
       <div class="pg-preview-wrap">
@@ -74,7 +76,7 @@ permalink: /playground/
           <span class="pg-preview-dot"></span>
           Preview
         </div>
-        <iframe id="pg-preview" class="pg-preview-iframe" sandbox="allow-scripts allow-same-origin" title="Live preview"></iframe>
+        <iframe id="pg-preview" class="pg-preview-iframe" sandbox="allow-scripts allow-modals allow-popups" allow="clipboard-write" title="Live preview"></iframe>
       </div>
     </div>
 

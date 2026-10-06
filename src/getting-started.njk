@@ -32,17 +32,23 @@ bun add softui-css</code></pre>
 <pre><code>&lt;link rel="stylesheet" href="https://unpkg.com/softui-css/dist/softui.min.css"&gt;
 &lt;script src="https://unpkg.com/softui-css/dist/softui.min.js"&gt;&lt;/script&gt;</code></pre>
     </div>
+    <p style="margin-top:16px;">Optional: load the default fonts (Plus Jakarta Sans and JetBrains Mono). SoftUI doesn't bundle fonts, so without these links it falls back to system fonts. See <a href="/theming/#typography" style="color:var(--sui-primary-text);font-weight:600;">Theming → Typography</a> for self-hosting with Fontsource.</p>
+    <div class="docs-getstarted-code">
+<pre><code>&lt;link rel="preconnect" href="https://fonts.googleapis.com"&gt;
+&lt;link rel="preconnect" href="https://fonts.gstatic.com" crossorigin&gt;
+&lt;link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet"&gt;</code></pre>
+    </div>
   </section>
 
   <!-- JavaScript -->
   <section class="docs-getstarted-section" id="javascript">
     <h2>JavaScript</h2>
-    <p>Most components are pure CSS. Some interactive components require <code>softui.js</code> — a lightweight, dependency-free script (~4KB min).</p>
+    <p>Most components are pure CSS. Some interactive components require <code>softui.js</code> — a dependency-free script{% if bundleSize.js %} (~{{ bundleSize.js.min }} minified, ~{{ bundleSize.js.gzip }} gzipped){% endif %}. Components set themselves up as soon as the DOM is ready; no setup code is needed.</p>
     <p>Include it at the end of your <code>&lt;body&gt;</code>:</p>
     <div class="docs-getstarted-code">
 <pre><code>&lt;script src="https://unpkg.com/softui-css/dist/softui.min.js"&gt;&lt;/script&gt;</code></pre>
     </div>
-    <p style="margin-top:12px;font-size:14px;color:var(--sui-text-muted);">Components that need JS: Accordion, Calendar, Carousel, Chart, Collapsible, Color Picker, Combobox, Command, Context Menu, Data Table, Dock, Drag &amp; Drop, Dropdown, File Upload, Input OTP, Menubar, Modal, Popover, Rating, Resizable, Sheet, Sidebar, Slider, Swap, Tabs, Toggle Group, and form enhancements (Password Toggle, Number Input, Tags Input).</p>
+    <p style="margin-top:12px;font-size:14px;color:var(--sui-text-muted);">Components that need JS: Accordion, Calendar, Carousel, Chart, Collapsible, Color Picker, Combobox, Command, Context Menu, Copy Button, Countdown, Data Table, Diff, Dock (magnify effect), Drag &amp; Drop (incl. Kanban), Drawer, Dropdown, Editable Text, File Upload, Image Lightbox, Input OTP, Menubar, Modal, Navigation Menu, Popover, Pricing (selectable), Radial Progress, Rating, Resizable, Scrollspy, Segmented Control, Sheet, Sidebar, Slider, Speed Dial, Styled Select, Swap, Tabs, Text Rotate, Time Picker, Toast, Toggle Group, Tour, Tree View (checkbox propagation), Typewriter, and form enhancements (Password Toggle, Number Input, Tags Input).</p>
   </section>
 
   <!-- Frameworks -->
@@ -101,6 +107,9 @@ import 'softui-css/dist/softui.min.css';
 &lt;head&gt;
   &lt;meta charset="UTF-8"&gt;
   &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+  &lt;link rel="preconnect" href="https://fonts.googleapis.com"&gt;
+  &lt;link rel="preconnect" href="https://fonts.gstatic.com" crossorigin&gt;
+  &lt;link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet"&gt;
   &lt;link rel="stylesheet" href="https://unpkg.com/softui-css/dist/softui.min.css"&gt;
 &lt;/head&gt;
 &lt;body class="sui-d-flex sui-justify-center sui-align-center sui-min-vh-100"&gt;
@@ -163,6 +172,14 @@ import 'softui-css/dist/softui.min.css';
     </div>
     <p style="margin-top:12px;font-size:14px;color:var(--sui-text-muted);"><code>data-theme</code> works on any element, so you can scope light or dark mode to a single section.</p>
     <p style="margin-top:12px;font-size:14px;color:var(--sui-text-muted);"><strong>Dark theme on a darker page:</strong> on a background darker than <code>--sui-bg</code> (for example pure black), the light half of dark-mode shadows shows as a faint halo. Wrap the area in <code>.sui-surface</code> with <code>data-theme="dark"</code> so it gets the matching background, or use <code>.sui-flat-all</code>.</p>
+    <p style="margin-top:16px;"><strong>Embed build</strong> (v1.16.0 and later). The standard stylesheet also sets page-wide base styles: a <code>*</code> margin/padding reset, <code>&lt;body&gt;</code> background and font, heading, paragraph, link and <code>code</code> styles, a thin scrollbar, and global reduced-motion and print rules. If you're adding SoftUI to a site that has its own styles, use <code>softui-embed.min.css</code> instead. It has the same components and tokens, but those base styles only apply inside SoftUI elements (anything with a <code>sui-</code> class), so the rest of your page is left alone. That includes utility classes: an element with, say, <code>sui-mt-3</code> or <code>sui-text-center</code> counts as a SoftUI element, so it and its children get SoftUI's reset and typography.</p>
+    <div class="docs-getstarted-code">
+<pre><code>&lt;link rel="stylesheet" href="https://unpkg.com/softui-css/dist/softui-embed.min.css"&gt;
+
+/* or with a bundler */
+import 'softui-css/dist/softui-embed.min.css';</code></pre>
+    </div>
+    <p style="margin-top:12px;font-size:14px;color:var(--sui-text-muted);">Components still need the SoftUI background for their shadows, so combine the embed build with <code>.sui-surface</code> or <code>.sui-flat</code> as shown above. Use one stylesheet or the other, not both.</p>
   </section>
 
   <!-- Dark Mode -->
@@ -199,7 +216,7 @@ import 'softui-css/dist/softui.min.css';
                        -6px -6px 12px rgba(255,255,255,0.05);
 }</code></pre>
     </div>
-    <p style="margin-top:12px;">See the <a href="/theming/" style="color:var(--sui-primary);font-weight:600;">Theming Guide</a> for the full list of variables — colors, shadows, radius, fonts, transitions, and dark mode.</p>
+    <p style="margin-top:12px;">See the <a href="/theming/" style="color:var(--sui-primary-text);font-weight:600;">Theming Guide</a> for the full list of variables — colors, shadows, radius, fonts, transitions, and dark mode.</p>
   </section>
 
   <!-- Browser Support -->
@@ -234,7 +251,7 @@ Not Supported:
 <pre><code>&lt;html lang="ar" dir="rtl"&gt;</code></pre>
     </div>
     <p style="margin-top:16px;font-size:14px;color:var(--sui-text-muted);">Utility classes (<code>sui-ml-*</code>, <code>sui-mr-*</code>, <code>sui-text-left/right</code>, <code>sui-offset-*</code>) use CSS logical properties and adapt automatically. Components like sheets, carousels, sidebars, breadcrumbs, dropdowns, and tooltips include <code>[dir="rtl"]</code> overrides to flip their positioning.</p>
-    <p style="margin-top:12px;"><a href="/rtl-demo/" style="color:var(--sui-primary);font-weight:600;">See the full RTL demo &rarr;</a></p>
+    <p style="margin-top:12px;"><a href="/rtl-demo/" style="color:var(--sui-primary-text);font-weight:600;">See the full RTL demo &rarr;</a></p>
     <div dir="rtl" lang="ar" style="margin-top:20px;">
       <div class="sui-card sui-raised" style="padding:20px;max-width:400px;">
         <div style="display:flex;align-items:center;gap:12px;margin-bottom:16px;">
