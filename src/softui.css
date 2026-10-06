@@ -1,6 +1,6 @@
 /*! SoftUI v1.15.0 — A Neumorphic CSS Library */
 
-/* ====================================
+/* ===========================================
    CSS Variables / Tokens
    =========================================== */
 :root {
@@ -57,7 +57,7 @@
   --sui-space-5: 48px;
   --sui-space-6: 64px;
   --sui-space-7: 96px;
-=======
+
   --sui-section-space: 96px;
   --sui-section-space-sm: 64px;
   --sui-section-space-xs: 40px;
