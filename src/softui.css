@@ -9479,7 +9479,12 @@ select.sui-datatable-filter:focus-visible {
   }
 
   .sui-timeline-alternate .sui-timeline-content,
-  .sui-timeline-alternate .sui-timeline-item:nth-child(even) .sui-timeline-content,
+  .sui-timeline-alternate .sui-timeline-item:nth-child(even) .sui-timeline-content {
+    text-align: start;
+    padding-inline: 0;
+  }
+
+  /* Separate rule: :has() in a selector list would drop the whole rule in browsers without :has() */
   .sui-timeline-alternate .sui-timeline-item:nth-child(even):not(:has(.sui-timeline-opposite)) .sui-timeline-content {
     text-align: start;
     padding-inline: 0;

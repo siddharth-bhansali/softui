@@ -4575,13 +4575,17 @@ const SoftUI = (() => {
   document.addEventListener('mouseenter', function(e) {
     if (!e.target.closest) return;
     const dial = e.target.closest('.sui-speed-dial-hover');
-    if (dial) dial.classList.add('open');
+    if (!dial) return;
+    dial.classList.add('open');
+    const trigger = dial.querySelector('.sui-speed-dial-trigger');
+    if (trigger) trigger.setAttribute('aria-expanded', 'true');
   }, true);
 
   document.addEventListener('mouseleave', function(e) {
-    if (!e.target.closest) return;
-    const dial = e.target.closest('.sui-speed-dial-hover');
-    if (dial) dial.classList.remove('open');
+    // Only react when the pointer leaves the dial itself, not its children
+    if (!e.target.matches || !e.target.matches('.sui-speed-dial-hover')) return;
+    // Refocus the trigger so focus isn't stranded on a now-hidden action
+    closeSpeedDial(e.target, true);
   }, true);
 
   // =========================================
