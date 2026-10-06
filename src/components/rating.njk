@@ -15,6 +15,7 @@ toc:
   - Custom Icons
   - Raised
   - Inset
+  - Reference
 ---
 
 {% set starSvg %}<svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>{% endset %}
@@ -25,7 +26,6 @@ toc:
 <!-- Default -->
 <div class="pg-section" id="section-1">
   <h3 class="pg-section-title">Default</h3>
-  <p class="pg-section-desc">Keyboard: interactive ratings are focusable sliders (<code>role="slider"</code> with <code>aria-valuenow</code>). <kbd>&rarr;</kbd>/<kbd>&uarr;</kbd> increase and <kbd>&larr;</kbd>/<kbd>&darr;</kbd> decrease by one star (half a star with <code>sui-rating-half</code>; left/right are mirrored in RTL), <kbd>Home</kbd>/<kbd>End</kbd> jump to 0 or the maximum, and number keys set a value directly. Each change fires <code>sui-rating-change</code>. Read-only ratings are announced as an image, e.g. "Rated 3 of 5". Roles and <code>tabindex</code> are added on page load, and by <code>SoftUI.init(el)</code> for markup added later.</p>
   <div class="pg-section-row">
     <div style="display:flex;flex-wrap:wrap;gap:24px;align-items:center;">
       <div class="sui-rating" data-value="3">
@@ -591,5 +591,26 @@ toc:
     &lt;svg viewBox="0 0 24 24"&gt;&lt;path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14 2 9.27l6.91-1.01L12 2z"/&gt;&lt;/svg&gt;
   &lt;/span&gt;
 &lt;/div&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Reference -->
+<div class="pg-section" id="section-10">
+  <h3 class="pg-section-title">Reference</h3>
+  <div class="docs-table-wrap">
+    <table class="sui-table sui-table-compact">
+      <thead>
+        <tr><th scope="col" style="width:40%;">Key / Event</th><th scope="col">Description</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><kbd>&rarr;</kbd> / <kbd>&uarr;</kbd></td><td>Increase by one star (half with <code>sui-rating-half</code>). Left/right mirror in RTL.</td></tr>
+        <tr><td><kbd>&larr;</kbd> / <kbd>&darr;</kbd></td><td>Decrease by one star.</td></tr>
+        <tr><td><kbd>Home</kbd> / <kbd>End</kbd></td><td>Set 0 / the maximum.</td></tr>
+        <tr><td>Number keys</td><td>Set the value directly.</td></tr>
+        <tr><td><code>sui-rating-change</code></td><td>Fires on each change with <code>detail.value</code>.</td></tr>
+        <tr><td>Read-only</td><td>Announced as an image, e.g. &ldquo;Rated 3 of 5&rdquo;.</td></tr>
+        <tr><td><code>SoftUI.init(el)</code></td><td>Adds roles and <code>tabindex</code> to markup inserted after page load.</td></tr>
+      </tbody>
+    </table>
   </div>
 </div>

@@ -9,6 +9,7 @@ toc:
   - Max Width
   - Height
   - Images
+  - Reference
 ---
 
 <!-- Width -->
@@ -146,9 +147,8 @@ toc:
 <!-- Images -->
 <div class="pg-section" id="section-4">
   <h3 class="pg-section-title">Images</h3>
-  <p class="pg-section-desc"><code>sui-img-fluid</code> keeps an image inside its container and preserves its aspect ratio (<code>max-width: 100%; height: auto</code>). It stays inline, so <code>sui-text-center</code> on the parent still centres it. <code>sui-img-frame</code> adds a raised neumorphic frame; put it on the <code>&lt;img&gt;</code> itself or on a wrapper around one. Combine with <code>sui-rounded-*</code>, <code>sui-raised-lg</code>, <code>sui-inset</code> or <code>sui-pressed</code> for other looks; in the wrapper form the image's corners follow the frame's radius (or set <code>--sui-img-frame-radius</code>).</p>
   <div class="pg-section-row" style="align-items:flex-start;">
-    <div class="sui-inset sui-text-center" style="width:300px;max-width:100%;padding:12px;border-radius:12px;">
+    <div class="sui-text-center" style="width:300px;max-width:100%;padding:12px;outline:1px dashed color-mix(in srgb, var(--sui-text-light) 50%, transparent);border-radius:var(--sui-radius);">
       <img class="sui-img-fluid" src="{{ demoImg }}" width="1200" height="600" alt="1200 by 600 demo image scaled to fit">
     </div>
     <div style="width:300px;max-width:100%;">
@@ -164,7 +164,7 @@ toc:
   <div class="pg-code-wrap">
     <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
     <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;!-- Scales down to fit, keeps its ratio --&gt;
-&lt;div class="sui-inset sui-text-center" style="width:300px;max-width:100%;padding:12px;border-radius:12px;"&gt;
+&lt;div class="sui-text-center" style="width:300px;max-width:100%;padding:12px;outline:1px dashed color-mix(in srgb, var(--sui-text-light) 50%, transparent);border-radius:var(--sui-radius);"&gt;
   &lt;img class="sui-img-fluid" src="..." width="1200" height="600" alt="..."&gt;
 &lt;/div&gt;
 
@@ -182,5 +182,23 @@ toc:
 &lt;figure class="sui-img-frame sui-inset sui-rounded-lg" style="width:300px;margin:0;"&gt;
   &lt;img src="..." width="1200" height="600" alt="..."&gt;
 &lt;/figure&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Reference -->
+<div class="pg-section" id="section-5">
+  <h3 class="pg-section-title">Reference</h3>
+  <div class="docs-table-wrap">
+    <table class="sui-table sui-table-compact">
+      <thead>
+        <tr><th scope="col" style="width:40%;">Class / Token</th><th scope="col">Description</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><code>sui-img-fluid</code></td><td><code>max-width: 100%; height: auto</code>. Stays inline, so <code>sui-text-center</code> on the parent centres it.</td></tr>
+        <tr><td><code>sui-img-frame</code></td><td>Raised frame, on the <code>&lt;img&gt;</code> itself or on a wrapper around one.</td></tr>
+        <tr><td><code>sui-rounded-*</code>, <code>sui-raised-lg</code>, <code>sui-inset</code>, <code>sui-pressed</code></td><td>Combine with <code>sui-img-frame</code> for other looks.</td></tr>
+        <tr><td><code>--sui-img-frame-radius</code></td><td>Image corner radius in the wrapper form (defaults to the frame's radius).</td></tr>
+      </tbody>
+    </table>
   </div>
 </div>

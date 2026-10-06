@@ -13,6 +13,7 @@ toc:
   - Flat
   - Compact
   - With Footer
+  - Reference
 ---
 
 <!-- Default -->
@@ -452,7 +453,6 @@ toc:
 <!-- With Footer -->
 <div class="pg-section" id="section-8">
   <h3 class="pg-section-title">With Footer</h3>
-  <p class="pg-section-desc">Add a <code>.sui-stat-footer</code> recessed pill below the value. Set <code>--sui-fill</code> (0&ndash;100%) to tint part of it, and pick a colour with <code>sui-stat-footer-success</code>, <code>-danger</code>, <code>-warning</code> or <code>-info</code>. Keep the percentage in the visible text. The fill starts at the inline start, so it grows from the right in RTL.</p>
   <div class="pg-section-row">
     <div style="display:flex;flex-wrap:wrap;gap:16px;">
       <div class="sui-stat">
@@ -502,5 +502,22 @@ toc:
   &lt;div class="sui-stat-value"&gt;1,284&lt;/div&gt;
   &lt;div class="sui-stat-footer"&gt;&lt;span&gt;Updated&lt;/span&gt;&lt;strong&gt;2 min ago&lt;/strong&gt;&lt;/div&gt;
 &lt;/div&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Reference -->
+<div class="pg-section" id="section-9">
+  <h3 class="pg-section-title">Reference</h3>
+  <div class="docs-table-wrap">
+    <table class="sui-table sui-table-compact">
+      <thead>
+        <tr><th scope="col" style="width:40%;">Class / Token</th><th scope="col">Description</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><code>sui-stat-footer</code></td><td>Recessed pill below the value.</td></tr>
+        <tr><td><code>--sui-fill</code></td><td>0&ndash;100% tint from the inline start (right in RTL). Keep the percentage in the visible text.</td></tr>
+        <tr><td><code>sui-stat-footer-{success|danger|warning|info}</code></td><td>Tint colour.</td></tr>
+      </tbody>
+    </table>
   </div>
 </div>
