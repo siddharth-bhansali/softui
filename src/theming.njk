@@ -242,6 +242,7 @@ import '@fontsource-variable/jetbrains-mono';</code></pre>
 
 /* Sections — vertical rhythm for .sui-section / .sui-section-header */
 :root {
+  --sui-section-space-lg: 128px; /* .sui-section-lg padding (80px below 768px) */
   --sui-section-space: 96px;     /* .sui-section padding (64px below 768px) */
   --sui-section-space-sm: 64px;  /* .sui-section-sm, and .sui-section on mobile */
   --sui-section-space-xs: 40px;  /* .sui-section-sm on mobile */
@@ -535,7 +536,7 @@ module.exports = {
   "shadows": { "shadow-light": "#FFFFFF", "shadow-dark": "#B8C0CC" },
   "radius": { "xs": "6px", "sm": "10px", "default": "16px", "lg": "24px", "full": "9999px" },
   "spacing": { "0": "0", "1": "4px", "2": "8px", "3": "16px", "4": "24px", "5": "48px", "6": "64px", "7": "96px" },
-  "sections": { "section-space": "96px", "section-space-sm": "64px", "section-space-xs": "40px", "section-header-gap": "40px" },
+  "sections": { "section-space-lg": "128px", "section-space": "96px", "section-space-sm": "64px", "section-space-xs": "40px", "section-header-gap": "40px" },
   "typography": { "font": "...", "font-mono": "..." },
   "transitions": { "fast": "0.15s", "base": "0.25s", "slow": "0.35s" }
 }</code></pre>

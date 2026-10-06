@@ -13984,7 +13984,7 @@ select.sui-datatable-filter:focus-visible {
 .sui-section-raised { box-shadow: var(--sui-shadow-raised); }
 .sui-section-inset  { box-shadow: var(--sui-shadow-inset); }
 .sui-section-alt    { background: var(--sui-bg-light); color: var(--sui-text); }
-.sui-section-bordered { border-block: 1px solid var(--sui-bg-dark); }
+.sui-section-bordered { border-block: 1px solid color-mix(in srgb, var(--sui-text-light) 25%, transparent); }
 .sui-section-header {
   display: flex;
   align-items: flex-end;
@@ -14005,7 +14005,7 @@ select.sui-datatable-filter:focus-visible {
 .sui-section-header-center .sui-section-action { margin-inline-start: 0; }
 .sui-section-header-bordered {
   padding-block-end: 16px;
-  border-block-end: 1px solid var(--sui-bg-dark);
+  border-block-end: 1px solid color-mix(in srgb, var(--sui-text-light) 25%, transparent);
 }
 .sui-heading-accent { position: relative; padding-inline-start: 16px; }
 .sui-heading-accent::before {
