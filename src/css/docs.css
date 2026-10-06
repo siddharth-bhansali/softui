@@ -669,6 +669,7 @@ body.mobile-nav-open { overflow: hidden; }
 /* Dogfoods .sui-footer (src/_includes/base.njk); only docs-specific bits here */
 .docs-footer {
   margin-top: 0;
+  padding-inline: 24px; /* keep the old 24px on phones (.sui-footer drops to 16px) */
 }
 
 .docs-footer .sui-footer-inner {

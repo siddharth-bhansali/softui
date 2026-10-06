@@ -68,6 +68,12 @@
        --sui-focus-ring:       full box-shadow, default 0 0 0 3px <color>
        --sui-focus-ring-color: default color-mix(in srgb, var(--sui-primary) 40%, transparent) */
 
+  /* Links — optional overrides, also left undeclared so they fall back to
+     the -text tokens per element (scoped [data-theme] areas re-resolve):
+       --sui-link:           default var(--sui-primary-text)
+       --sui-link-hover:     default var(--sui-primary-text-hover)
+       --sui-link-underline: default color-mix(in srgb, currentColor 40%, transparent) */
+
   /* Component tokens — redeclared in each [data-theme] block so scoped
      themes reset them. --sui-tint-* are mix amounts for --sui-primary. */
   --sui-tint-subtle: 4%;
@@ -232,12 +238,12 @@ code {
 }
 
 a {
-  color: var(--sui-primary-text);
+  color: var(--sui-link, var(--sui-primary-text));
   text-decoration: none;
   transition: var(--sui-transition);
 }
 a:hover {
-  color: var(--sui-primary-text-hover);
+  color: var(--sui-link-hover, var(--sui-primary-text-hover));
 }
 a:focus-visible {
   outline: 2px solid var(--sui-primary);
@@ -13259,26 +13265,29 @@ select.sui-datatable-filter {
    Links
    Bare <a> is coloured but not underlined; use .sui-link for links inside
    prose so they are not identified by colour alone (WCAG 1.4.1).
+   --sui-link, --sui-link-hover and --sui-link-underline are optional
+   overrides (see :root); unset, they fall back to the -text tokens so
+   scoped [data-theme] areas re-resolve.
    =========================================== */
 .sui-link,
 .sui-link-subtle,
 .sui-link-muted {
   text-decoration: underline;
-  text-decoration-color: color-mix(in srgb, currentColor 40%, transparent);
+  text-decoration-color: var(--sui-link-underline, color-mix(in srgb, currentColor 40%, transparent));
   text-decoration-thickness: 1px;
   text-underline-offset: 0.2em;
 }
-.sui-link { color: var(--sui-primary-text); cursor: pointer; }
-.sui-link:hover { color: var(--sui-primary-text-hover); text-decoration-color: currentColor; text-decoration-thickness: 2px; }
+.sui-link { color: var(--sui-link, var(--sui-primary-text)); cursor: pointer; }
+.sui-link:hover { color: var(--sui-link-hover, var(--sui-primary-text-hover)); text-decoration-color: currentColor; text-decoration-thickness: 2px; }
 .sui-link-subtle { color: inherit; }
-.sui-link-subtle:hover { color: var(--sui-primary-text-hover); text-decoration-color: currentColor; }
+.sui-link-subtle:hover { color: var(--sui-link-hover, var(--sui-primary-text-hover)); text-decoration-color: currentColor; }
 .sui-link-muted { color: var(--sui-text-muted); }
 .sui-link-muted:hover { color: var(--sui-text); text-decoration-color: currentColor; }
-.sui-link-arrow { color: var(--sui-primary-text); font-weight: 600; text-decoration: none; text-underline-offset: 0.2em; }
-.sui-link-arrow::after { content: "\2192"; display: inline-block; margin-inline-start: 0.35em; transition: transform var(--sui-transition-base) ease; }
-.sui-link-arrow:hover { color: var(--sui-primary-text-hover); text-decoration: underline; }
+.sui-link-arrow { color: var(--sui-link, var(--sui-primary-text)); font-weight: 600; text-decoration: none; text-underline-offset: 0.2em; }
+.sui-link-arrow::after { content: "\2192"; content: "\2192" / ""; display: inline-block; margin-inline-start: 0.35em; transition: transform var(--sui-transition-base) ease; }
+.sui-link-arrow:hover { color: var(--sui-link-hover, var(--sui-primary-text-hover)); text-decoration: underline; }
 .sui-link-arrow:hover::after { transform: translateX(3px); }
-[dir="rtl"] .sui-link-arrow::after { content: "\2190"; }
+[dir="rtl"] .sui-link-arrow::after { content: "\2190"; content: "\2190" / ""; }
 [dir="rtl"] .sui-link-arrow:hover::after { transform: translateX(-3px); }
 
 /* ===========================================
@@ -13362,15 +13371,18 @@ select.sui-datatable-filter {
   background: var(--sui-bg);
   border-radius: var(--sui-radius-full);
   overflow: hidden;
+  /* declared here so a fill/tint set on an ancestor doesn't leak in */
+  --sui-fill: 0%;
+  --sui-stat-footer-tint: color-mix(in srgb, var(--sui-primary) 14%, transparent);
 }
 .sui-stat-footer::before {
   content: '';
   position: absolute;
   inset-block: 0;
   inset-inline-start: 0;
-  width: var(--sui-fill, 0%);
+  width: var(--sui-fill);
   max-width: 100%;
-  background: var(--sui-stat-footer-tint, color-mix(in srgb, var(--sui-primary) 14%, transparent));
+  background: var(--sui-stat-footer-tint);
   border-radius: inherit;
   z-index: -1;
   transition: width 0.4s ease;

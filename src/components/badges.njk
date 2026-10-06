@@ -89,6 +89,7 @@ toc:
 <!-- Positioned -->
 <div class="pg-section" id="section-5">
   <h3 class="pg-section-title">Positioned</h3>
+  <p class="pg-section-desc">An empty dot carries meaning by colour only, so give it <code>role="img"</code> and an <code>aria-label</code> describing what it signals.</p>
   <div class="pg-section-row" style="gap:16px;">
     <span class="sui-badge-positioned">
       <button class="sui-btn">Inbox</button>
@@ -96,15 +97,15 @@ toc:
     </span>
     <span class="sui-badge-positioned">
       <button class="sui-btn">Notifications</button>
-      <span class="sui-badge sui-badge-dot sui-badge-danger"></span>
+      <span class="sui-badge sui-badge-dot sui-badge-danger" role="img" aria-label="Unread notifications"></span>
     </span>
     <span class="sui-badge-positioned">
       <button class="sui-btn">Messages</button>
-      <span class="sui-badge sui-badge-dot sui-badge-success"></span>
+      <span class="sui-badge sui-badge-dot sui-badge-success" role="img" aria-label="New messages"></span>
     </span>
     <span class="sui-badge-positioned">
       <button class="sui-btn">Updates</button>
-      <span class="sui-badge sui-badge-dot sui-badge-info"></span>
+      <span class="sui-badge sui-badge-dot sui-badge-info" role="img" aria-label="New updates"></span>
     </span>
   </div>
   <div class="pg-code-wrap">
@@ -116,17 +117,17 @@ toc:
 
 &lt;span class="sui-badge-positioned"&gt;
   &lt;button class="sui-btn"&gt;Notifications&lt;/button&gt;
-  &lt;span class="sui-badge sui-badge-dot sui-badge-danger"&gt;&lt;/span&gt;
+  &lt;span class="sui-badge sui-badge-dot sui-badge-danger" role="img" aria-label="Unread notifications"&gt;&lt;/span&gt;
 &lt;/span&gt;
 
 &lt;span class="sui-badge-positioned"&gt;
   &lt;button class="sui-btn"&gt;Messages&lt;/button&gt;
-  &lt;span class="sui-badge sui-badge-dot sui-badge-success"&gt;&lt;/span&gt;
+  &lt;span class="sui-badge sui-badge-dot sui-badge-success" role="img" aria-label="New messages"&gt;&lt;/span&gt;
 &lt;/span&gt;
 
 &lt;span class="sui-badge-positioned"&gt;
   &lt;button class="sui-btn"&gt;Updates&lt;/button&gt;
-  &lt;span class="sui-badge sui-badge-dot sui-badge-info"&gt;&lt;/span&gt;
+  &lt;span class="sui-badge sui-badge-dot sui-badge-info" role="img" aria-label="New updates"&gt;&lt;/span&gt;
 &lt;/span&gt;</pre></div>
   </div>
 </div>
