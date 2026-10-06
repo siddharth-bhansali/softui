@@ -1,17 +1,20 @@
 ---
 layout: component.njk
 title: Spacing
-description: Padding and margin utility classes from 0 (none) to 5 (48px), with directional margin variants.
+description: Padding and margin utilities on a 0-7 scale (0 to 96px) backed by --sui-space-* tokens, with logical start/end and axis variants that flip in RTL.
 componentId: spacing
 hasControls: false
 toc:
-  - Padding Scale
-  - Margin Classes
+  - Spacing Scale
+  - Padding Directions
+  - Margin Directions
+  - Spacing Tokens
 ---
 
-<!-- Padding Scale -->
+<!-- Spacing Scale -->
 <div class="pg-section" id="section-1">
-  <h3 class="pg-section-title">Padding Scale</h3>
+  <h3 class="pg-section-title">Spacing Scale</h3>
+  <p class="pg-section-desc">Every padding, margin and gap utility uses the same 0-7 scale. Spacing utilities use <code>!important</code>, so they override a component's own padding or margin (for example <code>sui-modal-body sui-p-0</code>).</p>
   <div class="pg-section-grid">
     <div style="text-align:center;">
       <div class="sui-raised sui-p-0" style="width:72px;height:72px;border-radius:12px;margin:0 auto 8px;display:flex;align-items:center;justify-content:center;">
@@ -44,42 +47,129 @@ toc:
       <small>sui-p-4 (24px)</small>
     </div>
     <div style="text-align:center;">
-      <div class="sui-raised sui-p-5" style="width:72px;height:72px;border-radius:12px;margin:0 auto 8px;display:flex;align-items:stretch;justify-content:stretch;">
+      <div class="sui-raised sui-p-5" style="width:120px;height:120px;border-radius:12px;margin:0 auto 8px;display:flex;align-items:stretch;justify-content:stretch;">
         <div style="background:var(--sui-primary);opacity:0.2;width:100%;border-radius:4px;"></div>
       </div>
       <small>sui-p-5 (48px)</small>
     </div>
+    <div style="text-align:center;">
+      <div class="sui-raised sui-p-6" style="width:152px;height:152px;border-radius:12px;margin:0 auto 8px;display:flex;align-items:stretch;justify-content:stretch;">
+        <div style="background:var(--sui-primary);opacity:0.2;width:100%;border-radius:4px;"></div>
+      </div>
+      <small>sui-p-6 (64px)</small>
+    </div>
+    <div style="text-align:center;">
+      <div class="sui-raised sui-p-7" style="width:216px;height:216px;border-radius:12px;margin:0 auto 8px;display:flex;align-items:stretch;justify-content:stretch;">
+        <div style="background:var(--sui-primary);opacity:0.2;width:100%;border-radius:4px;"></div>
+      </div>
+      <small>sui-p-7 (96px)</small>
+    </div>
   </div>
   <div class="pg-code-wrap">
     <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
-    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;!-- Padding scale: 0=0, 1=4px, 2=8px, 3=16px, 4=24px, 5=48px --&gt;
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;!-- Spacing scale: 0=0, 1=4px, 2=8px, 3=16px, 4=24px, 5=48px, 6=64px, 7=96px --&gt;
 &lt;div class="sui-p-0"&gt;...&lt;/div&gt;
 &lt;div class="sui-p-1"&gt;...&lt;/div&gt;
 &lt;div class="sui-p-2"&gt;...&lt;/div&gt;
 &lt;div class="sui-p-3"&gt;...&lt;/div&gt;
 &lt;div class="sui-p-4"&gt;...&lt;/div&gt;
-&lt;div class="sui-p-5"&gt;...&lt;/div&gt;</pre></div>
+&lt;div class="sui-p-5"&gt;...&lt;/div&gt;
+&lt;div class="sui-p-6"&gt;...&lt;/div&gt;
+&lt;div class="sui-p-7"&gt;...&lt;/div&gt;</pre></div>
   </div>
 </div>
 
-<!-- Margin Classes -->
+<!-- Padding Directions -->
 <div class="pg-section" id="section-2">
-  <h3 class="pg-section-title">Margin Classes</h3>
+  <h3 class="pg-section-title">Padding Directions</h3>
+  <p class="pg-section-desc">Classes: <code>sui-p-{0-7}</code> (all sides), <code>sui-px-{0-7}</code> (inline axis), <code>sui-py-{0-7}</code> (block axis), <code>sui-pt-{0-7}</code>, <code>sui-pb-{0-7}</code>, <code>sui-ps-{0-7}</code> (inline-start) and <code>sui-pe-{0-7}</code> (inline-end). Start and end are logical: <code>ps</code> is the left side in LTR and the right side in RTL. Classes combine from general to specific, so <code>sui-p-1 sui-ps-5</code> gives 4px everywhere except 48px at the start.</p>
   <div class="pg-section-row">
-    <div class="sui-raised" style="border-radius:12px;padding:20px;display:flex;flex-wrap:wrap;gap:8px;">
-      <code>sui-m-{0-5}</code>
-      <code>sui-mt-{0-5}</code>
-      <code>sui-mb-{0-5}</code>
-      <code>sui-ml-{0-5}</code>
-      <code>sui-mr-{0-5}</code>
+    <div style="display:flex;flex-direction:column;gap:12px;width:100%;">
+      <div class="sui-raised sui-px-5 sui-py-2" style="border-radius:12px;">
+        <div style="background:color-mix(in srgb, var(--sui-primary) 15%, transparent);border-radius:6px;padding:6px 10px;">sui-px-5 sui-py-2</div>
+      </div>
+      <div class="sui-raised sui-p-1 sui-pt-5" style="border-radius:12px;">
+        <div style="background:color-mix(in srgb, var(--sui-primary) 15%, transparent);border-radius:6px;padding:6px 10px;">sui-p-1 sui-pt-5</div>
+      </div>
+      <div class="sui-raised sui-p-1 sui-ps-5" style="border-radius:12px;">
+        <div style="background:color-mix(in srgb, var(--sui-primary) 15%, transparent);border-radius:6px;padding:6px 10px;">sui-p-1 sui-ps-5 (inline-start: left in LTR, right in RTL)</div>
+      </div>
+      <div class="sui-raised sui-p-1 sui-pe-5" style="border-radius:12px;">
+        <div style="background:color-mix(in srgb, var(--sui-primary) 15%, transparent);border-radius:6px;padding:6px 10px;">sui-p-1 sui-pe-5 (inline-end: right in LTR, left in RTL)</div>
+      </div>
     </div>
   </div>
   <div class="pg-code-wrap">
     <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
-    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-mt-3"&gt;Margin top 16px&lt;/div&gt;
-&lt;div class="sui-mb-2"&gt;Margin bottom 8px&lt;/div&gt;
-&lt;div class="sui-ml-4"&gt;Margin left 24px&lt;/div&gt;
-&lt;div class="sui-mr-1"&gt;Margin right 4px&lt;/div&gt;
-&lt;div class="sui-m-5"&gt;Margin all sides 48px&lt;/div&gt;</pre></div>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-px-5 sui-py-2"&gt;Padding inline 48px, block 8px&lt;/div&gt;
+&lt;div class="sui-p-1 sui-pt-5"&gt;Padding 4px, top 48px&lt;/div&gt;
+&lt;div class="sui-p-1 sui-ps-5"&gt;Padding 4px, inline-start 48px (left in LTR, right in RTL)&lt;/div&gt;
+&lt;div class="sui-p-1 sui-pe-5"&gt;Padding 4px, inline-end 48px (right in LTR, left in RTL)&lt;/div&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Margin Directions -->
+<div class="pg-section" id="section-3">
+  <h3 class="pg-section-title">Margin Directions</h3>
+  <p class="pg-section-desc">Classes: <code>sui-m-{0-7}</code>, <code>sui-mx-{0-7}</code>, <code>sui-my-{0-7}</code>, <code>sui-mt-{0-7}</code>, <code>sui-mb-{0-7}</code>, <code>sui-ms-{0-7}</code> (inline-start) and <code>sui-me-{0-7}</code> (inline-end), plus <code>sui-mx-auto</code>, <code>sui-my-auto</code>, <code>sui-ms-auto</code> and <code>sui-me-auto</code>. <code>sui-ml-{0-7}</code> and <code>sui-mr-{0-7}</code> are kept as aliases of <code>ms</code> and <code>me</code>, so they also flip in RTL.</p>
+  <div class="pg-section-row">
+    <div style="display:flex;flex-direction:column;gap:12px;width:100%;">
+      <div class="sui-inset" style="border-radius:12px;display:flow-root;">
+        <div class="sui-raised sui-mx-5 sui-my-2" style="border-radius:8px;padding:6px 10px;">sui-mx-5 sui-my-2</div>
+      </div>
+      <div class="sui-inset" style="border-radius:12px;display:flow-root;">
+        <div class="sui-raised sui-my-2 sui-ms-5" style="border-radius:8px;padding:6px 10px;">sui-my-2 sui-ms-5 (inline-start)</div>
+      </div>
+      <div class="sui-inset" style="border-radius:12px;display:flow-root;">
+        <div class="sui-raised sui-my-2 sui-me-5" style="border-radius:8px;padding:6px 10px;">sui-my-2 sui-me-5 (inline-end)</div>
+      </div>
+      <div class="sui-inset" style="border-radius:12px;display:flow-root;">
+        <div class="sui-raised sui-mt-4 sui-mb-1 sui-mx-2" style="border-radius:8px;padding:6px 10px;">sui-mt-4 sui-mb-1 sui-mx-2</div>
+      </div>
+    </div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-mx-5 sui-my-2"&gt;Margin inline 48px, block 8px&lt;/div&gt;
+&lt;div class="sui-my-2 sui-ms-5"&gt;Margin inline-start 48px (left in LTR, right in RTL)&lt;/div&gt;
+&lt;div class="sui-my-2 sui-me-5"&gt;Margin inline-end 48px (right in LTR, left in RTL)&lt;/div&gt;
+&lt;div class="sui-mt-4 sui-mb-1 sui-mx-2"&gt;Margin top 24px, bottom 4px, inline 8px&lt;/div&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Spacing Tokens -->
+<div class="pg-section" id="section-4">
+  <h3 class="pg-section-title">Spacing Tokens</h3>
+  <p class="pg-section-desc">The scale lives in <code>--sui-space-0</code> to <code>--sui-space-7</code>. Override a token to retune every padding, margin and gap utility at that step, either globally with <code>:root { --sui-space-3: 20px; }</code> or on a single subtree.</p>
+  <div class="pg-section-row">
+    <div class="docs-table-wrap" style="width:100%;">
+      <table class="sui-table">
+        <thead>
+          <tr><th scope="col">Token</th><th scope="col">Value</th><th scope="col">Classes</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><code>--sui-space-0</code></td><td>0</td><td><code>sui-*-0</code></td></tr>
+          <tr><td><code>--sui-space-1</code></td><td>4px</td><td><code>sui-*-1</code></td></tr>
+          <tr><td><code>--sui-space-2</code></td><td>8px</td><td><code>sui-*-2</code></td></tr>
+          <tr><td><code>--sui-space-3</code></td><td>16px</td><td><code>sui-*-3</code></td></tr>
+          <tr><td><code>--sui-space-4</code></td><td>24px</td><td><code>sui-*-4</code></td></tr>
+          <tr><td><code>--sui-space-5</code></td><td>48px</td><td><code>sui-*-5</code></td></tr>
+          <tr><td><code>--sui-space-6</code></td><td>64px</td><td><code>sui-*-6</code></td></tr>
+          <tr><td><code>--sui-space-7</code></td><td>96px</td><td><code>sui-*-7</code></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="pg-section-row">
+    <div style="--sui-space-3:20px;display:flex;flex-wrap:wrap;gap:12px;">
+      <div class="sui-raised sui-p-3" style="border-radius:12px;">sui-p-3 is 20px inside this wrapper</div>
+    </div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;!-- Globally: :root { --sui-space-3: 20px; } --&gt;
+&lt;div style="--sui-space-3:20px;display:flex;flex-wrap:wrap;gap:12px;"&gt;
+  &lt;div class="sui-raised sui-p-3" style="border-radius:12px;"&gt;sui-p-3 is 20px inside this wrapper&lt;/div&gt;
+&lt;/div&gt;</pre></div>
   </div>
 </div>

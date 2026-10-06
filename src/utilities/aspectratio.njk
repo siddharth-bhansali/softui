@@ -10,6 +10,7 @@ toc:
   - Portrait (9:16)
   - 4:3
   - 3:2
+  - 4:5
   - Ultrawide (21:9)
   - With Content
 ---
@@ -108,8 +109,25 @@ toc:
   </div>
 </div>
 
-<!-- Ultrawide (21:9) -->
+<!-- 4:5 -->
 <div class="pg-section" id="section-6">
+  <h3 class="pg-section-title">4:5</h3>
+  <p style="font-size:13px;color:var(--sui-text-light);margin-bottom:16px;">Add <code>sui-aspect-4-5</code> for a slightly tall 4:5 ratio, common for social feed images and product shots.</p>
+  <div class="pg-section-row" style="align-items:flex-start;">
+    <div class="sui-aspect sui-aspect-4-5" style="max-width:240px;border-radius:var(--sui-radius-sm);box-shadow:var(--sui-shadow-raised-sm);">
+      <div style="display:flex;align-items:center;justify-content:center;background:{{ gradients[2] }};color:#fff;font-size:14px;font-weight:600;">4 : 5</div>
+    </div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-aspect sui-aspect-4-5" style="max-width:240px;"&gt;
+  &lt;img src="..." alt="..." /&gt;
+&lt;/div&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Ultrawide (21:9) -->
+<div class="pg-section" id="section-7">
   <h3 class="pg-section-title">Ultrawide (21:9)</h3>
   <p style="font-size:13px;color:var(--sui-text-light);margin-bottom:16px;">Add <code>sui-aspect-21-9</code> for a cinematic ultrawide ratio.</p>
   <div class="pg-section-row" style="align-items:flex-start;">
@@ -126,7 +144,7 @@ toc:
 </div>
 
 <!-- With Content -->
-<div class="pg-section" id="section-7">
+<div class="pg-section" id="section-8">
   <h3 class="pg-section-title">With Content</h3>
   <p style="font-size:13px;color:var(--sui-text-light);margin-bottom:16px;">Children are stretched to fill the container. Use <code>object-fit: cover</code> on images or flex alignment on content.</p>
   <div class="pg-section-row" style="display:flex;gap:16px;flex-wrap:wrap;align-items:flex-start;">

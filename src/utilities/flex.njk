@@ -202,6 +202,7 @@ toc:
 <!-- Gap -->
 <div class="pg-section" id="section-6">
   <h3 class="pg-section-title">Gap</h3>
+  <p class="pg-section-desc"><code>sui-gap-{0-7}</code> uses the spacing scale (<code>--sui-space-*</code>): 0=0, 1=4px, 2=8px, 3=16px, 4=24px, 5=48px, 6=64px, 7=96px.</p>
   <div style="display:flex;flex-direction:column;gap:12px;">
     <div>
       <small style="display:block;margin-bottom:4px;color:var(--sui-text-muted);">sui-gap-0 (0)</small>
@@ -227,16 +228,25 @@ toc:
         <div class="sui-raised" style="padding:8px 14px;border-radius:6px;">C</div>
       </div>
     </div>
+    <div>
+      <small style="display:block;margin-bottom:4px;color:var(--sui-text-muted);">sui-gap-6 (64px)</small>
+      <div class="sui-d-flex sui-gap-6 sui-inset" style="padding:10px;border-radius:8px;">
+        <div class="sui-raised" style="padding:8px 14px;border-radius:6px;">A</div>
+        <div class="sui-raised" style="padding:8px 14px;border-radius:6px;">B</div>
+        <div class="sui-raised" style="padding:8px 14px;border-radius:6px;">C</div>
+      </div>
+    </div>
   </div>
   <div class="pg-code-wrap">
     <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
-    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;!-- Gap scale: 0=0, 1=4px, 2=8px, 3=16px, 4=24px, 5=48px --&gt;
-&lt;div class="sui-d-flex sui-gap-0"&gt;...&lt;/div&gt;
-&lt;div class="sui-d-flex sui-gap-1"&gt;...&lt;/div&gt;
-&lt;div class="sui-d-flex sui-gap-2"&gt;...&lt;/div&gt;
-&lt;div class="sui-d-flex sui-gap-3"&gt;...&lt;/div&gt;
-&lt;div class="sui-d-flex sui-gap-4"&gt;...&lt;/div&gt;
-&lt;div class="sui-d-flex sui-gap-5"&gt;...&lt;/div&gt;</pre></div>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-d-flex sui-gap-0 sui-inset" style="padding:10px;border-radius:8px;"&gt;
+  &lt;div class="sui-raised" style="padding:8px 14px;border-radius:6px;"&gt;A&lt;/div&gt;
+  &lt;div class="sui-raised" style="padding:8px 14px;border-radius:6px;"&gt;B&lt;/div&gt;
+  &lt;div class="sui-raised" style="padding:8px 14px;border-radius:6px;"&gt;C&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="sui-d-flex sui-gap-2 sui-inset" style="padding:10px;border-radius:8px;"&gt;...&lt;/div&gt;
+&lt;div class="sui-d-flex sui-gap-4 sui-inset" style="padding:10px;border-radius:8px;"&gt;...&lt;/div&gt;
+&lt;div class="sui-d-flex sui-gap-6 sui-inset" style="padding:10px;border-radius:8px;"&gt;...&lt;/div&gt;</pre></div>
   </div>
 </div>
 
@@ -265,6 +275,12 @@ toc:
         <div class="sui-raised" style="padding:8px 14px;border-radius:6px;">Right 2</div>
       </div>
     </div>
+    <div>
+      <small style="display:block;margin-bottom:4px;color:var(--sui-text-muted);">sui-my-auto — center vertically</small>
+      <div class="sui-d-flex sui-inset" style="padding:10px;border-radius:8px;height:96px;">
+        <div class="sui-raised sui-my-auto" style="padding:8px 14px;border-radius:6px;">Middle</div>
+      </div>
+    </div>
   </div>
   <div class="pg-code-wrap">
     <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
@@ -284,6 +300,11 @@ toc:
   &lt;div class="sui-me-auto"&gt;Left&lt;/div&gt;
   &lt;div&gt;Right 1&lt;/div&gt;
   &lt;div&gt;Right 2&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- Center vertically --&gt;
+&lt;div class="sui-d-flex" style="height:96px;"&gt;
+  &lt;div class="sui-my-auto"&gt;Middle&lt;/div&gt;
 &lt;/div&gt;</pre></div>
   </div>
 </div>
