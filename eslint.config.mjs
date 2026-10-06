@@ -35,6 +35,7 @@ export default [
         fetch: "readonly",
         URL: "readonly",
         Image: "readonly",
+        module: "readonly",
         SoftUI: "writable"
       }
     },

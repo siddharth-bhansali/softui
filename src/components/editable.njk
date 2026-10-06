@@ -134,7 +134,7 @@ toc:
 <!-- With Events -->
 <div class="pg-section" id="section-4">
   <h3 class="pg-section-title">With Events</h3>
-  <p class="pg-section-desc">Listen for <code>editable:save</code> and <code>editable:cancel</code> events.</p>
+  <p class="pg-section-desc">Listen for <code>sui-editable-save</code> and <code>sui-editable-cancel</code>. Both bubble, so you can also listen on <code>document</code>. The older <code>editable:save</code> / <code>editable:cancel</code> names still fire too.</p>
   <div class="pg-section-row" style="gap:12px;flex-direction:column;align-items:flex-start;">
     <div class="sui-editable" id="demo-editable-event">
       <span class="sui-editable-value" style="font-weight:600;">Click me to edit</span>
@@ -147,11 +147,11 @@ toc:
       var el = document.getElementById('demo-editable-event');
       var log = document.getElementById('editable-event-log');
       if (el && log) {
-        el.addEventListener('editable:save', function(e) {
+        el.addEventListener('sui-editable-save', function(e) {
           log.textContent = 'Saved: "' + e.detail.value + '" (was "' + e.detail.previous + '")';
           log.style.color = 'var(--sui-success)';
         });
-        el.addEventListener('editable:cancel', function() {
+        el.addEventListener('sui-editable-cancel', function() {
           log.textContent = 'Edit cancelled';
           log.style.color = 'var(--sui-text-muted)';
         });
@@ -170,13 +170,13 @@ toc:
 
 &lt;script&gt;
   document.getElementById('myEditable')
-    .addEventListener('editable:save', function(e) {
+    .addEventListener('sui-editable-save', function(e) {
       console.log('Saved:', e.detail.value);
       console.log('Previous:', e.detail.previous);
     });
 
   document.getElementById('myEditable')
-    .addEventListener('editable:cancel', function() {
+    .addEventListener('sui-editable-cancel', function() {
       console.log('Edit cancelled');
     });
 &lt;/script&gt;</pre></div>

@@ -82,6 +82,7 @@
    Dark Mode
    =========================================== */
 [data-theme="dark"] {
+  color-scheme: dark; /* native scrollbars, form controls and pickers */
   --sui-bg: #2A2D35;
   --sui-bg-light: #31343C;
   --sui-bg-dark: #23262D;
@@ -124,6 +125,7 @@
    the theme tokens, so a dark section inside a light page (or vice versa) works.
    Every token that differs between themes is declared in both blocks. */
 [data-theme="light"] {
+  color-scheme: light;
   --sui-bg: #E4E9F0;
   --sui-bg-light: #EDF1F7;
   --sui-bg-dark: #D1D9E6;
@@ -12266,6 +12268,168 @@ select.sui-datatable-filter {
 }
 
 /* =========================================
+   Theme Toggle
+   ========================================= */
+/* Sun/moon button for the theme switcher. softui.js wires any
+   [data-sui-theme-toggle] and adds .active while dark is on. */
+.sui-theme-toggle {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  border: none;
+  border-radius: var(--sui-radius-full);
+  background: var(--sui-bg);
+  box-shadow: var(--sui-shadow-raised-sm);
+  color: var(--sui-text-muted);
+  font: inherit;
+  cursor: pointer;
+  transition: box-shadow var(--sui-transition-fast) ease, color var(--sui-transition-fast) ease;
+}
+
+.sui-theme-toggle:hover {
+  color: var(--sui-primary-text);
+}
+
+.sui-theme-toggle:active {
+  box-shadow: var(--sui-shadow-inset-sm);
+}
+
+.sui-theme-toggle:focus-visible {
+  outline: none;
+  box-shadow: var(--sui-shadow-raised-sm), var(--sui-focus-ring, 0 0 0 3px var(--sui-focus-ring-color, color-mix(in srgb, var(--sui-primary) 40%, transparent)));
+}
+
+.sui-theme-toggle svg {
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  transition: opacity var(--sui-transition-base) ease, transform var(--sui-transition-slow) ease;
+}
+
+/* Light: sun shows. Dark (.active): moon shows. */
+.sui-theme-toggle .sui-theme-toggle-moon {
+  opacity: 0;
+  transform: rotate(-90deg) scale(0.5);
+}
+
+.sui-theme-toggle.active .sui-theme-toggle-sun {
+  opacity: 0;
+  transform: rotate(90deg) scale(0.5);
+}
+
+.sui-theme-toggle.active .sui-theme-toggle-moon {
+  opacity: 1;
+  transform: none;
+}
+
+.sui-theme-toggle-sm {
+  width: 32px;
+  height: 32px;
+}
+
+.sui-theme-toggle-sm svg {
+  width: 15px;
+  height: 15px;
+}
+
+.sui-theme-toggle-lg {
+  width: 48px;
+  height: 48px;
+}
+
+.sui-theme-toggle-lg svg {
+  width: 22px;
+  height: 22px;
+}
+
+/* =========================================
+   Scroll Reveal
+   ========================================= */
+/* Hidden only once softui.js adds .sui-reveal-ready to <html>, so content
+   stays visible without JS. Uses the individual translate/scale properties
+   (not transform) so component transforms such as hover lifts keep working. */
+:root {
+  --sui-reveal-dir: 1;
+}
+
+[dir="rtl"] {
+  --sui-reveal-dir: -1;
+}
+
+[dir="ltr"] {
+  --sui-reveal-dir: 1;
+}
+
+.sui-reveal-ready .sui-reveal {
+  opacity: 0;
+  translate: 0 var(--sui-reveal-distance, 24px);
+}
+
+/* Only revealing animates (hiding is instant, so nothing visibly fades out
+   on load). Once JS marks it .sui-reveal-done, the element's own transition
+   applies again. */
+.sui-reveal-ready .sui-reveal.sui-revealed:not(.sui-reveal-done) {
+  transition: opacity var(--sui-reveal-duration, 0.6s) ease var(--sui-delay, 0ms),
+              translate var(--sui-reveal-duration, 0.6s) cubic-bezier(0.2, 0.7, 0.2, 1) var(--sui-delay, 0ms),
+              scale var(--sui-reveal-duration, 0.6s) cubic-bezier(0.2, 0.7, 0.2, 1) var(--sui-delay, 0ms);
+}
+
+/* Directions — start/end follow the reading direction */
+.sui-reveal-ready .sui-reveal.sui-reveal-start {
+  translate: calc(-1 * var(--sui-reveal-dir) * var(--sui-reveal-distance, 24px)) 0;
+}
+
+.sui-reveal-ready .sui-reveal.sui-reveal-end {
+  translate: calc(var(--sui-reveal-dir) * var(--sui-reveal-distance, 24px)) 0;
+}
+
+.sui-reveal-ready .sui-reveal.sui-reveal-down {
+  translate: 0 calc(-1 * var(--sui-reveal-distance, 24px));
+}
+
+.sui-reveal-ready .sui-reveal.sui-reveal-fade {
+  translate: none;
+}
+
+.sui-reveal-ready .sui-reveal.sui-reveal-scale {
+  translate: none;
+  scale: 0.95;
+}
+
+.sui-reveal-ready .sui-reveal.sui-revealed {
+  opacity: 1;
+  translate: none;
+  scale: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sui-reveal-ready .sui-reveal {
+    opacity: 1 !important;
+    translate: none !important;
+    scale: none !important;
+    transition: none !important;
+  }
+}
+
+@media print {
+  .sui-reveal {
+    opacity: 1 !important;
+    translate: none !important;
+    scale: none !important;
+  }
+}
+
+/* =========================================
    Text Rotate
    ========================================= */
 .sui-text-rotate {
@@ -12277,7 +12441,7 @@ select.sui-datatable-filter {
 .sui-text-rotate-word {
   display: inline-block;
   position: absolute;
-  left: 0;
+  inset-inline-start: 0;
   top: 0;
   opacity: 0;
   transition: opacity 0.4s ease, transform 0.4s ease;
@@ -12363,6 +12527,17 @@ select.sui-datatable-filter {
 .sui-text-rotate-warning .sui-text-rotate-word.active { color: var(--sui-warning-text); }
 .sui-text-rotate-info .sui-text-rotate-word.active { color: var(--sui-info-text); }
 
+/* Reserve space — width of the longest word, so text around it never shifts */
+.sui-text-rotate[data-reserve] {
+  display: inline-grid;
+  justify-items: start;
+}
+
+.sui-text-rotate[data-reserve] > .sui-text-rotate-word {
+  grid-area: 1 / 1;
+  position: relative;
+}
+
 /* =========================================
    Typewriter
    ========================================= */
@@ -12370,12 +12545,17 @@ select.sui-datatable-filter {
   display: inline;
 }
 
-.sui-typewriter-cursor::after {
-  content: "|";
+.sui-typewriter-cursor::after,
+.sui-typewriter-cursor-block::after,
+.sui-typewriter-cursor-underscore::after {
   display: inline-block;
   animation: sui-blink 0.7s step-end infinite;
-  margin-left: 1px;
+  margin-inline-start: 1px;
   font-weight: 400;
+}
+
+.sui-typewriter-cursor::after {
+  content: "|";
 }
 
 @keyframes sui-blink {
@@ -12386,10 +12566,55 @@ select.sui-datatable-filter {
 /* Cursor variants */
 .sui-typewriter-cursor-block::after {
   content: "\2588";
-  font-weight: 400;
 }
 
 .sui-typewriter-cursor-underscore::after {
+  content: "_";
+  font-weight: 700;
+}
+
+/* Reserve space — data-reserve sizes the box to the longest phrase so the
+   text after it never reflows. The cursor moves onto the typed text. */
+.sui-typewriter[data-reserve] {
+  display: inline-grid;
+  justify-items: start;
+  align-items: start;
+  vertical-align: baseline;
+}
+
+.sui-typewriter[data-reserve] > .sui-typewriter-sizer,
+.sui-typewriter[data-reserve] > .sui-typewriter-text {
+  grid-area: 1 / 1;
+}
+
+.sui-typewriter-sizer {
+  visibility: hidden;
+}
+
+.sui-typewriter[data-reserve].sui-typewriter-cursor::after,
+.sui-typewriter[data-reserve].sui-typewriter-cursor-block::after,
+.sui-typewriter[data-reserve].sui-typewriter-cursor-underscore::after {
+  content: none;
+}
+
+.sui-typewriter[data-reserve].sui-typewriter-cursor > .sui-typewriter-text::after,
+.sui-typewriter[data-reserve].sui-typewriter-cursor-block > .sui-typewriter-text::after,
+.sui-typewriter[data-reserve].sui-typewriter-cursor-underscore > .sui-typewriter-text::after {
+  display: inline-block;
+  animation: sui-blink 0.7s step-end infinite;
+  margin-inline-start: 1px;
+  font-weight: 400;
+}
+
+.sui-typewriter[data-reserve].sui-typewriter-cursor > .sui-typewriter-text::after {
+  content: "|";
+}
+
+.sui-typewriter[data-reserve].sui-typewriter-cursor-block > .sui-typewriter-text::after {
+  content: "\2588";
+}
+
+.sui-typewriter[data-reserve].sui-typewriter-cursor-underscore > .sui-typewriter-text::after {
   content: "_";
   font-weight: 700;
 }

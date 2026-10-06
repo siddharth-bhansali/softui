@@ -1,0 +1,190 @@
+---
+layout: component.njk
+title: Scroll Reveal
+description: Fade and slide content in as it scrolls into view. Directions, staggered groups, repeat on scroll, and a JS API — with no hidden content for no-JS or reduced-motion users.
+componentId: reveal
+hasControls: false
+requiresJs: true
+toc:
+  - Basic
+  - Directions
+  - Stagger
+  - JavaScript API
+  - Accessibility
+---
+
+<script>
+  // Docs only: replay the reveal animation of a demo
+  function replayReveal(btn) {
+    var row = btn.closest('.pg-section').querySelector('.pg-section-row');
+    var els = row.querySelectorAll('.sui-reveal');
+    els.forEach(function(el) { el.classList.remove('sui-revealed', 'sui-reveal-done'); });
+    SoftUI.reveal(els);
+  }
+
+  // JavaScript API demo
+  function addCard() {
+    var card = document.createElement('div');
+    card.className = 'sui-card sui-reveal sui-reveal-scale';
+    card.style.padding = '16px 20px';
+    card.textContent = 'Added at ' + new Date().toLocaleTimeString();
+    document.getElementById('revealList').appendChild(card);
+    SoftUI.reveal(card);
+  }
+</script>
+
+<!-- Basic -->
+<div class="pg-section" id="section-1">
+  <h3 class="pg-section-title">Basic</h3>
+  <p class="pg-section-desc">Add <code>.sui-reveal</code> and the element fades up when it scrolls into view. Elements already on screen when the page loads are shown straight away, so nothing above the fold flashes. <button class="sui-btn sui-btn-sm" onclick="replayReveal(this)">Replay</button></p>
+  <div class="pg-section-row">
+    <div class="sui-card sui-reveal" style="padding:24px;max-width:360px;">
+      <h4 style="margin-bottom:8px;">Fades up into view</h4>
+      <p style="color:var(--sui-text-muted);font-size:14px;">Revealed once, the first time it enters the viewport.</p>
+    </div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-card sui-reveal" style="padding:24px;max-width:360px;"&gt;
+  &lt;h4 style="margin-bottom:8px;"&gt;Fades up into view&lt;/h4&gt;
+  &lt;p style="color:var(--sui-text-muted);font-size:14px;"&gt;Revealed once, the first time it enters the viewport.&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;!-- Tune it per element or globally --&gt;
+&lt;div class="sui-reveal" style="--sui-reveal-distance:40px;--sui-reveal-duration:0.9s;--sui-delay:200ms;"&gt;...&lt;/div&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Directions -->
+<div class="pg-section" id="section-2">
+  <h3 class="pg-section-title">Directions</h3>
+  <p class="pg-section-desc">Add a modifier next to <code>.sui-reveal</code>. <code>-start</code> and <code>-end</code> follow the reading direction, so they flip in RTL. <button class="sui-btn sui-btn-sm" onclick="replayReveal(this)">Replay</button></p>
+  <div class="pg-section-row">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:16px;width:100%;">
+      <div class="sui-card sui-reveal" style="padding:20px;text-align:center;">Up</div>
+      <div class="sui-card sui-reveal sui-reveal-down" style="padding:20px;text-align:center;">Down</div>
+      <div class="sui-card sui-reveal sui-reveal-start" style="padding:20px;text-align:center;">Start</div>
+      <div class="sui-card sui-reveal sui-reveal-end" style="padding:20px;text-align:center;">End</div>
+      <div class="sui-card sui-reveal sui-reveal-fade" style="padding:20px;text-align:center;">Fade</div>
+      <div class="sui-card sui-reveal sui-reveal-scale" style="padding:20px;text-align:center;">Scale</div>
+    </div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:16px;width:100%;"&gt;
+  &lt;div class="sui-card sui-reveal" style="padding:20px;text-align:center;"&gt;Up&lt;/div&gt;
+  &lt;div class="sui-card sui-reveal sui-reveal-down" style="padding:20px;text-align:center;"&gt;Down&lt;/div&gt;
+  &lt;div class="sui-card sui-reveal sui-reveal-start" style="padding:20px;text-align:center;"&gt;Start&lt;/div&gt;
+  &lt;div class="sui-card sui-reveal sui-reveal-end" style="padding:20px;text-align:center;"&gt;End&lt;/div&gt;
+  &lt;div class="sui-card sui-reveal sui-reveal-fade" style="padding:20px;text-align:center;"&gt;Fade&lt;/div&gt;
+  &lt;div class="sui-card sui-reveal sui-reveal-scale" style="padding:20px;text-align:center;"&gt;Scale&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- Up is the default. Start/End slide in from the inline start/end; Fade is opacity only. --&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Stagger -->
+<div class="pg-section" id="section-3">
+  <h3 class="pg-section-title">Stagger</h3>
+  <p class="pg-section-desc">Put <code>data-reveal-stagger</code> on the parent to delay each <code>.sui-reveal</code> child a little more than the last (milliseconds, default 80). Or set <code>--sui-delay</code> on any element yourself. <button class="sui-btn sui-btn-sm" onclick="replayReveal(this)">Replay</button></p>
+  <div class="pg-section-row">
+    <div data-reveal-stagger="120" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:16px;width:100%;">
+      <div class="sui-card sui-reveal" style="padding:20px;">
+        <h4 style="margin-bottom:6px;">Design</h4>
+        <p style="color:var(--sui-text-muted);font-size:13px;">0ms</p>
+      </div>
+      <div class="sui-card sui-reveal" style="padding:20px;">
+        <h4 style="margin-bottom:6px;">Build</h4>
+        <p style="color:var(--sui-text-muted);font-size:13px;">120ms</p>
+      </div>
+      <div class="sui-card sui-reveal" style="padding:20px;">
+        <h4 style="margin-bottom:6px;">Ship</h4>
+        <p style="color:var(--sui-text-muted);font-size:13px;">240ms</p>
+      </div>
+    </div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div data-reveal-stagger="120" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:16px;width:100%;"&gt;
+  &lt;div class="sui-card sui-reveal" style="padding:20px;"&gt;
+    &lt;h4 style="margin-bottom:6px;"&gt;Design&lt;/h4&gt;
+    &lt;p style="color:var(--sui-text-muted);font-size:13px;"&gt;0ms&lt;/p&gt;
+  &lt;/div&gt;
+  &lt;div class="sui-card sui-reveal" style="padding:20px;"&gt;
+    &lt;h4 style="margin-bottom:6px;"&gt;Build&lt;/h4&gt;
+    &lt;p style="color:var(--sui-text-muted);font-size:13px;"&gt;120ms&lt;/p&gt;
+  &lt;/div&gt;
+  &lt;div class="sui-card sui-reveal" style="padding:20px;"&gt;
+    &lt;h4 style="margin-bottom:6px;"&gt;Ship&lt;/h4&gt;
+    &lt;p style="color:var(--sui-text-muted);font-size:13px;"&gt;240ms&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- Manual delay --&gt;
+&lt;div class="sui-reveal" style="--sui-delay:300ms;"&gt;...&lt;/div&gt;</pre></div>
+  </div>
+</div>
+
+<!-- JavaScript API -->
+<div class="pg-section" id="section-4">
+  <h3 class="pg-section-title">JavaScript API</h3>
+  <p class="pg-section-desc"><code>.sui-reveal</code> elements in the page are picked up on load, and by <code>SoftUI.init(el)</code>. For content you add later, call <code>SoftUI.reveal()</code> with a selector, an element or a list. Add <code>data-reveal-repeat</code> to hide the element again when it leaves the viewport and replay it on the way back.</p>
+  <div class="pg-section-row" style="flex-direction:column;align-items:flex-start;gap:16px;">
+    <button class="sui-btn sui-btn-primary" onclick="addCard()">Add a card</button>
+    <div id="revealList" style="display:flex;flex-direction:column;gap:12px;max-width:360px;"></div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;button class="sui-btn sui-btn-primary" onclick="addCard()"&gt;Add a card&lt;/button&gt;
+&lt;div id="revealList" style="display:flex;flex-direction:column;gap:12px;max-width:360px;"&gt;&lt;/div&gt;
+
+&lt;script&gt;
+  function addCard() {
+    var card = document.createElement('div');
+    card.className = 'sui-card sui-reveal sui-reveal-scale';
+    card.style.padding = '16px 20px';
+    card.textContent = 'Added at ' + new Date().toLocaleTimeString();
+    document.getElementById('revealList').appendChild(card);
+    SoftUI.reveal(card);
+  }
+
+  // Other forms
+  SoftUI.reveal();                    // every .sui-reveal not yet revealed
+  SoftUI.reveal('.feature-card');     // a selector (adds .sui-reveal if missing)
+  SoftUI.reveal(listOfElements);      // a NodeList or array
+
+  // Observer options — read once, on the first call
+  SoftUI.reveal('.feature-card', { rootMargin: '0px 0px -20% 0px', threshold: 0.2 });
+&lt;/script&gt;
+
+&lt;!-- Replay every time it scrolls back into view --&gt;
+&lt;div class="sui-reveal" data-reveal-repeat&gt;...&lt;/div&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Accessibility -->
+<div class="pg-section" id="section-5">
+  <h3 class="pg-section-title">Accessibility</h3>
+  <p class="pg-section-desc">Content is only hidden after <code>softui.js</code> adds <code>.sui-reveal-ready</code> to <code>&lt;html&gt;</code>, so it is always visible without JavaScript and when printing. Users who prefer reduced motion see everything immediately, with no delay. Reveal uses the <code>translate</code> and <code>scale</code> properties, so it doesn't fight a component's own <code>transform</code> — but it does set <code>opacity</code>, so put <code>.sui-reveal</code> on a wrapper around interactive components rather than on the component itself. <button class="sui-btn sui-btn-sm" onclick="replayReveal(this)">Replay</button></p>
+  <div class="pg-section-row">
+    <div class="sui-reveal sui-reveal-start" data-reveal-repeat style="max-width:360px;">
+      <div class="sui-card sui-card-hover" style="padding:24px;">
+        <h4 style="margin-bottom:8px;">Wrapped card</h4>
+        <p style="color:var(--sui-text-muted);font-size:14px;">The wrapper reveals; the card keeps its hover lift. Scroll away and back to replay.</p>
+      </div>
+    </div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;!-- Reveal the wrapper, not the interactive card --&gt;
+&lt;div class="sui-reveal sui-reveal-start" data-reveal-repeat style="max-width:360px;"&gt;
+  &lt;div class="sui-card sui-card-hover" style="padding:24px;"&gt;
+    &lt;h4 style="margin-bottom:8px;"&gt;Wrapped card&lt;/h4&gt;
+    &lt;p style="color:var(--sui-text-muted);font-size:14px;"&gt;The wrapper reveals; the card keeps its hover lift. Scroll away and back to replay.&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- No JS or prefers-reduced-motion: content is simply visible --&gt;</pre></div>
+  </div>
+</div>

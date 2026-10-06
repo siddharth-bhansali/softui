@@ -11,6 +11,7 @@ toc:
   - Cursor Styles
   - Speeds
   - With Colors
+  - Reserve Space
 ---
 
 <!-- Default -->
@@ -164,5 +165,42 @@ toc:
   data-sui-typewriter data-words="Connection refused|Timeout exceeded" data-loop&gt;&lt;/span&gt;
 
 &lt;!-- Color classes: sui-typewriter-primary, success, danger, warning, info --&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Reserve Space -->
+<div class="pg-section" id="section-6">
+  <h3 class="pg-section-title">Reserve Space</h3>
+  <p class="pg-section-desc">Add <code>data-reserve</code> to size the typewriter to its longest phrase, so the text after it never shifts while typing. Text already inside a <code>data-words</code> element (for example server-rendered) shows immediately, then is deleted and the phrases start. Screen readers hear the full text once (override it with <code>data-sr-text</code>), and users who prefer reduced motion see the final text with no typing.</p>
+  <div class="pg-section-row">
+    <div style="display:flex;flex-direction:column;gap:20px;">
+      <p style="font-size:20px;font-weight:600;color:var(--sui-text);">
+        Ship <span class="sui-typewriter sui-typewriter-cursor sui-typewriter-primary" data-sui-typewriter data-reserve data-words="faster|smaller bundles|accessible interfaces" data-loop>faster</span> with SoftUI.
+      </p>
+      <p style="font-size:20px;font-weight:600;color:var(--sui-text);">
+        Status: <span class="sui-typewriter sui-typewriter-cursor-block" data-sui-typewriter data-reserve data-words="Building|Testing|Deploying|Live" data-loop data-sr-text="Build status">Building</span> — this sentence stays put.
+      </p>
+    </div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;p style="font-size:20px;font-weight:600;"&gt;
+  Ship &lt;span class="sui-typewriter sui-typewriter-cursor sui-typewriter-primary"
+    data-sui-typewriter data-reserve
+    data-words="faster|smaller bundles|accessible interfaces" data-loop&gt;faster&lt;/span&gt; with SoftUI.
+&lt;/p&gt;
+
+&lt;p style="font-size:20px;font-weight:600;"&gt;
+  Status: &lt;span class="sui-typewriter sui-typewriter-cursor-block"
+    data-sui-typewriter data-reserve
+    data-words="Building|Testing|Deploying|Live" data-loop
+    data-sr-text="Build status"&gt;Building&lt;/span&gt; — this sentence stays put.
+&lt;/p&gt;
+
+&lt;!-- data-reserve: width of the longest phrase, so nothing after it reflows --&gt;
+&lt;!-- Text inside a data-words element is shown first, then typed over
+     (if it matches the first phrase, typing continues from there) --&gt;
+&lt;!-- data-sr-text: what screen readers hear (default: all phrases, comma-separated) --&gt;
+&lt;!-- prefers-reduced-motion: the final text is shown with no typing --&gt;</pre></div>
   </div>
 </div>

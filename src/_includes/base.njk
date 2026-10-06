@@ -14,7 +14,7 @@
   <meta name="twitter:title" content="{% if title == 'SoftUI' %}SoftUI — Neumorphic CSS Component Library{% else %}{{ title }} — SoftUI{% endif %}">
   <meta name="twitter:description" content="{% if description %}{{ description }}{% else %}A neumorphic CSS component library with 77+ components, dark mode, and zero dependencies.{% endif %}">
   <style>body{opacity:0}</style>
-  <script>var t=localStorage.getItem('sui-theme');if(t==='dark'||(!t&&matchMedia('(prefers-color-scheme:dark)').matches))document.documentElement.setAttribute('data-theme','dark');</script>
+  <script>try{var t=localStorage.getItem('sui-theme');if(t!=='light'&&t!=='dark')t=matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light';document.documentElement.setAttribute('data-theme',t);}catch(e){}</script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -47,8 +47,8 @@
       <a href="https://github.com/siddharth-bhansali/softui" target="_blank" rel="noopener" class="docs-topbar-icon" aria-label="GitHub">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
       </a>
-      <button class="docs-theme-toggle" onclick="toggleTheme()">
-        <span class="theme-icon">&#9790;</span>
+      <button class="docs-theme-toggle" data-sui-theme-toggle aria-label="Dark mode">
+        <span class="theme-icon" aria-hidden="true">&#9790;</span>
       </button>
       <button class="docs-hamburger" onclick="toggleMobileNav()" aria-label="Toggle navigation">
         <span></span><span></span><span></span>
@@ -157,7 +157,7 @@
   <div class="sui-modal-backdrop sui-modal-static" id="demoModalStatic" role="dialog" aria-modal="true">
     <div class="sui-modal">
       <div class="sui-modal-header"><h3>Static Backdrop</h3><button class="sui-modal-close" aria-label="Close"></button></div>
-      <div class="sui-modal-body"><p>Clicking outside this modal won't close it. Instead, the modal will shake to indicate it requires explicit action. Use the close button or press Escape to dismiss.</p></div>
+      <div class="sui-modal-body"><p>Clicking outside this modal won't close it. Instead, the modal will shake to indicate it requires explicit action. Pressing Escape shakes it too — use the close button or an action to dismiss.</p></div>
       <div class="sui-modal-footer"><button class="sui-btn sui-btn-sm" onclick="SoftUI.modal('#demoModalStatic').close()">Cancel</button><button class="sui-btn sui-btn-primary sui-btn-sm">Understood</button></div>
     </div>
   </div>
@@ -242,7 +242,7 @@
   <div class="sui-sheet-backdrop sui-sheet-static" id="demoSheetStatic" role="dialog" aria-modal="true" aria-label="Static Sheet">
     <div class="sui-sheet sui-sheet-right">
       <div class="sui-sheet-header"><h3>Static Backdrop</h3><button class="sui-sheet-close" aria-label="Close"></button></div>
-      <div class="sui-sheet-body"><p>Clicking outside this sheet won't close it. The sheet will shake to indicate it requires explicit action. Use the close button or press Escape.</p></div>
+      <div class="sui-sheet-body"><p>Clicking outside this sheet won't close it. The sheet will shake to indicate it requires explicit action. Pressing Escape shakes it too. Use the close button to dismiss.</p></div>
       <div class="sui-sheet-footer"><button class="sui-btn sui-btn-sm" onclick="SoftUI.sheet('#demoSheetStatic').close()">Close</button></div>
     </div>
   </div>
@@ -287,19 +287,14 @@
       }
     });
 
-    // Theme
-    function toggleTheme() {
-      const html = document.documentElement;
-      const isDark = html.getAttribute('data-theme') === 'dark';
-      html.setAttribute('data-theme', isDark ? 'light' : 'dark');
-      document.querySelector('.theme-icon').textContent = isDark ? '\u263E' : '\u2600';
-      localStorage.setItem('sui-theme', isDark ? 'light' : 'dark');
+    // Theme \u2014 toggling, saving, following the OS and syncing tabs are handled
+    // by softui.js (data-sui-theme-toggle); this only swaps the header icon.
+    function syncThemeIcon() {
+      const icon = document.querySelector('.theme-icon');
+      if (icon) icon.textContent = document.documentElement.getAttribute('data-theme') === 'dark' ? '\u2600' : '\u263E';
     }
-    (function() {
-      if (document.documentElement.getAttribute('data-theme') === 'dark') {
-        document.querySelector('.theme-icon').textContent = '\u2600';
-      }
-    })();
+    syncThemeIcon();
+    document.addEventListener('sui-theme-change', syncThemeIcon);
 
 
     // Prevent tab focus on elements inside bento previews

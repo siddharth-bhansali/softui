@@ -52,7 +52,7 @@ toc:
 &lt;/div&gt;
 
 &lt;script&gt;
-  // Listen for completion:
+  // Listen for completion (the event bubbles, so document works too):
   document.querySelector('.sui-otp').addEventListener('sui-otp-complete', (e) =&gt; {
     console.log('OTP entered:', e.detail.value);
   });

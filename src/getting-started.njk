@@ -37,58 +37,123 @@ bun add softui-css</code></pre>
   <!-- JavaScript -->
   <section class="docs-getstarted-section" id="javascript">
     <h2>JavaScript</h2>
-    <p>Most components are pure CSS. Some interactive components require <code>softui.js</code> — a lightweight, dependency-free script (~4KB min).</p>
+    <p>Most components are pure CSS. Some interactive components require <code>softui.js</code> — a dependency-free script (about 24KB minified and gzipped).</p>
     <p>Include it at the end of your <code>&lt;body&gt;</code>:</p>
     <div class="docs-getstarted-code">
 <pre><code>&lt;script src="https://unpkg.com/softui-css/dist/softui.min.js"&gt;&lt;/script&gt;</code></pre>
     </div>
-    <p style="margin-top:12px;font-size:14px;color:var(--sui-text-muted);">Components that need JS: Accordion, Calendar, Carousel, Chart, Collapsible, Color Picker, Combobox, Command, Context Menu, Data Table, Dock, Drag &amp; Drop, Dropdown, File Upload, Input OTP, Menubar, Modal, Popover, Rating, Resizable, Sheet, Sidebar, Slider, Swap, Tabs, Toggle Group, and form enhancements (Password Toggle, Number Input, Tags Input).</p>
+    <p style="margin-top:12px;font-size:14px;color:var(--sui-text-muted);">Components that need JS: Accordion, Calendar, Carousel, Chart, Collapsible, Color Picker, Combobox, Command, Context Menu, Data Table, Dock, Drag &amp; Drop, Dropdown, File Upload, Input OTP, Menubar, Modal, Popover, Rating, Resizable, Scroll Reveal, Sheet, Sidebar, Slider, Swap, Tabs, Text Rotate, Theme Toggle, Toggle Group, Typewriter, and form enhancements (Password Toggle, Number Input, Tags Input).</p>
+    <p style="margin-top:12px;">The script initialises everything on page load and exposes <code>window.SoftUI</code>:</p>
+    <div class="docs-getstarted-code">
+<pre><code>SoftUI.init(el);                     // wire up markup added after load (safe to repeat)
+SoftUI.modal('#id').open();          // also .close(), .isOpen() — selector or element
+SoftUI.sheet('#id').open();
+SoftUI.toast({ title: 'Saved', message: 'Your changes are live.' });
+SoftUI.carousel('#id').next();
+SoftUI.sidebar('#id').toggle();
+SoftUI.tour([{ target: '#step1', title: 'Welcome' }]);
+SoftUI.theme.toggle();               // see Theming → Dark Mode Toggle
+SoftUI.reveal('.my-cards');          // see Scroll Reveal
+SoftUI.version;                      // '1.16.0'</code></pre>
+    </div>
+    <p style="margin-top:12px;font-size:14px;color:var(--sui-text-muted);">If one component's markup is broken, the error is logged as <code>[SoftUI] … failed</code> and every other component still works. Scripted motion (carousel autoplay, typewriter, text rotate, radial count-up, scroll reveal, smooth scrolling) is turned off when the user prefers reduced motion.</p>
   </section>
 
   <!-- Frameworks -->
   <section class="docs-getstarted-section" id="frameworks">
     <h2>Using with Frameworks</h2>
-    <p>SoftUI is plain CSS — it works with any framework. Just import the styles and use the classes.</p>
+    <p>The CSS works anywhere — import the styles and use the classes. The optional JS auto-initialises on page load. In single-page apps, call <code>SoftUI.init(el)</code> after rendering new markup that uses JS components; calling it again is safe because elements that are already set up are skipped.</p>
     <div class="docs-getstarted-code">
-<pre><code>/* React — import in your entry file (App.jsx or index.jsx) */
+<pre><code>/* React — import once in your entry file, init after render */
 import 'softui-css/dist/softui.min.css';
-import 'softui-css/dist/softui.min.js';
+import SoftUI from 'softui-css';
+import { useEffect, useRef } from 'react';
 
-function App() {
+function Settings() {
+  const ref = useRef(null);
+  useEffect(() =&gt; { SoftUI.init(ref.current); }, []);
   return (
-    &lt;button className="sui-btn sui-btn-primary"&gt;Click me&lt;/button&gt;
+    &lt;div ref={ref} className="sui-accordion"&gt;...&lt;/div&gt;
   );
 }
 
 
-/* Vue — import in main.js */
+/* Vue — import in main.js, init in onMounted */
 import 'softui-css/dist/softui.min.css';
-import 'softui-css/dist/softui.min.js';
+import SoftUI from 'softui-css';
 
+&lt;script setup&gt;
+import { ref, onMounted } from 'vue';
+const el = ref(null);
+onMounted(() =&gt; SoftUI.init(el.value));
+&lt;/script&gt;
 &lt;template&gt;
-  &lt;button class="sui-btn sui-btn-primary"&gt;Click me&lt;/button&gt;
+  &lt;div ref="el" class="sui-tabs"&gt;...&lt;/div&gt;
 &lt;/template&gt;
 
 
-/* Svelte — import in +layout.svelte or app.html */
-import 'softui-css/dist/softui.min.css';
-import 'softui-css/dist/softui.min.js';
-
-&lt;button class="sui-btn sui-btn-primary"&gt;Click me&lt;/button&gt;
+/* Svelte — import in +layout.svelte, init in onMount */
+&lt;script&gt;
+  import 'softui-css/dist/softui.min.css';
+  import SoftUI from 'softui-css';
+  import { onMount } from 'svelte';
+  let node;
+  onMount(() =&gt; SoftUI.init(node));
+&lt;/script&gt;
+&lt;div bind:this={node} class="sui-dropdown"&gt;...&lt;/div&gt;
 
 
 /* Astro — import in your layout */
 ---
 import 'softui-css/dist/softui.min.css';
 ---
-&lt;script src="/node_modules/softui-css/dist/softui.min.js"&gt;&lt;/script&gt;
+&lt;script&gt;import 'softui-css/dist/softui.min.js';&lt;/script&gt;
 
 
-/* Next.js — import in _app.js or layout.tsx */
+/* Next.js — import the CSS in layout.tsx, load the JS in a client component */
+// app/layout.tsx
 import 'softui-css/dist/softui.min.css';
-/* Add softui.min.js via Script component or next/script */</code></pre>
+
+// components/SoftUIInit.tsx
+'use client';
+import { useEffect } from 'react';
+export default function SoftUIInit() {
+  useEffect(() =&gt; {
+    import('softui-css').then((m) =&gt; (m.default || m).init(document));
+  }, []);
+  return null;
+}</code></pre>
     </div>
-    <p style="margin-top:12px;font-size:14px;color:var(--sui-text-muted);">Tip: For JS-dependent components (modals, dropdowns, etc.), make sure <code>softui.js</code> loads after the DOM is ready. In React/Vue/Svelte, the import handles this automatically.</p>
+    <p style="margin-top:12px;font-size:14px;color:var(--sui-text-muted);"><code>import SoftUI from 'softui-css'</code> and <code>require('softui-css')</code> return the same object as <code>window.SoftUI</code>, which is also set in the browser. Importing on the server (SSR) is a no-op, so the import is safe in Next.js, Nuxt, SvelteKit and Astro. Loading the script twice (for example a CDN tag plus a bundler import) reuses the first copy. Markup that your framework renders or re-renders after load needs a <code>SoftUI.init(el)</code> call; pure-CSS components never do.</p>
+  </section>
+
+  <!-- Events -->
+  <section class="docs-getstarted-section" id="events">
+    <h2>Events</h2>
+    <p>Interactive components fire <code>CustomEvent</code>s that bubble, so you can listen on the component or anywhere above it — including <code>document</code>:</p>
+    <div class="docs-getstarted-code">
+<pre><code>document.addEventListener('sui-date-select', function (e) {
+  console.log(e.target, e.detail.date);
+});</code></pre>
+    </div>
+    <div class="docs-getstarted-code" style="margin-top:12px;">
+<pre><code>Event                 Fired on                  detail
+sui-date-select       .sui-calendar             { date, hour, minute, period, is24h }  (single)
+                                                { start, end }                          (range)
+sui-date-clear        .sui-calendar             —
+sui-time-change       .sui-timepicker           { hour, minute, period, is24h }
+sui-otp-complete      .sui-otp                  { value }
+sui-rating-change     .sui-rating               { value }
+sui-color-change      .sui-color-picker         { color }        (swatch picker)
+                      .sui-color-spectrum       { hex, rgb }     (spectrum picker)
+sui-swap-change       .sui-swap                 { active }       (two-state swap)
+                      .sui-swap-cycle           { state, total } (multi-state swap)
+sui-editable-save     .sui-editable             { value, previous }
+sui-editable-cancel   .sui-editable             —
+sui-countdown-end     .sui-countdown            —
+sui-theme-change      document                  { theme, source }</code></pre>
+    </div>
+    <p style="margin-top:12px;font-size:14px;color:var(--sui-text-muted);">The older names <code>editable:save</code>, <code>editable:cancel</code> and <code>countdown:end</code> still fire alongside the <code>sui-*</code> names. Native <code>change</code> events also bubble from styled selects, selectable pricing cards and number inputs.</p>
   </section>
 
   <!-- Quick Start -->
@@ -172,14 +237,25 @@ import 'softui-css/dist/softui.min.css';
 <pre><code>&lt;head&gt;
   &lt;style&gt;body{opacity:0}&lt;/style&gt;
   &lt;script&gt;
-    var t = localStorage.getItem('sui-theme');
-    if (t === 'dark' || (!t && matchMedia('(prefers-color-scheme:dark)').matches))
-      document.documentElement.setAttribute('data-theme', 'dark');
+    try {
+      var t = localStorage.getItem('sui-theme');
+      if (t !== 'light' &amp;&amp; t !== 'dark')
+        t = matchMedia('(prefers-color-scheme:dark)').matches ? 'dark' : 'light';
+      document.documentElement.setAttribute('data-theme', t);
+    } catch (e) {}
   &lt;/script&gt;
   &lt;link rel="stylesheet" href="softui.min.css"&gt;
 &lt;/head&gt;</code></pre>
     </div>
     <p style="margin-top:12px;font-size:14px;color:var(--sui-text-muted);">The inline <code>opacity:0</code> hides the page until SoftUI's CSS loads (which sets <code>opacity:1</code>), eliminating any flash. The script reads the saved theme preference before the first paint.</p>
+    <p style="margin-top:12px;">For the toggle itself, add <code>data-sui-theme-toggle</code> to a button. <code>softui.js</code> handles switching, saving the choice, following the system preference and syncing tabs:</p>
+    <div class="docs-getstarted-code">
+<pre><code>&lt;button class="sui-theme-toggle" data-sui-theme-toggle aria-label="Dark mode"&gt;
+  &lt;svg class="sui-theme-toggle-sun" viewBox="0 0 24 24" aria-hidden="true"&gt;...&lt;/svg&gt;
+  &lt;svg class="sui-theme-toggle-moon" viewBox="0 0 24 24" aria-hidden="true"&gt;...&lt;/svg&gt;
+&lt;/button&gt;</code></pre>
+    </div>
+    <p style="margin-top:12px;font-size:14px;color:var(--sui-text-muted);">See <a href="/theming/#dark-mode-toggle" style="color:var(--sui-primary-text);font-weight:600;">Dark Mode Toggle</a> for light / dark / system buttons, the <code>SoftUI.theme</code> API and the <code>sui-theme-change</code> event.</p>
   </section>
 
   <!-- Customization -->
@@ -270,6 +346,7 @@ Not Supported:
   <a class="pg-toc-link" href="#cdn">CDN</a>
   <a class="pg-toc-link" href="#javascript">JavaScript</a>
   <a class="pg-toc-link" href="#frameworks">Frameworks</a>
+  <a class="pg-toc-link" href="#events">Events</a>
   <a class="pg-toc-link" href="#quickstart">Quick Start</a>
   <a class="pg-toc-link" href="#existing-sites">Existing Sites</a>
   <a class="pg-toc-link" href="#darkmode">Dark Mode</a>
