@@ -9,6 +9,203 @@ permalink: /changelog/
   <h1 class="docs-getstarted-title">Changelog</h1>
   <p class="docs-getstarted-desc">What's new in each version of SoftUI.</p>
 
+  <!-- 1.16.0 -->
+  <section class="docs-getstarted-section" id="v1.16.0">
+    <h2>v1.16.0</h2>
+    <p><strong>Theme Switcher, AA Colours, Section, Footer, Links & Scroll Reveal, Framework-Ready JS</strong></p>
+    <div class="docs-getstarted-code">
+<pre><code>New Components:
+  - Theme Toggle — data-sui-theme-toggle on any button toggles dark mode;
+    ="light" / "dark" / "system" set a value; &lt;html data-sui-theme-auto&gt;
+    follows the OS with no button. Saves the choice, follows the OS until
+    the user picks, syncs across tabs. SoftUI.theme.get/set/toggle/clear/
+    system and a sui-theme-change event ({theme, source}). New
+    sui-theme-toggle sun/moon button (-sm, -lg)
+  - Scroll Reveal — sui-reveal with -start, -end, -down, -fade, -scale;
+    data-reveal-stagger, data-reveal-repeat, --sui-delay,
+    --sui-reveal-distance, --sui-reveal-duration and SoftUI.reveal().
+    Content stays visible without JS, under reduced motion and in print
+  - Section — sui-section / sui-section-sm page spacing, sui-section-header
+    with sui-section-title, sui-section-subtitle, sui-section-action, and
+    sui-heading-accent
+  - Footer — centred, split (sui-footer-split) and multi-column
+    (sui-footer-columns), bordered / raised / inset, raised links
+  - Links — sui-link (underlined prose link), sui-link-subtle,
+    sui-link-muted, sui-link-arrow (RTL-aware)
+  - Status Dot — sui-status-dot with colours, -sm / -lg, -pulse, and a
+    sui-status label wrapper
+
+New:
+  - Hero: sui-hero-start (start-aligned) and sui-hero-split (text + media
+    side by side from 992px: sui-hero-content, sui-hero-media,
+    sui-hero-media-start)
+  - Display headings: sui-display-1, -2, -3 (fluid)
+  - Stat card footer: sui-stat-footer pill with a --sui-fill bar and
+    -primary / -success / -danger / -warning / -info tints
+  - Avatars: sui-avatar-2xl (120px) and sui-avatar-3xl (160px)
+  - sui-flat-all — on a container, turns every neumorphic shadow inside
+    (including toggle knobs and range thumbs) into a hairline outline
+  - Spacing scale 0-7 (0/4/8/16/24/48/64/96px) backed by --sui-space-0..7.
+    New sui-px/py/pt/pb/ps/pe-*, sui-mx/my/ms/me-*, sui-my-auto,
+    sui-gap-6 and sui-gap-7. Start/end classes flip in RTL; sui-ml-* and
+    sui-mr-* stay as aliases of ms/me
+  - Font utilities: sui-font-sans, sui-font-mono, sui-tabular-nums,
+    sui-proportional-nums
+  - Images: sui-img-fluid, sui-img-frame. Aspect ratio: sui-aspect-4-5
+  - Sidebar: off-canvas drawer below 900px (data-sidebar-open,
+    data-sidebar-close, overlay, Esc), sui-sidebar-static,
+    sui-sidebar-drawer, sui-sidebar-trigger-mobile, and
+    SoftUI.sidebar().open() / close() / isOpen()
+  - Tokens: --sui-{primary,success,danger,warning,info}-text and -text-hover
+    (AA text shades), --sui-warning-contrast, --sui-font-mono,
+    --sui-space-0..7, --sui-section-space / -sm / -xs,
+    --sui-section-header-gap. Optional: --sui-focus-ring,
+    --sui-focus-ring-color, --sui-link, --sui-link-hover,
+    --sui-link-underline, --sui-heading-accent
+  - Embed build: dist/softui-embed.css and softui-embed.min.css. Same
+    components and tokens, without the global reset, body styles, element
+    typography, scrollbar, reduced-motion and print rules outside SoftUI
+    elements
+  - window.SoftUI is a real global and the package's CommonJS / ES default
+    export (import SoftUI from 'softui-css'). Importing on the server (SSR)
+    is a no-op; loading the script twice reuses the first copy
+  - SoftUI.init(root) sets up markup added after load (element, selector or
+    nothing; safe to repeat). SoftUI.version
+  - A component that fails to initialise logs "[SoftUI] &lt;name&gt; failed"
+    and no longer stops the others
+  - SoftUI.modal(), SoftUI.sheet() and SoftUI.carousel() accept an element
+  - Typewriter and Text Rotate: data-reserve (fixed width), data-sr-text
+  - New events: sui-copy, sui-copy-error, sui-tree-toggle, sui-diff-change
+
+Changes (check these when upgrading):
+  - Coloured text uses the new -text shades: links, outline and ghost
+    buttons, outline badges and chips, alerts, sui-text-*, steppers, toasts
+    and active nav. Darker in light mode (warning text is now brown),
+    lighter in dark mode (link hover gets lighter, not darker). If you
+    rebrand --sui-primary, also set --sui-primary-text and -text-hover in
+    each theme
+  - Success and info fills are slightly darker so white text passes AA:
+    --sui-success #1FA96E → #198758 (hover #178A59 → #126D47),
+    --sui-info #1A82D4 → #187AC8 (hover #146BAE → #1364A3)
+  - --sui-text-light: #6A7D94 → #526072 (light), #8A94A6 → #939CAD (dark)
+  - --sui-text-muted (light): #5A6A7E → #4D5A6D, so muted text also passes
+    AA on --sui-bg-dark
+  - Dark-mode warning fills (buttons, badges, chips, filled alerts) use dark
+    text (#2D3748) instead of white
+  - Tints, glows and focus rings use color-mix() and follow your colour
+    tokens at any scope. Old-palette tints now match the current palette
+    (slightly deeper); the info chart colour is now --sui-info.
+    Browser baseline for these effects: Chrome/Edge 111, Safari 16.2,
+    Firefox 113. Older browsers lose tints and rings; layout is unaffected
+  - Spacing (sui-p-*, sui-m-*, ...), text colour and alignment (sui-text-*),
+    radius (sui-rounded-*) and aspect-ratio (sui-aspect-*) utilities now use
+    !important, like display, flex and gap. They now override component
+    defaults (e.g. sui-modal-body sui-p-0) and inline margin/padding on the
+    same element. Custom CSS that overrode them at equal specificity now
+    needs !important
+  - Gutter classes sui-g-*, sui-gx-* and sui-gy-* now apply (a default rule
+    used to force a 24px horizontal, 0 vertical gutter). sui-g-0 is now
+    flush, g-1/2/3 are narrower, g-5 is wider, and g/gy rows get vertical
+    gaps between wrapped lines
+  - All component events now bubble. New sui-* aliases: sui-editable-save,
+    sui-editable-cancel, sui-countdown-end (editable:save, editable:cancel
+    and countdown:end still fire)
+  - Toast title/message and tour title/description are inserted as plain
+    text (XSS fix). Pass html: true for trusted HTML. File upload names are
+    always text
+  - Escape closes only the topmost modal or sheet; static modals, alert
+    dialogs and static sheets shake instead of closing
+  - Sidebars become an off-canvas drawer below 900px; add
+    sui-sidebar-static to keep one inline
+  - Navigation menu: clicking a sub-menu parent opens/closes its sub-menu
+    instead of following its link
+  - Scripted motion respects prefers-reduced-motion: carousel autoplay,
+    text rotate, typewriter, radial count-up, scroll reveal, and
+    scrollspy/tour smooth scrolling
+  - data-theme sets color-scheme, so native scrollbars and form controls
+    match the theme
+  - Scoped themes fully reset component tints, the select arrow, borders,
+    scrollbars, warning text and the loading overlay; the overlay follows
+    the theme background
+  - code, kbd, OTP slots, colour picker, copy input and calendar time use
+    --sui-font-mono. --sui-font also lists 'Plus Jakarta Sans Variable'
+  - The hero title scales smoothly (clamp) instead of jumping at 600px
+  - Typewriter block and underscore cursors blink; text already in the
+    element is kept and typed over
+  - Playground preview iframe no longer has allow-same-origin, so shared
+    #code= links cannot run script against the docs site
+
+Fixes:
+  - Badge dot inside sui-badge-positioned is a 10px dot (was an 18px pill);
+    added the info dot colour
+  - Cards: images keep their aspect ratio and match the card radius;
+    overlay cards are positioned and clipped automatically; cards drop
+    their padding for direct images; sui-card-horizontal is a real row
+  - Outline toggle group border and default sidebar shadow restored
+  - Printing a dark page (or a scoped dark section) uses the light palette
+  - Focus returns to the opener on every modal/sheet close; body scroll
+    unlocks only when no overlay is open
+  - Drawer drag-to-dismiss threw an error and left the drawer open
+  - Carousel: autoplay intervals no longer stack; rewind-mode dots and
+    goTo() stop at the last full page
+  - Datepicker in 24-hour mode no longer adds "AM"
+  - Copy button: falls back to execCommand (works over http), restores its
+    own icon or label, survives double-clicks, .copy-failed state
+  - Password toggle no longer swallows click events
+  - Countdown: an invalid data-date shows "--"; a past date no longer
+    throws; relative dates may contain spaces ("+2y 5d")
+  - Timeline compact + right / alternate margins
+  - Stack back cards show inside surfaces and cards (isolation)
+  - Tour no longer dims the highlighted target
+  - Bottom-centre toasts slide up from the bottom edge
+  - Text rotate exit animation in RTL
+  - RTL via logical properties: navbar brand, timeline, alerts, filled
+    alerts, blockquotes, table headers and corners, sortable data table
+    headers, lists, bordered stats, positioned badges, avatar status dots,
+    navigation menu
+
+Accessibility:
+  - Contrast: coloured text (-text tokens) meets WCAG AA 4.5:1 on every
+    --sui-bg* surface in light and dark; text on filled buttons, badges and
+    chips meets 4.5:1 (white, or #2D3748 on warning)
+  - Keyboard support and roles: rating (slider), colour swatches (radio
+    group), tree view (ARIA tree), editable text (button), lightbox (dialog
+    with focus trap), diff (slider), navigation menu (arrows, Esc,
+    aria-expanded), sidebar drawer (focus trap, Esc)
+  - Focus-visible rings: dock, swap, speed dial, data table selects,
+    calendar AM/PM, copy buttons, colour swatches, navigation menu;
+    context-menu items reached by keyboard get the hover highlight
+  - Speed dial: aria-expanded, Escape closes it, closed actions leave the
+    tab order; dock and speed-dial labels show on focus
+  - Typewriter and text rotate: screen readers hear the full text once
+  - Playground editor is no longer a keyboard trap (Esc then Tab leaves)
+
+Docs:
+  - New pages: Section, Links, Footer, Scroll Reveal
+  - New sections: Hero (Start Aligned, Split), Typography (Display), Stat
+    Card (With Footer), Badges (Status Dot), Shadows (Flat Scope), Avatars
+    (2XL/3XL), Sidebar (Mobile Drawer), Timeline (RTL), Spacing, Text,
+    Sizing (Images), Aspect Ratio (4:5), Typewriter / Text Rotate (Reserve
+    Space)
+  - Theming: theme switcher, text shades, tints and focus rings, link and
+    section tokens, dark-theme halo note, loading the fonts
+  - Getting Started: JS API, frameworks with SoftUI.init, events, embed
+    build; the JS size is measured at build time
+  - Fixed "On This Page" links on Alerts, Badges, Buttons, Cards, Progress
+    and Toggles; fixed Playground snippets with non-existent classes
+  - 118 playground snippets (new: Theme Toggle, Hero Split, Section &amp;
+    Header, Stat Card Footer, Status Dot, Footer, Scroll Reveal, Links)
+  - The docs footer uses sui-footer
+
+Tooling:
+  - npm run build:embed; build:min also builds the embed files and syncs
+    the "/*! SoftUI vX.Y.Z" banners from package.json
+  - Publish workflow checks the npm registry, installs with
+    bun --frozen-lockfile and can be run manually; npm run dev works on
+    Windows cmd.exe</code></pre>
+    </div>
+  </section>
+
   <!-- 1.15.0 -->
   <section class="docs-getstarted-section" id="v1.15.0">
     <h2>v1.15.0</h2>
@@ -21,8 +218,10 @@ permalink: /changelog/
     not just &lt;html&gt; (shadow tokens re-resolve per section)
 
 Fixes:
-  - sui-flat now removes shadows on every component, including hover and
-    active states; keyboard focus keeps a visible ring
+  - sui-flat now removes the shadow of the element it is on, including
+    hover and active states; keyboard focus keeps a visible ring. Inner
+    parts such as toggle knobs and range thumbs keep their shadows (see
+    sui-flat-all in v1.16.0 to flatten a whole area)
 
 Docs:
   - "Using in an Existing Site" section on Getting Started

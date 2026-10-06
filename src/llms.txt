@@ -1,6 +1,6 @@
 # SoftUI
 
-> A neumorphic CSS component library with 77+ components, dark mode, and zero dependencies.
+> A neumorphic CSS component library with 80+ components, dark mode, and zero dependencies.
 
 SoftUI provides soft shadows, muted palettes, and tactile depth for modern web interfaces. Pure CSS with optional vanilla JavaScript for interactive components. No build tools required — just link the CSS and optionally the JS file.
 
@@ -33,15 +33,17 @@ All classes use the `sui-` prefix (e.g. `sui-btn`, `sui-card`, `sui-modal`).
 
 ## Features
 
-- 77+ components with neumorphic styling
-- Dark mode via `data-theme="dark"` on the html element, or scoped to any section
-- Existing sites: components need the SoftUI background (`--sui-bg`). Wrap sections in `sui-surface`, or use `sui-flat` on components placed on your own background
+- 80+ components with neumorphic styling
+- Dark mode via `data-theme="dark"` on the html element, or scoped to any section. `data-theme` also sets `color-scheme`, so native scrollbars and form controls match
+- Built-in theme switcher (softui.js): `data-sui-theme-toggle` on any button, or `<html data-sui-theme-auto>` to follow the OS with no button. Saves the choice, follows the OS until the user picks, syncs across tabs
+- Existing sites: components need the SoftUI background (`--sui-bg`). Wrap sections in `sui-surface`, use `sui-flat` on a single component placed on your own background, or `sui-flat-all` on a container to flatten everything inside it (including toggle knobs and range thumbs). A dark theme on a page darker than `--sui-bg` shows a faint halo; wrap it in `<div class="sui-surface" data-theme="dark">` or use `sui-flat-all`
 - Embed build (v1.16.0+): `dist/softui-embed.min.css` has the same components and tokens, but no global reset, body, element typography, scrollbar, reduced-motion or print rules outside SoftUI elements; base styles apply only inside elements with a `sui-` class. Use it instead of softui.min.css on sites with their own base styles
-- CSS custom properties for full theming (--sui-primary, --sui-bg, --sui-radius, etc.)
+- CSS custom properties for full theming (--sui-primary, --sui-bg, --sui-radius, --sui-space-*, etc.). Tints, glows and focus rings are computed with `color-mix()`, so they follow your colours at any scope (needs Chrome/Edge 111, Safari 16.2, Firefox 113; older browsers lose tints and rings, layout is unaffected)
+- Utility classes (spacing, text colour/alignment, radius, aspect ratio, display, flex, font) use `!important`, so they override component defaults
 - RTL support via CSS logical properties and dir="rtl" overrides
-- Responsive 12-column grid with sm/md/lg/xl breakpoints
-- Accessibility: prefers-reduced-motion, focus-visible, ARIA, WCAG AA contrast
-- Print styles included
+- Responsive 12-column grid with sm/md/lg/xl breakpoints and `sui-g-*`/`sui-gx-*`/`sui-gy-*` gutters
+- Accessibility: prefers-reduced-motion (CSS and scripted motion), focus-visible rings, ARIA and keyboard support for interactive components. Contrast: coloured text (`--sui-{primary,success,danger,warning,info}-text` tokens: links, outline/ghost buttons, badges, alerts, `sui-text-*`) meets WCAG AA 4.5:1 on every `--sui-bg*` surface in light and dark; text on filled buttons, badges and chips (white, or dark `--sui-warning-contrast` on warning) meets 4.5:1. If you change `--sui-primary` etc., set the matching `-text` tokens too
+- Print styles included (dark pages print with the light palette)
 - Zero dependencies — pure CSS + vanilla JS
 - Works with React, Vue, Svelte, Astro, Next.js, or plain HTML
 - Design tokens available at dist/tokens.json
@@ -52,75 +54,79 @@ All classes use the `sui-` prefix (e.g. `sui-btn`, `sui-card`, `sui-modal`).
 - Inputs (`sui-input`, `sui-label`, `sui-form-group`, `sui-select`) — text, email, password, number, tags, textarea, validation states, sizes
 - Toggles & Checks (`sui-toggle`, `sui-checkbox`, `sui-radio`) — switches, checkboxes, radios, colors, sizes, radio cards, checkbox cards
 - Slider (`sui-range`) — range input with labels, colors, sizes, vertical
-- Color Picker (`sui-color-swatch`, `sui-color-spectrum`) — swatches, spectrum picker with hue/hex/RGB
-- Rating (`sui-rating`) — star/heart/custom icons, half-star, sizes, read-only
+- Color Picker (`sui-color-swatch`, `sui-color-spectrum`) — swatches (keyboard radio group: one Tab stop, arrows select), spectrum picker with hue/hex/RGB
+- Rating (`sui-rating`) — star/heart/custom icons, half-star, sizes, read-only; keyboard slider (arrows, Home/End, number keys)
 - File Upload (`sui-dropzone`) — drag-and-drop, file list, progress, image previews
 - Input OTP (`sui-otp`) — one-time password digit boxes, auto-focus advance
 - Combobox (`sui-combobox`) — searchable select/autocomplete
-- Calendar (`sui-calendar`, `sui-datepicker`) — month grid, single/range selection, date picker popover, time picker
+- Calendar (`sui-calendar`, `sui-datepicker`) — month grid, single/range selection, date picker popover, time picker (12h/24h; `sui-date-select` detail includes `is24h`, `period` is null in 24h)
 - Segmented Control (`sui-segmented`) — iOS-style toggle with sliding indicator, primary, block, sizes
-- Editable Text (`sui-editable`) — click-to-edit inline text, underline variant, sizes, save/cancel events
+- Editable Text (`sui-editable`) — click-to-edit inline text, underline variant, sizes, `sui-editable-save`/`sui-editable-cancel` events; focusable button (Enter, Space or F2 to edit)
 - Styled Select (`sui-styled-select`) — custom dropdown replacement for native select, keyboard nav, sizes
 
 ### General
 - Buttons (`sui-btn`) — default, primary, success, danger, warning, info, outline, ghost, loading, sizes, icon, pill, block
 - Button Group (`sui-btn-group`) — horizontal/vertical connected buttons, sizes
-- Cards (`sui-card`) — raised, inset, flat, hoverable, image top, image overlay, horizontal, empty state
-- Avatars (`sui-avatar`) — circle, square, sizes, status dot, avatar group
-- Badges (`sui-badge`) — colors, pill, outline, sizes, positioned (notification dot)
+- Cards (`sui-card`) — raised, inset, flat, hoverable, image top, image overlay, horizontal, empty state. Card images (`sui-card-img-top`/`-bottom`/`-start`) take the card radius and drop the card padding automatically; `sui-card-horizontal` is a flex row (image max 40%, stacks on mobile); overlay cards need a height or an in-flow `img.sui-card-img-bg`
+- Avatars (`sui-avatar`) — circle, square, sizes `-sm`/`-lg`/`-xl`/`-2xl` (120px)/`-3xl` (160px), status dot (`sui-avatar-status`), avatar group
+- Badges (`sui-badge`) — colors, pill, outline, sizes, positioned (notification dot, flips in RTL)
+- Status Dot (`sui-status-dot`) — `-success`/`-warning`/`-danger`/`-info`/`-primary`, `-sm`/`-lg`, `-pulse` (respects reduced motion), `sui-status` label wrapper; override with `--sui-status-color`/`--sui-status-size`. A standalone dot needs `role="img"` and an `aria-label`
 - Chip (`sui-chip`) — dismissible labels, colors, outline, sizes, avatars
-- Copy Button (`sui-copy-btn`) — click-to-copy with checkmark feedback
+- Copy Button (`sui-copy-btn`) — click-to-copy with checkmark feedback; falls back to `execCommand` when the Clipboard API is unavailable; `.copy-failed` state; `sui-copy`/`sui-copy-error` events (`detail.text`)
 - Kbd (`sui-kbd`) — keyboard shortcut display
 - Divider (`sui-divider`) — horizontal/vertical, groove, dashed, dotted, text, colors
 - Pricing (`sui-pricing`) — cards with feature lists, featured badge, billing toggle, selectable, inset
-- Hero (`sui-hero`) — landing page banners, sizes, raised, bordered, inset, gradient, accent line
+- Hero (`sui-hero`) — landing page banners, sizes, raised, bordered, inset, gradient, accent line; start-aligned (`sui-hero-start`); split text + media from 992px (`sui-hero-split` with `sui-hero-content` and `sui-hero-media`, `sui-hero-media-start` to put media first); the title is fluid (clamp)
+- Links (`sui-link`) — underlined prose link (use inside running text; a bare `<a>` is coloured but not underlined), `sui-link-subtle`, `sui-link-muted`, `sui-link-arrow` (RTL-aware arrow). Recolour with `--sui-link`, `--sui-link-hover`, `--sui-link-underline`
 - List Group (`sui-list-group`) — styled lists with badges, avatars, actions, flyout sub-menus, active/disabled
 
 ### Data Display
-- Stat Card (`sui-stat`) — KPI display with value, label, trend arrow
+- Stat Card (`sui-stat`) — KPI display with value, label, trend arrow; optional footer pill `sui-stat-footer` with a `--sui-fill` bar (e.g. `style="--sui-fill:45%"`) and `-primary`/`-success`/`-danger`/`-warning`/`-info` tints
 - Tables (`sui-table`) — striped, compact, bordered, borderless, hoverable
 - Data Table (`sui-datatable`) — sortable, searchable, filterable, paginated with styled select
 - Chart (`sui-chart`) — CSS bar/donut/pie + SVG line/area charts
 - Radial Progress (`sui-radial`) — circular ring with animated count-up, sizes, colors
 - Timeline (`sui-timeline`) — vertical events with dots, connectors, colors, icons
-- Tree View (`sui-tree`) — hierarchical tree with icons, lines, checkboxes
+- Tree View (`sui-tree`) — hierarchical tree with icons, lines, checkboxes; ARIA tree with arrow-key navigation, `aria-checked` (incl. mixed), `sui-tree-toggle` event
 - Skeleton (`sui-skeleton`) — loading placeholders with shimmer animation
 - Descriptions (`sui-desc`) — key-value displays, bordered, raised, inset, striped
-- Countdown (`sui-countdown`) — animated timer with years/days/hours/min/sec, relative dates (+2y5d), variants
+- Countdown (`sui-countdown`) — animated timer with years/days/hours/min/sec, `data-date` as ISO 8601 or relative (`+2y5d`, spaces allowed), variants; an invalid date shows "--" and gets `data-countdown-invalid`; fires `sui-countdown-end`
 
 ### Feedback
 - Alerts (`sui-alert`) — default, filled, dismissible, with icon, all colors
-- Toast (`SoftUI.toast()`) — auto-dismissing notifications, 6 positions, colors, persistent
+- Toast (`SoftUI.toast()`) — auto-dismissing notifications, 6 positions, colors, persistent; `title`/`message` are plain text unless you pass `html: true`
 - Progress (`sui-progress`) — default, striped, animated, indeterminate, sizes, colors, labels
 - Spinner (`sui-spinner`) — spin, grow, wobble, elastic, sizes, colors
 - Loading Overlay (`sui-loading-overlay`) — spinner variants, blur, text, colors, fullscreen
 - Result (`sui-result`) — full-page feedback states (success, error, warning, 404, info), inset
 
 ### Navigation
-- Navbar (`sui-navbar`) — sticky, compact, full-width, with links and actions
-- Sidebar (`sui-sidebar`) — collapsible, nav groups, icons, mobile responsive with overlay
+- Navbar (`sui-navbar`) — sticky, compact, full-width, with links and actions; brand sits at the inline start (RTL-aware)
+- Sidebar (`sui-sidebar`) — collapsible, nav groups, icons; off-canvas drawer below 900px (open with `data-sidebar-open`, close with `data-sidebar-close`, the overlay, Esc or a nav item; focus trapped while open). `sui-sidebar-static` keeps it inline, `sui-sidebar-drawer` makes it a drawer at every width, `sui-sidebar-trigger-mobile` shows a trigger only below 900px
 - Breadcrumbs (`sui-breadcrumb`) — navigation trail with separators
 - Tabs (`sui-tabs`, `sui-tab`) — inset track, pill, underlined, fill, justified
 - Pagination (`sui-pagination`) — page numbers, sizes
 - Stepper (`sui-stepper`) — numbered steps, completed/active/pending, vertical
 - Dock (`sui-dock`) — macOS-style icon bar with hover magnification
-- Speed Dial (`sui-speed-dial`) — floating action button with expandable actions
-- Navigation Menu (`sui-nav-menu`) — mega-menu dropdowns, icons, groups, sub-menus, hover/click
+- Speed Dial (`sui-speed-dial`) — floating action button with expandable actions; give the trigger `aria-expanded="false" aria-label="Open actions"` (kept in sync by JS); Escape closes and returns focus
+- Navigation Menu (`sui-nav-menu`) — mega-menu dropdowns, icons, groups, sub-menus, hover/click; keyboard (arrows, Esc) with `aria-expanded`/`aria-controls`; clicking a sub-menu parent toggles its sub-menu
 - Scrollspy (`sui-scrollspy`) — auto-highlight nav on scroll, vertical, horizontal, pill
+- Footer (`sui-footer`) — centred by default, `sui-footer-split`, `sui-footer-columns` (`sui-footer-col`, `sui-footer-heading`, `sui-footer-bottom`, `sui-footer-brand-col`), `sui-footer-bordered`/`-raised`/`-inset`, `sui-footer-links-raised`; wrap content in `sui-footer-inner`
 
 ### Overlays
-- Modal (`SoftUI.modal()`) — sizes, scrollable, fullscreen, static backdrop, focus trap, escape to close
+- Modal (`SoftUI.modal()`) — sizes, scrollable, fullscreen, static backdrop, focus trap; Escape closes only the topmost modal/sheet (static ones shake instead); focus returns to the opener on every close; `modal()`/`sheet()` accept a selector or an element
 - Sheet (`SoftUI.sheet()`) — slide from left/right/top/bottom, sizes, drawer with drag handle and snap points
 - Dropdown (`sui-dropdown`) — click to open, directions, split button, no-arrow modifier
 - Popover (`sui-popover`) — click-triggered floating content
 - Hover Card (`sui-hover-card`) — hover-triggered preview cards
 - Tooltips (`sui-tooltip`) — 4 directions, pure CSS
-- Context Menu (`sui-context-menu`) — right-click menus with submenus, checkboxes, keyboard nav
+- Context Menu (`sui-context-menu`) — right-click menus with submenus, checkboxes, keyboard nav (focused items get the hover highlight)
 - Command Palette (`sui-command`) — Cmd+K searchable command list with groups, icons, shortcuts
 - Menubar (`sui-menubar`) — horizontal menu bar with dropdowns
 
 ### Layout
-- Layout (`sui-container`, `sui-row`, `sui-col-*`) — 12-column grid, responsive breakpoints, gutters, offsets
+- Layout (`sui-container`, `sui-row`, `sui-col-*`) — 12-column grid, responsive breakpoints, gutters (`sui-g-{0-5}`, `sui-gx-*`, `sui-gy-*` on the row), offsets
+- Section (`sui-section`, `sui-section-sm`) — page-section block padding from `--sui-section-space` / `--sui-section-space-sm`; `sui-section-header` with `sui-section-title`, `sui-section-subtitle`, `sui-section-action`; `sui-heading-accent` bar (colour via `--sui-heading-accent`, defaults to `--sui-primary`)
 - Scroll Area (`sui-scroll-area`) — custom neumorphic scrollbar styling
 - Accordion (`sui-accordion`) — expand/collapse sections, single/multi-open
 - Collapsible (`sui-collapsible`) — single section expand/collapse
@@ -128,35 +134,39 @@ All classes use the `sui-` prefix (e.g. `sui-btn`, `sui-card`, `sui-modal`).
 - Drag & Drop (`sui-sortable`, `sui-kanban`) — sortable lists, kanban board
 
 ### Media
-- Carousel (`sui-carousel`) — image/content slider, prev/next, dots, auto-play
-- Image Lightbox (`sui-lightbox-thumb`, `sui-lightbox-grid`) — grid, filmstrip, gallery, captions, zoom
-- Diff (`sui-diff`) — image compare slider with labels, vertical mode
+- Carousel (`sui-carousel`) — image/content slider, prev/next, dots, auto-play (off under reduced motion)
+- Image Lightbox (`sui-lightbox-thumb`, `sui-lightbox-grid`) — grid, filmstrip, gallery, captions, zoom; thumbnails are buttons, the viewer is a dialog that traps and returns focus
+- Diff (`sui-diff`) — image compare slider with labels, vertical mode; the handle is a keyboard slider, fires `sui-diff-change`
 - Chat Bubble (`sui-chat`) — message bubbles with avatar, timestamp, status
 - Browser Mockup (`sui-browser`) — macOS/Windows chrome with tabs
 - Marquee (`sui-marquee`) — infinite scrolling content, reverse, vertical
 - Phone Mockup (`sui-phone`) — notch, dynamic island, teardrop, punch hole
 - Stack (`sui-stack`) — overlapping cards with offset, fanned, hover spread
 - Swap (`sui-swap`) — animated toggle (rotate, flip, fade, slide)
-- Text Rotate (`sui-text-rotate`) — animated word cycling
-- Tour (`SoftUI.tour()`) — spotlight overlay with step-by-step tooltips
-- Typewriter (`sui-typewriter`) — character-by-character typing with cursor
+- Text Rotate (`sui-text-rotate`) — animated word cycling; `data-reserve` keeps the width fixed, `data-sr-text` sets what screen readers hear; static under reduced motion
+- Tour (`SoftUI.tour()`) — spotlight overlay with step-by-step tooltips; `title`/`description` are plain text unless `html: true` (per tour or per step)
+- Typewriter (`sui-typewriter`) — character-by-character typing with cursor; `data-reserve`, `data-sr-text`, screen readers hear the full text once; static under reduced motion
 - Toggle Group (`sui-toggle-group`) — group of toggleable buttons
 
 ### Utilities
-- Shadows: `sui-raised`, `sui-inset`, `sui-flat` (no shadow + border, works on any background), `sui-raised-lg`
+- Shadows: `sui-raised`, `sui-inset`, `sui-flat` (removes the element's own shadow and adds a border, works on any background), `sui-flat-all` (on a container: replaces every neumorphic shadow inside, incl. toggles and range thumbs, with a hairline outline), `sui-raised-lg`
 - Surface: `sui-surface` — paints the SoftUI background, text color, and font on a section (combine with `data-theme="dark"` for a scoped dark section)
 - Border Radius: `sui-rounded-sm`, `sui-rounded`, `sui-rounded-lg`, `sui-rounded-full`
-- Spacing: `sui-p-{0-5}`, `sui-m-{0-5}`, `sui-mt-{0-5}`, `sui-mb-{0-5}`, `sui-ml-{0-5}`, `sui-mr-{0-5}`, `sui-mx-auto`
+- Spacing (0-7 = 0/4/8/16/24/48/64/96px, tokens `--sui-space-0..7`): `sui-{p,px,py,pt,pb,ps,pe}-{0-7}`, `sui-{m,mx,my,mt,mb,ms,me}-{0-7}`, `sui-ml-*`/`sui-mr-*` (aliases of ms/me), `sui-mx-auto`, `sui-my-auto`. Start/end (`ps`/`pe`/`ms`/`me`/`px`/`mx`) are logical and flip in RTL
 - Text: `sui-text-center`, `sui-text-left`, `sui-text-right`, `sui-text-muted`, `sui-text-primary`, `sui-text-success`, `sui-text-warning`, `sui-text-danger`, `sui-text-info`, `sui-small`
-- Flex: `sui-d-flex`, `sui-justify-center`, `sui-align-center`, `sui-flex-wrap`, `sui-gap-{0-5}`
+- Font: `sui-font-sans`, `sui-font-mono` (uses `--sui-font-mono`), `sui-tabular-nums`, `sui-proportional-nums`
+- Flex: `sui-d-flex`, `sui-justify-center`, `sui-align-center`, `sui-flex-wrap`, `sui-gap-{0-7}`
 - Display: `sui-d-block`, `sui-d-inline-block`, `sui-d-none`, `sui-d-grid`
 - Position: `sui-relative`, `sui-absolute`, `sui-fixed`, `sui-sticky`
 - Sizing: `sui-w-full`, `sui-h-full`, `sui-h-screen`, `sui-min-vh-100`
+- Images: `sui-img-fluid` (max-width 100%, height auto), `sui-img-frame` (raised frame, on the `<img>` or a wrapper; combine with `sui-rounded-*` or a shadow utility)
 - Opacity: `sui-opacity-0` through `sui-opacity-100`
 - Cursor: `sui-cursor-pointer`, `sui-cursor-not-allowed`, `sui-cursor-grab`
 - Mask: `sui-mask-circle`, `sui-mask-star`, `sui-mask-heart`, `sui-mask-hexagon`, `sui-mask-diamond`, etc.
-- Aspect Ratio: `sui-aspect-square`, `sui-aspect-video`, `sui-aspect-portrait`, `sui-aspect-4-3`, `sui-aspect-3-2`, `sui-aspect-21-9` (add `sui-aspect` to make children fill the box)
-- Typography: headings, lead text, blockquote, lists
+- Aspect Ratio: `sui-aspect-square`, `sui-aspect-video`, `sui-aspect-portrait`, `sui-aspect-4-3`, `sui-aspect-3-2`, `sui-aspect-4-5`, `sui-aspect-21-9` (add `sui-aspect` to make children fill the box)
+- Typography: headings, display headings (`sui-display-1` to `sui-display-3`, fluid), lead text, blockquote, lists
+- Scroll Reveal (`sui-reveal`, needs softui.js): fades content in as it scrolls into view; `sui-reveal-start`/`-end`/`-down`/`-fade`/`-scale`, `data-reveal-stagger="120"` on the parent, `data-reveal-repeat`, `--sui-delay`, `--sui-reveal-distance`, `--sui-reveal-duration`. Content stays visible without JS, under reduced motion and in print
+- Theme Toggle (`sui-theme-toggle`, `-sm`/`-lg`): sun/moon button with `sui-theme-toggle-sun` and `sui-theme-toggle-moon` child SVGs; add `data-sui-theme-toggle`
 
 ## Theming
 
@@ -170,7 +180,7 @@ Override CSS custom properties to customize:
   --sui-shadow-light: #FFFFFF;
   --sui-shadow-dark: #B8C0CC;
   --sui-text: #2D3748;
-  --sui-text-muted: #5A6A7E;
+  --sui-text-muted: #4D5A6D;
   --sui-radius: 16px;
   --sui-radius-sm: 10px;
   --sui-font: 'Plus Jakarta Sans', sans-serif;
@@ -179,31 +189,55 @@ Override CSS custom properties to customize:
 }
 ```
 
+Text shades: coloured text uses `--sui-{primary,success,danger,warning,info}-text` and `-text-hover` (darker than the fill in light mode, lighter in dark mode); text on a warning fill uses `--sui-warning-contrast`. When you rebrand `--sui-primary`, also set `--sui-primary-text` and `--sui-primary-text-hover` on `:root, [data-theme="light"]` and on `[data-theme="dark"]`, and check 4.5:1 against `--sui-bg-dark` (light) and `--sui-bg-light` (dark).
+
+Other tokens:
+- Spacing scale: `--sui-space-0` to `--sui-space-7` (0/4/8/16/24/48/64/96px); retunes every padding, margin and gap utility at that step
+- Sections: `--sui-section-space` (96px), `--sui-section-space-sm` (64px), `--sui-section-space-xs` (40px), `--sui-section-header-gap` (40px); optional `--sui-heading-accent`
+- Focus ring (optional, not declared by default): `--sui-focus-ring` (full box-shadow) or `--sui-focus-ring-color` (default `--sui-primary` at 40%)
+- Links (optional): `--sui-link`, `--sui-link-hover`, `--sui-link-underline`
+- Scoped-theme helpers: `--sui-tint-subtle`, `--sui-tint-hover`, `--sui-tint-active` (mix amounts for `--sui-primary`), `--sui-hover-neutral`, `--sui-border-subtle`, `--sui-select-arrow`
+
 Fonts are not bundled. Load Plus Jakarta Sans / JetBrains Mono via Google Fonts or `@fontsource-variable/plus-jakarta-sans` + `@fontsource-variable/jetbrains-mono`; without them SoftUI falls back to system fonts.
 
-Dark mode: add `data-theme="dark"` to the `<html>` element.
+Dark mode: add `data-theme="dark"` to the `<html>` element (or any element, for a scoped section), or let the theme switcher manage it:
+```html
+<button class="sui-theme-toggle" data-sui-theme-toggle aria-label="Dark mode">
+  <svg class="sui-theme-toggle-sun" viewBox="0 0 24 24" aria-hidden="true">...</svg>
+  <svg class="sui-theme-toggle-moon" viewBox="0 0 24 24" aria-hidden="true">...</svg>
+</button>
+<!-- or set a value: data-sui-theme-toggle="light" | "dark" | "system" -->
+```
 
 ## JavaScript API
 
-Interactive components use the global `SoftUI` object:
+softui.js sets up every component on page load and exposes `window.SoftUI`. It is also the package's CommonJS / ESM default export (`import SoftUI from 'softui-css'` or `require('softui-css')`); importing on the server (SSR) is a no-op, and loading the script twice reuses the first copy.
 ```js
-SoftUI.modal('#myModal').open();
+SoftUI.init(el);                         // set up markup added after load: element, selector or nothing; safe to repeat
+SoftUI.modal('#myModal').open();         // modal() and sheet() accept a selector or an element
 SoftUI.modal('#myModal').close();
 SoftUI.sheet('#mySheet').open();
-SoftUI.toast({ title: 'Success', message: 'Saved!', variant: 'success' });
-SoftUI.tour([{ target: '#step1', title: 'Welcome', description: 'First step.' }]);
-SoftUI.carousel('#myCarousel').next();   // also prev(), goTo(i), current()
-SoftUI.sidebar('#mySidebar').toggle();   // also collapse(), expand(), isCollapsed()
+SoftUI.toast({ title: 'Success', message: 'Saved!', variant: 'success' });   // plain text; html: true for trusted HTML
+SoftUI.tour([{ target: '#step1', title: 'Welcome', description: 'First step.' }]);   // html: true per tour or step
+SoftUI.carousel('#myCarousel').next();   // also prev(), goTo(i), current(); accepts an element
+SoftUI.sidebar('#mySidebar').toggle();   // also collapse(), expand(), isCollapsed(), open(), close(), isOpen()
+SoftUI.theme.toggle();                   // also get(), set('light'|'dark'), clear() (follow the OS again), system() (the OS theme)
+SoftUI.reveal('.cards');                 // optional { rootMargin, threshold }, used when the observer is first created
+SoftUI.version;                          // '1.16.0'
 ```
+
+In frameworks, import the CSS once and call `SoftUI.init(el)` after rendering markup that uses JS components (React `useEffect`, Vue `onMounted`, Svelte `onMount`). Pure-CSS components never need it. A component that fails to initialise logs `[SoftUI] <name> failed` without stopping the others.
+
+Events (all bubble, listen on the element or `document`): `sui-theme-change` (`{theme, source}`), `sui-date-select`, `sui-date-clear`, `sui-time-change`, `sui-otp-complete`, `sui-rating-change`, `sui-color-change`, `sui-swap-change`, `sui-editable-save`, `sui-editable-cancel`, `sui-countdown-end`, `sui-copy`, `sui-copy-error`, `sui-tree-toggle`, `sui-diff-change`. The older `editable:save`, `editable:cancel` and `countdown:end` names still fire.
 
 ## When to Use SoftUI
 
 Use SoftUI when you want:
 - A distinctive neumorphic look that stands out from flat/material design
 - A CSS library that works with any framework or plain HTML
-- Dark mode that just works with one attribute
+- Dark mode that just works with one attribute, plus a built-in theme switcher
 - Zero JavaScript dependencies for styling
-- Accessible components that pass WCAG AA
+- Accessible components: AA-contrast coloured text and fill text, focus rings, keyboard support
 - RTL support for international apps
 
 Do not use SoftUI when:

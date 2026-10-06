@@ -1,4 +1,4 @@
-/*! SoftUI v1.15.0 — A Neumorphic CSS Library */
+/*! SoftUI v1.16.0 — A Neumorphic CSS Library */
 
 /* ===========================================
    CSS Variables / Tokens
@@ -13,14 +13,14 @@
 
   --sui-primary: #5B54E0;
   --sui-primary-hover: #4A44C4;
-  --sui-success: #1FA96E;
-  --sui-success-hover: #178A59;
+  --sui-success: #198758;
+  --sui-success-hover: #126D47;
   --sui-danger: #D03A5C;
   --sui-danger-hover: #B42E4C;
   --sui-warning: #F5A623;
   --sui-warning-hover: #DB921A;
-  --sui-info: #1A82D4;
-  --sui-info-hover: #146BAE;
+  --sui-info: #187AC8;
+  --sui-info-hover: #1364A3;
 
   /* Text-safe shades of the semantic colours: at least 4.5:1 (WCAG AA) on
      every plain --sui-bg* of the theme. On tinted hover/active surfaces
@@ -40,8 +40,8 @@
   --sui-warning-contrast: #2D3748;
 
   --sui-text: #2D3748;
-  --sui-text-muted: #5A6A7E;
-  --sui-text-light: #6A7D94;
+  --sui-text-muted: #4D5A6D;
+  --sui-text-light: #526072;
 
   --sui-radius-xs: 6px;
   --sui-radius: 16px;
@@ -112,7 +112,7 @@
 
   --sui-text: #E2E8F0;
   --sui-text-muted: #9BA5B8;
-  --sui-text-light: #8A94A6;
+  --sui-text-light: #939CAD;
 
   --sui-primary-text: #9894EC;
   --sui-primary-text-hover: #ADAAF0;
@@ -154,8 +154,8 @@
   --sui-shadow-dark: #B8C0CC;
 
   --sui-text: #2D3748;
-  --sui-text-muted: #5A6A7E;
-  --sui-text-light: #6A7D94;
+  --sui-text-muted: #4D5A6D;
+  --sui-text-light: #526072;
 
   --sui-primary-text: #4D45DD;
   --sui-primary-text-hover: #3A31DA;
@@ -15380,8 +15380,8 @@ a.sui-nav-menu-trigger::after {
     --sui-shadow-light: #FFFFFF;
     --sui-shadow-dark: #B8C0CC;
     --sui-text: #2D3748;
-    --sui-text-muted: #5A6A7E;
-    --sui-text-light: #6A7D94;
+    --sui-text-muted: #4D5A6D;
+    --sui-text-light: #526072;
     --sui-primary-text: #4D45DD;
     --sui-primary-text-hover: #3A31DA;
     --sui-success-text: #136A45;

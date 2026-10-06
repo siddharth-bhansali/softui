@@ -1,4 +1,4 @@
-/*! SoftUI v1.16.0 — A Neumorphic CSS Library */
+/*! SoftUI v1.16.0 (embed: no global page styles) — A Neumorphic CSS Library */
 
 /* ===========================================
    CSS Variables / Tokens
@@ -187,24 +187,21 @@
 /* ===========================================
    Reset & Base
    =========================================== */
-*, *::before, *::after {
+:where([class*="sui-"]), :where([class*="sui-"]) *,
+:where([class*="sui-"])::before, :where([class*="sui-"]) *::before,
+:where([class*="sui-"])::after, :where([class*="sui-"]) *::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
-body {
-  margin: 0;
-  min-height: 100vh;
+:where([class*="sui-"]):not(:where([class*="sui-"] *)) {
   font-family: var(--sui-font);
-  background: var(--sui-bg);
   color: var(--sui-text);
   font-size: 15px;
   line-height: 1.6;
-  opacity: 1;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  transition: background var(--sui-transition-base) ease, color var(--sui-transition-base) ease;
 }
 
 /* Surface — paints the SoftUI background on a section of an existing page,
@@ -218,28 +215,33 @@ body {
 /* ===========================================
    Typography
    =========================================== */
-h1, h2, h3, h4, h5, h6 {
+:where([class*="sui-"]) h1, h1:where([class*="sui-"]),
+:where([class*="sui-"]) h2, h2:where([class*="sui-"]),
+:where([class*="sui-"]) h3, h3:where([class*="sui-"]),
+:where([class*="sui-"]) h4, h4:where([class*="sui-"]),
+:where([class*="sui-"]) h5, h5:where([class*="sui-"]),
+:where([class*="sui-"]) h6, h6:where([class*="sui-"]) {
   color: var(--sui-text);
   line-height: 1.3;
   font-weight: 600;
 }
 
-h1 { font-size: 2.25rem; font-weight: 700; }
-h2 { font-size: 1.75rem; font-weight: 700; }
-h3 { font-size: 1.375rem; }
-h4 { font-size: 1.125rem; }
-h5 { font-size: 1rem; }
-h6 { font-size: 0.875rem; text-transform: uppercase; letter-spacing: 0.5px; color: var(--sui-text-muted); }
+:where([class*="sui-"]) h1, h1:where([class*="sui-"]) { font-size: 2.25rem; font-weight: 700; }
+:where([class*="sui-"]) h2, h2:where([class*="sui-"]) { font-size: 1.75rem; font-weight: 700; }
+:where([class*="sui-"]) h3, h3:where([class*="sui-"]) { font-size: 1.375rem; }
+:where([class*="sui-"]) h4, h4:where([class*="sui-"]) { font-size: 1.125rem; }
+:where([class*="sui-"]) h5, h5:where([class*="sui-"]) { font-size: 1rem; }
+:where([class*="sui-"]) h6, h6:where([class*="sui-"]) { font-size: 0.875rem; text-transform: uppercase; letter-spacing: 0.5px; color: var(--sui-text-muted); }
 
-p {
+:where([class*="sui-"]) p, p:where([class*="sui-"]) {
   margin-bottom: 12px;
   color: var(--sui-text-muted);
   line-height: 1.7;
 }
 
-small { font-size: 0.8125rem; color: var(--sui-text-light); }
+:where([class*="sui-"]) small, small:where([class*="sui-"]) { font-size: 0.8125rem; color: var(--sui-text-light); }
 
-code {
+:where([class*="sui-"]) code, code:where([class*="sui-"]) {
   font-family: var(--sui-font-mono);
   background: var(--sui-bg-dark);
   padding: 3px 8px;
@@ -248,15 +250,15 @@ code {
   color: var(--sui-primary-text);
 }
 
-a {
+:where([class*="sui-"]) a, a:where([class*="sui-"]) {
   color: var(--sui-link, var(--sui-primary-text));
   text-decoration: none;
   transition: var(--sui-transition);
 }
-a:hover {
+:where([class*="sui-"]) a:hover, a:where([class*="sui-"]):hover {
   color: var(--sui-link-hover, var(--sui-primary-text-hover));
 }
-a:focus-visible {
+:where([class*="sui-"]) a:focus-visible, a:where([class*="sui-"]):focus-visible {
   outline: 2px solid var(--sui-primary);
   outline-offset: 2px;
   border-radius: 2px;
@@ -5745,27 +5747,6 @@ select.sui-datatable-filter:focus-visible {
 /* ===========================================
    Custom Scrollbar (global)
    =========================================== */
-* {
-}
-::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
-}
-::-webkit-scrollbar-track {
-  background: transparent;
-}
-::-webkit-scrollbar-thumb {
-  background: var(--sui-text-light);
-  border-radius: 3px;
-  border: 1px solid transparent;
-  background-clip: content-box;
-}
-::-webkit-scrollbar-thumb:hover {
-  background: var(--sui-text-muted);
-}
-::-webkit-scrollbar-corner {
-  display: none;
-}
 
 /* ===========================================
    Spinner / Loader
@@ -15358,7 +15339,9 @@ a.sui-nav-menu-trigger::after {
    Reduced Motion
    =========================================== */
 @media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after {
+  :where([class*="sui-"]), :where([class*="sui-"]) *,
+  :where([class*="sui-"])::before, :where([class*="sui-"]) *::before,
+  :where([class*="sui-"])::after, :where([class*="sui-"]) *::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
@@ -15401,11 +15384,6 @@ a.sui-nav-menu-trigger::after {
     --sui-select-arrow: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%238492A6' viewBox='0 0 16 16'%3E%3Cpath d='M8 11L3 6h10l-5 5z'/%3E%3C/svg%3E");
   }
 
-  body {
-    background: #fff !important;
-    color: #000 !important;
-  }
-
   .sui-navbar, .sui-sidebar, .sui-sidebar-overlay, .sui-dock, .sui-speed-dial,
   .sui-modal-backdrop, .sui-sheet-backdrop, .sui-toast-container,
   .sui-tour-overlay, .sui-tour-tooltip, .sui-command-dialog,
@@ -15414,7 +15392,9 @@ a.sui-nav-menu-trigger::after {
     display: none !important;
   }
 
-  *, *::before, *::after {
+  :where([class*="sui-"]), :where([class*="sui-"]) *,
+  :where([class*="sui-"])::before, :where([class*="sui-"]) *::before,
+  :where([class*="sui-"])::after, :where([class*="sui-"]) *::after {
     box-shadow: none !important;
     text-shadow: none !important;
   }
@@ -15426,12 +15406,6 @@ a.sui-nav-menu-trigger::after {
 
   .sui-btn {
     border: 1px solid #999 !important;
-  }
-
-  a[href]::after {
-    content: " (" attr(href) ")";
-    font-size: 0.85em;
-    color: #666;
   }
 
   a.sui-btn::after, a.sui-navbar-link::after, a.sui-page-link::after {

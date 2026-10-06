@@ -24,6 +24,7 @@
     { "id": "divider", "name": "Divider", "url": "/components/divider/" },
     { "id": "pricing", "name": "Pricing", "url": "/components/pricing/" },
     { "id": "hero", "name": "Hero", "url": "/components/hero/" },
+    { "id": "links", "name": "Links", "url": "/components/links/" },
     { "id": "listgroup", "name": "List Group", "url": "/components/listgroup/" }
   ],
   "dataDisplay": [
@@ -56,7 +57,8 @@
     { "id": "dock", "name": "Dock", "url": "/components/dock/" },
     { "id": "speeddial", "name": "Speed Dial", "url": "/components/speeddial/" },
     { "id": "navmenu", "name": "Navigation Menu", "url": "/components/navmenu/" },
-    { "id": "scrollspy", "name": "Scrollspy", "url": "/components/scrollspy/" }
+    { "id": "scrollspy", "name": "Scrollspy", "url": "/components/scrollspy/" },
+    { "id": "footer", "name": "Footer", "url": "/components/footer/" }
   ],
   "overlays": [
     { "id": "modal", "name": "Modal", "url": "/components/modal/" },
@@ -71,6 +73,7 @@
   ],
   "layout": [
     { "id": "layout", "name": "Layout", "url": "/components/layout/" },
+    { "id": "section", "name": "Section", "url": "/components/section/" },
     { "id": "scrollarea", "name": "Scroll Area", "url": "/components/scrollarea/" },
     { "id": "accordion", "name": "Accordion", "url": "/components/accordion/" },
     { "id": "collapsible", "name": "Collapsible", "url": "/components/collapsible/" },
@@ -105,6 +108,7 @@
     { "id": "sizing", "name": "Sizing", "url": "/utilities/sizing/" },
     { "id": "opacity", "name": "Opacity", "url": "/utilities/opacity/" },
     { "id": "cursor", "name": "Cursor", "url": "/utilities/cursor/" },
-    { "id": "mask", "name": "Mask", "url": "/utilities/mask/" }
+    { "id": "mask", "name": "Mask", "url": "/utilities/mask/" },
+    { "id": "reveal", "name": "Scroll Reveal", "url": "/components/reveal/" }
   ]
 }
