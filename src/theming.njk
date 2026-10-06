@@ -50,7 +50,7 @@ permalink: /theming/
   --sui-info-hover: #146BAE;
 }</code></pre>
     </div>
-    <p style="margin-top:16px;"><strong>Text shades.</strong> Colored <em>text</em> (links, outline and ghost buttons, outline badges and chips, alerts, <code>.sui-text-*</code> utilities, active nav items) uses a separate <code>-text</code> token that reaches WCAG AA (4.5:1) on every background of the theme. Each theme block sets its own values — dark mode uses lighter shades.</p>
+    <p style="margin-top:16px;"><strong>Text shades.</strong> Colored <em>text</em> (links, outline and ghost buttons, outline badges and chips, alerts, <code>.sui-text-*</code> utilities, active nav items) uses a separate <code>-text</code> token that reaches WCAG AA (4.5:1) on every plain <code>--sui-bg*</code> surface of the theme. On tinted hover and active surfaces (selected items, ghost-button hover, range highlights) components switch to the <code>-text-hover</code> shade, which keeps 4.5:1. Each theme block sets its own values — dark mode uses lighter shades.</p>
     <div class="docs-getstarted-code">
 <pre><code>:root {
   --sui-primary-text: #4D45DD;   --sui-primary-text-hover: #3A31DA;
@@ -63,7 +63,7 @@ permalink: /theming/
   --sui-warning-contrast: #2D3748;
 }</code></pre>
     </div>
-    <p style="margin-top:12px;font-size:14px;color:var(--sui-text-muted);">If you override <code>--sui-primary</code> (or another semantic color), also set the matching <code>-text</code> token — on <code>:root</code> and on <code>[data-theme="dark"]</code> — to a shade with at least 4.5:1 contrast on <code>--sui-bg-dark</code>.</p>
+    <p style="margin-top:12px;font-size:14px;color:var(--sui-text-muted);">If you override <code>--sui-primary</code> (or another semantic color), also set the matching <code>-text</code> and <code>-text-hover</code> tokens for each theme — on <code>:root, [data-theme="light"]</code> and on <code>[data-theme="dark"]</code> (the light block redeclares them, so a <code>:root</code>-only override is reset inside light scopes and leaks into dark mode). Pick shades with at least 4.5:1 contrast on every <code>--sui-bg*</code> of that theme: the darkest one, <code>--sui-bg-dark</code>, in light mode; the lightest one, <code>--sui-bg-light</code>, in dark mode.</p>
     <p style="margin-top:16px;"><strong>Tints and focus rings.</strong> Hover tints, glows and focus rings are mixed from the color tokens with <code>color-mix()</code>, so they follow your brand color automatically (Chrome/Edge 111+, Safari 16.2+, Firefox 113+). The focus ring has two optional overrides:</p>
     <div class="docs-getstarted-code">
 <pre><code>:root {
@@ -332,7 +332,7 @@ permalink: /theming/
     <p>A complete brand override — just drop this in your CSS after importing SoftUI.</p>
     <div class="docs-getstarted-code">
 <pre><code>/* My Brand Theme */
-:root {
+:root, [data-theme="light"] {
   /* Colors */
   --sui-primary: #0066FF;
   --sui-primary-hover: #0052CC;
@@ -359,6 +359,19 @@ permalink: /theming/
 
   /* Speed */
   --sui-transition-base: 0.2s;
+}
+
+/* Dark mode: the rule above also matches &lt;html data-theme="dark"&gt;
+   (it is :root), so restate the dark surfaces and text here. */
+[data-theme="dark"] {
+  --sui-bg: #2A2D35;
+  --sui-bg-light: #31343C;
+  --sui-bg-dark: #23262D;
+  --sui-shadow-light: #33363F;
+  --sui-shadow-dark: #1E2027;
+  --sui-text: #E2E8F0;
+  --sui-primary-text: #6EA8FF;       /* AA on --sui-bg-light */
+  --sui-primary-text-hover: #8FBBFF;
 }</code></pre>
     </div>
   </section>
@@ -405,7 +418,20 @@ module.exports = {
     "success": "#1FA96E",
     "danger": "#D03A5C",
     "warning": "#F5A623",
-    "info": "#1A82D4"
+    "info": "#1A82D4",
+    "primary-text": "#4D45DD", "primary-text-hover": "#3A31DA",
+    "success-text": "#136A45", "success-text-hover": "#115C3C",
+    "danger-text": "#AE2947",  "danger-text-hover": "#97243E",
+    "warning-text": "#825306", "warning-text-hover": "#714805",
+    "info-text": "#13609D",    "info-text-hover": "#115388",
+    "warning-contrast": "#2D3748"
+  },
+  "colors-dark": {
+    "primary-text": "#9894EC", "primary-text-hover": "#ADAAF0",
+    "success-text": "#21B374", "success-text-hover": "#25CA83",
+    "danger-text": "#E18197",  "danger-text-hover": "#E89DAE",
+    "warning-text": "#F5A623", "warning-text-hover": "#F8BB55",
+    "info-text": "#4BA4E9",    "info-text-hover": "#73B8EE"
   },
   "backgrounds": { "bg": "#E4E9F0", "bg-light": "#EDF1F7", "bg-dark": "#D1D9E6" },
   "backgrounds-dark": { "bg": "#2A2D35", "bg-light": "#31343C", "bg-dark": "#23262D" },

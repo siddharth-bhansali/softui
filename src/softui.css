@@ -23,8 +23,10 @@
   --sui-info-hover: #146BAE;
 
   /* Text-safe shades of the semantic colours: at least 4.5:1 (WCAG AA) on
-     every --sui-bg* of the theme. Use for text only; fills, borders, shadows
-     and icons keep the base tokens. Set these too when you rebrand. */
+     every plain --sui-bg* of the theme. On tinted hover/active surfaces
+     (color-mix up to ~15%) use the -text-hover shade, which still clears
+     4.5:1. Use for text only; fills, borders, shadows and icons keep the
+     base tokens. Set these too when you rebrand. */
   --sui-primary-text: #4D45DD;
   --sui-primary-text-hover: #3A31DA;
   --sui-success-text: #136A45;
@@ -68,7 +70,6 @@
   --sui-tint-active: 10%;
   --sui-tint-blockquote: 4%;
   --sui-hover-neutral: rgba(0, 0, 0, 0.04);
-  --sui-border-subtle: var(--sui-bg-dark);
   --sui-select-arrow: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%238492A6' viewBox='0 0 16 16'%3E%3Cpath d='M8 11L3 6h10l-5 5z'/%3E%3C/svg%3E");
 
   --sui-transition-fast: 0.15s;
@@ -109,7 +110,7 @@
   --sui-tint-active: 15%;
   --sui-tint-blockquote: 6%;
   --sui-hover-neutral: rgba(255, 255, 255, 0.06);
-  --sui-border-subtle: var(--sui-bg-light);
+  --sui-border-subtle: var(--sui-bg-light); /* light themes leave it unset */
   --sui-select-arrow: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%238B95A8' viewBox='0 0 16 16'%3E%3Cpath d='M8 11L3 6h10l-5 5z'/%3E%3C/svg%3E");
 
   --sui-shadow-raised: 6px 6px 14px var(--sui-shadow-dark), -6px -6px 14px var(--sui-shadow-light);
@@ -151,7 +152,7 @@
   --sui-tint-active: 10%;
   --sui-tint-blockquote: 4%;
   --sui-hover-neutral: rgba(0, 0, 0, 0.04);
-  --sui-border-subtle: var(--sui-bg-dark);
+  --sui-border-subtle: initial; /* unset: uses var(--sui-bg-dark) per element */
   --sui-select-arrow: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%238492A6' viewBox='0 0 16 16'%3E%3Cpath d='M8 11L3 6h10l-5 5z'/%3E%3C/svg%3E");
 
   --sui-shadow-raised: 6px 6px 14px var(--sui-shadow-dark), -6px -6px 14px var(--sui-shadow-light);
@@ -663,7 +664,7 @@ a.sui-btn-warning:visited {
 }
 
 .sui-styled-select-option.selected {
-  color: var(--sui-primary-text);
+  color: var(--sui-primary-text-hover);
   font-weight: 600;
   background: color-mix(in srgb, var(--sui-primary) 8%, transparent);
 }
@@ -1586,7 +1587,7 @@ a.sui-btn-warning:visited {
 }
 
 .sui-breadcrumb-item a:hover {
-  color: var(--sui-primary-text);
+  color: var(--sui-primary-text-hover);
   background: color-mix(in srgb, var(--sui-primary) 8%, transparent);
 }
 
@@ -2080,11 +2081,11 @@ a.sui-btn-warning:visited {
   box-shadow: var(--sui-shadow-inset-sm);
 }
 .sui-btn-ghost.sui-btn-primary { color: var(--sui-primary-text); }
-.sui-btn-ghost.sui-btn-primary:hover { background: color-mix(in srgb, var(--sui-primary) 10%, transparent); }
+.sui-btn-ghost.sui-btn-primary:hover { color: var(--sui-primary-text-hover); background: color-mix(in srgb, var(--sui-primary) 10%, transparent); }
 .sui-btn-ghost.sui-btn-success { color: var(--sui-success-text); }
-.sui-btn-ghost.sui-btn-success:hover { background: color-mix(in srgb, var(--sui-success) 10%, transparent); }
+.sui-btn-ghost.sui-btn-success:hover { color: var(--sui-success-text-hover); background: color-mix(in srgb, var(--sui-success) 10%, transparent); }
 .sui-btn-ghost.sui-btn-danger { color: var(--sui-danger-text); }
-.sui-btn-ghost.sui-btn-danger:hover { background: color-mix(in srgb, var(--sui-danger) 10%, transparent); }
+.sui-btn-ghost.sui-btn-danger:hover { color: var(--sui-danger-text-hover); background: color-mix(in srgb, var(--sui-danger) 10%, transparent); }
 
 /* ===========================================
    Buttons — Pill / Rounded
@@ -4528,7 +4529,7 @@ select.sui-datatable-filter {
 
 .sui-calendar-day.in-range {
   background: color-mix(in srgb, var(--sui-primary) 12%, transparent);
-  color: var(--sui-primary-text);
+  color: var(--sui-primary-text-hover);
   border-radius: 0;
 }
 
@@ -5321,7 +5322,7 @@ select.sui-datatable-filter {
   padding: 2px 8px;
   font-size: 12px;
   font-weight: 500;
-  color: var(--sui-primary-text);
+  color: var(--sui-primary-text-hover);
   background: color-mix(in srgb, var(--sui-primary) 10%, transparent);
   border-radius: var(--sui-radius-xs);
 }
@@ -6487,7 +6488,7 @@ select.sui-datatable-filter {
 .sui-kbd-outline {
   background: transparent;
   box-shadow: none;
-  border: 1.5px solid var(--sui-border-subtle);
+  border: 1.5px solid var(--sui-border-subtle, var(--sui-bg-dark));
 }
 
 /* Kbd Group */
@@ -6511,7 +6512,7 @@ select.sui-datatable-filter {
 .sui-scroll-area {
   overflow: auto;
   scrollbar-width: thin;
-  scrollbar-color: var(--sui-border-subtle) transparent;
+  scrollbar-color: var(--sui-border-subtle, var(--sui-bg-dark)) transparent;
 }
 
 .sui-scroll-area::-webkit-scrollbar {
@@ -6525,7 +6526,7 @@ select.sui-datatable-filter {
 }
 
 .sui-scroll-area::-webkit-scrollbar-thumb {
-  background: var(--sui-border-subtle);
+  background: var(--sui-border-subtle, var(--sui-bg-dark));
   border-radius: 4px;
   border: 2px solid transparent;
   background-clip: content-box;
@@ -8723,7 +8724,7 @@ select.sui-datatable-filter {
 .sui-sidebar-nav li a.active,
 .sui-sidebar-nav li button.active {
   background: color-mix(in srgb, var(--sui-primary) var(--sui-tint-active), transparent);
-  color: var(--sui-primary-text);
+  color: var(--sui-primary-text-hover);
   font-weight: 600;
   box-shadow: var(--sui-shadow-inset-sm);
 }
@@ -8749,7 +8750,7 @@ select.sui-datatable-filter {
   padding: 2px 8px;
   border-radius: var(--sui-radius-full);
   background: color-mix(in srgb, var(--sui-primary) 10%, transparent);
-  color: var(--sui-primary-text);
+  color: var(--sui-primary-text-hover);
 }
 
 /* --- Divider --- */
@@ -11212,7 +11213,7 @@ select.sui-datatable-filter {
 
 .sui-tree-label.active {
   background: color-mix(in srgb, var(--sui-primary) 10%, transparent);
-  color: var(--sui-primary-text);
+  color: var(--sui-primary-text-hover);
 }
 
 .sui-tree-toggle {
@@ -13175,7 +13176,7 @@ select.sui-datatable-filter {
 .sui-pricing-save {
   font-size: 11px;
   font-weight: 700;
-  color: var(--sui-success-text);
+  color: var(--sui-success-text-hover);
   background: color-mix(in srgb, var(--sui-success) 10%, transparent);
   padding: 2px 8px;
   border-radius: var(--sui-radius-full);
@@ -13379,7 +13380,7 @@ button.sui-list-group-item:hover {
 
 .sui-list-group-item.active {
   background: color-mix(in srgb, var(--sui-primary) 8%, transparent);
-  color: var(--sui-primary-text);
+  color: var(--sui-primary-text-hover);
   font-weight: 600;
 }
 
@@ -13798,7 +13799,7 @@ button.sui-list-group-item:hover {
 }
 
 .sui-scrollspy a.active {
-  color: var(--sui-primary-text);
+  color: var(--sui-primary-text-hover);
   font-weight: 600;
   border-inline-start-color: var(--sui-primary);
   background: color-mix(in srgb, var(--sui-primary) var(--sui-tint-hover), transparent);
@@ -14373,7 +14374,7 @@ a.sui-nav-menu-trigger::after {
     --sui-tint-active: 10%;
     --sui-tint-blockquote: 4%;
     --sui-hover-neutral: rgba(0, 0, 0, 0.04);
-    --sui-border-subtle: var(--sui-bg-dark);
+    --sui-border-subtle: initial;
     --sui-select-arrow: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%238492A6' viewBox='0 0 16 16'%3E%3Cpath d='M8 11L3 6h10l-5 5z'/%3E%3C/svg%3E");
   }
 
