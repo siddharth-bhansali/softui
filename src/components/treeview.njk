@@ -25,7 +25,7 @@ toc:
 <!-- Default -->
 <div class="pg-section" id="section-1">
   <h3 class="pg-section-title">Default</h3>
-  <p class="pg-section-desc">Keyboard: the tree follows the WAI-ARIA tree pattern, with one <kbd>Tab</kbd> stop. <kbd>&darr;</kbd>/<kbd>&uarr;</kbd> move between visible items. <kbd>&rarr;</kbd> expands an item or moves to its first child, and <kbd>&larr;</kbd> collapses it or moves to its parent (mirrored in RTL). <kbd>Home</kbd>/<kbd>End</kbd> jump to the first or last visible item, <kbd>Enter</kbd> toggles, and <kbd>Space</kbd> toggles the checkbox in checkbox trees (with <code>aria-checked</code> including "mixed"). Expanding or collapsing fires <code>sui-tree-toggle</code>. Roles and <code>tabindex</code> are added on page load; elements inserted later need them in their markup.</p>
+  <p class="pg-section-desc">Keyboard: the tree follows the WAI-ARIA tree pattern, with one <kbd>Tab</kbd> stop. <kbd>&darr;</kbd>/<kbd>&uarr;</kbd> move between visible items. <kbd>&rarr;</kbd> expands an item or moves to its first child, and <kbd>&larr;</kbd> collapses it or moves to its parent (mirrored in RTL). <kbd>Home</kbd>/<kbd>End</kbd> jump to the first or last visible item, <kbd>Enter</kbd> toggles, and <kbd>Space</kbd> toggles the checkbox in checkbox trees (with <code>aria-checked</code> including "mixed"). Expanding or collapsing fires <code>sui-tree-toggle</code>. Roles and <code>tabindex</code> are added on page load, and by <code>SoftUI.init(el)</code> for markup added later.</p>
   <div class="pg-section-row">
     <div class="sui-tree" style="max-width:300px;">
       <div class="sui-tree-item expanded">

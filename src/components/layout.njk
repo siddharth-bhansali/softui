@@ -214,9 +214,10 @@ toc:
     Control gutter (gap) sizes with <code>.sui-g-{0-5}</code>, <code>.sui-gx-{0-5}</code> (horizontal), and <code>.sui-gy-{0-5}</code> (vertical).
     Values: 0=0, 1=4px, 2=8px, 3=16px, 4=24px, 5=48px. Without a gutter class a row has a 24px horizontal gutter and no vertical gutter.
     Vertical gutters (<code>.sui-g-*</code>, <code>.sui-gy-*</code>) separate wrapped lines of columns; the row pulls itself up by the same amount so the first line has no extra space above it.
+    Rows also pull outward by half the horizontal gutter, so give the row's parent horizontal padding of at least that much (24px for <code>.sui-g-5</code>) or <code>overflow-x: clip</code>, or large gutters can overflow it.
   </p>
   <div class="pg-section-row">
-    <div style="width:100%;">
+    <div style="width:100%;overflow-x:clip;">
       <p style="font-size:13px;font-weight:600;margin-bottom:8px;">No gutter (<code>.sui-g-0</code>)</p>
       <div class="sui-row sui-g-0">
         <div class="sui-col-4">

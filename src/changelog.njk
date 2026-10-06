@@ -114,7 +114,12 @@ Changes (check these when upgrading):
     text (XSS fix). Pass html: true for trusted HTML. File upload names are
     always text
   - Escape closes only the topmost modal or sheet; static modals, alert
-    dialogs and static sheets shake instead of closing
+    dialogs and static sheets shake instead of closing. An open dropdown,
+    popover, menu, combobox, styled select, speed dial or lightbox inside
+    it is closed first, on its own Escape
+  - sui-mx-auto and sui-my-auto moved into the spacing utilities, before the
+    single-side classes, so sui-mx-auto sui-ms-3 now gives a 16px start
+    margin (sui-ms-auto / sui-me-auto still win over sui-ms-* / sui-me-*)
   - Sidebars become an off-canvas drawer below 900px; add
     sui-sidebar-static to keep one inline
   - Navigation menu: clicking a sub-menu parent opens/closes its sub-menu
@@ -145,6 +150,12 @@ Fixes:
   - Printing a dark page (or a scoped dark section) uses the light palette
   - Focus returns to the opener on every modal/sheet close; body scroll
     unlocks only when no overlay is open
+  - Opening a modal or sheet moves focus into it (it stayed on the opener),
+    and Tab pulls focus back inside if it has escaped
+  - SoftUI.carousel(el) returns the existing instance instead of building a
+    second one with its own position, listeners and autoplay timer
+  - Command dialog open buttons added after load work
+  - Inset sidebars get a solid background when shown as a drawer
   - Drawer drag-to-dismiss threw an error and left the drawer open
   - Carousel: autoplay intervals no longer stack; rewind-mode dots and
     goTo() stop at the last full page
@@ -177,7 +188,12 @@ Accessibility:
     context-menu items reached by keyboard get the hover highlight
   - Speed dial: aria-expanded, Escape closes it, closed actions leave the
     tab order; dock and speed-dial labels show on focus
-  - Typewriter and text rotate: screen readers hear the full text once
+  - Typewriter and text rotate: screen readers hear the full text once,
+    without the cursor glyph
+  - Scroll reveal: hidden content appears when it receives focus, and short
+    elements at the very end of the page are revealed
+  - Vertical diff slider: PageUp/PageDown move the handle the same way as
+    the Up/Down arrows
   - Playground editor is no longer a keyboard trap (Esc then Tab leaves)
 
 Docs:
@@ -191,6 +207,8 @@ Docs:
     section tokens, dark-theme halo note, loading the fonts
   - Getting Started: JS API, frameworks with SoftUI.init, events, embed
     build; the JS size is measured at build time
+  - The no-flash snippet no longer hides the body with opacity:0, so it
+    also works with the embed build
   - Fixed "On This Page" links on Alerts, Badges, Buttons, Cards, Progress
     and Toggles; fixed Playground snippets with non-existent classes
   - 118 playground snippets (new: Theme Toggle, Hero Split, Section &amp;
@@ -199,7 +217,7 @@ Docs:
 
 Tooling:
   - npm run build:embed; build:min also builds the embed files and syncs
-    the "/*! SoftUI vX.Y.Z" banners from package.json
+    the "/*! SoftUI vX.Y.Z" banners and SoftUI.version from package.json
   - Publish workflow checks the npm registry, installs with
     bun --frozen-lockfile and can be run manually; npm run dev works on
     Windows cmd.exe</code></pre>

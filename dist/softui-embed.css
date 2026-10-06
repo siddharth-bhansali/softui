@@ -1348,6 +1348,7 @@ a.sui-btn-warning:visited {
 .sui-mx-5 { margin-inline: var(--sui-space-5) !important; }
 .sui-mx-6 { margin-inline: var(--sui-space-6) !important; }
 .sui-mx-7 { margin-inline: var(--sui-space-7) !important; }
+.sui-mx-auto { margin-inline: auto !important; }
 
 /* Margin: block axis (top + bottom) */
 .sui-my-0 { margin-block: var(--sui-space-0) !important; }
@@ -1358,6 +1359,7 @@ a.sui-btn-warning:visited {
 .sui-my-5 { margin-block: var(--sui-space-5) !important; }
 .sui-my-6 { margin-block: var(--sui-space-6) !important; }
 .sui-my-7 { margin-block: var(--sui-space-7) !important; }
+.sui-my-auto { margin-block: auto !important; }
 
 /* Margin: top */
 .sui-mt-0 { margin-top: var(--sui-space-0) !important; }
@@ -1416,6 +1418,10 @@ a.sui-btn-warning:visited {
 .sui-mr-5 { margin-inline-end: var(--sui-space-5) !important; }
 .sui-mr-6 { margin-inline-end: var(--sui-space-6) !important; }
 .sui-mr-7 { margin-inline-end: var(--sui-space-7) !important; }
+
+/* Margin: auto on one side (after the single-side scale) */
+.sui-ms-auto { margin-inline-start: auto !important; }
+.sui-me-auto { margin-inline-end: auto !important; }
 
 /* ===========================================
    Utility: Text
@@ -6356,12 +6362,6 @@ select.sui-datatable-filter:focus-visible {
 .sui-tabular-nums      { font-variant-numeric: tabular-nums !important; }
 .sui-proportional-nums { font-variant-numeric: proportional-nums !important; }
 
-/* Auto margins */
-.sui-ms-auto { margin-inline-start: auto !important; }
-.sui-me-auto { margin-inline-end: auto !important; }
-.sui-mx-auto { margin-inline: auto !important; }
-.sui-my-auto { margin-block: auto !important; }
-
 /* ===========================================
    Divider / Separator
    =========================================== */
@@ -9251,8 +9251,11 @@ select.sui-datatable-filter:focus-visible {
    Below 900px every .sui-sidebar (except .sui-sidebar-static) becomes a drawer,
    hidden until opened via [data-sidebar-open] or SoftUI.sidebar().open().
    .sui-sidebar-drawer makes it a drawer at every width. Selectors are
-   .sui-sidebar.* so they beat .sui-sidebar-sticky(.sui-sidebar-nav-offset). */
+   .sui-sidebar.* so they beat .sui-sidebar-sticky(.sui-sidebar-nav-offset).
+   The solid background keeps transparent variants (.sui-sidebar-inset)
+   from showing the page through the open drawer. */
 .sui-sidebar.sui-sidebar-drawer {
+  background: var(--sui-bg);
   position: fixed;
   inset-block: 0;
   inset-inline-start: 0;
@@ -9275,6 +9278,7 @@ select.sui-datatable-filter:focus-visible {
 
 @media (max-width: 900px) {
   .sui-sidebar:not(.sui-sidebar-static) {
+    background: var(--sui-bg);
     position: fixed;
     inset-block: 0;
     inset-inline-start: 0;
@@ -12984,7 +12988,7 @@ select.sui-datatable-filter:focus-visible {
 }
 
 .sui-typewriter-cursor::after {
-  content: "|";
+  content: "|"; content: "|" / "";
 }
 
 @keyframes sui-blink {
@@ -12994,11 +12998,11 @@ select.sui-datatable-filter:focus-visible {
 
 /* Cursor variants */
 .sui-typewriter-cursor-block::after {
-  content: "\2588";
+  content: "\2588"; content: "\2588" / "";
 }
 
 .sui-typewriter-cursor-underscore::after {
-  content: "_";
+  content: "_"; content: "_" / "";
   font-weight: 700;
 }
 
@@ -13036,15 +13040,15 @@ select.sui-datatable-filter:focus-visible {
 }
 
 .sui-typewriter[data-reserve].sui-typewriter-cursor > .sui-typewriter-text::after {
-  content: "|";
+  content: "|"; content: "|" / "";
 }
 
 .sui-typewriter[data-reserve].sui-typewriter-cursor-block > .sui-typewriter-text::after {
-  content: "\2588";
+  content: "\2588"; content: "\2588" / "";
 }
 
 .sui-typewriter[data-reserve].sui-typewriter-cursor-underscore > .sui-typewriter-text::after {
-  content: "_";
+  content: "_"; content: "_" / "";
   font-weight: 700;
 }
 
@@ -13058,15 +13062,15 @@ select.sui-datatable-filter:focus-visible {
 }
 
 .sui-typewriter[data-reserve].sui-typewriter-cursor > .sui-typewriter-sizer::after {
-  content: "|";
+  content: "|"; content: "|" / "";
 }
 
 .sui-typewriter[data-reserve].sui-typewriter-cursor-block > .sui-typewriter-sizer::after {
-  content: "\2588";
+  content: "\2588"; content: "\2588" / "";
 }
 
 .sui-typewriter[data-reserve].sui-typewriter-cursor-underscore > .sui-typewriter-sizer::after {
-  content: "_";
+  content: "_"; content: "_" / "";
   font-weight: 700;
 }
 

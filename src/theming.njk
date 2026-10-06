@@ -375,7 +375,6 @@ import '@fontsource-variable/jetbrains-mono';</code></pre>
     <p style="margin-top:16px;">Add this blocking script to your <code>&lt;head&gt;</code>, before the stylesheets, so the saved theme applies before the first paint (no flash of the wrong theme):</p>
     <div class="docs-getstarted-code">
 <pre><code>&lt;head&gt;
-  &lt;style&gt;body{opacity:0}&lt;/style&gt;
   &lt;script&gt;
     try {
       var t = localStorage.getItem('sui-theme');
@@ -437,8 +436,6 @@ document.addEventListener('sui-theme-change', function (e) {
   --sui-primary-hover: #0052CC;
   --sui-primary-text: #0052CC;       /* AA on --sui-bg-dark */
   --sui-primary-text-hover: #0043A8;
-  --sui-success: #00C853;
-  --sui-danger: #FF1744;
 
   /* Surfaces */
   --sui-bg: #F0F2F5;

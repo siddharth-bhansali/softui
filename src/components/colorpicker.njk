@@ -20,7 +20,7 @@ toc:
 <!-- Swatches -->
 <div class="pg-section" id="section-1">
   <h3 class="pg-section-title">Swatches</h3>
-  <p class="pg-section-desc">Keyboard: a swatch picker is a radio group. <kbd>Tab</kbd> lands on the selected swatch; arrow keys move and select (wrapping, mirrored in RTL), <kbd>Home</kbd>/<kbd>End</kbd> jump to the first or last swatch, and <kbd>Space</kbd>/<kbd>Enter</kbd> select. Swatches are named from <code>aria-label</code>, <code>title</code>, a <code>.sui-color-label</code>, or their <code>data-color</code>. Palette rows are display-only and are not focusable. Roles and <code>tabindex</code> are added on page load; elements inserted later need them in their markup.</p>
+  <p class="pg-section-desc">Keyboard: a swatch picker is a radio group. <kbd>Tab</kbd> lands on the selected swatch; arrow keys move and select (wrapping, mirrored in RTL), <kbd>Home</kbd>/<kbd>End</kbd> jump to the first or last swatch, and <kbd>Space</kbd>/<kbd>Enter</kbd> select. Swatches are named from <code>aria-label</code>, <code>title</code>, a <code>.sui-color-label</code>, or their <code>data-color</code>. Palette rows are display-only and are not focusable. Roles and <code>tabindex</code> are added on page load, and by <code>SoftUI.init(el)</code> for markup added later.</p>
   <div class="pg-section-row">
     <div class="sui-color-picker">
       <div class="sui-color-swatch active" data-color="#5B54E0" style="background:#5B54E0;"></div>

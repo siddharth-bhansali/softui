@@ -91,10 +91,7 @@
     backdrop.classList.add(openClass);
     document.body.style.overflow = 'hidden';
     const panel = backdrop.querySelector(panelSel);
-    if (panel) {
-      const first = getFocusable(panel)[0];
-      if (first) first.focus();
-    }
+    if (panel) focusInto(backdrop, panel, function() { return backdrop.classList.contains(openClass); }, 0);
   }
 
   function closeOverlay(backdrop, openClass) {
@@ -146,6 +143,49 @@
     ));
   }
 
+  function visibleFocusable(container) {
+    return getFocusable(container).filter(function(f) { return f.offsetParent !== null; });
+  }
+
+  // Overlays fade in by transitioning visibility from hidden, so their contents
+  // can't take focus in the tick they open. Finish those visibility transitions
+  // now; where that isn't supported, retry for up to ~0.5s. animRoot is the
+  // element whose subtree animates (the backdrop); panel receives focus.
+  function focusInto(animRoot, panel, isOpen, tries) {
+    if (!isOpen() || panel.contains(document.activeElement)) return;
+    const first = visibleFocusable(panel)[0]; // also flushes styles, creating the transitions
+    if (animRoot.getAnimations) {
+      animRoot.getAnimations({ subtree: true }).forEach(function(a) {
+        if (a.transitionProperty === 'visibility') a.finish();
+      });
+    }
+    if (first) {
+      first.focus();
+    } else {
+      if (!panel.hasAttribute('tabindex')) panel.setAttribute('tabindex', '-1');
+      panel.focus();
+    }
+    if (!panel.contains(document.activeElement) && tries < 30) {
+      setTimeout(function() { focusInto(animRoot, panel, isOpen, tries + 1); }, 16);
+    }
+  }
+
+  // Tab / Shift+Tab wrap inside panel, and pull focus back in if it escaped
+  function trapTab(e, panel) {
+    const focusable = visibleFocusable(panel);
+    if (!focusable.length) { e.preventDefault(); return; }
+    const first = focusable[0];
+    const last = focusable[focusable.length - 1];
+    const inside = panel.contains(document.activeElement);
+    if (e.shiftKey && (document.activeElement === first || !inside)) {
+      e.preventDefault();
+      last.focus();
+    } else if (!e.shiftKey && (document.activeElement === last || !inside)) {
+      e.preventDefault();
+      first.focus();
+    }
+  }
+
   // =========================================
   // Global listeners (bound once, on first init)
   // =========================================
@@ -154,9 +194,11 @@
 
     // Escape closes the topmost open modal or sheet (static ones shake instead).
     // Modal and sheet backdrops share z-index 1000, so the last open backdrop
-    // in document order is the one painted on top.
-    document.addEventListener('keydown', (e) => {
-      if (e.key !== 'Escape') return;
+    // in document order is the one painted on top. Bound on window so it runs
+    // after the document-level popup handlers: an Escape that closed a
+    // dropdown, popover, menu etc. (they preventDefault) leaves the overlay open.
+    window.addEventListener('keydown', (e) => {
+      if (e.key !== 'Escape' || e.defaultPrevented) return;
       const open = document.querySelectorAll(OPEN_OVERLAYS);
       const top = open[open.length - 1];
       if (!top) return;
@@ -189,25 +231,7 @@
       if (!backdrop) return;
 
       const modal = backdrop.querySelector('.sui-modal');
-      if (!modal) return;
-
-      const focusable = getFocusable(modal);
-      if (focusable.length === 0) return;
-
-      const first = focusable[0];
-      const last = focusable[focusable.length - 1];
-
-      if (e.shiftKey) {
-        if (document.activeElement === first) {
-          e.preventDefault();
-          last.focus();
-        }
-      } else {
-        if (document.activeElement === last) {
-          e.preventDefault();
-          first.focus();
-        }
-      }
+      if (modal) trapTab(e, modal);
     });
 
     // Close button handler (any .sui-modal-close inside a backdrop)
@@ -249,25 +273,7 @@
       if (!sheetBackdrop) return;
 
       const panel = sheetBackdrop.querySelector('.sui-sheet');
-      if (!panel) return;
-
-      const focusable = getFocusable(panel);
-      if (focusable.length === 0) return;
-
-      const first = focusable[0];
-      const last = focusable[focusable.length - 1];
-
-      if (e.shiftKey) {
-        if (document.activeElement === first) {
-          e.preventDefault();
-          last.focus();
-        }
-      } else {
-        if (document.activeElement === last) {
-          e.preventDefault();
-          first.focus();
-        }
-      }
+      if (panel) trapTab(e, panel);
     });
 
     // Dismissible alerts
@@ -696,6 +702,7 @@
     document.addEventListener('keydown', (e) => {
       if (e.key === 'Escape') {
         document.querySelectorAll('.sui-dropdown.open, .sui-dropdown-split.open').forEach(d => {
+          e.preventDefault();
           d.classList.remove('open');
           const t = d.querySelector('[data-sui-dropdown], .sui-dropdown-toggle');
           if (t) { t.setAttribute('aria-expanded', 'false'); t.focus(); }
@@ -845,6 +852,7 @@
     // Escape closes
     document.addEventListener('keydown', function(e) {
       if (e.key === 'Escape' && openMenu) {
+        e.preventDefault();
         // If a sub is open, close it first
         const openSub = openMenu.querySelector('.sui-context-sub.open');
         if (openSub) {
@@ -912,6 +920,8 @@
   // =========================================
   // Command Palette
   // =========================================
+  const commandDialogs = new WeakMap(); // dialog -> { open, close }
+
   function initCommand(root) {
     each(root, '.sui-command[data-sui-command]', 'command', function(cmd) {
       const input = cmd.querySelector('.sui-command-input');
@@ -1062,12 +1072,17 @@
         }
       });
 
-      // Trigger buttons
-      document.querySelectorAll('[data-sui-command-open="' + dialog.id + '"]').forEach(function(btn) {
-        btn.addEventListener('click', function() {
-          openDialog();
-        });
-      });
+      commandDialogs.set(dialog, { open: openDialog, close: closeDialog });
+    });
+
+    // Trigger buttons — delegated, so triggers added later work too
+    if (!once('command-open')) return;
+    document.addEventListener('click', function(e) {
+      const t = e.target.closest && e.target.closest('[data-sui-command-open]');
+      if (!t) return;
+      const d = document.getElementById(t.getAttribute('data-sui-command-open'));
+      const api = d && commandDialogs.get(d);
+      if (api) api.open();
     });
   }
 
@@ -1763,6 +1778,7 @@
     // Escape closes menubar
     document.addEventListener('keydown', function(e) {
       if (e.key === 'Escape') {
+        if (document.querySelector('.sui-menubar-menu.open')) e.preventDefault();
         document.querySelectorAll('.sui-menubar').forEach(function(bar) {
           closeAllMenus(bar);
         });
@@ -1933,7 +1949,10 @@
 
       // Escape closes
       combo.addEventListener('keydown', function(e) {
-        if (e.key === 'Escape') close();
+        if (e.key === 'Escape' && combo.classList.contains('open')) {
+          e.preventDefault();
+          close();
+        }
       });
 
       // Initialize clear button visibility for pre-selected items
@@ -2118,6 +2137,7 @@
     document.addEventListener('keydown', (e) => {
       if (e.key === 'Escape') {
         document.querySelectorAll('.sui-popover.open').forEach(p => {
+          e.preventDefault();
           p.classList.remove('open');
           delayedRestore(p, 'sui-popover');
           const t = p.querySelector('[data-sui-popover]');
@@ -2261,9 +2281,14 @@
   // =========================================
   // Carousel
   // =========================================
+  // One controller per element: SoftUI.carousel() returns the auto-init instance
+  const carouselInstances = new WeakMap();
+
   function carousel(selector) {
     const el = resolveEl(selector);
     if (!el) return null;
+    const existing = carouselInstances.get(el);
+    if (existing) return existing;
 
     const track = el.querySelector('.sui-carousel-track');
     if (!track) return null;
@@ -2438,7 +2463,9 @@
     update(false);
     startAutoplay();
 
-    return { next: next, prev: prev, goTo: goTo, current: function() { return current; } };
+    const api = { next: next, prev: prev, goTo: goTo, current: function() { return current; } };
+    carouselInstances.set(el, api);
+    return api;
   }
 
   function initCarousels(root) {
@@ -2646,7 +2673,8 @@
           } else {
             sel.classList.toggle('open');
           }
-        } else if (e.key === 'Escape') {
+        } else if (e.key === 'Escape' && isOpen) {
+          e.preventDefault();
           sel.classList.remove('open');
           options.forEach(function(o) { o.classList.remove('focused'); });
         }
@@ -3071,11 +3099,13 @@
       if (e.key === 'Escape') {
         const container = t.closest && t.closest('.sui-nav-menu .sui-nav-menu-sub.open, .sui-nav-menu .sui-nav-menu-item.open');
         if (container) {
+          e.preventDefault();
           navMenuSetOpen(container, false);
           const ctrl = navMenuControl(container);
           if (ctrl) ctrl.focus();
           return;
         }
+        if (document.querySelector('.sui-nav-menu-item.open')) e.preventDefault();
         navMenuCloseAll();
         return;
       }
@@ -3693,10 +3723,6 @@
     return overlay;
   }
 
-  function sidebarVisibleFocusable(el) {
-    return getFocusable(el).filter(function(f) { return f.offsetParent !== null; });
-  }
-
   function sidebarIsOpen(el) {
     return el.classList.contains('sui-sidebar-mobile-open');
   }
@@ -3709,29 +3735,8 @@
     sidebarOverlay(el).classList.add('open');
     document.body.style.overflow = 'hidden';
     sidebarTriggers(el).forEach(function(t) { t.setAttribute('aria-expanded', 'true'); });
-    sidebarFocusInto(el, 0);
-  }
-
-  // Children with `transition: all` animate the inherited visibility, so they can
-  // still be hidden (unfocusable) right after opening. Finish those transitions
-  // now; where that isn't supported, retry for up to ~0.5s.
-  function sidebarFocusInto(el, tries) {
-    if (!sidebarIsOpen(el) || el.contains(document.activeElement)) return;
-    const first = sidebarVisibleFocusable(el)[0]; // also flushes styles, creating the transitions
-    if (el.getAnimations) {
-      el.getAnimations({ subtree: true }).forEach(function(a) {
-        if (a.transitionProperty === 'visibility') a.finish();
-      });
-    }
-    if (first) {
-      first.focus();
-    } else {
-      if (!el.hasAttribute('tabindex')) el.setAttribute('tabindex', '-1');
-      el.focus();
-    }
-    if (!el.contains(document.activeElement) && tries < 30) {
-      setTimeout(function() { sidebarFocusInto(el, tries + 1); }, 16);
-    }
+    // Children with `transition: all` animate the inherited visibility
+    focusInto(el, el, function() { return sidebarIsOpen(el); }, 0);
   }
 
   function sidebarClose(el) {
@@ -3788,8 +3793,10 @@
     if (navLink) sidebarClose(navLink.closest('.sui-sidebar'));
   });
 
-  document.addEventListener('keydown', function(e) {
-    if (e.key !== 'Escape' && e.key !== 'Tab') return;
+  // On window (after document-level handlers): skip keys a popup or another
+  // overlay inside the drawer already handled
+  window.addEventListener('keydown', function(e) {
+    if ((e.key !== 'Escape' && e.key !== 'Tab') || e.defaultPrevented) return;
     const open = document.querySelectorAll('.sui-sidebar.sui-sidebar-mobile-open');
     if (!open.length) return;
     if (e.key === 'Escape') {
@@ -3798,7 +3805,7 @@
     }
     // Tab: keep focus inside the (last) open drawer
     const el = open[open.length - 1];
-    const focusable = sidebarVisibleFocusable(el);
+    const focusable = visibleFocusable(el);
     if (!focusable.length) { e.preventDefault(); return; }
     const first = focusable[0];
     const last = focusable[focusable.length - 1];
@@ -4556,7 +4563,7 @@
     btn.classList.toggle('active', reveal);
     btn.setAttribute('aria-pressed', reveal ? 'true' : 'false');
     if (btn.classList.contains('sui-swap')) {
-      btn.dispatchEvent(new CustomEvent('sui-swap-change', { detail: { active: reveal } }));
+      emit(btn, 'sui-swap-change', { active: reveal });
     }
   });
 
@@ -4736,7 +4743,7 @@
     });
     document.addEventListener('keydown', function(e) {
       if (!lightboxOverlay || !lightboxOverlay.classList.contains('open')) return;
-      if (e.key === 'Escape') closeLightbox();
+      if (e.key === 'Escape') { e.preventDefault(); closeLightbox(); }
       if (e.key === 'ArrowLeft') showLightboxImage(lightboxIndex - 1);
       if (e.key === 'ArrowRight') showLightboxImage(lightboxIndex + 1);
     });
@@ -5099,12 +5106,12 @@
       btn.classList.remove('copy-failed');
       btn.classList.add('copied');
       btn.innerHTML = checkSvg;
-      btn.dispatchEvent(new CustomEvent('sui-copy', { bubbles: true, detail: { text: value } }));
+      emit(btn, 'sui-copy', { text: value });
     }, function(err) {
       btn.classList.remove('copied');
       btn.classList.add('copy-failed');
       btn.innerHTML = crossSvg; // non-colour failure cue
-      btn.dispatchEvent(new CustomEvent('sui-copy-error', { bubbles: true, detail: { text: value, error: err } }));
+      emit(btn, 'sui-copy-error', { text: value, error: err });
     }).then(function() {
       // Clear after the async settle (not at click time) so rapid clicks can't race
       clearTimeout(btn._suiCopyTimer);
@@ -5150,7 +5157,7 @@
           handle.style.left = pct + '%';
         }
         handle.setAttribute('aria-valuenow', Math.round(pct));
-        diff.dispatchEvent(new CustomEvent('sui-diff-change', { detail: { value: pct } }));
+        emit(diff, 'sui-diff-change', { value: pct });
       }
 
       function onMove(e) {
@@ -5169,6 +5176,7 @@
 
       // Arrows step 1 (Shift: 10), PageUp/PageDown 10, Home/End 0/100.
       // Position is physical (left/top), so arrows are not mirrored in RTL.
+      // Vertical: Up/PageUp move the handle up, Down/PageDown move it down.
       handle.addEventListener('keydown', function(e) {
         const step = e.shiftKey ? 10 : 1;
         let next = null;
@@ -5179,8 +5187,9 @@
           if (e.key === 'ArrowRight' || e.key === 'ArrowUp') next = current + step;
           else if (e.key === 'ArrowLeft' || e.key === 'ArrowDown') next = current - step;
         }
-        if (e.key === 'PageUp') next = current + 10;
-        else if (e.key === 'PageDown') next = current - 10;
+        const page = isVertical ? -10 : 10;
+        if (e.key === 'PageUp') next = current + page;
+        else if (e.key === 'PageDown') next = current - page;
         else if (e.key === 'Home') next = 0;
         else if (e.key === 'End') next = 100;
         if (next === null) return;
@@ -5245,6 +5254,7 @@
   document.addEventListener('keydown', function(e) {
     if (e.key !== 'Escape') return;
     document.querySelectorAll('.sui-speed-dial.open').forEach(function(d) {
+      e.preventDefault();
       closeSpeedDial(d, true);
     });
   });
@@ -5283,7 +5293,7 @@
     if (!treeChildren(item)) return;
     item.classList.toggle('expanded', open);
     if (item.hasAttribute('aria-expanded')) item.setAttribute('aria-expanded', open ? 'true' : 'false');
-    item.dispatchEvent(new CustomEvent('sui-tree-toggle', { bubbles: true, detail: { expanded: open } }));
+    emit(item, 'sui-tree-toggle', { expanded: open });
   }
 
   // Items with no collapsed ancestor item
@@ -5799,16 +5809,54 @@
     if (revealTimers) revealTimers.set(el, stop);
   }
 
+  // instant: show at once with no animation (used for focus)
+  function revealNow(el, instant) {
+    if (!el.classList.contains('sui-revealed')) {
+      el.classList.add('sui-revealed');
+      if (instant) { cancelFinishReveal(el); el.classList.add('sui-reveal-done'); }
+      else finishReveal(el);
+    }
+    if (revealObserver && !el.hasAttribute('data-reveal-repeat')) revealObserver.unobserve(el);
+  }
+
+  // The observer's negative bottom margin means a short element sitting in the
+  // last ~10% of a page scrolled to its end never intersects. At the end of the
+  // page, reveal anything pending that is actually on screen.
+  let revealEdgeQueued = false;
+  function revealAtPageEnd() {
+    revealEdgeQueued = false;
+    const html = document.documentElement;
+    const vh = window.innerHeight || html.clientHeight;
+    if (window.scrollY + vh < html.scrollHeight - 2) return;
+    document.querySelectorAll('.sui-reveal:not(.sui-revealed)').forEach(function(el) {
+      if (el.getClientRects().length === 0) return;
+      const rect = el.getBoundingClientRect();
+      if (rect.bottom > 0 && rect.top < vh) revealNow(el, false);
+    });
+  }
+  function queueRevealAtPageEnd() {
+    if (revealEdgeQueued) return;
+    revealEdgeQueued = true;
+    requestAnimationFrame(revealAtPageEnd);
+  }
+
+  function bindRevealGlobal() {
+    if (!once('reveal')) return;
+    window.addEventListener('scroll', queueRevealAtPageEnd, { passive: true });
+    window.addEventListener('resize', queueRevealAtPageEnd, { passive: true });
+    // Never leave focused content invisible (WCAG 2.4.7)
+    document.addEventListener('focusin', function(e) {
+      const r = e.target.closest && e.target.closest('.sui-reveal:not(.sui-revealed)');
+      if (r && document.documentElement.classList.contains('sui-reveal-ready')) revealNow(r, true);
+    });
+  }
+
   function onRevealEntries(entries) {
     entries.forEach(function(entry) {
       const el = entry.target;
       const repeat = el.hasAttribute('data-reveal-repeat');
       if (entry.isIntersecting) {
-        if (!el.classList.contains('sui-revealed')) {
-          el.classList.add('sui-revealed');
-          finishReveal(el);
-        }
-        if (!repeat) revealObserver.unobserve(el);
+        revealNow(el, false);
       } else if (repeat && el.classList.contains('sui-revealed')) {
         cancelFinishReveal(el);
         el.classList.remove('sui-revealed', 'sui-reveal-done');
@@ -5851,6 +5899,7 @@
         threshold: opts.threshold != null ? opts.threshold : 0.1
       });
     }
+    bindRevealGlobal();
 
     // On first run, elements already in view are shown without animating,
     // so above-the-fold content never flashes hidden.
@@ -5871,6 +5920,7 @@
       revealObserver.observe(el);
     });
     html.classList.add('sui-reveal-ready');
+    queueRevealAtPageEnd();
   }
 
   function initReveal(root) {
