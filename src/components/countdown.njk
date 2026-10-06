@@ -12,12 +12,12 @@ toc:
   - Bordered
   - Small
   - Large
+  - Reference
 ---
 
 <!-- Default -->
 <div class="pg-section" id="section-1">
   <h3 class="pg-section-title">Default</h3>
-  <p class="pg-section-desc"><code>data-date</code> accepts an ISO 8601 date/time (e.g. <code>2028-12-31T00:00:00</code>) or a relative <code>+&lt;n&gt;&lt;y|d|h|m|s&gt;…</code> string such as <code>+2y5d</code> or <code>+6h 30m</code>. An invalid value logs a console warning, shows <code>--</code> in each unit, adds <code>data-countdown-invalid</code>, and never fires <code>countdown:end</code>.</p>
   <div class="pg-section-row">
     <div class="sui-countdown" data-date="+2y5d">
       <div class="sui-countdown-unit">
@@ -311,5 +311,22 @@ toc:
     &lt;span class="sui-countdown-label"&gt;Seconds&lt;/span&gt;
   &lt;/div&gt;
 &lt;/div&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Reference -->
+<div class="pg-section" id="section-7">
+  <h3 class="pg-section-title">Reference</h3>
+  <div class="docs-table-wrap">
+    <table class="sui-table sui-table-compact">
+      <thead>
+        <tr><th scope="col" style="width:40%;">Attribute / Event</th><th scope="col">Description</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><code>data-date</code></td><td>ISO 8601 date/time (<code>2028-12-31T00:00:00</code>) or relative <code>+&lt;n&gt;&lt;y|d|h|m|s&gt;</code>, e.g. <code>+2y5d</code>, <code>+6h 30m</code>.</td></tr>
+        <tr><td><code>data-countdown-invalid</code></td><td>Added for an invalid date: units show <code>--</code> and a console warning is logged.</td></tr>
+        <tr><td><code>sui-countdown-end</code></td><td>Fires (and bubbles) when the timer reaches zero; never for an invalid date. <code>countdown:end</code> also fires.</td></tr>
+      </tbody>
+    </table>
   </div>
 </div>

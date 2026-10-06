@@ -15,6 +15,7 @@ toc:
   - Inset
   - Hover to Open
   - With Sub-Menu
+  - Reference
 ---
 
 <!-- Simple Dropdown -->
@@ -578,8 +579,7 @@ toc:
 <!-- With Sub-Menu -->
 <div class="pg-section" id="section-9">
   <h3 class="pg-section-title">With Sub-Menu</h3>
-  <p class="pg-section-desc">Nest <code>sui-nav-menu-sub</code> inside a panel for flyout sub-menus. By default, sub-menus open on hover. Add <code>sui-nav-menu-sub-click</code> to the panel to make them open on click instead. Clicking a sub-menu parent (or pressing <kbd>Enter</kbd>) toggles its sub-menu in both modes.</p>
-  <p class="pg-section-desc">Keyboard: <kbd>Enter</kbd>/<kbd>Space</kbd> on a trigger toggles its panel and <kbd>&darr;</kbd> opens it and focuses the first link. <kbd>&uarr;</kbd>/<kbd>&darr;</kbd> move between links in a panel. <kbd>Enter</kbd>/<kbd>Space</kbd> or <kbd>&rarr;</kbd> opens a sub-menu, <kbd>Esc</kbd> or <kbd>&larr;</kbd> closes it and returns focus to its parent (arrows are mirrored in RTL). Tabbing out of a panel closes it. Triggers and sub-menu parents expose <code>aria-expanded</code> and <code>aria-controls</code>, set automatically.</p>
+  <p class="pg-section-desc">Nest <code>sui-nav-menu-sub</code> inside a panel for flyout sub-menus. By default, sub-menus open on hover. Add <code>sui-nav-menu-sub-click</code> to the panel to make them open on click instead.</p>
   <h4 style="margin:0 0 12px;font-size:14px;color:var(--sui-text-muted);">Hover (default)</h4>
   <div class="pg-section-row">
     <nav class="sui-nav-menu">
@@ -835,5 +835,26 @@ toc:
   &lt;/div&gt;
   &lt;a href="#" class="sui-nav-menu-trigger"&gt;Pricing&lt;/a&gt;
 &lt;/nav&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Reference -->
+<div class="pg-section" id="section-10">
+  <h3 class="pg-section-title">Reference</h3>
+  <div class="docs-table-wrap">
+    <table class="sui-table sui-table-compact">
+      <thead>
+        <tr><th scope="col" style="width:40%;">Key / Attribute</th><th scope="col">Description</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><kbd>Enter</kbd> / <kbd>Space</kbd></td><td>On a trigger: toggle its panel. On a sub-menu parent: toggle the sub-menu (clicks too, in both modes).</td></tr>
+        <tr><td><kbd>&darr;</kbd></td><td>On a trigger: open the panel and focus the first link.</td></tr>
+        <tr><td><kbd>&uarr;</kbd> / <kbd>&darr;</kbd></td><td>Move between links in a panel.</td></tr>
+        <tr><td><kbd>&rarr;</kbd></td><td>Open a sub-menu (mirrored in RTL).</td></tr>
+        <tr><td><kbd>Esc</kbd> / <kbd>&larr;</kbd></td><td>Close a sub-menu and focus its parent (mirrored in RTL).</td></tr>
+        <tr><td><kbd>Tab</kbd></td><td>Tabbing out of a panel closes it.</td></tr>
+        <tr><td><code>aria-expanded</code>, <code>aria-controls</code></td><td>Set automatically on triggers and sub-menu parents.</td></tr>
+      </tbody>
+    </table>
   </div>
 </div>

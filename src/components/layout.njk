@@ -12,6 +12,7 @@ toc:
   - Responsive
   - Gutters
   - Offsets
+  - Reference
 ---
 
 <!-- Container -->
@@ -212,9 +213,7 @@ toc:
   <h3 class="pg-section-title">Gutters</h3>
   <p style="margin-bottom:16px;color:var(--sui-text-muted);font-size:14px;">
     Control gutter (gap) sizes with <code>.sui-g-{0-5}</code>, <code>.sui-gx-{0-5}</code> (horizontal), and <code>.sui-gy-{0-5}</code> (vertical).
-    Values: 0=0, 1=4px, 2=8px, 3=16px, 4=24px, 5=48px. Without a gutter class a row has a 24px horizontal gutter and no vertical gutter.
-    Vertical gutters (<code>.sui-g-*</code>, <code>.sui-gy-*</code>) separate wrapped lines of columns; the row pulls itself up by the same amount so the first line has no extra space above it.
-    Rows also pull outward by half the horizontal gutter, so give the row's parent horizontal padding of at least that much (24px for <code>.sui-g-5</code>) or <code>overflow-x: clip</code>, or large gutters can overflow it.
+    Values: 0=0, 1=4px, 2=8px, 3=16px, 4=24px (default), 5=48px.
   </p>
   <div class="pg-section-row">
     <div style="width:100%;overflow-x:clip;">
@@ -369,5 +368,22 @@ toc:
 &lt;div class="sui-row"&gt;
   &lt;div class="sui-col-6 sui-offset-6"&gt;col-6 offset-6&lt;/div&gt;
 &lt;/div&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Reference -->
+<div class="pg-section" id="section-8">
+  <h3 class="pg-section-title">Reference</h3>
+  <div class="docs-table-wrap">
+    <table class="sui-table sui-table-compact">
+      <thead>
+        <tr><th scope="col" style="width:40%;">Class</th><th scope="col">Description</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><code>.sui-row</code></td><td>Without a gutter class: 24px between columns, no gap between wrapped lines.</td></tr>
+        <tr><td><code>.sui-g-*</code>, <code>.sui-gy-*</code></td><td>Vertical gutter between wrapped lines; the first line gets no extra space above.</td></tr>
+        <tr><td><code>.sui-g-*</code>, <code>.sui-gx-*</code></td><td>Rows pull outward by half the gutter: give the parent that much inline padding (24px for <code>.sui-g-5</code>) or <code>overflow-x: clip</code>.</td></tr>
+      </tbody>
+    </table>
   </div>
 </div>

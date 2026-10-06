@@ -15,12 +15,12 @@ toc:
   - With Preview
   - Raised
   - Inset
+  - Reference
 ---
 
 <!-- Swatches -->
 <div class="pg-section" id="section-1">
   <h3 class="pg-section-title">Swatches</h3>
-  <p class="pg-section-desc">Keyboard: a swatch picker is a radio group. <kbd>Tab</kbd> lands on the selected swatch; arrow keys move and select (wrapping, mirrored in RTL), <kbd>Home</kbd>/<kbd>End</kbd> jump to the first or last swatch, and <kbd>Space</kbd>/<kbd>Enter</kbd> select. Swatches are named from <code>aria-label</code>, <code>title</code>, a <code>.sui-color-label</code>, or their <code>data-color</code>. Palette rows are display-only and are not focusable. Roles and <code>tabindex</code> are added on page load, and by <code>SoftUI.init(el)</code> for markup added later.</p>
   <div class="pg-section-row">
     <div class="sui-color-picker">
       <div class="sui-color-swatch active" data-color="#5B54E0" style="background:#5B54E0;"></div>
@@ -480,5 +480,26 @@ toc:
   &lt;div class="sui-color-swatch" data-color="#6C757D" style="background:#6C757D;"&gt;&lt;/div&gt;
   &lt;div class="sui-color-swatch" data-color="#FFFFFF" style="background:#FFFFFF;"&gt;&lt;/div&gt;
 &lt;/div&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Reference -->
+<div class="pg-section" id="section-10">
+  <h3 class="pg-section-title">Reference</h3>
+  <div class="docs-table-wrap">
+    <table class="sui-table sui-table-compact">
+      <thead>
+        <tr><th scope="col" style="width:40%;">Key / Attribute</th><th scope="col">Description</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><kbd>Tab</kbd></td><td>Focuses the selected swatch (the picker is a radio group).</td></tr>
+        <tr><td>Arrow keys</td><td>Move and select, wrapping. Mirrored in RTL.</td></tr>
+        <tr><td><kbd>Home</kbd> / <kbd>End</kbd></td><td>First / last swatch.</td></tr>
+        <tr><td><kbd>Space</kbd> / <kbd>Enter</kbd></td><td>Select the focused swatch.</td></tr>
+        <tr><td>Swatch name</td><td>From <code>aria-label</code>, <code>title</code>, a <code>.sui-color-label</code>, or <code>data-color</code>.</td></tr>
+        <tr><td><code>sui-color-palette</code></td><td>Display-only rows; not focusable.</td></tr>
+        <tr><td><code>SoftUI.init(el)</code></td><td>Adds roles and <code>tabindex</code> to markup inserted after page load.</td></tr>
+      </tbody>
+    </table>
   </div>
 </div>

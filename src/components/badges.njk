@@ -10,6 +10,7 @@ toc:
   - Sizes
   - Positioned
   - Status Dot
+  - Reference
 ---
 
 <!-- All Colors -->
@@ -89,7 +90,6 @@ toc:
 <!-- Positioned -->
 <div class="pg-section" id="section-5">
   <h3 class="pg-section-title">Positioned</h3>
-  <p class="pg-section-desc">An empty dot carries meaning by colour only, so give it <code>role="img"</code> and an <code>aria-label</code> describing what it signals.</p>
   <div class="pg-section-row" style="gap:16px;">
     <span class="sui-badge-positioned">
       <button class="sui-btn">Inbox</button>
@@ -135,7 +135,6 @@ toc:
 <!-- Status Dot -->
 <div class="pg-section" id="section-6">
   <h3 class="pg-section-title">Status Dot</h3>
-  <p class="pg-section-desc">An inline dot for presence and state. Pair it with visible text inside <code>.sui-status</code>, or give a standalone dot <code>role="img"</code> and an <code>aria-label</code>. Add <code>sui-status-dot-pulse</code> for a live ping (hidden when reduced motion is on). Set <code>--sui-status-color</code> or <code>--sui-status-size</code> on the dot or any ancestor for custom values.</p>
   <div class="pg-section-row" style="gap:24px;">
     <span class="sui-status"><span class="sui-status-dot sui-status-dot-success"></span>Online</span>
     <span class="sui-status"><span class="sui-status-dot sui-status-dot-warning"></span>Away</span>
@@ -170,5 +169,26 @@ toc:
 
 &lt;!-- Standalone: needs an accessible name --&gt;
 &lt;span class="sui-status-dot sui-status-dot-success" role="img" aria-label="Online"&gt;&lt;/span&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Reference -->
+<div class="pg-section" id="section-7">
+  <h3 class="pg-section-title">Reference</h3>
+  <div class="docs-table-wrap">
+    <table class="sui-table sui-table-compact">
+      <thead>
+        <tr><th scope="col" style="width:40%;">Class</th><th scope="col">Description</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><code>sui-badge-dot</code></td><td>Empty dot. Give it <code>role="img"</code> and an <code>aria-label</code>.</td></tr>
+        <tr><td><code>sui-status</code></td><td>Inline wrapper for a status dot and its visible label.</td></tr>
+        <tr><td><code>sui-status-dot-{primary|success|warning|danger|info}</code></td><td>Dot colour. Without one the dot is neutral.</td></tr>
+        <tr><td><code>sui-status-dot-pulse</code></td><td>Live ping. Hidden when the user prefers reduced motion.</td></tr>
+        <tr><td><code>sui-status-dot-sm</code>, <code>sui-status-dot-lg</code></td><td>Small and large dots.</td></tr>
+        <tr><td><code>--sui-status-color</code>, <code>--sui-status-size</code></td><td>Custom colour and size, set on the dot or any ancestor.</td></tr>
+        <tr><td>Standalone dot</td><td>Without visible text, add <code>role="img"</code> and an <code>aria-label</code>.</td></tr>
+      </tbody>
+    </table>
   </div>
 </div>

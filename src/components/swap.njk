@@ -15,6 +15,7 @@ toc:
   - With Text
   - Raised
   - Inset
+  - Reference
 ---
 
 {% set sunSvg %}<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>{% endset %}
@@ -39,7 +40,6 @@ toc:
 <!-- Default -->
 <div class="pg-section" id="section-1">
   <h3 class="pg-section-title">Default</h3>
-  <p class="pg-section-desc">Add <code>data-sui-theme-toggle</code> to the moon/sun swap and it becomes a working dark mode switch — see <a href="/theming/#dark-mode-toggle">Theming</a>. Theme toggles are driven by the theme switcher and don't fire <code>sui-swap-change</code>.</p>
   <div class="pg-section-row">
     <div style="display:flex;flex-wrap:wrap;gap:24px;align-items:center;">
       <button class="sui-swap">
@@ -425,5 +425,21 @@ toc:
   &lt;span class="sui-swap-on"&gt;ON&lt;/span&gt;
   &lt;span class="sui-swap-off"&gt;OFF&lt;/span&gt;
 &lt;/button&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Reference -->
+<div class="pg-section" id="section-10">
+  <h3 class="pg-section-title">Reference</h3>
+  <div class="docs-table-wrap">
+    <table class="sui-table sui-table-compact">
+      <thead>
+        <tr><th scope="col" style="width:40%;">Attribute / Event</th><th scope="col">Description</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><code>data-sui-theme-toggle</code></td><td>Turns a moon/sun swap into a dark mode switch (see <a href="/theming/#dark-mode-toggle">Theming</a>).</td></tr>
+        <tr><td><code>sui-swap-change</code></td><td>Fires on each toggle with <code>detail.active</code> (cycle swaps: <code>detail.state</code>, <code>detail.total</code>); not fired by theme toggles.</td></tr>
+      </tbody>
+    </table>
   </div>
 </div>

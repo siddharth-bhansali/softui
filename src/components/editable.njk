@@ -10,12 +10,13 @@ toc:
   - Underline
   - Sizes
   - With Events
+  - Reference
 ---
 
 <!-- Default -->
 <div class="pg-section" id="section-1">
   <h3 class="pg-section-title">Default</h3>
-  <p class="pg-section-desc">Click the text to edit. Press Enter or click away to save. Press Escape to cancel. Keyboard: the text is a focusable button; <kbd>Enter</kbd>, <kbd>Space</kbd> or <kbd>F2</kbd> starts editing, and after <kbd>Enter</kbd> or <kbd>Esc</kbd> focus returns to it.</p>
+  <p class="pg-section-desc">Click the text to edit. Press Enter or click away to save. Press Escape to cancel.</p>
   <div class="pg-section-row" style="gap:8px;flex-direction:column;align-items:flex-start;">
     <h4 style="margin:0 0 4px;font-size:13px;color:var(--sui-text-muted);">With icon</h4>
     <div style="display:flex;align-items:center;gap:12px;">
@@ -134,7 +135,7 @@ toc:
 <!-- With Events -->
 <div class="pg-section" id="section-4">
   <h3 class="pg-section-title">With Events</h3>
-  <p class="pg-section-desc">Listen for <code>sui-editable-save</code> and <code>sui-editable-cancel</code>. Both bubble, so you can also listen on <code>document</code>. The older <code>editable:save</code> / <code>editable:cancel</code> names still fire too.</p>
+  <p class="pg-section-desc">Listen for <code>sui-editable-save</code> and <code>sui-editable-cancel</code> events.</p>
   <div class="pg-section-row" style="gap:12px;flex-direction:column;align-items:flex-start;">
     <div class="sui-editable" id="demo-editable-event">
       <span class="sui-editable-value" style="font-weight:600;">Click me to edit</span>
@@ -180,5 +181,24 @@ toc:
       console.log('Edit cancelled');
     });
 &lt;/script&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Reference -->
+<div class="pg-section" id="section-5">
+  <h3 class="pg-section-title">Reference</h3>
+  <div class="docs-table-wrap">
+    <table class="sui-table sui-table-compact">
+      <thead>
+        <tr><th scope="col" style="width:40%;">Key / Event</th><th scope="col">Description</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><kbd>Enter</kbd>, <kbd>Space</kbd>, <kbd>F2</kbd></td><td>Start editing (the text is a focusable button).</td></tr>
+        <tr><td><kbd>Enter</kbd> / <kbd>Esc</kbd></td><td>Save / cancel; focus returns to the text.</td></tr>
+        <tr><td><code>sui-editable-save</code></td><td>Fires on save with <code>detail.value</code> and <code>detail.previous</code>; bubbles.</td></tr>
+        <tr><td><code>sui-editable-cancel</code></td><td>Fires on cancel; bubbles.</td></tr>
+        <tr><td><code>editable:save</code>, <code>editable:cancel</code></td><td>Older event names; still fire.</td></tr>
+      </tbody>
+    </table>
   </div>
 </div>

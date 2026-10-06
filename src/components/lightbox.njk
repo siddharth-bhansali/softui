@@ -12,6 +12,7 @@ toc:
   - Vertical Gallery
   - With Captions
   - Inset
+  - Reference
 ---
 
 {% set placeholderBase %}data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='400'%3E{% endset %}
@@ -19,7 +20,6 @@ toc:
 <!-- Default -->
 <div class="pg-section" id="section-1">
   <h3 class="pg-section-title">Default</h3>
-  <p class="pg-section-desc">Keyboard: thumbnails (and the main image in the vertical gallery) are focusable buttons, so <kbd>Enter</kbd> or <kbd>Space</kbd> opens the viewer. The viewer is a modal dialog: focus moves to Close and stays inside, <kbd>&larr;</kbd>/<kbd>&rarr;</kbd> change the image, and <kbd>Esc</kbd> closes it and returns focus to the thumbnail. Roles and <code>tabindex</code> are added on page load, and by <code>SoftUI.init(el)</code> for markup added later.</p>
   <div class="pg-section-row">
     <div style="display:flex;flex-wrap:wrap;gap:16px;">
       <div class="sui-lightbox-thumb" style="width:200px;height:140px;">
@@ -249,5 +249,24 @@ toc:
     &lt;img src="image4.jpg" alt="Image 4"&gt;
   &lt;/div&gt;
 &lt;/div&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Reference -->
+<div class="pg-section" id="section-7">
+  <h3 class="pg-section-title">Reference</h3>
+  <div class="docs-table-wrap">
+    <table class="sui-table sui-table-compact">
+      <thead>
+        <tr><th scope="col" style="width:40%;">Key</th><th scope="col">Description</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><kbd>Enter</kbd> / <kbd>Space</kbd></td><td>Open the viewer from a focused thumbnail (or the vertical gallery's main image).</td></tr>
+        <tr><td><kbd>&larr;</kbd> / <kbd>&rarr;</kbd></td><td>Previous / next image.</td></tr>
+        <tr><td><kbd>Esc</kbd></td><td>Close; focus returns to the thumbnail.</td></tr>
+        <tr><td>Focus</td><td>Moves to Close when the viewer opens and stays inside it (modal dialog).</td></tr>
+        <tr><td><code>SoftUI.init(el)</code></td><td>Adds roles and <code>tabindex</code> to markup inserted after page load.</td></tr>
+      </tbody>
+    </table>
   </div>
 </div>

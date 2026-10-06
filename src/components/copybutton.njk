@@ -11,6 +11,7 @@ toc:
   - With Input
   - Sizes
   - Inset
+  - Reference
 ---
 
 {% set clipSvg %}<svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>{% endset %}
@@ -18,7 +19,6 @@ toc:
 <!-- Default -->
 <div class="pg-section" id="section-1">
   <h3 class="pg-section-title">Default</h3>
-  <p class="pg-section-desc">On success the button shows a check for 1.5s, then restores its own content (custom icons and text labels are kept) and fires <code>sui-copy</code>. If copying fails it shows a cross for 1.5s, gets <code>.copy-failed</code> (danger colour) and fires <code>sui-copy-error</code>. Both events bubble and carry <code>detail.text</code>. Where the Clipboard API is missing or denied (e.g. plain http) it falls back to <code>execCommand('copy')</code>, keeping keyboard focus on the button. Copy buttons are native buttons, so <kbd>Enter</kbd> and <kbd>Space</kbd> work and they show a focus ring.</p>
   <div class="pg-section-row">
     <div style="display:flex;flex-direction:column;gap:12px;max-width:400px;">
       <div class="sui-copy">
@@ -190,5 +190,23 @@ toc:
     &lt;svg viewBox="0 0 24 24"&gt;&lt;rect x="9" y="9" width="13" height="13" rx="2" ry="2"/&gt;&lt;path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/&gt;&lt;/svg&gt;
   &lt;/button&gt;
 &lt;/div&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Reference -->
+<div class="pg-section" id="section-6">
+  <h3 class="pg-section-title">Reference</h3>
+  <div class="docs-table-wrap">
+    <table class="sui-table sui-table-compact">
+      <thead>
+        <tr><th scope="col" style="width:40%;">Event / Class</th><th scope="col">Description</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><code>sui-copy</code></td><td>Fires on success with <code>detail.text</code>. The check shows for 1.5s, then the button's own content returns.</td></tr>
+        <tr><td><code>sui-copy-error</code></td><td>Fires on failure with <code>detail.text</code> and <code>detail.error</code>.</td></tr>
+        <tr><td><code>.copy-failed</code></td><td>Added on failure: danger colour and a cross for 1.5s.</td></tr>
+        <tr><td>Fallback</td><td>Uses <code>execCommand('copy')</code> where the Clipboard API is missing or denied (e.g. plain http).</td></tr>
+      </tbody>
+    </table>
   </div>
 </div>

@@ -15,12 +15,12 @@ toc:
   - Collapsed (Icon Only)
   - With Header & Footer
   - Mobile Drawer
+  - Reference
 ---
 
 <!-- Default -->
 <div class="pg-section" id="section-1">
   <h3 class="pg-section-title">Default</h3>
-  <p class="pg-section-desc">Below 900px a sidebar becomes an off-canvas drawer that needs a <code>data-sidebar-open</code> trigger (see <a href="#section-9">Mobile Drawer</a>). The demos on this page add <code>sui-sidebar-static</code> so they stay inline on small screens.</p>
   <div class="pg-section-row">
     <div style="display:flex;border:1px solid var(--sui-bg-dark);border-radius:var(--sui-radius);overflow:hidden;height:340px;width:100%;">
       <aside class="sui-sidebar sui-sidebar-static sui-sidebar-bordered" style="height:100%;">
@@ -664,7 +664,7 @@ toc:
 <!-- Mobile Drawer -->
 <div class="pg-section" id="section-9">
   <h3 class="pg-section-title">Mobile Drawer</h3>
-  <p class="pg-section-desc">Below 900px every <code>sui-sidebar</code> becomes an off-canvas drawer, hidden until opened. Open it with any element carrying <code>data-sidebar-open="#id"</code> (an empty value targets the first sidebar); <code>class="sui-sidebar-trigger sui-sidebar-trigger-mobile"</code> gives a hamburger button that only shows below 900px. A backdrop is created automatically, or place <code>&lt;div class="sui-sidebar-overlay"&gt;&lt;/div&gt;</code> right after the aside. The drawer closes on the backdrop, <kbd>Esc</kbd>, a nav item click, any <code>data-sidebar-close</code> button, or when the viewport grows past 900px. Focus moves into the drawer and is kept there while it is open, the trigger gets <code>aria-expanded</code>, and focus returns to the trigger on close. Add <code>sui-sidebar-static</code> to keep a sidebar inline on small screens, or <code>sui-sidebar-drawer</code> to make it a drawer at every width (as in this demo). A collapsed (icon-only) sidebar shows its full labels while it is open as a drawer. JS API: <code>SoftUI.sidebar('#id').open()</code>, <code>.close()</code>, <code>.isOpen()</code>.</p>
+  <p style="font-size:13px;color:var(--sui-text-light);margin-bottom:16px;">Below 900px every sidebar becomes a drawer like this; <code>sui-sidebar-drawer</code> makes it one at any width.</p>
   <div class="pg-section-row">
     <button class="sui-btn" data-sidebar-open="#demo-drawer-sidebar" aria-controls="demo-drawer-sidebar">Open sidebar</button>
     <aside id="demo-drawer-sidebar" class="sui-sidebar sui-sidebar-drawer" aria-label="Demo navigation">
@@ -714,5 +714,28 @@ toc:
   &lt;/div&gt;
 &lt;/aside&gt;
 </pre></div>
+  </div>
+</div>
+
+<!-- Reference -->
+<div class="pg-section" id="section-10">
+  <h3 class="pg-section-title">Reference</h3>
+  <div class="docs-table-wrap">
+    <table class="sui-table sui-table-compact">
+      <thead>
+        <tr><th scope="col" style="width:40%;">Class / Attribute</th><th scope="col">Description</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><code>data-sidebar-open="#id"</code></td><td>Opens the sidebar (empty value: the first one) and sets <code>aria-expanded</code> on the trigger.</td></tr>
+        <tr><td><code>data-sidebar-close</code></td><td>Closes the drawer from any element inside it.</td></tr>
+        <tr><td><code>sui-sidebar-trigger sui-sidebar-trigger-mobile</code></td><td>Hamburger button shown only below 900px.</td></tr>
+        <tr><td><code>sui-sidebar-overlay</code></td><td>Optional backdrop right after the aside; created automatically if missing.</td></tr>
+        <tr><td><code>sui-sidebar-static</code></td><td>Stays inline below 900px (used by the demos above).</td></tr>
+        <tr><td><code>sui-sidebar-drawer</code></td><td>Drawer at every width.</td></tr>
+        <tr><td><code>sui-sidebar-collapsed</code></td><td>Shows full labels while open as a drawer.</td></tr>
+        <tr><td>Closing</td><td>Backdrop, <kbd>Esc</kbd>, a nav item click, or growing past 900px. Focus is kept inside while open and returns to the trigger.</td></tr>
+        <tr><td><code>SoftUI.sidebar('#id')</code></td><td><code>.open()</code>, <code>.close()</code>, <code>.isOpen()</code>.</td></tr>
+      </tbody>
+    </table>
   </div>
 </div>

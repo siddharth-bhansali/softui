@@ -9,6 +9,7 @@ toc:
   - Default
   - With Labels
   - Vertical
+  - Reference
 ---
 
 {% set imgBefore %}data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='400'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0%25' stop-color='%231B1D2A'/%3E%3Cstop offset='100%25' stop-color='%236C757D'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect fill='url(%23g)' width='600' height='400'/%3E%3Ctext x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' fill='white' font-size='28' font-family='sans-serif' font-weight='700'%3EBefore%3C/text%3E%3C/svg%3E{% endset %}
@@ -19,7 +20,6 @@ toc:
 <!-- Default -->
 <div class="pg-section" id="section-1">
   <h3 class="pg-section-title">Default</h3>
-  <p class="pg-section-desc">Keyboard: the handle is a focusable slider (<code>aria-valuenow</code> 0&ndash;100). Arrow keys move it by 1% (<kbd>Shift</kbd> or <kbd>PageUp</kbd>/<kbd>PageDown</kbd> by 10%) and <kbd>Home</kbd>/<kbd>End</kbd> jump to the edges. Use <kbd>&uarr;</kbd>/<kbd>&darr;</kbd> in the vertical variant. Moving it fires <code>sui-diff-change</code> with <code>detail.value</code>.</p>
   <div class="pg-section-row">
     <div class="sui-diff" data-sui-diff style="max-width:500px;">
       <img class="sui-diff-before" src="{{ imgBefore }}" alt="Before">
@@ -87,5 +87,23 @@ toc:
 &lt;/div&gt;
 
 &lt;!-- Drag the handle up/down --&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Reference -->
+<div class="pg-section" id="section-4">
+  <h3 class="pg-section-title">Reference</h3>
+  <div class="docs-table-wrap">
+    <table class="sui-table sui-table-compact">
+      <thead>
+        <tr><th scope="col" style="width:40%;">Key / Event</th><th scope="col">Description</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><kbd>&larr;</kbd> / <kbd>&rarr;</kbd></td><td>Move the handle by 1% (<kbd>&uarr;</kbd> / <kbd>&darr;</kbd> in the vertical variant).</td></tr>
+        <tr><td><kbd>Shift</kbd> + arrow, <kbd>PageUp</kbd> / <kbd>PageDown</kbd></td><td>Move by 10%.</td></tr>
+        <tr><td><kbd>Home</kbd> / <kbd>End</kbd></td><td>Jump to the edges.</td></tr>
+        <tr><td><code>sui-diff-change</code></td><td>Fires on move with <code>detail.value</code> (0&ndash;100, also in <code>aria-valuenow</code>).</td></tr>
+      </tbody>
+    </table>
   </div>
 </div>

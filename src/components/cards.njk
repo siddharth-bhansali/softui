@@ -14,6 +14,7 @@ toc:
   - Image Overlay
   - Horizontal
   - Empty State
+  - Reference
 ---
 
 <!-- Raised (Default) -->
@@ -119,7 +120,6 @@ toc:
 <!-- Image Top -->
 <div class="pg-section" id="section-7">
   <h3 class="pg-section-title">Image Top</h3>
-  <p class="pg-section-desc">Put <code>.sui-card-img-top</code> (or <code>.sui-card-img-bottom</code>) directly inside the card; the card drops its padding and the image picks up the card's corner radius. For a real image, use <code>&lt;img class="sui-card-img-top" src="…" width="600" height="400" alt="…"&gt;</code> — it scales proportionally. To crop to a fixed ratio, wrap it in <code>.sui-aspect.sui-aspect-video</code>.</p>
   <div class="pg-section-grid">
     <div class="sui-card" style="max-width:340px;width:100%;"><div class="sui-card-img-top" style="height:160px;background:linear-gradient(135deg, var(--sui-primary) 0%, var(--sui-info) 100%);"></div><div class="sui-card-body"><h4 style="margin-bottom:8px;">Card with Image</h4><p>An image or visual sits above the card body content.</p></div></div>
   </div>
@@ -138,7 +138,6 @@ toc:
 <!-- Image Overlay -->
 <div class="pg-section" id="section-8">
   <h3 class="pg-section-title">Image Overlay</h3>
-  <p class="pg-section-desc">A card with a direct <code>.sui-card-img-overlay</code> child becomes the positioning context and clips to its radius automatically. The overlay and an absolutely positioned background add no height, so give the card an explicit height — or use an in-flow <code>&lt;img class="sui-card-img-bg"&gt;</code> to size it.</p>
   <div class="pg-section-grid">
     <div class="sui-card" style="max-width:340px;width:100%;height:220px;"><div class="sui-card-img-bg" style="position:absolute;inset:0;background:linear-gradient(135deg, var(--sui-primary) 0%, var(--sui-info) 100%);"></div><div class="sui-card-img-overlay"><h4 style="margin-bottom:8px;color:#fff;">Overlay Title</h4><p style="color:rgba(255,255,255,.85);">Text content layered on top of the image background.</p></div></div>
   </div>
@@ -223,5 +222,23 @@ toc:
   &lt;div class="sui-card-empty-text"&gt;Try adjusting your search or filter criteria.&lt;/div&gt;
   &lt;button class="sui-btn sui-btn-sm"&gt;Clear Filters&lt;/button&gt;
 &lt;/div&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Reference -->
+<div class="pg-section" id="section-11">
+  <h3 class="pg-section-title">Reference</h3>
+  <div class="docs-table-wrap">
+    <table class="sui-table sui-table-compact">
+      <thead>
+        <tr><th scope="col" style="width:40%;">Class</th><th scope="col">Description</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><code>.sui-card-img-top</code>, <code>.sui-card-img-bottom</code></td><td>Direct child of the card: the card drops its padding and the image takes its corner radius. An <code>&lt;img&gt;</code> scales proportionally.</td></tr>
+        <tr><td><code>.sui-aspect.sui-aspect-video</code></td><td>Wrap the image to crop it to a fixed ratio.</td></tr>
+        <tr><td><code>.sui-card-img-overlay</code></td><td>Direct child: the card becomes its positioning context and clips to its radius. Give the card a height, or use an in-flow <code>&lt;img class="sui-card-img-bg"&gt;</code> to size it.</td></tr>
+        <tr><td><code>.sui-card-img-bg</code></td><td>Background image or fill behind the overlay.</td></tr>
+      </tbody>
+    </table>
   </div>
 </div>

@@ -15,6 +15,7 @@ toc:
   - Number Input
   - Tags Input
   - "Select & Textarea"
+  - Reference
 ---
 
 <!-- Create Account -->
@@ -154,7 +155,6 @@ toc:
 <!-- Password Input -->
 <div class="pg-section" id="section-5">
   <h3 class="pg-section-title">Password Input</h3>
-  <p class="pg-section-desc">The eye button toggles the input between hidden and visible text and keeps <code>aria-pressed</code> in sync (pressed = password shown). It is a native button, so <kbd>Enter</kbd> and <kbd>Space</kbd> work, and its clicks bubble normally to your own listeners. With <code>sui-swap</code> on the button it also fires <code>sui-swap-change</code>.</p>
   <div class="pg-section-row">
     <div style="max-width:400px;width:100%;">
       <div class="sui-form-group">
@@ -415,5 +415,21 @@ toc:
 &lt;textarea class="sui-input sui-textarea" rows="3" placeholder="Write something..."&gt;&lt;/textarea&gt;
 
 &lt;input type="range" class="sui-range" min="0" max="100" value="50"&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Reference -->
+<div class="pg-section" id="section-9">
+  <h3 class="pg-section-title">Reference</h3>
+  <div class="docs-table-wrap">
+    <table class="sui-table sui-table-compact">
+      <thead>
+        <tr><th scope="col" style="width:40%;">Class / Event</th><th scope="col">Description</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><code>sui-password-toggle</code></td><td>Shows or hides the password and keeps <code>aria-pressed</code> in sync (pressed = shown).</td></tr>
+        <tr><td><code>sui-swap-change</code></td><td>Also fires from the toggle when it has <code>sui-swap</code>.</td></tr>
+      </tbody>
+    </table>
   </div>
 </div>

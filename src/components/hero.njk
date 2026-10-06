@@ -16,6 +16,7 @@ toc:
   - With Accent
   - Start Aligned
   - Split
+  - Reference
 ---
 
 <!-- Default -->
@@ -225,7 +226,6 @@ toc:
 <!-- Start Aligned -->
 <div class="pg-section" id="section-9">
   <h3 class="pg-section-title">Start Aligned</h3>
-  <p class="pg-section-desc">Add <code>sui-hero-start</code> to align the title, subtitle, actions and accent line to the inline start (the right in RTL). Use it instead of <code>sui-text-left</code>, which cannot override the hero's centring.</p>
   <div class="pg-section-row" style="display:block;">
     <div class="sui-hero sui-hero-start sui-hero-accent">
       <h1 class="sui-hero-title">Release Notes</h1>
@@ -252,7 +252,6 @@ toc:
 <!-- Split -->
 <div class="pg-section" id="section-10">
   <h3 class="pg-section-title">Split</h3>
-  <p class="pg-section-desc"><code>sui-hero-split</code> puts text and media side by side from 992px and stacks them (text first) below that. Wrap the title, subtitle and actions in <code>.sui-hero-content</code> (required) and put an <code>&lt;img&gt;</code> or <code>&lt;video&gt;</code> in <code>.sui-hero-media</code>; it is sized to the column and rounded. The demo uses a placeholder box. Add <code>sui-hero-media-start</code> to put the media first on wide screens. Columns follow the writing direction, so RTL needs no extra class. Inline SVGs in the media slot need a <code>viewBox</code> to scale.</p>
   <div class="pg-section-row" style="display:block;">
     <div class="sui-hero sui-hero-split">
       <div class="sui-hero-content">
@@ -283,5 +282,24 @@ toc:
     &lt;div class="sui-raised" style="aspect-ratio:4/3;border-radius:var(--sui-radius-lg);display:flex;align-items:center;justify-content:center;color:var(--sui-text-muted);font-weight:600;"&gt;Image or video&lt;/div&gt;
   &lt;/div&gt;
 &lt;/div&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Reference -->
+<div class="pg-section" id="section-11">
+  <h3 class="pg-section-title">Reference</h3>
+  <div class="docs-table-wrap">
+    <table class="sui-table sui-table-compact">
+      <thead>
+        <tr><th scope="col" style="width:40%;">Class</th><th scope="col">Description</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><code>sui-hero-start</code></td><td>Aligns content to the inline start (right in RTL). Use it instead of <code>sui-text-left</code>.</td></tr>
+        <tr><td><code>sui-hero-split</code></td><td>Text and media side by side from 992px; stacked, text first, below. Columns follow the writing direction (mirrored in RTL).</td></tr>
+        <tr><td><code>sui-hero-content</code></td><td>Required wrapper for the title, subtitle and actions in a split hero.</td></tr>
+        <tr><td><code>sui-hero-media</code></td><td>Holds an <code>&lt;img&gt;</code> or <code>&lt;video&gt;</code>, sized to the column and rounded. Inline SVGs need a <code>viewBox</code>.</td></tr>
+        <tr><td><code>sui-hero-media-start</code></td><td>Puts the media first on wide screens.</td></tr>
+      </tbody>
+    </table>
   </div>
 </div>
