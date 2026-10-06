@@ -1212,21 +1212,27 @@ a.sui-btn-warning:visited {
 .sui-img-fluid { max-width: 100%; height: auto; }
 
 /* Raised frame. Put it directly on the <img> (the image is clipped to the inner
-   radius automatically), or on a wrapper (figure/div) around an <img>. */
+   radius automatically), or on a wrapper (figure/div) around an <img>.
+   The shadow sits in :where() so sui-inset / sui-raised-lg / sui-pressed win.
+   --sui-img-frame-radius drives both the frame and the wrapped image's corners. */
 .sui-img-frame {
   display: inline-block;
   max-width: 100%;
   height: auto;
   padding: 8px;
   background: var(--sui-bg);
-  border-radius: var(--sui-radius);
-  box-shadow: var(--sui-shadow-raised);
+  border-radius: var(--sui-img-frame-radius, var(--sui-radius));
 }
+:where(.sui-img-frame) { box-shadow: var(--sui-shadow-raised); }
+.sui-img-frame.sui-rounded-sm   { --sui-img-frame-radius: var(--sui-radius-sm); }
+.sui-img-frame.sui-rounded      { --sui-img-frame-radius: var(--sui-radius); }
+.sui-img-frame.sui-rounded-lg   { --sui-img-frame-radius: var(--sui-radius-lg); }
+.sui-img-frame.sui-rounded-full { --sui-img-frame-radius: var(--sui-radius-full); }
 .sui-img-frame > img {
   display: block;
   max-width: 100%;
   height: auto;
-  border-radius: calc(var(--sui-radius) - 8px);
+  border-radius: max(0px, calc(var(--sui-img-frame-radius, var(--sui-radius)) - 8px));
 }
 
 /* ===========================================

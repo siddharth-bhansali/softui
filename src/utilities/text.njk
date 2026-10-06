@@ -86,21 +86,24 @@ toc:
   </div>
   <div class="pg-code-wrap">
     <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
-    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;span class="sui-font-sans"&gt;sui-font-sans — Plus Jakarta Sans&lt;/span&gt;
-&lt;span class="sui-font-mono"&gt;sui-font-mono — const x = 42;&lt;/span&gt;
-
-&lt;!-- Default (proportional) digits --&gt;
-&lt;div class="sui-text-right"&gt;
-  &lt;div&gt;1,111.11&lt;/div&gt;
-  &lt;div&gt;8,888.88&lt;/div&gt;
-  &lt;div&gt;4,701.10&lt;/div&gt;
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div style="display:flex;flex-direction:column;gap:8px;"&gt;
+  &lt;span class="sui-font-sans"&gt;sui-font-sans — Plus Jakarta Sans&lt;/span&gt;
+  &lt;span class="sui-font-mono"&gt;sui-font-mono — const x = 42;&lt;/span&gt;
 &lt;/div&gt;
 
-&lt;!-- Equal-width digits that line up --&gt;
-&lt;div class="sui-text-right sui-tabular-nums"&gt;
-  &lt;div&gt;1,111.11&lt;/div&gt;
-  &lt;div&gt;8,888.88&lt;/div&gt;
-  &lt;div&gt;4,701.10&lt;/div&gt;
+&lt;div style="display:flex;gap:16px;flex-wrap:wrap;"&gt;
+  &lt;div class="sui-raised sui-text-right" style="border-radius:12px;padding:16px;min-width:140px;"&gt;
+    &lt;small class="sui-text-muted"&gt;Default&lt;/small&gt;
+    &lt;div&gt;1,111.11&lt;/div&gt;
+    &lt;div&gt;8,888.88&lt;/div&gt;
+    &lt;div&gt;4,701.10&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="sui-raised sui-text-right sui-tabular-nums" style="border-radius:12px;padding:16px;min-width:140px;"&gt;
+    &lt;small class="sui-text-muted"&gt;sui-tabular-nums&lt;/small&gt;
+    &lt;div&gt;1,111.11&lt;/div&gt;
+    &lt;div&gt;8,888.88&lt;/div&gt;
+    &lt;div&gt;4,701.10&lt;/div&gt;
+  &lt;/div&gt;
 &lt;/div&gt;</pre></div>
   </div>
 </div>

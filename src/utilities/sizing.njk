@@ -146,7 +146,7 @@ toc:
 <!-- Images -->
 <div class="pg-section" id="section-4">
   <h3 class="pg-section-title">Images</h3>
-  <p class="pg-section-desc"><code>sui-img-fluid</code> keeps an image inside its container and preserves its aspect ratio (<code>max-width: 100%; height: auto</code>). It stays inline, so <code>sui-text-center</code> on the parent still centres it. <code>sui-img-frame</code> adds a raised neumorphic frame; put it on the <code>&lt;img&gt;</code> itself or on a wrapper around one. Combine with <code>sui-rounded-*</code>, <code>sui-raised</code> or <code>sui-inset</code> for other looks.</p>
+  <p class="pg-section-desc"><code>sui-img-fluid</code> keeps an image inside its container and preserves its aspect ratio (<code>max-width: 100%; height: auto</code>). It stays inline, so <code>sui-text-center</code> on the parent still centres it. <code>sui-img-frame</code> adds a raised neumorphic frame; put it on the <code>&lt;img&gt;</code> itself or on a wrapper around one. Combine with <code>sui-rounded-*</code>, <code>sui-raised-lg</code>, <code>sui-inset</code> or <code>sui-pressed</code> for other looks; in the wrapper form the image's corners follow the frame's radius (or set <code>--sui-img-frame-radius</code>).</p>
   <div class="pg-section-row" style="align-items:flex-start;">
     <div class="sui-inset sui-text-center" style="width:300px;max-width:100%;padding:12px;border-radius:12px;">
       <img class="sui-img-fluid" src="{{ demoImg }}" width="1200" height="600" alt="1200 by 600 demo image scaled to fit">
@@ -157,21 +157,29 @@ toc:
     <figure class="sui-img-frame" style="width:300px;margin:0;">
       <img src="{{ demoImg }}" width="1200" height="600" alt="Demo image in a framed figure">
     </figure>
+    <figure class="sui-img-frame sui-inset sui-rounded-lg" style="width:300px;margin:0;">
+      <img src="{{ demoImg }}" width="1200" height="600" alt="Demo image in an inset frame with large corners">
+    </figure>
   </div>
   <div class="pg-code-wrap">
     <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
     <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;!-- Scales down to fit, keeps its ratio --&gt;
-&lt;div class="sui-text-center" style="width:300px;"&gt;
+&lt;div class="sui-inset sui-text-center" style="width:300px;max-width:100%;padding:12px;border-radius:12px;"&gt;
   &lt;img class="sui-img-fluid" src="..." width="1200" height="600" alt="..."&gt;
 &lt;/div&gt;
 
 &lt;!-- Raised frame directly on the image --&gt;
-&lt;div style="width:300px;"&gt;
+&lt;div style="width:300px;max-width:100%;"&gt;
   &lt;img class="sui-img-frame" src="..." width="1200" height="600" alt="..."&gt;
 &lt;/div&gt;
 
 &lt;!-- Raised frame on a wrapper --&gt;
 &lt;figure class="sui-img-frame" style="width:300px;margin:0;"&gt;
+  &lt;img src="..." width="1200" height="600" alt="..."&gt;
+&lt;/figure&gt;
+
+&lt;!-- Inset frame with large corners (the image corners follow) --&gt;
+&lt;figure class="sui-img-frame sui-inset sui-rounded-lg" style="width:300px;margin:0;"&gt;
   &lt;img src="..." width="1200" height="600" alt="..."&gt;
 &lt;/figure&gt;</pre></div>
   </div>
