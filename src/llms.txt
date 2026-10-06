@@ -77,7 +77,7 @@ All classes use the `sui-` prefix (e.g. `sui-btn`, `sui-card`, `sui-modal`).
 - Divider (`sui-divider`) — horizontal/vertical, groove, dashed, dotted, text, colors
 - Pricing (`sui-pricing`) — cards with feature lists, featured badge, billing toggle, selectable, inset
 - Hero (`sui-hero`) — landing page banners, sizes, raised, bordered, inset, gradient, accent line; start-aligned (`sui-hero-start`); split text + media from 992px (`sui-hero-split` with `sui-hero-content` and `sui-hero-media`, `sui-hero-media-start` to put media first); the title is fluid (clamp)
-- Links (`sui-link`) — underlined prose link (use inside running text; a bare `<a>` is coloured but not underlined), `sui-link-subtle`, `sui-link-muted`, `sui-link-arrow` (RTL-aware arrow). Recolour with `--sui-link`, `--sui-link-hover`, `--sui-link-underline`
+- Links (`sui-link`) — underlined prose link (use inside running text; a bare `<a>` is coloured but not underlined), `sui-link-subtle`, `sui-link-muted`, `sui-link-arrow` (RTL-aware arrow), `sui-link-external` (trailing ↗, hidden from screen readers), `sui-link-raised` (raised pill link), `sui-link-underline-hover` (underline only on hover, for nav lists), colours `sui-link-success`/`-danger`/`-warning`/`-info`, sizes `sui-link-sm`/`-lg`. Recolour with `--sui-link`, `--sui-link-hover`, `--sui-link-underline`
 - List Group (`sui-list-group`) — styled lists with badges, avatars, actions, flyout sub-menus, active/disabled
 
 ### Data Display
@@ -111,7 +111,7 @@ All classes use the `sui-` prefix (e.g. `sui-btn`, `sui-card`, `sui-modal`).
 - Speed Dial (`sui-speed-dial`) — floating action button with expandable actions; give the trigger `aria-expanded="false" aria-label="Open actions"` (kept in sync by JS); Escape closes and returns focus
 - Navigation Menu (`sui-nav-menu`) — mega-menu dropdowns, icons, groups, sub-menus, hover/click; keyboard (arrows, Esc) with `aria-expanded`/`aria-controls`; clicking a sub-menu parent toggles its sub-menu
 - Scrollspy (`sui-scrollspy`) — auto-highlight nav on scroll, vertical, horizontal, pill
-- Footer (`sui-footer`) — centred by default, `sui-footer-split`, `sui-footer-columns` (`sui-footer-col`, `sui-footer-heading`, `sui-footer-bottom`, `sui-footer-brand-col`), `sui-footer-bordered`/`-raised`/`-inset`, `sui-footer-links-raised`; wrap content in `sui-footer-inner`
+- Footer (`sui-footer`) — centred by default, `sui-footer-split`, `sui-footer-columns` (`sui-footer-col`, `sui-footer-heading`, `sui-footer-bottom`, `sui-footer-brand-col`), `sui-footer-bordered`/`-raised`/`-inset`/`-tinted`, `sui-footer-sm` (compact), `sui-footer-links-raised`, `sui-footer-social` (round raised icon links; give each an aria-label); wrap content in `sui-footer-inner`
 
 ### Overlays
 - Modal (`SoftUI.modal()`) — sizes, scrollable, fullscreen, static backdrop, focus trap; Escape closes only the topmost modal/sheet (static ones shake instead); focus returns to the opener on every close; `modal()`/`sheet()` accept a selector or an element
@@ -126,7 +126,7 @@ All classes use the `sui-` prefix (e.g. `sui-btn`, `sui-card`, `sui-modal`).
 
 ### Layout
 - Layout (`sui-container`, `sui-row`, `sui-col-*`) — 12-column grid, responsive breakpoints, gutters (`sui-g-{0-5}`, `sui-gx-*`, `sui-gy-*` on the row), offsets
-- Section (`sui-section`, `sui-section-sm`) — page-section block padding from `--sui-section-space` / `--sui-section-space-sm`; `sui-section-header` with `sui-section-title`, `sui-section-subtitle`, `sui-section-action`; `sui-heading-accent` bar (colour via `--sui-heading-accent`, defaults to `--sui-primary`)
+- Section (`sui-section`, `sui-section-sm`, `sui-section-lg`) — page-section block padding from `--sui-section-space` / `-sm` / `-lg`; surfaces `sui-section-raised`, `sui-section-inset`, `sui-section-alt` (lighter band), `sui-section-bordered`; `sui-section-header` with `sui-section-title`, `sui-section-subtitle`, `sui-section-action` (modifiers `sui-section-header-center`, `sui-section-header-bordered`); `sui-heading-accent` bar (`-success`/`-danger`/`-warning`/`-info`, `-lg`, `-bottom`; custom colour via `--sui-heading-accent`, defaults to `--sui-primary`)
 - Scroll Area (`sui-scroll-area`) — custom neumorphic scrollbar styling
 - Accordion (`sui-accordion`) — expand/collapse sections, single/multi-open
 - Collapsible (`sui-collapsible`) — single section expand/collapse
@@ -165,7 +165,7 @@ All classes use the `sui-` prefix (e.g. `sui-btn`, `sui-card`, `sui-modal`).
 - Mask: `sui-mask-circle`, `sui-mask-star`, `sui-mask-heart`, `sui-mask-hexagon`, `sui-mask-diamond`, etc.
 - Aspect Ratio: `sui-aspect-square`, `sui-aspect-video`, `sui-aspect-portrait`, `sui-aspect-4-3`, `sui-aspect-3-2`, `sui-aspect-4-5`, `sui-aspect-21-9` (add `sui-aspect` to make children fill the box)
 - Typography: headings, display headings (`sui-display-1` to `sui-display-3`, fluid), lead text, blockquote, lists
-- Scroll Reveal (`sui-reveal`, needs softui.js): fades content in as it scrolls into view; `sui-reveal-start`/`-end`/`-down`/`-fade`/`-scale`, `data-reveal-stagger="120"` on the parent, `data-reveal-repeat`, `--sui-delay`, `--sui-reveal-distance`, `--sui-reveal-duration`. Content stays visible without JS, under reduced motion and in print
+- Scroll Reveal (`sui-reveal`, needs softui.js): fades content in as it scrolls into view; `sui-reveal-start`/`-end`/`-down`/`-fade`/`-scale`/`-zoom-out`/`-blur`, speeds `sui-reveal-fast`/`-slow`, `data-reveal-stagger="120"` on the parent, `data-reveal-repeat`, `--sui-delay`, `--sui-reveal-distance`, `--sui-reveal-duration`, `--sui-reveal-blur`. Content stays visible without JS, under reduced motion and in print
 - Theme Toggle (`sui-theme-toggle`, `-sm`/`-lg`): sun/moon button with `sui-theme-toggle-sun` and `sui-theme-toggle-moon` child SVGs; add `data-sui-theme-toggle`
 
 ## Theming

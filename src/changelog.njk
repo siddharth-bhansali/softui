@@ -21,17 +21,24 @@ permalink: /changelog/
     the user picks, syncs across tabs. SoftUI.theme.get/set/toggle/clear/
     system and a sui-theme-change event ({theme, source}). New
     sui-theme-toggle sun/moon button (-sm, -lg)
-  - Scroll Reveal — sui-reveal with -start, -end, -down, -fade, -scale;
+  - Scroll Reveal — sui-reveal with -start, -end, -down, -fade, -scale,
+    -zoom-out, -blur; speeds sui-reveal-fast / -slow; --sui-reveal-blur;
     data-reveal-stagger, data-reveal-repeat, --sui-delay,
     --sui-reveal-distance, --sui-reveal-duration and SoftUI.reveal().
     Content stays visible without JS, under reduced motion and in print
   - Section — sui-section / sui-section-sm page spacing, sui-section-header
     with sui-section-title, sui-section-subtitle, sui-section-action, and
-    sui-heading-accent
+    sui-heading-accent. Sizes sui-section-sm / -lg; surfaces
+    sui-section-raised, -inset, -alt, -bordered; sui-section-header-center
+    and -bordered; heading accent colours (-success, -danger, -warning,
+    -info), -lg and -bottom
   - Footer — centred, split (sui-footer-split) and multi-column
-    (sui-footer-columns), bordered / raised / inset, raised links
+    (sui-footer-columns), bordered / raised / inset / tinted, compact
+    (sui-footer-sm), raised links and social icons (sui-footer-social)
   - Links — sui-link (underlined prose link), sui-link-subtle,
-    sui-link-muted, sui-link-arrow (RTL-aware)
+    sui-link-muted, sui-link-arrow (RTL-aware), sui-link-external,
+    sui-link-raised, sui-link-underline-hover, colours (-success, -danger,
+    -warning, -info) and sizes (-sm, -lg)
   - Status Dot — sui-status-dot with colours, -sm / -lg, -pulse, and a
     sui-status label wrapper
 
@@ -58,7 +65,7 @@ New:
     SoftUI.sidebar().open() / close() / isOpen()
   - Tokens: --sui-{primary,success,danger,warning,info}-text and -text-hover
     (AA text shades), --sui-warning-contrast, --sui-font-mono,
-    --sui-space-0..7, --sui-section-space / -sm / -xs,
+    --sui-space-0..7, --sui-section-space / -sm / -lg / -xs,
     --sui-section-header-gap. Optional: --sui-focus-ring,
     --sui-focus-ring-color, --sui-link, --sui-link-hover,
     --sui-link-underline, --sui-heading-accent
@@ -198,6 +205,8 @@ Accessibility:
 
 Docs:
   - New pages: Section, Links, Footer, Scroll Reveal
+  - Pages changed in this release keep demos uncluttered: short captions,
+    with keys, attributes, events and tokens in a Reference table
   - New sections: Hero (Start Aligned, Split), Typography (Display), Stat
     Card (With Footer), Badges (Status Dot), Shadows (Flat Scope), Avatars
     (2XL/3XL), Sidebar (Mobile Drawer), Timeline (RTL), Spacing, Text,
