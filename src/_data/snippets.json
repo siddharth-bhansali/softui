@@ -53,12 +53,12 @@
     {
       "id": "number-input",
       "label": "Number Input",
-      "code": "<div class=\"sui-form-group\">\n  <label class=\"sui-label\">Quantity</label>\n  <div class=\"sui-number-input\">\n    <button class=\"sui-number-btn sui-number-dec\" type=\"button\">−</button>\n    <input type=\"number\" class=\"sui-input\" value=\"1\" min=\"0\" max=\"100\">\n    <button class=\"sui-number-btn sui-number-inc\" type=\"button\">+</button>\n  </div>\n</div>"
+      "code": "<div class=\"sui-form-group\">\n  <label class=\"sui-label\">Quantity</label>\n  <div class=\"sui-number-input\">\n    <button class=\"sui-number-input-btn\" data-action=\"decrement\" type=\"button\" aria-label=\"Decrease\">−</button>\n    <input type=\"number\" class=\"sui-input\" value=\"1\" min=\"0\" max=\"100\">\n    <button class=\"sui-number-input-btn\" data-action=\"increment\" type=\"button\" aria-label=\"Increase\">+</button>\n  </div>\n</div>"
     },
     {
       "id": "tags-input",
       "label": "Tags Input",
-      "code": "<div class=\"sui-form-group\">\n  <label class=\"sui-label\">Tags</label>\n  <div class=\"sui-tags-input\">\n    <span class=\"sui-tag\">Design<button class=\"sui-tag-close\"></button></span>\n    <span class=\"sui-tag\">CSS<button class=\"sui-tag-close\"></button></span>\n    <input type=\"text\" placeholder=\"Add tag...\">\n  </div>\n</div>"
+      "code": "<div class=\"sui-form-group\">\n  <label class=\"sui-label\">Tags</label>\n  <div class=\"sui-tags-input\">\n    <span class=\"sui-chip\">Design<button class=\"sui-chip-close\" aria-label=\"Remove\"></button></span>\n    <span class=\"sui-chip\">CSS<button class=\"sui-chip-close\" aria-label=\"Remove\"></button></span>\n    <input type=\"text\" class=\"sui-tags-input-field\" placeholder=\"Add tag...\">\n  </div>\n</div>"
     },
     {
       "id": "form-card",
@@ -563,7 +563,7 @@
     {
       "id": "text",
       "label": "Text Utilities",
-      "code": "<p class=\"sui-text-center sui-fw-bold\">Bold centered text</p>\n<p class=\"sui-text-muted sui-fs-sm\">Small muted text</p>\n<p class=\"sui-text-primary sui-fw-semibold\">Primary semibold text</p>\n<p class=\"sui-text-right sui-text-light\">Right-aligned light text</p>"
+      "code": "<p class=\"sui-text-center\"><strong>Bold centered text</strong></p>\n<p class=\"sui-small\">Small muted text</p>\n<p class=\"sui-text-primary\"><strong>Primary text</strong></p>\n<p class=\"sui-text-right sui-text-success\">Right-aligned success text</p>"
     },
     {
       "id": "shadows",
@@ -578,12 +578,12 @@
     {
       "id": "border-radius",
       "label": "Border Radius",
-      "code": "<div style=\"display:flex;gap:16px;flex-wrap:wrap;\">\n  <div class=\"sui-card sui-p-3 sui-text-center sui-radius-xs\" style=\"width:100px;\">xs</div>\n  <div class=\"sui-card sui-p-3 sui-text-center sui-radius-sm\" style=\"width:100px;\">sm</div>\n  <div class=\"sui-card sui-p-3 sui-text-center\" style=\"width:100px;\">default</div>\n  <div class=\"sui-card sui-p-3 sui-text-center sui-radius-lg\" style=\"width:100px;\">lg</div>\n  <div class=\"sui-card sui-p-3 sui-text-center sui-radius-full\" style=\"width:100px;\">full</div>\n</div>"
+      "code": "<div style=\"display:flex;gap:16px;flex-wrap:wrap;\">\n  <div class=\"sui-card sui-p-3 sui-text-center sui-rounded-sm\" style=\"width:100px;\">sm</div>\n  <div class=\"sui-card sui-p-3 sui-text-center sui-rounded\" style=\"width:100px;\">default</div>\n  <div class=\"sui-card sui-p-3 sui-text-center sui-rounded-lg\" style=\"width:100px;\">lg</div>\n  <div class=\"sui-card sui-p-3 sui-text-center sui-rounded-full\" style=\"width:100px;\">full</div>\n</div>"
     },
     {
       "id": "aspect-ratio",
       "label": "Aspect Ratio",
-      "code": "<div style=\"display:flex;gap:16px;flex-wrap:wrap;\">\n  <div class=\"sui-aspect-1-1\" style=\"width:100px;background:var(--sui-bg-dark);border-radius:var(--sui-radius-sm);display:flex;align-items:center;justify-content:center;font-size:12px;color:var(--sui-text-muted);\">1:1</div>\n  <div class=\"sui-aspect-16-9\" style=\"width:160px;background:var(--sui-bg-dark);border-radius:var(--sui-radius-sm);display:flex;align-items:center;justify-content:center;font-size:12px;color:var(--sui-text-muted);\">16:9</div>\n  <div class=\"sui-aspect-4-3\" style=\"width:120px;background:var(--sui-bg-dark);border-radius:var(--sui-radius-sm);display:flex;align-items:center;justify-content:center;font-size:12px;color:var(--sui-text-muted);\">4:3</div>\n</div>"
+      "code": "<div style=\"display:flex;gap:16px;flex-wrap:wrap;align-items:flex-start;\">\n  <div class=\"sui-aspect-square\" style=\"width:100px;background:var(--sui-bg-dark);border-radius:var(--sui-radius-sm);display:flex;align-items:center;justify-content:center;font-size:12px;color:var(--sui-text-muted);\">1:1</div>\n  <div class=\"sui-aspect-video\" style=\"width:160px;background:var(--sui-bg-dark);border-radius:var(--sui-radius-sm);display:flex;align-items:center;justify-content:center;font-size:12px;color:var(--sui-text-muted);\">16:9</div>\n  <div class=\"sui-aspect-4-3\" style=\"width:120px;background:var(--sui-bg-dark);border-radius:var(--sui-radius-sm);display:flex;align-items:center;justify-content:center;font-size:12px;color:var(--sui-text-muted);\">4:3</div>\n</div>"
     },
     {
       "id": "display",
@@ -593,7 +593,7 @@
     {
       "id": "position",
       "label": "Position Utilities",
-      "code": "<div class=\"sui-position-relative sui-card sui-p-5\" style=\"min-height:120px;\">\n  <span class=\"sui-badge sui-badge-primary sui-position-absolute\" style=\"top:8px;right:8px;\">Badge</span>\n  <p class=\"sui-text-muted\">Relative container with absolutely positioned badge.</p>\n</div>"
+      "code": "<div class=\"sui-relative sui-card sui-p-5\" style=\"min-height:120px;\">\n  <span class=\"sui-badge sui-badge-primary sui-absolute\" style=\"top:8px;inset-inline-end:8px;\">Badge</span>\n  <p class=\"sui-text-muted\">Relative container with absolutely positioned badge.</p>\n</div>"
     },
     {
       "id": "overflow",

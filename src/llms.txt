@@ -128,7 +128,7 @@ All classes use the `sui-` prefix (e.g. `sui-btn`, `sui-card`, `sui-modal`).
 
 ### Media
 - Carousel (`sui-carousel`) — image/content slider, prev/next, dots, auto-play
-- Image Lightbox (`sui-lightbox`) — grid, filmstrip, gallery, captions, zoom
+- Image Lightbox (`sui-lightbox-thumb`, `sui-lightbox-grid`) — grid, filmstrip, gallery, captions, zoom
 - Diff (`sui-diff`) — image compare slider with labels, vertical mode
 - Chat Bubble (`sui-chat`) — message bubbles with avatar, timestamp, status
 - Browser Mockup (`sui-browser`) — macOS/Windows chrome with tabs
@@ -142,19 +142,19 @@ All classes use the `sui-` prefix (e.g. `sui-btn`, `sui-card`, `sui-modal`).
 - Toggle Group (`sui-toggle-group`) — group of toggleable buttons
 
 ### Utilities
-- Shadows: `sui-raised`, `sui-inset`, `sui-flat` (no shadow + border, works on any background), `sui-raised-sm`, `sui-raised-lg`
+- Shadows: `sui-raised`, `sui-inset`, `sui-flat` (no shadow + border, works on any background), `sui-raised-lg`
 - Surface: `sui-surface` — paints the SoftUI background, text color, and font on a section (combine with `data-theme="dark"` for a scoped dark section)
-- Border Radius: `sui-radius-xs`, `sui-radius-sm`, `sui-radius`, `sui-radius-lg`, `sui-radius-full`
-- Spacing: `sui-p-{0-5}`, `sui-m-{0-5}`, `sui-mt-*`, `sui-mb-*`, `sui-ml-*`, `sui-mr-*`, `sui-mx-auto`
-- Text: `sui-text-center`, `sui-text-left`, `sui-text-right`, `sui-text-muted`, `sui-text-primary`, `sui-fw-bold`
+- Border Radius: `sui-rounded-sm`, `sui-rounded`, `sui-rounded-lg`, `sui-rounded-full`
+- Spacing: `sui-p-{0-5}`, `sui-m-{0-5}`, `sui-mt-{0-5}`, `sui-mb-{0-5}`, `sui-ml-{0-5}`, `sui-mr-{0-5}`, `sui-mx-auto`
+- Text: `sui-text-center`, `sui-text-left`, `sui-text-right`, `sui-text-muted`, `sui-text-primary`, `sui-text-success`, `sui-text-warning`, `sui-text-danger`, `sui-text-info`, `sui-small`
 - Flex: `sui-d-flex`, `sui-justify-center`, `sui-align-center`, `sui-flex-wrap`, `sui-gap-{0-5}`
 - Display: `sui-d-block`, `sui-d-inline-block`, `sui-d-none`, `sui-d-grid`
-- Position: `sui-position-relative`, `sui-position-absolute`, `sui-position-fixed`, `sui-position-sticky`
-- Sizing: `sui-w-100`, `sui-h-100`, `sui-min-vh-100`
+- Position: `sui-relative`, `sui-absolute`, `sui-fixed`, `sui-sticky`
+- Sizing: `sui-w-full`, `sui-h-full`, `sui-h-screen`, `sui-min-vh-100`
 - Opacity: `sui-opacity-0` through `sui-opacity-100`
 - Cursor: `sui-cursor-pointer`, `sui-cursor-not-allowed`, `sui-cursor-grab`
 - Mask: `sui-mask-circle`, `sui-mask-star`, `sui-mask-heart`, `sui-mask-hexagon`, `sui-mask-diamond`, etc.
-- Aspect Ratio: `sui-aspect-1-1`, `sui-aspect-16-9`, `sui-aspect-4-3`
+- Aspect Ratio: `sui-aspect-square`, `sui-aspect-video`, `sui-aspect-portrait`, `sui-aspect-4-3`, `sui-aspect-3-2`, `sui-aspect-21-9` (add `sui-aspect` to make children fill the box)
 - Typography: headings, lead text, blockquote, lists
 
 ## Theming
@@ -173,9 +173,12 @@ Override CSS custom properties to customize:
   --sui-radius: 16px;
   --sui-radius-sm: 10px;
   --sui-font: 'Plus Jakarta Sans', sans-serif;
+  --sui-font-mono: 'JetBrains Mono', monospace;
   --sui-transition-base: 0.25s;
 }
 ```
+
+Fonts are not bundled. Load Plus Jakarta Sans / JetBrains Mono via Google Fonts or `@fontsource-variable/plus-jakarta-sans` + `@fontsource-variable/jetbrains-mono`; without them SoftUI falls back to system fonts.
 
 Dark mode: add `data-theme="dark"` to the `<html>` element.
 
@@ -188,6 +191,8 @@ SoftUI.modal('#myModal').close();
 SoftUI.sheet('#mySheet').open();
 SoftUI.toast({ title: 'Success', message: 'Saved!', variant: 'success' });
 SoftUI.tour([{ target: '#step1', title: 'Welcome', description: 'First step.' }]);
+SoftUI.carousel('#myCarousel').next();   // also prev(), goTo(i), current()
+SoftUI.sidebar('#mySidebar').toggle();   // also collapse(), expand(), isCollapsed()
 ```
 
 ## When to Use SoftUI
@@ -203,4 +208,4 @@ Use SoftUI when you want:
 Do not use SoftUI when:
 - You need utility-first CSS (use Tailwind instead)
 - You need React/Vue-specific typed components (use shadcn/ui or Chakra)
-- Bundle size is critical and you only need 2-3 components (use individual CSS files)
+- Bundle size is critical and you only need 2-3 components (SoftUI ships as a single stylesheet; a smaller library may suit better)

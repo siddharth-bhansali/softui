@@ -192,6 +192,22 @@ permalink: /theming/
                    Consolas, monospace;
 }</code></pre>
     </div>
+    <p style="margin-top:16px;"><strong>Loading the fonts.</strong> SoftUI doesn't bundle any fonts. Plus Jakarta Sans and JetBrains Mono are only used if your page loads them; otherwise each stack falls back to the system fonts listed after them. Pick one of these:</p>
+    <p style="margin-top:12px;">1. Google Fonts — add to your <code>&lt;head&gt;</code>, before the SoftUI stylesheet:</p>
+    <div class="docs-getstarted-code">
+<pre><code>&lt;link rel="preconnect" href="https://fonts.googleapis.com"&gt;
+&lt;link rel="preconnect" href="https://fonts.gstatic.com" crossorigin&gt;
+&lt;link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet"&gt;</code></pre>
+    </div>
+    <p style="margin-top:12px;">2. Self-hosted with Fontsource — the <code>'… Variable'</code> family names are already in the default stacks, so no override is needed:</p>
+    <div class="docs-getstarted-code">
+<pre><code>npm i @fontsource-variable/plus-jakarta-sans @fontsource-variable/jetbrains-mono
+
+/* In your entry file */
+import '@fontsource-variable/plus-jakarta-sans';
+import '@fontsource-variable/jetbrains-mono';</code></pre>
+    </div>
+    <p style="margin-top:12px;">3. Nothing — skip both and SoftUI renders in the system UI and monospace fonts.</p>
   </section>
 
   <!-- Component Variables -->

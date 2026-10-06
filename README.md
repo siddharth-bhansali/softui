@@ -58,6 +58,18 @@ npm install softui-css
 <script src="https://unpkg.com/softui-css/dist/softui.min.js"></script>
 ```
 
+### Fonts (optional)
+
+SoftUI doesn't bundle fonts. Its default stacks start with Plus Jakarta Sans and JetBrains Mono and fall back to system fonts when they aren't loaded. To use them, load them from Google Fonts:
+
+```html
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+```
+
+or self-host them with Fontsource (`npm i @fontsource-variable/plus-jakarta-sans @fontsource-variable/jetbrains-mono`, then import both packages). The `Variable` family names are already in the default stacks.
+
 ---
 
 ## Quick Start
