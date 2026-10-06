@@ -600,15 +600,15 @@ toc:
   <div class="docs-table-wrap">
     <table class="sui-table sui-table-compact">
       <thead>
-        <tr><th scope="col" style="width:40%;">Key / Event</th><th scope="col">Description</th></tr>
+        <tr><th scope="col" style="width:40%;">Key / Event / Class</th><th scope="col">Description</th></tr>
       </thead>
       <tbody>
         <tr><td><kbd>&rarr;</kbd> / <kbd>&uarr;</kbd></td><td>Increase by one star (half with <code>sui-rating-half</code>). Left/right mirror in RTL.</td></tr>
         <tr><td><kbd>&larr;</kbd> / <kbd>&darr;</kbd></td><td>Decrease by one star.</td></tr>
         <tr><td><kbd>Home</kbd> / <kbd>End</kbd></td><td>Set 0 / the maximum.</td></tr>
-        <tr><td>Number keys</td><td>Set the value directly.</td></tr>
+        <tr><td><kbd>0</kbd>&ndash;<kbd>9</kbd></td><td>Set the value directly.</td></tr>
         <tr><td><code>sui-rating-change</code></td><td>Fires on each change with <code>detail.value</code>.</td></tr>
-        <tr><td>Read-only</td><td>Announced as an image, e.g. &ldquo;Rated 3 of 5&rdquo;.</td></tr>
+        <tr><td><code>sui-rating-readonly</code></td><td>Not interactive; announced as an image, e.g. &ldquo;Rated 3 of 5&rdquo;.</td></tr>
         <tr><td><code>SoftUI.init(el)</code></td><td>Adds roles and <code>tabindex</code> to markup inserted after page load.</td></tr>
       </tbody>
     </table>

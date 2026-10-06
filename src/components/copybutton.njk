@@ -202,10 +202,9 @@ toc:
         <tr><th scope="col" style="width:40%;">Event / Class</th><th scope="col">Description</th></tr>
       </thead>
       <tbody>
-        <tr><td><code>sui-copy</code></td><td>Fires on success with <code>detail.text</code>. The check shows for 1.5s, then the button's own content returns.</td></tr>
+        <tr><td><code>sui-copy</code></td><td>Fires on success with <code>detail.text</code>. The check shows for 1.5s, then the button's own content returns. Falls back to <code>execCommand('copy')</code> where the Clipboard API is missing or denied (e.g. plain http).</td></tr>
         <tr><td><code>sui-copy-error</code></td><td>Fires on failure with <code>detail.text</code> and <code>detail.error</code>.</td></tr>
         <tr><td><code>.copy-failed</code></td><td>Added on failure: danger colour and a cross for 1.5s.</td></tr>
-        <tr><td>Fallback</td><td>Uses <code>execCommand('copy')</code> where the Clipboard API is missing or denied (e.g. plain http).</td></tr>
       </tbody>
     </table>
   </div>
