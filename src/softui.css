@@ -13966,7 +13966,8 @@ select.sui-datatable-filter:focus-visible {
 [dir="rtl"] .sui-link-arrow::after { content: "\2190"; content: "\2190" / ""; }
 [dir="rtl"] .sui-link-arrow:hover::after { transform: translateX(-3px); }
 
-/* Colour modifiers: pair with .sui-link, .sui-link-arrow or .sui-link-raised */
+/* Colour modifiers: pair with .sui-link, .sui-link-arrow or .sui-link-raised.
+   Size modifiers below also apply to .sui-link-raised (see raised block). */
 .sui-link-success { color: var(--sui-success-text); }
 .sui-link-success:hover { color: var(--sui-success-text-hover); }
 .sui-link-danger { color: var(--sui-danger-text); }
@@ -13977,13 +13978,13 @@ select.sui-datatable-filter:focus-visible {
 .sui-link-info:hover { color: var(--sui-info-text-hover); }
 
 /* Underline on hover only. For nav-like lists, not links inside prose. */
-.sui-link-hover {
+.sui-link-underline-hover {
   text-decoration-line: underline;
   text-decoration-color: transparent;
   text-decoration-thickness: 1px;
   text-underline-offset: 0.2em;
 }
-.sui-link-hover:hover { text-decoration-color: currentColor; }
+.sui-link-underline-hover:hover { text-decoration-color: currentColor; }
 
 .sui-link-sm { font-size: 0.8125rem; }
 .sui-link-lg { font-size: 1.125rem; }
@@ -14015,6 +14016,8 @@ select.sui-datatable-filter:focus-visible {
   border-radius: 999px;
   box-shadow: var(--sui-shadow-raised-sm), var(--sui-focus-ring, 0 0 0 3px var(--sui-focus-ring-color, color-mix(in srgb, var(--sui-primary) 40%, transparent)));
 }
+.sui-link-raised.sui-link-sm { font-size: 0.75rem; padding-block: 4px; padding-inline: 10px; gap: 4px; }
+.sui-link-raised.sui-link-lg { font-size: 0.9375rem; padding-block: 8px; padding-inline: 18px; gap: 8px; }
 .sui-link-raised.sui-link-arrow::after,
 .sui-link-raised.sui-link-external::after { margin-inline-start: 0; }
 .sui-link-raised.sui-link-success { color: var(--sui-success-text); }
