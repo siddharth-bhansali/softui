@@ -303,8 +303,14 @@ const SoftUI = (() => {
     // Drawers
     initDrawers();
 
+    // Sidebar drawer triggers (aria-expanded / aria-controls)
+    initSidebars();
+
     // Editable Text
     initEditable();
+
+    // Keyboard/ARIA for rating, colour swatches, tree, lightbox thumbs
+    initKeyboardA11y();
 
     // Scrollspy
     initScrollspy();
@@ -2700,6 +2706,11 @@ const SoftUI = (() => {
 
         // Shift+Tab from the input shouldn't land back on the wrapper
         el.setAttribute('tabindex', '-1');
+        // A role=button must not contain the textbox: drop role/label while editing
+        const restRole = el.getAttribute('role');
+        const restLabel = el.getAttribute('aria-label');
+        el.removeAttribute('role');
+        el.removeAttribute('aria-label');
         el.insertBefore(input, valueEl);
         input.focus();
         input.select();
@@ -2711,6 +2722,8 @@ const SoftUI = (() => {
           valueEl.style.display = '';
           if (icon) icon.style.display = '';
           el.setAttribute('tabindex', restTabindex);
+          if (restRole !== null) el.setAttribute('role', restRole);
+          if (restLabel !== null && !el.hasAttribute('aria-label')) el.setAttribute('aria-label', restLabel);
           input.remove();
           // Return focus only for keyboard endings; a blur-save must not steal focus
           if (byKey) el.focus();
@@ -3699,12 +3712,28 @@ const SoftUI = (() => {
     sidebarOverlay(el).classList.add('open');
     document.body.style.overflow = 'hidden';
     sidebarTriggers(el).forEach(function(t) { t.setAttribute('aria-expanded', 'true'); });
-    const first = sidebarVisibleFocusable(el)[0];
+    sidebarFocusInto(el, 0);
+  }
+
+  // Children with `transition: all` animate the inherited visibility, so they can
+  // still be hidden (unfocusable) right after opening. Finish those transitions
+  // now; where that isn't supported, retry for up to ~0.5s.
+  function sidebarFocusInto(el, tries) {
+    if (!sidebarIsOpen(el) || el.contains(document.activeElement)) return;
+    const first = sidebarVisibleFocusable(el)[0]; // also flushes styles, creating the transitions
+    if (el.getAnimations) {
+      el.getAnimations({ subtree: true }).forEach(function(a) {
+        if (a.transitionProperty === 'visibility') a.finish();
+      });
+    }
     if (first) {
       first.focus();
     } else {
       if (!el.hasAttribute('tabindex')) el.setAttribute('tabindex', '-1');
       el.focus();
+    }
+    if (!el.contains(document.activeElement) && tries < 30) {
+      setTimeout(function() { sidebarFocusInto(el, tries + 1); }, 16);
     }
   }
 
@@ -3758,7 +3787,7 @@ const SoftUI = (() => {
       else document.querySelectorAll('.sui-sidebar.sui-sidebar-mobile-open').forEach(sidebarClose);
       return;
     }
-    const navLink = e.target.closest('.sui-sidebar-mobile-open .sui-sidebar-nav a[href]');
+    const navLink = e.target.closest('.sui-sidebar-mobile-open .sui-sidebar-nav a[href], .sui-sidebar-mobile-open .sui-sidebar-nav li > button:not([aria-expanded])');
     if (navLink) sidebarClose(navLink.closest('.sui-sidebar'));
   });
 
@@ -4974,6 +5003,7 @@ const SoftUI = (() => {
   // Copy Button
   // =========================================
   const checkSvg = '<svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>';
+  const crossSvg = '<svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>';
 
   // execCommand fallback for non-secure contexts / denied Clipboard API.
   // Restores focus so keyboard users keep their place.
@@ -5024,6 +5054,7 @@ const SoftUI = (() => {
     }, function(err) {
       btn.classList.remove('copied');
       btn.classList.add('copy-failed');
+      btn.innerHTML = crossSvg; // non-colour failure cue
       btn.dispatchEvent(new CustomEvent('sui-copy-error', { bubbles: true, detail: { text: value, error: err } }));
     }).then(function() {
       // Clear after the async settle (not at click time) so rapid clicks can't race

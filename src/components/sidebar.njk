@@ -20,6 +20,7 @@ toc:
 <!-- Default -->
 <div class="pg-section" id="section-1">
   <h3 class="pg-section-title">Default</h3>
+  <p class="pg-section-desc">Below 900px a sidebar becomes an off-canvas drawer that needs a <code>data-sidebar-open</code> trigger (see <a href="#section-9">Mobile Drawer</a>). The demos on this page add <code>sui-sidebar-static</code> so they stay inline on small screens.</p>
   <div class="pg-section-row">
     <div style="display:flex;border:1px solid var(--sui-bg-dark);border-radius:var(--sui-radius);overflow:hidden;height:340px;width:100%;">
       <aside class="sui-sidebar sui-sidebar-static sui-sidebar-bordered" style="height:100%;">
@@ -663,7 +664,7 @@ toc:
 <!-- Mobile Drawer -->
 <div class="pg-section" id="section-9">
   <h3 class="pg-section-title">Mobile Drawer</h3>
-  <p class="pg-section-desc">Below 900px every <code>sui-sidebar</code> becomes an off-canvas drawer, hidden until opened. Open it with any element carrying <code>data-sidebar-open="#id"</code> (an empty value targets the first sidebar); <code>class="sui-sidebar-trigger sui-sidebar-trigger-mobile"</code> gives a hamburger button that only shows below 900px. A backdrop is created automatically, or place <code>&lt;div class="sui-sidebar-overlay"&gt;&lt;/div&gt;</code> right after the aside. The drawer closes on the backdrop, <kbd>Esc</kbd>, a nav link click, any <code>data-sidebar-close</code> button, or when the viewport grows past 900px. Focus moves into the drawer and is kept there while it is open, the trigger gets <code>aria-expanded</code>, and focus returns to the trigger on close. Add <code>sui-sidebar-static</code> to keep a sidebar inline on small screens, or <code>sui-sidebar-drawer</code> to make it a drawer at every width (as in this demo). Icon-only collapse applies on desktop only. JS API: <code>SoftUI.sidebar('#id').open()</code>, <code>.close()</code>, <code>.isOpen()</code>.</p>
+  <p class="pg-section-desc">Below 900px every <code>sui-sidebar</code> becomes an off-canvas drawer, hidden until opened. Open it with any element carrying <code>data-sidebar-open="#id"</code> (an empty value targets the first sidebar); <code>class="sui-sidebar-trigger sui-sidebar-trigger-mobile"</code> gives a hamburger button that only shows below 900px. A backdrop is created automatically, or place <code>&lt;div class="sui-sidebar-overlay"&gt;&lt;/div&gt;</code> right after the aside. The drawer closes on the backdrop, <kbd>Esc</kbd>, a nav item click, any <code>data-sidebar-close</code> button, or when the viewport grows past 900px. Focus moves into the drawer and is kept there while it is open, the trigger gets <code>aria-expanded</code>, and focus returns to the trigger on close. Add <code>sui-sidebar-static</code> to keep a sidebar inline on small screens, or <code>sui-sidebar-drawer</code> to make it a drawer at every width (as in this demo). A collapsed (icon-only) sidebar shows its full labels while it is open as a drawer. JS API: <code>SoftUI.sidebar('#id').open()</code>, <code>.close()</code>, <code>.isOpen()</code>.</p>
   <div class="pg-section-row">
     <button class="sui-btn" data-sidebar-open="#demo-drawer-sidebar" aria-controls="demo-drawer-sidebar">Open sidebar</button>
     <aside id="demo-drawer-sidebar" class="sui-sidebar sui-sidebar-drawer" aria-label="Demo navigation">
@@ -679,10 +680,10 @@ toc:
         <div class="sui-sidebar-group">
           <h6 class="sui-sidebar-group-label">Main</h6>
           <ul class="sui-sidebar-nav">
-            <li><a href="#" class="active">Dashboard</a></li>
-            <li><a href="#">Analytics</a></li>
-            <li><a href="#">Customers</a></li>
-            <li><a href="#">Settings</a></li>
+            <li><a href="#section-9" class="active">Dashboard</a></li>
+            <li><a href="#section-9">Analytics</a></li>
+            <li><a href="#section-9">Customers</a></li>
+            <li><a href="#section-9">Settings</a></li>
           </ul>
         </div>
       </div>
@@ -704,10 +705,10 @@ toc:
     &lt;div class="sui-sidebar-group"&gt;
       &lt;h6 class="sui-sidebar-group-label"&gt;Main&lt;/h6&gt;
       &lt;ul class="sui-sidebar-nav"&gt;
-        &lt;li&gt;&lt;a href="#" class="active"&gt;Dashboard&lt;/a&gt;&lt;/li&gt;
-        &lt;li&gt;&lt;a href="#"&gt;Analytics&lt;/a&gt;&lt;/li&gt;
-        &lt;li&gt;&lt;a href="#"&gt;Customers&lt;/a&gt;&lt;/li&gt;
-        &lt;li&gt;&lt;a href="#"&gt;Settings&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="#section-9" class="active"&gt;Dashboard&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="#section-9"&gt;Analytics&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="#section-9"&gt;Customers&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="#section-9"&gt;Settings&lt;/a&gt;&lt;/li&gt;
       &lt;/ul&gt;
     &lt;/div&gt;
   &lt;/div&gt;
