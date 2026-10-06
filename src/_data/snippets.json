@@ -594,7 +594,10 @@
       "variants": [
         { "label": "Inline Link", "code": "<p style=\"max-width:560px;\">Read the <a class=\"sui-link\" href=\"#\">getting started guide</a>, then browse the <a class=\"sui-link\" href=\"#\">component gallery</a>.</p>" },
         { "label": "Subtle & Muted", "code": "<p>Questions? See the <a class=\"sui-link-subtle\" href=\"#\">FAQ</a>.</p>\n<p><small>Prices exclude tax. <a class=\"sui-link-muted\" href=\"#\">Terms apply</a>.</small></p>" },
-        { "label": "Arrow Link", "code": "<a class=\"sui-link-arrow\" href=\"#\">Read more</a>" }
+        { "label": "Colors", "code": "<a class=\"sui-link sui-link-success\" href=\"#\">Success</a>\n<a class=\"sui-link sui-link-danger\" href=\"#\">Danger</a>\n<a class=\"sui-link sui-link-warning\" href=\"#\">Warning</a>\n<a class=\"sui-link sui-link-info\" href=\"#\">Info</a>" },
+        { "label": "Arrow Link", "code": "<a class=\"sui-link-arrow\" href=\"#\">Read more</a>" },
+        { "label": "External Link", "code": "<p>Source code is on <a class=\"sui-link sui-link-external\" href=\"https://github.com/\" target=\"_blank\" rel=\"noopener\">GitHub</a>.</p>" },
+        { "label": "Raised", "code": "<a class=\"sui-link-raised\" href=\"#\">Docs</a>\n<a class=\"sui-link-raised sui-link-arrow\" href=\"#\">Get started</a>" }
       ]
     }
   ],

@@ -13966,6 +13966,66 @@ select.sui-datatable-filter:focus-visible {
 [dir="rtl"] .sui-link-arrow::after { content: "\2190"; content: "\2190" / ""; }
 [dir="rtl"] .sui-link-arrow:hover::after { transform: translateX(-3px); }
 
+/* Colour modifiers: pair with .sui-link, .sui-link-arrow or .sui-link-raised */
+.sui-link-success { color: var(--sui-success-text); }
+.sui-link-success:hover { color: var(--sui-success-text-hover); }
+.sui-link-danger { color: var(--sui-danger-text); }
+.sui-link-danger:hover { color: var(--sui-danger-text-hover); }
+.sui-link-warning { color: var(--sui-warning-text); }
+.sui-link-warning:hover { color: var(--sui-warning-text-hover); }
+.sui-link-info { color: var(--sui-info-text); }
+.sui-link-info:hover { color: var(--sui-info-text-hover); }
+
+/* Underline on hover only. For nav-like lists, not links inside prose. */
+.sui-link-hover {
+  text-decoration-line: underline;
+  text-decoration-color: transparent;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.2em;
+}
+.sui-link-hover:hover { text-decoration-color: currentColor; }
+
+.sui-link-sm { font-size: 0.8125rem; }
+.sui-link-lg { font-size: 1.125rem; }
+
+/* External: trailing arrow glyph with empty alt text so screen readers skip it */
+.sui-link-external::after { content: "\2197"; content: "\2197" / ""; display: inline-block; margin-inline-start: 0.2em; font-size: 0.85em; text-decoration: none; }
+[dir="rtl"] .sui-link-external::after { content: "\2196"; content: "\2196" / ""; }
+
+/* Raised: a pill-shaped link on the surface, lighter than a button */
+.sui-link-raised {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding-block: 6px;
+  padding-inline: 14px;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--sui-link, var(--sui-primary-text));
+  background: var(--sui-bg);
+  border-radius: 999px;
+  box-shadow: var(--sui-shadow-raised-sm);
+  text-decoration: none;
+  transition: color var(--sui-transition-fast) ease, box-shadow var(--sui-transition-fast) ease;
+}
+.sui-link-raised:hover { color: var(--sui-link-hover, var(--sui-primary-text-hover)); box-shadow: var(--sui-shadow-raised); text-decoration: none; }
+.sui-link-raised:active { box-shadow: var(--sui-shadow-inset-sm); }
+.sui-link-raised:focus-visible {
+  outline: none;
+  border-radius: 999px;
+  box-shadow: var(--sui-shadow-raised-sm), var(--sui-focus-ring, 0 0 0 3px var(--sui-focus-ring-color, color-mix(in srgb, var(--sui-primary) 40%, transparent)));
+}
+.sui-link-raised.sui-link-arrow::after,
+.sui-link-raised.sui-link-external::after { margin-inline-start: 0; }
+.sui-link-raised.sui-link-success { color: var(--sui-success-text); }
+.sui-link-raised.sui-link-success:hover { color: var(--sui-success-text-hover); }
+.sui-link-raised.sui-link-danger { color: var(--sui-danger-text); }
+.sui-link-raised.sui-link-danger:hover { color: var(--sui-danger-text-hover); }
+.sui-link-raised.sui-link-warning { color: var(--sui-warning-text); }
+.sui-link-raised.sui-link-warning:hover { color: var(--sui-warning-text-hover); }
+.sui-link-raised.sui-link-info { color: var(--sui-info-text); }
+.sui-link-raised.sui-link-info:hover { color: var(--sui-info-text-hover); }
+
 /* ===========================================
    Layout — Sections
    =========================================== */

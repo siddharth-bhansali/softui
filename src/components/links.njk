@@ -1,20 +1,25 @@
 ---
 layout: component.njk
 title: Links
-description: Underlined text links for prose, subtle and muted variants, and an arrow link for calls to action.
+description: Text links for prose and navigation, with colour, arrow, external and raised variants.
 componentId: links
 hasControls: false
 requiresJs: false
 toc:
   - Inline Link
   - Subtle & Muted
+  - All Colors
+  - Hover Underline
   - Arrow Link
+  - External Link
+  - Sizes
+  - Raised
+  - Reference
 ---
 
 <!-- Inline Link -->
 <div class="pg-section" id="section-1">
   <h3 class="pg-section-title">Inline Link</h3>
-  <p class="pg-section-desc">A bare <code>&lt;a&gt;</code> is coloured but not underlined, so it suits navigation and components. Inside running text, add <code>.sui-link</code> so links are not marked by colour alone (WCAG 1.4.1). Colours come from <code>--sui-primary-text</code>, which meets 4.5:1 in light and dark themes; set <code>--sui-link</code>, <code>--sui-link-hover</code> and <code>--sui-link-underline</code> to recolour links (see <a class="sui-link" href="/theming/#colors">Theming</a>).</p>
   <div class="pg-section-row" style="display:block;">
     <p style="max-width:560px;">Read the <a class="sui-link" href="#">getting started guide</a> to install SoftUI, then browse the <a class="sui-link" href="#">component gallery</a> for ready-made patterns.</p>
   </div>
@@ -27,7 +32,6 @@ toc:
 <!-- Subtle & Muted -->
 <div class="pg-section" id="section-2">
   <h3 class="pg-section-title">Subtle & Muted</h3>
-  <p class="pg-section-desc"><code>.sui-link-subtle</code> keeps the surrounding text colour and turns primary on hover. <code>.sui-link-muted</code> uses the muted text colour, for footnotes and secondary text. Both keep the underline. Each class is standalone; you do not need <code>.sui-link</code> as well.</p>
   <div class="pg-section-row" style="display:block;">
     <p style="max-width:560px;">Questions? See the <a class="sui-link-subtle" href="#">FAQ</a> or <a class="sui-link-subtle" href="#">contact support</a>.</p>
     <p style="max-width:560px;"><small>Prices exclude tax. <a class="sui-link-muted" href="#">Terms apply</a>.</small></p>
@@ -39,17 +43,136 @@ toc:
   </div>
 </div>
 
-<!-- Arrow Link -->
+<!-- All Colors -->
 <div class="pg-section" id="section-3">
-  <h3 class="pg-section-title">Arrow Link</h3>
-  <p class="pg-section-desc"><code>.sui-link-arrow</code> is a standalone call to action with a trailing arrow that nudges forward on hover. The underline appears on hover and never runs under the arrow. In RTL the arrow points left; with reduced motion the nudge is instant.</p>
+  <h3 class="pg-section-title">All Colors</h3>
+  <div class="pg-section-row" style="gap:24px;flex-wrap:wrap;">
+    <a class="sui-link" href="#">Primary</a>
+    <a class="sui-link sui-link-success" href="#">Success</a>
+    <a class="sui-link sui-link-danger" href="#">Danger</a>
+    <a class="sui-link sui-link-warning" href="#">Warning</a>
+    <a class="sui-link sui-link-info" href="#">Info</a>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;a class="sui-link" href="#"&gt;Primary&lt;/a&gt;
+&lt;a class="sui-link sui-link-success" href="#"&gt;Success&lt;/a&gt;
+&lt;a class="sui-link sui-link-danger" href="#"&gt;Danger&lt;/a&gt;
+&lt;a class="sui-link sui-link-warning" href="#"&gt;Warning&lt;/a&gt;
+&lt;a class="sui-link sui-link-info" href="#"&gt;Info&lt;/a&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Hover Underline -->
+<div class="pg-section" id="section-4">
+  <h3 class="pg-section-title">Hover Underline</h3>
+  <p style="font-size:13px;color:var(--sui-text-light);margin-bottom:16px;">Underlined only on hover, for navigation lists. Keep the full underline inside prose.</p>
   <div class="pg-section-row" style="display:block;">
+    <nav style="display:flex;flex-wrap:wrap;gap:24px;">
+      <a class="sui-link-subtle sui-link-hover" href="#">Docs</a>
+      <a class="sui-link-subtle sui-link-hover" href="#">Components</a>
+      <a class="sui-link-subtle sui-link-hover" href="#">Theming</a>
+      <a class="sui-link-subtle sui-link-hover" href="#">Changelog</a>
+    </nav>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;nav style="display:flex;flex-wrap:wrap;gap:24px;"&gt;
+  &lt;a class="sui-link-subtle sui-link-hover" href="#"&gt;Docs&lt;/a&gt;
+  &lt;a class="sui-link-subtle sui-link-hover" href="#"&gt;Components&lt;/a&gt;
+  &lt;a class="sui-link-subtle sui-link-hover" href="#"&gt;Theming&lt;/a&gt;
+  &lt;a class="sui-link-subtle sui-link-hover" href="#"&gt;Changelog&lt;/a&gt;
+&lt;/nav&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Arrow Link -->
+<div class="pg-section" id="section-5">
+  <h3 class="pg-section-title">Arrow Link</h3>
+  <div class="pg-section-row" style="gap:24px;flex-wrap:wrap;">
     <a class="sui-link-arrow" href="#">Read more</a>
-    <div dir="rtl" style="margin-top:16px;"><a class="sui-link-arrow" href="#">Read more (RTL)</a></div>
+    <a class="sui-link-arrow sui-link-success" href="#">View report</a>
+    <a class="sui-link-arrow sui-link-danger" href="#">Review errors</a>
+    <a class="sui-link-arrow sui-link-info" href="#">Learn more</a>
+    <span dir="rtl"><a class="sui-link-arrow" href="#">Read more (RTL)</a></span>
   </div>
   <div class="pg-code-wrap">
     <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
     <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;a class="sui-link-arrow" href="#"&gt;Read more&lt;/a&gt;
-&lt;div dir="rtl" style="margin-top:16px;"&gt;&lt;a class="sui-link-arrow" href="#"&gt;Read more (RTL)&lt;/a&gt;&lt;/div&gt;</pre></div>
+&lt;a class="sui-link-arrow sui-link-success" href="#"&gt;View report&lt;/a&gt;
+&lt;a class="sui-link-arrow sui-link-danger" href="#"&gt;Review errors&lt;/a&gt;
+&lt;a class="sui-link-arrow sui-link-info" href="#"&gt;Learn more&lt;/a&gt;
+&lt;span dir="rtl"&gt;&lt;a class="sui-link-arrow" href="#"&gt;Read more (RTL)&lt;/a&gt;&lt;/span&gt;</pre></div>
+  </div>
+</div>
+
+<!-- External Link -->
+<div class="pg-section" id="section-6">
+  <h3 class="pg-section-title">External Link</h3>
+  <div class="pg-section-row" style="display:block;">
+    <p style="max-width:560px;">Source code is on <a class="sui-link sui-link-external" href="https://github.com/" target="_blank" rel="noopener">GitHub</a> and the package is on <a class="sui-link sui-link-external" href="https://www.npmjs.com/" target="_blank" rel="noopener">npm</a>.</p>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;p style="max-width:560px;"&gt;Source code is on &lt;a class="sui-link sui-link-external" href="https://github.com/" target="_blank" rel="noopener"&gt;GitHub&lt;/a&gt; and the package is on &lt;a class="sui-link sui-link-external" href="https://www.npmjs.com/" target="_blank" rel="noopener"&gt;npm&lt;/a&gt;.&lt;/p&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Sizes -->
+<div class="pg-section" id="section-7">
+  <h3 class="pg-section-title">Sizes</h3>
+  <div class="pg-section-row" style="gap:24px;flex-wrap:wrap;align-items:baseline;">
+    <a class="sui-link-arrow sui-link-sm" href="#">Small</a>
+    <a class="sui-link-arrow" href="#">Default</a>
+    <a class="sui-link-arrow sui-link-lg" href="#">Large</a>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;a class="sui-link-arrow sui-link-sm" href="#"&gt;Small&lt;/a&gt;
+&lt;a class="sui-link-arrow" href="#"&gt;Default&lt;/a&gt;
+&lt;a class="sui-link-arrow sui-link-lg" href="#"&gt;Large&lt;/a&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Raised -->
+<div class="pg-section" id="section-8">
+  <h3 class="pg-section-title">Raised</h3>
+  <div class="pg-section-row" style="gap:16px;flex-wrap:wrap;">
+    <a class="sui-link-raised" href="#">Docs</a>
+    <a class="sui-link-raised sui-link-arrow" href="#">Get started</a>
+    <a class="sui-link-raised sui-link-external" href="https://github.com/" target="_blank" rel="noopener">GitHub</a>
+    <a class="sui-link-raised sui-link-success" href="#">Changelog</a>
+    <a class="sui-link-raised sui-link-danger" href="#">Report a bug</a>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;a class="sui-link-raised" href="#"&gt;Docs&lt;/a&gt;
+&lt;a class="sui-link-raised sui-link-arrow" href="#"&gt;Get started&lt;/a&gt;
+&lt;a class="sui-link-raised sui-link-external" href="https://github.com/" target="_blank" rel="noopener"&gt;GitHub&lt;/a&gt;
+&lt;a class="sui-link-raised sui-link-success" href="#"&gt;Changelog&lt;/a&gt;
+&lt;a class="sui-link-raised sui-link-danger" href="#"&gt;Report a bug&lt;/a&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Reference -->
+<div class="pg-section" id="section-9">
+  <h3 class="pg-section-title">Reference</h3>
+  <div class="docs-table-wrap">
+    <table class="sui-table sui-table-compact">
+      <thead><tr><th scope="col">Class / Token</th><th scope="col">Description</th></tr></thead>
+      <tbody>
+        <tr><td style="white-space:nowrap;"><code>.sui-link</code></td><td>Underlined link for running text, so links are not marked by colour alone (WCAG 1.4.1).</td></tr>
+        <tr><td style="white-space:nowrap;"><code>.sui-link-subtle</code> / <code>-muted</code></td><td>Inherited or muted text colour; standalone, no <code>.sui-link</code> needed.</td></tr>
+        <tr><td style="white-space:nowrap;"><code>.sui-link-{color}</code></td><td>success, danger, warning or info; pairs with <code>.sui-link</code>, <code>-arrow</code> or <code>-raised</code>.</td></tr>
+        <tr><td style="white-space:nowrap;"><code>.sui-link-hover</code></td><td>Underline on hover only; for nav lists, not prose.</td></tr>
+        <tr><td style="white-space:nowrap;"><code>.sui-link-arrow</code></td><td>Trailing arrow that nudges on hover; points left in RTL.</td></tr>
+        <tr><td style="white-space:nowrap;"><code>.sui-link-external</code></td><td>Trailing &#8599; glyph, hidden from screen readers; mirrored in RTL. Do not combine with <code>-arrow</code>.</td></tr>
+        <tr><td style="white-space:nowrap;"><code>.sui-link-sm</code> / <code>-lg</code></td><td>13px / 18px text.</td></tr>
+        <tr><td style="white-space:nowrap;"><code>.sui-link-raised</code></td><td>Pill link with raised depth, inset when pressed.</td></tr>
+        <tr><td style="white-space:nowrap;"><code>--sui-link</code></td><td>Link colour. Default <code>var(--sui-primary-text)</code>, 4.5:1 in light and dark.</td></tr>
+        <tr><td style="white-space:nowrap;"><code>--sui-link-hover</code></td><td>Hover colour. Default <code>var(--sui-primary-text-hover)</code>.</td></tr>
+        <tr><td style="white-space:nowrap;"><code>--sui-link-underline</code></td><td>Resting underline colour. Default <code>currentColor</code> at 40%.</td></tr>
+      </tbody>
+    </table>
   </div>
 </div>
