@@ -12619,6 +12619,28 @@ select.sui-datatable-filter {
   font-weight: 700;
 }
 
+/* Sizers carry a hidden cursor too, so the reserved width includes it */
+.sui-typewriter[data-reserve].sui-typewriter-cursor > .sui-typewriter-sizer::after,
+.sui-typewriter[data-reserve].sui-typewriter-cursor-block > .sui-typewriter-sizer::after,
+.sui-typewriter[data-reserve].sui-typewriter-cursor-underscore > .sui-typewriter-sizer::after {
+  display: inline-block;
+  margin-inline-start: 1px;
+  font-weight: 400;
+}
+
+.sui-typewriter[data-reserve].sui-typewriter-cursor > .sui-typewriter-sizer::after {
+  content: "|";
+}
+
+.sui-typewriter[data-reserve].sui-typewriter-cursor-block > .sui-typewriter-sizer::after {
+  content: "\2588";
+}
+
+.sui-typewriter[data-reserve].sui-typewriter-cursor-underscore > .sui-typewriter-sizer::after {
+  content: "_";
+  font-weight: 700;
+}
+
 /* Colors */
 .sui-typewriter-primary { color: var(--sui-primary-text); }
 .sui-typewriter-success { color: var(--sui-success-text); }

@@ -365,13 +365,14 @@ document.addEventListener('sui-theme-change', function (e) {
     </div>
     <p style="margin-top:16px;"><strong>Without softui.js.</strong> If you only use the CSS, a few lines do the basics:</p>
     <div class="docs-getstarted-code">
-<pre><code>&lt;button onclick="toggleTheme()" aria-label="Dark mode"&gt;Toggle theme&lt;/button&gt;
+<pre><code>&lt;button onclick="toggleTheme(this)" aria-pressed="false"&gt;Dark mode&lt;/button&gt;
 
 &lt;script&gt;
-  function toggleTheme() {
+  function toggleTheme(btn) {
     var html = document.documentElement;
     var next = html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
     html.setAttribute('data-theme', next);
+    btn.setAttribute('aria-pressed', String(next === 'dark'));
     try { localStorage.setItem('sui-theme', next); } catch (e) {}
   }
 &lt;/script&gt;</code></pre>

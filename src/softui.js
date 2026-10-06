@@ -590,7 +590,9 @@
     el.appendChild(body);
     if (opts.closable) {
       const close = document.createElement('button');
+      close.type = 'button';
       close.className = 'sui-toast-close';
+      close.setAttribute('aria-label', 'Close notification');
       el.appendChild(close);
     }
     if (opts.duration > 0) {
@@ -4905,10 +4907,12 @@
     if (prev !== t) emit(document, 'sui-theme-change', { theme: t, source: source });
   }
 
-  function activateTheme() {
+  // skipInit: set()/clear() apply their own theme right after, so the first
+  // API call fires a single 'user' event instead of an 'init' one.
+  function activateTheme(skipInit) {
     if (themeActive) return;
     themeActive = true;
-    applyTheme(resolveTheme(), 'init');
+    if (!skipInit) applyTheme(resolveTheme(), 'init');
     // Follow the OS while no choice is saved
     if (themeMql) {
       const onSystemChange = function() { if (!readTheme()) applyTheme(systemTheme(), 'system'); };
@@ -4923,7 +4927,7 @@
 
   function setTheme(t) {
     if (t !== 'light' && t !== 'dark') return;
-    activateTheme();
+    activateTheme(true);
     writeTheme(t); // write first so toggles sync to the saved value
     applyTheme(t, 'user');
   }
@@ -4931,7 +4935,7 @@
   function toggleTheme() { setTheme(getTheme() === 'dark' ? 'light' : 'dark'); }
 
   function clearTheme() {
-    activateTheme();
+    activateTheme(true);
     writeTheme(null);
     applyTheme(systemTheme(), 'user');
   }
@@ -4962,6 +4966,14 @@
   // Content is only hidden once html has .sui-reveal-ready, so it stays
   // visible without JS. One shared IntersectionObserver.
   let revealObserver = null;
+  // Pending finishReveal fallback timers, so a stale one can't end a newer reveal
+  const revealTimers = typeof WeakMap !== 'undefined' ? new WeakMap() : null;
+
+  function cancelFinishReveal(el) {
+    if (!revealTimers) return;
+    const cancel = revealTimers.get(el);
+    if (cancel) { cancel(); revealTimers.delete(el); }
+  }
 
   function cssTimeMs(list) {
     return Math.max.apply(null, String(list).split(',').map(function(v) {
@@ -4975,15 +4987,23 @@
     const cs = getComputedStyle(el);
     const wait = cssTimeMs(cs.transitionDuration) + cssTimeMs(cs.transitionDelay) + 50;
     let finished = false;
+    let timer = null;
+    cancelFinishReveal(el);
+    function stop() {
+      finished = true;
+      el.removeEventListener('transitionend', done);
+      clearTimeout(timer);
+      if (revealTimers && revealTimers.get(el) === stop) revealTimers.delete(el);
+    }
     function done(e) {
       if (e && (e.target !== el || e.propertyName !== 'opacity')) return;
       if (finished) return;
-      finished = true;
-      el.removeEventListener('transitionend', done);
+      stop();
       if (el.classList.contains('sui-revealed')) el.classList.add('sui-reveal-done');
     }
     el.addEventListener('transitionend', done);
-    setTimeout(function() { done(); }, wait);
+    timer = setTimeout(function() { done(); }, wait);
+    if (revealTimers) revealTimers.set(el, stop);
   }
 
   function onRevealEntries(entries) {
@@ -4997,6 +5017,7 @@
         }
         if (!repeat) revealObserver.unobserve(el);
       } else if (repeat && el.classList.contains('sui-revealed')) {
+        cancelFinishReveal(el);
         el.classList.remove('sui-revealed', 'sui-reveal-done');
       }
     });
@@ -5051,6 +5072,9 @@
 
     els.forEach(function(el) {
       if (el.classList.contains('sui-revealed') && !el.hasAttribute('data-reveal-repeat')) return;
+      // Re-observing an observed target is a no-op; unobserve first so a
+      // replayed element gets a fresh initial entry.
+      revealObserver.unobserve(el);
       revealObserver.observe(el);
     });
     html.classList.add('sui-reveal-ready');
