@@ -228,7 +228,7 @@ toc:
     <table class="sui-table sui-table-compact" style="min-width:640px;">
       <thead><tr><th scope="col">Name</th><th scope="col">Description</th></tr></thead>
       <tbody>
-        <tr><td style="white-space:nowrap;"><code>.sui-reveal</code></td><td>Fades up on first scroll into view; content already on screen at load shows at once.</td></tr>
+        <tr><td style="white-space:nowrap;"><code>.sui-reveal</code></td><td>Fades up on first scroll into view; content already on screen at load shows at once. It sets <code>opacity</code>, so put it on a wrapper around interactive components.</td></tr>
         <tr><td style="white-space:nowrap;"><code>.sui-reveal-down</code> / <code>-start</code> / <code>-end</code></td><td>Slide direction; start and end flip in RTL.</td></tr>
         <tr><td style="white-space:nowrap;"><code>.sui-reveal-fade</code> / <code>-scale</code></td><td>Opacity only, or grow in from 95%.</td></tr>
         <tr><td style="white-space:nowrap;"><code>.sui-reveal-zoom-out</code> / <code>-blur</code></td><td>Shrink in from 108%, or sharpen from a blur.</td></tr>
@@ -242,9 +242,8 @@ toc:
         <tr><td style="white-space:nowrap;"><code>SoftUI.reveal(target, opts)</code></td><td>Reveal added content: no argument, a selector, an element or a list.</td></tr>
         <tr><td style="white-space:nowrap;"><code>opts.rootMargin</code> / <code>opts.threshold</code></td><td>Observer options, read on the first call only.</td></tr>
         <tr><td style="white-space:nowrap;"><code>SoftUI.init(el)</code></td><td>Also picks up <code>.sui-reveal</code> inside <code>el</code>.</td></tr>
-        <tr><td style="white-space:nowrap;">No JS, print, reduced motion</td><td>Content is always visible; nothing is hidden or animated.</td></tr>
-        <tr><td style="white-space:nowrap;">Focus</td><td>Focusing content that has not revealed yet shows it at once.</td></tr>
-        <tr><td style="white-space:nowrap;">Interactive components</td><td>Reveal sets <code>opacity</code>; put <code>.sui-reveal</code> on a wrapper, as in Repeat.</td></tr>
+        <tr><td style="white-space:nowrap;"><code>prefers-reduced-motion</code></td><td>Content is always visible and nothing animates. The same applies without JS and in print.</td></tr>
+        <tr><td style="white-space:nowrap;"><kbd>Tab</kbd></td><td>Focusing content that has not revealed yet shows it at once.</td></tr>
       </tbody>
     </table>
   </div>
