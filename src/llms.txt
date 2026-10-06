@@ -36,6 +36,7 @@ All classes use the `sui-` prefix (e.g. `sui-btn`, `sui-card`, `sui-modal`).
 - 77+ components with neumorphic styling
 - Dark mode via `data-theme="dark"` on the html element, or scoped to any section
 - Existing sites: components need the SoftUI background (`--sui-bg`). Wrap sections in `sui-surface`, or use `sui-flat` on components placed on your own background
+- Embed build (v1.16.0+): `dist/softui-embed.min.css` has the same components and tokens, but no global reset, body, element typography, scrollbar, reduced-motion or print rules outside SoftUI elements; base styles apply only inside elements with a `sui-` class. Use it instead of softui.min.css on sites with their own base styles
 - CSS custom properties for full theming (--sui-primary, --sui-bg, --sui-radius, etc.)
 - RTL support via CSS logical properties and dir="rtl" overrides
 - Responsive 12-column grid with sm/md/lg/xl breakpoints

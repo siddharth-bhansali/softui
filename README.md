@@ -124,6 +124,14 @@ Neumorphic shadows need the SoftUI background (`--sui-bg`) behind them. SoftUI s
 <button class="sui-btn sui-flat">Save</button>
 ```
 
+**Embed build** (v1.16.0 and later). If your site has its own base styles, use `softui-embed.min.css` instead of `softui.min.css`:
+
+```html
+<link rel="stylesheet" href="https://unpkg.com/softui-css/dist/softui-embed.min.css">
+```
+
+It has the same components and tokens, but leaves out the global `*` reset, `<body>` styling, element typography (headings, paragraphs, links, `code`) outside SoftUI elements, the page scrollbar, and the global reduced-motion and print rules. Those base styles apply only inside elements with a `sui-` class (utility classes included). Components still need `.sui-surface` or `.sui-flat` for their shadows. Use one stylesheet or the other, not both.
+
 ---
 
 ## Components
@@ -159,6 +167,7 @@ SoftUI is built on CSS custom properties. Override them to make it yours:
   --sui-primary: #7C5CFC;
   --sui-radius: 12px;
   --sui-font: 'Inter', sans-serif;
+  --sui-font-mono: 'JetBrains Mono', monospace;
 }
 ```
 

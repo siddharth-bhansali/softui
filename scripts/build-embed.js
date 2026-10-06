@@ -26,10 +26,13 @@
  *                                   on the outermost SoftUI elements, which
  *                                   used to inherit them from <body>
  *   - Everything else that is global (body/html backgrounds, page scrollbar,
- *     print URL suffixes on host links, ...) is dropped.
+ *     print URL suffixes on host links, ...) is dropped. Only selectors that
+ *     match EXPECTED_DROPS may be dropped, so a new global rule in softui.css
+ *     can't silently vanish from the embed build.
  *
  * The script exits 1 if the CSS cannot be parsed, if the expected global
- * rules are not found, or if any global selector survives into the output.
+ * rules are not found, if any global selector survives into the output, or
+ * if a global selector outside EXPECTED_DROPS would be dropped.
  *
  * Usage: node scripts/build-embed.js [--src file] [--out file] [--verbose]
  */
@@ -50,6 +53,14 @@ var VERBOSE = args.indexOf('--verbose') >= 0;
 
 var SCOPE = '[class*="sui-"]';
 var RECURSE_AT = /^@(media|supports|container|layer|document|-moz-document)\b/i;
+// Global selectors the embed build may drop: page-level styles with no
+// SoftUI-scoped equivalent. Extend deliberately when softui.css gains a new
+// page-level rule.
+var EXPECTED_DROPS = [
+  /^(html|body)$/i,                               // page background / font
+  /^::-webkit-scrollbar(-[a-z]+)?(:[a-z-]+)*$/i,  // page scrollbar
+  /^a\[href\]::after$/i                           // print: URL suffix on host links
+];
 var INHERITED_FROM_BODY = /^(font-family|font-size|line-height|color|-webkit-font-smoothing|-moz-osx-font-smoothing)$/i;
 
 function fail(msg) {
@@ -203,7 +214,14 @@ function scopeElement(sel) {
   return ':where(' + SCOPE + ') ' + tag + rest + ', ' + tag + ':where(' + SCOPE + ')' + rest;
 }
 
-var stats = { kept: 0, trimmed: 0, scoped: 0, dropped: [], removedBlocks: 0, sawBody: false, sawUniversal: false };
+var stats = { kept: 0, trimmed: 0, scoped: 0, dropped: [], unexpected: [], removedBlocks: 0, sawBody: false, sawUniversal: false };
+
+// Flags dropped global selectors that are not in EXPECTED_DROPS.
+function checkDrops(selectors) {
+  selectors.forEach(function (sel) {
+    if (!EXPECTED_DROPS.some(function (re) { return re.test(sel); })) stats.unexpected.push(sel);
+  });
+}
 
 function indentOf(css, pos) {
   var lineStart = css.lastIndexOf('\n', pos - 1) + 1;
@@ -235,6 +253,7 @@ function transformRule(css, node, depth) {
   if (own.length === selectors.length) { stats.kept++; return original; }
   if (own.length) {
     stats.trimmed++;
+    checkDrops(selectors.filter(function (s) { return !isSoftUISelector(s); }));
     stats.dropped.push(selectors.filter(function (s) { return !isSoftUISelector(s); }).join(', ') + ' (from a mixed list)');
     return rule(own, body, indent);
   }
@@ -261,6 +280,7 @@ function transformRule(css, node, depth) {
       inherited.map(function (d) { return inner + d + ';'; }).join('\n') + '\n' + indent + '}';
   }
 
+  checkDrops(selectors);
   stats.dropped.push(selectors.join(', '));
   return null;
 }
@@ -329,6 +349,11 @@ var out = transform(src, 0, src.length, 0);
 if (!stats.sawUniversal || !stats.sawBody) {
   fail('did not find the global reset / body rules in ' + path.relative(root, SRC) +
     ' — has the base section moved? Refusing to write ' + path.relative(root, OUT));
+}
+if (stats.unexpected.length) {
+  fail('global selectors would be dropped without a scoped replacement:\n  ' +
+    stats.unexpected.join('\n  ') +
+    '\nScope them in scripts/build-embed.js, or add them to EXPECTED_DROPS if dropping is intended.');
 }
 var leaks = verify(out);
 if (leaks.length) fail('global selectors left in output:\n  ' + leaks.join('\n  '));
