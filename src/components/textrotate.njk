@@ -12,6 +12,7 @@ toc:
   - Flip
   - Zoom
   - With Colors
+  - Reserve Space
 ---
 
 <!-- Fade -->
@@ -208,5 +209,37 @@ toc:
 
 &lt;!-- Color classes: sui-text-rotate-primary, success, danger, warning, info --&gt;
 &lt;!-- data-interval="2000" controls speed in ms (default 2000) --&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Reserve Space -->
+<div class="pg-section" id="section-7">
+  <h3 class="pg-section-title">Reserve Space</h3>
+  <p class="pg-section-desc">By default the rotator takes the width of the current word, so the text after it moves. Add <code>data-reserve</code> to hold the width of the longest word instead. Screen readers hear the words once as a list (override with <code>data-sr-text</code>), and with reduced motion the first word stays put.</p>
+  <div class="pg-section-row">
+    <p style="font-size:24px;font-weight:700;color:var(--sui-text);">
+      Made for
+      <span class="sui-text-rotate sui-text-rotate-slide sui-text-rotate-primary" data-sui-text-rotate data-reserve data-interval="2000" data-sr-text="designers and developers">
+        <span class="sui-text-rotate-word">designers</span>
+        <span class="sui-text-rotate-word">developers</span>
+        <span class="sui-text-rotate-word">you</span>
+      </span>
+      — and this text never moves.
+    </p>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;p style="font-size:24px;font-weight:700;color:var(--sui-text);"&gt;
+  Made for
+  &lt;span class="sui-text-rotate sui-text-rotate-slide sui-text-rotate-primary" data-sui-text-rotate data-reserve data-interval="2000" data-sr-text="designers and developers"&gt;
+    &lt;span class="sui-text-rotate-word"&gt;designers&lt;/span&gt;
+    &lt;span class="sui-text-rotate-word"&gt;developers&lt;/span&gt;
+    &lt;span class="sui-text-rotate-word"&gt;you&lt;/span&gt;
+  &lt;/span&gt;
+  — and this text never moves.
+&lt;/p&gt;
+
+&lt;!-- data-reserve: width of the longest word, so nothing after it shifts --&gt;
+&lt;!-- data-sr-text: what screen readers hear (default: the words, comma-separated) --&gt;</pre></div>
   </div>
 </div>

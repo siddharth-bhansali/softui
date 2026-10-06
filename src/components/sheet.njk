@@ -42,6 +42,8 @@ toc:
 &lt;script&gt;
   SoftUI.sheet('#mySheet').open();
   SoftUI.sheet('#mySheet').close();
+  // Also accepts an element: SoftUI.sheet(document.getElementById('mySheet'))
+  // Closing (Escape, backdrop, X, close()) returns focus to the opener.
 &lt;/script&gt;
 </pre></div>
   </div>
@@ -243,7 +245,7 @@ toc:
       &lt;button class="sui-sheet-close" aria-label="Close"&gt;&lt;/button&gt;
     &lt;/div&gt;
     &lt;div class="sui-sheet-body"&gt;
-      &lt;p&gt;Clicking outside won't close this sheet.&lt;/p&gt;
+      &lt;p&gt;Clicking outside or pressing Escape won't close this sheet. It shakes instead.&lt;/p&gt;
     &lt;/div&gt;
   &lt;/div&gt;
 &lt;/div&gt;</pre></div>

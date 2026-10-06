@@ -95,7 +95,7 @@
 
   function updatePreview() {
     var code = editor.value;
-    var themeAttr = previewDark ? ' data-theme="dark"' : '';
+    var themeAttr = previewDark ? ' data-theme="dark"' : ' data-theme="light"';
     var doc =
       '<!DOCTYPE html>' +
       '<html lang="en"' + themeAttr + '>' +

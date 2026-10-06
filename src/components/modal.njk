@@ -41,6 +41,10 @@ toc:
 
 SoftUI.modal('#myModal').open();
 SoftUI.modal('#myModal').close();
+
+&lt;!-- SoftUI.modal() takes a selector or an element.
+     Escape, the backdrop, the X and close() all return focus to the
+     element that opened the modal. Escape closes the topmost modal/sheet. --&gt;
 </pre></div>
   </div>
 </div>
@@ -164,7 +168,7 @@ SoftUI.modal('#myModal').close();
       &lt;button class="sui-modal-close" aria-label="Close"&gt;&lt;/button&gt;
     &lt;/div&gt;
     &lt;div class="sui-modal-body"&gt;
-      &lt;p&gt;Clicking outside won't close this modal. It shakes instead.&lt;/p&gt;
+      &lt;p&gt;Clicking outside or pressing Escape won't close this modal. It shakes instead.&lt;/p&gt;
     &lt;/div&gt;
     &lt;div class="sui-modal-footer"&gt;
       &lt;button class="sui-btn sui-btn-sm"&gt;Cancel&lt;/button&gt;
@@ -177,7 +181,7 @@ SoftUI.modal('#myModal').close();
 
 <div class="pg-section" id="section-7">
   <h3 class="pg-section-title">Alert Dialog</h3>
-  <p style="font-size:13px;color:var(--sui-text-light);margin-bottom:16px;">A confirmation dialog that requires explicit user action. Combines <code>sui-modal-sm</code> + <code>sui-modal-static</code> with no close button and <code>role="alertdialog"</code>. Clicking outside shakes the dialog instead of dismissing it — the user must choose an action.</p>
+  <p style="font-size:13px;color:var(--sui-text-light);margin-bottom:16px;">A confirmation dialog that requires explicit user action. Combines <code>sui-modal-sm</code> + <code>sui-modal-static</code> with no close button and <code>role="alertdialog"</code>. Clicking outside or pressing Escape shakes the dialog instead of dismissing it — the user must choose an action.</p>
   <div class="pg-section-row">
     <button class="sui-btn sui-btn-danger" onclick="SoftUI.modal('#demoModalAlert').open()">Delete Item</button>
   </div>
