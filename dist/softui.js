@@ -202,6 +202,8 @@
       const open = document.querySelectorAll(OPEN_OVERLAYS);
       const top = open[open.length - 1];
       if (!top) return;
+      // Handled: other window-level layers (e.g. an open sidebar drawer) skip it
+      e.preventDefault();
       if (top.classList.contains('sui-modal-backdrop')) {
         if (top.classList.contains('sui-modal-static')) shake(top, 'sui-modal-shake');
         else closeOverlay(top, 'sui-modal-open');
@@ -3799,6 +3801,8 @@
     if ((e.key !== 'Escape' && e.key !== 'Tab') || e.defaultPrevented) return;
     const open = document.querySelectorAll('.sui-sidebar.sui-sidebar-mobile-open');
     if (!open.length) return;
+    // A modal or sheet opened from the drawer sits on top and owns Tab/Escape
+    if (document.querySelector(OPEN_OVERLAYS)) return;
     if (e.key === 'Escape') {
       open.forEach(sidebarClose);
       return;
