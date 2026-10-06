@@ -4534,22 +4534,40 @@ const SoftUI = (() => {
   // =========================================
   // Speed Dial
   // =========================================
+  function closeSpeedDial(dial, refocus) {
+    const trigger = dial.querySelector('.sui-speed-dial-trigger');
+    const hadFocus = dial.contains(document.activeElement);
+    dial.classList.remove('open');
+    if (trigger) {
+      trigger.setAttribute('aria-expanded', 'false');
+      // Closed actions become visibility:hidden — don't strand focus on them
+      if (refocus && hadFocus) trigger.focus();
+    }
+  }
+
   document.addEventListener('click', function(e) {
     const trigger = e.target.closest('.sui-speed-dial-trigger');
     if (trigger) {
       const dial = trigger.closest('.sui-speed-dial');
       dial.classList.toggle('open');
+      trigger.setAttribute('aria-expanded', String(dial.classList.contains('open')));
       return;
     }
     const action = e.target.closest('.sui-speed-dial-action');
     if (action) {
-      const dial = action.closest('.sui-speed-dial');
-      dial.classList.remove('open');
+      closeSpeedDial(action.closest('.sui-speed-dial'), true);
       return;
     }
     // Close all open dials when clicking outside
     document.querySelectorAll('.sui-speed-dial.open').forEach(function(d) {
-      d.classList.remove('open');
+      closeSpeedDial(d, false);
+    });
+  });
+
+  document.addEventListener('keydown', function(e) {
+    if (e.key !== 'Escape') return;
+    document.querySelectorAll('.sui-speed-dial.open').forEach(function(d) {
+      closeSpeedDial(d, true);
     });
   });
 
@@ -4557,13 +4575,17 @@ const SoftUI = (() => {
   document.addEventListener('mouseenter', function(e) {
     if (!e.target.closest) return;
     const dial = e.target.closest('.sui-speed-dial-hover');
-    if (dial) dial.classList.add('open');
+    if (!dial) return;
+    dial.classList.add('open');
+    const trigger = dial.querySelector('.sui-speed-dial-trigger');
+    if (trigger) trigger.setAttribute('aria-expanded', 'true');
   }, true);
 
   document.addEventListener('mouseleave', function(e) {
-    if (!e.target.closest) return;
-    const dial = e.target.closest('.sui-speed-dial-hover');
-    if (dial) dial.classList.remove('open');
+    // Only react when the pointer leaves the dial itself, not its children
+    if (!e.target.matches || !e.target.matches('.sui-speed-dial-hover')) return;
+    // Refocus the trigger so focus isn't stranded on a now-hidden action
+    closeSpeedDial(e.target, true);
   }, true);
 
   // =========================================

@@ -491,7 +491,7 @@ a.sui-btn-warning:visited {
   background: var(--sui-bg-light);
 }
 
-.sui-card:has(.sui-card-header, .sui-card-body, .sui-card-footer) {
+.sui-card:has(.sui-card-header, .sui-card-body, .sui-card-footer, > .sui-card-img-top, > .sui-card-img-bottom, > .sui-card-img-overlay, > .sui-card-img-bg, > .sui-card-img-start) {
   padding: 0;
 }
 
@@ -979,13 +979,13 @@ a.sui-btn-warning:visited {
   background: var(--sui-bg);
   color: var(--sui-text-muted);
   box-shadow: var(--sui-shadow-raised-sm);
-  border-left: 4px solid var(--sui-bg-dark);
+  border-inline-start: 4px solid var(--sui-bg-dark);
 }
 
-.sui-alert-primary { border-left-color: var(--sui-primary); color: var(--sui-primary-text); }
-.sui-alert-success { border-left-color: var(--sui-success); color: var(--sui-success-text); }
-.sui-alert-danger  { border-left-color: var(--sui-danger);  color: var(--sui-danger-text); }
-.sui-alert-warning { border-left-color: var(--sui-warning); color: var(--sui-warning-text); }
+.sui-alert-primary { border-inline-start-color: var(--sui-primary); color: var(--sui-primary-text); }
+.sui-alert-success { border-inline-start-color: var(--sui-success); color: var(--sui-success-text); }
+.sui-alert-danger  { border-inline-start-color: var(--sui-danger);  color: var(--sui-danger-text); }
+.sui-alert-warning { border-inline-start-color: var(--sui-warning); color: var(--sui-warning-text); }
 
 /* ===========================================
    Progress
@@ -1028,7 +1028,7 @@ a.sui-btn-warning:visited {
 }
 
 .sui-table th {
-  text-align: left;
+  text-align: start;
   padding: 14px 20px;
   font-size: 12px;
   font-weight: 700;
@@ -1038,10 +1038,10 @@ a.sui-btn-warning:visited {
 }
 
 .sui-table thead tr th:first-child {
-  border-top-left-radius: var(--sui-radius);
+  border-start-start-radius: var(--sui-radius);
 }
 .sui-table thead tr th:last-child {
-  border-top-right-radius: var(--sui-radius);
+  border-start-end-radius: var(--sui-radius);
 }
 
 .sui-table td {
@@ -1055,10 +1055,10 @@ a.sui-btn-warning:visited {
   border-bottom: none;
 }
 .sui-table tbody tr:last-child td:first-child {
-  border-bottom-left-radius: var(--sui-radius);
+  border-end-start-radius: var(--sui-radius);
 }
 .sui-table tbody tr:last-child td:last-child {
-  border-bottom-right-radius: var(--sui-radius);
+  border-end-end-radius: var(--sui-radius);
 }
 
 .sui-table tbody tr:hover {
@@ -1094,7 +1094,7 @@ a.sui-btn-warning:visited {
   font-size: 18px;
   font-weight: 700;
   color: var(--sui-text);
-  margin-right: auto;
+  margin-inline-end: auto;
 }
 
 .sui-navbar-brand:hover {
@@ -1449,18 +1449,20 @@ a.sui-btn-warning:visited {
 .sui-blockquote {
   margin: 16px 0;
   padding: 12px 20px;
-  border-left: 3px solid var(--sui-primary);
+  border-inline-start: 3px solid var(--sui-primary);
   font-style: italic;
   color: var(--sui-text-muted);
   line-height: 1.7;
   font-size: 15px;
   background: color-mix(in srgb, var(--sui-primary) var(--sui-tint-blockquote), transparent);
-  border-radius: 0 var(--sui-radius-xs) var(--sui-radius-xs) 0;
+  border-radius: 0;
+  border-start-end-radius: var(--sui-radius-xs);
+  border-end-end-radius: var(--sui-radius-xs);
 }
 
 .sui-list {
   margin: 12px 0;
-  padding-left: 24px;
+  padding-inline-start: 24px;
   color: var(--sui-text-muted);
   line-height: 1.8;
   font-size: 15px;
@@ -1472,7 +1474,7 @@ a.sui-btn-warning:visited {
 
 .sui-list-none {
   list-style: none;
-  padding-left: 0;
+  padding-inline-start: 0;
 }
 
 .sui-code {
@@ -2303,16 +2305,31 @@ a.sui-btn-warning:visited {
 /* ===========================================
    Cards — Image
    =========================================== */
+/* Zero specificity so .sui-aspect > * (height: 100%) still wins inside an aspect wrapper */
+:where(.sui-card-img-top, .sui-card-img-bottom, .sui-card-img-start) {
+  height: auto;
+}
+
 .sui-card-img-top {
   width: 100%;
-  border-radius: var(--sui-radius-sm) var(--sui-radius-sm) 0 0;
+  max-width: 100%;
+  border-radius: var(--sui-radius) var(--sui-radius) 0 0;
   display: block;
+  object-fit: cover;
 }
 
 .sui-card-img-bottom {
   width: 100%;
-  border-radius: 0 0 var(--sui-radius-sm) var(--sui-radius-sm);
+  max-width: 100%;
+  border-radius: 0 0 var(--sui-radius) var(--sui-radius);
   display: block;
+  object-fit: cover;
+}
+
+/* Overlay needs a positioned parent — scoped so other cards keep their containing block */
+.sui-card:has(> .sui-card-img-overlay) {
+  position: relative;
+  overflow: hidden;
 }
 
 .sui-card-img-overlay {
@@ -2322,7 +2339,7 @@ a.sui-btn-warning:visited {
   bottom: 0;
   left: 0;
   padding: 20px;
-  border-radius: var(--sui-radius-sm);
+  border-radius: var(--sui-radius);
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
@@ -2339,7 +2356,7 @@ a.sui-btn-warning:visited {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  border-radius: var(--sui-radius-sm);
+  border-radius: var(--sui-radius);
   display: block;
 }
 
@@ -2347,15 +2364,20 @@ a.sui-btn-warning:visited {
    Cards — Horizontal
    =========================================== */
 .sui-card-horizontal {
+  display: flex;
   flex-direction: row;
   overflow: hidden;
 }
 
 .sui-card-horizontal .sui-card-img-start {
   width: 200px;
-  min-height: 100%;
+  max-width: 40%;
+  align-self: stretch;
   object-fit: cover;
-  border-radius: var(--sui-radius-sm) 0 0 var(--sui-radius-sm);
+  border-start-start-radius: var(--sui-radius);
+  border-end-start-radius: var(--sui-radius);
+  border-start-end-radius: 0;
+  border-end-end-radius: 0;
   flex-shrink: 0;
 }
 
@@ -2364,6 +2386,8 @@ a.sui-btn-warning:visited {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  min-width: 0;
+  flex: 1 1 auto;
 }
 
 /* ===========================================
@@ -2935,7 +2959,7 @@ a.sui-btn-warning:visited {
 /* ===========================================
    Alerts — Info Color
    =========================================== */
-.sui-alert-info { border-left-color: var(--sui-info); color: var(--sui-info-text); }
+.sui-alert-info { border-inline-start-color: var(--sui-info); color: var(--sui-info-text); }
 
 /* ===========================================
    Alerts — With Icon
@@ -2958,7 +2982,7 @@ a.sui-btn-warning:visited {
 .sui-alert-dismissible {
   display: flex;
   align-items: center;
-  padding-right: 16px;
+  padding-inline-end: 16px;
 }
 .sui-alert-dismissible .sui-alert-content {
   flex: 1;
@@ -2972,7 +2996,7 @@ a.sui-btn-warning:visited {
   cursor: pointer;
   position: relative;
   flex-shrink: 0;
-  margin-left: 12px;
+  margin-inline-start: 12px;
   transition: var(--sui-transition);
 }
 .sui-alert-close::before,
@@ -3006,7 +3030,7 @@ a.sui-btn-warning:visited {
    Alerts — Filled Variants
    =========================================== */
 .sui-alert-filled {
-  border-left: none;
+  border-inline-start: none;
   color: #fff;
 }
 .sui-alert-filled.sui-alert-primary { background: var(--sui-primary); box-shadow: 3px 3px 10px color-mix(in srgb, var(--sui-primary) 40%, transparent); }
@@ -3256,6 +3280,11 @@ select.sui-datatable-filter {
   flex-shrink: 0;
 }
 
+.sui-datatable-perpage select:focus-visible,
+select.sui-datatable-filter:focus-visible {
+  box-shadow: var(--sui-shadow-raised-sm), var(--sui-focus-ring, 0 0 0 3px var(--sui-focus-ring-color, color-mix(in srgb, var(--sui-primary) 40%, transparent)));
+}
+
 /* Filter — styled dropdown */
 .sui-datatable-filter.sui-dropdown {
   flex-shrink: 0;
@@ -3293,7 +3322,7 @@ select.sui-datatable-filter {
   -webkit-user-select: none;
   user-select: none;
   position: relative;
-  padding-right: 28px;
+  padding-inline-end: 28px;
   transition: color var(--sui-transition-fast);
 }
 
@@ -3304,7 +3333,7 @@ select.sui-datatable-filter {
 .sui-datatable .sui-table th[data-sort]::after {
   content: '';
   position: absolute;
-  right: 12px;
+  inset-inline-end: 12px;
   top: 50%;
   transform: translateY(-50%);
   width: 0;
@@ -3990,9 +4019,12 @@ select.sui-datatable-filter {
   transform: translateX(-50%);
 }
 
-.sui-toast-container.sui-toast-tc .sui-toast,
-.sui-toast-container.sui-toast-bc .sui-toast {
+.sui-toast-container.sui-toast-tc .sui-toast {
   transform: translateY(-20px);
+}
+
+.sui-toast-container.sui-toast-bc .sui-toast {
+  transform: translateY(20px);
 }
 
 .sui-toast-container.sui-toast-tc .sui-toast.sui-toast-show,
@@ -4829,6 +4861,10 @@ select.sui-datatable-filter {
 
 .sui-calendar-time-period:active {
   box-shadow: var(--sui-shadow-inset-sm);
+}
+
+.sui-calendar-time-period:focus-visible {
+  box-shadow: var(--sui-shadow-raised-sm), var(--sui-focus-ring, 0 0 0 3px var(--sui-focus-ring-color, color-mix(in srgb, var(--sui-primary) 40%, transparent)));
 }
 
 /* Standalone Time Picker */
@@ -8742,7 +8778,12 @@ select.sui-datatable-filter {
   }
   .sui-card-horizontal .sui-card-img-start {
     width: 100%;
+    max-width: 100%;
     max-height: 200px;
+    border-start-start-radius: var(--sui-radius);
+    border-start-end-radius: var(--sui-radius);
+    border-end-start-radius: 0;
+    border-end-end-radius: 0;
   }
   .sui-navbar {
     flex-wrap: wrap;
@@ -9235,7 +9276,7 @@ select.sui-datatable-filter {
   align-items: center;
   align-self: stretch;
   flex-shrink: 0;
-  margin-right: 20px;
+  margin-inline-end: 20px;
 }
 
 /* --- Dot --- */
@@ -9299,8 +9340,8 @@ select.sui-datatable-filter {
 /* --- Opposite content --- */
 .sui-timeline-opposite {
   flex: 1;
-  text-align: right;
-  padding-right: 20px;
+  text-align: end;
+  padding-inline-end: 20px;
   padding-bottom: 24px;
   font-size: 13px;
   color: var(--sui-text-muted);
@@ -9315,12 +9356,12 @@ select.sui-datatable-filter {
 }
 
 .sui-timeline-right .sui-timeline-separator {
-  margin-right: 0;
-  margin-left: 20px;
+  margin-inline-end: 0;
+  margin-inline-start: 20px;
 }
 
 .sui-timeline-right .sui-timeline-content {
-  text-align: right;
+  text-align: end;
 }
 
 /* ===========================================
@@ -9338,29 +9379,29 @@ select.sui-datatable-filter {
 .sui-timeline-alternate .sui-timeline-opposite {
   flex: 1;
   min-width: 0;
-  padding-right: 0;
+  padding-inline-end: 0;
 }
 
-/* Odd items: opposite left, content right */
+/* Odd items: opposite at start, content at end */
 .sui-timeline-alternate .sui-timeline-item .sui-timeline-opposite {
-  text-align: right;
+  text-align: end;
 }
 
 .sui-timeline-alternate .sui-timeline-item .sui-timeline-content {
-  text-align: left;
+  text-align: start;
 }
 
-/* Even items: flip to content on left */
+/* Even items: flip to content at start */
 .sui-timeline-alternate .sui-timeline-item:nth-child(even) {
   flex-direction: row-reverse;
 }
 
 .sui-timeline-alternate .sui-timeline-item:nth-child(even) .sui-timeline-opposite {
-  text-align: left;
+  text-align: start;
 }
 
 .sui-timeline-alternate .sui-timeline-item:nth-child(even) .sui-timeline-content {
-  text-align: right;
+  text-align: end;
 }
 
 /* When no opposite div exists, use pseudo spacer */
@@ -9374,7 +9415,7 @@ select.sui-datatable-filter {
 }
 
 .sui-timeline-alternate .sui-timeline-item:nth-child(even):not(:has(.sui-timeline-opposite)) .sui-timeline-content {
-  text-align: right;
+  text-align: end;
 }
 
 /* ===========================================
@@ -9587,7 +9628,16 @@ select.sui-datatable-filter {
 }
 
 .sui-timeline-compact .sui-timeline-separator {
-  margin-right: 14px;
+  margin-inline-end: 14px;
+}
+
+.sui-timeline-right.sui-timeline-compact .sui-timeline-separator {
+  margin-inline-end: 0;
+  margin-inline-start: 14px;
+}
+
+.sui-timeline-alternate.sui-timeline-compact .sui-timeline-separator {
+  margin-inline: 14px;
 }
 
 /* ===========================================
@@ -9604,14 +9654,25 @@ select.sui-datatable-filter {
   }
 
   .sui-timeline-alternate .sui-timeline-separator {
-    margin: 0 16px 0 0;
+    margin: 0;
+    margin-inline-end: 16px;
+  }
+
+  .sui-timeline-alternate.sui-timeline-compact .sui-timeline-separator {
+    margin: 0;
+    margin-inline-end: 14px;
   }
 
   .sui-timeline-alternate .sui-timeline-content,
   .sui-timeline-alternate .sui-timeline-item:nth-child(even) .sui-timeline-content {
-    text-align: left;
-    padding-left: 0;
-    padding-right: 0;
+    text-align: start;
+    padding-inline: 0;
+  }
+
+  /* Separate rule: :has() in a selector list would drop the whole rule in browsers without :has() */
+  .sui-timeline-alternate .sui-timeline-item:nth-child(even):not(:has(.sui-timeline-opposite)) .sui-timeline-content {
+    text-align: start;
+    padding-inline: 0;
   }
 
   .sui-timeline-alternate .sui-timeline-opposite,
@@ -9729,14 +9790,14 @@ select.sui-datatable-filter {
 
 /* --- Bordered accent --- */
 .sui-stat-bordered {
-  border-left: 3px solid var(--sui-bg-dark);
+  border-inline-start: 3px solid var(--sui-bg-dark);
 }
 
-.sui-stat-bordered-primary { border-left-color: var(--sui-primary); }
-.sui-stat-bordered-success { border-left-color: var(--sui-success); }
-.sui-stat-bordered-danger { border-left-color: var(--sui-danger); }
-.sui-stat-bordered-warning { border-left-color: var(--sui-warning); }
-.sui-stat-bordered-info { border-left-color: var(--sui-info); }
+.sui-stat-bordered-primary { border-inline-start-color: var(--sui-primary); }
+.sui-stat-bordered-success { border-inline-start-color: var(--sui-success); }
+.sui-stat-bordered-danger { border-inline-start-color: var(--sui-danger); }
+.sui-stat-bordered-warning { border-inline-start-color: var(--sui-warning); }
+.sui-stat-bordered-info { border-inline-start-color: var(--sui-info); }
 
 /* --- Inset --- */
 .sui-stat-inset {
@@ -10966,7 +11027,8 @@ select.sui-datatable-filter {
   transition: opacity 0.15s ease, transform 0.15s ease;
 }
 
-.sui-dock-item[data-label]:hover::after {
+.sui-dock-item[data-label]:hover::after,
+.sui-dock-item[data-label]:focus-visible::after {
   opacity: 1;
   transform: translateX(-50%) scale(1);
 }
@@ -10985,7 +11047,8 @@ select.sui-datatable-filter {
   transform: translateY(-50%) scale(0.8);
 }
 
-.sui-dock-vertical .sui-dock-item[data-label]:hover::after {
+.sui-dock-vertical .sui-dock-item[data-label]:hover::after,
+.sui-dock-vertical .sui-dock-item[data-label]:focus-visible::after {
   transform: translateY(-50%) scale(1);
 }
 
@@ -11079,6 +11142,21 @@ select.sui-datatable-filter {
   box-shadow: var(--sui-shadow-raised-sm);
 }
 
+/* Focus — after the colour/inset variants so their box-shadow can't cancel the ring */
+.sui-dock-item:focus-visible {
+  box-shadow: var(--sui-shadow-raised), var(--sui-focus-ring, 0 0 0 3px var(--sui-focus-ring-color, color-mix(in srgb, var(--sui-primary) 40%, transparent)));
+}
+
+.sui-dock-dark .sui-dock-item:focus-visible {
+  background: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.8);
+}
+
+.sui-dock-primary .sui-dock-item:focus-visible {
+  background: rgba(255, 255, 255, 0.25);
+  box-shadow: 0 0 0 2px #fff;
+}
+
 /* =========================================
    Swap
    ========================================= */
@@ -11096,6 +11174,12 @@ select.sui-datatable-filter {
   font: inherit;
   outline: none;
   color: var(--sui-text);
+}
+
+.sui-swap:focus-visible {
+  outline: 2px solid var(--sui-primary);
+  outline-offset: 2px;
+  border-radius: var(--sui-radius-sm);
 }
 
 .sui-swap-on,
@@ -11602,6 +11686,12 @@ select.sui-datatable-filter {
   transform: scale(1.05);
 }
 
+/* Outline, not box-shadow, so the colour variants' shadows can't cancel it */
+.sui-speed-dial-trigger:focus-visible {
+  outline: 2px solid var(--sui-primary);
+  outline-offset: 3px;
+}
+
 .sui-speed-dial.open .sui-speed-dial-trigger svg {
   transform: rotate(45deg);
 }
@@ -11615,13 +11705,16 @@ select.sui-datatable-filter {
   opacity: 0;
   transform: translateY(10px) scale(0.8);
   pointer-events: none;
-  transition: opacity 0.25s ease, transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  visibility: hidden; /* keeps closed actions out of the tab order */
+  transition: opacity 0.25s ease, transform 0.25s cubic-bezier(0.4, 0, 0.2, 1), visibility 0s linear 0.25s;
 }
 
 .sui-speed-dial.open .sui-speed-dial-actions {
   opacity: 1;
   transform: translateY(0) scale(1);
   pointer-events: auto;
+  visibility: visible;
+  transition-delay: 0s;
 }
 
 /* Individual action */
@@ -11659,6 +11752,10 @@ select.sui-datatable-filter {
   box-shadow: var(--sui-shadow-raised);
 }
 
+.sui-speed-dial-action:focus-visible {
+  box-shadow: var(--sui-shadow-raised), var(--sui-focus-ring, 0 0 0 3px var(--sui-focus-ring-color, color-mix(in srgb, var(--sui-primary) 40%, transparent)));
+}
+
 /* Staggered animation */
 .sui-speed-dial.open .sui-speed-dial-action:nth-child(1) { transition-delay: 0.03s; }
 .sui-speed-dial.open .sui-speed-dial-action:nth-child(2) { transition-delay: 0.06s; }
@@ -11685,7 +11782,8 @@ select.sui-datatable-filter {
   transition: opacity 0.15s ease, transform 0.15s ease;
 }
 
-.sui-speed-dial-action[data-label]:hover::before {
+.sui-speed-dial-action[data-label]:hover::before,
+.sui-speed-dial-action[data-label]:focus-visible::before {
   opacity: 1;
   transform: translateY(-50%) scale(1);
 }
@@ -11734,7 +11832,8 @@ select.sui-datatable-filter {
   transform: translateX(-50%) scale(0.8);
 }
 
-.sui-speed-dial-left .sui-speed-dial-action[data-label]:hover::before {
+.sui-speed-dial-left .sui-speed-dial-action[data-label]:hover::before,
+.sui-speed-dial-left .sui-speed-dial-action[data-label]:focus-visible::before {
   transform: translateX(-50%) scale(1);
 }
 
@@ -11761,7 +11860,8 @@ select.sui-datatable-filter {
   transform: translateX(-50%) scale(0.8);
 }
 
-.sui-speed-dial-right .sui-speed-dial-action[data-label]:hover::before {
+.sui-speed-dial-right .sui-speed-dial-action[data-label]:hover::before,
+.sui-speed-dial-right .sui-speed-dial-action[data-label]:focus-visible::before {
   transform: translateX(-50%) scale(1);
 }
 
@@ -11775,6 +11875,9 @@ select.sui-datatable-filter {
   background: var(--sui-danger);
   box-shadow: 0 4px 14px color-mix(in srgb, var(--sui-danger) 40%, transparent);
 }
+
+.sui-speed-dial-success .sui-speed-dial-trigger:focus-visible { outline-color: var(--sui-success); }
+.sui-speed-dial-danger .sui-speed-dial-trigger:focus-visible { outline-color: var(--sui-danger); }
 
 /* Sizes */
 .sui-speed-dial-sm .sui-speed-dial-trigger {
@@ -12234,9 +12337,11 @@ select.sui-datatable-filter {
 /* =========================================
    Stack
    ========================================= */
+/* isolate: keep negative z-index back cards inside the stack so ancestor backgrounds (.sui-surface, .sui-card, page sections) don't cover them */
 .sui-stack {
   position: relative;
   display: inline-flex;
+  isolation: isolate;
 }
 
 .sui-stack > * {
@@ -12975,7 +13080,7 @@ select.sui-datatable-filter {
 /* White/Gold frame overrides for new cutouts */
 .sui-phone-white .sui-phone-teardrop::before,
 .sui-phone-white .sui-phone-punch::before,
-.sui-phone-white .sui-phone-punch-double::before { background: #E8E8ED; box-shadow-color: #E8E8ED; }
+.sui-phone-white .sui-phone-punch-double::before { background: #E8E8ED; }
 
 .sui-phone-white .sui-phone-punch-double::before { box-shadow: 18px 0 0 0 #E8E8ED; }
 
@@ -13099,7 +13204,7 @@ select.sui-datatable-filter {
 .sui-tour-backdrop {
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.5);
+  background: transparent; /* click-to-close layer only — the spotlight's shadow is the single dim */
   z-index: 1;
 }
 
@@ -13110,7 +13215,7 @@ select.sui-datatable-filter {
   box-shadow: 0 0 0 9999px rgba(0, 0, 0, 0.5);
   z-index: 2;
   pointer-events: none;
-  transition: top 0.3s ease, left 0.3s ease, width 0.3s ease, height 0.3s ease;
+  transition: top 0.3s ease, left 0.3s ease, width 0.3s ease, height 0.3s ease, opacity 0.2s ease;
 }
 
 /* Tooltip */
@@ -13399,9 +13504,6 @@ select.sui-datatable-filter {
    RTL (Right-to-Left) Support
    =========================================== */
 
-/* Navbar brand spacing */
-[dir="rtl"] .sui-navbar-brand { margin-right: auto; margin-left: 0; }
-
 /* Sheet slide direction */
 [dir="rtl"] .sui-sheet-right { right: auto; left: 0; transform: translateX(-100%); }
 [dir="rtl"] .sui-sheet-backdrop.sui-sheet-open .sui-sheet-right { transform: translateX(0); }
@@ -13444,9 +13546,6 @@ select.sui-datatable-filter {
 
 /* Stepper connector */
 [dir="rtl"] .sui-step-connector { transform: scaleX(-1); }
-
-/* Timeline */
-[dir="rtl"] .sui-timeline-separator { margin-right: 0; margin-left: 16px; }
 
 /* ===========================================
    Mask (clip-path shapes)
