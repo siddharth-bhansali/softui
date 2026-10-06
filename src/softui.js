@@ -1354,7 +1354,7 @@ const SoftUI = (() => {
                 if (mode === 'single') {
                   selected = dt;
                   const detail = { date: dt };
-                  if (hasTime) { detail.hour = timeHour; detail.minute = timeMinute; detail.period = timePeriod; }
+                  if (hasTime) { detail.hour = timeHour; detail.minute = timeMinute; detail.period = is24h ? null : timePeriod; detail.is24h = is24h; }
                   cal.dispatchEvent(new CustomEvent('sui-date-select', { detail: detail }));
                 } else if (mode === 'range') {
                   if (!rangeStart || rangeEnd) {
@@ -2319,6 +2319,9 @@ const SoftUI = (() => {
       }
       cloneCount = visible;
     }
+    // Seamless only applies when clones exist; with no more slides than are
+    // visible it falls back to the rewind branch (maxIndex 0, so it stays put)
+    const seamlessActive = isSeamless && cloneCount > 0;
 
     const allItems = Array.from(track.children);
 
@@ -2356,7 +2359,7 @@ const SoftUI = (() => {
       }
 
       // Seamless jump after transition ends
-      if (isSeamless && !jumping) {
+      if (seamlessActive && !jumping) {
         if (current >= totalReal) {
           jumping = true;
           setTimeout(function() {
@@ -2377,8 +2380,12 @@ const SoftUI = (() => {
 
     function goTo(index) {
       if (jumping) return;
-      if (isLoop) {
+      if (seamlessActive) {
         current = ((index % totalReal) + totalReal) % totalReal;
+      } else if (isLoop) {
+        // rewind: wrap out-of-range indices, then clamp to the last full page
+        const wrapped = ((index % totalReal) + totalReal) % totalReal;
+        current = Math.min(wrapped, maxIndex);
       } else {
         current = Math.max(0, Math.min(index, maxIndex));
       }
@@ -2387,7 +2394,7 @@ const SoftUI = (() => {
 
     function next() {
       if (jumping) return;
-      if (isSeamless) {
+      if (seamlessActive) {
         current++;
       } else if (isLoop) {
         current = (current + 1) > maxIndex ? 0 : current + 1;
@@ -2400,7 +2407,7 @@ const SoftUI = (() => {
 
     function prev() {
       if (jumping) return;
-      if (isSeamless) {
+      if (seamlessActive) {
         current--;
       } else if (isLoop) {
         current = (current - 1) < 0 ? maxIndex : current - 1;
@@ -2666,7 +2673,16 @@ const SoftUI = (() => {
       const valueEl = el.querySelector('.sui-editable-value');
       if (!valueEl) return;
 
-      el.addEventListener('click', function() {
+      // Keyboard access: the wrapper is a button that turns into a text input
+      const ownLabel = !el.hasAttribute('aria-label') && !el.hasAttribute('aria-labelledby');
+      if (!el.hasAttribute('tabindex')) el.setAttribute('tabindex', '0');
+      if (!el.hasAttribute('role')) el.setAttribute('role', 'button');
+      if (ownLabel) el.setAttribute('aria-label', 'Edit: ' + valueEl.textContent.trim());
+      const iconEl = el.querySelector('.sui-editable-icon');
+      if (iconEl && !iconEl.hasAttribute('aria-hidden')) iconEl.setAttribute('aria-hidden', 'true');
+      const restTabindex = el.getAttribute('tabindex');
+
+      function startEdit() {
         if (el.querySelector('.sui-editable-input')) return; // Already editing
 
         const currentText = valueEl.textContent;
@@ -2676,41 +2692,60 @@ const SoftUI = (() => {
         input.value = currentText;
         input.style.fontSize = getComputedStyle(valueEl).fontSize;
         input.style.fontWeight = getComputedStyle(valueEl).fontWeight;
+        input.setAttribute('aria-label', el.getAttribute('aria-label') || 'Edit text');
 
         valueEl.style.display = 'none';
         const icon = el.querySelector('.sui-editable-icon');
         if (icon) icon.style.display = 'none';
 
+        // Shift+Tab from the input shouldn't land back on the wrapper
+        el.setAttribute('tabindex', '-1');
         el.insertBefore(input, valueEl);
         input.focus();
         input.select();
 
-        let cancelled = false;
+        let finished = false;
 
-        function save() {
-          if (cancelled) return;
-          const newVal = input.value.trim() || currentText;
-          valueEl.textContent = newVal;
+        function finish(byKey) {
+          finished = true;
           valueEl.style.display = '';
           if (icon) icon.style.display = '';
+          el.setAttribute('tabindex', restTabindex);
           input.remove();
+          // Return focus only for keyboard endings; a blur-save must not steal focus
+          if (byKey) el.focus();
+        }
+
+        function save(byKey) {
+          if (finished) return;
+          const newVal = input.value.trim() || currentText;
+          valueEl.textContent = newVal;
+          if (ownLabel) el.setAttribute('aria-label', 'Edit: ' + newVal);
+          finish(byKey === true);
           el.dispatchEvent(new CustomEvent('editable:save', { detail: { value: newVal, previous: currentText } }));
         }
 
         function cancel() {
-          cancelled = true;
-          valueEl.style.display = '';
-          if (icon) icon.style.display = '';
-          input.remove();
+          if (finished) return;
+          finish(true);
           el.dispatchEvent(new CustomEvent('editable:cancel'));
         }
 
         input.addEventListener('keydown', function(e) {
-          if (e.key === 'Enter') { e.preventDefault(); save(); }
+          if (e.key === 'Enter') { e.preventDefault(); save(true); }
           if (e.key === 'Escape') { e.preventDefault(); cancel(); }
         });
 
         input.addEventListener('blur', save);
+      }
+
+      el.addEventListener('click', startEdit);
+      el.addEventListener('keydown', function(e) {
+        if (e.target !== el) return;
+        if (e.key === 'Enter' || e.key === ' ' || e.key === 'F2') {
+          e.preventDefault();
+          startEdit();
+        }
       });
     });
   }
@@ -2818,23 +2853,37 @@ const SoftUI = (() => {
     document.querySelectorAll('.sui-countdown[data-date]').forEach(function(el) {
       const dateStr = el.getAttribute('data-date');
 
-      // Support relative dates: "+2y", "+30d", "+2y5d", "+6h30m"
+      // Support relative dates: "+2y", "+30d", "+2y5d", "+6h30m", "+2y 5d"
       let target;
       if (dateStr.startsWith('+')) {
-        target = new Date();
-        const parts = dateStr.slice(1).matchAll(/(\d+)([ydhms])/g);
-        for (const p of parts) {
-          const val = parseInt(p[1], 10);
-          const unit = p[2];
-          if (unit === 'y') target.setFullYear(target.getFullYear() + val);
-          else if (unit === 'd') target.setDate(target.getDate() + val);
-          else if (unit === 'h') target.setHours(target.getHours() + val);
-          else if (unit === 'm') target.setMinutes(target.getMinutes() + val);
-          else if (unit === 's') target.setSeconds(target.getSeconds() + val);
+        if (!/^\+\s*(\d+\s*[ydhms]\s*)+$/.test(dateStr)) {
+          target = NaN;
+        } else {
+          target = new Date();
+          const parts = dateStr.slice(1).matchAll(/(\d+)\s*([ydhms])/g);
+          for (const p of parts) {
+            const val = parseInt(p[1], 10);
+            const unit = p[2];
+            if (unit === 'y') target.setFullYear(target.getFullYear() + val);
+            else if (unit === 'd') target.setDate(target.getDate() + val);
+            else if (unit === 'h') target.setHours(target.getHours() + val);
+            else if (unit === 'm') target.setMinutes(target.getMinutes() + val);
+            else if (unit === 's') target.setSeconds(target.getSeconds() + val);
+          }
+          target = target.getTime();
         }
-        target = target.getTime();
       } else {
         target = new Date(dateStr).getTime();
+      }
+
+      // Invalid date: show placeholders, warn once, run no timer, fire no countdown:end
+      if (!Number.isFinite(target)) {
+        console.warn('[SoftUI] Countdown: invalid data-date "' + dateStr + '"', el);
+        el.setAttribute('data-countdown-invalid', '');
+        ['[data-years]', '[data-days]', '[data-hours]', '[data-minutes]', '[data-seconds]'].forEach(function(sel) {
+          const n = el.querySelector(sel); if (n) n.textContent = '--';
+        });
+        return;
       }
 
       const yearsEl = el.querySelector('[data-years]');
@@ -2861,14 +2910,16 @@ const SoftUI = (() => {
         if (hoursEl) hoursEl.textContent = String(h).padStart(2, '0');
         if (minsEl) minsEl.textContent = String(m).padStart(2, '0');
         if (secsEl) secsEl.textContent = String(s).padStart(2, '0');
-        if (diff === 0) {
+        if (!(diff > 0)) {
           clearInterval(timer);
+          ended = true;
           el.dispatchEvent(new Event('countdown:end'));
         }
       }
 
+      let timer = null, ended = false;
       update();
-      const timer = setInterval(update, 1000);
+      if (!ended) timer = setInterval(update, 1000);
     });
   }
 
@@ -2899,7 +2950,64 @@ const SoftUI = (() => {
     });
   }
 
+  // Disclosure-navigation pattern: triggers / sub-parent links expose aria-expanded
+  let navMenuPanelCount = 0;
+
+  function navMenuControl(container) {
+    if (container.classList.contains('sui-nav-menu-sub')) return container.querySelector(':scope > .sui-nav-menu-link');
+    return container.querySelector(':scope > .sui-nav-menu-trigger:not([href])');
+  }
+
+  function navMenuPanel(container) {
+    return container.querySelector(':scope > .sui-nav-menu-panel');
+  }
+
+  function navMenuPrimeOne(container) {
+    const ctrl = navMenuControl(container);
+    const panel = navMenuPanel(container);
+    if (!ctrl || !panel) return;
+    if (!ctrl.hasAttribute('aria-expanded')) ctrl.setAttribute('aria-expanded', container.classList.contains('open') ? 'true' : 'false');
+    if (!ctrl.hasAttribute('aria-controls')) {
+      if (!panel.id) panel.id = 'sui-navmenu-panel-' + (++navMenuPanelCount);
+      ctrl.setAttribute('aria-controls', panel.id);
+    }
+  }
+
+  function navMenuSetOpen(container, open) {
+    container.classList.toggle('open', open);
+    const ctrl = navMenuControl(container);
+    if (ctrl && navMenuPanel(container)) ctrl.setAttribute('aria-expanded', open ? 'true' : 'false');
+    // Closing also closes nested subs so stale state doesn't reappear on next open
+    if (!open) {
+      container.querySelectorAll('.sui-nav-menu-sub.open').forEach(function(sub) { navMenuSetOpen(sub, false); });
+    }
+  }
+
+  function navMenuCloseAll(except) {
+    document.querySelectorAll('.sui-nav-menu-item.open').forEach(function(i) {
+      if (i !== except) navMenuSetOpen(i, false);
+    });
+  }
+
+  // Close open subs in the same panel that aren't this sub, its ancestors or descendants
+  function navMenuCloseSiblingSubs(sub) {
+    const panel = sub.parentElement && sub.parentElement.closest('.sui-nav-menu-panel');
+    if (!panel) return;
+    panel.querySelectorAll('.sui-nav-menu-sub.open').forEach(function(s) {
+      if (s !== sub && !s.contains(sub) && !sub.contains(s)) navMenuSetOpen(s, false);
+    });
+  }
+
+  // Visible links that belong directly to this panel (not to nested sub panels)
+  function navMenuLinks(panel) {
+    return Array.from(panel.querySelectorAll('.sui-nav-menu-link')).filter(function(l) {
+      return l.closest('.sui-nav-menu-panel') === panel && l.offsetParent !== null;
+    });
+  }
+
   function initNavMenu() {
+    document.querySelectorAll('.sui-nav-menu-item, .sui-nav-menu-sub').forEach(navMenuPrimeOne);
+
     // Toggle on click
     document.addEventListener('click', function(e) {
       if (!e.target.closest) return;
@@ -2907,55 +3015,134 @@ const SoftUI = (() => {
       if (trigger && !trigger.hasAttribute('href')) {
         const item = trigger.closest('.sui-nav-menu-item');
         if (!item) return;
+        navMenuPrimeOne(item);
         // Close other open items
-        document.querySelectorAll('.sui-nav-menu-item.open').forEach(function(i) {
-          if (i !== item) i.classList.remove('open');
-        });
-        item.classList.toggle('open');
+        navMenuCloseAll(item);
+        navMenuSetOpen(item, !item.classList.contains('open'));
         e.stopPropagation();
         return;
       }
-      // Click on sub-menu trigger (click mode)
+      // Click (or Enter) on a sub-menu parent toggles it, in hover and click modes
       const subLink = e.target.closest('.sui-nav-menu-sub > .sui-nav-menu-link');
       if (subLink) {
-        const sub = subLink.closest('.sui-nav-menu-sub');
-        const panel = sub.closest('.sui-nav-menu-panel');
-        if (panel && panel.closest('.sui-nav-menu-sub-click')) {
-          e.preventDefault();
-          e.stopPropagation();
-          // Close sibling subs
-          panel.querySelectorAll('.sui-nav-menu-sub.open').forEach(function(s) {
-            if (s !== sub) s.classList.remove('open');
-          });
-          sub.classList.toggle('open');
-          return;
-        }
+        const sub = subLink.parentElement;
+        e.preventDefault();
+        e.stopPropagation();
+        navMenuPrimeOne(sub);
+        navMenuCloseSiblingSubs(sub);
+        navMenuSetOpen(sub, !sub.classList.contains('open'));
+        return;
       }
 
       // Click on a nav-menu link closes everything
       const link = e.target.closest('.sui-nav-menu-link');
       if (link && link.closest('.sui-nav-menu-item')) {
-        document.querySelectorAll('.sui-nav-menu-item.open').forEach(function(i) {
-          i.classList.remove('open');
-        });
+        navMenuCloseAll();
         return;
       }
 
       // Click outside closes all
       if (!e.target.closest('.sui-nav-menu-item')) {
-        document.querySelectorAll('.sui-nav-menu-item.open').forEach(function(i) {
-          i.classList.remove('open');
-        });
+        navMenuCloseAll();
       }
     });
 
-    // Escape closes
+    // Hover-mode subs: entering another sub closes a click/keyboard-opened sibling
+    document.addEventListener('mouseover', function(e) {
+      if (!e.target.closest) return;
+      const sub = e.target.closest('.sui-nav-menu-sub');
+      if (!sub || sub.closest('.sui-nav-menu-sub-click')) return;
+      navMenuCloseSiblingSubs(sub);
+    });
+
+    // Keyboard
     document.addEventListener('keydown', function(e) {
+      const t = e.target;
       if (e.key === 'Escape') {
-        document.querySelectorAll('.sui-nav-menu-item.open').forEach(function(i) {
-          i.classList.remove('open');
-        });
+        const container = t.closest && t.closest('.sui-nav-menu .sui-nav-menu-sub.open, .sui-nav-menu .sui-nav-menu-item.open');
+        if (container) {
+          navMenuSetOpen(container, false);
+          const ctrl = navMenuControl(container);
+          if (ctrl) ctrl.focus();
+          return;
+        }
+        navMenuCloseAll();
+        return;
       }
+      if (!t.closest) return;
+      const nav = t.closest('.sui-nav-menu');
+      if (!nav) return;
+      const rtl = getComputedStyle(nav).direction === 'rtl';
+      const inward = rtl ? 'ArrowLeft' : 'ArrowRight';
+      const outward = rtl ? 'ArrowRight' : 'ArrowLeft';
+
+      // Top-level trigger: ArrowDown opens and focuses the first link
+      if (t.matches('.sui-nav-menu-trigger:not([href])')) {
+        if (e.key !== 'ArrowDown') return;
+        const item = t.closest('.sui-nav-menu-item');
+        const panel = item && navMenuPanel(item);
+        if (!panel) return;
+        e.preventDefault();
+        navMenuPrimeOne(item);
+        navMenuCloseAll(item);
+        navMenuSetOpen(item, true);
+        const first = navMenuLinks(panel)[0];
+        if (first) first.focus();
+        return;
+      }
+
+      if (!t.matches('.sui-nav-menu-link')) return;
+      const panel = t.closest('.sui-nav-menu-panel');
+      if (!panel) return;
+      const sub = t.parentElement && t.parentElement.classList.contains('sui-nav-menu-sub') ? t.parentElement : null;
+
+      // Sub-parent: inward arrow (or Space) opens the sub and focuses its first link
+      if (sub && (e.key === inward || e.key === ' ')) {
+        const subPanel = navMenuPanel(sub);
+        if (!subPanel) return;
+        e.preventDefault();
+        navMenuPrimeOne(sub);
+        navMenuCloseSiblingSubs(sub);
+        navMenuSetOpen(sub, true);
+        if (e.key === inward) {
+          const first = navMenuLinks(subPanel)[0];
+          if (first) first.focus();
+        }
+        return;
+      }
+
+      // Outward arrow inside a sub panel: close it and return to its parent link
+      if (e.key === outward) {
+        const owner = panel.parentElement;
+        if (owner && owner.classList.contains('sui-nav-menu-sub')) {
+          e.preventDefault();
+          navMenuSetOpen(owner, false);
+          const ctrl = navMenuControl(owner);
+          if (ctrl) ctrl.focus();
+        }
+        return;
+      }
+
+      // ArrowUp / ArrowDown move between this panel's own links (wrapping)
+      if (e.key === 'ArrowDown' || e.key === 'ArrowUp') {
+        const links = navMenuLinks(panel);
+        const i = links.indexOf(t);
+        if (i === -1 || !links.length) return;
+        e.preventDefault();
+        const next = e.key === 'ArrowDown' ? (i + 1) % links.length : (i - 1 + links.length) % links.length;
+        links[next].focus();
+      }
+    });
+
+    // Tabbing out of an open item/sub closes it. A null relatedTarget (click on a
+    // non-focusable spot, or leaving the window) is ignored; outside clicks are
+    // handled by the click listener above.
+    document.addEventListener('focusout', function(e) {
+      const rt = e.relatedTarget;
+      if (!rt || !e.target.closest) return;
+      document.querySelectorAll('.sui-nav-menu-item.open, .sui-nav-menu-sub.open').forEach(function(c) {
+        if (c.contains(e.target) && !c.contains(rt)) navMenuSetOpen(c, false);
+      });
     });
   }
 
@@ -3459,6 +3646,155 @@ const SoftUI = (() => {
     }
   });
 
+  // =========================================
+  // Sidebar — off-canvas drawer (below 900px, or always with .sui-sidebar-drawer)
+  // =========================================
+  const sidebarState = new WeakMap(); // el -> { prevFocus }
+  const sidebarMq = window.matchMedia ? window.matchMedia('(max-width: 900px)') : null;
+
+  function sidebarIsDrawer(el) {
+    if (el.classList.contains('sui-sidebar-drawer')) return true;
+    if (el.classList.contains('sui-sidebar-static')) return false;
+    return !!(sidebarMq && sidebarMq.matches);
+  }
+
+  function sidebarQuery(sel) {
+    try { return document.querySelector(sel); } catch (_) { return null; }
+  }
+
+  function sidebarResolve(trigger) {
+    const sel = trigger.getAttribute('data-sidebar-open');
+    return sel ? sidebarQuery(sel) : document.querySelector('.sui-sidebar:not(.sui-sidebar-static)');
+  }
+
+  function sidebarTriggers(el) {
+    return Array.from(document.querySelectorAll('[data-sidebar-open]')).filter(function(t) {
+      return sidebarResolve(t) === el;
+    });
+  }
+
+  function sidebarOverlay(el) {
+    const next = el.nextElementSibling;
+    if (next && next.classList.contains('sui-sidebar-overlay')) return next;
+    const overlay = document.createElement('div');
+    overlay.className = 'sui-sidebar-overlay';
+    overlay.setAttribute('aria-hidden', 'true');
+    el.parentNode.insertBefore(overlay, el.nextSibling);
+    return overlay;
+  }
+
+  function sidebarVisibleFocusable(el) {
+    return getFocusable(el).filter(function(f) { return f.offsetParent !== null; });
+  }
+
+  function sidebarIsOpen(el) {
+    return el.classList.contains('sui-sidebar-mobile-open');
+  }
+
+  function sidebarOpen(el) {
+    // Only opens when the sidebar is actually a drawer (mobile, or .sui-sidebar-drawer)
+    if (!el || sidebarIsOpen(el) || !sidebarIsDrawer(el)) return;
+    sidebarState.set(el, { prevFocus: document.activeElement });
+    el.classList.add('sui-sidebar-mobile-open');
+    sidebarOverlay(el).classList.add('open');
+    document.body.style.overflow = 'hidden';
+    sidebarTriggers(el).forEach(function(t) { t.setAttribute('aria-expanded', 'true'); });
+    const first = sidebarVisibleFocusable(el)[0];
+    if (first) {
+      first.focus();
+    } else {
+      if (!el.hasAttribute('tabindex')) el.setAttribute('tabindex', '-1');
+      el.focus();
+    }
+  }
+
+  function sidebarClose(el) {
+    if (!el || !sidebarIsOpen(el)) return;
+    el.classList.remove('sui-sidebar-mobile-open');
+    const next = el.nextElementSibling;
+    if (next && next.classList.contains('sui-sidebar-overlay')) next.classList.remove('open');
+    document.body.style.overflow = '';
+    sidebarTriggers(el).forEach(function(t) { t.setAttribute('aria-expanded', 'false'); });
+    const state = sidebarState.get(el);
+    sidebarState.delete(el);
+    const prev = state && state.prevFocus;
+    const active = document.activeElement;
+    // Return focus to the opener unless the user has already moved it elsewhere
+    if (prev && prev.isConnected && typeof prev.focus === 'function' &&
+        (!active || active === document.body || el.contains(active))) {
+      prev.focus();
+    }
+  }
+
+  // Sets aria-expanded / aria-controls on existing [data-sidebar-open] triggers.
+  function initSidebars() {
+    document.querySelectorAll('[data-sidebar-open]').forEach(function(t) {
+      const target = sidebarResolve(t);
+      if (!target) return;
+      if (!t.hasAttribute('aria-expanded')) t.setAttribute('aria-expanded', sidebarIsOpen(target) ? 'true' : 'false');
+      if (target.id && !t.hasAttribute('aria-controls')) t.setAttribute('aria-controls', target.id);
+    });
+  }
+
+  document.addEventListener('click', function(e) {
+    if (!e.target.closest) return;
+    const opener = e.target.closest('[data-sidebar-open]');
+    if (opener) {
+      const target = sidebarResolve(opener);
+      if (!target) return;
+      e.preventDefault();
+      if (sidebarIsOpen(target)) sidebarClose(target); else sidebarOpen(target);
+      return;
+    }
+    const closer = e.target.closest('[data-sidebar-close]');
+    if (closer) {
+      const sel = closer.getAttribute('data-sidebar-close');
+      sidebarClose((sel && sidebarQuery(sel)) || closer.closest('.sui-sidebar'));
+      return;
+    }
+    if (e.target.classList.contains('sui-sidebar-overlay')) {
+      const prev = e.target.previousElementSibling;
+      if (prev && prev.classList.contains('sui-sidebar')) sidebarClose(prev);
+      else document.querySelectorAll('.sui-sidebar.sui-sidebar-mobile-open').forEach(sidebarClose);
+      return;
+    }
+    const navLink = e.target.closest('.sui-sidebar-mobile-open .sui-sidebar-nav a[href]');
+    if (navLink) sidebarClose(navLink.closest('.sui-sidebar'));
+  });
+
+  document.addEventListener('keydown', function(e) {
+    if (e.key !== 'Escape' && e.key !== 'Tab') return;
+    const open = document.querySelectorAll('.sui-sidebar.sui-sidebar-mobile-open');
+    if (!open.length) return;
+    if (e.key === 'Escape') {
+      open.forEach(sidebarClose);
+      return;
+    }
+    // Tab: keep focus inside the (last) open drawer
+    const el = open[open.length - 1];
+    const focusable = sidebarVisibleFocusable(el);
+    if (!focusable.length) { e.preventDefault(); return; }
+    const first = focusable[0];
+    const last = focusable[focusable.length - 1];
+    const inside = el.contains(document.activeElement);
+    if (e.shiftKey && (document.activeElement === first || !inside)) {
+      e.preventDefault();
+      last.focus();
+    } else if (!e.shiftKey && (document.activeElement === last || !inside)) {
+      e.preventDefault();
+      first.focus();
+    }
+  });
+
+  // Growing past 900px closes media-query drawers so body scroll isn't left locked
+  if (sidebarMq) {
+    const onSidebarMqChange = function(e) {
+      if (!e.matches) document.querySelectorAll('.sui-sidebar.sui-sidebar-mobile-open:not(.sui-sidebar-drawer)').forEach(sidebarClose);
+    };
+    if (sidebarMq.addEventListener) sidebarMq.addEventListener('change', onSidebarMqChange);
+    else if (sidebarMq.addListener) sidebarMq.addListener(onSidebarMqChange);
+  }
+
   function sidebar(selector) {
     const el = typeof selector === 'string' ? document.querySelector(selector) : selector;
     if (!el) return null;
@@ -3467,8 +3803,11 @@ const SoftUI = (() => {
     function expand() { el.classList.remove('sui-sidebar-collapsed'); }
     function toggle() { el.classList.toggle('sui-sidebar-collapsed'); }
     function isCollapsed() { return el.classList.contains('sui-sidebar-collapsed'); }
+    function open() { sidebarOpen(el); }
+    function close() { sidebarClose(el); }
+    function isOpen() { return sidebarIsOpen(el); }
 
-    return { collapse: collapse, expand: expand, toggle: toggle, isCollapsed: isCollapsed, el: el };
+    return { collapse: collapse, expand: expand, toggle: toggle, isCollapsed: isCollapsed, open: open, close: close, isOpen: isOpen, el: el };
   }
 
   // =========================================
@@ -3494,6 +3833,71 @@ const SoftUI = (() => {
     }
   }
 
+  function ratingMax(rating) {
+    return rating.querySelectorAll('.sui-rating-star').length;
+  }
+
+  // data-value if present, otherwise count .active stars (+0.5 for a .half star)
+  function ratingCurrent(rating) {
+    const dv = parseFloat(rating.getAttribute('data-value'));
+    if (!isNaN(dv)) return dv;
+    let v = 0;
+    rating.querySelectorAll('.sui-rating-star').forEach(function(s) {
+      if (s.classList.contains('active')) v += 1;
+      else if (s.classList.contains('half')) v += 0.5;
+    });
+    return v;
+  }
+
+  function ratingSyncAria(rating, v) {
+    if (rating.getAttribute('role') !== 'slider') return;
+    rating.setAttribute('aria-valuenow', v);
+    rating.setAttribute('aria-valuetext', v + ' of ' + ratingMax(rating) + ' stars');
+  }
+
+  // Interactive ratings become a slider; read-only ratings an image with a label
+  function ratingPrime(rating) {
+    if (rating.dataset.suiKbd) return;
+    rating.dataset.suiKbd = '1';
+    const max = ratingMax(rating);
+    const v = ratingCurrent(rating);
+    const labelled = rating.hasAttribute('aria-label') || rating.hasAttribute('aria-labelledby');
+    rating.querySelectorAll('.sui-rating-star').forEach(function(s) {
+      if (!s.hasAttribute('aria-hidden')) s.setAttribute('aria-hidden', 'true');
+    });
+    if (rating.classList.contains('sui-rating-readonly')) {
+      if (!rating.hasAttribute('role')) rating.setAttribute('role', 'img');
+      if (!labelled) rating.setAttribute('aria-label', 'Rated ' + v + ' of ' + max);
+      return;
+    }
+    if (!rating.hasAttribute('role')) rating.setAttribute('role', 'slider');
+    if (!rating.hasAttribute('tabindex')) rating.setAttribute('tabindex', '0');
+    if (!labelled) rating.setAttribute('aria-label', 'Rating');
+    if (!rating.hasAttribute('aria-valuemin')) rating.setAttribute('aria-valuemin', '0');
+    if (!rating.hasAttribute('aria-valuemax')) rating.setAttribute('aria-valuemax', max);
+    ratingSyncAria(rating, v);
+  }
+
+  // Shared by click and keyboard: v is a whole or .5 value
+  function setRating(rating, v) {
+    const stars = Array.from(rating.querySelectorAll('.sui-rating-star'));
+    const full = Math.floor(v);
+    const half = v - full >= 0.5;
+    stars.forEach(function(s, i) {
+      s.classList.remove('active', 'half', 'hover', 'hover-half');
+      ratingResetSvg(s);
+      if (i < full) {
+        s.classList.add('active');
+      } else if (i === full && half) {
+        ratingEnsureDualSvg(s);
+        s.classList.add('half');
+      }
+    });
+    rating.setAttribute('data-value', v);
+    ratingSyncAria(rating, v);
+    rating.dispatchEvent(new CustomEvent('sui-rating-change', { detail: { value: v } }));
+  }
+
   document.addEventListener('click', function(e) {
     const star = e.target.closest('.sui-rating:not(.sui-rating-readonly) .sui-rating-star');
     if (!star) return;
@@ -3502,23 +3906,28 @@ const SoftUI = (() => {
     const index = stars.indexOf(star);
     const allowHalf = rating.classList.contains('sui-rating-half');
     const isHalf = allowHalf && ratingIsHalf(star, e);
-    const value = isHalf ? index + 0.5 : index + 1;
-    stars.forEach(function(s, i) {
-      s.classList.remove('active', 'half', 'hover', 'hover-half');
-      ratingResetSvg(s);
-      if (i < index) {
-        s.classList.add('active');
-      } else if (i === index) {
-        if (isHalf) {
-          ratingEnsureDualSvg(s);
-          s.classList.add('half');
-        } else {
-          s.classList.add('active');
-        }
-      }
-    });
-    rating.setAttribute('data-value', value);
-    rating.dispatchEvent(new CustomEvent('sui-rating-change', { detail: { value: value } }));
+    setRating(rating, isHalf ? index + 0.5 : index + 1);
+  });
+
+  // Keyboard: arrows step (0.5 with .sui-rating-half), Home/End, digit keys
+  document.addEventListener('keydown', function(e) {
+    if (!e.target.closest || e.altKey || e.ctrlKey || e.metaKey) return;
+    const rating = e.target.closest('.sui-rating:not(.sui-rating-readonly)');
+    if (!rating || e.target !== rating) return;
+    const max = ratingMax(rating);
+    const step = rating.classList.contains('sui-rating-half') ? 0.5 : 1;
+    const rtl = getComputedStyle(rating).direction === 'rtl';
+    const cur = ratingCurrent(rating);
+    let v = null;
+    if (e.key === 'ArrowUp' || e.key === (rtl ? 'ArrowLeft' : 'ArrowRight')) v = cur + step;
+    else if (e.key === 'ArrowDown' || e.key === (rtl ? 'ArrowRight' : 'ArrowLeft')) v = cur - step;
+    else if (e.key === 'Home') v = 0;
+    else if (e.key === 'End') v = max;
+    else if (/^[0-9]$/.test(e.key) && parseInt(e.key, 10) <= max) v = parseInt(e.key, 10);
+    if (v === null) return;
+    e.preventDefault();
+    v = Math.max(0, Math.min(max, v));
+    if (v !== cur) setRating(rating, v);
   });
 
   document.addEventListener('mousemove', function(e) {
@@ -3559,17 +3968,66 @@ const SoftUI = (() => {
   // =========================================
   // Color Picker
   // =========================================
-  document.addEventListener('click', function(e) {
-    const swatch = e.target.closest('.sui-color-picker .sui-color-swatch');
-    if (!swatch) return;
+  // Swatch pickers are a radiogroup with a roving tabindex
+  function swatchPrime(picker) {
+    if (picker.dataset.suiKbd) return;
+    picker.dataset.suiKbd = '1';
+    if (!picker.hasAttribute('role')) picker.setAttribute('role', 'radiogroup');
+    if (!picker.hasAttribute('aria-label') && !picker.hasAttribute('aria-labelledby')) picker.setAttribute('aria-label', 'Color');
+    const list = Array.from(picker.querySelectorAll('.sui-color-swatch'));
+    const current = list.find(function(s) { return s.classList.contains('active'); }) || list[0];
+    list.forEach(function(s) {
+      if (!s.hasAttribute('role')) s.setAttribute('role', 'radio');
+      s.setAttribute('aria-checked', s.classList.contains('active') ? 'true' : 'false');
+      if (!s.hasAttribute('aria-label') && !s.hasAttribute('aria-labelledby') && !s.hasAttribute('title')) {
+        const item = s.closest('.sui-color-item');
+        const text = item && item.querySelector('.sui-color-label');
+        const c = (text && text.textContent.trim()) || s.getAttribute('data-color');
+        if (c) s.setAttribute('aria-label', c);
+      }
+      if (!s.hasAttribute('tabindex')) s.setAttribute('tabindex', s === current ? '0' : '-1');
+    });
+  }
+
+  function selectSwatch(swatch) {
     const picker = swatch.closest('.sui-color-picker');
+    const primed = !!picker.dataset.suiKbd;
     picker.querySelectorAll('.sui-color-swatch').forEach(function(s) {
       s.classList.remove('active');
+      if (primed) { s.setAttribute('aria-checked', 'false'); s.setAttribute('tabindex', '-1'); }
     });
     swatch.classList.add('active');
+    if (primed) { swatch.setAttribute('aria-checked', 'true'); swatch.setAttribute('tabindex', '0'); }
     const color = swatch.getAttribute('data-color') || swatch.style.background || swatch.style.backgroundColor;
     picker.setAttribute('data-value', color);
     picker.dispatchEvent(new CustomEvent('sui-color-change', { detail: { color: color } }));
+  }
+
+  document.addEventListener('click', function(e) {
+    const swatch = e.target.closest('.sui-color-picker .sui-color-swatch');
+    if (!swatch) return;
+    selectSwatch(swatch);
+  });
+
+  // Keyboard: arrows move focus and select (wrapping), Home/End, Space/Enter
+  document.addEventListener('keydown', function(e) {
+    if (!e.target.closest || e.altKey || e.ctrlKey || e.metaKey) return;
+    const swatch = e.target.closest('.sui-color-picker .sui-color-swatch');
+    if (!swatch || e.target !== swatch) return;
+    const picker = swatch.closest('.sui-color-picker');
+    const list = Array.from(picker.querySelectorAll('.sui-color-swatch'));
+    const i = list.indexOf(swatch);
+    const rtl = getComputedStyle(picker).direction === 'rtl';
+    let next = null;
+    if (e.key === 'ArrowDown' || e.key === (rtl ? 'ArrowLeft' : 'ArrowRight')) next = list[(i + 1) % list.length];
+    else if (e.key === 'ArrowUp' || e.key === (rtl ? 'ArrowRight' : 'ArrowLeft')) next = list[(i - 1 + list.length) % list.length];
+    else if (e.key === 'Home') next = list[0];
+    else if (e.key === 'End') next = list[list.length - 1];
+    else if (e.key === ' ' || e.key === 'Enter') next = swatch;
+    if (!next) return;
+    e.preventDefault();
+    selectSwatch(next);
+    next.focus();
   });
 
   // =========================================
@@ -4059,17 +4517,22 @@ const SoftUI = (() => {
   // =========================================
   // Password Toggle
   // =========================================
+  // Bubble-phase, no stopPropagation, so consumer click listeners still fire.
+  // The Swap handler skips .sui-password-toggle so .active is only toggled here.
   document.addEventListener('click', function(e) {
     const btn = e.target.closest('.sui-password-toggle');
     if (!btn) return;
-    e.stopPropagation();
     const wrap = btn.closest('.sui-password-input');
-    const input = wrap.querySelector('input');
+    const input = wrap && wrap.querySelector('input');
     if (!input) return;
-    const isPassword = input.type === 'password';
-    input.type = isPassword ? 'text' : 'password';
-    btn.classList.toggle('active');
-  }, true);
+    const reveal = input.type === 'password';
+    input.type = reveal ? 'text' : 'password';
+    btn.classList.toggle('active', reveal);
+    btn.setAttribute('aria-pressed', reveal ? 'true' : 'false');
+    if (btn.classList.contains('sui-swap')) {
+      btn.dispatchEvent(new CustomEvent('sui-swap-change', { detail: { active: reveal } }));
+    }
+  });
 
   // =========================================
   // Tags Input
@@ -4142,7 +4605,7 @@ const SoftUI = (() => {
 
   document.addEventListener('click', function(e) {
     const swap = e.target.closest('.sui-swap');
-    if (!swap) return;
+    if (!swap || swap.matches('.sui-password-input .sui-password-toggle')) return;
     if (swap.classList.contains('sui-swap-cycle')) {
       const states = Array.from(swap.querySelectorAll('.sui-swap-state'));
       const current = states.findIndex(function(s) { return s.classList.contains('active'); });
@@ -4229,6 +4692,9 @@ const SoftUI = (() => {
     if (lightboxOverlay) return;
     lightboxOverlay = document.createElement('div');
     lightboxOverlay.className = 'sui-lightbox-overlay';
+    lightboxOverlay.setAttribute('role', 'dialog');
+    lightboxOverlay.setAttribute('aria-modal', 'true');
+    lightboxOverlay.setAttribute('aria-label', 'Image viewer');
     lightboxOverlay.innerHTML =
       '<button class="sui-lightbox-close" aria-label="Close">&times;</button>' +
       '<span class="sui-lightbox-counter"></span>' +
@@ -4253,10 +4719,29 @@ const SoftUI = (() => {
       if (e.key === 'ArrowLeft') showLightboxImage(lightboxIndex - 1);
       if (e.key === 'ArrowRight') showLightboxImage(lightboxIndex + 1);
     });
+    // Keep Tab inside the open viewer (prev/next may be display:none)
+    document.addEventListener('keydown', function(e) {
+      if (e.key !== 'Tab' || !lightboxOverlay || !lightboxOverlay.classList.contains('open')) return;
+      const focusable = getFocusable(lightboxOverlay).filter(function(f) { return f.offsetParent !== null; });
+      if (!focusable.length) return;
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+      const inside = lightboxOverlay.contains(document.activeElement);
+      if (e.shiftKey && (document.activeElement === first || !inside)) {
+        e.preventDefault();
+        last.focus();
+      } else if (!e.shiftKey && (document.activeElement === last || !inside)) {
+        e.preventDefault();
+        first.focus();
+      }
+    });
   }
+
+  let lightboxLastFocus = null;
 
   function openLightbox(images, index) {
     createLightbox();
+    if (!lightboxOverlay.classList.contains('open')) lightboxLastFocus = document.activeElement;
     lightboxImages = images;
     lightboxIndex = index || 0;
     showLightboxImage(lightboxIndex);
@@ -4267,12 +4752,18 @@ const SoftUI = (() => {
     lightboxOverlay.querySelector('.sui-lightbox-prev').style.display = hasMultiple ? '' : 'none';
     lightboxOverlay.querySelector('.sui-lightbox-next').style.display = hasMultiple ? '' : 'none';
     lightboxOverlay.querySelector('.sui-lightbox-counter').style.display = hasMultiple ? '' : 'none';
+    lightboxOverlay.querySelector('.sui-lightbox-close').focus();
   }
 
   function closeLightbox() {
     if (lightboxOverlay) {
+      const wasOpen = lightboxOverlay.classList.contains('open');
       lightboxOverlay.classList.remove('open', 'zoomed');
       document.body.style.overflow = '';
+      if (wasOpen && lightboxLastFocus && lightboxLastFocus.isConnected && lightboxLastFocus.focus) {
+        lightboxLastFocus.focus();
+      }
+      lightboxLastFocus = null;
     }
   }
 
@@ -4302,8 +4793,12 @@ const SoftUI = (() => {
       main.src = thumb.getAttribute('data-src') || img.src;
       main.alt = thumb.getAttribute('data-alt') || img.alt;
     }
-    gallery.querySelectorAll('.sui-lightbox-vertical-strip .sui-lightbox-thumb').forEach(function(t) { t.classList.remove('active'); });
+    gallery.querySelectorAll('.sui-lightbox-vertical-strip .sui-lightbox-thumb').forEach(function(t) {
+      t.classList.remove('active');
+      if (t.dataset.suiKbd) t.setAttribute('aria-pressed', 'false');
+    });
     thumb.classList.add('active');
+    if (thumb.dataset.suiKbd) thumb.setAttribute('aria-pressed', 'true');
   });
 
   // Click main image in vertical gallery to open lightbox
@@ -4342,6 +4837,36 @@ const SoftUI = (() => {
     });
     const index = thumbs.indexOf(thumb);
     openLightbox(images, index);
+  });
+
+  // Thumbnails and the vertical main image act as buttons
+  function lightboxPrime(root) {
+    root.querySelectorAll('.sui-lightbox-thumb, .sui-lightbox-vertical-main').forEach(function(el) {
+      if (el.dataset.suiKbd) return;
+      el.dataset.suiKbd = '1';
+      const inStrip = !!el.closest('.sui-lightbox-vertical-strip');
+      const isMain = el.classList.contains('sui-lightbox-vertical-main');
+      if (!el.hasAttribute('role')) el.setAttribute('role', 'button');
+      if (!el.hasAttribute('tabindex')) el.setAttribute('tabindex', '0');
+      if (!el.hasAttribute('aria-label') && !el.hasAttribute('aria-labelledby')) {
+        const img = el.querySelector('img');
+        const alt = el.getAttribute('data-alt') || (img ? img.alt : '');
+        let label;
+        if (isMain) label = 'Open image in lightbox';
+        else label = (inStrip ? 'Show image' : 'Open image') + (alt ? ': ' + alt : '');
+        el.setAttribute('aria-label', label);
+      }
+      if (inStrip) el.setAttribute('aria-pressed', el.classList.contains('active') ? 'true' : 'false');
+    });
+  }
+
+  document.addEventListener('keydown', function(e) {
+    if (e.key !== 'Enter' && e.key !== ' ') return;
+    if (!e.target.closest) return;
+    const el = e.target.closest('.sui-lightbox-thumb, .sui-lightbox-vertical-main');
+    if (!el || e.target !== el || el.matches('button, a[href]')) return; // native controls already click
+    e.preventDefault();
+    el.click();
   });
 
   // =========================================
@@ -4448,8 +4973,32 @@ const SoftUI = (() => {
   // =========================================
   // Copy Button
   // =========================================
-  const clipboardSvg = '<svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>';
   const checkSvg = '<svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>';
+
+  // execCommand fallback for non-secure contexts / denied Clipboard API.
+  // Restores focus so keyboard users keep their place.
+  function suiExecCopy(str) {
+    const active = document.activeElement;
+    const ta = document.createElement('textarea');
+    ta.value = str; ta.setAttribute('readonly', '');
+    ta.style.position = 'fixed'; ta.style.top = '-9999px'; ta.style.opacity = '0';
+    document.body.appendChild(ta); ta.select();
+    let ok = false;
+    try { ok = document.execCommand('copy'); } catch (_) {}
+    ta.blur();
+    document.body.removeChild(ta);
+    if (active && active.focus) active.focus();
+    return ok ? Promise.resolve() : Promise.reject(new Error('copy failed'));
+  }
+
+  function suiCopyText(str) {
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      let p;
+      try { p = navigator.clipboard.writeText(str); } catch (_) { return suiExecCopy(str); }
+      return p.catch(function() { return suiExecCopy(str); });
+    }
+    return suiExecCopy(str);
+  }
 
   document.addEventListener('click', function(e) {
     const btn = e.target.closest('[data-sui-copy]');
@@ -4464,13 +5013,27 @@ const SoftUI = (() => {
       }
     }
     if (!text) return;
-    try { navigator.clipboard.writeText(text.trim()); } catch (_) {}
-    btn.classList.add('copied');
-    btn.innerHTML = checkSvg;
-    setTimeout(function() {
+    const value = text.trim();
+    // Capture the button's own content only when not mid-feedback
+    if (btn._suiCopyOrig == null) btn._suiCopyOrig = btn.innerHTML;
+    suiCopyText(value).then(function() {
+      btn.classList.remove('copy-failed');
+      btn.classList.add('copied');
+      btn.innerHTML = checkSvg;
+      btn.dispatchEvent(new CustomEvent('sui-copy', { bubbles: true, detail: { text: value } }));
+    }, function(err) {
       btn.classList.remove('copied');
-      btn.innerHTML = clipboardSvg;
-    }, 1500);
+      btn.classList.add('copy-failed');
+      btn.dispatchEvent(new CustomEvent('sui-copy-error', { bubbles: true, detail: { text: value, error: err } }));
+    }).then(function() {
+      // Clear after the async settle (not at click time) so rapid clicks can't race
+      clearTimeout(btn._suiCopyTimer);
+      btn._suiCopyTimer = setTimeout(function() {
+        btn.classList.remove('copied', 'copy-failed');
+        if (btn._suiCopyOrig != null) btn.innerHTML = btn._suiCopyOrig;
+        btn._suiCopyOrig = null;
+      }, 1500);
+    });
   });
 
   // =========================================
@@ -4484,6 +5047,31 @@ const SoftUI = (() => {
       const before = diff.querySelector('.sui-diff-before');
       if (!handle || !before) return;
       const isVertical = diff.classList.contains('sui-diff-vertical');
+      let current = parseFloat(isVertical ? handle.style.top : handle.style.left);
+      if (isNaN(current)) current = 50;
+
+      // Keyboard-operable slider on the handle
+      if (!handle.hasAttribute('role')) handle.setAttribute('role', 'slider');
+      if (!handle.hasAttribute('tabindex')) handle.setAttribute('tabindex', '0');
+      if (!handle.hasAttribute('aria-label') && !handle.hasAttribute('aria-labelledby')) handle.setAttribute('aria-label', 'Comparison position');
+      handle.setAttribute('aria-valuemin', '0');
+      handle.setAttribute('aria-valuemax', '100');
+      handle.setAttribute('aria-valuenow', Math.round(current));
+      handle.setAttribute('aria-orientation', isVertical ? 'vertical' : 'horizontal');
+
+      function setPos(pct) {
+        pct = Math.max(0, Math.min(100, pct));
+        current = pct;
+        if (isVertical) {
+          before.style.clipPath = 'inset(0 0 ' + (100 - pct) + '% 0)';
+          handle.style.top = pct + '%';
+        } else {
+          before.style.clipPath = 'inset(0 ' + (100 - pct) + '% 0 0)';
+          handle.style.left = pct + '%';
+        }
+        handle.setAttribute('aria-valuenow', Math.round(pct));
+        diff.dispatchEvent(new CustomEvent('sui-diff-change', { detail: { value: pct } }));
+      }
 
       function onMove(e) {
         e.preventDefault();
@@ -4492,17 +5080,33 @@ const SoftUI = (() => {
         if (isVertical) {
           const clientY = e.touches ? e.touches[0].clientY : e.clientY;
           pos = Math.max(0, Math.min(1, (clientY - rect.top) / rect.height));
-          const pct = (pos * 100);
-          before.style.clipPath = 'inset(0 0 ' + (100 - pct) + '% 0)';
-          handle.style.top = pct + '%';
         } else {
           const clientX = e.touches ? e.touches[0].clientX : e.clientX;
           pos = Math.max(0, Math.min(1, (clientX - rect.left) / rect.width));
-          const pct = (pos * 100);
-          before.style.clipPath = 'inset(0 ' + (100 - pct) + '% 0 0)';
-          handle.style.left = pct + '%';
         }
+        setPos(pos * 100);
       }
+
+      // Arrows step 1 (Shift: 10), PageUp/PageDown 10, Home/End 0/100.
+      // Position is physical (left/top), so arrows are not mirrored in RTL.
+      handle.addEventListener('keydown', function(e) {
+        const step = e.shiftKey ? 10 : 1;
+        let next = null;
+        if (isVertical) {
+          if (e.key === 'ArrowDown') next = current + step;
+          else if (e.key === 'ArrowUp') next = current - step;
+        } else {
+          if (e.key === 'ArrowRight' || e.key === 'ArrowUp') next = current + step;
+          else if (e.key === 'ArrowLeft' || e.key === 'ArrowDown') next = current - step;
+        }
+        if (e.key === 'PageUp') next = current + 10;
+        else if (e.key === 'PageDown') next = current - 10;
+        else if (e.key === 'Home') next = 0;
+        else if (e.key === 'End') next = 100;
+        if (next === null) return;
+        e.preventDefault();
+        setPos(next);
+      });
 
       function onDown(e) {
         e.preventDefault();
@@ -4569,6 +5173,76 @@ const SoftUI = (() => {
   // =========================================
   // Tree View
   // =========================================
+  let treeIdCount = 0;
+
+  function treeChildren(item) {
+    return item.querySelector(':scope > .sui-tree-children');
+  }
+
+  function treeOwnCheckbox(item) {
+    return item.querySelector(':scope > .sui-tree-label .sui-checkbox input');
+  }
+
+  function setTreeExpanded(item, open) {
+    if (!treeChildren(item)) return;
+    item.classList.toggle('expanded', open);
+    if (item.hasAttribute('aria-expanded')) item.setAttribute('aria-expanded', open ? 'true' : 'false');
+    item.dispatchEvent(new CustomEvent('sui-tree-toggle', { bubbles: true, detail: { expanded: open } }));
+  }
+
+  // Items with no collapsed ancestor item
+  function treeVisibleItems(tree) {
+    return Array.from(tree.querySelectorAll('.sui-tree-item')).filter(function(item) {
+      let p = item.parentElement && item.parentElement.closest('.sui-tree-item');
+      while (p && tree.contains(p)) {
+        if (!p.classList.contains('expanded')) return false;
+        p = p.parentElement && p.parentElement.closest('.sui-tree-item');
+      }
+      return true;
+    });
+  }
+
+  function treeSyncChecked(tree) {
+    tree.querySelectorAll('.sui-tree-item').forEach(function(item) {
+      const cb = treeOwnCheckbox(item);
+      if (cb && item.getAttribute('role') === 'treeitem') {
+        item.setAttribute('aria-checked', cb.indeterminate ? 'mixed' : (cb.checked ? 'true' : 'false'));
+      }
+    });
+  }
+
+  function treeFocus(tree, item) {
+    tree.querySelectorAll('.sui-tree-item[tabindex="0"]').forEach(function(i) { i.setAttribute('tabindex', '-1'); });
+    item.setAttribute('tabindex', '0');
+    item.focus();
+  }
+
+  // WAI-ARIA tree: role/roving tabindex/aria-expanded live on .sui-tree-item
+  function treePrime(tree) {
+    if (tree.dataset.suiKbd) return;
+    tree.dataset.suiKbd = '1';
+    if (!tree.hasAttribute('role')) tree.setAttribute('role', 'tree');
+    tree.querySelectorAll('.sui-tree-item').forEach(function(item) {
+      const label = item.querySelector(':scope > .sui-tree-label');
+      if (!item.hasAttribute('role')) item.setAttribute('role', 'treeitem');
+      if (label && !item.hasAttribute('aria-labelledby') && !item.hasAttribute('aria-label')) {
+        if (!label.id) label.id = 'sui-tree-label-' + (++treeIdCount);
+        item.setAttribute('aria-labelledby', label.id);
+      }
+      const children = treeChildren(item);
+      if (children) {
+        if (!children.hasAttribute('role')) children.setAttribute('role', 'group');
+        item.setAttribute('aria-expanded', item.classList.contains('expanded') ? 'true' : 'false');
+      }
+      const cb = treeOwnCheckbox(item);
+      if (cb) cb.setAttribute('tabindex', '-1');
+      if (!item.hasAttribute('tabindex')) item.setAttribute('tabindex', '-1');
+    });
+    treeSyncChecked(tree);
+    const first = treeVisibleItems(tree)[0];
+    if (first && !tree.querySelector('.sui-tree-item[tabindex="0"]')) first.setAttribute('tabindex', '0');
+  }
+
   document.addEventListener('click', function(e) {
     const label = e.target.closest('.sui-tree-label');
     if (!label) return;
@@ -4576,8 +5250,64 @@ const SoftUI = (() => {
     const item = label.closest('.sui-tree-item');
     const children = item.querySelector('.sui-tree-children');
     if (children) {
-      item.classList.toggle('expanded');
+      setTreeExpanded(item, !item.classList.contains('expanded'));
     }
+  });
+
+  // Keep the roving tabindex on whichever item last received focus
+  document.addEventListener('focusin', function(e) {
+    if (!e.target.closest) return;
+    const item = e.target.closest('.sui-tree-item[role="treeitem"]');
+    if (!item || e.target !== item) return;
+    const tree = item.closest('.sui-tree');
+    if (!tree) return;
+    tree.querySelectorAll('.sui-tree-item[tabindex="0"]').forEach(function(i) { if (i !== item) i.setAttribute('tabindex', '-1'); });
+    item.setAttribute('tabindex', '0');
+  });
+
+  // Keyboard: Up/Down, Right/Left (expand/collapse/move), Home/End, Enter, Space
+  document.addEventListener('keydown', function(e) {
+    if (!e.target.closest || e.altKey || e.ctrlKey || e.metaKey) return;
+    const item = e.target.closest('.sui-tree-item');
+    if (!item || e.target !== item) return;
+    const tree = item.closest('.sui-tree');
+    if (!tree) return;
+    const rtl = getComputedStyle(tree).direction === 'rtl';
+    const inward = rtl ? 'ArrowLeft' : 'ArrowRight';
+    const outward = rtl ? 'ArrowRight' : 'ArrowLeft';
+    const hasChildren = !!treeChildren(item);
+    const expanded = item.classList.contains('expanded');
+    const visible = treeVisibleItems(tree);
+    const i = visible.indexOf(item);
+    let target = null;
+    if (e.key === 'ArrowDown') target = visible[i + 1];
+    else if (e.key === 'ArrowUp') target = visible[i - 1];
+    else if (e.key === 'Home') target = visible[0];
+    else if (e.key === 'End') target = visible[visible.length - 1];
+    else if (e.key === inward) {
+      e.preventDefault();
+      if (hasChildren && !expanded) { setTreeExpanded(item, true); return; }
+      if (hasChildren) target = treeChildren(item).querySelector(':scope > .sui-tree-item');
+    } else if (e.key === outward) {
+      e.preventDefault();
+      if (hasChildren && expanded) { setTreeExpanded(item, false); return; }
+      const parent = item.parentElement && item.parentElement.closest('.sui-tree-item');
+      if (parent && tree.contains(parent)) target = parent;
+    } else if (e.key === 'Enter') {
+      e.preventDefault();
+      if (hasChildren) setTreeExpanded(item, !expanded);
+      return;
+    } else if (e.key === ' ') {
+      e.preventDefault();
+      const cb = treeOwnCheckbox(item);
+      if (cb) cb.click();
+      else if (hasChildren) setTreeExpanded(item, !expanded);
+      return;
+    } else {
+      return;
+    }
+    e.preventDefault();
+    if (target) treeFocus(tree, target);
   });
 
   // Tree checkbox propagation
@@ -4624,6 +5354,24 @@ const SoftUI = (() => {
 
     // Continue up the tree
     updateTreeParent(parentItem);
+  }
+
+  // Mirror checkbox state onto treeitems (registered after the propagation listener)
+  document.addEventListener('change', function(e) {
+    if (!e.target.closest || !e.target.closest('.sui-tree .sui-checkbox input')) return;
+    const tree = e.target.closest('.sui-tree');
+    if (tree.dataset.suiKbd) treeSyncChecked(tree);
+  });
+
+  // Keyboard/ARIA enhancement for rating, colour swatches, tree view and
+  // lightbox thumbnails. Adds only missing attributes; safe to call again.
+  function initKeyboardA11y() {
+    document.querySelectorAll('.sui-rating').forEach(ratingPrime);
+    document.querySelectorAll('.sui-color-picker').forEach(function(picker) {
+      if (picker.querySelector('.sui-color-swatch')) swatchPrime(picker);
+    });
+    document.querySelectorAll('.sui-tree').forEach(treePrime);
+    lightboxPrime(document);
   }
 
   // =========================================

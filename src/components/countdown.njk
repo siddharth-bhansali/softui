@@ -17,6 +17,7 @@ toc:
 <!-- Default -->
 <div class="pg-section" id="section-1">
   <h3 class="pg-section-title">Default</h3>
+  <p class="pg-section-desc"><code>data-date</code> accepts an ISO 8601 date/time (e.g. <code>2028-12-31T00:00:00</code>) or a relative <code>+&lt;n&gt;&lt;y|d|h|m|s&gt;…</code> string such as <code>+2y5d</code> or <code>+6h 30m</code>. An invalid value logs a console warning, shows <code>--</code> in each unit, adds <code>data-countdown-invalid</code>, and never fires <code>countdown:end</code>.</p>
   <div class="pg-section-row">
     <div class="sui-countdown" data-date="+2y5d">
       <div class="sui-countdown-unit">
@@ -50,7 +51,8 @@ toc:
     <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;!-- Absolute date --&gt;
 &lt;div class="sui-countdown" data-date="2028-12-31T00:00:00"&gt;
 
-&lt;!-- Relative date: +2y, +30d, +6h, +45m, +30s --&gt;
+&lt;!-- Relative date: +2y, +30d, +6h, +45m, +30s (combine: +2y5d or +6h 30m) --&gt;
+&lt;!-- Invalid values show "--", warn in the console and never fire countdown:end --&gt;
 &lt;div class="sui-countdown" data-date="+2y5d"&gt;
   &lt;div class="sui-countdown-unit"&gt;
     &lt;div class="sui-countdown-value" data-years&gt;00&lt;/div&gt;

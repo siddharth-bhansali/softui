@@ -14,6 +14,7 @@ toc:
   - Collapsible
   - Collapsed (Icon Only)
   - With Header & Footer
+  - Mobile Drawer
 ---
 
 <!-- Default -->
@@ -21,7 +22,7 @@ toc:
   <h3 class="pg-section-title">Default</h3>
   <div class="pg-section-row">
     <div style="display:flex;border:1px solid var(--sui-bg-dark);border-radius:var(--sui-radius);overflow:hidden;height:340px;width:100%;">
-      <aside class="sui-sidebar sui-sidebar-bordered" style="height:100%;">
+      <aside class="sui-sidebar sui-sidebar-static sui-sidebar-bordered" style="height:100%;">
         <div class="sui-sidebar-content">
           <div class="sui-sidebar-group">
             <h6 class="sui-sidebar-group-label">Main</h6>
@@ -81,7 +82,7 @@ toc:
   <h3 class="pg-section-title">With Groups</h3>
   <div class="pg-section-row">
     <div style="display:flex;border:1px solid var(--sui-bg-dark);border-radius:var(--sui-radius);overflow:hidden;height:380px;width:100%;">
-      <aside class="sui-sidebar sui-sidebar-bordered" style="height:100%;">
+      <aside class="sui-sidebar sui-sidebar-static sui-sidebar-bordered" style="height:100%;">
         <div class="sui-sidebar-content">
           <div class="sui-sidebar-group">
             <h6 class="sui-sidebar-group-label">Platform</h6>
@@ -164,7 +165,7 @@ toc:
   <h3 class="pg-section-title">With Badges</h3>
   <div class="pg-section-row">
     <div style="display:flex;border:1px solid var(--sui-bg-dark);border-radius:var(--sui-radius);overflow:hidden;height:300px;width:100%;">
-      <aside class="sui-sidebar sui-sidebar-bordered" style="height:100%;">
+      <aside class="sui-sidebar sui-sidebar-static sui-sidebar-bordered" style="height:100%;">
         <div class="sui-sidebar-content">
           <div class="sui-sidebar-group">
             <ul class="sui-sidebar-nav">
@@ -212,7 +213,7 @@ toc:
   <h3 class="pg-section-title">Bordered</h3>
   <div class="pg-section-row">
     <div style="display:flex;border:1px solid var(--sui-bg-dark);border-radius:var(--sui-radius);overflow:hidden;height:260px;width:100%;">
-      <aside class="sui-sidebar sui-sidebar-bordered" style="height:100%;">
+      <aside class="sui-sidebar sui-sidebar-static sui-sidebar-bordered" style="height:100%;">
         <div class="sui-sidebar-content">
           <div class="sui-sidebar-group">
             <ul class="sui-sidebar-nav">
@@ -251,7 +252,7 @@ toc:
   <h3 class="pg-section-title">Compact</h3>
   <div class="pg-section-row">
     <div style="display:flex;border:1px solid var(--sui-bg-dark);border-radius:var(--sui-radius);overflow:hidden;height:340px;width:100%;">
-      <aside class="sui-sidebar sui-sidebar-bordered sui-sidebar-compact" style="height:100%;">
+      <aside class="sui-sidebar sui-sidebar-static sui-sidebar-bordered sui-sidebar-compact" style="height:100%;">
         <div class="sui-sidebar-content">
           <div class="sui-sidebar-group">
             <h6 class="sui-sidebar-group-label">Forms</h6>
@@ -324,7 +325,7 @@ toc:
   <h3 class="pg-section-title">Collapsible</h3>
   <div class="pg-section-row">
     <div style="display:flex;border:1px solid var(--sui-bg-dark);border-radius:var(--sui-radius);overflow:hidden;height:420px;width:100%;">
-      <aside class="sui-sidebar sui-sidebar-bordered sui-sidebar-collapsible" style="height:100%;">
+      <aside class="sui-sidebar sui-sidebar-static sui-sidebar-bordered sui-sidebar-collapsible" style="height:100%;">
         <div class="sui-sidebar-header sui-sidebar-header-toggle">
           <div class="sui-sidebar-brand">
             <div class="sui-avatar sui-avatar-sm" style="background:var(--sui-primary);color:#fff;font-weight:700;font-size:12px;">CM</div>
@@ -466,7 +467,7 @@ toc:
   <h3 class="pg-section-title">Collapsed (Icon Only)</h3>
   <div class="pg-section-row">
     <div style="display:flex;border:1px solid var(--sui-bg-dark);border-radius:var(--sui-radius);overflow:hidden;height:320px;width:100%;">
-      <aside class="sui-sidebar sui-sidebar-bordered sui-sidebar-collapsed" style="height:100%;">
+      <aside class="sui-sidebar sui-sidebar-static sui-sidebar-bordered sui-sidebar-collapsed" style="height:100%;">
         <div class="sui-sidebar-content">
           <div class="sui-sidebar-group">
             <ul class="sui-sidebar-nav">
@@ -529,7 +530,7 @@ toc:
   <h3 class="pg-section-title">With Header & Footer</h3>
   <div class="pg-section-row">
     <div style="display:flex;border:1px solid var(--sui-bg-dark);border-radius:var(--sui-radius);overflow:hidden;height:420px;width:100%;">
-      <aside class="sui-sidebar sui-sidebar-bordered" style="height:100%;">
+      <aside class="sui-sidebar sui-sidebar-static sui-sidebar-bordered" style="height:100%;">
         <div class="sui-sidebar-header">
           <div style="display:flex;align-items:center;gap:10px;">
             <div class="sui-avatar sui-avatar-sm" style="background:var(--sui-primary);color:#fff;font-weight:700;font-size:12px;">CM</div>
@@ -656,5 +657,61 @@ toc:
     &lt;/div&gt;
   &lt;/div&gt;
 &lt;/aside&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Mobile Drawer -->
+<div class="pg-section" id="section-9">
+  <h3 class="pg-section-title">Mobile Drawer</h3>
+  <p class="pg-section-desc">Below 900px every <code>sui-sidebar</code> becomes an off-canvas drawer, hidden until opened. Open it with any element carrying <code>data-sidebar-open="#id"</code> (an empty value targets the first sidebar); <code>class="sui-sidebar-trigger sui-sidebar-trigger-mobile"</code> gives a hamburger button that only shows below 900px. A backdrop is created automatically, or place <code>&lt;div class="sui-sidebar-overlay"&gt;&lt;/div&gt;</code> right after the aside. The drawer closes on the backdrop, <kbd>Esc</kbd>, a nav link click, any <code>data-sidebar-close</code> button, or when the viewport grows past 900px. Focus moves into the drawer and is kept there while it is open, the trigger gets <code>aria-expanded</code>, and focus returns to the trigger on close. Add <code>sui-sidebar-static</code> to keep a sidebar inline on small screens, or <code>sui-sidebar-drawer</code> to make it a drawer at every width (as in this demo). Icon-only collapse applies on desktop only. JS API: <code>SoftUI.sidebar('#id').open()</code>, <code>.close()</code>, <code>.isOpen()</code>.</p>
+  <div class="pg-section-row">
+    <button class="sui-btn" data-sidebar-open="#demo-drawer-sidebar" aria-controls="demo-drawer-sidebar">Open sidebar</button>
+    <aside id="demo-drawer-sidebar" class="sui-sidebar sui-sidebar-drawer" aria-label="Demo navigation">
+      <div class="sui-sidebar-header sui-sidebar-header-toggle">
+        <div class="sui-sidebar-brand">
+          <span>CloudMetrics</span>
+        </div>
+        <button class="sui-sidebar-toggle" data-sidebar-close aria-label="Close sidebar">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+      </div>
+      <div class="sui-sidebar-content">
+        <div class="sui-sidebar-group">
+          <h6 class="sui-sidebar-group-label">Main</h6>
+          <ul class="sui-sidebar-nav">
+            <li><a href="#" class="active">Dashboard</a></li>
+            <li><a href="#">Analytics</a></li>
+            <li><a href="#">Customers</a></li>
+            <li><a href="#">Settings</a></li>
+          </ul>
+        </div>
+      </div>
+    </aside>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;button class="sui-btn" data-sidebar-open="#demo-drawer-sidebar" aria-controls="demo-drawer-sidebar"&gt;Open sidebar&lt;/button&gt;
+&lt;aside id="demo-drawer-sidebar" class="sui-sidebar sui-sidebar-drawer" aria-label="Demo navigation"&gt;
+  &lt;div class="sui-sidebar-header sui-sidebar-header-toggle"&gt;
+    &lt;div class="sui-sidebar-brand"&gt;
+      &lt;span&gt;CloudMetrics&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;button class="sui-sidebar-toggle" data-sidebar-close aria-label="Close sidebar"&gt;
+      &lt;svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"&gt;&lt;line x1="18" y1="6" x2="6" y2="18"/&gt;&lt;line x1="6" y1="6" x2="18" y2="18"/&gt;&lt;/svg&gt;
+    &lt;/button&gt;
+  &lt;/div&gt;
+  &lt;div class="sui-sidebar-content"&gt;
+    &lt;div class="sui-sidebar-group"&gt;
+      &lt;h6 class="sui-sidebar-group-label"&gt;Main&lt;/h6&gt;
+      &lt;ul class="sui-sidebar-nav"&gt;
+        &lt;li&gt;&lt;a href="#" class="active"&gt;Dashboard&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="#"&gt;Analytics&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="#"&gt;Customers&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="#"&gt;Settings&lt;/a&gt;&lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/aside&gt;
+</pre></div>
   </div>
 </div>
