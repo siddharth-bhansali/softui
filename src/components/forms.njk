@@ -154,13 +154,14 @@ toc:
 <!-- Password Input -->
 <div class="pg-section" id="section-5">
   <h3 class="pg-section-title">Password Input</h3>
+  <p class="pg-section-desc">The eye button toggles the input between hidden and visible text and keeps <code>aria-pressed</code> in sync (pressed = password shown). It is a native button, so <kbd>Enter</kbd> and <kbd>Space</kbd> work, and its clicks bubble normally to your own listeners. With <code>sui-swap</code> on the button it also fires <code>sui-swap-change</code>.</p>
   <div class="pg-section-row">
     <div style="max-width:400px;width:100%;">
       <div class="sui-form-group">
         <label class="sui-label">Password</label>
         <div class="sui-password-input">
           <input type="password" class="sui-input" id="demo-pw" placeholder="Enter password" autocomplete="new-password" oninput="demoValidatePw()">
-          <button type="button" class="sui-password-toggle sui-swap sui-swap-fade" aria-label="Toggle password visibility">
+          <button type="button" class="sui-password-toggle sui-swap sui-swap-fade" aria-label="Toggle password visibility" aria-pressed="false">
             <span class="sui-swap-on"><svg viewBox="0 0 24 24"><path d="M17.94 17.94A10.07 10.07 0 0112 20c-7 0-11-8-11-8a18.45 18.45 0 015.06-5.94M9.9 4.24A9.12 9.12 0 0112 4c7 0 11 8 11 8a18.5 18.5 0 01-2.16 3.19m-6.72-1.07a3 3 0 11-4.24-4.24"/><line x1="1" y1="1" x2="23" y2="23"/></svg></span>
             <span class="sui-swap-off"><svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></span>
           </button>
@@ -176,7 +177,7 @@ toc:
         <label class="sui-label">Confirm Password</label>
         <div class="sui-password-input">
           <input type="password" class="sui-input" id="demo-pw-confirm" placeholder="Confirm password" autocomplete="new-password" oninput="demoValidatePw()">
-          <button type="button" class="sui-password-toggle sui-swap sui-swap-fade" aria-label="Toggle password visibility">
+          <button type="button" class="sui-password-toggle sui-swap sui-swap-fade" aria-label="Toggle password visibility" aria-pressed="false">
             <span class="sui-swap-on"><svg viewBox="0 0 24 24"><path d="M17.94 17.94A10.07 10.07 0 0112 20c-7 0-11-8-11-8a18.45 18.45 0 015.06-5.94M9.9 4.24A9.12 9.12 0 0112 4c7 0 11 8 11 8a18.5 18.5 0 01-2.16 3.19m-6.72-1.07a3 3 0 11-4.24-4.24"/><line x1="1" y1="1" x2="23" y2="23"/></svg></span>
             <span class="sui-swap-off"><svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></span>
           </button>
@@ -239,7 +240,7 @@ toc:
   &lt;label class="sui-label"&gt;Password&lt;/label&gt;
   &lt;div class="sui-password-input"&gt;
     &lt;input type="password" class="sui-input" placeholder="Enter password"&gt;
-    &lt;button type="button" class="sui-password-toggle sui-swap sui-swap-fade" aria-label="Toggle password visibility"&gt;
+    &lt;button type="button" class="sui-password-toggle sui-swap sui-swap-fade" aria-label="Toggle password visibility" aria-pressed="false"&gt;
       &lt;span class="sui-swap-on"&gt;
         &lt;svg viewBox="0 0 24 24"&gt;&lt;path d="M17.94 17.94A10.07 10.07 0 0112 20c-7 0-11-8-11-8a18.45 18.45 0 015.06-5.94M9.9 4.24A9.12 9.12 0 0112 4c7 0 11 8 11 8a18.5 18.5 0 01-2.16 3.19m-6.72-1.07a3 3 0 11-4.24-4.24"/&gt;&lt;line x1="1" y1="1" x2="23" y2="23"/&gt;&lt;/svg&gt;
       &lt;/span&gt;
@@ -260,7 +261,7 @@ toc:
   &lt;label class="sui-label"&gt;Confirm Password&lt;/label&gt;
   &lt;div class="sui-password-input"&gt;
     &lt;input type="password" class="sui-input" placeholder="Confirm password"&gt;
-    &lt;button type="button" class="sui-password-toggle sui-swap sui-swap-fade" aria-label="Toggle password visibility"&gt;
+    &lt;button type="button" class="sui-password-toggle sui-swap sui-swap-fade" aria-label="Toggle password visibility" aria-pressed="false"&gt;
       &lt;span class="sui-swap-on"&gt;
         &lt;svg viewBox="0 0 24 24"&gt;&lt;path d="M17.94 17.94A10.07 10.07 0 0112 20c-7 0-11-8-11-8a18.45 18.45 0 015.06-5.94M9.9 4.24A9.12 9.12 0 0112 4c7 0 11 8 11 8a18.5 18.5 0 01-2.16 3.19m-6.72-1.07a3 3 0 11-4.24-4.24"/&gt;&lt;line x1="1" y1="1" x2="23" y2="23"/&gt;&lt;/svg&gt;
       &lt;/span&gt;

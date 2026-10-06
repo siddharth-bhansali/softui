@@ -5037,6 +5037,13 @@ select.sui-datatable-filter:focus-visible {
   color: var(--sui-primary-text);
 }
 
+/* Keyboard focus (arrow keys move real focus) — separate rule, like .sui-dropdown-item */
+.sui-context-item:focus-visible {
+  outline: none;
+  background: var(--sui-bg-dark);
+  color: var(--sui-primary-text);
+}
+
 .sui-context-item:active {
   box-shadow: var(--sui-shadow-inset-sm);
 }
@@ -5116,6 +5123,18 @@ select.sui-datatable-filter:focus-visible {
   color: var(--sui-primary-text);
 }
 
+.sui-context-sub-trigger:focus-visible {
+  outline: none;
+  background: var(--sui-bg-dark);
+  color: var(--sui-primary-text);
+}
+
+/* Keep the parent trigger highlighted while its submenu is open */
+.sui-context-sub.open > .sui-context-sub-trigger {
+  background: var(--sui-bg-dark);
+  color: var(--sui-primary-text);
+}
+
 .sui-context-sub-trigger::after {
   content: '';
   width: 5px;
@@ -5168,6 +5187,11 @@ select.sui-datatable-filter:focus-visible {
   color: var(--sui-primary);
 }
 
+.sui-context-item:focus-visible .sui-context-icon,
+.sui-context-sub-trigger:focus-visible .sui-context-icon {
+  color: var(--sui-primary);
+}
+
 /* Context Menu — Destructive */
 .sui-context-item-destructive {
   color: var(--sui-danger-text);
@@ -5175,6 +5199,11 @@ select.sui-datatable-filter:focus-visible {
 
 .sui-context-item-destructive:hover,
 .sui-context-item-destructive.focused {
+  background: var(--sui-danger);
+  color: #fff;
+}
+
+.sui-context-item-destructive:focus-visible {
   background: var(--sui-danger);
   color: #fff;
 }
@@ -9064,38 +9093,38 @@ select.sui-datatable-filter:focus-visible {
   box-shadow: none;
 }
 
-/* --- Collapsed (icon-only) --- */
+/* --- Collapsed (icon-only); full labels return while open as a drawer --- */
 .sui-sidebar-collapsed {
   --sui-sidebar-width: 64px;
 }
 
-.sui-sidebar-collapsed .sui-sidebar-header,
-.sui-sidebar-collapsed .sui-sidebar-content,
-.sui-sidebar-collapsed .sui-sidebar-footer {
+.sui-sidebar-collapsed:not(.sui-sidebar-mobile-open) .sui-sidebar-header,
+.sui-sidebar-collapsed:not(.sui-sidebar-mobile-open) .sui-sidebar-content,
+.sui-sidebar-collapsed:not(.sui-sidebar-mobile-open) .sui-sidebar-footer {
   padding-left: 8px;
   padding-right: 8px;
 }
 
-.sui-sidebar-collapsed .sui-sidebar-group-label,
-.sui-sidebar-collapsed .sui-sidebar-badge,
-.sui-sidebar-collapsed .sui-sidebar-nav li span:not(.sui-sidebar-icon) {
+.sui-sidebar-collapsed:not(.sui-sidebar-mobile-open) .sui-sidebar-group-label,
+.sui-sidebar-collapsed:not(.sui-sidebar-mobile-open) .sui-sidebar-badge,
+.sui-sidebar-collapsed:not(.sui-sidebar-mobile-open) .sui-sidebar-nav li span:not(.sui-sidebar-icon) {
   display: none;
 }
 
-.sui-sidebar-collapsed .sui-sidebar-nav li a,
-.sui-sidebar-collapsed .sui-sidebar-nav li button {
+.sui-sidebar-collapsed:not(.sui-sidebar-mobile-open) .sui-sidebar-nav li a,
+.sui-sidebar-collapsed:not(.sui-sidebar-mobile-open) .sui-sidebar-nav li button {
   justify-content: center;
   padding: 10px;
   gap: 0;
 }
 
-.sui-sidebar-collapsed .sui-sidebar-nav li svg {
+.sui-sidebar-collapsed:not(.sui-sidebar-mobile-open) .sui-sidebar-nav li svg {
   width: 20px;
   height: 20px;
   opacity: 0.85;
 }
 
-.sui-sidebar-collapsed .sui-sidebar-divider {
+.sui-sidebar-collapsed:not(.sui-sidebar-mobile-open) .sui-sidebar-divider {
   margin: 8px 4px;
 }
 
@@ -9144,37 +9173,37 @@ select.sui-datatable-filter:focus-visible {
 }
 
 /* Override static display:none for collapsible — use animated properties instead */
-.sui-sidebar-collapsible.sui-sidebar-collapsed .sui-sidebar-group-label {
+.sui-sidebar-collapsible.sui-sidebar-collapsed:not(.sui-sidebar-mobile-open) .sui-sidebar-group-label {
   display: block;
   opacity: 0;
   max-height: 0;
   margin: 0;
 }
 
-.sui-sidebar-collapsible.sui-sidebar-collapsed .sui-sidebar-badge,
-.sui-sidebar-collapsible.sui-sidebar-collapsed .sui-sidebar-nav li span:not(.sui-sidebar-icon) {
+.sui-sidebar-collapsible.sui-sidebar-collapsed:not(.sui-sidebar-mobile-open) .sui-sidebar-badge,
+.sui-sidebar-collapsible.sui-sidebar-collapsed:not(.sui-sidebar-mobile-open) .sui-sidebar-nav li span:not(.sui-sidebar-icon) {
   position: absolute;
   opacity: 0;
   pointer-events: none;
 }
 
-.sui-sidebar-collapsible.sui-sidebar-collapsed .sui-sidebar-header span,
-.sui-sidebar-collapsible.sui-sidebar-collapsed .sui-sidebar-footer span {
+.sui-sidebar-collapsible.sui-sidebar-collapsed:not(.sui-sidebar-mobile-open) .sui-sidebar-header span,
+.sui-sidebar-collapsible.sui-sidebar-collapsed:not(.sui-sidebar-mobile-open) .sui-sidebar-footer span {
   position: absolute;
   opacity: 0;
   pointer-events: none;
 }
 
-.sui-sidebar-collapsible.sui-sidebar-collapsed .sui-sidebar-header > *:not(.sui-sidebar-toggle) {
+.sui-sidebar-collapsible.sui-sidebar-collapsed:not(.sui-sidebar-mobile-open) .sui-sidebar-header > *:not(.sui-sidebar-toggle) {
   display: none;
 }
 
-.sui-sidebar-collapsible.sui-sidebar-collapsed .sui-sidebar-header {
+.sui-sidebar-collapsible.sui-sidebar-collapsed:not(.sui-sidebar-mobile-open) .sui-sidebar-header {
   display: flex;
   justify-content: center;
 }
 
-.sui-sidebar-collapsible.sui-sidebar-collapsed .sui-sidebar-footer {
+.sui-sidebar-collapsible.sui-sidebar-collapsed:not(.sui-sidebar-mobile-open) .sui-sidebar-footer {
   display: flex;
   justify-content: center;
 }
@@ -9232,44 +9261,87 @@ select.sui-datatable-filter:focus-visible {
   border-color: var(--sui-primary);
 }
 
-/* --- Responsive --- */
+.sui-sidebar-trigger:focus-visible {
+  outline: none;
+  box-shadow: var(--sui-focus-ring, 0 0 0 3px var(--sui-focus-ring-color, color-mix(in srgb, var(--sui-primary) 40%, transparent)));
+}
+
+/* --- Off-canvas drawer ---
+   Below 900px every .sui-sidebar (except .sui-sidebar-static) becomes a drawer,
+   hidden until opened via [data-sidebar-open] or SoftUI.sidebar().open().
+   .sui-sidebar-drawer makes it a drawer at every width. Selectors are
+   .sui-sidebar.* so they beat .sui-sidebar-sticky(.sui-sidebar-nav-offset). */
+.sui-sidebar.sui-sidebar-drawer {
+  position: fixed;
+  inset-block: 0;
+  inset-inline-start: 0;
+  height: 100vh;
+  height: 100dvh;
+  width: min(280px, 85vw);
+  z-index: 200;
+  transform: translateX(-100%);
+  visibility: hidden;
+  box-shadow: none;
+  transition: transform 0.25s ease, visibility 0s linear 0.25s;
+}
+
+.sui-sidebar.sui-sidebar-drawer.sui-sidebar-mobile-open {
+  transform: none;
+  visibility: visible;
+  box-shadow: 8px 0 24px rgba(0, 0, 0, 0.15);
+  transition: transform 0.25s ease, visibility 0s;
+}
+
 @media (max-width: 900px) {
-  .sui-sidebar {
-    display: none;
+  .sui-sidebar:not(.sui-sidebar-static) {
+    position: fixed;
+    inset-block: 0;
+    inset-inline-start: 0;
+    height: 100vh;
+    height: 100dvh;
+    width: min(280px, 85vw);
+    z-index: 200;
+    transform: translateX(-100%);
+    visibility: hidden;
+    box-shadow: none;
+    transition: transform 0.25s ease, visibility 0s linear 0.25s;
   }
 
-  .sui-sidebar.sui-sidebar-mobile-open {
-    display: flex;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 280px;
-    height: 100vh;
-    z-index: 200;
+  .sui-sidebar:not(.sui-sidebar-static).sui-sidebar-mobile-open {
+    transform: none;
+    visibility: visible;
     box-shadow: 8px 0 24px rgba(0, 0, 0, 0.15);
+    transition: transform 0.25s ease, visibility 0s;
   }
 }
 
-/* Sidebar overlay for mobile */
+/* Sidebar overlay (auto-created by JS, or place one right after the aside) */
 .sui-sidebar-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 199;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.3s ease, visibility 0s linear 0.3s;
+}
+
+.sui-sidebar-overlay.open {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transition: opacity 0.3s ease, visibility 0s;
+}
+
+/* Trigger that only shows when the sidebar is a drawer (below 900px) */
+.sui-sidebar-trigger-mobile {
   display: none;
 }
 
 @media (max-width: 900px) {
-  .sui-sidebar-overlay {
-    position: fixed;
-    inset: 0;
-    background: rgba(0, 0, 0, 0.4);
-    z-index: 199;
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.3s ease;
-  }
-
-  .sui-sidebar-overlay.open {
-    display: block;
-    opacity: 1;
-    pointer-events: auto;
+  .sui-sidebar-trigger-mobile {
+    display: inline-flex;
   }
 }
 
@@ -9883,6 +9955,12 @@ select.sui-datatable-filter:focus-visible {
   gap: 2px;
 }
 
+.sui-rating:focus-visible {
+  outline: none;
+  box-shadow: var(--sui-focus-ring, 0 0 0 3px var(--sui-focus-ring-color, color-mix(in srgb, var(--sui-primary) 40%, transparent)));
+  border-radius: var(--sui-radius-xs);
+}
+
 .sui-rating-star {
   width: 24px;
   height: 24px;
@@ -10199,6 +10277,11 @@ select.sui-datatable-filter:focus-visible {
   box-shadow: var(--sui-shadow-raised);
 }
 
+.sui-color-swatch:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--sui-bg), var(--sui-focus-ring, 0 0 0 5px var(--sui-focus-ring-color, color-mix(in srgb, var(--sui-primary) 40%, transparent)));
+}
+
 .sui-color-swatch.active::after {
   content: "";
   position: absolute;
@@ -10402,6 +10485,10 @@ select.sui-datatable-filter:focus-visible {
 
 .sui-color-picker-inset .sui-color-swatch {
   box-shadow: var(--sui-shadow-raised-sm);
+}
+
+.sui-color-picker-inset .sui-color-swatch:focus-visible {
+  box-shadow: 0 0 0 2px var(--sui-bg), var(--sui-focus-ring, 0 0 0 5px var(--sui-focus-ring-color, color-mix(in srgb, var(--sui-primary) 40%, transparent)));
 }
 
 /* Spectrum picker */
@@ -11510,6 +11597,15 @@ select.sui-datatable-filter:focus-visible {
   color: var(--sui-primary-text-hover);
 }
 
+/* Keyboard focus lives on the treeitem; draw the ring on its own label */
+.sui-tree-item:focus-visible {
+  outline: none;
+}
+
+.sui-tree-item:focus-visible > .sui-tree-label {
+  box-shadow: var(--sui-focus-ring, 0 0 0 3px var(--sui-focus-ring-color, color-mix(in srgb, var(--sui-primary) 40%, transparent)));
+}
+
 .sui-tree-toggle {
   width: 16px;
   height: 16px;
@@ -11964,6 +12060,11 @@ select.sui-datatable-filter:focus-visible {
   box-shadow: var(--sui-shadow-raised);
 }
 
+.sui-lightbox-thumb:focus-visible {
+  outline: none;
+  box-shadow: var(--sui-shadow-raised-sm), var(--sui-focus-ring, 0 0 0 3px var(--sui-focus-ring-color, color-mix(in srgb, var(--sui-primary) 40%, transparent)));
+}
+
 .sui-lightbox-thumb img {
   display: block;
   width: 100%;
@@ -12016,6 +12117,11 @@ select.sui-datatable-filter:focus-visible {
   box-shadow: var(--sui-shadow-raised);
 }
 
+.sui-lightbox-vertical-main:focus-visible {
+  outline: none;
+  box-shadow: var(--sui-shadow-raised-sm), var(--sui-focus-ring, 0 0 0 3px var(--sui-focus-ring-color, color-mix(in srgb, var(--sui-primary) 40%, transparent)));
+}
+
 .sui-lightbox-vertical-main img {
   width: 100%;
   height: 100%;
@@ -12042,7 +12148,8 @@ select.sui-datatable-filter:focus-visible {
 }
 
 .sui-lightbox-vertical-strip .sui-lightbox-thumb:hover,
-.sui-lightbox-vertical-strip .sui-lightbox-thumb.active {
+.sui-lightbox-vertical-strip .sui-lightbox-thumb.active,
+.sui-lightbox-vertical-strip .sui-lightbox-thumb:focus-visible {
   opacity: 1;
 }
 
@@ -12287,6 +12394,14 @@ select.sui-datatable-filter:focus-visible {
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
 }
 
+.sui-diff-handle:focus-visible {
+  outline: none;
+}
+
+.sui-diff-handle:focus-visible::before {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2), var(--sui-focus-ring, 0 0 0 3px var(--sui-focus-ring-color, color-mix(in srgb, var(--sui-primary) 40%, transparent)));
+}
+
 .sui-diff-handle-arrows {
   position: absolute;
   top: 50%;
@@ -12521,6 +12636,22 @@ select.sui-datatable-filter:focus-visible {
   color: var(--sui-success);
 }
 
+.sui-copy-btn:focus-visible {
+  outline: none;
+  box-shadow: var(--sui-shadow-raised-sm), var(--sui-focus-ring, 0 0 0 3px var(--sui-focus-ring-color, color-mix(in srgb, var(--sui-primary) 40%, transparent)));
+}
+
+.sui-copy-inline:focus-visible {
+  outline: none;
+  box-shadow: var(--sui-focus-ring, 0 0 0 3px var(--sui-focus-ring-color, color-mix(in srgb, var(--sui-primary) 40%, transparent)));
+}
+
+/* Copy failed (clipboard denied and execCommand fallback failed) */
+.sui-copy-btn.copy-failed,
+.sui-copy-inline.copy-failed {
+  color: var(--sui-danger-text);
+}
+
 /* With input */
 .sui-copy-input {
   display: flex;
@@ -12578,6 +12709,10 @@ select.sui-datatable-filter:focus-visible {
 
 .sui-copy-inset .sui-copy-btn {
   box-shadow: var(--sui-shadow-raised-sm);
+}
+
+.sui-copy-inset .sui-copy-btn:focus-visible {
+  box-shadow: var(--sui-shadow-raised-sm), var(--sui-focus-ring, 0 0 0 3px var(--sui-focus-ring-color, color-mix(in srgb, var(--sui-primary) 40%, transparent)));
 }
 
 /* =========================================
@@ -14083,8 +14218,17 @@ select.sui-datatable-filter:focus-visible {
 /* Dropdown toggle arrow */
 [dir="rtl"] .sui-dropdown-toggle::after { margin-left: 0; margin-right: 6px; }
 
+/* Nav menu sub-menu chevron */
+[dir="rtl"] .sui-nav-menu-sub > .sui-nav-menu-link::after { content: '\2039'; }
+
 /* Sidebar */
 [dir="rtl"] .sui-sidebar-bordered { border-right: none; border-left: 1px solid var(--sui-bg-dark); }
+[dir="rtl"] .sui-sidebar.sui-sidebar-drawer { transform: translateX(100%); }
+[dir="rtl"] .sui-sidebar.sui-sidebar-drawer.sui-sidebar-mobile-open { transform: none; box-shadow: -8px 0 24px rgba(0, 0, 0, 0.15); }
+@media (max-width: 900px) {
+  [dir="rtl"] .sui-sidebar:not(.sui-sidebar-static) { transform: translateX(100%); }
+  [dir="rtl"] .sui-sidebar:not(.sui-sidebar-static).sui-sidebar-mobile-open { transform: none; box-shadow: -8px 0 24px rgba(0, 0, 0, 0.15); }
+}
 
 /* Speed dial corners */
 [dir="rtl"] .sui-speed-dial-br { right: auto; left: 24px; }
@@ -14566,6 +14710,20 @@ button.sui-list-group-item:hover {
   opacity: 1;
 }
 
+.sui-editable:focus-visible {
+  outline: none;
+}
+
+.sui-editable:focus-visible .sui-editable-value {
+  border-color: var(--sui-bg-dark);
+  background: var(--sui-bg-light);
+  box-shadow: var(--sui-focus-ring, 0 0 0 3px var(--sui-focus-ring-color, color-mix(in srgb, var(--sui-primary) 40%, transparent)));
+}
+
+.sui-editable:focus-visible .sui-editable-icon {
+  opacity: 1;
+}
+
 .sui-editable-input {
   padding: 4px 8px;
   font-size: inherit;
@@ -14921,6 +15079,11 @@ button.sui-list-group-item:hover {
   font-weight: 600;
 }
 
+.sui-nav-menu-trigger:focus-visible {
+  outline: none;
+  box-shadow: var(--sui-focus-ring, 0 0 0 3px var(--sui-focus-ring-color, color-mix(in srgb, var(--sui-primary) 40%, transparent)));
+}
+
 /* Arrow */
 .sui-nav-menu-trigger::after {
   content: '';
@@ -14934,7 +15097,7 @@ button.sui-list-group-item:hover {
   transition: transform var(--sui-transition-fast);
 }
 
-.sui-nav-menu-item.open .sui-nav-menu-trigger::after {
+.sui-nav-menu-item.open > .sui-nav-menu-trigger::after {
   transform: rotate(-135deg);
   margin-top: 2px;
 }
@@ -14948,7 +15111,7 @@ a.sui-nav-menu-trigger::after {
 .sui-nav-menu-panel {
   position: absolute;
   top: calc(100% + 6px);
-  left: 0;
+  inset-inline-start: 0;
   min-width: 240px;
   background: var(--sui-bg);
   border-radius: var(--sui-radius-sm);
@@ -14968,7 +15131,9 @@ a.sui-nav-menu-trigger::after {
   height: 10px;
 }
 
-.sui-nav-menu-item.open .sui-nav-menu-panel {
+/* Child combinator so nested sub panels stay display:none (and out of the Tab
+   order) until their own sub opens. Sub panels therefore no longer fade in. */
+.sui-nav-menu-item.open > .sui-nav-menu-panel {
   display: block;
 }
 
@@ -14978,7 +15143,7 @@ a.sui-nav-menu-trigger::after {
   display: none;
 }
 
-.sui-nav-menu-item.open .sui-nav-menu-panel-wide {
+.sui-nav-menu-item.open > .sui-nav-menu-panel-wide {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 8px;
@@ -14992,7 +15157,7 @@ a.sui-nav-menu-trigger::after {
   display: none;
 }
 
-.sui-nav-menu-item.open .sui-nav-menu-panel-full {
+.sui-nav-menu-item.open > .sui-nav-menu-panel-full {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 8px;
@@ -15011,6 +15176,17 @@ a.sui-nav-menu-trigger::after {
 }
 
 .sui-nav-menu-link:hover {
+  background: color-mix(in srgb, var(--sui-primary) var(--sui-tint-hover), transparent);
+}
+
+.sui-nav-menu-link:focus-visible {
+  outline: none;
+  background: color-mix(in srgb, var(--sui-primary) var(--sui-tint-hover), transparent);
+  box-shadow: var(--sui-focus-ring, 0 0 0 3px var(--sui-focus-ring-color, color-mix(in srgb, var(--sui-primary) 40%, transparent)));
+}
+
+/* Sub-menu parent while its flyout is open (click / keyboard) */
+.sui-nav-menu-sub.open > .sui-nav-menu-link {
   background: color-mix(in srgb, var(--sui-primary) var(--sui-tint-hover), transparent);
 }
 
@@ -15107,7 +15283,7 @@ a.sui-nav-menu-trigger::after {
 
 .sui-nav-menu-sub > .sui-nav-menu-panel {
   position: absolute;
-  left: calc(100% + 4px);
+  inset-inline-start: calc(100% + 4px);
   top: -12px;
   display: none;
   pointer-events: none;
@@ -15140,7 +15316,7 @@ a.sui-nav-menu-trigger::after {
   content: '';
   position: absolute;
   top: 0;
-  left: -8px;
+  inset-inline-start: -8px;
   width: 8px;
   height: 100%;
 }
@@ -15161,18 +15337,20 @@ a.sui-nav-menu-trigger::after {
   }
   .sui-nav-menu-panel,
   .sui-nav-menu-panel-wide,
-  .sui-nav-menu-item.open .sui-nav-menu-panel-wide {
+  .sui-nav-menu-item.open > .sui-nav-menu-panel-wide {
     position: static;
     box-shadow: none;
     grid-template-columns: 1fr;
-    padding: 0 0 0 16px;
+    padding: 0;
+    padding-inline-start: 16px;
   }
   .sui-nav-menu-panel-full,
-  .sui-nav-menu-item.open .sui-nav-menu-panel-full {
+  .sui-nav-menu-item.open > .sui-nav-menu-panel-full {
     position: static;
     box-shadow: none;
     grid-template-columns: 1fr;
-    padding: 0 0 0 16px;
+    padding: 0;
+    padding-inline-start: 16px;
   }
 }
 
@@ -15228,7 +15406,7 @@ a.sui-nav-menu-trigger::after {
     color: #000 !important;
   }
 
-  .sui-navbar, .sui-sidebar, .sui-dock, .sui-speed-dial,
+  .sui-navbar, .sui-sidebar, .sui-sidebar-overlay, .sui-dock, .sui-speed-dial,
   .sui-modal-backdrop, .sui-sheet-backdrop, .sui-toast-container,
   .sui-tour-overlay, .sui-tour-tooltip, .sui-command-dialog,
   .sui-tooltip, .sui-popover-content, .sui-dropdown-menu,

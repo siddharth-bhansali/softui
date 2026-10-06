@@ -199,7 +199,7 @@ toc:
 <!-- Loop Rewind -->
 <div class="pg-section" id="section-4">
   <h3 class="pg-section-title">Loop Rewind</h3>
-  <p style="font-size:13px;color:var(--sui-text-light);margin-bottom:16px;">Use <code>data-sui-loop="rewind"</code> to wrap around by scrolling back to the beginning instead of seamlessly continuing.</p>
+  <p style="font-size:13px;color:var(--sui-text-light);margin-bottom:16px;">Use <code>data-sui-loop="rewind"</code> to wrap around by scrolling back to the beginning instead of seamlessly continuing. With multiple items per view, rewind never scrolls past the last full page: dots and <code>goTo()</code> beyond it stop on the last page. A seamless loop with no more slides than are visible stays put. The arrows and dots are native buttons with <code>aria-label</code>s, so they work with <kbd>Tab</kbd>, <kbd>Enter</kbd> and <kbd>Space</kbd>.</p>
   <div class="pg-section-row">
     <div class="sui-carousel" id="carouselRewind" data-sui-loop="rewind" style="max-width:480px;">
       <div class="sui-carousel-track">

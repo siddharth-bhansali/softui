@@ -18,6 +18,7 @@ toc:
 <!-- Default -->
 <div class="pg-section" id="section-1">
   <h3 class="pg-section-title">Default</h3>
+  <p class="pg-section-desc">On success the button shows a check for 1.5s, then restores its own content (custom icons and text labels are kept) and fires <code>sui-copy</code>. If copying fails it shows a cross for 1.5s, gets <code>.copy-failed</code> (danger colour) and fires <code>sui-copy-error</code>. Both events bubble and carry <code>detail.text</code>. Where the Clipboard API is missing or denied (e.g. plain http) it falls back to <code>execCommand('copy')</code>, keeping keyboard focus on the button. Copy buttons are native buttons, so <kbd>Enter</kbd> and <kbd>Space</kbd> work and they show a focus ring.</p>
   <div class="pg-section-row">
     <div style="display:flex;flex-direction:column;gap:12px;max-width:400px;">
       <div class="sui-copy">
@@ -43,8 +44,14 @@ toc:
   &lt;/button&gt;
 &lt;/div&gt;
 
-&lt;!-- Click the button — icon swaps to checkmark for 1.5s --&gt;
-&lt;!-- Text is auto-read from .sui-copy-text sibling --&gt;</pre></div>
+&lt;!-- Click the button — icon swaps to checkmark for 1.5s, then the original content returns --&gt;
+&lt;!-- Text is auto-read from .sui-copy-text sibling --&gt;
+
+&lt;!-- Events (bubble, detail.text): sui-copy on success, sui-copy-error on failure (.copy-failed) --&gt;
+&lt;script&gt;
+  document.addEventListener('sui-copy', function(e) { console.log('Copied', e.detail.text); });
+  document.addEventListener('sui-copy-error', function(e) { console.warn('Copy failed', e.detail.error); });
+&lt;/script&gt;</pre></div>
   </div>
 </div>
 
