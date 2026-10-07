@@ -5,23 +5,28 @@ description: A composable sidebar navigation component with header, content grou
 componentId: sidebar
 hasControls: false
 requiresJs: true
+partialJs: true
 toc:
   - Default
   - With Groups
   - With Badges
   - Bordered
+  - Inset
+  - Sizes
   - Compact
   - Collapsible
   - Collapsed (Icon Only)
   - With Header & Footer
+  - Mobile Drawer
+  - Reference
 ---
 
 <!-- Default -->
 <div class="pg-section" id="section-1">
   <h3 class="pg-section-title">Default</h3>
   <div class="pg-section-row">
-    <div style="display:flex;border:1px solid var(--sui-bg-dark);border-radius:var(--sui-radius);overflow:hidden;height:340px;width:100%;">
-      <aside class="sui-sidebar sui-sidebar-bordered" style="height:100%;">
+    <div style="display:flex;border:1px solid var(--sui-bg-dark);border-radius:var(--sui-radius);overflow:hidden;height:400px;width:100%;">
+      <aside class="sui-sidebar sui-sidebar-static" style="height:100%;">
         <div class="sui-sidebar-content">
           <div class="sui-sidebar-group">
             <h6 class="sui-sidebar-group-label">Main</h6>
@@ -49,7 +54,7 @@ toc:
   </div>
   <div class="pg-code-wrap">
     <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
-    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;aside class="sui-sidebar sui-sidebar-bordered"&gt;
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;aside class="sui-sidebar sui-sidebar-static"&gt;
   &lt;div class="sui-sidebar-content"&gt;
     &lt;div class="sui-sidebar-group"&gt;
       &lt;h6 class="sui-sidebar-group-label"&gt;Main&lt;/h6&gt;
@@ -71,8 +76,7 @@ toc:
       &lt;/ul&gt;
     &lt;/div&gt;
   &lt;/div&gt;
-&lt;/aside&gt;
-</pre></div>
+&lt;/aside&gt;</pre></div>
   </div>
 </div>
 
@@ -81,7 +85,7 @@ toc:
   <h3 class="pg-section-title">With Groups</h3>
   <div class="pg-section-row">
     <div style="display:flex;border:1px solid var(--sui-bg-dark);border-radius:var(--sui-radius);overflow:hidden;height:380px;width:100%;">
-      <aside class="sui-sidebar sui-sidebar-bordered" style="height:100%;">
+      <aside class="sui-sidebar sui-sidebar-static" style="height:100%;">
         <div class="sui-sidebar-content">
           <div class="sui-sidebar-group">
             <h6 class="sui-sidebar-group-label">Platform</h6>
@@ -121,7 +125,7 @@ toc:
   </div>
   <div class="pg-code-wrap">
     <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
-    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;aside class="sui-sidebar sui-sidebar-bordered"&gt;
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;aside class="sui-sidebar sui-sidebar-static"&gt;
   &lt;div class="sui-sidebar-content"&gt;
     &lt;div class="sui-sidebar-group"&gt;
       &lt;h6 class="sui-sidebar-group-label"&gt;Platform&lt;/h6&gt;
@@ -164,7 +168,7 @@ toc:
   <h3 class="pg-section-title">With Badges</h3>
   <div class="pg-section-row">
     <div style="display:flex;border:1px solid var(--sui-bg-dark);border-radius:var(--sui-radius);overflow:hidden;height:300px;width:100%;">
-      <aside class="sui-sidebar sui-sidebar-bordered" style="height:100%;">
+      <aside class="sui-sidebar sui-sidebar-static" style="height:100%;">
         <div class="sui-sidebar-content">
           <div class="sui-sidebar-group">
             <ul class="sui-sidebar-nav">
@@ -182,7 +186,7 @@ toc:
   </div>
   <div class="pg-code-wrap">
     <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
-    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;aside class="sui-sidebar sui-sidebar-bordered"&gt;
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;aside class="sui-sidebar sui-sidebar-static"&gt;
   &lt;div class="sui-sidebar-content"&gt;
     &lt;div class="sui-sidebar-group"&gt;
       &lt;ul class="sui-sidebar-nav"&gt;
@@ -212,7 +216,7 @@ toc:
   <h3 class="pg-section-title">Bordered</h3>
   <div class="pg-section-row">
     <div style="display:flex;border:1px solid var(--sui-bg-dark);border-radius:var(--sui-radius);overflow:hidden;height:260px;width:100%;">
-      <aside class="sui-sidebar sui-sidebar-bordered" style="height:100%;">
+      <aside class="sui-sidebar sui-sidebar-static sui-sidebar-bordered" style="height:100%;">
         <div class="sui-sidebar-content">
           <div class="sui-sidebar-group">
             <ul class="sui-sidebar-nav">
@@ -224,14 +228,116 @@ toc:
           </div>
         </div>
       </aside>
-      <div style="flex:1;padding:24px;display:flex;align-items:center;justify-content:center;color:var(--sui-text-muted);font-size:14px;">
-        <code style="font-size:13px;">sui-sidebar-bordered</code> &mdash; uses a border instead of box-shadow
+      <div class="docs-caption-pane" style="flex:1;min-width:0;padding:24px;display:flex;align-items:center;justify-content:center;color:var(--sui-text-muted);font-size:14px;">
+        <p style="margin:0;min-width:0;overflow-wrap:anywhere;text-align:center;"><code style="font-size:13px;">sui-sidebar-bordered</code> &mdash; uses a border instead of box-shadow</p>
       </div>
     </div>
   </div>
   <div class="pg-code-wrap">
     <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
-    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;aside class="sui-sidebar sui-sidebar-bordered"&gt;
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;aside class="sui-sidebar sui-sidebar-static sui-sidebar-bordered"&gt;
+  &lt;div class="sui-sidebar-content"&gt;
+    &lt;div class="sui-sidebar-group"&gt;
+      &lt;ul class="sui-sidebar-nav"&gt;
+        &lt;li&gt;&lt;a href="#" class="active"&gt;Home&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="#"&gt;About&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="#"&gt;Services&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="#"&gt;Contact&lt;/a&gt;&lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/aside&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Inset -->
+<div class="pg-section" id="section-5">
+  <h3 class="pg-section-title">Inset</h3>
+  <div class="pg-section-row">
+    <div style="display:flex;border:1px solid var(--sui-bg-dark);border-radius:var(--sui-radius);overflow:hidden;height:260px;width:100%;">
+      <aside class="sui-sidebar sui-sidebar-static sui-sidebar-inset" style="height:100%;">
+        <div class="sui-sidebar-content">
+          <div class="sui-sidebar-group">
+            <ul class="sui-sidebar-nav">
+              <li><a href="#" class="active">Home</a></li>
+              <li><a href="#">About</a></li>
+              <li><a href="#">Services</a></li>
+              <li><a href="#">Contact</a></li>
+            </ul>
+          </div>
+        </div>
+      </aside>
+      <div class="docs-caption-pane" style="flex:1;min-width:0;padding:24px;display:flex;align-items:center;justify-content:center;color:var(--sui-text-muted);font-size:14px;">
+        <p style="margin:0;min-width:0;overflow-wrap:anywhere;text-align:center;"><code style="font-size:13px;">sui-sidebar-inset</code> &mdash; flat and transparent, blends with the page</p>
+      </div>
+    </div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;aside class="sui-sidebar sui-sidebar-static sui-sidebar-inset"&gt;
+  &lt;div class="sui-sidebar-content"&gt;
+    &lt;div class="sui-sidebar-group"&gt;
+      &lt;ul class="sui-sidebar-nav"&gt;
+        &lt;li&gt;&lt;a href="#" class="active"&gt;Home&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="#"&gt;About&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="#"&gt;Services&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="#"&gt;Contact&lt;/a&gt;&lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/aside&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Sizes -->
+<div class="pg-section" id="section-6">
+  <h3 class="pg-section-title">Sizes</h3>
+  <div class="pg-section-row" style="align-items:flex-start;gap:24px;flex-wrap:wrap;">
+    <div style="display:flex;border:1px solid var(--sui-bg-dark);border-radius:var(--sui-radius);overflow:hidden;height:220px;">
+      <aside class="sui-sidebar sui-sidebar-static sui-sidebar-sm" style="height:100%;">
+        <div class="sui-sidebar-content">
+          <div class="sui-sidebar-group">
+            <ul class="sui-sidebar-nav">
+              <li><a href="#" class="active">Home</a></li>
+              <li><a href="#">About</a></li>
+              <li><a href="#">Services</a></li>
+              <li><a href="#">Contact</a></li>
+            </ul>
+          </div>
+        </div>
+      </aside>
+    </div>
+    <div style="display:flex;border:1px solid var(--sui-bg-dark);border-radius:var(--sui-radius);overflow:hidden;height:220px;">
+      <aside class="sui-sidebar sui-sidebar-static sui-sidebar-lg" style="height:100%;">
+        <div class="sui-sidebar-content">
+          <div class="sui-sidebar-group">
+            <ul class="sui-sidebar-nav">
+              <li><a href="#" class="active">Home</a></li>
+              <li><a href="#">About</a></li>
+              <li><a href="#">Services</a></li>
+              <li><a href="#">Contact</a></li>
+            </ul>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;aside class="sui-sidebar sui-sidebar-static sui-sidebar-sm"&gt;
+  &lt;div class="sui-sidebar-content"&gt;
+    &lt;div class="sui-sidebar-group"&gt;
+      &lt;ul class="sui-sidebar-nav"&gt;
+        &lt;li&gt;&lt;a href="#" class="active"&gt;Home&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="#"&gt;About&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="#"&gt;Services&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="#"&gt;Contact&lt;/a&gt;&lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/aside&gt;
+
+&lt;aside class="sui-sidebar sui-sidebar-static sui-sidebar-lg"&gt;
   &lt;div class="sui-sidebar-content"&gt;
     &lt;div class="sui-sidebar-group"&gt;
       &lt;ul class="sui-sidebar-nav"&gt;
@@ -247,11 +353,11 @@ toc:
 </div>
 
 <!-- Compact -->
-<div class="pg-section" id="section-5">
+<div class="pg-section" id="section-7">
   <h3 class="pg-section-title">Compact</h3>
   <div class="pg-section-row">
     <div style="display:flex;border:1px solid var(--sui-bg-dark);border-radius:var(--sui-radius);overflow:hidden;height:340px;width:100%;">
-      <aside class="sui-sidebar sui-sidebar-bordered sui-sidebar-compact" style="height:100%;">
+      <aside class="sui-sidebar sui-sidebar-static sui-sidebar-compact" style="height:100%;">
         <div class="sui-sidebar-content">
           <div class="sui-sidebar-group">
             <h6 class="sui-sidebar-group-label">Forms</h6>
@@ -280,14 +386,14 @@ toc:
           </div>
         </div>
       </aside>
-      <div style="flex:1;padding:24px;display:flex;align-items:center;justify-content:center;color:var(--sui-text-muted);font-size:14px;">
-        A tighter, docs-style sidebar. Uses <code style="font-size:13px;">sui-sidebar-compact</code>
+      <div class="docs-caption-pane" style="flex:1;min-width:0;padding:24px;display:flex;align-items:center;justify-content:center;color:var(--sui-text-muted);font-size:14px;">
+        <p style="margin:0;min-width:0;overflow-wrap:anywhere;text-align:center;">A tighter, docs-style sidebar. Uses <code style="font-size:13px;">sui-sidebar-compact</code></p>
       </div>
     </div>
   </div>
   <div class="pg-code-wrap">
     <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
-    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;aside class="sui-sidebar sui-sidebar-bordered sui-sidebar-compact"&gt;
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;aside class="sui-sidebar sui-sidebar-static sui-sidebar-compact"&gt;
   &lt;div class="sui-sidebar-content"&gt;
     &lt;div class="sui-sidebar-group"&gt;
       &lt;h6 class="sui-sidebar-group-label"&gt;Forms&lt;/h6&gt;
@@ -320,11 +426,11 @@ toc:
 </div>
 
 <!-- Collapsible -->
-<div class="pg-section" id="section-6">
+<div class="pg-section" id="section-8">
   <h3 class="pg-section-title">Collapsible</h3>
   <div class="pg-section-row">
     <div style="display:flex;border:1px solid var(--sui-bg-dark);border-radius:var(--sui-radius);overflow:hidden;height:420px;width:100%;">
-      <aside class="sui-sidebar sui-sidebar-bordered sui-sidebar-collapsible" style="height:100%;">
+      <aside id="app-sidebar" class="sui-sidebar sui-sidebar-static sui-sidebar-collapsible" style="height:100%;">
         <div class="sui-sidebar-header sui-sidebar-header-toggle">
           <div class="sui-sidebar-brand">
             <div class="sui-avatar sui-avatar-sm" style="background:var(--sui-primary);color:#fff;font-weight:700;font-size:12px;">CM</div>
@@ -381,14 +487,14 @@ toc:
           </div>
         </div>
       </aside>
-      <div style="flex:1;padding:24px;display:flex;align-items:center;justify-content:center;color:var(--sui-text-muted);font-size:14px;">
-        Click the toggle button in the header to collapse &amp; expand.
+      <div class="docs-caption-pane" style="flex:1;min-width:0;padding:24px;display:flex;align-items:center;justify-content:center;color:var(--sui-text-muted);font-size:14px;">
+        <p style="margin:0;min-width:0;overflow-wrap:anywhere;text-align:center;">Click the toggle button in the header to collapse &amp; expand.</p>
       </div>
     </div>
   </div>
   <div class="pg-code-wrap">
     <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
-    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;aside class="sui-sidebar sui-sidebar-bordered sui-sidebar-collapsible"&gt;
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;aside id="app-sidebar" class="sui-sidebar sui-sidebar-static sui-sidebar-collapsible"&gt;
   &lt;div class="sui-sidebar-header sui-sidebar-header-toggle"&gt;
     &lt;div class="sui-sidebar-brand"&gt;
       &lt;div class="sui-avatar sui-avatar-sm" style="background:var(--sui-primary);color:#fff;font-weight:700;font-size:12px;"&gt;CM&lt;/div&gt;
@@ -401,7 +507,7 @@ toc:
       &lt;/svg&gt;
     &lt;/button&gt;
   &lt;/div&gt;
-  &lt;div class="sui-sidebar-divider"&gt;&lt;/div&gt;
+  &lt;div class="sui-sidebar-divider" style="margin:0 0 4px;"&gt;&lt;/div&gt;
 
   &lt;div class="sui-sidebar-content"&gt;
     &lt;div class="sui-sidebar-group"&gt;
@@ -442,7 +548,7 @@ toc:
     &lt;/div&gt;
   &lt;/div&gt;
 
-  &lt;div class="sui-sidebar-divider"&gt;&lt;/div&gt;
+  &lt;div class="sui-sidebar-divider" style="margin:4px 0 0;"&gt;&lt;/div&gt;
   &lt;div class="sui-sidebar-footer"&gt;
     &lt;div style="display:flex;align-items:center;gap:10px;"&gt;
       &lt;div class="sui-avatar sui-avatar-sm" style="background:var(--sui-success);color:#fff;font-weight:600;font-size:11px;flex-shrink:0;"&gt;JD&lt;/div&gt;
@@ -453,7 +559,7 @@ toc:
 
 &lt;!-- Or toggle programmatically --&gt;
 &lt;script&gt;
-  const sb = SoftUI.sidebar('.my-sidebar');
+  const sb = SoftUI.sidebar('#app-sidebar');
   sb.toggle();   // toggle collapsed
   sb.collapse(); // force collapse
   sb.expand();   // force expand
@@ -462,11 +568,11 @@ toc:
 </div>
 
 <!-- Collapsed (Icon Only) -->
-<div class="pg-section" id="section-7">
+<div class="pg-section" id="section-9">
   <h3 class="pg-section-title">Collapsed (Icon Only)</h3>
   <div class="pg-section-row">
     <div style="display:flex;border:1px solid var(--sui-bg-dark);border-radius:var(--sui-radius);overflow:hidden;height:320px;width:100%;">
-      <aside class="sui-sidebar sui-sidebar-bordered sui-sidebar-collapsed" style="height:100%;">
+      <aside class="sui-sidebar sui-sidebar-static sui-sidebar-collapsed" style="height:100%;">
         <div class="sui-sidebar-content">
           <div class="sui-sidebar-group">
             <ul class="sui-sidebar-nav">
@@ -490,14 +596,14 @@ toc:
           </div>
         </div>
       </aside>
-      <div style="flex:1;padding:24px;display:flex;align-items:center;justify-content:center;color:var(--sui-text-muted);font-size:14px;">
-        Add <code style="font-size:13px;">sui-sidebar-collapsed</code> for icon-only mode. Labels and badges are hidden automatically.
+      <div class="docs-caption-pane" style="flex:1;min-width:0;padding:24px;display:flex;align-items:center;justify-content:center;color:var(--sui-text-muted);font-size:14px;">
+        <p style="margin:0;min-width:0;overflow-wrap:anywhere;text-align:center;">Add <code style="font-size:13px;">sui-sidebar-collapsed</code> for icon-only mode. Labels and badges are hidden automatically.</p>
       </div>
     </div>
   </div>
   <div class="pg-code-wrap">
     <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
-    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;aside class="sui-sidebar sui-sidebar-bordered sui-sidebar-collapsed"&gt;
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;aside class="sui-sidebar sui-sidebar-static sui-sidebar-collapsed"&gt;
   &lt;div class="sui-sidebar-content"&gt;
     &lt;div class="sui-sidebar-group"&gt;
       &lt;ul class="sui-sidebar-nav"&gt;
@@ -525,11 +631,11 @@ toc:
 </div>
 
 <!-- With Header & Footer -->
-<div class="pg-section" id="section-8">
+<div class="pg-section" id="section-10">
   <h3 class="pg-section-title">With Header & Footer</h3>
   <div class="pg-section-row">
-    <div style="display:flex;border:1px solid var(--sui-bg-dark);border-radius:var(--sui-radius);overflow:hidden;height:420px;width:100%;">
-      <aside class="sui-sidebar sui-sidebar-bordered" style="height:100%;">
+    <div style="display:flex;border:1px solid var(--sui-bg-dark);border-radius:var(--sui-radius);overflow:hidden;height:470px;width:100%;">
+      <aside class="sui-sidebar sui-sidebar-static" style="height:100%;">
         <div class="sui-sidebar-header">
           <div style="display:flex;align-items:center;gap:10px;">
             <div class="sui-avatar sui-avatar-sm" style="background:var(--sui-primary);color:#fff;font-weight:700;font-size:12px;">CM</div>
@@ -594,7 +700,7 @@ toc:
   </div>
   <div class="pg-code-wrap">
     <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
-    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;aside class="sui-sidebar sui-sidebar-bordered"&gt;
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;aside class="sui-sidebar sui-sidebar-static"&gt;
   &lt;div class="sui-sidebar-header"&gt;
     &lt;div style="display:flex;align-items:center;gap:10px;"&gt;
       &lt;div class="sui-avatar sui-avatar-sm" style="background:var(--sui-primary);color:#fff;font-weight:700;font-size:12px;"&gt;CM&lt;/div&gt;
@@ -604,7 +710,7 @@ toc:
       &lt;/div&gt;
     &lt;/div&gt;
   &lt;/div&gt;
-  &lt;div class="sui-sidebar-divider"&gt;&lt;/div&gt;
+  &lt;div class="sui-sidebar-divider" style="margin:0 0 4px;"&gt;&lt;/div&gt;
 
   &lt;div class="sui-sidebar-content"&gt;
     &lt;div class="sui-sidebar-group"&gt;
@@ -645,7 +751,7 @@ toc:
     &lt;/div&gt;
   &lt;/div&gt;
 
-  &lt;div class="sui-sidebar-divider"&gt;&lt;/div&gt;
+  &lt;div class="sui-sidebar-divider" style="margin:4px 0 0;"&gt;&lt;/div&gt;
   &lt;div class="sui-sidebar-footer"&gt;
     &lt;div style="display:flex;align-items:center;gap:10px;"&gt;
       &lt;div class="sui-avatar sui-avatar-sm" style="background:var(--sui-success);color:#fff;font-weight:600;font-size:11px;"&gt;JD&lt;/div&gt;
@@ -656,5 +762,95 @@ toc:
     &lt;/div&gt;
   &lt;/div&gt;
 &lt;/aside&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Mobile Drawer -->
+<div class="pg-section" id="section-11">
+  <h3 class="pg-section-title">Mobile Drawer</h3>
+  <p style="font-size:13px;color:var(--sui-text-light);margin-bottom:16px;">Below 900px every sidebar becomes a drawer like this; <code>sui-sidebar-drawer</code> makes it one at any width.</p>
+  <div class="pg-section-row">
+    <button class="sui-sidebar-trigger" data-sidebar-open="#demo-drawer-sidebar" aria-controls="demo-drawer-sidebar" aria-label="Open sidebar"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
+    <aside id="demo-drawer-sidebar" class="sui-sidebar sui-sidebar-drawer" aria-label="Demo navigation">
+      <div class="sui-sidebar-header sui-sidebar-header-toggle">
+        <div class="sui-sidebar-brand">
+          <span>CloudMetrics</span>
+        </div>
+        <button class="sui-sidebar-toggle" data-sidebar-close aria-label="Close sidebar">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+      </div>
+      <div class="sui-sidebar-content">
+        <div class="sui-sidebar-group">
+          <h6 class="sui-sidebar-group-label">Main</h6>
+          <ul class="sui-sidebar-nav">
+            <li><a href="#section-11" class="active">Dashboard</a></li>
+            <li><a href="#section-11">Analytics</a></li>
+            <li><a href="#section-11">Customers</a></li>
+            <li><a href="#section-11">Settings</a></li>
+          </ul>
+        </div>
+      </div>
+    </aside>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;button class="sui-sidebar-trigger" data-sidebar-open="#demo-drawer-sidebar" aria-controls="demo-drawer-sidebar" aria-label="Open sidebar"&gt;
+  &lt;svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"&gt;&lt;line x1="3" y1="6" x2="21" y2="6"/&gt;&lt;line x1="3" y1="12" x2="21" y2="12"/&gt;&lt;line x1="3" y1="18" x2="21" y2="18"/&gt;&lt;/svg&gt;
+&lt;/button&gt;
+&lt;aside id="demo-drawer-sidebar" class="sui-sidebar sui-sidebar-drawer" aria-label="Demo navigation"&gt;
+  &lt;div class="sui-sidebar-header sui-sidebar-header-toggle"&gt;
+    &lt;div class="sui-sidebar-brand"&gt;
+      &lt;span&gt;CloudMetrics&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;button class="sui-sidebar-toggle" data-sidebar-close aria-label="Close sidebar"&gt;
+      &lt;svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"&gt;&lt;line x1="18" y1="6" x2="6" y2="18"/&gt;&lt;line x1="6" y1="6" x2="18" y2="18"/&gt;&lt;/svg&gt;
+    &lt;/button&gt;
+  &lt;/div&gt;
+  &lt;div class="sui-sidebar-content"&gt;
+    &lt;div class="sui-sidebar-group"&gt;
+      &lt;h6 class="sui-sidebar-group-label"&gt;Main&lt;/h6&gt;
+      &lt;ul class="sui-sidebar-nav"&gt;
+        &lt;li&gt;&lt;a href="#" class="active"&gt;Dashboard&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="#"&gt;Analytics&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="#"&gt;Customers&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="#"&gt;Settings&lt;/a&gt;&lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/aside&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Reference -->
+<div class="pg-section" id="section-12">
+  <h3 class="pg-section-title">Reference</h3>
+  <div class="docs-table-wrap">
+    <table class="sui-table sui-table-compact">
+      <thead>
+        <tr><th scope="col" style="width:40%;">Class / Attribute / Key</th><th scope="col">Description</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><code>data-sidebar-open="#id"</code></td><td>Toggles the drawer (empty value: the first non-static sidebar) and sets <code>aria-expanded</code> on the trigger.</td></tr>
+        <tr><td><code>data-sidebar-close</code></td><td>Closes the drawer it sits in, or the one named by an optional <code>"#id"</code> value.</td></tr>
+        <tr><td><code>data-sidebar-toggle</code></td><td>Collapses or expands its sidebar to an icon-only rail.</td></tr>
+        <tr><td><code>sui-sidebar-trigger</code></td><td>Square trigger button for <code>data-sidebar-open</code>.</td></tr>
+        <tr><td><code>sui-sidebar-trigger-mobile</code></td><td>Shows the trigger only below 900px.</td></tr>
+        <tr><td><code>sui-sidebar-overlay</code></td><td>Optional backdrop right after the aside; created automatically if missing.</td></tr>
+        <tr><td><code>sui-sidebar-static</code></td><td>Stays inline below 900px (used by the demos above).</td></tr>
+        <tr><td><code>sui-sidebar-drawer</code></td><td>Drawer at every width.</td></tr>
+        <tr><td><code>sui-sidebar-bordered</code></td><td>Right border instead of the raised shadow.</td></tr>
+        <tr><td><code>sui-sidebar-inset</code></td><td>No shadow and a transparent background.</td></tr>
+        <tr><td><code>sui-sidebar-sm</code> / <code>sui-sidebar-lg</code></td><td>200px / 300px wide (default 260px, set by <code>--sui-sidebar-width</code>).</td></tr>
+        <tr><td><code>sui-sidebar-compact</code></td><td>220px wide with tighter, docs-style spacing.</td></tr>
+        <tr><td><code>sui-sidebar-sticky</code></td><td>Sticks to the top of the viewport at full height.</td></tr>
+        <tr><td><code>sui-sidebar-nav-offset</code></td><td>With <code>sui-sidebar-sticky</code>, starts 56px down to clear a fixed navbar.</td></tr>
+        <tr><td><code>sui-sidebar-collapsible</code></td><td>Animates labels and badges when collapsing.</td></tr>
+        <tr><td><code>sui-sidebar-collapsed</code></td><td>Icon-only rail; shows full labels when opened as a drawer.</td></tr>
+        <tr><td><code>sui-sidebar-header-toggle</code></td><td>Header layout with the brand and a toggle button side by side.</td></tr>
+        <tr><td><kbd class="sui-kbd-inline">Esc</kbd></td><td>Closes the drawer, as do the backdrop, a nav item click, or growing past 900px. Focus stays inside while open and returns to the trigger.</td></tr>
+        <tr><td><code>SoftUI.sidebar('#id')</code></td><td><code>.open()</code>, <code>.close()</code>, <code>.isOpen()</code>, <code>.toggle()</code>, <code>.collapse()</code>, <code>.expand()</code>, <code>.isCollapsed()</code>, <code>.el</code>.</td></tr>
+      </tbody>
+    </table>
   </div>
 </div>

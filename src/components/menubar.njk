@@ -13,12 +13,13 @@ toc:
   - Disabled Items
   - With Icons
   - Hover to Open
+  - Reference
 ---
 
 <!-- Default -->
 <div class="pg-section" id="section-1">
   <h3 class="pg-section-title">Default</h3>
-  <p style="font-size:13px;color:var(--sui-text-light);margin-bottom:16px;">A horizontal bar of menu triggers. Click to open, hover to switch between menus while one is open.</p>
+  <p style="font-size:13px;color:var(--sui-text-light);margin-bottom:16px;">A horizontal bar of menu triggers that open dropdowns on click.</p>
   <div class="pg-section-row" style="align-items:flex-start;">
     <div class="sui-menubar">
       <div class="sui-menubar-menu">
@@ -151,7 +152,7 @@ toc:
 <!-- Checkboxes & Radios -->
 <div class="pg-section" id="section-3">
   <h3 class="pg-section-title">Checkboxes & Radios</h3>
-  <p style="font-size:13px;color:var(--sui-text-light);margin-bottom:16px;">Use <code>sui-menubar-check</code> for check/radio indicators and <code>sui-menubar-label</code> for group labels.</p>
+  <p style="font-size:13px;color:var(--sui-text-light);margin-bottom:16px;"><code>sui-menubar-check</code> only shows check/radio state; update its content from your own click handler.</p>
   <div class="pg-section-row" style="align-items:flex-start;">
     <div class="sui-menubar">
       <div class="sui-menubar-menu">
@@ -185,7 +186,7 @@ toc:
     <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-menubar"&gt;
   &lt;div class="sui-menubar-menu"&gt;
     &lt;button type="button" class="sui-menubar-trigger"&gt;View&lt;/button&gt;
-    &lt;div class="sui-menubar-content"&gt;
+    &lt;div class="sui-menubar-content" style="min-width:220px;"&gt;
       &lt;button type="button" class="sui-menubar-item"&gt;&lt;span class="sui-menubar-check"&gt;&amp;#10003;&lt;/span&gt; Show Toolbar&lt;/button&gt;
       &lt;button type="button" class="sui-menubar-item"&gt;&lt;span class="sui-menubar-check"&gt;&amp;#10003;&lt;/span&gt; Show Sidebar&lt;/button&gt;
       &lt;button type="button" class="sui-menubar-item"&gt;&lt;span class="sui-menubar-check"&gt;&lt;/span&gt; Show Minimap&lt;/button&gt;
@@ -214,7 +215,7 @@ toc:
 <!-- With Submenu -->
 <div class="pg-section" id="section-4">
   <h3 class="pg-section-title">With Submenu</h3>
-  <p style="font-size:13px;color:var(--sui-text-light);margin-bottom:16px;">Nest <code>sui-menubar-sub</code> inside a menu for flyout submenus. They open on hover.</p>
+  <p style="font-size:13px;color:var(--sui-text-light);margin-bottom:16px;">Nest <code>sui-menubar-sub</code> inside a menu for flyout submenus that open on hover.</p>
   <div class="pg-section-row" style="align-items:flex-start;">
     <div class="sui-menubar">
       <div class="sui-menubar-menu">
@@ -507,5 +508,28 @@ toc:
     &lt;/div&gt;
   &lt;/div&gt;
 &lt;/div&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Reference -->
+<div class="pg-section" id="section-8">
+  <h3 class="pg-section-title">Reference</h3>
+  <div class="docs-table-wrap">
+    <table class="sui-table sui-table-compact">
+      <thead><tr><th scope="col">Class / Key</th><th scope="col">Description</th></tr></thead>
+      <tbody>
+        <tr><td><code>sui-menubar-trigger</code></td><td>Opens its menu on click; while a menu is open, hovering another trigger switches to it.</td></tr>
+        <tr><td><code>sui-menubar-item</code></td><td>Clicking an item closes the menu.</td></tr>
+        <tr><td><code>sui-menubar-hover</code></td><td>On the bar: menus open on hover instead of click.</td></tr>
+        <tr><td><code>sui-menubar-sub</code></td><td>Wraps a <code>sui-menubar-sub-trigger</code> and <code>sui-menubar-sub-content</code>; opens on hover or click.</td></tr>
+        <tr><td><code>sui-menubar-check</code></td><td>16px indicator slot for a check or radio mark; visual only, softui.js does not toggle it.</td></tr>
+        <tr><td><code>sui-menubar-item-inset</code></td><td>Indents an item without a check slot so its text lines up with checked items.</td></tr>
+        <tr><td><code>sui-menubar-label</code></td><td>Small uppercase group heading inside a menu.</td></tr>
+        <tr><td><code>sui-menubar-shortcut</code></td><td>Right-aligned shortcut hint inside an item.</td></tr>
+        <tr><td><code>sui-menubar-icon</code></td><td>Leading icon inside an item.</td></tr>
+        <tr><td><code>disabled</code></td><td>On an item: dims it and blocks clicks.</td></tr>
+        <tr><td><kbd class="sui-kbd-inline">Esc</kbd></td><td>Closes any open menu.</td></tr>
+      </tbody>
+    </table>
   </div>
 </div>

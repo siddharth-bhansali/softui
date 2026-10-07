@@ -13,8 +13,10 @@ toc:
   - Slide
   - Cycle
   - With Text
+  - Sizes
   - Raised
   - Inset
+  - Reference
 ---
 
 {% set sunSvg %}<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>{% endset %}
@@ -41,19 +43,19 @@ toc:
   <h3 class="pg-section-title">Default</h3>
   <div class="pg-section-row">
     <div style="display:flex;flex-wrap:wrap;gap:24px;align-items:center;">
-      <button class="sui-swap">
+      <button class="sui-swap" aria-label="Toggle dark mode">
         <span class="sui-swap-on">{{ moonSvg | safe }}</span>
         <span class="sui-swap-off">{{ sunSvg | safe }}</span>
       </button>
-      <button class="sui-swap">
+      <button class="sui-swap" aria-label="Toggle mute">
         <span class="sui-swap-on">{{ volOnSvg | safe }}</span>
         <span class="sui-swap-off">{{ volOffSvg | safe }}</span>
       </button>
-      <button class="sui-swap">
+      <button class="sui-swap" aria-label="Like">
         <span class="sui-swap-on">{{ heartFillSvg | safe }}</span>
         <span class="sui-swap-off">{{ heartSvg | safe }}</span>
       </button>
-      <button class="sui-swap">
+      <button class="sui-swap" aria-label="Toggle visibility">
         <span class="sui-swap-on">{{ eyeOffSvg | safe }}</span>
         <span class="sui-swap-off">{{ eyeSvg | safe }}</span>
       </button>
@@ -61,7 +63,7 @@ toc:
   </div>
   <div class="pg-code-wrap">
     <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
-    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;button class="sui-swap"&gt;
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;button class="sui-swap" aria-label="Toggle dark mode"&gt;
   &lt;span class="sui-swap-on"&gt;
     &lt;svg viewBox="0 0 24 24"&gt;&lt;path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/&gt;&lt;/svg&gt;
   &lt;/span&gt;
@@ -69,7 +71,33 @@ toc:
     &lt;svg viewBox="0 0 24 24"&gt;&lt;circle cx="12" cy="12" r="5"/&gt;&lt;line x1="12" y1="1" x2="12" y2="3"/&gt;&lt;line x1="12" y1="21" x2="12" y2="23"/&gt;&lt;line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/&gt;&lt;line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/&gt;&lt;line x1="1" y1="12" x2="3" y2="12"/&gt;&lt;line x1="21" y1="12" x2="23" y2="12"/&gt;&lt;line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/&gt;&lt;line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/&gt;&lt;/svg&gt;
   &lt;/span&gt;
 &lt;/button&gt;
-</pre></div>
+
+&lt;button class="sui-swap" aria-label="Toggle mute"&gt;
+  &lt;span class="sui-swap-on"&gt;
+    &lt;svg viewBox="0 0 24 24"&gt;&lt;polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/&gt;&lt;path d="M19.07 4.93a10 10 0 010 14.14"/&gt;&lt;path d="M15.54 8.46a5 5 0 010 7.07"/&gt;&lt;/svg&gt;
+  &lt;/span&gt;
+  &lt;span class="sui-swap-off"&gt;
+    &lt;svg viewBox="0 0 24 24"&gt;&lt;polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/&gt;&lt;line x1="23" y1="9" x2="17" y2="15"/&gt;&lt;line x1="17" y1="9" x2="23" y2="15"/&gt;&lt;/svg&gt;
+  &lt;/span&gt;
+&lt;/button&gt;
+
+&lt;button class="sui-swap" aria-label="Like"&gt;
+  &lt;span class="sui-swap-on"&gt;
+    &lt;svg viewBox="0 0 24 24" style="fill:var(--sui-danger);stroke:var(--sui-danger);"&gt;&lt;path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78L12 21.23l8.84-8.84a5.5 5.5 0 000-7.78z"/&gt;&lt;/svg&gt;
+  &lt;/span&gt;
+  &lt;span class="sui-swap-off"&gt;
+    &lt;svg viewBox="0 0 24 24"&gt;&lt;path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78L12 21.23l8.84-8.84a5.5 5.5 0 000-7.78z"/&gt;&lt;/svg&gt;
+  &lt;/span&gt;
+&lt;/button&gt;
+
+&lt;button class="sui-swap" aria-label="Toggle visibility"&gt;
+  &lt;span class="sui-swap-on"&gt;
+    &lt;svg viewBox="0 0 24 24"&gt;&lt;path d="M17.94 17.94A10.07 10.07 0 0112 20c-7 0-11-8-11-8a18.45 18.45 0 015.06-5.94M9.9 4.24A9.12 9.12 0 0112 4c7 0 11 8 11 8a18.5 18.5 0 01-2.16 3.19m-6.72-1.07a3 3 0 11-4.24-4.24"/&gt;&lt;line x1="1" y1="1" x2="23" y2="23"/&gt;&lt;/svg&gt;
+  &lt;/span&gt;
+  &lt;span class="sui-swap-off"&gt;
+    &lt;svg viewBox="0 0 24 24"&gt;&lt;path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/&gt;&lt;circle cx="12" cy="12" r="3"/&gt;&lt;/svg&gt;
+  &lt;/span&gt;
+&lt;/button&gt;</pre></div>
   </div>
 </div>
 
@@ -78,15 +106,15 @@ toc:
   <h3 class="pg-section-title">Rotate</h3>
   <div class="pg-section-row">
     <div style="display:flex;flex-wrap:wrap;gap:24px;align-items:center;">
-      <button class="sui-swap sui-swap-rotate">
+      <button class="sui-swap sui-swap-rotate" aria-label="Toggle dark mode">
         <span class="sui-swap-on">{{ moonSvg | safe }}</span>
         <span class="sui-swap-off">{{ sunSvg | safe }}</span>
       </button>
-      <button class="sui-swap sui-swap-rotate">
+      <button class="sui-swap sui-swap-rotate" aria-label="Toggle mute">
         <span class="sui-swap-on">{{ volOnSvg | safe }}</span>
         <span class="sui-swap-off">{{ volOffSvg | safe }}</span>
       </button>
-      <button class="sui-swap sui-swap-rotate">
+      <button class="sui-swap sui-swap-rotate" aria-label="Like">
         <span class="sui-swap-on">{{ heartFillSvg | safe }}</span>
         <span class="sui-swap-off">{{ heartSvg | safe }}</span>
       </button>
@@ -94,12 +122,30 @@ toc:
   </div>
   <div class="pg-code-wrap">
     <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
-    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;button class="sui-swap sui-swap-rotate"&gt;
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;button class="sui-swap sui-swap-rotate" aria-label="Toggle dark mode"&gt;
   &lt;span class="sui-swap-on"&gt;
     &lt;svg viewBox="0 0 24 24"&gt;&lt;path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/&gt;&lt;/svg&gt;
   &lt;/span&gt;
   &lt;span class="sui-swap-off"&gt;
     &lt;svg viewBox="0 0 24 24"&gt;&lt;circle cx="12" cy="12" r="5"/&gt;&lt;line x1="12" y1="1" x2="12" y2="3"/&gt;&lt;line x1="12" y1="21" x2="12" y2="23"/&gt;&lt;line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/&gt;&lt;line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/&gt;&lt;line x1="1" y1="12" x2="3" y2="12"/&gt;&lt;line x1="21" y1="12" x2="23" y2="12"/&gt;&lt;line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/&gt;&lt;line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/&gt;&lt;/svg&gt;
+  &lt;/span&gt;
+&lt;/button&gt;
+
+&lt;button class="sui-swap sui-swap-rotate" aria-label="Toggle mute"&gt;
+  &lt;span class="sui-swap-on"&gt;
+    &lt;svg viewBox="0 0 24 24"&gt;&lt;polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/&gt;&lt;path d="M19.07 4.93a10 10 0 010 14.14"/&gt;&lt;path d="M15.54 8.46a5 5 0 010 7.07"/&gt;&lt;/svg&gt;
+  &lt;/span&gt;
+  &lt;span class="sui-swap-off"&gt;
+    &lt;svg viewBox="0 0 24 24"&gt;&lt;polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/&gt;&lt;line x1="23" y1="9" x2="17" y2="15"/&gt;&lt;line x1="17" y1="9" x2="23" y2="15"/&gt;&lt;/svg&gt;
+  &lt;/span&gt;
+&lt;/button&gt;
+
+&lt;button class="sui-swap sui-swap-rotate" aria-label="Like"&gt;
+  &lt;span class="sui-swap-on"&gt;
+    &lt;svg viewBox="0 0 24 24" style="fill:var(--sui-danger);stroke:var(--sui-danger);"&gt;&lt;path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78L12 21.23l8.84-8.84a5.5 5.5 0 000-7.78z"/&gt;&lt;/svg&gt;
+  &lt;/span&gt;
+  &lt;span class="sui-swap-off"&gt;
+    &lt;svg viewBox="0 0 24 24"&gt;&lt;path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78L12 21.23l8.84-8.84a5.5 5.5 0 000-7.78z"/&gt;&lt;/svg&gt;
   &lt;/span&gt;
 &lt;/button&gt;</pre></div>
   </div>
@@ -110,15 +156,15 @@ toc:
   <h3 class="pg-section-title">Flip</h3>
   <div class="pg-section-row">
     <div style="display:flex;flex-wrap:wrap;gap:24px;align-items:center;">
-      <button class="sui-swap sui-swap-flip">
+      <button class="sui-swap sui-swap-flip" aria-label="Toggle dark mode">
         <span class="sui-swap-on">{{ moonSvg | safe }}</span>
         <span class="sui-swap-off">{{ sunSvg | safe }}</span>
       </button>
-      <button class="sui-swap sui-swap-flip">
+      <button class="sui-swap sui-swap-flip" aria-label="Like">
         <span class="sui-swap-on">{{ heartFillSvg | safe }}</span>
         <span class="sui-swap-off">{{ heartSvg | safe }}</span>
       </button>
-      <button class="sui-swap sui-swap-flip">
+      <button class="sui-swap sui-swap-flip" aria-label="Toggle visibility">
         <span class="sui-swap-on">{{ eyeOffSvg | safe }}</span>
         <span class="sui-swap-off">{{ eyeSvg | safe }}</span>
       </button>
@@ -126,12 +172,30 @@ toc:
   </div>
   <div class="pg-code-wrap">
     <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
-    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;button class="sui-swap sui-swap-flip"&gt;
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;button class="sui-swap sui-swap-flip" aria-label="Toggle dark mode"&gt;
   &lt;span class="sui-swap-on"&gt;
     &lt;svg viewBox="0 0 24 24"&gt;&lt;path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/&gt;&lt;/svg&gt;
   &lt;/span&gt;
   &lt;span class="sui-swap-off"&gt;
     &lt;svg viewBox="0 0 24 24"&gt;&lt;circle cx="12" cy="12" r="5"/&gt;&lt;line x1="12" y1="1" x2="12" y2="3"/&gt;&lt;line x1="12" y1="21" x2="12" y2="23"/&gt;&lt;line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/&gt;&lt;line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/&gt;&lt;line x1="1" y1="12" x2="3" y2="12"/&gt;&lt;line x1="21" y1="12" x2="23" y2="12"/&gt;&lt;line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/&gt;&lt;line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/&gt;&lt;/svg&gt;
+  &lt;/span&gt;
+&lt;/button&gt;
+
+&lt;button class="sui-swap sui-swap-flip" aria-label="Like"&gt;
+  &lt;span class="sui-swap-on"&gt;
+    &lt;svg viewBox="0 0 24 24" style="fill:var(--sui-danger);stroke:var(--sui-danger);"&gt;&lt;path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78L12 21.23l8.84-8.84a5.5 5.5 0 000-7.78z"/&gt;&lt;/svg&gt;
+  &lt;/span&gt;
+  &lt;span class="sui-swap-off"&gt;
+    &lt;svg viewBox="0 0 24 24"&gt;&lt;path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78L12 21.23l8.84-8.84a5.5 5.5 0 000-7.78z"/&gt;&lt;/svg&gt;
+  &lt;/span&gt;
+&lt;/button&gt;
+
+&lt;button class="sui-swap sui-swap-flip" aria-label="Toggle visibility"&gt;
+  &lt;span class="sui-swap-on"&gt;
+    &lt;svg viewBox="0 0 24 24"&gt;&lt;path d="M17.94 17.94A10.07 10.07 0 0112 20c-7 0-11-8-11-8a18.45 18.45 0 015.06-5.94M9.9 4.24A9.12 9.12 0 0112 4c7 0 11 8 11 8a18.5 18.5 0 01-2.16 3.19m-6.72-1.07a3 3 0 11-4.24-4.24"/&gt;&lt;line x1="1" y1="1" x2="23" y2="23"/&gt;&lt;/svg&gt;
+  &lt;/span&gt;
+  &lt;span class="sui-swap-off"&gt;
+    &lt;svg viewBox="0 0 24 24"&gt;&lt;path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/&gt;&lt;circle cx="12" cy="12" r="3"/&gt;&lt;/svg&gt;
   &lt;/span&gt;
 &lt;/button&gt;</pre></div>
   </div>
@@ -142,15 +206,15 @@ toc:
   <h3 class="pg-section-title">Fade</h3>
   <div class="pg-section-row">
     <div style="display:flex;flex-wrap:wrap;gap:24px;align-items:center;">
-      <button class="sui-swap sui-swap-fade">
+      <button class="sui-swap sui-swap-fade" aria-label="Toggle dark mode">
         <span class="sui-swap-on">{{ moonSvg | safe }}</span>
         <span class="sui-swap-off">{{ sunSvg | safe }}</span>
       </button>
-      <button class="sui-swap sui-swap-fade">
+      <button class="sui-swap sui-swap-fade" aria-label="Toggle mute">
         <span class="sui-swap-on">{{ volOnSvg | safe }}</span>
         <span class="sui-swap-off">{{ volOffSvg | safe }}</span>
       </button>
-      <button class="sui-swap sui-swap-fade">
+      <button class="sui-swap sui-swap-fade" aria-label="Like">
         <span class="sui-swap-on">{{ heartFillSvg | safe }}</span>
         <span class="sui-swap-off">{{ heartSvg | safe }}</span>
       </button>
@@ -158,12 +222,30 @@ toc:
   </div>
   <div class="pg-code-wrap">
     <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
-    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;button class="sui-swap sui-swap-fade"&gt;
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;button class="sui-swap sui-swap-fade" aria-label="Toggle dark mode"&gt;
   &lt;span class="sui-swap-on"&gt;
     &lt;svg viewBox="0 0 24 24"&gt;&lt;path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/&gt;&lt;/svg&gt;
   &lt;/span&gt;
   &lt;span class="sui-swap-off"&gt;
     &lt;svg viewBox="0 0 24 24"&gt;&lt;circle cx="12" cy="12" r="5"/&gt;&lt;line x1="12" y1="1" x2="12" y2="3"/&gt;&lt;line x1="12" y1="21" x2="12" y2="23"/&gt;&lt;line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/&gt;&lt;line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/&gt;&lt;line x1="1" y1="12" x2="3" y2="12"/&gt;&lt;line x1="21" y1="12" x2="23" y2="12"/&gt;&lt;line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/&gt;&lt;line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/&gt;&lt;/svg&gt;
+  &lt;/span&gt;
+&lt;/button&gt;
+
+&lt;button class="sui-swap sui-swap-fade" aria-label="Toggle mute"&gt;
+  &lt;span class="sui-swap-on"&gt;
+    &lt;svg viewBox="0 0 24 24"&gt;&lt;polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/&gt;&lt;path d="M19.07 4.93a10 10 0 010 14.14"/&gt;&lt;path d="M15.54 8.46a5 5 0 010 7.07"/&gt;&lt;/svg&gt;
+  &lt;/span&gt;
+  &lt;span class="sui-swap-off"&gt;
+    &lt;svg viewBox="0 0 24 24"&gt;&lt;polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/&gt;&lt;line x1="23" y1="9" x2="17" y2="15"/&gt;&lt;line x1="17" y1="9" x2="23" y2="15"/&gt;&lt;/svg&gt;
+  &lt;/span&gt;
+&lt;/button&gt;
+
+&lt;button class="sui-swap sui-swap-fade" aria-label="Like"&gt;
+  &lt;span class="sui-swap-on"&gt;
+    &lt;svg viewBox="0 0 24 24" style="fill:var(--sui-danger);stroke:var(--sui-danger);"&gt;&lt;path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78L12 21.23l8.84-8.84a5.5 5.5 0 000-7.78z"/&gt;&lt;/svg&gt;
+  &lt;/span&gt;
+  &lt;span class="sui-swap-off"&gt;
+    &lt;svg viewBox="0 0 24 24"&gt;&lt;path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78L12 21.23l8.84-8.84a5.5 5.5 0 000-7.78z"/&gt;&lt;/svg&gt;
   &lt;/span&gt;
 &lt;/button&gt;</pre></div>
   </div>
@@ -174,15 +256,15 @@ toc:
   <h3 class="pg-section-title">Slide</h3>
   <div class="pg-section-row">
     <div style="display:flex;flex-wrap:wrap;gap:24px;align-items:center;">
-      <button class="sui-swap sui-swap-slide">
+      <button class="sui-swap sui-swap-slide" aria-label="Toggle dark mode">
         <span class="sui-swap-on">{{ moonSvg | safe }}</span>
         <span class="sui-swap-off">{{ sunSvg | safe }}</span>
       </button>
-      <button class="sui-swap sui-swap-slide">
+      <button class="sui-swap sui-swap-slide" aria-label="Toggle mute">
         <span class="sui-swap-on">{{ volOnSvg | safe }}</span>
         <span class="sui-swap-off">{{ volOffSvg | safe }}</span>
       </button>
-      <button class="sui-swap sui-swap-slide">
+      <button class="sui-swap sui-swap-slide" aria-label="Toggle visibility">
         <span class="sui-swap-on">{{ eyeOffSvg | safe }}</span>
         <span class="sui-swap-off">{{ eyeSvg | safe }}</span>
       </button>
@@ -190,12 +272,30 @@ toc:
   </div>
   <div class="pg-code-wrap">
     <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
-    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;button class="sui-swap sui-swap-slide"&gt;
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;button class="sui-swap sui-swap-slide" aria-label="Toggle dark mode"&gt;
   &lt;span class="sui-swap-on"&gt;
     &lt;svg viewBox="0 0 24 24"&gt;&lt;path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/&gt;&lt;/svg&gt;
   &lt;/span&gt;
   &lt;span class="sui-swap-off"&gt;
     &lt;svg viewBox="0 0 24 24"&gt;&lt;circle cx="12" cy="12" r="5"/&gt;&lt;line x1="12" y1="1" x2="12" y2="3"/&gt;&lt;line x1="12" y1="21" x2="12" y2="23"/&gt;&lt;line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/&gt;&lt;line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/&gt;&lt;line x1="1" y1="12" x2="3" y2="12"/&gt;&lt;line x1="21" y1="12" x2="23" y2="12"/&gt;&lt;line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/&gt;&lt;line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/&gt;&lt;/svg&gt;
+  &lt;/span&gt;
+&lt;/button&gt;
+
+&lt;button class="sui-swap sui-swap-slide" aria-label="Toggle mute"&gt;
+  &lt;span class="sui-swap-on"&gt;
+    &lt;svg viewBox="0 0 24 24"&gt;&lt;polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/&gt;&lt;path d="M19.07 4.93a10 10 0 010 14.14"/&gt;&lt;path d="M15.54 8.46a5 5 0 010 7.07"/&gt;&lt;/svg&gt;
+  &lt;/span&gt;
+  &lt;span class="sui-swap-off"&gt;
+    &lt;svg viewBox="0 0 24 24"&gt;&lt;polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/&gt;&lt;line x1="23" y1="9" x2="17" y2="15"/&gt;&lt;line x1="17" y1="9" x2="23" y2="15"/&gt;&lt;/svg&gt;
+  &lt;/span&gt;
+&lt;/button&gt;
+
+&lt;button class="sui-swap sui-swap-slide" aria-label="Toggle visibility"&gt;
+  &lt;span class="sui-swap-on"&gt;
+    &lt;svg viewBox="0 0 24 24"&gt;&lt;path d="M17.94 17.94A10.07 10.07 0 0112 20c-7 0-11-8-11-8a18.45 18.45 0 015.06-5.94M9.9 4.24A9.12 9.12 0 0112 4c7 0 11 8 11 8a18.5 18.5 0 01-2.16 3.19m-6.72-1.07a3 3 0 11-4.24-4.24"/&gt;&lt;line x1="1" y1="1" x2="23" y2="23"/&gt;&lt;/svg&gt;
+  &lt;/span&gt;
+  &lt;span class="sui-swap-off"&gt;
+    &lt;svg viewBox="0 0 24 24"&gt;&lt;path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/&gt;&lt;circle cx="12" cy="12" r="3"/&gt;&lt;/svg&gt;
   &lt;/span&gt;
 &lt;/button&gt;</pre></div>
   </div>
@@ -208,7 +308,7 @@ toc:
     <div style="display:flex;flex-wrap:wrap;gap:24px;align-items:flex-start;">
       <div style="display:flex;flex-direction:column;align-items:center;">
         <div style="font-size:12px;color:var(--sui-text-muted);margin-bottom:6px;">Sort</div>
-        <button class="sui-swap sui-swap-cycle sui-swap-rotate">
+        <button class="sui-swap sui-swap-cycle sui-swap-rotate" aria-label="Sort">
           <span class="sui-swap-state active">{{ sortNoneSvg | safe }}</span>
           <span class="sui-swap-state">{{ sortAscSvg | safe }}</span>
           <span class="sui-swap-state">{{ sortDescSvg | safe }}</span>
@@ -216,7 +316,7 @@ toc:
       </div>
       <div style="display:flex;flex-direction:column;align-items:center;">
         <div style="font-size:12px;color:var(--sui-text-muted);margin-bottom:6px;">Repeat</div>
-        <button class="sui-swap sui-swap-cycle sui-swap-fade">
+        <button class="sui-swap sui-swap-cycle sui-swap-fade" aria-label="Repeat">
           <span class="sui-swap-state active">{{ repeatOffSvg | safe }}</span>
           <span class="sui-swap-state">{{ repeatAllSvg | safe }}</span>
           <span class="sui-swap-state">{{ repeatOneSvg | safe }}</span>
@@ -224,7 +324,7 @@ toc:
       </div>
       <div style="display:flex;flex-direction:column;align-items:center;">
         <div style="font-size:12px;color:var(--sui-text-muted);margin-bottom:6px;">Align</div>
-        <button class="sui-swap sui-swap-cycle sui-swap-slide-x">
+        <button class="sui-swap sui-swap-cycle sui-swap-slide-x" aria-label="Align">
           <span class="sui-swap-state active">{{ alignLeftSvg | safe }}</span>
           <span class="sui-swap-state">{{ alignCenterSvg | safe }}</span>
           <span class="sui-swap-state">{{ alignRightSvg | safe }}</span>
@@ -232,7 +332,7 @@ toc:
       </div>
       <div style="display:flex;flex-direction:column;align-items:center;">
         <div style="font-size:12px;color:var(--sui-text-muted);margin-bottom:6px;">Traffic Light</div>
-        <button class="sui-swap sui-swap-cycle sui-swap-fade">
+        <button class="sui-swap sui-swap-cycle sui-swap-fade" aria-label="Traffic light">
           <span class="sui-swap-state active"><svg viewBox="0 0 24 24" style="fill:var(--sui-danger);stroke:var(--sui-danger);"><circle cx="12" cy="12" r="10"/></svg></span>
           <span class="sui-swap-state"><svg viewBox="0 0 24 24" style="fill:var(--sui-warning);stroke:var(--sui-warning);"><circle cx="12" cy="12" r="10"/></svg></span>
           <span class="sui-swap-state"><svg viewBox="0 0 24 24" style="fill:var(--sui-success);stroke:var(--sui-success);"><circle cx="12" cy="12" r="10"/></svg></span>
@@ -243,7 +343,7 @@ toc:
   <div class="pg-code-wrap">
     <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
     <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;!-- Sort: 3 states (none → ascending → descending) --&gt;
-&lt;button class="sui-swap sui-swap-cycle sui-swap-rotate"&gt;
+&lt;button class="sui-swap sui-swap-cycle sui-swap-rotate" aria-label="Sort"&gt;
   &lt;span class="sui-swap-state active"&gt;
     &lt;svg viewBox="0 0 24 24"&gt;&lt;line x1="8" y1="6" x2="21" y2="6"/&gt;&lt;line x1="8" y1="12" x2="21" y2="12"/&gt;&lt;line x1="8" y1="18" x2="21" y2="18"/&gt;&lt;line x1="3" y1="6" x2="3.01" y2="6"/&gt;&lt;line x1="3" y1="12" x2="3.01" y2="12"/&gt;&lt;line x1="3" y1="18" x2="3.01" y2="18"/&gt;&lt;/svg&gt;
   &lt;/span&gt;
@@ -256,7 +356,7 @@ toc:
 &lt;/button&gt;
 
 &lt;!-- Repeat: off → all → one --&gt;
-&lt;button class="sui-swap sui-swap-cycle sui-swap-fade"&gt;
+&lt;button class="sui-swap sui-swap-cycle sui-swap-fade" aria-label="Repeat"&gt;
   &lt;span class="sui-swap-state active"&gt;
     &lt;svg viewBox="0 0 24 24"&gt;&lt;polyline points="17 1 21 5 17 9"/&gt;&lt;path d="M3 11V9a4 4 0 014-4h14"/&gt;&lt;polyline points="7 23 3 19 7 15"/&gt;&lt;path d="M21 13v2a4 4 0 01-4 4H3"/&gt;&lt;/svg&gt;
   &lt;/span&gt;
@@ -269,7 +369,7 @@ toc:
 &lt;/button&gt;
 
 &lt;!-- Align: left → center → right --&gt;
-&lt;button class="sui-swap sui-swap-cycle sui-swap-slide-x"&gt;
+&lt;button class="sui-swap sui-swap-cycle sui-swap-slide-x" aria-label="Align"&gt;
   &lt;span class="sui-swap-state active"&gt;
     &lt;svg viewBox="0 0 24 24"&gt;&lt;line x1="17" y1="10" x2="3" y2="10"/&gt;&lt;line x1="21" y1="6" x2="3" y2="6"/&gt;&lt;line x1="21" y1="14" x2="3" y2="14"/&gt;&lt;line x1="17" y1="18" x2="3" y2="18"/&gt;&lt;/svg&gt;
   &lt;/span&gt;
@@ -282,7 +382,7 @@ toc:
 &lt;/button&gt;
 
 &lt;!-- Traffic light: red → yellow → green --&gt;
-&lt;button class="sui-swap sui-swap-cycle sui-swap-fade"&gt;
+&lt;button class="sui-swap sui-swap-cycle sui-swap-fade" aria-label="Traffic light"&gt;
   &lt;span class="sui-swap-state active"&gt;
     &lt;svg viewBox="0 0 24 24" style="fill:var(--sui-danger);stroke:var(--sui-danger);"&gt;&lt;circle cx="12" cy="12" r="10"/&gt;&lt;/svg&gt;
   &lt;/span&gt;
@@ -292,8 +392,7 @@ toc:
   &lt;span class="sui-swap-state"&gt;
     &lt;svg viewBox="0 0 24 24" style="fill:var(--sui-success);stroke:var(--sui-success);"&gt;&lt;circle cx="12" cy="12" r="10"/&gt;&lt;/svg&gt;
   &lt;/span&gt;
-&lt;/button&gt;
-</pre></div>
+&lt;/button&gt;</pre></div>
   </div>
 </div>
 
@@ -302,19 +401,19 @@ toc:
   <h3 class="pg-section-title">With Text</h3>
   <div class="pg-section-row">
     <div style="display:flex;flex-wrap:wrap;gap:24px;align-items:center;">
-      <button class="sui-swap sui-swap-text sui-swap-rotate">
+      <button class="sui-swap sui-swap-raised sui-swap-text sui-swap-rotate">
         <span class="sui-swap-on">ON</span>
         <span class="sui-swap-off">OFF</span>
       </button>
-      <button class="sui-swap sui-swap-text sui-swap-fade">
+      <button class="sui-swap sui-swap-raised sui-swap-text sui-swap-fade">
         <span class="sui-swap-on">Pause</span>
         <span class="sui-swap-off">Play</span>
       </button>
-      <button class="sui-swap sui-swap-text sui-swap-slide">
+      <button class="sui-swap sui-swap-raised sui-swap-text sui-swap-slide">
         <span class="sui-swap-on">Hide</span>
         <span class="sui-swap-off">Show</span>
       </button>
-      <button class="sui-swap sui-swap-text">
+      <button class="sui-swap sui-swap-raised sui-swap-text">
         <span class="sui-swap-on">Yes</span>
         <span class="sui-swap-off">No</span>
       </button>
@@ -322,46 +421,50 @@ toc:
   </div>
   <div class="pg-code-wrap">
     <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
-    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;button class="sui-swap sui-swap-text sui-swap-rotate"&gt;
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;button class="sui-swap sui-swap-raised sui-swap-text sui-swap-rotate"&gt;
   &lt;span class="sui-swap-on"&gt;ON&lt;/span&gt;
   &lt;span class="sui-swap-off"&gt;OFF&lt;/span&gt;
 &lt;/button&gt;
 
-&lt;button class="sui-swap sui-swap-text sui-swap-fade"&gt;
+&lt;button class="sui-swap sui-swap-raised sui-swap-text sui-swap-fade"&gt;
   &lt;span class="sui-swap-on"&gt;Pause&lt;/span&gt;
   &lt;span class="sui-swap-off"&gt;Play&lt;/span&gt;
 &lt;/button&gt;
 
-&lt;button class="sui-swap sui-swap-text sui-swap-slide"&gt;
+&lt;button class="sui-swap sui-swap-raised sui-swap-text sui-swap-slide"&gt;
   &lt;span class="sui-swap-on"&gt;Hide&lt;/span&gt;
   &lt;span class="sui-swap-off"&gt;Show&lt;/span&gt;
 &lt;/button&gt;
 
-&lt;button class="sui-swap sui-swap-text"&gt;
+&lt;button class="sui-swap sui-swap-raised sui-swap-text"&gt;
   &lt;span class="sui-swap-on"&gt;Yes&lt;/span&gt;
   &lt;span class="sui-swap-off"&gt;No&lt;/span&gt;
 &lt;/button&gt;</pre></div>
   </div>
 </div>
 
-<!-- Raised -->
+<!-- Sizes -->
 <div class="pg-section" id="section-8">
-  <h3 class="pg-section-title">Raised</h3>
+  <h3 class="pg-section-title">Sizes</h3>
   <div class="pg-section-row">
     <div style="display:flex;flex-wrap:wrap;gap:24px;align-items:center;">
-      <button class="sui-swap sui-swap-raised sui-swap-rotate">
+      <button class="sui-swap sui-swap-sm sui-swap-raised sui-swap-rotate" aria-label="Toggle dark mode">
         <span class="sui-swap-on">{{ moonSvg | safe }}</span>
         <span class="sui-swap-off">{{ sunSvg | safe }}</span>
       </button>
-      <button class="sui-swap sui-swap-raised sui-swap-fade">
-        <span class="sui-swap-on">{{ heartFillSvg | safe }}</span>
-        <span class="sui-swap-off">{{ heartSvg | safe }}</span>
+      <button class="sui-swap sui-swap-raised sui-swap-rotate" aria-label="Toggle dark mode">
+        <span class="sui-swap-on">{{ moonSvg | safe }}</span>
+        <span class="sui-swap-off">{{ sunSvg | safe }}</span>
+      </button>
+      <button class="sui-swap sui-swap-lg sui-swap-raised sui-swap-rotate" aria-label="Toggle dark mode">
+        <span class="sui-swap-on">{{ moonSvg | safe }}</span>
+        <span class="sui-swap-off">{{ sunSvg | safe }}</span>
       </button>
     </div>
   </div>
   <div class="pg-code-wrap">
     <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
-    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;button class="sui-swap sui-swap-raised sui-swap-rotate"&gt;
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;button class="sui-swap sui-swap-sm sui-swap-raised sui-swap-rotate" aria-label="Toggle dark mode"&gt;
   &lt;span class="sui-swap-on"&gt;
     &lt;svg viewBox="0 0 24 24"&gt;&lt;path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/&gt;&lt;/svg&gt;
   &lt;/span&gt;
@@ -370,7 +473,53 @@ toc:
   &lt;/span&gt;
 &lt;/button&gt;
 
-&lt;button class="sui-swap sui-swap-raised sui-swap-fade"&gt;
+&lt;button class="sui-swap sui-swap-raised sui-swap-rotate" aria-label="Toggle dark mode"&gt;
+  &lt;span class="sui-swap-on"&gt;
+    &lt;svg viewBox="0 0 24 24"&gt;&lt;path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/&gt;&lt;/svg&gt;
+  &lt;/span&gt;
+  &lt;span class="sui-swap-off"&gt;
+    &lt;svg viewBox="0 0 24 24"&gt;&lt;circle cx="12" cy="12" r="5"/&gt;&lt;line x1="12" y1="1" x2="12" y2="3"/&gt;&lt;line x1="12" y1="21" x2="12" y2="23"/&gt;&lt;line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/&gt;&lt;line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/&gt;&lt;line x1="1" y1="12" x2="3" y2="12"/&gt;&lt;line x1="21" y1="12" x2="23" y2="12"/&gt;&lt;line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/&gt;&lt;line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/&gt;&lt;/svg&gt;
+  &lt;/span&gt;
+&lt;/button&gt;
+
+&lt;button class="sui-swap sui-swap-lg sui-swap-raised sui-swap-rotate" aria-label="Toggle dark mode"&gt;
+  &lt;span class="sui-swap-on"&gt;
+    &lt;svg viewBox="0 0 24 24"&gt;&lt;path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/&gt;&lt;/svg&gt;
+  &lt;/span&gt;
+  &lt;span class="sui-swap-off"&gt;
+    &lt;svg viewBox="0 0 24 24"&gt;&lt;circle cx="12" cy="12" r="5"/&gt;&lt;line x1="12" y1="1" x2="12" y2="3"/&gt;&lt;line x1="12" y1="21" x2="12" y2="23"/&gt;&lt;line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/&gt;&lt;line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/&gt;&lt;line x1="1" y1="12" x2="3" y2="12"/&gt;&lt;line x1="21" y1="12" x2="23" y2="12"/&gt;&lt;line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/&gt;&lt;line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/&gt;&lt;/svg&gt;
+  &lt;/span&gt;
+&lt;/button&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Raised -->
+<div class="pg-section" id="section-9">
+  <h3 class="pg-section-title">Raised</h3>
+  <div class="pg-section-row">
+    <div style="display:flex;flex-wrap:wrap;gap:24px;align-items:center;">
+      <button class="sui-swap sui-swap-raised sui-swap-rotate" aria-label="Toggle dark mode">
+        <span class="sui-swap-on">{{ moonSvg | safe }}</span>
+        <span class="sui-swap-off">{{ sunSvg | safe }}</span>
+      </button>
+      <button class="sui-swap sui-swap-raised sui-swap-fade" aria-label="Like">
+        <span class="sui-swap-on">{{ heartFillSvg | safe }}</span>
+        <span class="sui-swap-off">{{ heartSvg | safe }}</span>
+      </button>
+    </div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;button class="sui-swap sui-swap-raised sui-swap-rotate" aria-label="Toggle dark mode"&gt;
+  &lt;span class="sui-swap-on"&gt;
+    &lt;svg viewBox="0 0 24 24"&gt;&lt;path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/&gt;&lt;/svg&gt;
+  &lt;/span&gt;
+  &lt;span class="sui-swap-off"&gt;
+    &lt;svg viewBox="0 0 24 24"&gt;&lt;circle cx="12" cy="12" r="5"/&gt;&lt;line x1="12" y1="1" x2="12" y2="3"/&gt;&lt;line x1="12" y1="21" x2="12" y2="23"/&gt;&lt;line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/&gt;&lt;line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/&gt;&lt;line x1="1" y1="12" x2="3" y2="12"/&gt;&lt;line x1="21" y1="12" x2="23" y2="12"/&gt;&lt;line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/&gt;&lt;line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/&gt;&lt;/svg&gt;
+  &lt;/span&gt;
+&lt;/button&gt;
+
+&lt;button class="sui-swap sui-swap-raised sui-swap-fade" aria-label="Like"&gt;
   &lt;span class="sui-swap-on"&gt;
     &lt;svg viewBox="0 0 24 24" style="fill:var(--sui-danger);stroke:var(--sui-danger);"&gt;&lt;path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78L12 21.23l8.84-8.84a5.5 5.5 0 000-7.78z"/&gt;&lt;/svg&gt;
   &lt;/span&gt;
@@ -382,15 +531,15 @@ toc:
 </div>
 
 <!-- Inset -->
-<div class="pg-section" id="section-9">
+<div class="pg-section" id="section-10">
   <h3 class="pg-section-title">Inset</h3>
   <div class="pg-section-row">
     <div style="display:flex;flex-wrap:wrap;gap:24px;align-items:center;">
-      <button class="sui-swap sui-swap-inset sui-swap-rotate">
+      <button class="sui-swap sui-swap-inset sui-swap-rotate" aria-label="Toggle dark mode">
         <span class="sui-swap-on">{{ moonSvg | safe }}</span>
         <span class="sui-swap-off">{{ sunSvg | safe }}</span>
       </button>
-      <button class="sui-swap sui-swap-inset sui-swap-flip">
+      <button class="sui-swap sui-swap-inset sui-swap-flip" aria-label="Like">
         <span class="sui-swap-on">{{ heartFillSvg | safe }}</span>
         <span class="sui-swap-off">{{ heartSvg | safe }}</span>
       </button>
@@ -402,7 +551,7 @@ toc:
   </div>
   <div class="pg-code-wrap">
     <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
-    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;button class="sui-swap sui-swap-inset sui-swap-rotate"&gt;
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;button class="sui-swap sui-swap-inset sui-swap-rotate" aria-label="Toggle dark mode"&gt;
   &lt;span class="sui-swap-on"&gt;
     &lt;svg viewBox="0 0 24 24"&gt;&lt;path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/&gt;&lt;/svg&gt;
   &lt;/span&gt;
@@ -411,7 +560,7 @@ toc:
   &lt;/span&gt;
 &lt;/button&gt;
 
-&lt;button class="sui-swap sui-swap-inset sui-swap-flip"&gt;
+&lt;button class="sui-swap sui-swap-inset sui-swap-flip" aria-label="Like"&gt;
   &lt;span class="sui-swap-on"&gt;
     &lt;svg viewBox="0 0 24 24" style="fill:var(--sui-danger);stroke:var(--sui-danger);"&gt;&lt;path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78L12 21.23l8.84-8.84a5.5 5.5 0 000-7.78z"/&gt;&lt;/svg&gt;
   &lt;/span&gt;
@@ -424,5 +573,28 @@ toc:
   &lt;span class="sui-swap-on"&gt;ON&lt;/span&gt;
   &lt;span class="sui-swap-off"&gt;OFF&lt;/span&gt;
 &lt;/button&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Reference -->
+<div class="pg-section" id="section-11">
+  <h3 class="pg-section-title">Reference</h3>
+  <div class="docs-table-wrap">
+    <table class="sui-table sui-table-compact">
+      <thead>
+        <tr><th scope="col" style="width:40%;">Class / Attribute / Event</th><th scope="col">Description</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><code>sui-swap-on</code> / <code>sui-swap-off</code></td><td>The two states; <code>.active</code> on the button shows <code>.sui-swap-on</code>.</td></tr>
+        <tr><td><code>sui-swap-rotate</code> / <code>sui-swap-flip</code> / <code>sui-swap-fade</code> / <code>sui-swap-slide</code></td><td>Transition between states.</td></tr>
+        <tr><td><code>sui-swap-slide-x</code></td><td>Horizontal slide transition.</td></tr>
+        <tr><td><code>sui-swap-cycle</code> + <code>sui-swap-state</code></td><td>Cycles through any number of states; mark the first with <code>.active</code>.</td></tr>
+        <tr><td><code>sui-swap-text</code></td><td>Text labels instead of icons.</td></tr>
+        <tr><td><code>sui-swap-raised</code> / <code>sui-swap-inset</code></td><td>Raised or inset button surface.</td></tr>
+        <tr><td><code>sui-swap-sm</code> / <code>sui-swap-lg</code></td><td>Smaller (16px icon) or larger (32px icon) swap.</td></tr>
+        <tr><td><code>data-sui-theme-toggle</code></td><td>Turns a moon/sun swap into a dark mode switch (see <a href="/theming/#dark-mode-toggle">Theming</a>).</td></tr>
+        <tr><td><code>sui-swap-change</code></td><td>Fires on each toggle with <code>detail.active</code> (cycle swaps: <code>detail.state</code>, <code>detail.total</code>); not fired by theme toggles.</td></tr>
+      </tbody>
+    </table>
   </div>
 </div>

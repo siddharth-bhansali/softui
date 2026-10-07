@@ -1,13 +1,15 @@
 ---
 layout: component.njk
 title: Sizing
-description: Width, max-width, height, and min/max height utility classes for controlling element dimensions.
+description: Width, max-width, height, and min/max height utility classes for controlling element dimensions, and responsive images.
 componentId: sizing
 hasControls: false
 toc:
   - Width
   - Max Width
   - Height
+  - Images
+  - Reference
 ---
 
 <!-- Width -->
@@ -15,19 +17,19 @@ toc:
   <h3 class="pg-section-title">Width</h3>
   <div style="display:flex;flex-direction:column;gap:12px;">
     <div>
-      <small style="display:block;margin-bottom:4px;color:var(--sui-text-muted);">sui-w-full (width: 100%)</small>
+      <small style="display:block;margin-bottom:4px;color:var(--sui-text-muted);"><code>sui-w-full</code> (width: 100%)</small>
       <div class="sui-inset" style="padding:10px;border-radius:8px;">
         <div class="sui-w-full sui-raised" style="padding:10px 14px;border-radius:6px;text-align:center;">w-full</div>
       </div>
     </div>
     <div>
-      <small style="display:block;margin-bottom:4px;color:var(--sui-text-muted);">sui-w-auto (width: auto)</small>
+      <small style="display:block;margin-bottom:4px;color:var(--sui-text-muted);"><code>sui-w-auto</code> (width: auto)</small>
       <div class="sui-inset" style="padding:10px;border-radius:8px;">
         <div class="sui-w-auto sui-raised" style="padding:10px 14px;border-radius:6px;display:inline-block;">w-auto sizes to content</div>
       </div>
     </div>
     <div>
-      <small style="display:block;margin-bottom:4px;color:var(--sui-text-muted);">sui-w-screen (width: 100vw)</small>
+      <small style="display:block;margin-bottom:4px;color:var(--sui-text-muted);"><code>sui-w-screen</code> (width: 100vw)</small>
       <div class="sui-inset" style="padding:10px;border-radius:8px;">
         <div class="sui-raised" style="padding:10px 14px;border-radius:6px;text-align:center;">
           <code>sui-w-screen</code> — spans the full viewport width
@@ -49,28 +51,33 @@ toc:
   <h3 class="pg-section-title">Max Width</h3>
   <div style="display:flex;flex-direction:column;gap:10px;">
     <div>
-      <small style="display:block;margin-bottom:4px;color:var(--sui-text-muted);">sui-max-w-sm (320px)</small>
+      <small style="display:block;margin-bottom:4px;color:var(--sui-text-muted);"><code>sui-max-w-sm</code> (320px)</small>
       <div class="sui-max-w-sm sui-raised" style="padding:10px 14px;border-radius:6px;text-align:center;width:100%;">max-w-sm</div>
     </div>
     <div>
-      <small style="display:block;margin-bottom:4px;color:var(--sui-text-muted);">sui-max-w-md (480px)</small>
+      <small style="display:block;margin-bottom:4px;color:var(--sui-text-muted);"><code>sui-max-w-md</code> (480px)</small>
       <div class="sui-max-w-md sui-raised" style="padding:10px 14px;border-radius:6px;text-align:center;width:100%;">max-w-md</div>
     </div>
     <div>
-      <small style="display:block;margin-bottom:4px;color:var(--sui-text-muted);">sui-max-w-lg (640px)</small>
+      <small style="display:block;margin-bottom:4px;color:var(--sui-text-muted);"><code>sui-max-w-lg</code> (640px)</small>
       <div class="sui-max-w-lg sui-raised" style="padding:10px 14px;border-radius:6px;text-align:center;width:100%;">max-w-lg</div>
     </div>
     <div>
-      <small style="display:block;margin-bottom:4px;color:var(--sui-text-muted);">sui-max-w-xl (800px)</small>
-      <div class="sui-max-w-xl sui-raised" style="padding:10px 14px;border-radius:6px;text-align:center;width:100%;">max-w-xl</div>
-    </div>
-    <div>
-      <small style="display:block;margin-bottom:4px;color:var(--sui-text-muted);">sui-max-w-2xl (1024px)</small>
-      <div class="sui-max-w-2xl sui-raised" style="padding:10px 14px;border-radius:6px;text-align:center;width:100%;">max-w-2xl</div>
-    </div>
-    <div>
-      <small style="display:block;margin-bottom:4px;color:var(--sui-text-muted);">sui-max-w-full (100%)</small>
-      <div class="sui-max-w-full sui-raised" style="padding:10px 14px;border-radius:6px;text-align:center;width:100%;">max-w-full</div>
+      <small style="display:block;margin-bottom:4px;color:var(--sui-text-muted);">Wider caps (only visible in containers wider than this column, shown as descriptions)</small>
+      <div class="sui-d-flex sui-flex-wrap sui-gap-2">
+        <div class="sui-raised" style="padding:12px 16px;border-radius:8px;">
+          <code>sui-max-w-xl</code><br><small style="color:var(--sui-text-muted);">max-width: 800px</small>
+        </div>
+        <div class="sui-raised" style="padding:12px 16px;border-radius:8px;">
+          <code>sui-max-w-2xl</code><br><small style="color:var(--sui-text-muted);">max-width: 1024px</small>
+        </div>
+        <div class="sui-raised" style="padding:12px 16px;border-radius:8px;">
+          <code>sui-max-w-full</code><br><small style="color:var(--sui-text-muted);">max-width: 100%</small>
+        </div>
+        <div class="sui-raised" style="padding:12px 16px;border-radius:8px;">
+          <code>sui-max-w-none</code><br><small style="color:var(--sui-text-muted);">max-width: none</small>
+        </div>
+      </div>
     </div>
   </div>
   <div class="pg-code-wrap">
@@ -91,7 +98,7 @@ toc:
   <div style="display:flex;flex-direction:column;gap:12px;">
     <div>
       <small style="display:block;margin-bottom:4px;color:var(--sui-text-muted);">Height utilities inside a fixed-height container (200px)</small>
-      <div class="sui-d-flex sui-gap-3 sui-inset" style="padding:10px;border-radius:8px;height:200px;">
+      <div class="sui-d-flex sui-align-start sui-gap-3 sui-inset" style="padding:10px;border-radius:8px;height:200px;">
         <div class="sui-h-full sui-raised" style="width:80px;border-radius:6px;display:flex;align-items:center;justify-content:center;text-align:center;font-size:0.8rem;">
           h-full<br>(100%)
         </div>
@@ -137,5 +144,81 @@ toc:
 &lt;div class="sui-min-h-screen"&gt;min-height: 100vh&lt;/div&gt;
 &lt;div class="sui-max-h-full"&gt;max-height: 100%&lt;/div&gt;
 &lt;div class="sui-max-h-screen"&gt;max-height: 100vh&lt;/div&gt;</pre></div>
+  </div>
+</div>
+
+{% set demoImg = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1200' height='600'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0%25' stop-color='%235B54E0'/%3E%3Cstop offset='100%25' stop-color='%2336A3F7'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect fill='url(%23g)' width='1200' height='600'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' fill='white' font-size='72' font-family='sans-serif' font-weight='800'%3E1200 x 600%3C/text%3E%3C/svg%3E" %}
+
+<!-- Images -->
+<div class="pg-section" id="section-4">
+  <h3 class="pg-section-title">Images</h3>
+  <div class="pg-section-row" style="align-items:flex-start;">
+    <div style="width:300px;max-width:100%;">
+      <small style="display:block;margin-bottom:4px;color:var(--sui-text-muted);"><code>sui-img-fluid</code> (dashed outline shows the parent)</small>
+      <div class="sui-text-center" style="width:300px;max-width:100%;padding:12px;outline:1px dashed color-mix(in srgb, var(--sui-text-light) 50%, transparent);border-radius:var(--sui-radius);">
+        <img class="sui-img-fluid" src="{{ demoImg }}" width="1200" height="600" alt="1200 by 600 demo image scaled to fit">
+      </div>
+    </div>
+    <div style="width:300px;max-width:100%;">
+      <small style="display:block;margin-bottom:4px;color:var(--sui-text-muted);"><code>sui-img-frame</code> on <code>&lt;img&gt;</code></small>
+      <div style="width:300px;max-width:100%;">
+        <img class="sui-img-frame" src="{{ demoImg }}" width="1200" height="600" alt="Demo image in a raised frame">
+      </div>
+    </div>
+    <div style="width:300px;max-width:100%;">
+      <small style="display:block;margin-bottom:4px;color:var(--sui-text-muted);"><code>sui-img-frame</code> on <code>&lt;figure&gt;</code></small>
+      <figure class="sui-img-frame" style="width:300px;margin:0;">
+        <img src="{{ demoImg }}" width="1200" height="600" alt="Demo image in a framed figure">
+      </figure>
+    </div>
+    <div style="width:300px;max-width:100%;">
+      <small style="display:block;margin-bottom:4px;color:var(--sui-text-muted);"><code>sui-img-frame sui-inset sui-rounded-lg</code></small>
+      <figure class="sui-img-frame sui-inset sui-rounded-lg" style="width:300px;margin:0;">
+        <img src="{{ demoImg }}" width="1200" height="600" alt="Demo image in an inset frame with large corners">
+      </figure>
+    </div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;!-- Scales down to fit, keeps its ratio --&gt;
+&lt;div class="sui-text-center" style="width:300px;max-width:100%;"&gt;
+  &lt;img class="sui-img-fluid" src="..." width="1200" height="600" alt="..."&gt;
+&lt;/div&gt;
+
+&lt;!-- Raised frame directly on the image --&gt;
+&lt;div style="width:300px;max-width:100%;"&gt;
+  &lt;img class="sui-img-frame" src="..." width="1200" height="600" alt="..."&gt;
+&lt;/div&gt;
+
+&lt;!-- Raised frame on a wrapper --&gt;
+&lt;figure class="sui-img-frame" style="width:300px;margin:0;"&gt;
+  &lt;img src="..." width="1200" height="600" alt="..."&gt;
+&lt;/figure&gt;
+
+&lt;!-- Inset frame with large corners (the image corners follow) --&gt;
+&lt;figure class="sui-img-frame sui-inset sui-rounded-lg" style="width:300px;margin:0;"&gt;
+  &lt;img src="..." width="1200" height="600" alt="..."&gt;
+&lt;/figure&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Reference -->
+<div class="pg-section" id="section-5">
+  <h3 class="pg-section-title">Reference</h3>
+  <div class="docs-table-wrap">
+    <table class="sui-table sui-table-compact">
+      <thead>
+        <tr><th scope="col" style="width:40%;">Class / Token</th><th scope="col">Description</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><code>sui-img-fluid</code></td><td><code>max-width: 100%; height: auto</code>. Stays inline, so <code>sui-text-center</code> on the parent centres it.</td></tr>
+        <tr><td><code>sui-img-frame</code></td><td>Raised frame, on the <code>&lt;img&gt;</code> itself or on a wrapper around one.</td></tr>
+        <tr><td><code>sui-rounded-*</code>, <code>sui-raised-lg</code>, <code>sui-inset</code>, <code>sui-pressed</code></td><td>Combine with <code>sui-img-frame</code> for other looks.</td></tr>
+        <tr><td><code>--sui-img-frame-radius</code></td><td>Frame corner radius (default <code>--sui-radius</code>); a wrapped image's corners follow it, inset by the 8px padding. <code>sui-rounded-*</code> set it.</td></tr>
+        <tr><td><code>sui-min-w-0</code></td><td><code>min-width: 0</code>. Lets flex children shrink so text can truncate.</td></tr>
+        <tr><td><code>sui-max-w-none</code></td><td><code>max-width: none</code>. Removes a max-width cap.</td></tr>
+        <tr><td><code>sui-min-vh-100</code></td><td><code>min-height: 100vh</code>. Alias of <code>sui-min-h-screen</code>.</td></tr>
+      </tbody>
+    </table>
   </div>
 </div>

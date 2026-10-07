@@ -15,6 +15,7 @@ toc:
   - With Preview
   - Raised
   - Inset
+  - Reference
 ---
 
 <!-- Swatches -->
@@ -89,20 +90,29 @@ toc:
     <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
     <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;!-- Small --&gt;
 &lt;div class="sui-color-picker sui-color-picker-sm"&gt;
-  &lt;div class="sui-color-swatch" data-color="#5B54E0" style="background:#5B54E0;"&gt;&lt;/div&gt;
-  &lt;!-- more swatches --&gt;
+  &lt;div class="sui-color-swatch active" data-color="#5B54E0" style="background:#5B54E0;"&gt;&lt;/div&gt;
+  &lt;div class="sui-color-swatch" data-color="#2DCE89" style="background:#2DCE89;"&gt;&lt;/div&gt;
+  &lt;div class="sui-color-swatch" data-color="#E74C6F" style="background:#E74C6F;"&gt;&lt;/div&gt;
+  &lt;div class="sui-color-swatch" data-color="#F5A623" style="background:#F5A623;"&gt;&lt;/div&gt;
+  &lt;div class="sui-color-swatch" data-color="#36A3F7" style="background:#36A3F7;"&gt;&lt;/div&gt;
 &lt;/div&gt;
 
 &lt;!-- Default --&gt;
 &lt;div class="sui-color-picker"&gt;
-  &lt;div class="sui-color-swatch" data-color="#5B54E0" style="background:#5B54E0;"&gt;&lt;/div&gt;
-  &lt;!-- more swatches --&gt;
+  &lt;div class="sui-color-swatch active" data-color="#5B54E0" style="background:#5B54E0;"&gt;&lt;/div&gt;
+  &lt;div class="sui-color-swatch" data-color="#2DCE89" style="background:#2DCE89;"&gt;&lt;/div&gt;
+  &lt;div class="sui-color-swatch" data-color="#E74C6F" style="background:#E74C6F;"&gt;&lt;/div&gt;
+  &lt;div class="sui-color-swatch" data-color="#F5A623" style="background:#F5A623;"&gt;&lt;/div&gt;
+  &lt;div class="sui-color-swatch" data-color="#36A3F7" style="background:#36A3F7;"&gt;&lt;/div&gt;
 &lt;/div&gt;
 
 &lt;!-- Large --&gt;
 &lt;div class="sui-color-picker sui-color-picker-lg"&gt;
-  &lt;div class="sui-color-swatch" data-color="#5B54E0" style="background:#5B54E0;"&gt;&lt;/div&gt;
-  &lt;!-- more swatches --&gt;
+  &lt;div class="sui-color-swatch active" data-color="#5B54E0" style="background:#5B54E0;"&gt;&lt;/div&gt;
+  &lt;div class="sui-color-swatch" data-color="#2DCE89" style="background:#2DCE89;"&gt;&lt;/div&gt;
+  &lt;div class="sui-color-swatch" data-color="#E74C6F" style="background:#E74C6F;"&gt;&lt;/div&gt;
+  &lt;div class="sui-color-swatch" data-color="#F5A623" style="background:#F5A623;"&gt;&lt;/div&gt;
+  &lt;div class="sui-color-swatch" data-color="#36A3F7" style="background:#36A3F7;"&gt;&lt;/div&gt;
 &lt;/div&gt;</pre></div>
   </div>
 </div>
@@ -166,7 +176,7 @@ toc:
   <h3 class="pg-section-title">Palette</h3>
   <div class="pg-section-row">
     <div class="sui-color-palette">
-      <div style="display:flex;align-items:center;gap:12px;">
+      <div class="sui-color-palette-item">
         <span class="sui-color-palette-label">Purple</span>
         <div class="sui-color-palette-row">
           <div class="sui-color-swatch" style="background:#EDE9FE;"></div>
@@ -178,7 +188,7 @@ toc:
           <div class="sui-color-swatch" style="background:#4C1D95;"></div>
         </div>
       </div>
-      <div style="display:flex;align-items:center;gap:12px;">
+      <div class="sui-color-palette-item">
         <span class="sui-color-palette-label">Green</span>
         <div class="sui-color-palette-row">
           <div class="sui-color-swatch" style="background:#D1FAE5;"></div>
@@ -190,7 +200,7 @@ toc:
           <div class="sui-color-swatch" style="background:#065F46;"></div>
         </div>
       </div>
-      <div style="display:flex;align-items:center;gap:12px;">
+      <div class="sui-color-palette-item">
         <span class="sui-color-palette-label">Red</span>
         <div class="sui-color-palette-row">
           <div class="sui-color-swatch" style="background:#FEE2E2;"></div>
@@ -202,7 +212,7 @@ toc:
           <div class="sui-color-swatch" style="background:#991B1B;"></div>
         </div>
       </div>
-      <div style="display:flex;align-items:center;gap:12px;">
+      <div class="sui-color-palette-item">
         <span class="sui-color-palette-label">Gray</span>
         <div class="sui-color-palette-row">
           <div class="sui-color-swatch" style="background:#F3F4F6;"></div>
@@ -219,7 +229,7 @@ toc:
   <div class="pg-code-wrap">
     <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
     <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-color-palette"&gt;
-  &lt;div style="display:flex;align-items:center;gap:12px;"&gt;
+  &lt;div class="sui-color-palette-item"&gt;
     &lt;span class="sui-color-palette-label"&gt;Purple&lt;/span&gt;
     &lt;div class="sui-color-palette-row"&gt;
       &lt;div class="sui-color-swatch" style="background:#EDE9FE;"&gt;&lt;/div&gt;
@@ -231,7 +241,7 @@ toc:
       &lt;div class="sui-color-swatch" style="background:#4C1D95;"&gt;&lt;/div&gt;
     &lt;/div&gt;
   &lt;/div&gt;
-  &lt;div style="display:flex;align-items:center;gap:12px;"&gt;
+  &lt;div class="sui-color-palette-item"&gt;
     &lt;span class="sui-color-palette-label"&gt;Green&lt;/span&gt;
     &lt;div class="sui-color-palette-row"&gt;
       &lt;div class="sui-color-swatch" style="background:#D1FAE5;"&gt;&lt;/div&gt;
@@ -241,6 +251,30 @@ toc:
       &lt;div class="sui-color-swatch" style="background:#059669;"&gt;&lt;/div&gt;
       &lt;div class="sui-color-swatch" style="background:#047857;"&gt;&lt;/div&gt;
       &lt;div class="sui-color-swatch" style="background:#065F46;"&gt;&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="sui-color-palette-item"&gt;
+    &lt;span class="sui-color-palette-label"&gt;Red&lt;/span&gt;
+    &lt;div class="sui-color-palette-row"&gt;
+      &lt;div class="sui-color-swatch" style="background:#FEE2E2;"&gt;&lt;/div&gt;
+      &lt;div class="sui-color-swatch" style="background:#FCA5A5;"&gt;&lt;/div&gt;
+      &lt;div class="sui-color-swatch" style="background:#F87171;"&gt;&lt;/div&gt;
+      &lt;div class="sui-color-swatch" style="background:#EF4444;"&gt;&lt;/div&gt;
+      &lt;div class="sui-color-swatch" style="background:#DC2626;"&gt;&lt;/div&gt;
+      &lt;div class="sui-color-swatch" style="background:#B91C1C;"&gt;&lt;/div&gt;
+      &lt;div class="sui-color-swatch" style="background:#991B1B;"&gt;&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="sui-color-palette-item"&gt;
+    &lt;span class="sui-color-palette-label"&gt;Gray&lt;/span&gt;
+    &lt;div class="sui-color-palette-row"&gt;
+      &lt;div class="sui-color-swatch" style="background:#F3F4F6;"&gt;&lt;/div&gt;
+      &lt;div class="sui-color-swatch" style="background:#D1D5DB;"&gt;&lt;/div&gt;
+      &lt;div class="sui-color-swatch" style="background:#9CA3AF;"&gt;&lt;/div&gt;
+      &lt;div class="sui-color-swatch" style="background:#6B7280;"&gt;&lt;/div&gt;
+      &lt;div class="sui-color-swatch" style="background:#4B5563;"&gt;&lt;/div&gt;
+      &lt;div class="sui-color-swatch" style="background:#374151;"&gt;&lt;/div&gt;
+      &lt;div class="sui-color-swatch" style="background:#1F2937;"&gt;&lt;/div&gt;
     &lt;/div&gt;
   &lt;/div&gt;
 &lt;/div&gt;</pre></div>
@@ -351,6 +385,38 @@ toc:
       &lt;/div&gt;
     &lt;/div&gt;
   &lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="sui-color-spectrum" data-color="#2DCE89"&gt;
+  &lt;div class="sui-color-spectrum-canvas"&gt;
+    &lt;canvas&gt;&lt;/canvas&gt;
+    &lt;div class="sui-color-spectrum-cursor"&gt;&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="sui-color-spectrum-hue"&gt;
+    &lt;div class="sui-color-spectrum-hue-cursor"&gt;&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="sui-color-spectrum-footer"&gt;
+    &lt;div class="sui-color-spectrum-preview"&gt;&lt;/div&gt;
+    &lt;div class="sui-color-spectrum-values"&gt;
+      &lt;div class="sui-color-spectrum-hex"&gt;
+        &lt;label&gt;Hex&lt;/label&gt;
+        &lt;input type="text" value="2DCE89" maxlength="6" spellcheck="false"&gt;
+      &lt;/div&gt;
+      &lt;div class="sui-color-spectrum-rgb"&gt;
+        &lt;div class="sui-color-spectrum-rgb-field"&gt;
+          &lt;input type="number" data-channel="r" min="0" max="255" value="45"&gt;
+          &lt;label&gt;R&lt;/label&gt;
+        &lt;/div&gt;
+        &lt;div class="sui-color-spectrum-rgb-field"&gt;
+          &lt;input type="number" data-channel="g" min="0" max="255" value="206"&gt;
+          &lt;label&gt;G&lt;/label&gt;
+        &lt;/div&gt;
+        &lt;div class="sui-color-spectrum-rgb-field"&gt;
+          &lt;input type="number" data-channel="b" min="0" max="255" value="137"&gt;
+          &lt;label&gt;B&lt;/label&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
 &lt;/div&gt;</pre></div>
   </div>
 </div>
@@ -383,6 +449,13 @@ toc:
   &lt;div&gt;
     &lt;div class="sui-color-input-value"&gt;#5B54E0&lt;/div&gt;
     &lt;div class="sui-color-input-label"&gt;Brand Color&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="sui-color-input"&gt;
+  &lt;input type="color" value="#2DCE89"&gt;
+  &lt;div&gt;
+    &lt;div class="sui-color-input-value"&gt;#2DCE89&lt;/div&gt;
+    &lt;div class="sui-color-input-label"&gt;Accent Color&lt;/div&gt;
   &lt;/div&gt;
 &lt;/div&gt;</pre></div>
   </div>
@@ -423,6 +496,20 @@ toc:
   &lt;div class="sui-color-preview-info"&gt;
     &lt;div class="sui-color-preview-hex"&gt;#5B54E0&lt;/div&gt;
     &lt;div class="sui-color-preview-name"&gt;Primary Purple&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="sui-color-preview"&gt;
+  &lt;div class="sui-color-preview-swatch" style="background:#2DCE89;"&gt;&lt;/div&gt;
+  &lt;div class="sui-color-preview-info"&gt;
+    &lt;div class="sui-color-preview-hex"&gt;#2DCE89&lt;/div&gt;
+    &lt;div class="sui-color-preview-name"&gt;Success Green&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="sui-color-preview"&gt;
+  &lt;div class="sui-color-preview-swatch" style="background:#E74C6F;"&gt;&lt;/div&gt;
+  &lt;div class="sui-color-preview-info"&gt;
+    &lt;div class="sui-color-preview-hex"&gt;#E74C6F&lt;/div&gt;
+    &lt;div class="sui-color-preview-name"&gt;Danger Rose&lt;/div&gt;
   &lt;/div&gt;
 &lt;/div&gt;</pre></div>
   </div>
@@ -479,5 +566,29 @@ toc:
   &lt;div class="sui-color-swatch" data-color="#6C757D" style="background:#6C757D;"&gt;&lt;/div&gt;
   &lt;div class="sui-color-swatch" data-color="#FFFFFF" style="background:#FFFFFF;"&gt;&lt;/div&gt;
 &lt;/div&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Reference -->
+<div class="pg-section" id="section-10">
+  <h3 class="pg-section-title">Reference</h3>
+  <div class="docs-table-wrap">
+    <table class="sui-table sui-table-compact">
+      <thead>
+        <tr><th scope="col" style="width:40%;">Key / Attribute / Event / API</th><th scope="col">Description</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><kbd class="sui-kbd-inline">Tab</kbd></td><td>Focuses the selected swatch (a swatch picker is a radio group).</td></tr>
+        <tr><td><kbd class="sui-kbd-inline">&larr;</kbd> <kbd class="sui-kbd-inline">&rarr;</kbd> <kbd class="sui-kbd-inline">&uarr;</kbd> <kbd class="sui-kbd-inline">&darr;</kbd></td><td>Move and select, wrapping. Mirrored in RTL.</td></tr>
+        <tr><td><kbd class="sui-kbd-inline">Home</kbd> / <kbd class="sui-kbd-inline">End</kbd></td><td>First / last swatch.</td></tr>
+        <tr><td><kbd class="sui-kbd-inline">Space</kbd> / <kbd class="sui-kbd-inline">Enter</kbd></td><td>Select the focused swatch.</td></tr>
+        <tr><td><code>aria-label</code></td><td>Swatch name. Falls back to <code>title</code>, a <code>.sui-color-label</code>, or <code>data-color</code>.</td></tr>
+        <tr><td><code>sui-color-palette</code></td><td>Display-only rows; not focusable.</td></tr>
+        <tr><td><code>sui-color-palette-item</code></td><td>One palette row: a <code>sui-color-palette-label</code> plus its <code>sui-color-palette-row</code> of swatches.</td></tr>
+        <tr><td><code>sui-color-change</code></td><td>Event on the picker when a colour is chosen: <code>detail.color</code> for swatches, <code>detail.hex</code> and <code>detail.rgb</code> for the spectrum.</td></tr>
+        <tr><td><code>sui-color-spectrum</code></td><td>Pick with the pointer, or type in the Hex and RGB fields; the canvas and hue bar have no arrow-key support.</td></tr>
+        <tr><td><code>SoftUI.init(el)</code></td><td>Adds roles and <code>tabindex</code> to markup inserted after page load.</td></tr>
+      </tbody>
+    </table>
   </div>
 </div>

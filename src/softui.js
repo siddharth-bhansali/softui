@@ -1,84 +1,137 @@
-/*! SoftUI v1.1.0 — Interactive Behaviors */
+/*! SoftUI v1.16.0 — Interactive Behaviors */
 
-const SoftUI = (() => {
+// Works as a classic <script> (window.SoftUI), a CommonJS/bundler import
+// (module.exports, with .default for ESM interop) and on the server (no-op).
+(function (root, factory) {
+  const api = factory();
+  if (typeof module === 'object' && module && module.exports) {
+    module.exports = api;
+    module.exports.default = api;
+  }
+  if (root && typeof window !== 'undefined') root.SoftUI = api;
+})(typeof window !== 'undefined' ? window : (typeof globalThis !== 'undefined' ? globalThis : this), function () {
+  const VERSION = '1.16.0';
+
+  // SSR: importing on the server is a no-op (nothing touches document)
+  if (typeof window === 'undefined' || typeof document === 'undefined') {
+    const noop = function () { return null; };
+    return {
+      init: noop, modal: noop, sheet: noop, toast: noop, carousel: noop, sidebar: noop, tour: noop, reveal: noop,
+      theme: { get: noop, set: noop, toggle: noop, clear: noop, system: noop },
+      version: VERSION
+    };
+  }
+
+  // Loaded twice (e.g. a <script> tag plus a bundler import): reuse the first
+  // copy instead of registering every document listener again.
+  if (window.SoftUI && typeof window.SoftUI.init === 'function') return window.SoftUI;
+
   function pad(n) { return n < 10 ? '0' + n : '' + n; }
+
+  // Reduced motion (checked live so OS toggles apply without reload)
+  function prefersReducedMotion() {
+    return !!(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches);
+  }
+  function scrollBehavior() { return prefersReducedMotion() ? 'auto' : 'smooth'; }
+
+  // Component events: always bubble, so you can listen on document
+  function emit(el, name, detail) {
+    el.dispatchEvent(new CustomEvent(name, { detail: detail, bubbles: true }));
+  }
+
+  // Init helpers: safe() isolates failures, once() binds document listeners
+  // a single time, each() runs a per-element setup once per element.
+  const _bound = {};
+  const _seen = {};
+  function safe(name, fn, arg) {
+    try {
+      return fn(arg);
+    } catch (err) {
+      if (typeof console !== 'undefined') console.error('[SoftUI] ' + name + ' failed:', err);
+    }
+  }
+  function once(key) {
+    if (_bound[key]) return false;
+    _bound[key] = true;
+    return true;
+  }
+  function each(root, selector, key, fn) {
+    const r = root || document;
+    const seen = _seen[key] || (_seen[key] = new WeakSet());
+    const list = [];
+    if (r.nodeType === 1 && r.matches(selector)) list.push(r);
+    if (r.querySelectorAll) r.querySelectorAll(selector).forEach(function(el) { list.push(el); });
+    list.forEach(function(el) {
+      if (seen.has(el)) return;
+      seen.add(el);
+      safe(key, fn, el);
+    });
+  }
+
+  // Accepts a selector string or an Element
+  function resolveEl(target) {
+    if (typeof target === 'string') return document.querySelector(target);
+    return target && target.nodeType === 1 ? target : null;
+  }
+
+  // =========================================
+  // Overlays (modal + sheet) — shared open/close with focus restore
+  // =========================================
+  const openerMap = new WeakMap(); // backdrop -> element focused when it opened
+  const OPEN_OVERLAYS = '.sui-modal-backdrop.sui-modal-open, .sui-sheet-backdrop.sui-sheet-open';
+
+  function anyOverlayOpen() {
+    return !!document.querySelector(OPEN_OVERLAYS);
+  }
+
+  function openOverlay(backdrop, openClass, panelSel) {
+    if (backdrop.classList.contains(openClass)) return;
+    const active = document.activeElement;
+    if (active && active !== document.body && !backdrop.contains(active)) openerMap.set(backdrop, active);
+    backdrop.classList.add(openClass);
+    document.body.style.overflow = 'hidden';
+    const panel = backdrop.querySelector(panelSel);
+    if (panel) focusInto(backdrop, panel, function() { return backdrop.classList.contains(openClass); }, 0);
+  }
+
+  function closeOverlay(backdrop, openClass) {
+    if (!backdrop || !backdrop.classList.contains(openClass)) return;
+    backdrop.classList.remove(openClass);
+    if (!anyOverlayOpen()) document.body.style.overflow = '';
+    const opener = openerMap.get(backdrop);
+    openerMap.delete(backdrop);
+    if (opener && opener.isConnected && typeof opener.focus === 'function') opener.focus();
+  }
+
+  function shake(el, cls) {
+    el.classList.add(cls);
+    setTimeout(() => el.classList.remove(cls), 200);
+  }
 
   // =========================================
   // Modal
   // =========================================
-  function modal(selector) {
-    const backdrop = document.querySelector(selector);
+  function modal(target) {
+    const backdrop = resolveEl(target);
     if (!backdrop) return null;
-
-    let previouslyFocused = null;
-
-    function open() {
-      previouslyFocused = document.activeElement;
-      backdrop.classList.add('sui-modal-open');
-      document.body.style.overflow = 'hidden';
-
-      // Focus the first focusable element inside the modal
-      const modal = backdrop.querySelector('.sui-modal');
-      if (modal) {
-        const first = getFocusable(modal)[0];
-        if (first) first.focus();
-      }
-    }
-
-    function close() {
-      backdrop.classList.remove('sui-modal-open');
-      document.body.style.overflow = '';
-
-      // Restore focus to the element that opened the modal
-      if (previouslyFocused) {
-        previouslyFocused.focus();
-        previouslyFocused = null;
-      }
-    }
-
-    function isOpen() {
-      return backdrop.classList.contains('sui-modal-open');
-    }
-
-    return { open, close, isOpen };
+    return {
+      open() { openOverlay(backdrop, 'sui-modal-open', '.sui-modal'); },
+      close() { closeOverlay(backdrop, 'sui-modal-open'); },
+      isOpen() { return backdrop.classList.contains('sui-modal-open'); }
+    };
   }
 
   // =========================================
   // Sheet / Drawer
   // =========================================
-  function sheet(selector) {
-    const backdrop = document.querySelector(selector);
+  function sheet(target) {
+    const backdrop = resolveEl(target);
     if (!backdrop) return null;
-
-    let previouslyFocused = null;
-
-    function open() {
-      previouslyFocused = document.activeElement;
-      backdrop.classList.add('sui-sheet-open');
-      document.body.style.overflow = 'hidden';
-
-      const panel = backdrop.querySelector('.sui-sheet');
-      if (panel) {
-        const first = getFocusable(panel)[0];
-        if (first) first.focus();
-      }
-    }
-
-    function close() {
-      backdrop.classList.remove('sui-sheet-open');
-      document.body.style.overflow = '';
-
-      if (previouslyFocused) {
-        previouslyFocused.focus();
-        previouslyFocused = null;
-      }
-    }
-
-    function isOpen() {
-      return backdrop.classList.contains('sui-sheet-open');
-    }
-
-    return { open, close, isOpen };
+    return {
+      open() { openOverlay(backdrop, 'sui-sheet-open', '.sui-sheet'); },
+      close() { closeOverlay(backdrop, 'sui-sheet-open'); },
+      isOpen() { return backdrop.classList.contains('sui-sheet-open'); }
+    };
   }
 
   // =========================================
@@ -90,23 +143,74 @@ const SoftUI = (() => {
     ));
   }
 
+  function visibleFocusable(container) {
+    return getFocusable(container).filter(function(f) { return f.offsetParent !== null; });
+  }
+
+  // Overlays fade in by transitioning visibility from hidden, so their contents
+  // can't take focus in the tick they open. Finish those visibility transitions
+  // now; where that isn't supported, retry for up to ~0.5s. animRoot is the
+  // element whose subtree animates (the backdrop); panel receives focus.
+  function focusInto(animRoot, panel, isOpen, tries) {
+    if (!isOpen() || panel.contains(document.activeElement)) return;
+    const first = visibleFocusable(panel)[0]; // also flushes styles, creating the transitions
+    if (animRoot.getAnimations) {
+      animRoot.getAnimations({ subtree: true }).forEach(function(a) {
+        if (a.transitionProperty === 'visibility') a.finish();
+      });
+    }
+    if (first) {
+      first.focus();
+    } else {
+      if (!panel.hasAttribute('tabindex')) panel.setAttribute('tabindex', '-1');
+      panel.focus();
+    }
+    if (!panel.contains(document.activeElement) && tries < 30) {
+      setTimeout(function() { focusInto(animRoot, panel, isOpen, tries + 1); }, 16);
+    }
+  }
+
+  // Tab / Shift+Tab wrap inside panel, and pull focus back in if it escaped
+  function trapTab(e, panel) {
+    const focusable = visibleFocusable(panel);
+    if (!focusable.length) { e.preventDefault(); return; }
+    const first = focusable[0];
+    const last = focusable[focusable.length - 1];
+    const inside = panel.contains(document.activeElement);
+    if (e.shiftKey && (document.activeElement === first || !inside)) {
+      e.preventDefault();
+      last.focus();
+    } else if (!e.shiftKey && (document.activeElement === last || !inside)) {
+      e.preventDefault();
+      first.focus();
+    }
+  }
+
   // =========================================
-  // Global listeners (auto-initialized)
+  // Global listeners (bound once, on first init)
   // =========================================
-  function init() {
-    // Escape key closes any open modal or sheet
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') {
-        const openModal = document.querySelector('.sui-modal-backdrop.sui-modal-open');
-        if (openModal) {
-          openModal.classList.remove('sui-modal-open');
-          document.body.style.overflow = '';
-        }
-        const openSheet = document.querySelector('.sui-sheet-backdrop.sui-sheet-open');
-        if (openSheet && !openSheet.classList.contains('sui-sheet-static')) {
-          openSheet.classList.remove('sui-sheet-open');
-          document.body.style.overflow = '';
-        }
+  function bindGlobal() {
+    if (!once('global')) return;
+
+    // Escape closes the topmost open modal or sheet (static ones shake instead).
+    // Modal and sheet backdrops share z-index 1000, so the last open backdrop
+    // in document order is the one painted on top. Bound on window so it runs
+    // after the document-level popup handlers: an Escape that closed a
+    // dropdown, popover, menu etc. (they preventDefault) leaves the overlay open.
+    window.addEventListener('keydown', (e) => {
+      if (e.key !== 'Escape' || e.defaultPrevented) return;
+      const open = document.querySelectorAll(OPEN_OVERLAYS);
+      const top = open[open.length - 1];
+      if (!top) return;
+      // Handled: other window-level layers (e.g. an open sidebar drawer) skip it
+      e.preventDefault();
+      if (top.classList.contains('sui-modal-backdrop')) {
+        if (top.classList.contains('sui-modal-static')) shake(top, 'sui-modal-shake');
+        else closeOverlay(top, 'sui-modal-open');
+      } else if (top.classList.contains('sui-sheet-static')) {
+        shake(top, 'sui-sheet-shake');
+      } else {
+        closeOverlay(top, 'sui-sheet-open');
       }
     });
 
@@ -114,11 +218,9 @@ const SoftUI = (() => {
     document.addEventListener('click', (e) => {
       if (e.target.classList.contains('sui-modal-backdrop') && e.target.classList.contains('sui-modal-open')) {
         if (e.target.classList.contains('sui-modal-static')) {
-          e.target.classList.add('sui-modal-shake');
-          setTimeout(() => e.target.classList.remove('sui-modal-shake'), 200);
+          shake(e.target, 'sui-modal-shake');
         } else {
-          e.target.classList.remove('sui-modal-open');
-          document.body.style.overflow = '';
+          closeOverlay(e.target, 'sui-modal-open');
         }
       }
     });
@@ -131,25 +233,7 @@ const SoftUI = (() => {
       if (!backdrop) return;
 
       const modal = backdrop.querySelector('.sui-modal');
-      if (!modal) return;
-
-      const focusable = getFocusable(modal);
-      if (focusable.length === 0) return;
-
-      const first = focusable[0];
-      const last = focusable[focusable.length - 1];
-
-      if (e.shiftKey) {
-        if (document.activeElement === first) {
-          e.preventDefault();
-          last.focus();
-        }
-      } else {
-        if (document.activeElement === last) {
-          e.preventDefault();
-          first.focus();
-        }
-      }
+      if (modal) trapTab(e, modal);
     });
 
     // Close button handler (any .sui-modal-close inside a backdrop)
@@ -159,35 +243,28 @@ const SoftUI = (() => {
       if (!closeBtn) return;
 
       const backdrop = closeBtn.closest('.sui-modal-backdrop');
-      if (backdrop) {
-        backdrop.classList.remove('sui-modal-open');
-        document.body.style.overflow = '';
-      }
+      if (backdrop) closeOverlay(backdrop, 'sui-modal-open');
     });
 
     // Sheet backdrop click to close (or shake if static)
     document.addEventListener('click', (e) => {
       if (e.target.classList.contains('sui-sheet-backdrop') && e.target.classList.contains('sui-sheet-open')) {
         if (e.target.classList.contains('sui-sheet-static')) {
-          e.target.classList.add('sui-sheet-shake');
-          setTimeout(() => e.target.classList.remove('sui-sheet-shake'), 200);
+          shake(e.target, 'sui-sheet-shake');
         } else {
-          e.target.classList.remove('sui-sheet-open');
-          document.body.style.overflow = '';
+          closeOverlay(e.target, 'sui-sheet-open');
         }
       }
     });
 
     // Sheet close button handler
     document.addEventListener('click', (e) => {
+      if (!e.target.closest) return;
       const closeBtn = e.target.closest('.sui-sheet-close');
       if (!closeBtn) return;
 
       const backdrop = closeBtn.closest('.sui-sheet-backdrop');
-      if (backdrop) {
-        backdrop.classList.remove('sui-sheet-open');
-        document.body.style.overflow = '';
-      }
+      if (backdrop) closeOverlay(backdrop, 'sui-sheet-open');
     });
 
     // Focus trap inside open sheets
@@ -198,25 +275,7 @@ const SoftUI = (() => {
       if (!sheetBackdrop) return;
 
       const panel = sheetBackdrop.querySelector('.sui-sheet');
-      if (!panel) return;
-
-      const focusable = getFocusable(panel);
-      if (focusable.length === 0) return;
-
-      const first = focusable[0];
-      const last = focusable[focusable.length - 1];
-
-      if (e.shiftKey) {
-        if (document.activeElement === first) {
-          e.preventDefault();
-          last.focus();
-        }
-      } else {
-        if (document.activeElement === last) {
-          e.preventDefault();
-          first.focus();
-        }
-      }
+      if (panel) trapTab(e, panel);
     });
 
     // Dismissible alerts
@@ -244,85 +303,6 @@ const SoftUI = (() => {
         setTimeout(() => chip.remove(), 250);
       }
     });
-
-    // Tabs
-    initTabs();
-
-    // Accordion
-    initAccordion();
-
-    // Collapsible
-    initCollapsible();
-
-    // Dropdown
-    initDropdown();
-
-    // Context Menu
-    initContextMenu();
-
-    // Command Palette
-    initCommand();
-
-    // Calendar
-    initCalendar();
-    initTimePicker();
-
-    // Menubar
-    initMenubar();
-
-    // Combobox
-    initCombobox();
-
-    // Resizable
-    initResizable();
-
-    // Popover
-    initPopover();
-
-    // Carousels
-    initCarousels();
-
-    // Sliders
-    initSliders();
-
-    // Toggle Groups
-    initToggleGroups();
-
-    // Input OTP
-    initOtp();
-
-    // Charts
-    initCharts();
-
-    // Styled Selects
-    initStyledSelects();
-
-    // Selectable pricing
-    initSelectablePricing();
-
-    // Drawers
-    initDrawers();
-
-    // Editable Text
-    initEditable();
-
-    // Scrollspy
-    initScrollspy();
-
-    // Countdowns
-    initCountdowns();
-
-    // Segmented Controls
-    initSegmented();
-
-    // Navigation Menu
-    initNavMenu();
-
-    // Data Tables
-    initDataTables();
-
-    // Drag & Drop
-    initDragDrop();
 
     // Tooltip auto-positioning
     document.addEventListener('mouseenter', (e) => {
@@ -450,17 +430,11 @@ const SoftUI = (() => {
     setTimeout(() => restorePosition(el, prefix), 200);
   }
 
-  // Auto-init when DOM is ready
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', init);
-  } else {
-    init();
-  }
-
   // =========================================
   // Tabs
   // =========================================
   function initTabs() {
+    if (!once('tabs')) return;
     document.addEventListener('click', (e) => {
       const tab = e.target.closest('.sui-tab');
       if (!tab) return;
@@ -492,12 +466,13 @@ const SoftUI = (() => {
   // =========================================
   // Accordion
   // =========================================
-  function initAccordion() {
+  function initAccordion(root) {
     // Set accurate max-height on initially active items
-    document.querySelectorAll('.sui-accordion-item.active .sui-accordion-body').forEach(body => {
+    each(root, '.sui-accordion-item.active .sui-accordion-body', 'accordion', body => {
       body.style.setProperty('--sui-accordion-height', body.scrollHeight + 'px');
     });
 
+    if (!once('accordion')) return;
     document.addEventListener('click', (e) => {
       const header = e.target.closest('.sui-accordion-header');
       if (!header) return;
@@ -538,12 +513,13 @@ const SoftUI = (() => {
   // =========================================
   // Collapsible
   // =========================================
-  function initCollapsible() {
+  function initCollapsible(root) {
     // Set height on initially open collapsibles
-    document.querySelectorAll('.sui-collapsible.open .sui-collapsible-content').forEach(function(content) {
+    each(root, '.sui-collapsible.open .sui-collapsible-content', 'collapsible', function(content) {
       content.style.setProperty('--sui-collapsible-height', content.scrollHeight + 'px');
     });
 
+    if (!once('collapsible')) return;
     document.addEventListener('click', function(e) {
       const trigger = e.target.closest('.sui-collapsible-trigger');
       if (!trigger) return;
@@ -571,8 +547,10 @@ const SoftUI = (() => {
   // =========================================
   // Toast
   // =========================================
+  const TOAST_POSITIONS = ['tr', 'tl', 'br', 'bl', 'tc', 'bc'];
+
   function getToastContainer(position) {
-    const pos = position || 'tr';
+    const pos = TOAST_POSITIONS.indexOf(position) !== -1 ? position : 'tr';
     const cls = 'sui-toast-container sui-toast-' + pos;
     let container = document.querySelector('.sui-toast-container.sui-toast-' + pos);
     if (!container) {
@@ -590,7 +568,8 @@ const SoftUI = (() => {
       variant: '',
       duration: 4000,
       position: 'tr',
-      closable: true
+      closable: true,
+      html: false // true renders title/message as HTML — trusted content only
     }, options);
 
     const container = getToastContainer(opts.position);
@@ -603,13 +582,32 @@ const SoftUI = (() => {
     el.setAttribute('aria-live', 'polite');
     el.setAttribute('aria-atomic', 'true');
 
-    let html = '<div class="sui-toast-body">';
-    if (opts.title) html += '<div class="sui-toast-title">' + opts.title + '</div>';
-    if (opts.message) html += '<div class="sui-toast-message">' + opts.message + '</div>';
-    html += '</div>';
-    if (opts.closable) html += '<button class="sui-toast-close"></button>';
-    if (opts.duration > 0) html += '<div class="sui-toast-progress"></div>';
-    el.innerHTML = html;
+    // Text by default; HTML only when explicitly opted in
+    function part(className, value) {
+      const node = document.createElement('div');
+      node.className = className;
+      if (opts.html) node.innerHTML = value;
+      else node.textContent = String(value);
+      return node;
+    }
+
+    const body = document.createElement('div');
+    body.className = 'sui-toast-body';
+    if (opts.title) body.appendChild(part('sui-toast-title', opts.title));
+    if (opts.message) body.appendChild(part('sui-toast-message', opts.message));
+    el.appendChild(body);
+    if (opts.closable) {
+      const close = document.createElement('button');
+      close.type = 'button';
+      close.className = 'sui-toast-close';
+      close.setAttribute('aria-label', 'Close notification');
+      el.appendChild(close);
+    }
+    if (opts.duration > 0) {
+      const progress = document.createElement('div');
+      progress.className = 'sui-toast-progress';
+      el.appendChild(progress);
+    }
 
     container.appendChild(el);
 
@@ -659,6 +657,7 @@ const SoftUI = (() => {
   // Dropdown
   // =========================================
   function initDropdown() {
+    if (!once('dropdown')) return;
     document.addEventListener('click', (e) => {
       const toggle = e.target.closest('[data-sui-dropdown], .sui-dropdown-toggle');
       if (toggle) {
@@ -705,6 +704,7 @@ const SoftUI = (() => {
     document.addEventListener('keydown', (e) => {
       if (e.key === 'Escape') {
         document.querySelectorAll('.sui-dropdown.open, .sui-dropdown-split.open').forEach(d => {
+          e.preventDefault();
           d.classList.remove('open');
           const t = d.querySelector('[data-sui-dropdown], .sui-dropdown-toggle');
           if (t) { t.setAttribute('aria-expanded', 'false'); t.focus(); }
@@ -732,6 +732,7 @@ const SoftUI = (() => {
   // Context Menu
   // =========================================
   function initContextMenu() {
+    if (!once('context-menu')) return;
     let openMenu = null;
 
     function closeAll() {
@@ -853,6 +854,7 @@ const SoftUI = (() => {
     // Escape closes
     document.addEventListener('keydown', function(e) {
       if (e.key === 'Escape' && openMenu) {
+        e.preventDefault();
         // If a sub is open, close it first
         const openSub = openMenu.querySelector('.sui-context-sub.open');
         if (openSub) {
@@ -920,8 +922,10 @@ const SoftUI = (() => {
   // =========================================
   // Command Palette
   // =========================================
-  function initCommand() {
-    document.querySelectorAll('.sui-command[data-sui-command]').forEach(function(cmd) {
+  const commandDialogs = new WeakMap(); // dialog -> { open, close }
+
+  function initCommand(root) {
+    each(root, '.sui-command[data-sui-command]', 'command', function(cmd) {
       const input = cmd.querySelector('.sui-command-input');
       const list = cmd.querySelector('.sui-command-list');
       const empty = cmd.querySelector('.sui-command-empty');
@@ -933,7 +937,8 @@ const SoftUI = (() => {
       let focusedIndex = -1;
 
       function getVisibleItems() {
-        return Array.from(list.querySelectorAll('.sui-command-item:not([hidden])'));
+        // Disabled items are skipped by arrow keys, Enter and hover
+        return Array.from(list.querySelectorAll('.sui-command-item:not([hidden]):not(.disabled):not([disabled]):not([aria-disabled="true"])'));
       }
 
       function updateFocus(visibleItems) {
@@ -1023,7 +1028,7 @@ const SoftUI = (() => {
     });
 
     // Dialog mode — Cmd+K / Ctrl+K
-    document.querySelectorAll('.sui-command-dialog').forEach(function(dialog) {
+    each(root, '.sui-command-dialog', 'command-dialog', function(dialog) {
       const cmd = dialog.querySelector('.sui-command');
       const input = cmd ? cmd.querySelector('.sui-command-input') : null;
 
@@ -1070,19 +1075,24 @@ const SoftUI = (() => {
         }
       });
 
-      // Trigger buttons
-      document.querySelectorAll('[data-sui-command-open="' + dialog.id + '"]').forEach(function(btn) {
-        btn.addEventListener('click', function() {
-          openDialog();
-        });
-      });
+      commandDialogs.set(dialog, { open: openDialog, close: closeDialog });
+    });
+
+    // Trigger buttons — delegated, so triggers added later work too
+    if (!once('command-open')) return;
+    document.addEventListener('click', function(e) {
+      const t = e.target.closest && e.target.closest('[data-sui-command-open]');
+      if (!t) return;
+      const d = document.getElementById(t.getAttribute('data-sui-command-open'));
+      const api = d && commandDialogs.get(d);
+      if (api) api.open();
     });
   }
 
   // =========================================
   // Calendar
   // =========================================
-  function initCalendar() {
+  function initCalendar(root) {
     const MONTHS = ['January','February','March','April','May','June','July','August','September','October','November','December'];
     const MONTHS_SHORT = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
     const DAYS = ['Su','Mo','Tu','We','Th','Fr','Sa'];
@@ -1120,7 +1130,7 @@ const SoftUI = (() => {
       return str;
     }
 
-    document.querySelectorAll('.sui-calendar[data-sui-calendar]').forEach(function(cal) {
+    each(root, '.sui-calendar[data-sui-calendar]', 'calendar', function(cal) {
       const mode = cal.dataset.suiCalendar || 'single';
       const today = new Date();
       today.setHours(0,0,0,0);
@@ -1267,7 +1277,7 @@ const SoftUI = (() => {
       function fireTimeUpdate() {
         if (!hasTime) return;
         if (mode === 'single' && selected) {
-          cal.dispatchEvent(new CustomEvent('sui-date-select', { detail: { date: selected, hour: timeHour, minute: timeMinute, period: is24h ? null : timePeriod, is24h: is24h } }));
+          emit(cal, 'sui-date-select', { date: selected, hour: timeHour, minute: timeMinute, period: is24h ? null : timePeriod, is24h: is24h });
         }
       }
 
@@ -1354,8 +1364,8 @@ const SoftUI = (() => {
                 if (mode === 'single') {
                   selected = dt;
                   const detail = { date: dt };
-                  if (hasTime) { detail.hour = timeHour; detail.minute = timeMinute; detail.period = timePeriod; }
-                  cal.dispatchEvent(new CustomEvent('sui-date-select', { detail: detail }));
+                  if (hasTime) { detail.hour = timeHour; detail.minute = timeMinute; detail.period = is24h ? null : timePeriod; detail.is24h = is24h; }
+                  emit(cal, 'sui-date-select', detail);
                 } else if (mode === 'range') {
                   if (!rangeStart || rangeEnd) {
                     rangeStart = dt;
@@ -1363,7 +1373,7 @@ const SoftUI = (() => {
                   } else {
                     if (dt < rangeStart) { rangeEnd = rangeStart; rangeStart = dt; }
                     else { rangeEnd = dt; }
-                    cal.dispatchEvent(new CustomEvent('sui-date-select', { detail: { start: rangeStart, end: rangeEnd } }));
+                    emit(cal, 'sui-date-select', { start: rangeStart, end: rangeEnd });
                   }
                 }
                 renderDays();
@@ -1525,7 +1535,7 @@ const SoftUI = (() => {
             if (minuteInput) minuteInput.value = pad(timeMinute);
             if (periodBtn) periodBtn.textContent = timePeriod;
           }
-          cal.dispatchEvent(new CustomEvent('sui-date-clear'));
+          emit(cal, 'sui-date-clear');
           renderDays();
         });
       });
@@ -1580,8 +1590,8 @@ const SoftUI = (() => {
   // =========================================
   // Standalone Time Picker
   // =========================================
-  function initTimePicker() {
-    document.querySelectorAll('.sui-timepicker[data-sui-timepicker]').forEach(function(tp) {
+  function initTimePicker(root) {
+    each(root, '.sui-timepicker[data-sui-timepicker]', 'timepicker', function(tp) {
       const is24h = tp.getAttribute('data-sui-timepicker') === '24h';
       const hourMax = is24h ? 23 : 12;
       const hourMin = is24h ? 0 : 1;
@@ -1641,7 +1651,7 @@ const SoftUI = (() => {
       function clampM(v) { const n = parseInt(v, 10); if (isNaN(n) || n < 0) return 0; if (n > 59) return 59; return n; }
 
       function fireChange() {
-        tp.dispatchEvent(new CustomEvent('sui-time-change', { detail: { hour: tHour, minute: tMinute, period: is24h ? null : tPeriod, is24h: is24h } }));
+        emit(tp, 'sui-time-change', { hour: tHour, minute: tMinute, period: is24h ? null : tPeriod, is24h: is24h });
       }
 
       hInput.addEventListener('blur', function() {
@@ -1678,7 +1688,21 @@ const SoftUI = (() => {
   // =========================================
   // Menubar
   // =========================================
-  function initMenubar() {
+  function initMenubar(root) {
+    // Hover to open submenus
+    each(root, '.sui-menubar-sub', 'menubar-sub', function(sub) {
+      sub.addEventListener('mouseenter', function() {
+        sub.parentElement.querySelectorAll('.sui-menubar-sub.open').forEach(function(s) {
+          if (s !== sub) s.classList.remove('open');
+        });
+        sub.classList.add('open');
+      });
+      sub.addEventListener('mouseleave', function() {
+        sub.classList.remove('open');
+      });
+    });
+
+    if (!once('menubar')) return;
     let menubarOpen = false;
 
     function closeAllMenus(bar) {
@@ -1754,22 +1778,10 @@ const SoftUI = (() => {
       }
     }, true);
 
-    // Hover to open submenus
-    document.querySelectorAll('.sui-menubar-sub').forEach(function(sub) {
-      sub.addEventListener('mouseenter', function() {
-        sub.parentElement.querySelectorAll('.sui-menubar-sub.open').forEach(function(s) {
-          if (s !== sub) s.classList.remove('open');
-        });
-        sub.classList.add('open');
-      });
-      sub.addEventListener('mouseleave', function() {
-        sub.classList.remove('open');
-      });
-    });
-
     // Escape closes menubar
     document.addEventListener('keydown', function(e) {
       if (e.key === 'Escape') {
+        if (document.querySelector('.sui-menubar-menu.open')) e.preventDefault();
         document.querySelectorAll('.sui-menubar').forEach(function(bar) {
           closeAllMenus(bar);
         });
@@ -1780,8 +1792,8 @@ const SoftUI = (() => {
   // =========================================
   // Combobox
   // =========================================
-  function initCombobox() {
-    document.querySelectorAll('.sui-combobox').forEach(function(combo) {
+  function initCombobox(root) {
+    each(root, '.sui-combobox', 'combobox', function(combo) {
       const trigger = combo.querySelector('.sui-combobox-trigger');
       const content = combo.querySelector('.sui-combobox-content');
       const input = combo.querySelector('.sui-combobox-input');
@@ -1940,7 +1952,10 @@ const SoftUI = (() => {
 
       // Escape closes
       combo.addEventListener('keydown', function(e) {
-        if (e.key === 'Escape') close();
+        if (e.key === 'Escape' && combo.classList.contains('open')) {
+          e.preventDefault();
+          close();
+        }
       });
 
       // Initialize clear button visibility for pre-selected items
@@ -1951,8 +1966,8 @@ const SoftUI = (() => {
   // =========================================
   // Resizable
   // =========================================
-  function initResizable() {
-    document.querySelectorAll('.sui-resizable').forEach(function(container) {
+  function initResizable(root) {
+    each(root, '.sui-resizable', 'resizable', function(container) {
       const isVertical = container.classList.contains('sui-resizable-vertical');
       const handles = container.querySelectorAll(':scope > .sui-resizable-handle');
 
@@ -2062,6 +2077,7 @@ const SoftUI = (() => {
   // Popover
   // =========================================
   function initPopover() {
+    if (!once('popover')) return;
     document.addEventListener('click', (e) => {
       const trigger = e.target.closest('[data-sui-popover]');
       if (trigger) {
@@ -2124,6 +2140,7 @@ const SoftUI = (() => {
     document.addEventListener('keydown', (e) => {
       if (e.key === 'Escape') {
         document.querySelectorAll('.sui-popover.open').forEach(p => {
+          e.preventDefault();
           p.classList.remove('open');
           delayedRestore(p, 'sui-popover');
           const t = p.querySelector('[data-sui-popover]');
@@ -2139,8 +2156,8 @@ const SoftUI = (() => {
   // =========================================
   // Slider
   // =========================================
-  function initSliders() {
-    document.querySelectorAll('.sui-slider').forEach(slider => {
+  function initSliders(root) {
+    each(root, '.sui-slider', 'slider', slider => {
       const input = slider.querySelector('input[type="range"]');
       const display = slider.querySelector('.sui-slider-value');
       if (!input || !display) return;
@@ -2158,8 +2175,8 @@ const SoftUI = (() => {
   // =========================================
   // Input OTP
   // =========================================
-  function initOtp() {
-    document.querySelectorAll('.sui-otp[data-sui-otp]').forEach(function(otp) {
+  function initOtp(root) {
+    each(root, '.sui-otp[data-sui-otp]', 'otp', function(otp) {
       if (otp.dataset.suiOtpDisabled !== undefined) return;
 
       const slots = otp.querySelectorAll('.sui-otp-slot');
@@ -2205,7 +2222,7 @@ const SoftUI = (() => {
 
         // Dispatch event when complete
         if (filtered.length === len) {
-          otp.dispatchEvent(new CustomEvent('sui-otp-complete', { detail: { value: filtered } }));
+          emit(otp, 'sui-otp-complete', { value: filtered });
         }
       });
 
@@ -2238,8 +2255,8 @@ const SoftUI = (() => {
   // =========================================
   // Toggle Group
   // =========================================
-  function initToggleGroups() {
-    document.querySelectorAll('.sui-toggle-group[data-sui-toggle]').forEach(function(group) {
+  function initToggleGroups(root) {
+    each(root, '.sui-toggle-group[data-sui-toggle]', 'toggle-group', function(group) {
       const mode = group.dataset.suiToggle; // "single" or "multi"
       const items = group.querySelectorAll('.sui-toggle-group-item:not([disabled])');
 
@@ -2267,9 +2284,14 @@ const SoftUI = (() => {
   // =========================================
   // Carousel
   // =========================================
+  // One controller per element: SoftUI.carousel() returns the auto-init instance
+  const carouselInstances = new WeakMap();
+
   function carousel(selector) {
-    const el = document.querySelector(selector);
+    const el = resolveEl(selector);
     if (!el) return null;
+    const existing = carouselInstances.get(el);
+    if (existing) return existing;
 
     const track = el.querySelector('.sui-carousel-track');
     if (!track) return null;
@@ -2319,6 +2341,9 @@ const SoftUI = (() => {
       }
       cloneCount = visible;
     }
+    // Seamless only applies when clones exist; with no more slides than are
+    // visible it falls back to the rewind branch (maxIndex 0, so it stays put)
+    const seamlessActive = isSeamless && cloneCount > 0;
 
     const allItems = Array.from(track.children);
 
@@ -2356,7 +2381,7 @@ const SoftUI = (() => {
       }
 
       // Seamless jump after transition ends
-      if (isSeamless && !jumping) {
+      if (seamlessActive && !jumping) {
         if (current >= totalReal) {
           jumping = true;
           setTimeout(function() {
@@ -2377,8 +2402,12 @@ const SoftUI = (() => {
 
     function goTo(index) {
       if (jumping) return;
-      if (isLoop) {
+      if (seamlessActive) {
         current = ((index % totalReal) + totalReal) % totalReal;
+      } else if (isLoop) {
+        // rewind: wrap out-of-range indices, then clamp to the last full page
+        const wrapped = ((index % totalReal) + totalReal) % totalReal;
+        current = Math.min(wrapped, maxIndex);
       } else {
         current = Math.max(0, Math.min(index, maxIndex));
       }
@@ -2387,7 +2416,7 @@ const SoftUI = (() => {
 
     function next() {
       if (jumping) return;
-      if (isSeamless) {
+      if (seamlessActive) {
         current++;
       } else if (isLoop) {
         current = (current + 1) > maxIndex ? 0 : current + 1;
@@ -2400,7 +2429,7 @@ const SoftUI = (() => {
 
     function prev() {
       if (jumping) return;
-      if (isSeamless) {
+      if (seamlessActive) {
         current--;
       } else if (isLoop) {
         current = (current - 1) < 0 ? maxIndex : current - 1;
@@ -2415,42 +2444,46 @@ const SoftUI = (() => {
     if (nextBtn) nextBtn.addEventListener('click', function() { next(); resetAutoplay(); });
     dots.forEach(function(d, i) { d.addEventListener('click', function() { goTo(i); resetAutoplay(); }); });
 
-    // Autoplay
+    // Autoplay — off under prefers-reduced-motion, paused while hovered.
+    // startAutoplay always clears first so intervals can never stack.
+    let hovering = false;
+    function stopAutoplay() {
+      if (autoplayTimer) { clearInterval(autoplayTimer); autoplayTimer = null; }
+    }
     function startAutoplay() {
-      if (autoplayMs > 0) {
-        autoplayTimer = setInterval(next, autoplayMs);
+      stopAutoplay();
+      if (autoplayMs > 0 && !hovering && !prefersReducedMotion()) {
+        autoplayTimer = setInterval(function() { if (!prefersReducedMotion()) next(); }, autoplayMs);
       }
     }
-
-    function resetAutoplay() {
-      if (autoplayTimer) clearInterval(autoplayTimer);
-      startAutoplay();
-    }
+    function resetAutoplay() { startAutoplay(); }
 
     if (autoplayMs > 0) {
-      el.addEventListener('mouseenter', function() { if (autoplayTimer) clearInterval(autoplayTimer); });
-      el.addEventListener('mouseleave', function() { startAutoplay(); });
+      el.addEventListener('mouseenter', function() { hovering = true; stopAutoplay(); });
+      el.addEventListener('mouseleave', function() { hovering = false; startAutoplay(); });
     }
 
     update(false);
     startAutoplay();
 
-    return { next: next, prev: prev, goTo: goTo, current: function() { return current; } };
+    const api = { next: next, prev: prev, goTo: goTo, current: function() { return current; } };
+    carouselInstances.set(el, api);
+    return api;
   }
 
-  function initCarousels() {
-    document.querySelectorAll('.sui-carousel').forEach(el => {
+  function initCarousels(root) {
+    each(root, '.sui-carousel', 'carousel', el => {
       if (!el.id) return;
-      carousel('#' + el.id);
+      carousel(el);
     });
   }
 
   // =========================================
   // Charts
   // =========================================
-  function initCharts() {
+  function initCharts(root) {
     // Bar charts — set heights from data-value
-    document.querySelectorAll('.sui-chart-bar-col').forEach(function(col) {
+    each(root, '.sui-chart-bar-col', 'chart-bar-col', function(col) {
       // Skip grouped bars (handled separately)
       if (col.querySelector('.sui-chart-bar-group')) return;
       const fill = col.querySelector('.sui-chart-bar-fill');
@@ -2463,7 +2496,7 @@ const SoftUI = (() => {
     });
 
     // Grouped bars — set heights for each fill in a group
-    document.querySelectorAll('.sui-chart-bar-group').forEach(function(group) {
+    each(root, '.sui-chart-bar-group', 'chart-bar-group', function(group) {
       group.querySelectorAll('.sui-chart-bar-fill').forEach(function(fill) {
         const val = parseFloat(fill.getAttribute('data-value'));
         if (isNaN(val)) return;
@@ -2474,7 +2507,7 @@ const SoftUI = (() => {
     });
 
     // Horizontal bars
-    document.querySelectorAll('.sui-chart-bar-row').forEach(function(row) {
+    each(root, '.sui-chart-bar-row', 'chart-bar-row', function(row) {
       const fill = row.querySelector('.sui-chart-bar-fill');
       if (!fill) return;
       const val = parseFloat(fill.getAttribute('data-value'));
@@ -2485,7 +2518,7 @@ const SoftUI = (() => {
     });
 
     // Stacked bars
-    document.querySelectorAll('.sui-chart-bar-track-stacked').forEach(function(track) {
+    each(root, '.sui-chart-bar-track-stacked', 'chart-bar-stacked', function(track) {
       const fills = track.querySelectorAll('.sui-chart-bar-fill');
       let total = 0;
       fills.forEach(function(f) { total += parseFloat(f.getAttribute('data-value')) || 0; });
@@ -2497,7 +2530,7 @@ const SoftUI = (() => {
     });
 
     // Donut / Pie charts — build conic-gradient from data-segments
-    document.querySelectorAll('.sui-chart-donut[data-segments]').forEach(function(donut) {
+    each(root, '.sui-chart-donut[data-segments]', 'chart-donut', function(donut) {
       try {
         const segments = JSON.parse(donut.getAttribute('data-segments'));
         let total = 0;
@@ -2515,7 +2548,7 @@ const SoftUI = (() => {
     });
 
     // Line / Area charts — measure path length for animation
-    document.querySelectorAll('.sui-chart-line-wrap .chart-line').forEach(function(path) {
+    each(root, '.sui-chart-line-wrap .chart-line, .sui-chart-line-wrap .sui-chart-line', 'chart-line', function(path) {
       if (path.getTotalLength) {
         const len = path.getTotalLength();
         path.style.setProperty('--line-length', len);
@@ -2525,8 +2558,8 @@ const SoftUI = (() => {
     });
 
     // SVG dot tooltips
-    document.querySelectorAll('.sui-chart-line-wrap').forEach(function(wrap) {
-      const dots = wrap.querySelectorAll('.chart-dot[data-value]');
+    each(root, '.sui-chart-line-wrap', 'chart-line-wrap', function(wrap) {
+      const dots = wrap.querySelectorAll('.chart-dot[data-value], .sui-chart-dot[data-value]');
       if (!dots.length) return;
 
       const tip = document.createElement('div');
@@ -2558,8 +2591,8 @@ const SoftUI = (() => {
     });
   }
 
-  function initSelectablePricing() {
-    document.querySelectorAll('.sui-pricing-selectable').forEach(function(container) {
+  function initSelectablePricing(root) {
+    each(root, '.sui-pricing-selectable', 'pricing', function(container) {
       const cards = container.querySelectorAll('.sui-pricing-card');
       cards.forEach(function(card) {
         card.addEventListener('click', function() {
@@ -2572,8 +2605,8 @@ const SoftUI = (() => {
     });
   }
 
-  function initStyledSelects() {
-    document.querySelectorAll('.sui-styled-select').forEach(function(sel) {
+  function initStyledSelects(root) {
+    each(root, '.sui-styled-select', 'styled-select', function(sel) {
       const trigger = sel.querySelector('.sui-styled-select-trigger');
       const menu = sel.querySelector('.sui-styled-select-menu');
       const valueEl = sel.querySelector('.sui-styled-select-value');
@@ -2643,7 +2676,8 @@ const SoftUI = (() => {
           } else {
             sel.classList.toggle('open');
           }
-        } else if (e.key === 'Escape') {
+        } else if (e.key === 'Escape' && isOpen) {
+          e.preventDefault();
           sel.classList.remove('open');
           options.forEach(function(o) { o.classList.remove('focused'); });
         }
@@ -2651,6 +2685,7 @@ const SoftUI = (() => {
     });
 
     // Close on outside click
+    if (!once('styled-select')) return;
     document.addEventListener('click', function(e) {
       if (!e.target.closest) return;
       if (!e.target.closest('.sui-styled-select')) {
@@ -2661,12 +2696,21 @@ const SoftUI = (() => {
     });
   }
 
-  function initEditable() {
-    document.querySelectorAll('.sui-editable').forEach(function(el) {
+  function initEditable(root) {
+    each(root, '.sui-editable', 'editable', function(el) {
       const valueEl = el.querySelector('.sui-editable-value');
       if (!valueEl) return;
 
-      el.addEventListener('click', function() {
+      // Keyboard access: the wrapper is a button that turns into a text input
+      const ownLabel = !el.hasAttribute('aria-label') && !el.hasAttribute('aria-labelledby');
+      if (!el.hasAttribute('tabindex')) el.setAttribute('tabindex', '0');
+      if (!el.hasAttribute('role')) el.setAttribute('role', 'button');
+      if (ownLabel) el.setAttribute('aria-label', 'Edit: ' + valueEl.textContent.trim());
+      const iconEl = el.querySelector('.sui-editable-icon');
+      if (iconEl && !iconEl.hasAttribute('aria-hidden')) iconEl.setAttribute('aria-hidden', 'true');
+      const restTabindex = el.getAttribute('tabindex');
+
+      function startEdit() {
         if (el.querySelector('.sui-editable-input')) return; // Already editing
 
         const currentText = valueEl.textContent;
@@ -2676,47 +2720,76 @@ const SoftUI = (() => {
         input.value = currentText;
         input.style.fontSize = getComputedStyle(valueEl).fontSize;
         input.style.fontWeight = getComputedStyle(valueEl).fontWeight;
+        input.setAttribute('aria-label', el.getAttribute('aria-label') || 'Edit text');
 
         valueEl.style.display = 'none';
         const icon = el.querySelector('.sui-editable-icon');
         if (icon) icon.style.display = 'none';
 
+        // Shift+Tab from the input shouldn't land back on the wrapper
+        el.setAttribute('tabindex', '-1');
+        // A role=button must not contain the textbox: drop role/label while editing
+        const restRole = el.getAttribute('role');
+        const restLabel = el.getAttribute('aria-label');
+        el.removeAttribute('role');
+        el.removeAttribute('aria-label');
         el.insertBefore(input, valueEl);
         input.focus();
         input.select();
 
-        let cancelled = false;
+        let finished = false;
 
-        function save() {
-          if (cancelled) return;
-          const newVal = input.value.trim() || currentText;
-          valueEl.textContent = newVal;
+        function finish(byKey) {
+          finished = true;
           valueEl.style.display = '';
           if (icon) icon.style.display = '';
+          el.setAttribute('tabindex', restTabindex);
+          if (restRole !== null) el.setAttribute('role', restRole);
+          if (restLabel !== null && !el.hasAttribute('aria-label')) el.setAttribute('aria-label', restLabel);
           input.remove();
-          el.dispatchEvent(new CustomEvent('editable:save', { detail: { value: newVal, previous: currentText } }));
+          // Return focus only for keyboard endings; a blur-save must not steal focus
+          if (byKey) el.focus();
+        }
+
+        function save(byKey) {
+          if (finished) return;
+          const newVal = input.value.trim() || currentText;
+          valueEl.textContent = newVal;
+          if (ownLabel) el.setAttribute('aria-label', 'Edit: ' + newVal);
+          finish(byKey === true);
+          const d = { value: newVal, previous: currentText };
+          emit(el, 'editable:save', d); // legacy name
+          emit(el, 'sui-editable-save', d);
         }
 
         function cancel() {
-          cancelled = true;
-          valueEl.style.display = '';
-          if (icon) icon.style.display = '';
-          input.remove();
-          el.dispatchEvent(new CustomEvent('editable:cancel'));
+          if (finished) return;
+          finish(true);
+          emit(el, 'editable:cancel'); // legacy name
+          emit(el, 'sui-editable-cancel');
         }
 
         input.addEventListener('keydown', function(e) {
-          if (e.key === 'Enter') { e.preventDefault(); save(); }
+          if (e.key === 'Enter') { e.preventDefault(); save(true); }
           if (e.key === 'Escape') { e.preventDefault(); cancel(); }
         });
 
         input.addEventListener('blur', save);
+      }
+
+      el.addEventListener('click', startEdit);
+      el.addEventListener('keydown', function(e) {
+        if (e.target !== el) return;
+        if (e.key === 'Enter' || e.key === ' ' || e.key === 'F2') {
+          e.preventDefault();
+          startEdit();
+        }
       });
     });
   }
 
-  function initScrollspy() {
-    document.querySelectorAll('[data-sui-scrollspy]').forEach(function(nav) {
+  function initScrollspy(root) {
+    each(root, '[data-sui-scrollspy]', 'scrollspy', function(nav) {
       const links = nav.querySelectorAll('a[href^="#"]');
       if (!links.length) return;
 
@@ -2804,9 +2877,9 @@ const SoftUI = (() => {
           links.forEach(function(l) { l.classList.remove('active'); });
           link.classList.add('active');
           if (scrollRoot) {
-            scrollRoot.scrollTo({ top: el.offsetTop - scrollRoot.offsetTop, behavior: 'smooth' });
+            scrollRoot.scrollTo({ top: el.offsetTop - scrollRoot.offsetTop, behavior: scrollBehavior() });
           } else {
-            el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            el.scrollIntoView({ behavior: scrollBehavior(), block: 'start' });
           }
           setTimeout(function() { clickLock = false; }, 600);
         });
@@ -2814,27 +2887,41 @@ const SoftUI = (() => {
     });
   }
 
-  function initCountdowns() {
-    document.querySelectorAll('.sui-countdown[data-date]').forEach(function(el) {
+  function initCountdowns(root) {
+    each(root, '.sui-countdown[data-date]', 'countdown', function(el) {
       const dateStr = el.getAttribute('data-date');
 
-      // Support relative dates: "+2y", "+30d", "+2y5d", "+6h30m"
+      // Support relative dates: "+2y", "+30d", "+2y5d", "+6h30m", "+2y 5d"
       let target;
       if (dateStr.startsWith('+')) {
-        target = new Date();
-        const parts = dateStr.slice(1).matchAll(/(\d+)([ydhms])/g);
-        for (const p of parts) {
-          const val = parseInt(p[1], 10);
-          const unit = p[2];
-          if (unit === 'y') target.setFullYear(target.getFullYear() + val);
-          else if (unit === 'd') target.setDate(target.getDate() + val);
-          else if (unit === 'h') target.setHours(target.getHours() + val);
-          else if (unit === 'm') target.setMinutes(target.getMinutes() + val);
-          else if (unit === 's') target.setSeconds(target.getSeconds() + val);
+        if (!/^\+\s*(\d+\s*[ydhms]\s*)+$/.test(dateStr)) {
+          target = NaN;
+        } else {
+          target = new Date();
+          const parts = dateStr.slice(1).matchAll(/(\d+)\s*([ydhms])/g);
+          for (const p of parts) {
+            const val = parseInt(p[1], 10);
+            const unit = p[2];
+            if (unit === 'y') target.setFullYear(target.getFullYear() + val);
+            else if (unit === 'd') target.setDate(target.getDate() + val);
+            else if (unit === 'h') target.setHours(target.getHours() + val);
+            else if (unit === 'm') target.setMinutes(target.getMinutes() + val);
+            else if (unit === 's') target.setSeconds(target.getSeconds() + val);
+          }
+          target = target.getTime();
         }
-        target = target.getTime();
       } else {
         target = new Date(dateStr).getTime();
+      }
+
+      // Invalid date: show placeholders, warn once, run no timer, fire no countdown:end
+      if (!Number.isFinite(target)) {
+        console.warn('[SoftUI] Countdown: invalid data-date "' + dateStr + '"', el);
+        el.setAttribute('data-countdown-invalid', '');
+        ['[data-years]', '[data-days]', '[data-hours]', '[data-minutes]', '[data-seconds]'].forEach(function(sel) {
+          const n = el.querySelector(sel); if (n) n.textContent = '--';
+        });
+        return;
       }
 
       const yearsEl = el.querySelector('[data-years]');
@@ -2842,6 +2929,8 @@ const SoftUI = (() => {
       const hoursEl = el.querySelector('[data-hours]');
       const minsEl = el.querySelector('[data-minutes]');
       const secsEl = el.querySelector('[data-seconds]');
+      let timer = null;
+      let ended = false;
 
       function update() {
         const now = Date.now();
@@ -2861,19 +2950,21 @@ const SoftUI = (() => {
         if (hoursEl) hoursEl.textContent = String(h).padStart(2, '0');
         if (minsEl) minsEl.textContent = String(m).padStart(2, '0');
         if (secsEl) secsEl.textContent = String(s).padStart(2, '0');
-        if (diff === 0) {
-          clearInterval(timer);
-          el.dispatchEvent(new Event('countdown:end'));
+        if (!(diff > 0)) {
+          ended = true;
+          if (timer) clearInterval(timer);
+          emit(el, 'countdown:end'); // legacy name
+          emit(el, 'sui-countdown-end');
         }
       }
 
       update();
-      const timer = setInterval(update, 1000);
+      if (!ended) timer = setInterval(update, 1000);
     });
   }
 
-  function initSegmented() {
-    document.querySelectorAll('.sui-segmented').forEach(function(seg) {
+  function initSegmented(root) {
+    each(root, '.sui-segmented', 'segmented', function(seg) {
       const indicator = seg.querySelector('.sui-segmented-indicator');
       if (!indicator) return;
 
@@ -2899,7 +2990,65 @@ const SoftUI = (() => {
     });
   }
 
+  // Disclosure-navigation pattern: triggers / sub-parent links expose aria-expanded
+  let navMenuPanelCount = 0;
+
+  function navMenuControl(container) {
+    if (container.classList.contains('sui-nav-menu-sub')) return container.querySelector(':scope > .sui-nav-menu-link');
+    return container.querySelector(':scope > .sui-nav-menu-trigger:not([href])');
+  }
+
+  function navMenuPanel(container) {
+    return container.querySelector(':scope > .sui-nav-menu-panel');
+  }
+
+  function navMenuPrimeOne(container) {
+    const ctrl = navMenuControl(container);
+    const panel = navMenuPanel(container);
+    if (!ctrl || !panel) return;
+    if (!ctrl.hasAttribute('aria-expanded')) ctrl.setAttribute('aria-expanded', container.classList.contains('open') ? 'true' : 'false');
+    if (!ctrl.hasAttribute('aria-controls')) {
+      if (!panel.id) panel.id = 'sui-navmenu-panel-' + (++navMenuPanelCount);
+      ctrl.setAttribute('aria-controls', panel.id);
+    }
+  }
+
+  function navMenuSetOpen(container, open) {
+    container.classList.toggle('open', open);
+    const ctrl = navMenuControl(container);
+    if (ctrl && navMenuPanel(container)) ctrl.setAttribute('aria-expanded', open ? 'true' : 'false');
+    // Closing also closes nested subs so stale state doesn't reappear on next open
+    if (!open) {
+      container.querySelectorAll('.sui-nav-menu-sub.open').forEach(function(sub) { navMenuSetOpen(sub, false); });
+    }
+  }
+
+  function navMenuCloseAll(except) {
+    document.querySelectorAll('.sui-nav-menu-item.open').forEach(function(i) {
+      if (i !== except) navMenuSetOpen(i, false);
+    });
+  }
+
+  // Close open subs in the same panel that aren't this sub, its ancestors or descendants
+  function navMenuCloseSiblingSubs(sub) {
+    const panel = sub.parentElement && sub.parentElement.closest('.sui-nav-menu-panel');
+    if (!panel) return;
+    panel.querySelectorAll('.sui-nav-menu-sub.open').forEach(function(s) {
+      if (s !== sub && !s.contains(sub) && !sub.contains(s)) navMenuSetOpen(s, false);
+    });
+  }
+
+  // Visible links that belong directly to this panel (not to nested sub panels)
+  function navMenuLinks(panel) {
+    return Array.from(panel.querySelectorAll('.sui-nav-menu-link')).filter(function(l) {
+      return l.closest('.sui-nav-menu-panel') === panel && l.offsetParent !== null;
+    });
+  }
+
   function initNavMenu() {
+    document.querySelectorAll('.sui-nav-menu-item, .sui-nav-menu-sub').forEach(navMenuPrimeOne);
+    if (!once('nav-menu')) return;
+
     // Toggle on click
     document.addEventListener('click', function(e) {
       if (!e.target.closest) return;
@@ -2907,60 +3056,141 @@ const SoftUI = (() => {
       if (trigger && !trigger.hasAttribute('href')) {
         const item = trigger.closest('.sui-nav-menu-item');
         if (!item) return;
+        navMenuPrimeOne(item);
         // Close other open items
-        document.querySelectorAll('.sui-nav-menu-item.open').forEach(function(i) {
-          if (i !== item) i.classList.remove('open');
-        });
-        item.classList.toggle('open');
+        navMenuCloseAll(item);
+        navMenuSetOpen(item, !item.classList.contains('open'));
         e.stopPropagation();
         return;
       }
-      // Click on sub-menu trigger (click mode)
+      // Click (or Enter) on a sub-menu parent toggles it, in hover and click modes
       const subLink = e.target.closest('.sui-nav-menu-sub > .sui-nav-menu-link');
       if (subLink) {
-        const sub = subLink.closest('.sui-nav-menu-sub');
-        const panel = sub.closest('.sui-nav-menu-panel');
-        if (panel && panel.closest('.sui-nav-menu-sub-click')) {
-          e.preventDefault();
-          e.stopPropagation();
-          // Close sibling subs
-          panel.querySelectorAll('.sui-nav-menu-sub.open').forEach(function(s) {
-            if (s !== sub) s.classList.remove('open');
-          });
-          sub.classList.toggle('open');
-          return;
-        }
+        const sub = subLink.parentElement;
+        e.preventDefault();
+        e.stopPropagation();
+        navMenuPrimeOne(sub);
+        navMenuCloseSiblingSubs(sub);
+        navMenuSetOpen(sub, !sub.classList.contains('open'));
+        return;
       }
 
       // Click on a nav-menu link closes everything
       const link = e.target.closest('.sui-nav-menu-link');
       if (link && link.closest('.sui-nav-menu-item')) {
-        document.querySelectorAll('.sui-nav-menu-item.open').forEach(function(i) {
-          i.classList.remove('open');
-        });
+        navMenuCloseAll();
         return;
       }
 
       // Click outside closes all
       if (!e.target.closest('.sui-nav-menu-item')) {
-        document.querySelectorAll('.sui-nav-menu-item.open').forEach(function(i) {
-          i.classList.remove('open');
-        });
+        navMenuCloseAll();
       }
     });
 
-    // Escape closes
+    // Hover-mode subs: entering another sub closes a click/keyboard-opened sibling
+    document.addEventListener('mouseover', function(e) {
+      if (!e.target.closest) return;
+      const sub = e.target.closest('.sui-nav-menu-sub');
+      if (!sub || sub.closest('.sui-nav-menu-sub-click')) return;
+      navMenuCloseSiblingSubs(sub);
+    });
+
+    // Keyboard
     document.addEventListener('keydown', function(e) {
+      const t = e.target;
       if (e.key === 'Escape') {
-        document.querySelectorAll('.sui-nav-menu-item.open').forEach(function(i) {
-          i.classList.remove('open');
-        });
+        const container = t.closest && t.closest('.sui-nav-menu .sui-nav-menu-sub.open, .sui-nav-menu .sui-nav-menu-item.open');
+        if (container) {
+          e.preventDefault();
+          navMenuSetOpen(container, false);
+          const ctrl = navMenuControl(container);
+          if (ctrl) ctrl.focus();
+          return;
+        }
+        if (document.querySelector('.sui-nav-menu-item.open')) e.preventDefault();
+        navMenuCloseAll();
+        return;
       }
+      if (!t.closest) return;
+      const nav = t.closest('.sui-nav-menu');
+      if (!nav) return;
+      const rtl = getComputedStyle(nav).direction === 'rtl';
+      const inward = rtl ? 'ArrowLeft' : 'ArrowRight';
+      const outward = rtl ? 'ArrowRight' : 'ArrowLeft';
+
+      // Top-level trigger: ArrowDown opens and focuses the first link
+      if (t.matches('.sui-nav-menu-trigger:not([href])')) {
+        if (e.key !== 'ArrowDown') return;
+        const item = t.closest('.sui-nav-menu-item');
+        const panel = item && navMenuPanel(item);
+        if (!panel) return;
+        e.preventDefault();
+        navMenuPrimeOne(item);
+        navMenuCloseAll(item);
+        navMenuSetOpen(item, true);
+        const first = navMenuLinks(panel)[0];
+        if (first) first.focus();
+        return;
+      }
+
+      if (!t.matches('.sui-nav-menu-link')) return;
+      const panel = t.closest('.sui-nav-menu-panel');
+      if (!panel) return;
+      const sub = t.parentElement && t.parentElement.classList.contains('sui-nav-menu-sub') ? t.parentElement : null;
+
+      // Sub-parent: inward arrow (or Space) opens the sub and focuses its first link
+      if (sub && (e.key === inward || e.key === ' ')) {
+        const subPanel = navMenuPanel(sub);
+        if (!subPanel) return;
+        e.preventDefault();
+        navMenuPrimeOne(sub);
+        navMenuCloseSiblingSubs(sub);
+        navMenuSetOpen(sub, true);
+        if (e.key === inward) {
+          const first = navMenuLinks(subPanel)[0];
+          if (first) first.focus();
+        }
+        return;
+      }
+
+      // Outward arrow inside a sub panel: close it and return to its parent link
+      if (e.key === outward) {
+        const owner = panel.parentElement;
+        if (owner && owner.classList.contains('sui-nav-menu-sub')) {
+          e.preventDefault();
+          navMenuSetOpen(owner, false);
+          const ctrl = navMenuControl(owner);
+          if (ctrl) ctrl.focus();
+        }
+        return;
+      }
+
+      // ArrowUp / ArrowDown move between this panel's own links (wrapping)
+      if (e.key === 'ArrowDown' || e.key === 'ArrowUp') {
+        const links = navMenuLinks(panel);
+        const i = links.indexOf(t);
+        if (i === -1 || !links.length) return;
+        e.preventDefault();
+        const next = e.key === 'ArrowDown' ? (i + 1) % links.length : (i - 1 + links.length) % links.length;
+        links[next].focus();
+      }
+    });
+
+    // Tabbing out of an open item/sub closes it. A null relatedTarget (click on a
+    // non-focusable spot, or leaving the window) is ignored; outside clicks are
+    // handled by the click listener above.
+    document.addEventListener('focusout', function(e) {
+      const rt = e.relatedTarget;
+      if (!rt || !e.target.closest) return;
+      document.querySelectorAll('.sui-nav-menu-item.open, .sui-nav-menu-sub.open').forEach(function(c) {
+        if (c.contains(e.target) && !c.contains(rt)) navMenuSetOpen(c, false);
+      });
     });
   }
 
-  function initDrawers() {
-    document.querySelectorAll('.sui-drawer').forEach(function(backdrop) {
+  function initDrawers(root) {
+    each(root, '.sui-drawer', 'drawer', function(backdrop) {
       const panel = backdrop.querySelector('.sui-sheet-bottom');
       const handle = backdrop.querySelector('.sui-drawer-handle');
       if (!panel || !handle) return;
@@ -3007,16 +3237,18 @@ const SoftUI = (() => {
             if (dist < minDist) { minDist = dist; closest = p; }
           });
           if (closest === 0) {
-            SoftUI.sheet(backdrop).close();
             panel.style.height = '';
+            const s = sheet(backdrop);
+            if (s) s.close();
           } else {
             panel.style.height = closest + 'px';
           }
         } else {
           // No snap points — dismiss if dragged below 30% of starting height
           if (currentHeight < startHeight * 0.3) {
-            SoftUI.sheet(backdrop).close();
             panel.style.height = '';
+            const s = sheet(backdrop);
+            if (s) s.close();
           }
         }
       }
@@ -3030,8 +3262,8 @@ const SoftUI = (() => {
     });
   }
 
-  function initDataTables() {
-    document.querySelectorAll('.sui-datatable').forEach(function(dt) {
+  function initDataTables(root) {
+    each(root, '.sui-datatable', 'datatable', function(dt) {
       const table = dt.querySelector('.sui-table');
       if (!table) return;
 
@@ -3252,9 +3484,9 @@ const SoftUI = (() => {
     });
   }
 
-  function initDragDrop() {
+  function initDragDrop(root) {
     // ── Sortable Lists ──
-    document.querySelectorAll('.sui-sortable').forEach(function(list) {
+    each(root, '.sui-sortable', 'sortable', function(list) {
       let dragItem = null;
 
       list.querySelectorAll('.sui-sortable-item').forEach(function(item) {
@@ -3307,7 +3539,7 @@ const SoftUI = (() => {
     });
 
     // ── Kanban ──
-    document.querySelectorAll('.sui-kanban').forEach(function(kanban) {
+    each(root, '.sui-kanban', 'kanban', function(kanban) {
       let dragCard = null;
 
       kanban.querySelectorAll('.sui-kanban-card').forEach(function(card) {
@@ -3375,7 +3607,35 @@ const SoftUI = (() => {
     }
 
     // ── Drop Zone ──
-    document.querySelectorAll('.sui-dropzone').forEach(function(zone) {
+    // File names are user-controlled: always inserted as text
+    function addDropzoneFiles(zone, files) {
+      let fileList = zone.querySelector('.sui-dropzone-files');
+      if (!fileList) {
+        fileList = document.createElement('div');
+        fileList.className = 'sui-dropzone-files';
+        zone.appendChild(fileList);
+      }
+      Array.prototype.slice.call(files).forEach(function(file) {
+        const item = document.createElement('div');
+        item.className = 'sui-dropzone-file';
+        const name = document.createElement('span');
+        name.textContent = file.name;
+        const remove = document.createElement('button');
+        remove.className = 'sui-dropzone-file-remove';
+        remove.type = 'button';
+        remove.textContent = '×';
+        remove.setAttribute('aria-label', 'Remove ' + file.name);
+        remove.addEventListener('click', function(ev) {
+          ev.stopPropagation();
+          item.remove();
+        });
+        item.appendChild(name);
+        item.appendChild(remove);
+        fileList.appendChild(item);
+      });
+    }
+
+    each(root, '.sui-dropzone', 'dropzone', function(zone) {
       // Click-to-upload: create hidden file input
       const fileInput = document.createElement('input');
       fileInput.type = 'file';
@@ -3391,22 +3651,7 @@ const SoftUI = (() => {
       fileInput.addEventListener('change', function() {
         const files = fileInput.files;
         if (!files.length) return;
-        let fileList = zone.querySelector('.sui-dropzone-files');
-        if (!fileList) {
-          fileList = document.createElement('div');
-          fileList.className = 'sui-dropzone-files';
-          zone.appendChild(fileList);
-        }
-        Array.prototype.slice.call(files).forEach(function(file) {
-          const item = document.createElement('div');
-          item.className = 'sui-dropzone-file';
-          item.innerHTML = '<span>' + file.name + '</span><button class="sui-dropzone-file-remove" type="button">&times;</button>';
-          item.querySelector('.sui-dropzone-file-remove').addEventListener('click', function(ev) {
-            ev.stopPropagation();
-            item.remove();
-          });
-          fileList.appendChild(item);
-        });
+        addDropzoneFiles(zone, files);
         fileInput.value = '';
       });
 
@@ -3427,22 +3672,7 @@ const SoftUI = (() => {
         zone.classList.remove('drag-over');
         const files = e.dataTransfer.files;
         if (!files.length) return;
-        let fileList = zone.querySelector('.sui-dropzone-files');
-        if (!fileList) {
-          fileList = document.createElement('div');
-          fileList.className = 'sui-dropzone-files';
-          zone.appendChild(fileList);
-        }
-        Array.prototype.slice.call(files).forEach(function(file) {
-          const item = document.createElement('div');
-          item.className = 'sui-dropzone-file';
-          item.innerHTML = '<span>' + file.name + '</span><button class="sui-dropzone-file-remove" type="button">&times;</button>';
-          item.querySelector('.sui-dropzone-file-remove').addEventListener('click', function(ev) {
-            ev.stopPropagation();
-            item.remove();
-          });
-          fileList.appendChild(item);
-        });
+        addDropzoneFiles(zone, files);
       });
     });
   }
@@ -3459,6 +3689,150 @@ const SoftUI = (() => {
     }
   });
 
+  // =========================================
+  // Sidebar — off-canvas drawer (below 900px, or always with .sui-sidebar-drawer)
+  // =========================================
+  const sidebarState = new WeakMap(); // el -> { prevFocus }
+  const sidebarMq = window.matchMedia ? window.matchMedia('(max-width: 900px)') : null;
+
+  function sidebarIsDrawer(el) {
+    if (el.classList.contains('sui-sidebar-drawer')) return true;
+    if (el.classList.contains('sui-sidebar-static')) return false;
+    return !!(sidebarMq && sidebarMq.matches);
+  }
+
+  function sidebarQuery(sel) {
+    try { return document.querySelector(sel); } catch (_) { return null; }
+  }
+
+  function sidebarResolve(trigger) {
+    const sel = trigger.getAttribute('data-sidebar-open');
+    return sel ? sidebarQuery(sel) : document.querySelector('.sui-sidebar:not(.sui-sidebar-static)');
+  }
+
+  function sidebarTriggers(el) {
+    return Array.from(document.querySelectorAll('[data-sidebar-open]')).filter(function(t) {
+      return sidebarResolve(t) === el;
+    });
+  }
+
+  function sidebarOverlay(el) {
+    const next = el.nextElementSibling;
+    if (next && next.classList.contains('sui-sidebar-overlay')) return next;
+    const overlay = document.createElement('div');
+    overlay.className = 'sui-sidebar-overlay';
+    overlay.setAttribute('aria-hidden', 'true');
+    el.parentNode.insertBefore(overlay, el.nextSibling);
+    return overlay;
+  }
+
+  function sidebarIsOpen(el) {
+    return el.classList.contains('sui-sidebar-mobile-open');
+  }
+
+  function sidebarOpen(el) {
+    // Only opens when the sidebar is actually a drawer (mobile, or .sui-sidebar-drawer)
+    if (!el || sidebarIsOpen(el) || !sidebarIsDrawer(el)) return;
+    sidebarState.set(el, { prevFocus: document.activeElement });
+    el.classList.add('sui-sidebar-mobile-open');
+    sidebarOverlay(el).classList.add('open');
+    document.body.style.overflow = 'hidden';
+    sidebarTriggers(el).forEach(function(t) { t.setAttribute('aria-expanded', 'true'); });
+    // Children with `transition: all` animate the inherited visibility
+    focusInto(el, el, function() { return sidebarIsOpen(el); }, 0);
+  }
+
+  function sidebarClose(el) {
+    if (!el || !sidebarIsOpen(el)) return;
+    el.classList.remove('sui-sidebar-mobile-open');
+    const next = el.nextElementSibling;
+    if (next && next.classList.contains('sui-sidebar-overlay')) next.classList.remove('open');
+    document.body.style.overflow = '';
+    sidebarTriggers(el).forEach(function(t) { t.setAttribute('aria-expanded', 'false'); });
+    const state = sidebarState.get(el);
+    sidebarState.delete(el);
+    const prev = state && state.prevFocus;
+    const active = document.activeElement;
+    // Return focus to the opener unless the user has already moved it elsewhere
+    if (prev && prev.isConnected && typeof prev.focus === 'function' &&
+        (!active || active === document.body || el.contains(active))) {
+      prev.focus();
+    }
+  }
+
+  // Sets aria-expanded / aria-controls on existing [data-sidebar-open] triggers.
+  function initSidebars() {
+    document.querySelectorAll('[data-sidebar-open]').forEach(function(t) {
+      const target = sidebarResolve(t);
+      if (!target) return;
+      if (!t.hasAttribute('aria-expanded')) t.setAttribute('aria-expanded', sidebarIsOpen(target) ? 'true' : 'false');
+      if (target.id && !t.hasAttribute('aria-controls')) t.setAttribute('aria-controls', target.id);
+    });
+  }
+
+  document.addEventListener('click', function(e) {
+    if (!e.target.closest) return;
+    const opener = e.target.closest('[data-sidebar-open]');
+    if (opener) {
+      const target = sidebarResolve(opener);
+      if (!target) return;
+      e.preventDefault();
+      if (sidebarIsOpen(target)) sidebarClose(target); else sidebarOpen(target);
+      return;
+    }
+    const closer = e.target.closest('[data-sidebar-close]');
+    if (closer) {
+      const sel = closer.getAttribute('data-sidebar-close');
+      sidebarClose((sel && sidebarQuery(sel)) || closer.closest('.sui-sidebar'));
+      return;
+    }
+    if (e.target.classList.contains('sui-sidebar-overlay')) {
+      const prev = e.target.previousElementSibling;
+      if (prev && prev.classList.contains('sui-sidebar')) sidebarClose(prev);
+      else document.querySelectorAll('.sui-sidebar.sui-sidebar-mobile-open').forEach(sidebarClose);
+      return;
+    }
+    const navLink = e.target.closest('.sui-sidebar-mobile-open .sui-sidebar-nav a[href], .sui-sidebar-mobile-open .sui-sidebar-nav li > button:not([aria-expanded])');
+    if (navLink) sidebarClose(navLink.closest('.sui-sidebar'));
+  });
+
+  // On window (after document-level handlers): skip keys a popup or another
+  // overlay inside the drawer already handled
+  window.addEventListener('keydown', function(e) {
+    if ((e.key !== 'Escape' && e.key !== 'Tab') || e.defaultPrevented) return;
+    const open = document.querySelectorAll('.sui-sidebar.sui-sidebar-mobile-open');
+    if (!open.length) return;
+    // A modal or sheet opened from the drawer sits on top and owns Tab/Escape
+    if (document.querySelector(OPEN_OVERLAYS)) return;
+    if (e.key === 'Escape') {
+      open.forEach(sidebarClose);
+      return;
+    }
+    // Tab: keep focus inside the (last) open drawer
+    const el = open[open.length - 1];
+    const focusable = visibleFocusable(el);
+    if (!focusable.length) { e.preventDefault(); return; }
+    const first = focusable[0];
+    const last = focusable[focusable.length - 1];
+    const inside = el.contains(document.activeElement);
+    if (e.shiftKey && (document.activeElement === first || !inside)) {
+      e.preventDefault();
+      last.focus();
+    } else if (!e.shiftKey && (document.activeElement === last || !inside)) {
+      e.preventDefault();
+      first.focus();
+    }
+  });
+
+  // Growing past 900px closes media-query drawers so body scroll isn't left locked
+  if (sidebarMq) {
+    const onSidebarMqChange = function(e) {
+      if (!e.matches) document.querySelectorAll('.sui-sidebar.sui-sidebar-mobile-open:not(.sui-sidebar-drawer)').forEach(sidebarClose);
+    };
+    if (sidebarMq.addEventListener) sidebarMq.addEventListener('change', onSidebarMqChange);
+    else if (sidebarMq.addListener) sidebarMq.addListener(onSidebarMqChange);
+  }
+
   function sidebar(selector) {
     const el = typeof selector === 'string' ? document.querySelector(selector) : selector;
     if (!el) return null;
@@ -3467,8 +3841,11 @@ const SoftUI = (() => {
     function expand() { el.classList.remove('sui-sidebar-collapsed'); }
     function toggle() { el.classList.toggle('sui-sidebar-collapsed'); }
     function isCollapsed() { return el.classList.contains('sui-sidebar-collapsed'); }
+    function open() { sidebarOpen(el); }
+    function close() { sidebarClose(el); }
+    function isOpen() { return sidebarIsOpen(el); }
 
-    return { collapse: collapse, expand: expand, toggle: toggle, isCollapsed: isCollapsed, el: el };
+    return { collapse: collapse, expand: expand, toggle: toggle, isCollapsed: isCollapsed, open: open, close: close, isOpen: isOpen, el: el };
   }
 
   // =========================================
@@ -3494,6 +3871,71 @@ const SoftUI = (() => {
     }
   }
 
+  function ratingMax(rating) {
+    return rating.querySelectorAll('.sui-rating-star').length;
+  }
+
+  // data-value if present, otherwise count .active stars (+0.5 for a .half star)
+  function ratingCurrent(rating) {
+    const dv = parseFloat(rating.getAttribute('data-value'));
+    if (!isNaN(dv)) return dv;
+    let v = 0;
+    rating.querySelectorAll('.sui-rating-star').forEach(function(s) {
+      if (s.classList.contains('active')) v += 1;
+      else if (s.classList.contains('half')) v += 0.5;
+    });
+    return v;
+  }
+
+  function ratingSyncAria(rating, v) {
+    if (rating.getAttribute('role') !== 'slider') return;
+    rating.setAttribute('aria-valuenow', v);
+    rating.setAttribute('aria-valuetext', v + ' of ' + ratingMax(rating) + ' stars');
+  }
+
+  // Interactive ratings become a slider; read-only ratings an image with a label
+  function ratingPrime(rating) {
+    if (rating.dataset.suiKbd) return;
+    rating.dataset.suiKbd = '1';
+    const max = ratingMax(rating);
+    const v = ratingCurrent(rating);
+    const labelled = rating.hasAttribute('aria-label') || rating.hasAttribute('aria-labelledby');
+    rating.querySelectorAll('.sui-rating-star').forEach(function(s) {
+      if (!s.hasAttribute('aria-hidden')) s.setAttribute('aria-hidden', 'true');
+    });
+    if (rating.classList.contains('sui-rating-readonly')) {
+      if (!rating.hasAttribute('role')) rating.setAttribute('role', 'img');
+      if (!labelled) rating.setAttribute('aria-label', 'Rated ' + v + ' of ' + max);
+      return;
+    }
+    if (!rating.hasAttribute('role')) rating.setAttribute('role', 'slider');
+    if (!rating.hasAttribute('tabindex')) rating.setAttribute('tabindex', '0');
+    if (!labelled) rating.setAttribute('aria-label', 'Rating');
+    if (!rating.hasAttribute('aria-valuemin')) rating.setAttribute('aria-valuemin', '0');
+    if (!rating.hasAttribute('aria-valuemax')) rating.setAttribute('aria-valuemax', max);
+    ratingSyncAria(rating, v);
+  }
+
+  // Shared by click and keyboard: v is a whole or .5 value
+  function setRating(rating, v) {
+    const stars = Array.from(rating.querySelectorAll('.sui-rating-star'));
+    const full = Math.floor(v);
+    const half = v - full >= 0.5;
+    stars.forEach(function(s, i) {
+      s.classList.remove('active', 'half', 'hover', 'hover-half');
+      ratingResetSvg(s);
+      if (i < full) {
+        s.classList.add('active');
+      } else if (i === full && half) {
+        ratingEnsureDualSvg(s);
+        s.classList.add('half');
+      }
+    });
+    rating.setAttribute('data-value', v);
+    ratingSyncAria(rating, v);
+    emit(rating, 'sui-rating-change', { value: v });
+  }
+
   document.addEventListener('click', function(e) {
     const star = e.target.closest('.sui-rating:not(.sui-rating-readonly) .sui-rating-star');
     if (!star) return;
@@ -3502,23 +3944,28 @@ const SoftUI = (() => {
     const index = stars.indexOf(star);
     const allowHalf = rating.classList.contains('sui-rating-half');
     const isHalf = allowHalf && ratingIsHalf(star, e);
-    const value = isHalf ? index + 0.5 : index + 1;
-    stars.forEach(function(s, i) {
-      s.classList.remove('active', 'half', 'hover', 'hover-half');
-      ratingResetSvg(s);
-      if (i < index) {
-        s.classList.add('active');
-      } else if (i === index) {
-        if (isHalf) {
-          ratingEnsureDualSvg(s);
-          s.classList.add('half');
-        } else {
-          s.classList.add('active');
-        }
-      }
-    });
-    rating.setAttribute('data-value', value);
-    rating.dispatchEvent(new CustomEvent('sui-rating-change', { detail: { value: value } }));
+    setRating(rating, isHalf ? index + 0.5 : index + 1);
+  });
+
+  // Keyboard: arrows step (0.5 with .sui-rating-half), Home/End, digit keys
+  document.addEventListener('keydown', function(e) {
+    if (!e.target.closest || e.altKey || e.ctrlKey || e.metaKey) return;
+    const rating = e.target.closest('.sui-rating:not(.sui-rating-readonly)');
+    if (!rating || e.target !== rating) return;
+    const max = ratingMax(rating);
+    const step = rating.classList.contains('sui-rating-half') ? 0.5 : 1;
+    const rtl = getComputedStyle(rating).direction === 'rtl';
+    const cur = ratingCurrent(rating);
+    let v = null;
+    if (e.key === 'ArrowUp' || e.key === (rtl ? 'ArrowLeft' : 'ArrowRight')) v = cur + step;
+    else if (e.key === 'ArrowDown' || e.key === (rtl ? 'ArrowRight' : 'ArrowLeft')) v = cur - step;
+    else if (e.key === 'Home') v = 0;
+    else if (e.key === 'End') v = max;
+    else if (/^[0-9]$/.test(e.key) && parseInt(e.key, 10) <= max) v = parseInt(e.key, 10);
+    if (v === null) return;
+    e.preventDefault();
+    v = Math.max(0, Math.min(max, v));
+    if (v !== cur) setRating(rating, v);
   });
 
   document.addEventListener('mousemove', function(e) {
@@ -3559,30 +4006,80 @@ const SoftUI = (() => {
   // =========================================
   // Color Picker
   // =========================================
+  // Swatch pickers are a radiogroup with a roving tabindex
+  function swatchPrime(picker) {
+    if (picker.dataset.suiKbd) return;
+    picker.dataset.suiKbd = '1';
+    if (!picker.hasAttribute('role')) picker.setAttribute('role', 'radiogroup');
+    if (!picker.hasAttribute('aria-label') && !picker.hasAttribute('aria-labelledby')) picker.setAttribute('aria-label', 'Color');
+    const list = Array.from(picker.querySelectorAll('.sui-color-swatch'));
+    const current = list.find(function(s) { return s.classList.contains('active'); }) || list[0];
+    list.forEach(function(s) {
+      if (!s.hasAttribute('role')) s.setAttribute('role', 'radio');
+      s.setAttribute('aria-checked', s.classList.contains('active') ? 'true' : 'false');
+      if (!s.hasAttribute('aria-label') && !s.hasAttribute('aria-labelledby') && !s.hasAttribute('title')) {
+        const item = s.closest('.sui-color-item');
+        const text = item && item.querySelector('.sui-color-label');
+        const c = (text && text.textContent.trim()) || s.getAttribute('data-color');
+        if (c) s.setAttribute('aria-label', c);
+      }
+      if (!s.hasAttribute('tabindex')) s.setAttribute('tabindex', s === current ? '0' : '-1');
+    });
+  }
+
+  function selectSwatch(swatch) {
+    const picker = swatch.closest('.sui-color-picker');
+    const primed = !!picker.dataset.suiKbd;
+    picker.querySelectorAll('.sui-color-swatch').forEach(function(s) {
+      s.classList.remove('active');
+      if (primed) { s.setAttribute('aria-checked', 'false'); s.setAttribute('tabindex', '-1'); }
+    });
+    swatch.classList.add('active');
+    if (primed) { swatch.setAttribute('aria-checked', 'true'); swatch.setAttribute('tabindex', '0'); }
+    const color = swatch.getAttribute('data-color') || swatch.style.background || swatch.style.backgroundColor;
+    picker.setAttribute('data-value', color);
+    emit(picker, 'sui-color-change', { color: color });
+  }
+
   document.addEventListener('click', function(e) {
     const swatch = e.target.closest('.sui-color-picker .sui-color-swatch');
     if (!swatch) return;
+    selectSwatch(swatch);
+  });
+
+  // Keyboard: arrows move focus and select (wrapping), Home/End, Space/Enter
+  document.addEventListener('keydown', function(e) {
+    if (!e.target.closest || e.altKey || e.ctrlKey || e.metaKey) return;
+    const swatch = e.target.closest('.sui-color-picker .sui-color-swatch');
+    if (!swatch || e.target !== swatch) return;
     const picker = swatch.closest('.sui-color-picker');
-    picker.querySelectorAll('.sui-color-swatch').forEach(function(s) {
-      s.classList.remove('active');
-    });
-    swatch.classList.add('active');
-    const color = swatch.getAttribute('data-color') || swatch.style.background || swatch.style.backgroundColor;
-    picker.setAttribute('data-value', color);
-    picker.dispatchEvent(new CustomEvent('sui-color-change', { detail: { color: color } }));
+    const list = Array.from(picker.querySelectorAll('.sui-color-swatch'));
+    const i = list.indexOf(swatch);
+    const rtl = getComputedStyle(picker).direction === 'rtl';
+    let next = null;
+    if (e.key === 'ArrowDown' || e.key === (rtl ? 'ArrowLeft' : 'ArrowRight')) next = list[(i + 1) % list.length];
+    else if (e.key === 'ArrowUp' || e.key === (rtl ? 'ArrowRight' : 'ArrowLeft')) next = list[(i - 1 + list.length) % list.length];
+    else if (e.key === 'Home') next = list[0];
+    else if (e.key === 'End') next = list[list.length - 1];
+    else if (e.key === ' ' || e.key === 'Enter') next = swatch;
+    if (!next) return;
+    e.preventDefault();
+    selectSwatch(next);
+    next.focus();
   });
 
   // =========================================
   // Color Spectrum Picker
   // =========================================
-  function initSpectrumPickers() {
-    const pickers = document.querySelectorAll('.sui-color-spectrum');
-    pickers.forEach(function(picker) { initSpectrum(picker); });
+  function initSpectrumPickers(root) {
+    each(root, '.sui-color-spectrum', 'spectrum', initSpectrum);
   }
 
   function initSpectrum(picker) {
     const canvasWrap = picker.querySelector('.sui-color-spectrum-canvas');
+    if (!canvasWrap) return;
     const canvas = canvasWrap.querySelector('canvas');
+    if (!canvas) return;
     const ctx = canvas.getContext('2d');
     const cursor = canvasWrap.querySelector('.sui-color-spectrum-cursor');
     const hueBar = picker.querySelector('.sui-color-spectrum-hue');
@@ -3684,7 +4181,7 @@ const SoftUI = (() => {
       hueCursor.style.background = 'rgb(' + hueRgb[0] + ',' + hueRgb[1] + ',' + hueRgb[2] + ')';
 
       picker.setAttribute('data-value', hex);
-      picker.dispatchEvent(new CustomEvent('sui-color-change', { detail: { hex: hex, rgb: rgb } }));
+      emit(picker, 'sui-color-change', { hex: hex, rgb: rgb });
     }
 
     // Canvas drag
@@ -3785,12 +4282,6 @@ const SoftUI = (() => {
     window.addEventListener('resize', resizeCanvas);
   }
 
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initSpectrumPickers);
-  } else {
-    initSpectrumPickers();
-  }
-
   // =========================================
   // File Upload
   // =========================================
@@ -3849,6 +4340,12 @@ const SoftUI = (() => {
     return container;
   }
 
+  // File names are user-controlled: set as text, never as HTML
+  function setFileName(item, f) {
+    item.querySelector('.sui-file-item-name').textContent = f.name;
+    item.querySelector('.sui-file-item-remove').setAttribute('aria-label', 'Remove ' + f.name);
+  }
+
   function renderFileList(zone, files, append) {
     const container = getOrCreateContainer(zone, 'sui-file-list');
     if (!append) container.innerHTML = '';
@@ -3859,10 +4356,11 @@ const SoftUI = (() => {
       item.innerHTML =
         '<div class="sui-file-item-icon ' + getFileIconClass(f) + '">' + getFileIcon(f) + '</div>' +
         '<div class="sui-file-item-info">' +
-          '<div class="sui-file-item-name">' + f.name + '</div>' +
+          '<div class="sui-file-item-name"></div>' +
           '<div class="sui-file-item-size">' + formatFileSize(f.size) + '</div>' +
         '</div>' +
         '<button class="sui-file-item-remove" aria-label="Remove">&times;</button>';
+      setFileName(item, f);
       container.appendChild(item);
     }
   }
@@ -3878,12 +4376,13 @@ const SoftUI = (() => {
         '<div class="sui-file-item-icon ' + getFileIconClass(f) + '">' + getFileIcon(f) + '</div>' +
         '<div class="sui-file-item-info sui-file-item-progress">' +
           '<div style="display:flex;justify-content:space-between;align-items:center;">' +
-            '<div class="sui-file-item-name">' + f.name + '</div>' +
+            '<div class="sui-file-item-name"></div>' +
             '<span class="sui-file-item-status sui-file-item-status-uploading">0%</span>' +
           '</div>' +
           '<div class="sui-progress sui-progress-sm"><div class="sui-progress-bar sui-progress-primary" style="width:0%;"></div></div>' +
         '</div>' +
         '<button class="sui-file-item-remove" aria-label="Remove">&times;</button>';
+      setFileName(item, f);
       container.appendChild(item);
       simulateProgress(item);
     }
@@ -3918,8 +4417,10 @@ const SoftUI = (() => {
       const item = document.createElement('div');
       item.className = 'sui-file-preview-item';
       item.innerHTML =
-        '<img alt="' + f.name + '">' +
+        '<img alt="">' +
         '<button class="sui-file-preview-item-remove" aria-label="Remove">&times;</button>';
+      item.querySelector('img').alt = f.name;
+      item.querySelector('.sui-file-preview-item-remove').setAttribute('aria-label', 'Remove ' + f.name);
       container.appendChild(item);
       (function(img, file) {
         const reader = new FileReader();
@@ -3990,9 +4491,8 @@ const SoftUI = (() => {
   // =========================================
   // Radial Progress
   // =========================================
-  function initRadialProgress() {
-    const radials = document.querySelectorAll('.sui-radial[data-value]');
-    radials.forEach(function(el) {
+  function initRadialProgress(root) {
+    each(root, '.sui-radial[data-value]', 'radial', function(el) {
       const fill = el.querySelector('.sui-radial-fill');
       if (!fill) return;
       let value = parseFloat(el.getAttribute('data-value')) || 0;
@@ -4012,7 +4512,9 @@ const SoftUI = (() => {
           const offset = circumference - (value / 100) * circumference;
           fill.style.strokeDashoffset = offset;
 
-          if (valueEl) {
+          if (valueEl && prefersReducedMotion()) {
+            valueEl.textContent = Math.round(value) + '%';
+          } else if (valueEl) {
             const start = performance.now();
             function tick(now) {
               const elapsed = now - start;
@@ -4026,12 +4528,6 @@ const SoftUI = (() => {
         });
       });
     });
-  }
-
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initRadialProgress);
-  } else {
-    initRadialProgress();
   }
 
   // =========================================
@@ -4059,17 +4555,22 @@ const SoftUI = (() => {
   // =========================================
   // Password Toggle
   // =========================================
+  // Bubble-phase, no stopPropagation, so consumer click listeners still fire.
+  // The Swap handler skips .sui-password-toggle so .active is only toggled here.
   document.addEventListener('click', function(e) {
     const btn = e.target.closest('.sui-password-toggle');
     if (!btn) return;
-    e.stopPropagation();
     const wrap = btn.closest('.sui-password-input');
-    const input = wrap.querySelector('input');
+    const input = wrap && wrap.querySelector('input');
     if (!input) return;
-    const isPassword = input.type === 'password';
-    input.type = isPassword ? 'text' : 'password';
-    btn.classList.toggle('active');
-  }, true);
+    const reveal = input.type === 'password';
+    input.type = reveal ? 'text' : 'password';
+    btn.classList.toggle('active', reveal);
+    btn.setAttribute('aria-pressed', reveal ? 'true' : 'false');
+    if (btn.classList.contains('sui-swap')) {
+      emit(btn, 'sui-swap-change', { active: reveal });
+    }
+  });
 
   // =========================================
   // Tags Input
@@ -4114,8 +4615,8 @@ const SoftUI = (() => {
   // Swap
   // =========================================
   // Lock slide swap dimensions so absolute children don't collapse container
-  function initSlideSwaps() {
-    document.querySelectorAll('.sui-swap-slide, .sui-swap-slide-x').forEach(function(swap) {
+  function initSlideSwaps(root) {
+    each(root, '.sui-swap-slide, .sui-swap-slide-x', 'slide-swap', function(swap) {
       if (swap.dataset.suiSlideInit) return;
       const children = swap.querySelectorAll('.sui-swap-on, .sui-swap-off, .sui-swap-state');
       let maxW = 0, maxH = 0;
@@ -4134,15 +4635,10 @@ const SoftUI = (() => {
     });
   }
 
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initSlideSwaps);
-  } else {
-    initSlideSwaps();
-  }
-
   document.addEventListener('click', function(e) {
     const swap = e.target.closest('.sui-swap');
-    if (!swap) return;
+    if (!swap || swap.matches('.sui-password-input .sui-password-toggle')) return;
+    if (swap.hasAttribute('data-sui-theme-toggle')) return; // owned by the theme switcher
     if (swap.classList.contains('sui-swap-cycle')) {
       const states = Array.from(swap.querySelectorAll('.sui-swap-state'));
       const current = states.findIndex(function(s) { return s.classList.contains('active'); });
@@ -4150,10 +4646,10 @@ const SoftUI = (() => {
       states.forEach(function(s) { s.classList.remove('active'); });
       states[next].classList.add('active');
       swap.setAttribute('data-state', next);
-      swap.dispatchEvent(new CustomEvent('sui-swap-change', { detail: { state: next, total: states.length } }));
+      emit(swap, 'sui-swap-change', { state: next, total: states.length });
     } else {
       swap.classList.toggle('active');
-      swap.dispatchEvent(new CustomEvent('sui-swap-change', { detail: { active: swap.classList.contains('active') } }));
+      emit(swap, 'sui-swap-change', { active: swap.classList.contains('active') });
     }
   });
 
@@ -4229,6 +4725,9 @@ const SoftUI = (() => {
     if (lightboxOverlay) return;
     lightboxOverlay = document.createElement('div');
     lightboxOverlay.className = 'sui-lightbox-overlay';
+    lightboxOverlay.setAttribute('role', 'dialog');
+    lightboxOverlay.setAttribute('aria-modal', 'true');
+    lightboxOverlay.setAttribute('aria-label', 'Image viewer');
     lightboxOverlay.innerHTML =
       '<button class="sui-lightbox-close" aria-label="Close">&times;</button>' +
       '<span class="sui-lightbox-counter"></span>' +
@@ -4249,14 +4748,33 @@ const SoftUI = (() => {
     });
     document.addEventListener('keydown', function(e) {
       if (!lightboxOverlay || !lightboxOverlay.classList.contains('open')) return;
-      if (e.key === 'Escape') closeLightbox();
+      if (e.key === 'Escape') { e.preventDefault(); closeLightbox(); }
       if (e.key === 'ArrowLeft') showLightboxImage(lightboxIndex - 1);
       if (e.key === 'ArrowRight') showLightboxImage(lightboxIndex + 1);
     });
+    // Keep Tab inside the open viewer (prev/next may be display:none)
+    document.addEventListener('keydown', function(e) {
+      if (e.key !== 'Tab' || !lightboxOverlay || !lightboxOverlay.classList.contains('open')) return;
+      const focusable = getFocusable(lightboxOverlay).filter(function(f) { return f.offsetParent !== null; });
+      if (!focusable.length) return;
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+      const inside = lightboxOverlay.contains(document.activeElement);
+      if (e.shiftKey && (document.activeElement === first || !inside)) {
+        e.preventDefault();
+        last.focus();
+      } else if (!e.shiftKey && (document.activeElement === last || !inside)) {
+        e.preventDefault();
+        first.focus();
+      }
+    });
   }
+
+  let lightboxLastFocus = null;
 
   function openLightbox(images, index) {
     createLightbox();
+    if (!lightboxOverlay.classList.contains('open')) lightboxLastFocus = document.activeElement;
     lightboxImages = images;
     lightboxIndex = index || 0;
     showLightboxImage(lightboxIndex);
@@ -4267,12 +4785,18 @@ const SoftUI = (() => {
     lightboxOverlay.querySelector('.sui-lightbox-prev').style.display = hasMultiple ? '' : 'none';
     lightboxOverlay.querySelector('.sui-lightbox-next').style.display = hasMultiple ? '' : 'none';
     lightboxOverlay.querySelector('.sui-lightbox-counter').style.display = hasMultiple ? '' : 'none';
+    lightboxOverlay.querySelector('.sui-lightbox-close').focus();
   }
 
   function closeLightbox() {
     if (lightboxOverlay) {
+      const wasOpen = lightboxOverlay.classList.contains('open');
       lightboxOverlay.classList.remove('open', 'zoomed');
       document.body.style.overflow = '';
+      if (wasOpen && lightboxLastFocus && lightboxLastFocus.isConnected && lightboxLastFocus.focus) {
+        lightboxLastFocus.focus();
+      }
+      lightboxLastFocus = null;
     }
   }
 
@@ -4302,8 +4826,12 @@ const SoftUI = (() => {
       main.src = thumb.getAttribute('data-src') || img.src;
       main.alt = thumb.getAttribute('data-alt') || img.alt;
     }
-    gallery.querySelectorAll('.sui-lightbox-vertical-strip .sui-lightbox-thumb').forEach(function(t) { t.classList.remove('active'); });
+    gallery.querySelectorAll('.sui-lightbox-vertical-strip .sui-lightbox-thumb').forEach(function(t) {
+      t.classList.remove('active');
+      if (t.dataset.suiKbd) t.setAttribute('aria-pressed', 'false');
+    });
     thumb.classList.add('active');
+    if (thumb.dataset.suiKbd) thumb.setAttribute('aria-pressed', 'true');
   });
 
   // Click main image in vertical gallery to open lightbox
@@ -4344,11 +4872,41 @@ const SoftUI = (() => {
     openLightbox(images, index);
   });
 
+  // Thumbnails and the vertical main image act as buttons
+  function lightboxPrime(root) {
+    root.querySelectorAll('.sui-lightbox-thumb, .sui-lightbox-vertical-main').forEach(function(el) {
+      if (el.dataset.suiKbd) return;
+      el.dataset.suiKbd = '1';
+      const inStrip = !!el.closest('.sui-lightbox-vertical-strip');
+      const isMain = el.classList.contains('sui-lightbox-vertical-main');
+      if (!el.hasAttribute('role')) el.setAttribute('role', 'button');
+      if (!el.hasAttribute('tabindex')) el.setAttribute('tabindex', '0');
+      if (!el.hasAttribute('aria-label') && !el.hasAttribute('aria-labelledby')) {
+        const img = el.querySelector('img');
+        const alt = el.getAttribute('data-alt') || (img ? img.alt : '');
+        let label;
+        if (isMain) label = 'Open image in lightbox';
+        else label = (inStrip ? 'Show image' : 'Open image') + (alt ? ': ' + alt : '');
+        el.setAttribute('aria-label', label);
+      }
+      if (inStrip) el.setAttribute('aria-pressed', el.classList.contains('active') ? 'true' : 'false');
+    });
+  }
+
+  document.addEventListener('keydown', function(e) {
+    if (e.key !== 'Enter' && e.key !== ' ') return;
+    if (!e.target.closest) return;
+    const el = e.target.closest('.sui-lightbox-thumb, .sui-lightbox-vertical-main');
+    if (!el || e.target !== el || el.matches('button, a[href]')) return; // native controls already click
+    e.preventDefault();
+    el.click();
+  });
+
   // =========================================
   // Typewriter
   // =========================================
-  function initTypewriters() {
-    document.querySelectorAll('[data-sui-typewriter]').forEach(function(el) {
+  function initTypewriters(root) {
+    each(root, '[data-sui-typewriter]', 'typewriter', function(el) {
       if (el.dataset.suiTypewriterInit) return;
       el.dataset.suiTypewriterInit = '1';
       const words = el.getAttribute('data-words');
@@ -4357,27 +4915,65 @@ const SoftUI = (() => {
       const pause = parseInt(el.getAttribute('data-pause')) || 1500;
       const loop = el.hasAttribute('data-loop');
 
+      // Server-rendered text is kept (and typed over in words mode)
+      const initial = el.textContent.trim();
+      let phrases = null;
       if (words) {
+        phrases = words.split('|').map(function(s) { return s.trim(); }).filter(Boolean);
+        if (!phrases.length) phrases = null;
+      }
+
+      // Screen readers get the full text once; the animated span is hidden
+      const sr = document.createElement('span');
+      sr.className = 'sui-sr-only';
+      sr.textContent = el.getAttribute('data-sr-text') || (phrases ? phrases.join(', ') : initial);
+      const out = document.createElement('span');
+      out.className = 'sui-typewriter-text';
+      out.setAttribute('aria-hidden', 'true');
+      el.textContent = '';
+      el.appendChild(sr);
+      // data-reserve: invisible sizers hold the width of the longest phrase
+      if (el.hasAttribute('data-reserve')) {
+        (initial ? [initial] : []).concat(phrases || []).forEach(function(text) {
+          const sizer = document.createElement('span');
+          sizer.className = 'sui-typewriter-sizer';
+          sizer.setAttribute('aria-hidden', 'true');
+          sizer.textContent = text;
+          el.appendChild(sizer);
+        });
+      }
+      el.appendChild(out);
+
+      if (phrases) {
         // Multiple phrases mode
-        const phrases = words.split('|').map(function(s) { return s.trim(); });
         let phraseIdx = 0;
         let charIdx = 0;
         let deleting = false;
 
+        if (prefersReducedMotion()) {
+          out.textContent = loop ? (initial || phrases[0]) : phrases[phrases.length - 1];
+          return;
+        }
+
+        function endOfPhrase() {
+          if (!loop && phraseIdx === phrases.length - 1) return;
+          setTimeout(function() { deleting = true; tick(); }, pause);
+        }
+
         function tick() {
           const current = phrases[phraseIdx];
+          if (prefersReducedMotion()) { out.textContent = current; return; }
           if (!deleting) {
             charIdx++;
-            el.textContent = current.substring(0, charIdx);
+            out.textContent = current.substring(0, charIdx);
             if (charIdx === current.length) {
-              if (!loop && phraseIdx === phrases.length - 1) return;
-              setTimeout(function() { deleting = true; tick(); }, pause);
+              endOfPhrase();
               return;
             }
             setTimeout(tick, speed);
           } else {
             charIdx--;
-            el.textContent = current.substring(0, charIdx);
+            out.textContent = current.substring(0, charIdx);
             if (charIdx === 0) {
               deleting = false;
               phraseIdx = (phraseIdx + 1) % phrases.length;
@@ -4388,16 +4984,35 @@ const SoftUI = (() => {
           }
         }
 
-        el.textContent = '';
-        setTimeout(tick, 500);
+        if (!initial) {
+          setTimeout(tick, 500);
+        } else if (initial === phrases[0]) {
+          // Already showing the first phrase: continue from its end
+          out.textContent = initial;
+          charIdx = initial.length;
+          endOfPhrase();
+        } else {
+          // Show the server text, then delete it and start the phrases
+          out.textContent = initial;
+          let leadIdx = initial.length;
+          const deleteLead = function() {
+            if (prefersReducedMotion()) { out.textContent = initial; return; }
+            leadIdx--;
+            out.textContent = initial.substring(0, leadIdx);
+            if (leadIdx <= 0) { setTimeout(tick, speed); return; }
+            setTimeout(deleteLead, deleteSpeed);
+          };
+          setTimeout(deleteLead, pause);
+        }
       } else {
         // Single text mode — type out existing content
-        const text = el.textContent;
-        el.textContent = '';
+        const text = initial;
+        if (prefersReducedMotion()) { out.textContent = text; return; }
         let i = 0;
         function typeChar() {
+          if (prefersReducedMotion()) { out.textContent = text; return; }
           if (i < text.length) {
-            el.textContent += text[i];
+            out.textContent += text[i];
             i++;
             setTimeout(typeChar, speed);
           }
@@ -4407,17 +5022,11 @@ const SoftUI = (() => {
     });
   }
 
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initTypewriters);
-  } else {
-    initTypewriters();
-  }
-
   // =========================================
   // Text Rotate
   // =========================================
-  function initTextRotate() {
-    document.querySelectorAll('[data-sui-text-rotate]').forEach(function(el) {
+  function initTextRotate(root) {
+    each(root, '[data-sui-text-rotate]', 'text-rotate', function(el) {
       if (el.dataset.suiRotateInit) return;
       el.dataset.suiRotateInit = '1';
       const words = el.querySelectorAll('.sui-text-rotate-word');
@@ -4425,9 +5034,21 @@ const SoftUI = (() => {
       const interval = parseInt(el.getAttribute('data-interval')) || 2000;
       let index = 0;
 
+      // Screen readers hear the list once instead of every word run together
+      words.forEach(function(w) { w.setAttribute('aria-hidden', 'true'); });
+      const sr = document.createElement('span');
+      sr.className = 'sui-sr-only';
+      sr.textContent = el.getAttribute('data-sr-text') ||
+        Array.prototype.map.call(words, function(w) { return w.textContent.trim(); }).join(', ');
+      el.insertBefore(sr, el.firstChild);
+
       words[0].classList.add('active');
 
+      // Reduced motion: stay on the first word
+      if (prefersReducedMotion()) return;
+
       setInterval(function() {
+        if (prefersReducedMotion()) return;
         const current = words[index];
         current.classList.remove('active');
         current.classList.add('exit');
@@ -4439,17 +5060,36 @@ const SoftUI = (() => {
     });
   }
 
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initTextRotate);
-  } else {
-    initTextRotate();
-  }
-
   // =========================================
   // Copy Button
   // =========================================
-  const clipboardSvg = '<svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>';
   const checkSvg = '<svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>';
+  const crossSvg = '<svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>';
+
+  // execCommand fallback for non-secure contexts / denied Clipboard API.
+  // Restores focus so keyboard users keep their place.
+  function suiExecCopy(str) {
+    const active = document.activeElement;
+    const ta = document.createElement('textarea');
+    ta.value = str; ta.setAttribute('readonly', '');
+    ta.style.position = 'fixed'; ta.style.top = '-9999px'; ta.style.opacity = '0';
+    document.body.appendChild(ta); ta.select();
+    let ok = false;
+    try { ok = document.execCommand('copy'); } catch (_) {}
+    ta.blur();
+    document.body.removeChild(ta);
+    if (active && active.focus) active.focus();
+    return ok ? Promise.resolve() : Promise.reject(new Error('copy failed'));
+  }
+
+  function suiCopyText(str) {
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      let p;
+      try { p = navigator.clipboard.writeText(str); } catch (_) { return suiExecCopy(str); }
+      return p.catch(function() { return suiExecCopy(str); });
+    }
+    return suiExecCopy(str);
+  }
 
   document.addEventListener('click', function(e) {
     const btn = e.target.closest('[data-sui-copy]');
@@ -4464,26 +5104,66 @@ const SoftUI = (() => {
       }
     }
     if (!text) return;
-    try { navigator.clipboard.writeText(text.trim()); } catch (_) {}
-    btn.classList.add('copied');
-    btn.innerHTML = checkSvg;
-    setTimeout(function() {
+    const value = text.trim();
+    // Capture the button's own content only when not mid-feedback
+    if (btn._suiCopyOrig == null) btn._suiCopyOrig = btn.innerHTML;
+    suiCopyText(value).then(function() {
+      btn.classList.remove('copy-failed');
+      btn.classList.add('copied');
+      btn.innerHTML = checkSvg;
+      emit(btn, 'sui-copy', { text: value });
+    }, function(err) {
       btn.classList.remove('copied');
-      btn.innerHTML = clipboardSvg;
-    }, 1500);
+      btn.classList.add('copy-failed');
+      btn.innerHTML = crossSvg; // non-colour failure cue
+      emit(btn, 'sui-copy-error', { text: value, error: err });
+    }).then(function() {
+      // Clear after the async settle (not at click time) so rapid clicks can't race
+      clearTimeout(btn._suiCopyTimer);
+      btn._suiCopyTimer = setTimeout(function() {
+        btn.classList.remove('copied', 'copy-failed');
+        if (btn._suiCopyOrig != null) btn.innerHTML = btn._suiCopyOrig;
+        btn._suiCopyOrig = null;
+      }, 1500);
+    });
   });
 
   // =========================================
   // Diff — Image Compare Slider
   // =========================================
-  function initDiffSliders() {
-    document.querySelectorAll('.sui-diff[data-sui-diff]').forEach(function(diff) {
+  function initDiffSliders(root) {
+    each(root, '.sui-diff[data-sui-diff]', 'diff', function(diff) {
       if (diff.dataset.suiDiffInit) return;
       diff.dataset.suiDiffInit = '1';
       const handle = diff.querySelector('.sui-diff-handle');
       const before = diff.querySelector('.sui-diff-before');
       if (!handle || !before) return;
       const isVertical = diff.classList.contains('sui-diff-vertical');
+      let current = parseFloat(isVertical ? handle.style.top : handle.style.left);
+      if (isNaN(current)) current = 50;
+
+      // Keyboard-operable slider on the handle
+      if (!handle.hasAttribute('role')) handle.setAttribute('role', 'slider');
+      if (!handle.hasAttribute('tabindex')) handle.setAttribute('tabindex', '0');
+      if (!handle.hasAttribute('aria-label') && !handle.hasAttribute('aria-labelledby')) handle.setAttribute('aria-label', 'Comparison position');
+      handle.setAttribute('aria-valuemin', '0');
+      handle.setAttribute('aria-valuemax', '100');
+      handle.setAttribute('aria-valuenow', Math.round(current));
+      handle.setAttribute('aria-orientation', isVertical ? 'vertical' : 'horizontal');
+
+      function setPos(pct) {
+        pct = Math.max(0, Math.min(100, pct));
+        current = pct;
+        if (isVertical) {
+          before.style.clipPath = 'inset(0 0 ' + (100 - pct) + '% 0)';
+          handle.style.top = pct + '%';
+        } else {
+          before.style.clipPath = 'inset(0 ' + (100 - pct) + '% 0 0)';
+          handle.style.left = pct + '%';
+        }
+        handle.setAttribute('aria-valuenow', Math.round(pct));
+        emit(diff, 'sui-diff-change', { value: pct });
+      }
 
       function onMove(e) {
         e.preventDefault();
@@ -4492,17 +5172,35 @@ const SoftUI = (() => {
         if (isVertical) {
           const clientY = e.touches ? e.touches[0].clientY : e.clientY;
           pos = Math.max(0, Math.min(1, (clientY - rect.top) / rect.height));
-          const pct = (pos * 100);
-          before.style.clipPath = 'inset(0 0 ' + (100 - pct) + '% 0)';
-          handle.style.top = pct + '%';
         } else {
           const clientX = e.touches ? e.touches[0].clientX : e.clientX;
           pos = Math.max(0, Math.min(1, (clientX - rect.left) / rect.width));
-          const pct = (pos * 100);
-          before.style.clipPath = 'inset(0 ' + (100 - pct) + '% 0 0)';
-          handle.style.left = pct + '%';
         }
+        setPos(pos * 100);
       }
+
+      // Arrows step 1 (Shift: 10), PageUp/PageDown 10, Home/End 0/100.
+      // Position is physical (left/top), so arrows are not mirrored in RTL.
+      // Vertical: Up/PageUp move the handle up, Down/PageDown move it down.
+      handle.addEventListener('keydown', function(e) {
+        const step = e.shiftKey ? 10 : 1;
+        let next = null;
+        if (isVertical) {
+          if (e.key === 'ArrowDown') next = current + step;
+          else if (e.key === 'ArrowUp') next = current - step;
+        } else {
+          if (e.key === 'ArrowRight' || e.key === 'ArrowUp') next = current + step;
+          else if (e.key === 'ArrowLeft' || e.key === 'ArrowDown') next = current - step;
+        }
+        const page = isVertical ? -10 : 10;
+        if (e.key === 'PageUp') next = current + page;
+        else if (e.key === 'PageDown') next = current - page;
+        else if (e.key === 'Home') next = 0;
+        else if (e.key === 'End') next = 100;
+        if (next === null) return;
+        e.preventDefault();
+        setPos(next);
+      });
 
       function onDown(e) {
         e.preventDefault();
@@ -4525,31 +5223,44 @@ const SoftUI = (() => {
     });
   }
 
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initDiffSliders);
-  } else {
-    initDiffSliders();
-  }
-
   // =========================================
   // Speed Dial
   // =========================================
+  function closeSpeedDial(dial, refocus) {
+    const trigger = dial.querySelector('.sui-speed-dial-trigger');
+    const hadFocus = dial.contains(document.activeElement);
+    dial.classList.remove('open');
+    if (trigger) {
+      trigger.setAttribute('aria-expanded', 'false');
+      // Closed actions become visibility:hidden — don't strand focus on them
+      if (refocus && hadFocus) trigger.focus();
+    }
+  }
+
   document.addEventListener('click', function(e) {
     const trigger = e.target.closest('.sui-speed-dial-trigger');
     if (trigger) {
       const dial = trigger.closest('.sui-speed-dial');
       dial.classList.toggle('open');
+      trigger.setAttribute('aria-expanded', String(dial.classList.contains('open')));
       return;
     }
     const action = e.target.closest('.sui-speed-dial-action');
     if (action) {
-      const dial = action.closest('.sui-speed-dial');
-      dial.classList.remove('open');
+      closeSpeedDial(action.closest('.sui-speed-dial'), true);
       return;
     }
     // Close all open dials when clicking outside
     document.querySelectorAll('.sui-speed-dial.open').forEach(function(d) {
-      d.classList.remove('open');
+      closeSpeedDial(d, false);
+    });
+  });
+
+  document.addEventListener('keydown', function(e) {
+    if (e.key !== 'Escape') return;
+    document.querySelectorAll('.sui-speed-dial.open').forEach(function(d) {
+      e.preventDefault();
+      closeSpeedDial(d, true);
     });
   });
 
@@ -4557,18 +5268,92 @@ const SoftUI = (() => {
   document.addEventListener('mouseenter', function(e) {
     if (!e.target.closest) return;
     const dial = e.target.closest('.sui-speed-dial-hover');
-    if (dial) dial.classList.add('open');
+    if (!dial) return;
+    dial.classList.add('open');
+    const trigger = dial.querySelector('.sui-speed-dial-trigger');
+    if (trigger) trigger.setAttribute('aria-expanded', 'true');
   }, true);
 
   document.addEventListener('mouseleave', function(e) {
-    if (!e.target.closest) return;
-    const dial = e.target.closest('.sui-speed-dial-hover');
-    if (dial) dial.classList.remove('open');
+    // Only react when the pointer leaves the dial itself, not its children
+    if (!e.target.matches || !e.target.matches('.sui-speed-dial-hover')) return;
+    // Refocus the trigger so focus isn't stranded on a now-hidden action
+    closeSpeedDial(e.target, true);
   }, true);
 
   // =========================================
   // Tree View
   // =========================================
+  let treeIdCount = 0;
+
+  function treeChildren(item) {
+    return item.querySelector(':scope > .sui-tree-children');
+  }
+
+  function treeOwnCheckbox(item) {
+    return item.querySelector(':scope > .sui-tree-label .sui-checkbox input');
+  }
+
+  function setTreeExpanded(item, open) {
+    if (!treeChildren(item)) return;
+    item.classList.toggle('expanded', open);
+    if (item.hasAttribute('aria-expanded')) item.setAttribute('aria-expanded', open ? 'true' : 'false');
+    emit(item, 'sui-tree-toggle', { expanded: open });
+  }
+
+  // Items with no collapsed ancestor item
+  function treeVisibleItems(tree) {
+    return Array.from(tree.querySelectorAll('.sui-tree-item')).filter(function(item) {
+      let p = item.parentElement && item.parentElement.closest('.sui-tree-item');
+      while (p && tree.contains(p)) {
+        if (!p.classList.contains('expanded')) return false;
+        p = p.parentElement && p.parentElement.closest('.sui-tree-item');
+      }
+      return true;
+    });
+  }
+
+  function treeSyncChecked(tree) {
+    tree.querySelectorAll('.sui-tree-item').forEach(function(item) {
+      const cb = treeOwnCheckbox(item);
+      if (cb && item.getAttribute('role') === 'treeitem') {
+        item.setAttribute('aria-checked', cb.indeterminate ? 'mixed' : (cb.checked ? 'true' : 'false'));
+      }
+    });
+  }
+
+  function treeFocus(tree, item) {
+    tree.querySelectorAll('.sui-tree-item[tabindex="0"]').forEach(function(i) { i.setAttribute('tabindex', '-1'); });
+    item.setAttribute('tabindex', '0');
+    item.focus();
+  }
+
+  // WAI-ARIA tree: role/roving tabindex/aria-expanded live on .sui-tree-item
+  function treePrime(tree) {
+    if (tree.dataset.suiKbd) return;
+    tree.dataset.suiKbd = '1';
+    if (!tree.hasAttribute('role')) tree.setAttribute('role', 'tree');
+    tree.querySelectorAll('.sui-tree-item').forEach(function(item) {
+      const label = item.querySelector(':scope > .sui-tree-label');
+      if (!item.hasAttribute('role')) item.setAttribute('role', 'treeitem');
+      if (label && !item.hasAttribute('aria-labelledby') && !item.hasAttribute('aria-label')) {
+        if (!label.id) label.id = 'sui-tree-label-' + (++treeIdCount);
+        item.setAttribute('aria-labelledby', label.id);
+      }
+      const children = treeChildren(item);
+      if (children) {
+        if (!children.hasAttribute('role')) children.setAttribute('role', 'group');
+        item.setAttribute('aria-expanded', item.classList.contains('expanded') ? 'true' : 'false');
+      }
+      const cb = treeOwnCheckbox(item);
+      if (cb) cb.setAttribute('tabindex', '-1');
+      if (!item.hasAttribute('tabindex')) item.setAttribute('tabindex', '-1');
+    });
+    treeSyncChecked(tree);
+    const first = treeVisibleItems(tree)[0];
+    if (first && !tree.querySelector('.sui-tree-item[tabindex="0"]')) first.setAttribute('tabindex', '0');
+  }
+
   document.addEventListener('click', function(e) {
     const label = e.target.closest('.sui-tree-label');
     if (!label) return;
@@ -4576,8 +5361,64 @@ const SoftUI = (() => {
     const item = label.closest('.sui-tree-item');
     const children = item.querySelector('.sui-tree-children');
     if (children) {
-      item.classList.toggle('expanded');
+      setTreeExpanded(item, !item.classList.contains('expanded'));
     }
+  });
+
+  // Keep the roving tabindex on whichever item last received focus
+  document.addEventListener('focusin', function(e) {
+    if (!e.target.closest) return;
+    const item = e.target.closest('.sui-tree-item[role="treeitem"]');
+    if (!item || e.target !== item) return;
+    const tree = item.closest('.sui-tree');
+    if (!tree) return;
+    tree.querySelectorAll('.sui-tree-item[tabindex="0"]').forEach(function(i) { if (i !== item) i.setAttribute('tabindex', '-1'); });
+    item.setAttribute('tabindex', '0');
+  });
+
+  // Keyboard: Up/Down, Right/Left (expand/collapse/move), Home/End, Enter, Space
+  document.addEventListener('keydown', function(e) {
+    if (!e.target.closest || e.altKey || e.ctrlKey || e.metaKey) return;
+    const item = e.target.closest('.sui-tree-item');
+    if (!item || e.target !== item) return;
+    const tree = item.closest('.sui-tree');
+    if (!tree) return;
+    const rtl = getComputedStyle(tree).direction === 'rtl';
+    const inward = rtl ? 'ArrowLeft' : 'ArrowRight';
+    const outward = rtl ? 'ArrowRight' : 'ArrowLeft';
+    const hasChildren = !!treeChildren(item);
+    const expanded = item.classList.contains('expanded');
+    const visible = treeVisibleItems(tree);
+    const i = visible.indexOf(item);
+    let target = null;
+    if (e.key === 'ArrowDown') target = visible[i + 1];
+    else if (e.key === 'ArrowUp') target = visible[i - 1];
+    else if (e.key === 'Home') target = visible[0];
+    else if (e.key === 'End') target = visible[visible.length - 1];
+    else if (e.key === inward) {
+      e.preventDefault();
+      if (hasChildren && !expanded) { setTreeExpanded(item, true); return; }
+      if (hasChildren) target = treeChildren(item).querySelector(':scope > .sui-tree-item');
+    } else if (e.key === outward) {
+      e.preventDefault();
+      if (hasChildren && expanded) { setTreeExpanded(item, false); return; }
+      const parent = item.parentElement && item.parentElement.closest('.sui-tree-item');
+      if (parent && tree.contains(parent)) target = parent;
+    } else if (e.key === 'Enter') {
+      e.preventDefault();
+      if (hasChildren) setTreeExpanded(item, !expanded);
+      return;
+    } else if (e.key === ' ') {
+      e.preventDefault();
+      const cb = treeOwnCheckbox(item);
+      if (cb) cb.click();
+      else if (hasChildren) setTreeExpanded(item, !expanded);
+      return;
+    } else {
+      return;
+    }
+    e.preventDefault();
+    if (target) treeFocus(tree, target);
   });
 
   // Tree checkbox propagation
@@ -4626,6 +5467,24 @@ const SoftUI = (() => {
     updateTreeParent(parentItem);
   }
 
+  // Mirror checkbox state onto treeitems (registered after the propagation listener)
+  document.addEventListener('change', function(e) {
+    if (!e.target.closest || !e.target.closest('.sui-tree .sui-checkbox input')) return;
+    const tree = e.target.closest('.sui-tree');
+    if (tree.dataset.suiKbd) treeSyncChecked(tree);
+  });
+
+  // Keyboard/ARIA enhancement for rating, colour swatches, tree view and
+  // lightbox thumbnails. Adds only missing attributes; safe to call again.
+  function initKeyboardA11y() {
+    document.querySelectorAll('.sui-rating').forEach(ratingPrime);
+    document.querySelectorAll('.sui-color-picker').forEach(function(picker) {
+      if (picker.querySelector('.sui-color-swatch')) swatchPrime(picker);
+    });
+    document.querySelectorAll('.sui-tree').forEach(treePrime);
+    lightboxPrime(document);
+  }
+
   // =========================================
   // Tour / Walkthrough
   // =========================================
@@ -4633,7 +5492,7 @@ const SoftUI = (() => {
     options = options || {};
     let currentStep = 0;
     let overlay, backdrop, spotlight, tooltip;
-    const padding = options.padding || 8;
+    const padding = options.padding != null ? options.padding : 8;
     const noOverlay = options.noOverlay || false;
 
     function create() {
@@ -4651,11 +5510,18 @@ const SoftUI = (() => {
       document.body.appendChild(overlay);
 
       backdrop.addEventListener('click', close);
+      document.addEventListener('keydown', onKeydown);
+    }
+
+    function onKeydown(e) {
+      if (e.key === 'Escape') close();
     }
 
     let firstShow = true;
 
     function show(idx) {
+      // Out of range (next() on the last step, goTo(n)) or already closed: no-op
+      if (!overlay || typeof idx !== 'number' || idx < 0 || idx >= steps.length) return;
       currentStep = idx;
       const step = steps[idx];
       const target = document.querySelector(step.target);
@@ -4673,7 +5539,7 @@ const SoftUI = (() => {
         const r = target.getBoundingClientRect();
         const margin = 120;
         needsScroll = r.top < margin || r.bottom > window.innerHeight - margin;
-        if (needsScroll) target.scrollIntoView({ block: 'center', behavior: 'smooth' });
+        if (needsScroll) target.scrollIntoView({ block: 'center', behavior: scrollBehavior() });
       }
       setTimeout(function() {
       if (target) {
@@ -4695,8 +5561,8 @@ const SoftUI = (() => {
       }
 
       tooltip.innerHTML =
-        '<div class="sui-tour-tooltip-title">' + (step.title || '') + '</div>' +
-        '<div class="sui-tour-tooltip-desc">' + (step.description || '') + '</div>' +
+        '<div class="sui-tour-tooltip-title"></div>' +
+        '<div class="sui-tour-tooltip-desc"></div>' +
         '<div class="sui-tour-tooltip-footer">' +
           dotsHtml +
           '<div class="sui-tour-tooltip-actions">' +
@@ -4704,6 +5570,18 @@ const SoftUI = (() => {
             (idx < steps.length - 1 ? '<button class="sui-btn sui-btn-primary sui-btn-sm sui-tour-next">Next</button>' : '<button class="sui-btn sui-btn-primary sui-btn-sm sui-tour-done">Done</button>') +
           '</div>' +
         '</div>';
+
+      // Title/description are text unless html: true (trusted content only)
+      const allowHtml = step.html != null ? !!step.html : !!options.html;
+      const titleEl = tooltip.querySelector('.sui-tour-tooltip-title');
+      const descEl = tooltip.querySelector('.sui-tour-tooltip-desc');
+      if (allowHtml) {
+        titleEl.innerHTML = step.title || '';
+        descEl.innerHTML = step.description || '';
+      } else {
+        titleEl.textContent = step.title || '';
+        descEl.textContent = step.description || '';
+      }
 
       // Button handlers
       const nextBtn = tooltip.querySelector('.sui-tour-next');
@@ -4756,12 +5634,18 @@ const SoftUI = (() => {
       overlay.classList.add('active');
     }
 
+    let closed = false;
+
     function close() {
-      if (overlay) {
-        overlay.classList.remove('active');
+      if (closed) return;
+      closed = true;
+      document.removeEventListener('keydown', onKeydown);
+      const el = overlay;
+      overlay = null;
+      if (el) {
+        el.classList.remove('active');
         setTimeout(function() {
-          if (overlay && overlay.parentNode) overlay.parentNode.removeChild(overlay);
-          overlay = null;
+          if (el.parentNode) el.parentNode.removeChild(el);
         }, 300);
       }
       if (options.onComplete) options.onComplete();
@@ -4773,5 +5657,384 @@ const SoftUI = (() => {
     return { next: function() { show(currentStep + 1); }, prev: function() { show(currentStep - 1); }, close: close, goTo: show };
   }
 
-  return { modal, sheet, toast, carousel, sidebar, tour };
-})();
+  // =========================================
+  // Theme switcher
+  // =========================================
+  // Opt-in: only runs when the page has a [data-sui-theme-toggle] element or
+  // <html data-sui-theme-auto>, or when SoftUI.theme.set/toggle/clear is
+  // called. Otherwise data-theme is never touched. Priority: saved > system.
+  const THEME_KEY = 'sui-theme';
+  const themeMql = window.matchMedia ? window.matchMedia('(prefers-color-scheme: dark)') : null;
+  let themeActive = false;
+
+  function readTheme() {
+    try {
+      const v = localStorage.getItem(THEME_KEY);
+      return v === 'light' || v === 'dark' ? v : null;
+    } catch (_) {
+      return null;
+    }
+  }
+
+  function storageAvailable() {
+    try {
+      localStorage.getItem(THEME_KEY);
+      return true;
+    } catch (_) {
+      return false;
+    }
+  }
+
+  function writeTheme(v) {
+    try {
+      if (v) localStorage.setItem(THEME_KEY, v);
+      else localStorage.removeItem(THEME_KEY);
+    } catch (_) { /* storage unavailable (private mode, sandboxed iframe) */ }
+  }
+
+  function systemTheme() { return themeMql && themeMql.matches ? 'dark' : 'light'; }
+  function resolveTheme() { return readTheme() || systemTheme(); }
+
+  function getTheme() {
+    const cur = document.documentElement.getAttribute('data-theme');
+    return cur === 'light' || cur === 'dark' ? cur : resolveTheme();
+  }
+
+  function syncThemeToggles(t) {
+    const saved = readTheme();
+    document.querySelectorAll('[data-sui-theme-toggle]').forEach(function(btn) {
+      const v = btn.getAttribute('data-sui-theme-toggle');
+      // Set-buttons reflect the saved preference, not the resolved theme
+      if (v === 'light' || v === 'dark' || v === 'system') {
+        const pressed = v === 'system' ? !saved : saved === v;
+        btn.setAttribute('aria-pressed', String(pressed));
+        btn.classList.toggle('active', pressed);
+        return;
+      }
+      const labelDark = btn.getAttribute('data-sui-label-dark');
+      const labelLight = btn.getAttribute('data-sui-label-light');
+      if (labelDark && labelLight) {
+        // Label-swapping model: no aria-pressed (it would contradict the name)
+        btn.setAttribute('aria-label', t === 'dark' ? labelDark : labelLight);
+        btn.removeAttribute('aria-pressed');
+      } else {
+        btn.setAttribute('aria-pressed', String(t === 'dark'));
+        if (!btn.hasAttribute('aria-label') && !btn.hasAttribute('aria-labelledby') && !btn.textContent.trim()) {
+          btn.setAttribute('aria-label', 'Dark mode');
+        }
+      }
+      if (btn.classList.contains('sui-swap') || btn.classList.contains('sui-theme-toggle')) {
+        btn.classList.toggle('active', t === 'dark');
+      }
+    });
+  }
+
+  function applyTheme(t, source) {
+    const html = document.documentElement;
+    const prev = html.getAttribute('data-theme');
+    html.setAttribute('data-theme', t);
+    syncThemeToggles(t);
+    if (prev !== t) emit(document, 'sui-theme-change', { theme: t, source: source });
+  }
+
+  // skipInit: set()/clear() apply their own theme right after, so the first
+  // API call fires a single 'user' event instead of an 'init' one.
+  function activateTheme(skipInit) {
+    if (themeActive) return;
+    themeActive = true;
+    if (!skipInit) {
+      // Without storage (sandboxed iframe, blocked cookies) nothing can have
+      // been saved, so keep a data-theme the page already set rather than
+      // overriding it with the OS preference.
+      const cur = document.documentElement.getAttribute('data-theme');
+      const keep = !storageAvailable() && (cur === 'light' || cur === 'dark');
+      applyTheme(keep ? cur : resolveTheme(), 'init');
+    }
+    // Follow the OS while no choice is saved
+    if (themeMql) {
+      const onSystemChange = function() { if (!readTheme()) applyTheme(systemTheme(), 'system'); };
+      if (themeMql.addEventListener) themeMql.addEventListener('change', onSystemChange);
+      else if (themeMql.addListener) themeMql.addListener(onSystemChange);
+    }
+    // Sync with other tabs
+    window.addEventListener('storage', function(e) {
+      if (e.key === THEME_KEY || e.key === null) applyTheme(resolveTheme(), 'storage');
+    });
+  }
+
+  function setTheme(t) {
+    if (t !== 'light' && t !== 'dark') return;
+    activateTheme(true);
+    writeTheme(t); // write first so toggles sync to the saved value
+    applyTheme(t, 'user');
+  }
+
+  function toggleTheme() { setTheme(getTheme() === 'dark' ? 'light' : 'dark'); }
+
+  function clearTheme() {
+    activateTheme(true);
+    writeTheme(null);
+    applyTheme(systemTheme(), 'user');
+  }
+
+  const theme = { get: getTheme, set: setTheme, toggle: toggleTheme, clear: clearTheme, system: systemTheme };
+
+  function initTheme() {
+    if (themeActive) { syncThemeToggles(getTheme()); return; }
+    if (document.documentElement.hasAttribute('data-sui-theme-auto') || document.querySelector('[data-sui-theme-toggle]')) {
+      activateTheme();
+    }
+  }
+
+  // [data-sui-theme-toggle] toggles; ="light" / "dark" / "system" set a value
+  document.addEventListener('click', function(e) {
+    if (!e.target.closest) return;
+    const btn = e.target.closest('[data-sui-theme-toggle]');
+    if (!btn) return;
+    const v = btn.getAttribute('data-sui-theme-toggle');
+    if (v === 'light' || v === 'dark') setTheme(v);
+    else if (v === 'system') clearTheme();
+    else toggleTheme();
+  });
+
+  // =========================================
+  // Color input — keep the hex readout in sync
+  // =========================================
+  document.addEventListener('input', function(e) {
+    const input = e.target;
+    if (!input || input.type !== 'color' || !input.closest) return;
+    const wrap = input.closest('.sui-color-input');
+    const out = wrap && wrap.querySelector('.sui-color-input-value');
+    if (out) out.textContent = input.value.toUpperCase();
+  });
+
+  // =========================================
+  // Scroll Reveal
+  // =========================================
+  // Content is only hidden once html has .sui-reveal-ready, so it stays
+  // visible without JS. One shared IntersectionObserver.
+  let revealObserver = null;
+  // Pending finishReveal fallback timers, so a stale one can't end a newer reveal
+  const revealTimers = typeof WeakMap !== 'undefined' ? new WeakMap() : null;
+
+  function cancelFinishReveal(el) {
+    if (!revealTimers) return;
+    const cancel = revealTimers.get(el);
+    if (cancel) { cancel(); revealTimers.delete(el); }
+  }
+
+  function cssTimeMs(list) {
+    return Math.max.apply(null, String(list).split(',').map(function(v) {
+      v = v.trim();
+      return /ms$/.test(v) ? parseFloat(v) || 0 : (parseFloat(v) || 0) * 1000;
+    }));
+  }
+
+  // After the reveal transition, stop overriding the element's own transition
+  function finishReveal(el) {
+    const cs = getComputedStyle(el);
+    const wait = cssTimeMs(cs.transitionDuration) + cssTimeMs(cs.transitionDelay) + 50;
+    let finished = false;
+    let timer = null;
+    cancelFinishReveal(el);
+    function stop() {
+      finished = true;
+      el.removeEventListener('transitionend', done);
+      clearTimeout(timer);
+      if (revealTimers && revealTimers.get(el) === stop) revealTimers.delete(el);
+    }
+    function done(e) {
+      if (e && (e.target !== el || e.propertyName !== 'opacity')) return;
+      if (finished) return;
+      stop();
+      if (el.classList.contains('sui-revealed')) el.classList.add('sui-reveal-done');
+    }
+    el.addEventListener('transitionend', done);
+    timer = setTimeout(function() { done(); }, wait);
+    if (revealTimers) revealTimers.set(el, stop);
+  }
+
+  // instant: show at once with no animation (used for focus)
+  function revealNow(el, instant) {
+    if (!el.classList.contains('sui-revealed')) {
+      el.classList.add('sui-revealed');
+      if (instant) { cancelFinishReveal(el); el.classList.add('sui-reveal-done'); }
+      else finishReveal(el);
+    }
+    if (revealObserver && !el.hasAttribute('data-reveal-repeat')) revealObserver.unobserve(el);
+  }
+
+  // The observer's negative bottom margin means a short element sitting in the
+  // last ~10% of a page scrolled to its end never intersects. At the end of the
+  // page, reveal anything pending that is actually on screen.
+  let revealEdgeQueued = false;
+  function revealAtPageEnd() {
+    revealEdgeQueued = false;
+    const html = document.documentElement;
+    const vh = window.innerHeight || html.clientHeight;
+    if (window.scrollY + vh < html.scrollHeight - 2) return;
+    document.querySelectorAll('.sui-reveal:not(.sui-revealed)').forEach(function(el) {
+      if (el.getClientRects().length === 0) return;
+      const rect = el.getBoundingClientRect();
+      if (rect.bottom > 0 && rect.top < vh) revealNow(el, false);
+    });
+  }
+  function queueRevealAtPageEnd() {
+    if (revealEdgeQueued) return;
+    revealEdgeQueued = true;
+    requestAnimationFrame(revealAtPageEnd);
+  }
+
+  function bindRevealGlobal() {
+    if (!once('reveal')) return;
+    window.addEventListener('scroll', queueRevealAtPageEnd, { passive: true });
+    window.addEventListener('resize', queueRevealAtPageEnd, { passive: true });
+    // Never leave focused content invisible (WCAG 2.4.7)
+    document.addEventListener('focusin', function(e) {
+      const r = e.target.closest && e.target.closest('.sui-reveal:not(.sui-revealed)');
+      if (r && document.documentElement.classList.contains('sui-reveal-ready')) revealNow(r, true);
+    });
+  }
+
+  function onRevealEntries(entries) {
+    entries.forEach(function(entry) {
+      const el = entry.target;
+      const repeat = el.hasAttribute('data-reveal-repeat');
+      if (entry.isIntersecting) {
+        revealNow(el, false);
+      } else if (repeat && el.classList.contains('sui-revealed')) {
+        cancelFinishReveal(el);
+        el.classList.remove('sui-revealed', 'sui-reveal-done');
+      }
+    });
+  }
+
+  function reveal(target, opts) {
+    opts = opts || {};
+    let els;
+    if (!target) els = document.querySelectorAll('.sui-reveal:not(.sui-revealed)');
+    else if (typeof target === 'string') els = document.querySelectorAll(target);
+    else if (target.nodeType === 1) els = [target];
+    else els = target;
+    els = Array.prototype.slice.call(els);
+    const html = document.documentElement;
+
+    els.forEach(function(el) {
+      el.classList.add('sui-reveal');
+      // data-reveal-stagger="100" on the parent: 0ms, 100ms, 200ms...
+      const parent = el.parentElement;
+      if (parent && parent.hasAttribute('data-reveal-stagger') && !el.style.getPropertyValue('--sui-delay')) {
+        const step = parseInt(parent.getAttribute('data-reveal-stagger'), 10) || 80;
+        const siblings = Array.prototype.filter.call(parent.children, function(c) { return c.classList.contains('sui-reveal'); });
+        el.style.setProperty('--sui-delay', (siblings.indexOf(el) * step) + 'ms');
+      }
+    });
+
+    // No observer support or reduced motion: just show everything
+    if (!('IntersectionObserver' in window) || prefersReducedMotion()) {
+      els.forEach(function(el) { el.classList.add('sui-revealed', 'sui-reveal-done'); });
+      html.classList.add('sui-reveal-ready');
+      return;
+    }
+
+    // rootMargin / threshold apply when the observer is first created
+    if (!revealObserver) {
+      revealObserver = new IntersectionObserver(onRevealEntries, {
+        rootMargin: opts.rootMargin || '0px 0px -10% 0px',
+        threshold: opts.threshold != null ? opts.threshold : 0.1
+      });
+    }
+    bindRevealGlobal();
+
+    // On first run, elements already in view are shown without animating,
+    // so above-the-fold content never flashes hidden.
+    if (!html.classList.contains('sui-reveal-ready')) {
+      const vh = window.innerHeight || html.clientHeight;
+      els.forEach(function(el) {
+        if (el.getClientRects().length === 0) return;
+        const rect = el.getBoundingClientRect();
+        if (rect.bottom > 0 && rect.top < vh) el.classList.add('sui-revealed', 'sui-reveal-done');
+      });
+    }
+
+    els.forEach(function(el) {
+      if (el.classList.contains('sui-revealed') && !el.hasAttribute('data-reveal-repeat')) return;
+      // Re-observing an observed target is a no-op; unobserve first so a
+      // replayed element gets a fresh initial entry.
+      revealObserver.unobserve(el);
+      revealObserver.observe(el);
+    });
+    html.classList.add('sui-reveal-ready');
+    queueRevealAtPageEnd();
+  }
+
+  function initReveal(root) {
+    const list = [];
+    each(root, '.sui-reveal', 'reveal', function(el) {
+      if (!el.classList.contains('sui-revealed')) list.push(el);
+    });
+    if (list.length) reveal(list);
+  }
+
+  // =========================================
+  // Init — SoftUI.init(root) wires up markup added later (SPA renders).
+  // Safe to call repeatedly: document listeners bind once and each element
+  // is set up once. One failing component never stops the others.
+  // =========================================
+  const initializers = [
+    ['tabs', initTabs],
+    ['accordion', initAccordion],
+    ['collapsible', initCollapsible],
+    ['dropdown', initDropdown],
+    ['contextMenu', initContextMenu],
+    ['command', initCommand],
+    ['calendar', initCalendar],
+    ['timePicker', initTimePicker],
+    ['menubar', initMenubar],
+    ['combobox', initCombobox],
+    ['resizable', initResizable],
+    ['popover', initPopover],
+    ['carousels', initCarousels],
+    ['sliders', initSliders],
+    ['toggleGroups', initToggleGroups],
+    ['otp', initOtp],
+    ['charts', initCharts],
+    ['styledSelects', initStyledSelects],
+    ['selectablePricing', initSelectablePricing],
+    ['drawers', initDrawers],
+    ['editable', initEditable],
+    ['sidebars', initSidebars],
+    ['keyboardA11y', initKeyboardA11y],
+    ['scrollspy', initScrollspy],
+    ['countdowns', initCountdowns],
+    ['segmented', initSegmented],
+    ['navMenu', initNavMenu],
+    ['dataTables', initDataTables],
+    ['dragDrop', initDragDrop],
+    ['spectrumPickers', initSpectrumPickers],
+    ['radialProgress', initRadialProgress],
+    ['slideSwaps', initSlideSwaps],
+    ['typewriters', initTypewriters],
+    ['textRotate', initTextRotate],
+    ['diffSliders', initDiffSliders],
+    ['theme', initTheme],
+    ['reveal', initReveal]
+  ];
+
+  function init(root) {
+    if (typeof root === 'string') root = document.querySelector(root);
+    const r = root || document;
+    safe('bindGlobal', bindGlobal);
+    initializers.forEach(function(p) { safe(p[0], p[1], r); });
+    return r;
+  }
+
+  // Auto-init when DOM is ready
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', function() { init(document); });
+  } else {
+    init(document);
+  }
+
+  return { init, modal, sheet, toast, carousel, sidebar, tour, theme, reveal, version: VERSION };
+});

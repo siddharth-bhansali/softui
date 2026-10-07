@@ -12,12 +12,13 @@ toc:
   - Full Featured
   - Filterable
   - Striped & Compact
+  - Reference
 ---
 
 <!-- Section 1 — Basic -->
 <div class="pg-section" id="section-1">
-  <h3 class="pg-section-title">Basic Data Table</h3>
-  <p class="pg-section-desc">Wrap a <code>.sui-table</code> in <code>.sui-datatable</code> and add a footer with info and pagination.</p>
+  <h3 class="pg-section-title">Basic</h3>
+  <p class="pg-section-desc">Wrap a <code>sui-table</code> in <code>sui-datatable</code> with an info and pagination footer.</p>
 
   <div class="pg-section-row">
     <div class="sui-datatable">
@@ -59,11 +60,11 @@ toc:
   &lt;table class="sui-table"&gt;
     &lt;thead&gt;
       &lt;tr&gt;
-        &lt;th&gt;#&lt;/th&gt;
-        &lt;th&gt;Name&lt;/th&gt;
-        &lt;th&gt;Email&lt;/th&gt;
-        &lt;th&gt;Role&lt;/th&gt;
-        &lt;th&gt;Status&lt;/th&gt;
+        &lt;th scope="col"&gt;#&lt;/th&gt;
+        &lt;th scope="col"&gt;Name&lt;/th&gt;
+        &lt;th scope="col"&gt;Email&lt;/th&gt;
+        &lt;th scope="col"&gt;Role&lt;/th&gt;
+        &lt;th scope="col"&gt;Status&lt;/th&gt;
       &lt;/tr&gt;
     &lt;/thead&gt;
     &lt;tbody&gt;
@@ -81,16 +82,15 @@ toc:
     &lt;div class="sui-datatable-info"&gt;&lt;/div&gt;
     &lt;div class="sui-datatable-pagination"&gt;&lt;/div&gt;
   &lt;/div&gt;
-&lt;/div&gt;
-</pre>
+&lt;/div&gt;</pre>
     </div>
   </div>
 </div>
 
 <!-- Section 2 — Sortable -->
 <div class="pg-section" id="section-2">
-  <h3 class="pg-section-title">Sortable Columns</h3>
-  <p class="pg-section-desc">Add <code>data-sort="string"</code> or <code>data-sort="number"</code> to <code>&lt;th&gt;</code> elements. Click a header to sort ascending, click again for descending.</p>
+  <h3 class="pg-section-title">Sortable</h3>
+  <p class="pg-section-desc">Add <code>data-sort</code> to a <code>&lt;th&gt;</code>; clicks cycle ascending, descending and original order.</p>
 
   <div class="pg-section-row">
     <div class="sui-datatable">
@@ -132,11 +132,11 @@ toc:
   &lt;table class="sui-table"&gt;
     &lt;thead&gt;
       &lt;tr&gt;
-        &lt;th data-sort="number"&gt;#&lt;/th&gt;
-        &lt;th data-sort="string"&gt;Product&lt;/th&gt;
-        &lt;th data-sort="string"&gt;Category&lt;/th&gt;
-        &lt;th data-sort="number"&gt;Price&lt;/th&gt;
-        &lt;th data-sort="number"&gt;Stock&lt;/th&gt;
+        &lt;th scope="col" data-sort="number"&gt;#&lt;/th&gt;
+        &lt;th scope="col" data-sort="string"&gt;Product&lt;/th&gt;
+        &lt;th scope="col" data-sort="string"&gt;Category&lt;/th&gt;
+        &lt;th scope="col" data-sort="number"&gt;Price&lt;/th&gt;
+        &lt;th scope="col" data-sort="number"&gt;Stock&lt;/th&gt;
       &lt;/tr&gt;
     &lt;/thead&gt;
     &lt;tbody&gt;
@@ -162,14 +162,14 @@ toc:
 <!-- Section 3 — Searchable -->
 <div class="pg-section" id="section-3">
   <h3 class="pg-section-title">Searchable</h3>
-  <p class="pg-section-desc">Add a <code>.sui-datatable-toolbar</code> with a search input to filter rows in real time.</p>
+  <p class="pg-section-desc">Add a <code>sui-datatable-search</code> input to filter rows as you type.</p>
 
   <div class="pg-section-row">
     <div class="sui-datatable">
       <div class="sui-datatable-toolbar">
         <div class="sui-datatable-search">
           <svg class="sui-datatable-search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-          <input type="text" placeholder="Search employees...">
+          <input type="text" placeholder="Search employees..." aria-label="Search">
         </div>
       </div>
       <div class="docs-table-wrap">
@@ -215,17 +215,17 @@ toc:
         &lt;circle cx="11" cy="11" r="8"/&gt;
         &lt;line x1="21" y1="21" x2="16.65" y2="16.65"/&gt;
       &lt;/svg&gt;
-      &lt;input type="text" placeholder="Search employees..."&gt;
+      &lt;input type="text" placeholder="Search employees..." aria-label="Search"&gt;
     &lt;/div&gt;
   &lt;/div&gt;
   &lt;table class="sui-table"&gt;
     &lt;thead&gt;
       &lt;tr&gt;
-        &lt;th data-sort="number"&gt;#&lt;/th&gt;
-        &lt;th data-sort="string"&gt;Name&lt;/th&gt;
-        &lt;th data-sort="string"&gt;Department&lt;/th&gt;
-        &lt;th data-sort="string"&gt;Location&lt;/th&gt;
-        &lt;th&gt;Status&lt;/th&gt;
+        &lt;th scope="col" data-sort="number"&gt;#&lt;/th&gt;
+        &lt;th scope="col" data-sort="string"&gt;Name&lt;/th&gt;
+        &lt;th scope="col" data-sort="string"&gt;Department&lt;/th&gt;
+        &lt;th scope="col" data-sort="string"&gt;Location&lt;/th&gt;
+        &lt;th scope="col"&gt;Status&lt;/th&gt;
       &lt;/tr&gt;
     &lt;/thead&gt;
     &lt;tbody&gt;
@@ -251,14 +251,14 @@ toc:
 <!-- Section 4 — Full Featured -->
 <div class="pg-section" id="section-4">
   <h3 class="pg-section-title">Full Featured</h3>
-  <p class="pg-section-desc">Combine search, sortable columns, per-page selector, and pagination for a complete data table experience.</p>
+  <p class="pg-section-desc">Search, sorting, a per-page selector and pagination together.</p>
 
   <div class="pg-section-row">
     <div class="sui-datatable">
       <div class="sui-datatable-toolbar">
         <div class="sui-datatable-search">
           <svg class="sui-datatable-search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-          <input type="text" placeholder="Search orders...">
+          <input type="text" placeholder="Search orders..." aria-label="Search">
         </div>
         <div class="sui-datatable-perpage">
           <span>Show</span>
@@ -288,21 +288,21 @@ toc:
             </tr>
           </thead>
           <tbody>
-            <tr><td>#1001</td><td>Alice Martin</td><td>Pro Subscription</td><td>$299</td><td>2026-03-01</td><td><span class="sui-badge sui-badge-success">Completed</span></td></tr>
-            <tr><td>#1002</td><td>Bob Chen</td><td>Team License</td><td>$599</td><td>2026-03-02</td><td><span class="sui-badge sui-badge-success">Completed</span></td></tr>
-            <tr><td>#1003</td><td>Carol Davis</td><td>Starter Plan</td><td>$49</td><td>2026-03-02</td><td><span class="sui-badge sui-badge-warning">Pending</span></td></tr>
-            <tr><td>#1004</td><td>David Kim</td><td>Enterprise</td><td>$1,299</td><td>2026-03-03</td><td><span class="sui-badge sui-badge-success">Completed</span></td></tr>
-            <tr><td>#1005</td><td>Eva Novak</td><td>Pro Subscription</td><td>$299</td><td>2026-03-04</td><td><span class="sui-badge sui-badge-danger">Refunded</span></td></tr>
-            <tr><td>#1006</td><td>Frank Li</td><td>Team License</td><td>$599</td><td>2026-03-04</td><td><span class="sui-badge sui-badge-success">Completed</span></td></tr>
-            <tr><td>#1007</td><td>Grace Park</td><td>Starter Plan</td><td>$49</td><td>2026-03-05</td><td><span class="sui-badge sui-badge-success">Completed</span></td></tr>
-            <tr><td>#1008</td><td>Henry Wells</td><td>Pro Subscription</td><td>$299</td><td>2026-03-05</td><td><span class="sui-badge sui-badge-warning">Pending</span></td></tr>
-            <tr><td>#1009</td><td>Ivy Torres</td><td>Enterprise</td><td>$1,299</td><td>2026-03-06</td><td><span class="sui-badge sui-badge-success">Completed</span></td></tr>
-            <tr><td>#1010</td><td>Jack Murphy</td><td>Team License</td><td>$599</td><td>2026-03-06</td><td><span class="sui-badge sui-badge-success">Completed</span></td></tr>
-            <tr><td>#1011</td><td>Karen Scott</td><td>Starter Plan</td><td>$49</td><td>2026-03-07</td><td><span class="sui-badge sui-badge-warning">Pending</span></td></tr>
-            <tr><td>#1012</td><td>Leo Adams</td><td>Pro Subscription</td><td>$299</td><td>2026-03-07</td><td><span class="sui-badge sui-badge-success">Completed</span></td></tr>
-            <tr><td>#1013</td><td>Mia Rivera</td><td>Enterprise</td><td>$1,299</td><td>2026-03-08</td><td><span class="sui-badge sui-badge-danger">Refunded</span></td></tr>
-            <tr><td>#1014</td><td>Noah Cooper</td><td>Team License</td><td>$599</td><td>2026-03-08</td><td><span class="sui-badge sui-badge-success">Completed</span></td></tr>
-            <tr><td>#1015</td><td>Olivia Reed</td><td>Starter Plan</td><td>$49</td><td>2026-03-09</td><td><span class="sui-badge sui-badge-success">Completed</span></td></tr>
+            <tr><td>#1001</td><td>Alice Martin</td><td>Pro Subscription</td><td>$299</td><td style="white-space:nowrap;">2026-03-01</td><td><span class="sui-badge sui-badge-success">Completed</span></td></tr>
+            <tr><td>#1002</td><td>Bob Chen</td><td>Team License</td><td>$599</td><td style="white-space:nowrap;">2026-03-02</td><td><span class="sui-badge sui-badge-success">Completed</span></td></tr>
+            <tr><td>#1003</td><td>Carol Davis</td><td>Starter Plan</td><td>$49</td><td style="white-space:nowrap;">2026-03-02</td><td><span class="sui-badge sui-badge-warning">Pending</span></td></tr>
+            <tr><td>#1004</td><td>David Kim</td><td>Enterprise</td><td>$1,299</td><td style="white-space:nowrap;">2026-03-03</td><td><span class="sui-badge sui-badge-success">Completed</span></td></tr>
+            <tr><td>#1005</td><td>Eva Novak</td><td>Pro Subscription</td><td>$299</td><td style="white-space:nowrap;">2026-03-04</td><td><span class="sui-badge sui-badge-danger">Refunded</span></td></tr>
+            <tr><td>#1006</td><td>Frank Li</td><td>Team License</td><td>$599</td><td style="white-space:nowrap;">2026-03-04</td><td><span class="sui-badge sui-badge-success">Completed</span></td></tr>
+            <tr><td>#1007</td><td>Grace Park</td><td>Starter Plan</td><td>$49</td><td style="white-space:nowrap;">2026-03-05</td><td><span class="sui-badge sui-badge-success">Completed</span></td></tr>
+            <tr><td>#1008</td><td>Henry Wells</td><td>Pro Subscription</td><td>$299</td><td style="white-space:nowrap;">2026-03-05</td><td><span class="sui-badge sui-badge-warning">Pending</span></td></tr>
+            <tr><td>#1009</td><td>Ivy Torres</td><td>Enterprise</td><td>$1,299</td><td style="white-space:nowrap;">2026-03-06</td><td><span class="sui-badge sui-badge-success">Completed</span></td></tr>
+            <tr><td>#1010</td><td>Jack Murphy</td><td>Team License</td><td>$599</td><td style="white-space:nowrap;">2026-03-06</td><td><span class="sui-badge sui-badge-success">Completed</span></td></tr>
+            <tr><td>#1011</td><td>Karen Scott</td><td>Starter Plan</td><td>$49</td><td style="white-space:nowrap;">2026-03-07</td><td><span class="sui-badge sui-badge-warning">Pending</span></td></tr>
+            <tr><td>#1012</td><td>Leo Adams</td><td>Pro Subscription</td><td>$299</td><td style="white-space:nowrap;">2026-03-07</td><td><span class="sui-badge sui-badge-success">Completed</span></td></tr>
+            <tr><td>#1013</td><td>Mia Rivera</td><td>Enterprise</td><td>$1,299</td><td style="white-space:nowrap;">2026-03-08</td><td><span class="sui-badge sui-badge-danger">Refunded</span></td></tr>
+            <tr><td>#1014</td><td>Noah Cooper</td><td>Team License</td><td>$599</td><td style="white-space:nowrap;">2026-03-08</td><td><span class="sui-badge sui-badge-success">Completed</span></td></tr>
+            <tr><td>#1015</td><td>Olivia Reed</td><td>Starter Plan</td><td>$49</td><td style="white-space:nowrap;">2026-03-09</td><td><span class="sui-badge sui-badge-success">Completed</span></td></tr>
           </tbody>
         </table>
       </div>
@@ -325,12 +325,12 @@ toc:
         &lt;circle cx="11" cy="11" r="8"/&gt;
         &lt;line x1="21" y1="21" x2="16.65" y2="16.65"/&gt;
       &lt;/svg&gt;
-      &lt;input type="text" placeholder="Search orders..."&gt;
+      &lt;input type="text" placeholder="Search orders..." aria-label="Search"&gt;
     &lt;/div&gt;
     &lt;div class="sui-datatable-perpage"&gt;
       &lt;span&gt;Show&lt;/span&gt;
       &lt;div class="sui-styled-select sui-styled-select-sm" data-value="5" style="width:70px;"&gt;
-        &lt;button class="sui-styled-select-trigger"&gt;
+        &lt;button type="button" class="sui-styled-select-trigger"&gt;
           &lt;span class="sui-styled-select-value"&gt;5&lt;/span&gt;
         &lt;/button&gt;
         &lt;div class="sui-styled-select-menu"&gt;
@@ -345,12 +345,12 @@ toc:
   &lt;table class="sui-table"&gt;
     &lt;thead&gt;
       &lt;tr&gt;
-        &lt;th data-sort="number"&gt;Order&lt;/th&gt;
-        &lt;th data-sort="string"&gt;Customer&lt;/th&gt;
-        &lt;th data-sort="string"&gt;Product&lt;/th&gt;
-        &lt;th data-sort="number"&gt;Amount&lt;/th&gt;
-        &lt;th data-sort="string"&gt;Date&lt;/th&gt;
-        &lt;th&gt;Status&lt;/th&gt;
+        &lt;th scope="col" data-sort="number"&gt;Order&lt;/th&gt;
+        &lt;th scope="col" data-sort="string"&gt;Customer&lt;/th&gt;
+        &lt;th scope="col" data-sort="string"&gt;Product&lt;/th&gt;
+        &lt;th scope="col" data-sort="number"&gt;Amount&lt;/th&gt;
+        &lt;th scope="col" data-sort="string"&gt;Date&lt;/th&gt;
+        &lt;th scope="col"&gt;Status&lt;/th&gt;
       &lt;/tr&gt;
     &lt;/thead&gt;
     &lt;tbody&gt;
@@ -359,7 +359,7 @@ toc:
         &lt;td&gt;Alice Martin&lt;/td&gt;
         &lt;td&gt;Pro Subscription&lt;/td&gt;
         &lt;td&gt;$299&lt;/td&gt;
-        &lt;td&gt;2026-03-01&lt;/td&gt;
+        &lt;td style="white-space:nowrap;"&gt;2026-03-01&lt;/td&gt;
         &lt;td&gt;&lt;span class="sui-badge sui-badge-success"&gt;Completed&lt;/span&gt;&lt;/td&gt;
       &lt;/tr&gt;
       &lt;!-- more rows... --&gt;
@@ -377,14 +377,14 @@ toc:
 <!-- Section 5 — Filterable -->
 <div class="pg-section" id="section-5">
   <h3 class="pg-section-title">Filterable</h3>
-  <p class="pg-section-desc">Add a <code>.sui-datatable-filter</code> select with <code>data-filter-attr</code> to filter rows by a data attribute. Works with search, sort, and pagination.</p>
+  <p class="pg-section-desc">Add <code>sui-datatable-filter</code> to a <code>sui-dropdown</code> or <code>&lt;select&gt;</code> with <code>data-filter-attr</code>.</p>
 
   <div class="pg-section-row">
     <div class="sui-datatable">
       <div class="sui-datatable-toolbar">
         <div class="sui-datatable-search">
           <svg class="sui-datatable-search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-          <input type="text" placeholder="Search...">
+          <input type="text" placeholder="Search..." aria-label="Search">
         </div>
         <div class="sui-dropdown sui-datatable-filter" data-filter-attr="data-dept">
           <button class="sui-dropdown-toggle" data-sui-dropdown aria-expanded="false" aria-haspopup="true">
@@ -452,18 +452,36 @@ toc:
       <pre>&lt;div class="sui-datatable"&gt;
   &lt;div class="sui-datatable-toolbar"&gt;
     &lt;div class="sui-datatable-search"&gt;
-      &lt;input type="text" placeholder="Search..."&gt;
+      &lt;svg class="sui-datatable-search-icon" viewBox="0 0 24 24" fill="none"
+        stroke="currentColor" stroke-width="2"&gt;
+        &lt;circle cx="11" cy="11" r="8"/&gt;
+        &lt;line x1="21" y1="21" x2="16.65" y2="16.65"/&gt;
+      &lt;/svg&gt;
+      &lt;input type="text" placeholder="Search..." aria-label="Search"&gt;
     &lt;/div&gt;
     &lt;div class="sui-dropdown sui-datatable-filter" data-filter-attr="data-dept"&gt;
-      &lt;button class="sui-dropdown-toggle" data-sui-dropdown&gt;
+      &lt;button class="sui-dropdown-toggle" data-sui-dropdown aria-expanded="false" aria-haspopup="true"&gt;
         &lt;span class="sui-datatable-filter-label"&gt;All Departments&lt;/span&gt;
       &lt;/button&gt;
-      &lt;div class="sui-dropdown-menu"&gt;
-        &lt;button class="sui-dropdown-item active" data-value=""&gt;All Departments&lt;/button&gt;
-        &lt;button class="sui-dropdown-item" data-value="engineering"&gt;Engineering&lt;/button&gt;
-        &lt;button class="sui-dropdown-item" data-value="design"&gt;Design&lt;/button&gt;
+      &lt;div class="sui-dropdown-menu" role="menu"&gt;
+        &lt;button class="sui-dropdown-item active" data-value="" role="menuitem"&gt;All Departments&lt;/button&gt;
+        &lt;button class="sui-dropdown-item" data-value="engineering" role="menuitem"&gt;Engineering&lt;/button&gt;
+        &lt;button class="sui-dropdown-item" data-value="design" role="menuitem"&gt;Design&lt;/button&gt;
         &lt;!-- more items --&gt;
       &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="sui-datatable-perpage"&gt;
+      &lt;span&gt;Show&lt;/span&gt;
+      &lt;div class="sui-styled-select sui-styled-select-sm" data-value="5" style="width:70px;"&gt;
+        &lt;button type="button" class="sui-styled-select-trigger"&gt;
+          &lt;span class="sui-styled-select-value"&gt;5&lt;/span&gt;
+        &lt;/button&gt;
+        &lt;div class="sui-styled-select-menu"&gt;
+          &lt;div class="sui-styled-select-option selected" data-value="5"&gt;5&lt;/div&gt;
+          &lt;div class="sui-styled-select-option" data-value="10"&gt;10&lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+      &lt;span&gt;entries&lt;/span&gt;
     &lt;/div&gt;
   &lt;/div&gt;
   &lt;table class="sui-table"&gt;
@@ -486,14 +504,14 @@ toc:
 <!-- Section 6 — Striped & Compact -->
 <div class="pg-section" id="section-6">
   <h3 class="pg-section-title">Striped & Compact</h3>
-  <p class="pg-section-desc">Combine with existing table variants like <code>.sui-table-striped</code> and <code>.sui-table-compact</code>.</p>
+  <p class="pg-section-desc">Table variants such as <code>sui-table-striped</code> and <code>sui-table-compact</code> work as usual.</p>
 
   <div class="pg-section-row">
     <div class="sui-datatable">
       <div class="sui-datatable-toolbar">
         <div class="sui-datatable-search">
           <svg class="sui-datatable-search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-          <input type="text" placeholder="Search...">
+          <input type="text" placeholder="Search..." aria-label="Search">
         </div>
         <div class="sui-datatable-perpage">
           <span>Show</span>
@@ -555,12 +573,12 @@ toc:
         &lt;circle cx="11" cy="11" r="8"/&gt;
         &lt;line x1="21" y1="21" x2="16.65" y2="16.65"/&gt;
       &lt;/svg&gt;
-      &lt;input type="text" placeholder="Search..."&gt;
+      &lt;input type="text" placeholder="Search..." aria-label="Search"&gt;
     &lt;/div&gt;
     &lt;div class="sui-datatable-perpage"&gt;
       &lt;span&gt;Show&lt;/span&gt;
       &lt;div class="sui-styled-select sui-styled-select-sm" data-value="5" style="width:70px;"&gt;
-        &lt;button class="sui-styled-select-trigger"&gt;
+        &lt;button type="button" class="sui-styled-select-trigger"&gt;
           &lt;span class="sui-styled-select-value"&gt;5&lt;/span&gt;
         &lt;/button&gt;
         &lt;div class="sui-styled-select-menu"&gt;
@@ -574,11 +592,11 @@ toc:
   &lt;table class="sui-table sui-table-striped sui-table-compact"&gt;
     &lt;thead&gt;
       &lt;tr&gt;
-        &lt;th data-sort="number"&gt;#&lt;/th&gt;
-        &lt;th data-sort="string"&gt;Task&lt;/th&gt;
-        &lt;th data-sort="string"&gt;Assignee&lt;/th&gt;
-        &lt;th data-sort="string"&gt;Priority&lt;/th&gt;
-        &lt;th&gt;Progress&lt;/th&gt;
+        &lt;th scope="col" data-sort="number"&gt;#&lt;/th&gt;
+        &lt;th scope="col" data-sort="string"&gt;Task&lt;/th&gt;
+        &lt;th scope="col" data-sort="string"&gt;Assignee&lt;/th&gt;
+        &lt;th scope="col" data-sort="string"&gt;Priority&lt;/th&gt;
+        &lt;th scope="col"&gt;Progress&lt;/th&gt;
       &lt;/tr&gt;
     &lt;/thead&gt;
     &lt;tbody&gt;
@@ -598,5 +616,29 @@ toc:
   &lt;/div&gt;
 &lt;/div&gt;</pre>
     </div>
+  </div>
+</div>
+
+<!-- Reference -->
+<div class="pg-section" id="section-7">
+  <h3 class="pg-section-title">Reference</h3>
+  <div class="docs-table-wrap">
+    <table class="sui-table sui-table-compact">
+      <thead>
+        <tr><th scope="col" style="width:40%;">Class / Attribute</th><th scope="col">Description</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><code>data-sort="string|number"</code></td><td>On a <code>&lt;th&gt;</code>, makes the column sortable. Clicks cycle ascending, descending, original order.</td></tr>
+        <tr><td><code>sort-asc</code> / <code>sort-desc</code></td><td>Added to the sorted <code>&lt;th&gt;</code> by softui.js and drawn as an arrow.</td></tr>
+        <tr><td><code>sui-datatable-search</code></td><td>Wraps the search <code>&lt;input&gt;</code>; rows are filtered by their text as you type.</td></tr>
+        <tr><td><code>sui-datatable-filter</code></td><td>A native <code>&lt;select&gt;</code> or a <code>sui-dropdown</code> whose items carry <code>data-value</code>. An empty value shows all rows.</td></tr>
+        <tr><td><code>data-filter-attr</code></td><td>Row attribute the filter compares against. Default <code>data-status</code>.</td></tr>
+        <tr><td><code>sui-datatable-filter-label</code></td><td>Inside a dropdown filter, shows the chosen item&rsquo;s text.</td></tr>
+        <tr><td><code>sui-datatable-perpage</code></td><td>Holds a <code>&lt;select&gt;</code> or <code>sui-styled-select</code> that sets rows per page. Without it every row shows.</td></tr>
+        <tr><td><code>sui-datatable-info</code></td><td>Filled with the visible range and total count.</td></tr>
+        <tr><td><code>sui-datatable-pagination</code></td><td>Filled with page buttons.</td></tr>
+        <tr><td><code>sui-datatable-empty</code></td><td>Generated cell shown when no rows match.</td></tr>
+      </tbody>
+    </table>
   </div>
 </div>

@@ -137,14 +137,38 @@ toc:
     </div>
     <div>
       <small style="display:block;margin-bottom:4px;color:var(--sui-text-muted);">sui-overflow-visible</small>
-      <div class="sui-overflow-visible sui-inset" style="padding:10px;border-radius:8px;height:60px;margin-bottom:40px;">
-        <div style="color:var(--sui-text);">This container has overflow-visible. Content overflows and is visible outside the box boundaries. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
+      <div class="sui-overflow-visible sui-inset" style="padding:10px;border-radius:8px;height:36px;margin-bottom:64px;">
+        <div style="color:var(--sui-text);">This box is 36px tall.<br>These lines overflow it<br>and stay visible below.</div>
       </div>
     </div>
     <div>
       <small style="display:block;margin-bottom:4px;color:var(--sui-text-muted);">sui-overflow-x-auto</small>
       <div class="sui-overflow-x-auto sui-inset" style="padding:10px;border-radius:8px;">
         <div style="white-space:nowrap;color:var(--sui-text);">This is a very long line of text that extends beyond the container width to demonstrate horizontal scrolling with sui-overflow-x-auto. It keeps going and going to ensure it overflows.</div>
+      </div>
+    </div>
+    <div>
+      <small style="display:block;margin-bottom:4px;color:var(--sui-text-muted);">sui-overflow-scroll</small>
+      <div class="sui-overflow-scroll sui-inset" style="padding:10px;border-radius:8px;height:60px;">
+        <div style="color:var(--sui-text);">This container has overflow-scroll. Scrollbars are always shown. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.</div>
+      </div>
+    </div>
+    <div>
+      <small style="display:block;margin-bottom:4px;color:var(--sui-text-muted);">sui-overflow-y-auto</small>
+      <div class="sui-overflow-y-auto sui-inset" style="padding:10px;border-radius:8px;height:60px;">
+        <div style="color:var(--sui-text);">This container has overflow-y-auto. It scrolls vertically only. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.</div>
+      </div>
+    </div>
+    <div>
+      <small style="display:block;margin-bottom:4px;color:var(--sui-text-muted);">sui-overflow-x-hidden</small>
+      <div class="sui-overflow-x-hidden sui-inset" style="padding:10px;border-radius:8px;">
+        <div style="white-space:nowrap;color:var(--sui-text);">This long line is clipped at the right edge with sui-overflow-x-hidden instead of scrolling. It keeps going and going to ensure it overflows.</div>
+      </div>
+    </div>
+    <div>
+      <small style="display:block;margin-bottom:4px;color:var(--sui-text-muted);">sui-overflow-y-hidden</small>
+      <div class="sui-overflow-y-hidden sui-inset" style="padding:10px;border-radius:8px;height:60px;">
+        <div style="color:var(--sui-text);">This container has overflow-y-hidden. Text past the bottom edge is clipped. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.</div>
       </div>
     </div>
   </div>
@@ -154,6 +178,7 @@ toc:
 &lt;div class="sui-overflow-auto"&gt;Scrollbar when needed&lt;/div&gt;
 &lt;div class="sui-overflow-visible"&gt;Content overflows visibly&lt;/div&gt;
 &lt;div class="sui-overflow-x-auto"&gt;Horizontal scroll&lt;/div&gt;
+&lt;div class="sui-overflow-scroll"&gt;Scrollbars always shown&lt;/div&gt;
 &lt;div class="sui-overflow-y-auto"&gt;Vertical scroll&lt;/div&gt;
 &lt;div class="sui-overflow-x-hidden"&gt;Clip horizontal overflow&lt;/div&gt;
 &lt;div class="sui-overflow-y-hidden"&gt;Clip vertical overflow&lt;/div&gt;</pre></div>

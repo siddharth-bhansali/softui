@@ -11,6 +11,8 @@ toc:
   - Cursor Styles
   - Speeds
   - With Colors
+  - Reserve Space
+  - Reference
 ---
 
 <!-- Default -->
@@ -23,7 +25,7 @@ toc:
   </div>
   <div class="pg-code-wrap">
     <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
-    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;p style="font-size:22px;font-weight:700;"&gt;
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;p style="font-size:22px;font-weight:700;color:var(--sui-text);"&gt;
   &lt;span class="sui-typewriter sui-typewriter-cursor" data-sui-typewriter&gt;Welcome to SoftUI, a neumorphic CSS library.&lt;/span&gt;
 &lt;/p&gt;
 
@@ -49,13 +51,16 @@ toc:
   </div>
   <div class="pg-code-wrap">
     <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
-    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;p style="font-size:22px;font-weight:700;"&gt;
-  I love
-  &lt;span class="sui-typewriter sui-typewriter-cursor"
-    data-sui-typewriter
-    data-words="building websites|writing CSS|creating components|open source"
-    data-loop&gt;&lt;/span&gt;
-&lt;/p&gt;
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div style="display:flex;flex-direction:column;gap:20px;"&gt;
+  &lt;p style="font-size:22px;font-weight:700;color:var(--sui-text);"&gt;
+    I love
+    &lt;span class="sui-typewriter sui-typewriter-cursor" data-sui-typewriter data-words="building websites|writing CSS|creating components|open source" data-loop&gt;&lt;/span&gt;
+  &lt;/p&gt;
+  &lt;p style="font-size:20px;font-weight:600;color:var(--sui-text);"&gt;
+    npm install
+    &lt;span class="sui-typewriter sui-typewriter-cursor sui-typewriter-primary" data-sui-typewriter data-words="softui-css|react|vue|svelte" data-loop&gt;&lt;/span&gt;
+  &lt;/p&gt;
+&lt;/div&gt;
 
 &lt;!-- data-words: pipe-separated phrases to cycle through --&gt;
 &lt;!-- data-loop: types, deletes, types next phrase, repeats --&gt;</pre></div>
@@ -83,14 +88,20 @@ toc:
   </div>
   <div class="pg-code-wrap">
     <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
-    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;!-- Line cursor (default) --&gt;
-&lt;span class="sui-typewriter sui-typewriter-cursor" data-sui-typewriter&gt;...&lt;/span&gt;
-
-&lt;!-- Block cursor --&gt;
-&lt;span class="sui-typewriter sui-typewriter-cursor-block" data-sui-typewriter&gt;...&lt;/span&gt;
-
-&lt;!-- Underscore cursor --&gt;
-&lt;span class="sui-typewriter sui-typewriter-cursor-underscore" data-sui-typewriter&gt;...&lt;/span&gt;</pre></div>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div style="display:flex;flex-direction:column;gap:20px;"&gt;
+  &lt;p style="font-size:20px;font-weight:600;color:var(--sui-text);"&gt;
+    Line cursor:
+    &lt;span class="sui-typewriter sui-typewriter-cursor" data-sui-typewriter data-words="default cursor style" data-speed="60"&gt;&lt;/span&gt;
+  &lt;/p&gt;
+  &lt;p style="font-size:20px;font-weight:600;color:var(--sui-text);"&gt;
+    Block cursor:
+    &lt;span class="sui-typewriter sui-typewriter-cursor-block" data-sui-typewriter data-words="block cursor style" data-speed="60"&gt;&lt;/span&gt;
+  &lt;/p&gt;
+  &lt;p style="font-size:20px;font-weight:600;color:var(--sui-text);"&gt;
+    Underscore cursor:
+    &lt;span class="sui-typewriter sui-typewriter-cursor-underscore" data-sui-typewriter data-words="underscore cursor style" data-speed="60"&gt;&lt;/span&gt;
+  &lt;/p&gt;
+&lt;/div&gt;</pre></div>
   </div>
 </div>
 
@@ -115,14 +126,20 @@ toc:
   </div>
   <div class="pg-code-wrap">
     <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
-    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;!-- Slow --&gt;
-&lt;span class="sui-typewriter sui-typewriter-cursor" data-sui-typewriter data-speed="120"&gt;Slow text&lt;/span&gt;
-
-&lt;!-- Default --&gt;
-&lt;span class="sui-typewriter sui-typewriter-cursor" data-sui-typewriter&gt;Default speed&lt;/span&gt;
-
-&lt;!-- Fast --&gt;
-&lt;span class="sui-typewriter sui-typewriter-cursor" data-sui-typewriter data-speed="30"&gt;Fast text&lt;/span&gt;
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div style="display:flex;flex-direction:column;gap:20px;"&gt;
+  &lt;p style="font-size:18px;font-weight:600;color:var(--sui-text);"&gt;
+    Slow (120ms):
+    &lt;span class="sui-typewriter sui-typewriter-cursor" data-sui-typewriter data-words="This types slowly...|Notice the pace?" data-speed="120" data-loop&gt;&lt;/span&gt;
+  &lt;/p&gt;
+  &lt;p style="font-size:18px;font-weight:600;color:var(--sui-text);"&gt;
+    Default (80ms):
+    &lt;span class="sui-typewriter sui-typewriter-cursor" data-sui-typewriter data-words="This is the default speed.|A good balance." data-speed="80" data-loop&gt;&lt;/span&gt;
+  &lt;/p&gt;
+  &lt;p style="font-size:18px;font-weight:600;color:var(--sui-text);"&gt;
+    Fast (30ms):
+    &lt;span class="sui-typewriter sui-typewriter-cursor" data-sui-typewriter data-words="This types really fast!|Blink and you miss it." data-speed="30" data-loop&gt;&lt;/span&gt;
+  &lt;/p&gt;
+&lt;/div&gt;
 
 &lt;!-- data-speed: ms per character (default 80) --&gt;
 &lt;!-- data-delete-speed: ms per character when deleting (default 40) --&gt;
@@ -151,18 +168,80 @@ toc:
   </div>
   <div class="pg-code-wrap">
     <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
-    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;!-- Primary --&gt;
-&lt;span class="sui-typewriter sui-typewriter-cursor sui-typewriter-primary"
-  data-sui-typewriter data-words="production|staging|preview" data-loop&gt;&lt;/span&gt;
-
-&lt;!-- Success --&gt;
-&lt;span class="sui-typewriter sui-typewriter-cursor-block sui-typewriter-success"
-  data-sui-typewriter data-words="All systems operational"&gt;&lt;/span&gt;
-
-&lt;!-- Danger --&gt;
-&lt;span class="sui-typewriter sui-typewriter-cursor sui-typewriter-danger"
-  data-sui-typewriter data-words="Connection refused|Timeout exceeded" data-loop&gt;&lt;/span&gt;
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div style="display:flex;flex-direction:column;gap:20px;"&gt;
+  &lt;p style="font-size:22px;font-weight:700;color:var(--sui-text);"&gt;
+    Deploy to
+    &lt;span class="sui-typewriter sui-typewriter-cursor sui-typewriter-primary" data-sui-typewriter data-words="production|staging|preview" data-loop&gt;&lt;/span&gt;
+  &lt;/p&gt;
+  &lt;p style="font-size:22px;font-weight:700;color:var(--sui-text);"&gt;
+    Status:
+    &lt;span class="sui-typewriter sui-typewriter-cursor-block sui-typewriter-success" data-sui-typewriter data-words="All systems operational" data-speed="50"&gt;&lt;/span&gt;
+  &lt;/p&gt;
+  &lt;p style="font-size:22px;font-weight:700;color:var(--sui-text);"&gt;
+    Error:
+    &lt;span class="sui-typewriter sui-typewriter-cursor sui-typewriter-danger" data-sui-typewriter data-words="Connection refused|Timeout exceeded|404 Not Found" data-loop data-pause="2000"&gt;&lt;/span&gt;
+  &lt;/p&gt;
+&lt;/div&gt;
 
 &lt;!-- Color classes: sui-typewriter-primary, success, danger, warning, info --&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Reserve Space -->
+<div class="pg-section" id="section-6">
+  <h3 class="pg-section-title">Reserve Space</h3>
+  <p style="font-size:13px;color:var(--sui-text-light);margin-bottom:16px;">Add <code>data-reserve</code> to hold the width of the longest phrase.</p>
+  <div class="pg-section-row">
+    <div style="display:flex;flex-direction:column;gap:20px;">
+      <p style="font-size:20px;font-weight:600;color:var(--sui-text);">
+        Ship <span class="sui-typewriter sui-typewriter-cursor sui-typewriter-primary" data-sui-typewriter data-reserve data-words="faster|smaller bundles|accessible interfaces" data-loop>faster</span> with SoftUI.
+      </p>
+      <p style="font-size:20px;font-weight:600;color:var(--sui-text);">
+        Status: <span class="sui-typewriter sui-typewriter-cursor-block" data-sui-typewriter data-reserve data-words="Building|Testing|Deploying|Live" data-loop data-sr-text="Build status">Building</span> — this sentence stays put.
+      </p>
+    </div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div style="display:flex;flex-direction:column;gap:20px;"&gt;
+  &lt;p style="font-size:20px;font-weight:600;color:var(--sui-text);"&gt;
+    Ship &lt;span class="sui-typewriter sui-typewriter-cursor sui-typewriter-primary" data-sui-typewriter data-reserve data-words="faster|smaller bundles|accessible interfaces" data-loop&gt;faster&lt;/span&gt; with SoftUI.
+  &lt;/p&gt;
+  &lt;p style="font-size:20px;font-weight:600;color:var(--sui-text);"&gt;
+    Status: &lt;span class="sui-typewriter sui-typewriter-cursor-block" data-sui-typewriter data-reserve data-words="Building|Testing|Deploying|Live" data-loop data-sr-text="Build status"&gt;Building&lt;/span&gt; — this sentence stays put.
+  &lt;/p&gt;
+&lt;/div&gt;
+
+&lt;!-- data-reserve: width of the longest phrase, so nothing after it reflows --&gt;
+&lt;!-- Text inside a data-words element is shown first, then typed over
+     (if it matches the first phrase, typing continues from there) --&gt;
+&lt;!-- data-sr-text: what screen readers hear (default: all phrases, comma-separated) --&gt;
+&lt;!-- prefers-reduced-motion: static text, no typing
+     (existing text or first phrase with data-loop, last phrase without) --&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Reference -->
+<div class="pg-section" id="section-7">
+  <h3 class="pg-section-title">Reference</h3>
+  <div class="docs-table-wrap">
+    <table class="sui-table sui-table-compact">
+      <thead>
+        <tr><th scope="col" style="width:40%;">Attribute / Class / Setting</th><th scope="col">Description</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><code>data-sui-typewriter</code></td><td>Turns the element into a typewriter. Without <code>data-words</code> it types its own text once.</td></tr>
+        <tr><td><code>data-words</code></td><td>Phrases separated by <code>|</code>. Text already inside the element (e.g. server-rendered) shows first, then is typed over.</td></tr>
+        <tr><td><code>data-loop</code></td><td>Types, deletes and moves to the next phrase, forever. Without it, typing stops on the last phrase.</td></tr>
+        <tr><td><code>data-speed</code></td><td>Milliseconds per typed character (default 80).</td></tr>
+        <tr><td><code>data-delete-speed</code></td><td>Milliseconds per deleted character (default 40).</td></tr>
+        <tr><td><code>data-pause</code></td><td>Milliseconds to wait before deleting a finished phrase (default 1500).</td></tr>
+        <tr><td><code>data-reserve</code></td><td>Sizes to the longest phrase so the text after it never shifts.</td></tr>
+        <tr><td><code>data-sr-text</code></td><td>What screen readers hear (default: all phrases once).</td></tr>
+        <tr><td><code>sui-typewriter-cursor</code>, <code>-cursor-block</code>, <code>-cursor-underscore</code></td><td>Line, block or underscore blinking cursor.</td></tr>
+        <tr><td><code>sui-typewriter-primary</code>, <code>-success</code>, <code>-danger</code>, <code>-warning</code>, <code>-info</code></td><td>Text colour.</td></tr>
+        <tr><td><code>prefers-reduced-motion</code></td><td>Static text, no typing: the existing text or first phrase with <code>data-loop</code>, the last phrase without. Plain-text mode shows the full text.</td></tr>
+      </tbody>
+    </table>
   </div>
 </div>

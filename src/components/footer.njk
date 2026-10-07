@@ -1,0 +1,432 @@
+---
+layout: component.njk
+title: Footer
+description: Page footers with brand, links and copyright, in centred, split and multi-column layouts.
+componentId: footer
+hasControls: false
+requiresJs: false
+toc:
+  - Centered
+  - Split
+  - Columns
+  - Raised
+  - Bordered
+  - Inset
+  - Tinted
+  - Small
+  - Social Icons
+  - Raised Links
+  - RTL
+  - Reference
+---
+
+<!-- Centered -->
+<div class="pg-section" id="section-1">
+  <h3 class="pg-section-title">Centered</h3>
+  <div class="pg-section-row" style="display:block;">
+    <footer class="sui-footer">
+      <div class="sui-footer-inner">
+        <span class="sui-footer-brand">Acme</span>
+        <nav class="sui-footer-links" aria-label="Footer (centered demo)">
+          <a class="sui-footer-link" href="#">About</a>
+          <a class="sui-footer-link" href="#">Blog</a>
+          <a class="sui-footer-link" href="#">Contact</a>
+        </nav>
+        <span class="sui-footer-copy">&copy; 2026 Acme Inc.</span>
+      </div>
+    </footer>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;footer class="sui-footer"&gt;
+  &lt;div class="sui-footer-inner"&gt;
+    &lt;span class="sui-footer-brand"&gt;Acme&lt;/span&gt;
+    &lt;nav class="sui-footer-links" aria-label="Footer (centered demo)"&gt;
+      &lt;a class="sui-footer-link" href="#"&gt;About&lt;/a&gt;
+      &lt;a class="sui-footer-link" href="#"&gt;Blog&lt;/a&gt;
+      &lt;a class="sui-footer-link" href="#"&gt;Contact&lt;/a&gt;
+    &lt;/nav&gt;
+    &lt;span class="sui-footer-copy"&gt;&amp;copy; 2026 Acme Inc.&lt;/span&gt;
+  &lt;/div&gt;
+&lt;/footer&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Split -->
+<div class="pg-section" id="section-2">
+  <h3 class="pg-section-title">Split</h3>
+  <div class="pg-section-row" style="display:block;">
+    <footer class="sui-footer sui-footer-split">
+      <div class="sui-footer-inner">
+        <div class="sui-footer-brand">
+          Acme
+          <span class="sui-footer-tagline">Tools for small teams</span>
+        </div>
+        <nav class="sui-footer-links" aria-label="Footer (split demo)">
+          <a class="sui-footer-link" href="#">Privacy</a>
+          <a class="sui-footer-link" href="#">Terms</a>
+          <a class="sui-footer-link" href="#">Status</a>
+        </nav>
+      </div>
+    </footer>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;footer class="sui-footer sui-footer-split"&gt;
+  &lt;div class="sui-footer-inner"&gt;
+    &lt;div class="sui-footer-brand"&gt;
+      Acme
+      &lt;span class="sui-footer-tagline"&gt;Tools for small teams&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;nav class="sui-footer-links" aria-label="Footer (split demo)"&gt;
+      &lt;a class="sui-footer-link" href="#"&gt;Privacy&lt;/a&gt;
+      &lt;a class="sui-footer-link" href="#"&gt;Terms&lt;/a&gt;
+      &lt;a class="sui-footer-link" href="#"&gt;Status&lt;/a&gt;
+    &lt;/nav&gt;
+  &lt;/div&gt;
+&lt;/footer&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Columns -->
+<div class="pg-section" id="section-3">
+  <h3 class="pg-section-title">Columns</h3>
+  <div class="pg-section-row" style="display:block;">
+    <footer class="sui-footer sui-footer-columns">
+      <div class="sui-footer-inner">
+        <div class="sui-footer-col sui-footer-brand-col">
+          <span class="sui-footer-brand">Acme</span>
+          <span class="sui-footer-tagline">Tools for small teams that ship.</span>
+        </div>
+        <div class="sui-footer-col">
+          <h4 class="sui-footer-heading">Product</h4>
+          <a class="sui-footer-link" href="#">Features</a>
+          <a class="sui-footer-link" href="#">Pricing</a>
+          <a class="sui-footer-link" href="#">Changelog</a>
+        </div>
+        <div class="sui-footer-col">
+          <h4 class="sui-footer-heading">Company</h4>
+          <a class="sui-footer-link" href="#">About</a>
+          <a class="sui-footer-link" href="#">Careers</a>
+          <a class="sui-footer-link" href="#">Contact</a>
+        </div>
+        <div class="sui-footer-bottom">
+          <span class="sui-footer-copy">&copy; 2026 Acme Inc.</span>
+          <nav class="sui-footer-links" aria-label="Legal">
+            <a class="sui-footer-link" href="#">Privacy</a>
+            <a class="sui-footer-link" href="#">Terms</a>
+          </nav>
+        </div>
+      </div>
+    </footer>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;footer class="sui-footer sui-footer-columns"&gt;
+  &lt;div class="sui-footer-inner"&gt;
+    &lt;div class="sui-footer-col sui-footer-brand-col"&gt;
+      &lt;span class="sui-footer-brand"&gt;Acme&lt;/span&gt;
+      &lt;span class="sui-footer-tagline"&gt;Tools for small teams that ship.&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;div class="sui-footer-col"&gt;
+      &lt;h4 class="sui-footer-heading"&gt;Product&lt;/h4&gt;
+      &lt;a class="sui-footer-link" href="#"&gt;Features&lt;/a&gt;
+      &lt;a class="sui-footer-link" href="#"&gt;Pricing&lt;/a&gt;
+      &lt;a class="sui-footer-link" href="#"&gt;Changelog&lt;/a&gt;
+    &lt;/div&gt;
+    &lt;div class="sui-footer-col"&gt;
+      &lt;h4 class="sui-footer-heading"&gt;Company&lt;/h4&gt;
+      &lt;a class="sui-footer-link" href="#"&gt;About&lt;/a&gt;
+      &lt;a class="sui-footer-link" href="#"&gt;Careers&lt;/a&gt;
+      &lt;a class="sui-footer-link" href="#"&gt;Contact&lt;/a&gt;
+    &lt;/div&gt;
+    &lt;div class="sui-footer-bottom"&gt;
+      &lt;span class="sui-footer-copy"&gt;&amp;copy; 2026 Acme Inc.&lt;/span&gt;
+      &lt;nav class="sui-footer-links" aria-label="Legal"&gt;
+        &lt;a class="sui-footer-link" href="#"&gt;Privacy&lt;/a&gt;
+        &lt;a class="sui-footer-link" href="#"&gt;Terms&lt;/a&gt;
+      &lt;/nav&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/footer&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Raised -->
+<div class="pg-section" id="section-4">
+  <h3 class="pg-section-title">Raised</h3>
+  <div class="pg-section-row" style="display:block;">
+    <footer class="sui-footer sui-footer-split sui-footer-raised" style="border-radius:var(--sui-radius);">
+      <div class="sui-footer-inner">
+        <span class="sui-footer-brand">Raised</span>
+        <span class="sui-footer-copy">&copy; 2026 Acme Inc.</span>
+      </div>
+    </footer>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;footer class="sui-footer sui-footer-split sui-footer-raised" style="border-radius:var(--sui-radius);"&gt;
+  &lt;div class="sui-footer-inner"&gt;
+    &lt;span class="sui-footer-brand"&gt;Raised&lt;/span&gt;
+    &lt;span class="sui-footer-copy"&gt;&amp;copy; 2026 Acme Inc.&lt;/span&gt;
+  &lt;/div&gt;
+&lt;/footer&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Bordered -->
+<div class="pg-section" id="section-5">
+  <h3 class="pg-section-title">Bordered</h3>
+  <div class="pg-section-row" style="display:block;">
+    <footer class="sui-footer sui-footer-split sui-footer-bordered">
+      <div class="sui-footer-inner">
+        <span class="sui-footer-brand">Bordered</span>
+        <span class="sui-footer-copy">&copy; 2026 Acme Inc.</span>
+      </div>
+    </footer>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;footer class="sui-footer sui-footer-split sui-footer-bordered"&gt;
+  &lt;div class="sui-footer-inner"&gt;
+    &lt;span class="sui-footer-brand"&gt;Bordered&lt;/span&gt;
+    &lt;span class="sui-footer-copy"&gt;&amp;copy; 2026 Acme Inc.&lt;/span&gt;
+  &lt;/div&gt;
+&lt;/footer&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Inset -->
+<div class="pg-section" id="section-6">
+  <h3 class="pg-section-title">Inset</h3>
+  <div class="pg-section-row" style="display:block;">
+    <footer class="sui-footer sui-footer-split sui-footer-inset" style="border-radius:var(--sui-radius);">
+      <div class="sui-footer-inner">
+        <span class="sui-footer-brand">Inset</span>
+        <span class="sui-footer-copy">&copy; 2026 Acme Inc.</span>
+      </div>
+    </footer>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;footer class="sui-footer sui-footer-split sui-footer-inset" style="border-radius:var(--sui-radius);"&gt;
+  &lt;div class="sui-footer-inner"&gt;
+    &lt;span class="sui-footer-brand"&gt;Inset&lt;/span&gt;
+    &lt;span class="sui-footer-copy"&gt;&amp;copy; 2026 Acme Inc.&lt;/span&gt;
+  &lt;/div&gt;
+&lt;/footer&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Tinted -->
+<div class="pg-section" id="section-7">
+  <h3 class="pg-section-title">Tinted</h3>
+  <div class="pg-section-row" style="display:block;">
+    <footer class="sui-footer sui-footer-split sui-footer-tinted" style="border-radius:var(--sui-radius);">
+      <div class="sui-footer-inner">
+        <div class="sui-footer-brand">
+          Acme
+          <span class="sui-footer-tagline">Tools for small teams</span>
+        </div>
+        <nav class="sui-footer-links" aria-label="Footer (tinted demo)">
+          <a class="sui-footer-link" href="#">Privacy</a>
+          <a class="sui-footer-link" href="#">Terms</a>
+          <a class="sui-footer-link" href="#">Status</a>
+        </nav>
+      </div>
+    </footer>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;footer class="sui-footer sui-footer-split sui-footer-tinted" style="border-radius:var(--sui-radius);"&gt;
+  &lt;div class="sui-footer-inner"&gt;
+    &lt;div class="sui-footer-brand"&gt;
+      Acme
+      &lt;span class="sui-footer-tagline"&gt;Tools for small teams&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;nav class="sui-footer-links" aria-label="Footer (tinted demo)"&gt;
+      &lt;a class="sui-footer-link" href="#"&gt;Privacy&lt;/a&gt;
+      &lt;a class="sui-footer-link" href="#"&gt;Terms&lt;/a&gt;
+      &lt;a class="sui-footer-link" href="#"&gt;Status&lt;/a&gt;
+    &lt;/nav&gt;
+  &lt;/div&gt;
+&lt;/footer&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Small -->
+<div class="pg-section" id="section-8">
+  <h3 class="pg-section-title">Small</h3>
+  <div class="pg-section-row" style="display:block;">
+    <footer class="sui-footer sui-footer-sm sui-footer-split">
+      <div class="sui-footer-inner">
+        <span class="sui-footer-copy">&copy; 2026 Acme Inc.</span>
+        <nav class="sui-footer-links" aria-label="Footer (small demo)">
+          <a class="sui-footer-link" href="#">Privacy</a>
+          <a class="sui-footer-link" href="#">Terms</a>
+          <a class="sui-footer-link" href="#">Cookies</a>
+        </nav>
+      </div>
+    </footer>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;footer class="sui-footer sui-footer-sm sui-footer-split"&gt;
+  &lt;div class="sui-footer-inner"&gt;
+    &lt;span class="sui-footer-copy"&gt;&amp;copy; 2026 Acme Inc.&lt;/span&gt;
+    &lt;nav class="sui-footer-links" aria-label="Footer (small demo)"&gt;
+      &lt;a class="sui-footer-link" href="#"&gt;Privacy&lt;/a&gt;
+      &lt;a class="sui-footer-link" href="#"&gt;Terms&lt;/a&gt;
+      &lt;a class="sui-footer-link" href="#"&gt;Cookies&lt;/a&gt;
+    &lt;/nav&gt;
+  &lt;/div&gt;
+&lt;/footer&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Social Icons -->
+<div class="pg-section" id="section-9">
+  <h3 class="pg-section-title">Social Icons</h3>
+  <div class="pg-section-row" style="display:block;">
+    <footer class="sui-footer">
+      <div class="sui-footer-inner">
+        <span class="sui-footer-brand">Acme</span>
+        <nav class="sui-footer-social" aria-label="Social">
+          <a href="#" aria-label="GitHub"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg></a>
+          <a href="#" aria-label="Email"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 5L2 7"/></svg></a>
+          <a href="#" aria-label="RSS feed"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 11a9 9 0 0 1 9 9"/><path d="M4 4a16 16 0 0 1 16 16"/><circle cx="5" cy="19" r="1"/></svg></a>
+        </nav>
+        <span class="sui-footer-copy">&copy; 2026 Acme Inc.</span>
+      </div>
+    </footer>
+    <footer class="sui-footer sui-footer-sm sui-footer-split" style="margin-top:24px;">
+      <div class="sui-footer-inner">
+        <span class="sui-footer-copy">&copy; 2026 Acme Inc.</span>
+        <nav class="sui-footer-social" aria-label="Social (small)">
+          <a href="#" aria-label="GitHub"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg></a>
+          <a href="#" aria-label="Email"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 5L2 7"/></svg></a>
+          <a href="#" aria-label="RSS feed"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 11a9 9 0 0 1 9 9"/><path d="M4 4a16 16 0 0 1 16 16"/><circle cx="5" cy="19" r="1"/></svg></a>
+        </nav>
+      </div>
+    </footer>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;footer class="sui-footer"&gt;
+  &lt;div class="sui-footer-inner"&gt;
+    &lt;span class="sui-footer-brand"&gt;Acme&lt;/span&gt;
+    &lt;nav class="sui-footer-social" aria-label="Social"&gt;
+      &lt;a href="#" aria-label="GitHub"&gt;&lt;svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"&gt;&lt;path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/&gt;&lt;/svg&gt;&lt;/a&gt;
+      &lt;a href="#" aria-label="Email"&gt;&lt;svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"&gt;&lt;rect x="2" y="4" width="20" height="16" rx="2"/&gt;&lt;path d="m22 7-10 5L2 7"/&gt;&lt;/svg&gt;&lt;/a&gt;
+      &lt;a href="#" aria-label="RSS feed"&gt;&lt;svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"&gt;&lt;path d="M4 11a9 9 0 0 1 9 9"/&gt;&lt;path d="M4 4a16 16 0 0 1 16 16"/&gt;&lt;circle cx="5" cy="19" r="1"/&gt;&lt;/svg&gt;&lt;/a&gt;
+    &lt;/nav&gt;
+    &lt;span class="sui-footer-copy"&gt;&amp;copy; 2026 Acme Inc.&lt;/span&gt;
+  &lt;/div&gt;
+&lt;/footer&gt;
+&lt;footer class="sui-footer sui-footer-sm sui-footer-split" style="margin-top:24px;"&gt;
+  &lt;div class="sui-footer-inner"&gt;
+    &lt;span class="sui-footer-copy"&gt;&amp;copy; 2026 Acme Inc.&lt;/span&gt;
+    &lt;nav class="sui-footer-social" aria-label="Social (small)"&gt;
+      &lt;a href="#" aria-label="GitHub"&gt;&lt;svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"&gt;&lt;path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/&gt;&lt;/svg&gt;&lt;/a&gt;
+      &lt;a href="#" aria-label="Email"&gt;&lt;svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"&gt;&lt;rect x="2" y="4" width="20" height="16" rx="2"/&gt;&lt;path d="m22 7-10 5L2 7"/&gt;&lt;/svg&gt;&lt;/a&gt;
+      &lt;a href="#" aria-label="RSS feed"&gt;&lt;svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"&gt;&lt;path d="M4 11a9 9 0 0 1 9 9"/&gt;&lt;path d="M4 4a16 16 0 0 1 16 16"/&gt;&lt;circle cx="5" cy="19" r="1"/&gt;&lt;/svg&gt;&lt;/a&gt;
+    &lt;/nav&gt;
+  &lt;/div&gt;
+&lt;/footer&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Raised Links -->
+<div class="pg-section" id="section-10">
+  <h3 class="pg-section-title">Raised Links</h3>
+  <div class="pg-section-row" style="display:block;">
+    <footer class="sui-footer sui-footer-split">
+      <div class="sui-footer-inner">
+        <div class="sui-footer-brand">
+          Acme
+          <span class="sui-footer-tagline">Tools for small teams</span>
+        </div>
+        <nav class="sui-footer-links sui-footer-links-raised" aria-label="Footer (raised links demo)">
+          <a class="sui-footer-link" href="#"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>GitHub</a>
+          <a class="sui-footer-link" href="#">Docs</a>
+        </nav>
+      </div>
+    </footer>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;footer class="sui-footer sui-footer-split"&gt;
+  &lt;div class="sui-footer-inner"&gt;
+    &lt;div class="sui-footer-brand"&gt;
+      Acme
+      &lt;span class="sui-footer-tagline"&gt;Tools for small teams&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;nav class="sui-footer-links sui-footer-links-raised" aria-label="Footer (raised links demo)"&gt;
+      &lt;a class="sui-footer-link" href="#"&gt;&lt;svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"&gt;&lt;path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/&gt;&lt;/svg&gt;GitHub&lt;/a&gt;
+      &lt;a class="sui-footer-link" href="#"&gt;Docs&lt;/a&gt;
+    &lt;/nav&gt;
+  &lt;/div&gt;
+&lt;/footer&gt;</pre></div>
+  </div>
+</div>
+
+<!-- RTL -->
+<div class="pg-section" id="section-11">
+  <h3 class="pg-section-title">RTL</h3>
+  <p style="font-size:13px;color:var(--sui-text-light);margin-bottom:16px;">Logical properties mirror the footer under <code>dir="rtl"</code> with no extra classes.</p>
+  <div class="pg-section-row" style="display:block;">
+    <div dir="rtl">
+      <footer class="sui-footer sui-footer-split">
+        <div class="sui-footer-inner">
+          <span class="sui-footer-brand">Acme</span>
+          <nav class="sui-footer-links" aria-label="Footer (RTL demo)">
+            <a class="sui-footer-link" href="#">Privacy</a>
+            <a class="sui-footer-link" href="#">Terms</a>
+          </nav>
+        </div>
+      </footer>
+    </div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div dir="rtl"&gt;
+  &lt;footer class="sui-footer sui-footer-split"&gt;
+    &lt;div class="sui-footer-inner"&gt;
+      &lt;span class="sui-footer-brand"&gt;Acme&lt;/span&gt;
+      &lt;nav class="sui-footer-links" aria-label="Footer (RTL demo)"&gt;
+        &lt;a class="sui-footer-link" href="#"&gt;Privacy&lt;/a&gt;
+        &lt;a class="sui-footer-link" href="#"&gt;Terms&lt;/a&gt;
+      &lt;/nav&gt;
+    &lt;/div&gt;
+  &lt;/footer&gt;
+&lt;/div&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Reference -->
+<div class="pg-section" id="section-12">
+  <h3 class="pg-section-title">Reference</h3>
+  <div class="docs-table-wrap">
+    <table class="sui-table sui-table-compact">
+      <thead><tr><th scope="col" style="width:40%;">Class</th><th scope="col">Description</th></tr></thead>
+      <tbody>
+        <tr><td><code>sui-footer</code></td><td>Wrapper on <code>&lt;footer&gt;</code>; page background, 32px block padding.</td></tr>
+        <tr><td><code>sui-footer-inner</code></td><td>Content container, max 1100px, centred.</td></tr>
+        <tr><td><code>sui-footer-brand</code> <code>sui-footer-tagline</code></td><td>Brand name and muted tagline.</td></tr>
+        <tr><td><code>sui-footer-links</code> <code>sui-footer-link</code></td><td>Link row and links (global focus outline).</td></tr>
+        <tr><td><code>sui-footer-copy</code></td><td>Copyright text.</td></tr>
+        <tr><td><code>sui-footer-split</code></td><td>Brand at inline start, links at inline end; stacks and centres below 600px.</td></tr>
+        <tr><td><code>sui-footer-columns</code></td><td>Grid of columns that wrap; two per row below 600px.</td></tr>
+        <tr><td><code>sui-footer-col</code> <code>sui-footer-brand-col</code></td><td>Link column; the brand column spans the full row on mobile.</td></tr>
+        <tr><td><code>sui-footer-heading</code></td><td>Column heading; any level (usually <code>h2</code> in a site footer).</td></tr>
+        <tr><td><code>sui-footer-bottom</code></td><td>Full-width bottom row with a top border.</td></tr>
+        <tr><td><code>sui-footer-raised</code> <code>sui-footer-inset</code></td><td>Raised or inset depth.</td></tr>
+        <tr><td><code>sui-footer-bordered</code></td><td>Top border.</td></tr>
+        <tr><td><code>sui-footer-tinted</code></td><td>Lighter <code>--sui-bg-light</code> band.</td></tr>
+        <tr><td><code>sui-footer-sm</code></td><td>Compact padding, gaps, links and icons.</td></tr>
+        <tr><td><code>sui-footer-social</code></td><td>Row of round raised icon links; give each an <code>aria-label</code>.</td></tr>
+        <tr><td><code>sui-footer-links-raised</code></td><td>Links as raised pills.</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>

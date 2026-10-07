@@ -8,10 +8,12 @@ toc:
   - Default
   - With Icon
   - With Progress
+  - With Footer
   - Bordered
   - Inset
   - Flat
   - Compact
+  - Reference
 ---
 
 <!-- Default -->
@@ -31,7 +33,7 @@ toc:
         <p class="sui-stat-label">Active Users</p>
         <div class="sui-stat-value">2,847</div>
         <div class="sui-stat-trend">
-          <span class="sui-stat-change sui-stat-change-up">&#9650; 8.2%</span>
+          <span class="sui-stat-change sui-stat-change-flat">&#9644; 0.4%</span>
           <span>vs last month</span>
         </div>
       </div>
@@ -56,10 +58,23 @@ toc:
   &lt;/div&gt;
 &lt;/div&gt;
 
-&lt;!-- Trend variants --&gt;
-&lt;span class="sui-stat-change sui-stat-change-up"&gt;&amp;#9650; 12.5%&lt;/span&gt;
-&lt;span class="sui-stat-change sui-stat-change-down"&gt;&amp;#9660; 3.1%&lt;/span&gt;
-&lt;span class="sui-stat-change sui-stat-change-flat"&gt;&amp;#9644; 0.4%&lt;/span&gt;</pre></div>
+&lt;div class="sui-stat"&gt;
+  &lt;p class="sui-stat-label"&gt;Active Users&lt;/p&gt;
+  &lt;div class="sui-stat-value"&gt;2,847&lt;/div&gt;
+  &lt;div class="sui-stat-trend"&gt;
+    &lt;span class="sui-stat-change sui-stat-change-flat"&gt;&amp;#9644; 0.4%&lt;/span&gt;
+    &lt;span&gt;vs last month&lt;/span&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="sui-stat"&gt;
+  &lt;p class="sui-stat-label"&gt;New Orders&lt;/p&gt;
+  &lt;div class="sui-stat-value"&gt;384&lt;/div&gt;
+  &lt;div class="sui-stat-trend"&gt;
+    &lt;span class="sui-stat-change sui-stat-change-down"&gt;&amp;#9660; 3.1%&lt;/span&gt;
+    &lt;span&gt;vs last month&lt;/span&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</pre></div>
   </div>
 </div>
 
@@ -202,8 +217,79 @@ toc:
   </div>
 </div>
 
-<!-- Bordered -->
+<!-- With Footer -->
 <div class="pg-section" id="section-4">
+  <h3 class="pg-section-title">With Footer</h3>
+  <div class="pg-section-row">
+    <div style="display:flex;flex-direction:column;gap:16px;">
+      <div style="display:flex;flex-wrap:wrap;gap:16px;">
+        <div class="sui-stat">
+          <p class="sui-stat-label">Storage</p>
+          <div class="sui-stat-value">45 GB</div>
+          <div class="sui-stat-footer" style="--sui-fill:45%"><span>Quota used</span><strong>45%</strong></div>
+        </div>
+        <div class="sui-stat">
+          <p class="sui-stat-label">Monthly Goal</p>
+          <div class="sui-stat-value">$36,000</div>
+          <div class="sui-stat-footer sui-stat-footer-success" style="--sui-fill:72%"><span>Target reached</span><strong>72%</strong></div>
+        </div>
+        <div class="sui-stat">
+          <p class="sui-stat-label">API Requests</p>
+          <div class="sui-stat-value">9.0M</div>
+          <div class="sui-stat-footer sui-stat-footer-warning" style="--sui-fill:90%"><span>Rate limit</span><strong>90%</strong></div>
+        </div>
+      </div>
+      <div style="display:flex;flex-wrap:wrap;gap:16px;">
+        <div class="sui-stat sui-stat-compact">
+          <p class="sui-stat-label">Active Users</p>
+          <div class="sui-stat-value">1,284</div>
+          <div class="sui-stat-footer sui-stat-footer-info"><span>Updated</span><strong>2 min ago</strong></div>
+        </div>
+        <div class="sui-stat sui-stat-compact">
+          <p class="sui-stat-label">Error Rate</p>
+          <div class="sui-stat-value">2.4%</div>
+          <div class="sui-stat-footer sui-stat-footer-danger" style="--sui-fill:60%"><span>Error budget</span><strong>60%</strong></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-stat"&gt;
+  &lt;p class="sui-stat-label"&gt;Storage&lt;/p&gt;
+  &lt;div class="sui-stat-value"&gt;45 GB&lt;/div&gt;
+  &lt;div class="sui-stat-footer" style="--sui-fill:45%"&gt;&lt;span&gt;Quota used&lt;/span&gt;&lt;strong&gt;45%&lt;/strong&gt;&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="sui-stat"&gt;
+  &lt;p class="sui-stat-label"&gt;Monthly Goal&lt;/p&gt;
+  &lt;div class="sui-stat-value"&gt;$36,000&lt;/div&gt;
+  &lt;div class="sui-stat-footer sui-stat-footer-success" style="--sui-fill:72%"&gt;&lt;span&gt;Target reached&lt;/span&gt;&lt;strong&gt;72%&lt;/strong&gt;&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="sui-stat"&gt;
+  &lt;p class="sui-stat-label"&gt;API Requests&lt;/p&gt;
+  &lt;div class="sui-stat-value"&gt;9.0M&lt;/div&gt;
+  &lt;div class="sui-stat-footer sui-stat-footer-warning" style="--sui-fill:90%"&gt;&lt;span&gt;Rate limit&lt;/span&gt;&lt;strong&gt;90%&lt;/strong&gt;&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- Compact --&gt;
+&lt;div class="sui-stat sui-stat-compact"&gt;
+  &lt;p class="sui-stat-label"&gt;Active Users&lt;/p&gt;
+  &lt;div class="sui-stat-value"&gt;1,284&lt;/div&gt;
+  &lt;div class="sui-stat-footer sui-stat-footer-info"&gt;&lt;span&gt;Updated&lt;/span&gt;&lt;strong&gt;2 min ago&lt;/strong&gt;&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="sui-stat sui-stat-compact"&gt;
+  &lt;p class="sui-stat-label"&gt;Error Rate&lt;/p&gt;
+  &lt;div class="sui-stat-value"&gt;2.4%&lt;/div&gt;
+  &lt;div class="sui-stat-footer sui-stat-footer-danger" style="--sui-fill:60%"&gt;&lt;span&gt;Error budget&lt;/span&gt;&lt;strong&gt;60%&lt;/strong&gt;&lt;/div&gt;
+&lt;/div&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Bordered -->
+<div class="pg-section" id="section-5">
   <h3 class="pg-section-title">Bordered</h3>
   <div class="pg-section-row">
     <div style="display:flex;flex-wrap:wrap;gap:16px;">
@@ -244,52 +330,30 @@ toc:
   &lt;/div&gt;
 &lt;/div&gt;
 
-&lt;!-- Border color variants --&gt;
-&lt;div class="sui-stat sui-stat-bordered sui-stat-bordered-primary"&gt;
-  &lt;p class="sui-stat-label"&gt;Label&lt;/p&gt;
-  &lt;div class="sui-stat-value"&gt;Value&lt;/div&gt;
-  &lt;div class="sui-stat-trend"&gt;
-    &lt;span class="sui-stat-change sui-stat-change-up"&gt;&amp;#9650; 0.0%&lt;/span&gt;
-    &lt;span&gt;vs last month&lt;/span&gt;
-  &lt;/div&gt;
-&lt;/div&gt;
 &lt;div class="sui-stat sui-stat-bordered sui-stat-bordered-success"&gt;
-  &lt;p class="sui-stat-label"&gt;Label&lt;/p&gt;
-  &lt;div class="sui-stat-value"&gt;Value&lt;/div&gt;
+  &lt;p class="sui-stat-label"&gt;Active Users&lt;/p&gt;
+  &lt;div class="sui-stat-value"&gt;2,847&lt;/div&gt;
   &lt;div class="sui-stat-trend"&gt;
-    &lt;span class="sui-stat-change sui-stat-change-up"&gt;&amp;#9650; 0.0%&lt;/span&gt;
+    &lt;span class="sui-stat-change sui-stat-change-up"&gt;&amp;#9650; 8.2%&lt;/span&gt;
     &lt;span&gt;vs last month&lt;/span&gt;
   &lt;/div&gt;
 &lt;/div&gt;
+
 &lt;div class="sui-stat sui-stat-bordered sui-stat-bordered-danger"&gt;
-  &lt;p class="sui-stat-label"&gt;Label&lt;/p&gt;
-  &lt;div class="sui-stat-value"&gt;Value&lt;/div&gt;
+  &lt;p class="sui-stat-label"&gt;New Orders&lt;/p&gt;
+  &lt;div class="sui-stat-value"&gt;384&lt;/div&gt;
   &lt;div class="sui-stat-trend"&gt;
-    &lt;span class="sui-stat-change sui-stat-change-up"&gt;&amp;#9650; 0.0%&lt;/span&gt;
+    &lt;span class="sui-stat-change sui-stat-change-down"&gt;&amp;#9660; 3.1%&lt;/span&gt;
     &lt;span&gt;vs last month&lt;/span&gt;
   &lt;/div&gt;
 &lt;/div&gt;
-&lt;div class="sui-stat sui-stat-bordered sui-stat-bordered-warning"&gt;
-  &lt;p class="sui-stat-label"&gt;Label&lt;/p&gt;
-  &lt;div class="sui-stat-value"&gt;Value&lt;/div&gt;
-  &lt;div class="sui-stat-trend"&gt;
-    &lt;span class="sui-stat-change sui-stat-change-up"&gt;&amp;#9650; 0.0%&lt;/span&gt;
-    &lt;span&gt;vs last month&lt;/span&gt;
-  &lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="sui-stat sui-stat-bordered sui-stat-bordered-info"&gt;
-  &lt;p class="sui-stat-label"&gt;Label&lt;/p&gt;
-  &lt;div class="sui-stat-value"&gt;Value&lt;/div&gt;
-  &lt;div class="sui-stat-trend"&gt;
-    &lt;span class="sui-stat-change sui-stat-change-up"&gt;&amp;#9650; 0.0%&lt;/span&gt;
-    &lt;span&gt;vs last month&lt;/span&gt;
-  &lt;/div&gt;
-&lt;/div&gt;</pre></div>
+
+&lt;!-- Also: sui-stat-bordered-warning, sui-stat-bordered-info --&gt;</pre></div>
   </div>
 </div>
 
 <!-- Inset -->
-<div class="pg-section" id="section-5">
+<div class="pg-section" id="section-6">
   <h3 class="pg-section-title">Inset</h3>
   <div class="pg-section-row">
     <div style="display:flex;flex-wrap:wrap;gap:16px;">
@@ -333,7 +397,7 @@ toc:
 </div>
 
 <!-- Flat -->
-<div class="pg-section" id="section-6">
+<div class="pg-section" id="section-7">
   <h3 class="pg-section-title">Flat</h3>
   <div class="pg-section-row">
     <div style="display:flex;flex-wrap:wrap;gap:16px;">
@@ -377,7 +441,7 @@ toc:
 </div>
 
 <!-- Compact -->
-<div class="pg-section" id="section-7">
+<div class="pg-section" id="section-8">
   <h3 class="pg-section-title">Compact</h3>
   <div class="pg-section-row">
     <div style="display:flex;flex-wrap:wrap;gap:16px;">
@@ -445,5 +509,26 @@ toc:
     &lt;span&gt;vs last month&lt;/span&gt;
   &lt;/div&gt;
 &lt;/div&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Reference -->
+<div class="pg-section" id="section-9">
+  <h3 class="pg-section-title">Reference</h3>
+  <div class="docs-table-wrap">
+    <table class="sui-table sui-table-compact">
+      <thead>
+        <tr><th scope="col" style="width:40%;">Class / Token</th><th scope="col">Description</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><code>sui-stat-footer</code></td><td>Recessed pill below the value. Smaller inside <code>sui-stat-compact</code>.</td></tr>
+        <tr><td><code>--sui-fill</code></td><td>0&ndash;100% tint from the inline start (right in RTL). Keep the percentage in the visible text.</td></tr>
+        <tr><td><code>sui-stat-footer-primary</code></td><td>Primary tint. This is the default, so the class is optional.</td></tr>
+        <tr><td><code>sui-stat-footer-success</code></td><td>Success tint.</td></tr>
+        <tr><td><code>sui-stat-footer-danger</code></td><td>Danger tint.</td></tr>
+        <tr><td><code>sui-stat-footer-warning</code></td><td>Warning tint.</td></tr>
+        <tr><td><code>sui-stat-footer-info</code></td><td>Info tint.</td></tr>
+      </tbody>
+    </table>
   </div>
 </div>

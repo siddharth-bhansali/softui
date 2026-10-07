@@ -17,7 +17,7 @@ toc:
 <!-- Default -->
 <div class="pg-section" id="section-1">
   <h3 class="pg-section-title">Default</h3>
-  <p style="font-size:13px;color:var(--sui-text-light);margin-bottom:16px;">Click to open, type to filter. Select an item from the list.</p>
+  <p style="font-size:13px;color:var(--sui-text-light);margin-bottom:16px;">Click to open, type to filter.</p>
   <div class="pg-section-row" style="align-items:flex-start;">
     <div class="sui-combobox">
       <button type="button" class="sui-combobox-trigger">
@@ -100,7 +100,7 @@ toc:
     <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-combobox"&gt;
   &lt;button type="button" class="sui-combobox-trigger"&gt;
     &lt;span class="sui-combobox-value"&gt;Vue&lt;/span&gt;
-    &lt;span class="sui-combobox-clear"&gt;&amp;#10005;&lt;/span&gt;
+    &lt;span class="sui-combobox-clear visible"&gt;&amp;#10005;&lt;/span&gt;
     &lt;span class="sui-combobox-arrow"&gt;&lt;/span&gt;
   &lt;/button&gt;
   &lt;div class="sui-combobox-content"&gt;
@@ -124,7 +124,7 @@ toc:
 <!-- Multiple -->
 <div class="pg-section" id="section-3">
   <h3 class="pg-section-title">Multiple</h3>
-  <p style="font-size:13px;color:var(--sui-text-light);margin-bottom:16px;">Add <code>sui-combobox-multiple</code> for multi-select. Selected items appear as chips in the trigger.</p>
+  <p style="font-size:13px;color:var(--sui-text-light);margin-bottom:16px;">Add <code>sui-combobox-multiple</code>, which softui.js reads to enable multi-select with chips.</p>
   <div class="pg-section-row" style="align-items:flex-start;">
     <div class="sui-combobox sui-combobox-multiple" style="width:300px;">
       <button type="button" class="sui-combobox-trigger">
@@ -152,7 +152,7 @@ toc:
   </div>
   <div class="pg-code-wrap">
     <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
-    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-combobox sui-combobox-multiple"&gt;
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-combobox sui-combobox-multiple" style="width:300px;"&gt;
   &lt;button type="button" class="sui-combobox-trigger"&gt;
     &lt;div class="sui-combobox-chips"&gt;
       &lt;span class="placeholder"&gt;Select languages...&lt;/span&gt;
@@ -215,7 +215,7 @@ toc:
   </div>
   <div class="pg-code-wrap">
     <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
-    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-combobox"&gt;
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-combobox" style="width:260px;"&gt;
   &lt;button type="button" class="sui-combobox-trigger"&gt;
     &lt;span class="sui-combobox-value placeholder"&gt;Select a tool...&lt;/span&gt;
     &lt;span class="sui-combobox-clear"&gt;&amp;#10005;&lt;/span&gt;

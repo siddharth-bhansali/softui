@@ -14,7 +14,9 @@ toc:
   - Bordered
   - Inset
   - Hover to Open
-  - With Sub-Menu
+  - Sub-Menu
+  - Sub-Menu on Click
+  - Reference
 ---
 
 <!-- Simple Dropdown -->
@@ -23,7 +25,7 @@ toc:
   <div class="pg-section-row">
     <nav class="sui-nav-menu">
       <div class="sui-nav-menu-item">
-        <button class="sui-nav-menu-trigger">Products</button>
+        <button class="sui-nav-menu-trigger" aria-expanded="false">Products</button>
         <div class="sui-nav-menu-panel">
           <a href="#" class="sui-nav-menu-link">
             <div class="sui-nav-menu-link-text">
@@ -43,7 +45,7 @@ toc:
         </div>
       </div>
       <div class="sui-nav-menu-item">
-        <button class="sui-nav-menu-trigger">Resources</button>
+        <button class="sui-nav-menu-trigger" aria-expanded="false">Resources</button>
         <div class="sui-nav-menu-panel">
           <a href="#" class="sui-nav-menu-link">
             <div class="sui-nav-menu-link-text">
@@ -69,7 +71,7 @@ toc:
     <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
     <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;nav class="sui-nav-menu"&gt;
   &lt;div class="sui-nav-menu-item"&gt;
-    &lt;button class="sui-nav-menu-trigger"&gt;Products&lt;/button&gt;
+    &lt;button class="sui-nav-menu-trigger" aria-expanded="false"&gt;Products&lt;/button&gt;
     &lt;div class="sui-nav-menu-panel"&gt;
       &lt;a href="#" class="sui-nav-menu-link"&gt;
         &lt;div class="sui-nav-menu-link-text"&gt;
@@ -88,6 +90,26 @@ toc:
       &lt;/a&gt;
     &lt;/div&gt;
   &lt;/div&gt;
+  &lt;div class="sui-nav-menu-item"&gt;
+    &lt;button class="sui-nav-menu-trigger" aria-expanded="false"&gt;Resources&lt;/button&gt;
+    &lt;div class="sui-nav-menu-panel"&gt;
+      &lt;a href="#" class="sui-nav-menu-link"&gt;
+        &lt;div class="sui-nav-menu-link-text"&gt;
+          &lt;div class="sui-nav-menu-link-title"&gt;Documentation&lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/a&gt;
+      &lt;a href="#" class="sui-nav-menu-link"&gt;
+        &lt;div class="sui-nav-menu-link-text"&gt;
+          &lt;div class="sui-nav-menu-link-title"&gt;Blog&lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/a&gt;
+      &lt;a href="#" class="sui-nav-menu-link"&gt;
+        &lt;div class="sui-nav-menu-link-text"&gt;
+          &lt;div class="sui-nav-menu-link-title"&gt;Changelog&lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/a&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
   &lt;a href="#" class="sui-nav-menu-trigger"&gt;Pricing&lt;/a&gt;
 &lt;/nav&gt;</pre></div>
   </div>
@@ -99,24 +121,24 @@ toc:
   <div class="pg-section-row">
     <nav class="sui-nav-menu">
       <div class="sui-nav-menu-item">
-        <button class="sui-nav-menu-trigger">Features</button>
+        <button class="sui-nav-menu-trigger" aria-expanded="false">Features</button>
         <div class="sui-nav-menu-panel" style="min-width:300px;">
           <a href="#" class="sui-nav-menu-link">
-            <div class="sui-nav-menu-link-icon" style="background:rgba(91,84,224,0.1);color:var(--sui-primary);">&#9883;</div>
+            <div class="sui-nav-menu-link-icon" style="background:color-mix(in srgb, var(--sui-primary) 10%, transparent);color:var(--sui-primary);">&#9883;</div>
             <div class="sui-nav-menu-link-text">
               <div class="sui-nav-menu-link-title">Dashboard</div>
               <div class="sui-nav-menu-link-desc">Real-time analytics and KPI tracking</div>
             </div>
           </a>
           <a href="#" class="sui-nav-menu-link">
-            <div class="sui-nav-menu-link-icon" style="background:rgba(31,169,110,0.1);color:var(--sui-success);">&#9881;</div>
+            <div class="sui-nav-menu-link-icon" style="background:color-mix(in srgb, var(--sui-success) 10%, transparent);color:var(--sui-success);">&#9881;</div>
             <div class="sui-nav-menu-link-text">
               <div class="sui-nav-menu-link-title">Automation</div>
               <div class="sui-nav-menu-link-desc">Workflows, triggers, and scheduled tasks</div>
             </div>
           </a>
           <a href="#" class="sui-nav-menu-link">
-            <div class="sui-nav-menu-link-icon" style="background:rgba(26,130,212,0.1);color:var(--sui-info);">&#128279;</div>
+            <div class="sui-nav-menu-link-icon" style="background:color-mix(in srgb, var(--sui-info) 10%, transparent);color:var(--sui-info);">&#128279;</div>
             <div class="sui-nav-menu-link-text">
               <div class="sui-nav-menu-link-title">Integrations</div>
               <div class="sui-nav-menu-link-desc">Connect with Slack, GitHub, Jira, and more</div>
@@ -124,7 +146,7 @@ toc:
           </a>
           <div class="sui-nav-menu-separator"></div>
           <a href="#" class="sui-nav-menu-link">
-            <div class="sui-nav-menu-link-icon" style="background:rgba(245,166,35,0.1);color:var(--sui-warning);">&#9733;</div>
+            <div class="sui-nav-menu-link-icon" style="background:color-mix(in srgb, var(--sui-warning) 10%, transparent);color:var(--sui-warning);">&#9733;</div>
             <div class="sui-nav-menu-link-text">
               <div class="sui-nav-menu-link-title">What's New</div>
               <div class="sui-nav-menu-link-desc">Latest features and improvements</div>
@@ -140,24 +162,24 @@ toc:
     <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
     <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;nav class="sui-nav-menu"&gt;
   &lt;div class="sui-nav-menu-item"&gt;
-    &lt;button class="sui-nav-menu-trigger"&gt;Features&lt;/button&gt;
+    &lt;button class="sui-nav-menu-trigger" aria-expanded="false"&gt;Features&lt;/button&gt;
     &lt;div class="sui-nav-menu-panel" style="min-width:300px;"&gt;
       &lt;a href="#" class="sui-nav-menu-link"&gt;
-        &lt;div class="sui-nav-menu-link-icon" style="background:rgba(91,84,224,0.1);color:var(--sui-primary);"&gt;&amp;#9883;&lt;/div&gt;
+        &lt;div class="sui-nav-menu-link-icon" style="background:color-mix(in srgb, var(--sui-primary) 10%, transparent);color:var(--sui-primary);"&gt;&amp;#9883;&lt;/div&gt;
         &lt;div class="sui-nav-menu-link-text"&gt;
           &lt;div class="sui-nav-menu-link-title"&gt;Dashboard&lt;/div&gt;
           &lt;div class="sui-nav-menu-link-desc"&gt;Real-time analytics and KPI tracking&lt;/div&gt;
         &lt;/div&gt;
       &lt;/a&gt;
       &lt;a href="#" class="sui-nav-menu-link"&gt;
-        &lt;div class="sui-nav-menu-link-icon" style="background:rgba(31,169,110,0.1);color:var(--sui-success);"&gt;&amp;#9881;&lt;/div&gt;
+        &lt;div class="sui-nav-menu-link-icon" style="background:color-mix(in srgb, var(--sui-success) 10%, transparent);color:var(--sui-success);"&gt;&amp;#9881;&lt;/div&gt;
         &lt;div class="sui-nav-menu-link-text"&gt;
           &lt;div class="sui-nav-menu-link-title"&gt;Automation&lt;/div&gt;
           &lt;div class="sui-nav-menu-link-desc"&gt;Workflows, triggers, and scheduled tasks&lt;/div&gt;
         &lt;/div&gt;
       &lt;/a&gt;
       &lt;a href="#" class="sui-nav-menu-link"&gt;
-        &lt;div class="sui-nav-menu-link-icon" style="background:rgba(26,130,212,0.1);color:var(--sui-info);"&gt;&amp;#128279;&lt;/div&gt;
+        &lt;div class="sui-nav-menu-link-icon" style="background:color-mix(in srgb, var(--sui-info) 10%, transparent);color:var(--sui-info);"&gt;&amp;#128279;&lt;/div&gt;
         &lt;div class="sui-nav-menu-link-text"&gt;
           &lt;div class="sui-nav-menu-link-title"&gt;Integrations&lt;/div&gt;
           &lt;div class="sui-nav-menu-link-desc"&gt;Connect with Slack, GitHub, Jira, and more&lt;/div&gt;
@@ -165,7 +187,7 @@ toc:
       &lt;/a&gt;
       &lt;div class="sui-nav-menu-separator"&gt;&lt;/div&gt;
       &lt;a href="#" class="sui-nav-menu-link"&gt;
-        &lt;div class="sui-nav-menu-link-icon" style="background:rgba(245,166,35,0.1);color:var(--sui-warning);"&gt;&amp;#9733;&lt;/div&gt;
+        &lt;div class="sui-nav-menu-link-icon" style="background:color-mix(in srgb, var(--sui-warning) 10%, transparent);color:var(--sui-warning);"&gt;&amp;#9733;&lt;/div&gt;
         &lt;div class="sui-nav-menu-link-text"&gt;
           &lt;div class="sui-nav-menu-link-title"&gt;What's New&lt;/div&gt;
           &lt;div class="sui-nav-menu-link-desc"&gt;Latest features and improvements&lt;/div&gt;
@@ -186,31 +208,31 @@ toc:
   <div class="pg-section-row">
     <nav class="sui-nav-menu">
       <div class="sui-nav-menu-item">
-        <button class="sui-nav-menu-trigger">Solutions</button>
+        <button class="sui-nav-menu-trigger" aria-expanded="false">Solutions</button>
         <div class="sui-nav-menu-panel sui-nav-menu-panel-wide">
           <a href="#" class="sui-nav-menu-link">
-            <div class="sui-nav-menu-link-icon" style="background:rgba(91,84,224,0.1);color:var(--sui-primary);">&#128200;</div>
+            <div class="sui-nav-menu-link-icon" style="background:color-mix(in srgb, var(--sui-primary) 10%, transparent);color:var(--sui-primary);">&#128200;</div>
             <div class="sui-nav-menu-link-text">
               <div class="sui-nav-menu-link-title">For Startups</div>
               <div class="sui-nav-menu-link-desc">Launch fast with ready-made tools</div>
             </div>
           </a>
           <a href="#" class="sui-nav-menu-link">
-            <div class="sui-nav-menu-link-icon" style="background:rgba(31,169,110,0.1);color:var(--sui-success);">&#127970;</div>
+            <div class="sui-nav-menu-link-icon" style="background:color-mix(in srgb, var(--sui-success) 10%, transparent);color:var(--sui-success);">&#127970;</div>
             <div class="sui-nav-menu-link-text">
               <div class="sui-nav-menu-link-title">For Enterprise</div>
               <div class="sui-nav-menu-link-desc">Scale with security and compliance</div>
             </div>
           </a>
           <a href="#" class="sui-nav-menu-link">
-            <div class="sui-nav-menu-link-icon" style="background:rgba(245,166,35,0.1);color:var(--sui-warning);">&#128722;</div>
+            <div class="sui-nav-menu-link-icon" style="background:color-mix(in srgb, var(--sui-warning) 10%, transparent);color:var(--sui-warning);">&#128722;</div>
             <div class="sui-nav-menu-link-text">
               <div class="sui-nav-menu-link-title">For E-Commerce</div>
               <div class="sui-nav-menu-link-desc">Payments, inventory, and storefronts</div>
             </div>
           </a>
           <a href="#" class="sui-nav-menu-link">
-            <div class="sui-nav-menu-link-icon" style="background:rgba(26,130,212,0.1);color:var(--sui-info);">&#127891;</div>
+            <div class="sui-nav-menu-link-icon" style="background:color-mix(in srgb, var(--sui-info) 10%, transparent);color:var(--sui-info);">&#127891;</div>
             <div class="sui-nav-menu-link-text">
               <div class="sui-nav-menu-link-title">For Education</div>
               <div class="sui-nav-menu-link-desc">LMS, grading, and student portals</div>
@@ -226,31 +248,31 @@ toc:
     <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
     <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;nav class="sui-nav-menu"&gt;
   &lt;div class="sui-nav-menu-item"&gt;
-    &lt;button class="sui-nav-menu-trigger"&gt;Solutions&lt;/button&gt;
+    &lt;button class="sui-nav-menu-trigger" aria-expanded="false"&gt;Solutions&lt;/button&gt;
     &lt;div class="sui-nav-menu-panel sui-nav-menu-panel-wide"&gt;
       &lt;a href="#" class="sui-nav-menu-link"&gt;
-        &lt;div class="sui-nav-menu-link-icon" style="background:rgba(91,84,224,0.1);color:var(--sui-primary);"&gt;&amp;#128200;&lt;/div&gt;
+        &lt;div class="sui-nav-menu-link-icon" style="background:color-mix(in srgb, var(--sui-primary) 10%, transparent);color:var(--sui-primary);"&gt;&amp;#128200;&lt;/div&gt;
         &lt;div class="sui-nav-menu-link-text"&gt;
           &lt;div class="sui-nav-menu-link-title"&gt;For Startups&lt;/div&gt;
           &lt;div class="sui-nav-menu-link-desc"&gt;Launch fast with ready-made tools&lt;/div&gt;
         &lt;/div&gt;
       &lt;/a&gt;
       &lt;a href="#" class="sui-nav-menu-link"&gt;
-        &lt;div class="sui-nav-menu-link-icon" style="background:rgba(31,169,110,0.1);color:var(--sui-success);"&gt;&amp;#127970;&lt;/div&gt;
+        &lt;div class="sui-nav-menu-link-icon" style="background:color-mix(in srgb, var(--sui-success) 10%, transparent);color:var(--sui-success);"&gt;&amp;#127970;&lt;/div&gt;
         &lt;div class="sui-nav-menu-link-text"&gt;
           &lt;div class="sui-nav-menu-link-title"&gt;For Enterprise&lt;/div&gt;
           &lt;div class="sui-nav-menu-link-desc"&gt;Scale with security and compliance&lt;/div&gt;
         &lt;/div&gt;
       &lt;/a&gt;
       &lt;a href="#" class="sui-nav-menu-link"&gt;
-        &lt;div class="sui-nav-menu-link-icon" style="background:rgba(245,166,35,0.1);color:var(--sui-warning);"&gt;&amp;#128722;&lt;/div&gt;
+        &lt;div class="sui-nav-menu-link-icon" style="background:color-mix(in srgb, var(--sui-warning) 10%, transparent);color:var(--sui-warning);"&gt;&amp;#128722;&lt;/div&gt;
         &lt;div class="sui-nav-menu-link-text"&gt;
           &lt;div class="sui-nav-menu-link-title"&gt;For E-Commerce&lt;/div&gt;
           &lt;div class="sui-nav-menu-link-desc"&gt;Payments, inventory, and storefronts&lt;/div&gt;
         &lt;/div&gt;
       &lt;/a&gt;
       &lt;a href="#" class="sui-nav-menu-link"&gt;
-        &lt;div class="sui-nav-menu-link-icon" style="background:rgba(26,130,212,0.1);color:var(--sui-info);"&gt;&amp;#127891;&lt;/div&gt;
+        &lt;div class="sui-nav-menu-link-icon" style="background:color-mix(in srgb, var(--sui-info) 10%, transparent);color:var(--sui-info);"&gt;&amp;#127891;&lt;/div&gt;
         &lt;div class="sui-nav-menu-link-text"&gt;
           &lt;div class="sui-nav-menu-link-title"&gt;For Education&lt;/div&gt;
           &lt;div class="sui-nav-menu-link-desc"&gt;LMS, grading, and student portals&lt;/div&gt;
@@ -267,11 +289,10 @@ toc:
 <!-- With Groups -->
 <div class="pg-section" id="section-4">
   <h3 class="pg-section-title">With Groups</h3>
-  <p class="pg-section-desc">Use group labels to organize links within a panel.</p>
   <div class="pg-section-row">
     <nav class="sui-nav-menu">
       <div class="sui-nav-menu-item">
-        <button class="sui-nav-menu-trigger">Developer</button>
+        <button class="sui-nav-menu-trigger" aria-expanded="false">Developer</button>
         <div class="sui-nav-menu-panel sui-nav-menu-panel-wide">
           <div>
             <div class="sui-nav-menu-group-label">Getting Started</div>
@@ -313,7 +334,7 @@ toc:
     <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
     <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;nav class="sui-nav-menu"&gt;
   &lt;div class="sui-nav-menu-item"&gt;
-    &lt;button class="sui-nav-menu-trigger"&gt;Developer&lt;/button&gt;
+    &lt;button class="sui-nav-menu-trigger" aria-expanded="false"&gt;Developer&lt;/button&gt;
     &lt;div class="sui-nav-menu-panel sui-nav-menu-panel-wide"&gt;
       &lt;div&gt;
         &lt;div class="sui-nav-menu-group-label"&gt;Getting Started&lt;/div&gt;
@@ -359,7 +380,7 @@ toc:
   <div class="pg-section-row">
     <nav class="sui-nav-menu sui-nav-menu-raised">
       <div class="sui-nav-menu-item">
-        <button class="sui-nav-menu-trigger">Products</button>
+        <button class="sui-nav-menu-trigger" aria-expanded="false">Products</button>
         <div class="sui-nav-menu-panel" style="min-width:200px;">
           <a href="#" class="sui-nav-menu-link"><div class="sui-nav-menu-link-text"><div class="sui-nav-menu-link-title">Analytics</div></div></a>
           <a href="#" class="sui-nav-menu-link"><div class="sui-nav-menu-link-text"><div class="sui-nav-menu-link-title">Automation</div></div></a>
@@ -373,7 +394,7 @@ toc:
     <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
     <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;nav class="sui-nav-menu sui-nav-menu-raised"&gt;
   &lt;div class="sui-nav-menu-item"&gt;
-    &lt;button class="sui-nav-menu-trigger"&gt;Products&lt;/button&gt;
+    &lt;button class="sui-nav-menu-trigger" aria-expanded="false"&gt;Products&lt;/button&gt;
     &lt;div class="sui-nav-menu-panel" style="min-width:200px;"&gt;
       &lt;a href="#" class="sui-nav-menu-link"&gt;
         &lt;div class="sui-nav-menu-link-text"&gt;
@@ -396,21 +417,21 @@ toc:
 <!-- Bordered -->
 <div class="pg-section" id="section-6">
   <h3 class="pg-section-title">Bordered</h3>
-  <p class="pg-section-desc">Add <code>sui-nav-menu-bordered</code> to the nav for a border around the entire navigation bar.</p>
+  <p class="pg-section-desc">Add <code>sui-nav-menu-bordered</code> to the nav to outline the whole bar.</p>
   <div class="pg-section-row">
     <nav class="sui-nav-menu sui-nav-menu-bordered">
       <div class="sui-nav-menu-item">
-        <button class="sui-nav-menu-trigger">Products</button>
+        <button class="sui-nav-menu-trigger" aria-expanded="false">Products</button>
         <div class="sui-nav-menu-panel" style="min-width:280px;">
           <a href="#" class="sui-nav-menu-link">
-            <div class="sui-nav-menu-link-icon" style="background:rgba(91,84,224,0.1);color:var(--sui-primary);">&#9883;</div>
+            <div class="sui-nav-menu-link-icon" style="background:color-mix(in srgb, var(--sui-primary) 10%, transparent);color:var(--sui-primary);">&#9883;</div>
             <div class="sui-nav-menu-link-text">
               <div class="sui-nav-menu-link-title">Dashboard</div>
               <div class="sui-nav-menu-link-desc">Real-time analytics and KPI tracking</div>
             </div>
           </a>
           <a href="#" class="sui-nav-menu-link">
-            <div class="sui-nav-menu-link-icon" style="background:rgba(31,169,110,0.1);color:var(--sui-success);">&#9881;</div>
+            <div class="sui-nav-menu-link-icon" style="background:color-mix(in srgb, var(--sui-success) 10%, transparent);color:var(--sui-success);">&#9881;</div>
             <div class="sui-nav-menu-link-text">
               <div class="sui-nav-menu-link-title">Automation</div>
               <div class="sui-nav-menu-link-desc">Workflows, triggers, and scheduled tasks</div>
@@ -425,17 +446,17 @@ toc:
     <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
     <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;nav class="sui-nav-menu sui-nav-menu-bordered"&gt;
   &lt;div class="sui-nav-menu-item"&gt;
-    &lt;button class="sui-nav-menu-trigger"&gt;Products&lt;/button&gt;
+    &lt;button class="sui-nav-menu-trigger" aria-expanded="false"&gt;Products&lt;/button&gt;
     &lt;div class="sui-nav-menu-panel" style="min-width:280px;"&gt;
   &lt;a href="#" class="sui-nav-menu-link"&gt;
-    &lt;div class="sui-nav-menu-link-icon" style="background:rgba(91,84,224,0.1);color:var(--sui-primary);"&gt;&amp;#9883;&lt;/div&gt;
+    &lt;div class="sui-nav-menu-link-icon" style="background:color-mix(in srgb, var(--sui-primary) 10%, transparent);color:var(--sui-primary);"&gt;&amp;#9883;&lt;/div&gt;
     &lt;div class="sui-nav-menu-link-text"&gt;
       &lt;div class="sui-nav-menu-link-title"&gt;Dashboard&lt;/div&gt;
       &lt;div class="sui-nav-menu-link-desc"&gt;Real-time analytics and KPI tracking&lt;/div&gt;
     &lt;/div&gt;
   &lt;/a&gt;
   &lt;a href="#" class="sui-nav-menu-link"&gt;
-    &lt;div class="sui-nav-menu-link-icon" style="background:rgba(31,169,110,0.1);color:var(--sui-success);"&gt;&amp;#9881;&lt;/div&gt;
+    &lt;div class="sui-nav-menu-link-icon" style="background:color-mix(in srgb, var(--sui-success) 10%, transparent);color:var(--sui-success);"&gt;&amp;#9881;&lt;/div&gt;
     &lt;div class="sui-nav-menu-link-text"&gt;
       &lt;div class="sui-nav-menu-link-title"&gt;Automation&lt;/div&gt;
       &lt;div class="sui-nav-menu-link-desc"&gt;Workflows, triggers, and scheduled tasks&lt;/div&gt;
@@ -454,7 +475,7 @@ toc:
   <div class="pg-section-row">
     <nav class="sui-nav-menu sui-nav-menu-inset">
       <div class="sui-nav-menu-item">
-        <button class="sui-nav-menu-trigger">Products</button>
+        <button class="sui-nav-menu-trigger" aria-expanded="false">Products</button>
         <div class="sui-nav-menu-panel" style="min-width:200px;">
           <a href="#" class="sui-nav-menu-link"><div class="sui-nav-menu-link-text"><div class="sui-nav-menu-link-title">Analytics</div></div></a>
           <a href="#" class="sui-nav-menu-link"><div class="sui-nav-menu-link-text"><div class="sui-nav-menu-link-title">Automation</div></div></a>
@@ -468,7 +489,7 @@ toc:
     <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
     <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;nav class="sui-nav-menu sui-nav-menu-inset"&gt;
   &lt;div class="sui-nav-menu-item"&gt;
-    &lt;button class="sui-nav-menu-trigger"&gt;Products&lt;/button&gt;
+    &lt;button class="sui-nav-menu-trigger" aria-expanded="false"&gt;Products&lt;/button&gt;
     &lt;div class="sui-nav-menu-panel" style="min-width:200px;"&gt;
       &lt;a href="#" class="sui-nav-menu-link"&gt;
         &lt;div class="sui-nav-menu-link-text"&gt;
@@ -495,7 +516,7 @@ toc:
   <div class="pg-section-row">
     <nav class="sui-nav-menu sui-nav-menu-hover">
       <div class="sui-nav-menu-item">
-        <button class="sui-nav-menu-trigger">Products</button>
+        <button class="sui-nav-menu-trigger" aria-expanded="false">Products</button>
         <div class="sui-nav-menu-panel" style="min-width:200px;">
           <a href="#" class="sui-nav-menu-link">
             <div class="sui-nav-menu-link-text">
@@ -515,7 +536,7 @@ toc:
         </div>
       </div>
       <div class="sui-nav-menu-item">
-        <button class="sui-nav-menu-trigger">Company</button>
+        <button class="sui-nav-menu-trigger" aria-expanded="false">Company</button>
         <div class="sui-nav-menu-panel" style="min-width:200px;">
           <a href="#" class="sui-nav-menu-link">
             <div class="sui-nav-menu-link-text">
@@ -536,7 +557,7 @@ toc:
     <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
     <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;nav class="sui-nav-menu sui-nav-menu-hover"&gt;
   &lt;div class="sui-nav-menu-item"&gt;
-    &lt;button class="sui-nav-menu-trigger"&gt;Products&lt;/button&gt;
+    &lt;button class="sui-nav-menu-trigger" aria-expanded="false"&gt;Products&lt;/button&gt;
     &lt;div class="sui-nav-menu-panel" style="min-width:200px;"&gt;
       &lt;a href="#" class="sui-nav-menu-link"&gt;
         &lt;div class="sui-nav-menu-link-text"&gt;
@@ -556,7 +577,7 @@ toc:
     &lt;/div&gt;
   &lt;/div&gt;
   &lt;div class="sui-nav-menu-item"&gt;
-    &lt;button class="sui-nav-menu-trigger"&gt;Company&lt;/button&gt;
+    &lt;button class="sui-nav-menu-trigger" aria-expanded="false"&gt;Company&lt;/button&gt;
     &lt;div class="sui-nav-menu-panel" style="min-width:200px;"&gt;
       &lt;a href="#" class="sui-nav-menu-link"&gt;
         &lt;div class="sui-nav-menu-link-text"&gt;
@@ -575,15 +596,14 @@ toc:
   </div>
 </div>
 
-<!-- With Sub-Menu -->
+<!-- Sub-Menu -->
 <div class="pg-section" id="section-9">
-  <h3 class="pg-section-title">With Sub-Menu</h3>
-  <p class="pg-section-desc">Nest <code>sui-nav-menu-sub</code> inside a panel for flyout sub-menus. By default, sub-menus open on hover. Add <code>sui-nav-menu-sub-click</code> to the panel to make them open on click instead.</p>
-  <h4 style="margin:0 0 12px;font-size:14px;color:var(--sui-text-muted);">Hover (default)</h4>
+  <h3 class="pg-section-title">Sub-Menu</h3>
+  <p class="pg-section-desc">Nest <code>sui-nav-menu-sub</code> in a panel for a flyout that opens on hover.</p>
   <div class="pg-section-row">
     <nav class="sui-nav-menu">
       <div class="sui-nav-menu-item">
-        <button class="sui-nav-menu-trigger">Products</button>
+        <button class="sui-nav-menu-trigger" aria-expanded="false">Products</button>
         <div class="sui-nav-menu-panel" style="min-width:220px;">
           <a href="#" class="sui-nav-menu-link">
             <div class="sui-nav-menu-link-text">
@@ -652,7 +672,7 @@ toc:
     <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
     <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;nav class="sui-nav-menu"&gt;
   &lt;div class="sui-nav-menu-item"&gt;
-    &lt;button class="sui-nav-menu-trigger"&gt;Products&lt;/button&gt;
+    &lt;button class="sui-nav-menu-trigger" aria-expanded="false"&gt;Products&lt;/button&gt;
     &lt;div class="sui-nav-menu-panel" style="min-width:220px;"&gt;
       &lt;a href="#" class="sui-nav-menu-link"&gt;
         &lt;div class="sui-nav-menu-link-text"&gt;
@@ -717,11 +737,16 @@ toc:
   &lt;a href="#" class="sui-nav-menu-trigger"&gt;Pricing&lt;/a&gt;
 &lt;/nav&gt;</pre></div>
   </div>
-  <h4 style="margin:20px 0 12px;font-size:14px;color:var(--sui-text-muted);">Click (add <code>sui-nav-menu-sub-click</code> to panel)</h4>
+</div>
+
+<!-- Sub-Menu on Click -->
+<div class="pg-section" id="section-10">
+  <h3 class="pg-section-title">Sub-Menu on Click</h3>
+  <p class="pg-section-desc">Add <code>sui-nav-menu-sub-click</code> to the panel to open sub-menus on click.</p>
   <div class="pg-section-row">
     <nav class="sui-nav-menu">
       <div class="sui-nav-menu-item">
-        <button class="sui-nav-menu-trigger">Products</button>
+        <button class="sui-nav-menu-trigger" aria-expanded="false">Products</button>
         <div class="sui-nav-menu-panel sui-nav-menu-sub-click" style="min-width:220px;">
           <a href="#" class="sui-nav-menu-link">
             <div class="sui-nav-menu-link-text">
@@ -780,7 +805,7 @@ toc:
     <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
     <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;nav class="sui-nav-menu"&gt;
   &lt;div class="sui-nav-menu-item"&gt;
-    &lt;button class="sui-nav-menu-trigger"&gt;Products&lt;/button&gt;
+    &lt;button class="sui-nav-menu-trigger" aria-expanded="false"&gt;Products&lt;/button&gt;
     &lt;div class="sui-nav-menu-panel sui-nav-menu-sub-click" style="min-width:220px;"&gt;
       &lt;a href="#" class="sui-nav-menu-link"&gt;
         &lt;div class="sui-nav-menu-link-text"&gt;
@@ -834,5 +859,41 @@ toc:
   &lt;/div&gt;
   &lt;a href="#" class="sui-nav-menu-trigger"&gt;Pricing&lt;/a&gt;
 &lt;/nav&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Reference -->
+<div class="pg-section" id="section-11">
+  <h3 class="pg-section-title">Reference</h3>
+  <div class="docs-table-wrap">
+    <table class="sui-table sui-table-compact">
+      <thead>
+        <tr><th scope="col" style="width:40%;">Class / Key / Attribute</th><th scope="col">Description</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><code>sui-nav-menu</code></td><td>The nav bar; holds <code>sui-nav-menu-item</code>s and plain <code>sui-nav-menu-trigger</code> links.</td></tr>
+        <tr><td><code>sui-nav-menu-item</code></td><td>Wraps a <code>sui-nav-menu-trigger</code> button and its <code>sui-nav-menu-panel</code>; gets <code>open</code> while shown.</td></tr>
+        <tr><td><code>sui-nav-menu-panel-wide</code></td><td>2-column panel (min 480px).</td></tr>
+        <tr><td><code>sui-nav-menu-panel-full</code></td><td>3-column panel spanning the nav width.</td></tr>
+        <tr><td><code>sui-nav-menu-link-icon</code></td><td>Icon tile beside <code>sui-nav-menu-link-title</code>, <code>sui-nav-menu-link-desc</code>.</td></tr>
+        <tr><td><code>sui-nav-menu-group-label</code></td><td>Small uppercase heading inside a panel.</td></tr>
+        <tr><td><code>sui-nav-menu-separator</code></td><td>1px divider between panel links.</td></tr>
+        <tr><td><code>sui-nav-menu-raised</code></td><td>Raised bar style.</td></tr>
+        <tr><td><code>sui-nav-menu-bordered</code></td><td>Bordered bar style.</td></tr>
+        <tr><td><code>sui-nav-menu-inset</code></td><td>Inset bar style.</td></tr>
+        <tr><td><code>sui-nav-menu-hover</code></td><td>On the nav: panels open on hover instead of click.</td></tr>
+        <tr><td><code>sui-nav-menu-sub</code></td><td>Wraps a panel link and a nested panel as a flyout sub-menu (opens on hover).</td></tr>
+        <tr><td><code>sui-nav-menu-sub-click</code></td><td>On a panel: its sub-menus open on click instead of hover.</td></tr>
+        <tr><td><kbd class="sui-kbd-inline">Enter</kbd></td><td>On a trigger: toggle its panel. On a sub-menu parent: toggle the sub-menu (clicks too, in both modes).</td></tr>
+        <tr><td><kbd class="sui-kbd-inline">Space</kbd></td><td>On a trigger: toggle its panel. On a sub-menu parent: open the sub-menu.</td></tr>
+        <tr><td><kbd class="sui-kbd-inline">&darr;</kbd></td><td>On a trigger: open the panel and focus the first link.</td></tr>
+        <tr><td><kbd class="sui-kbd-inline">&uarr;</kbd> / <kbd class="sui-kbd-inline">&darr;</kbd></td><td>Move between links in a panel, wrapping at the ends.</td></tr>
+        <tr><td><kbd class="sui-kbd-inline">&rarr;</kbd></td><td>Open a sub-menu and focus its first link (mirrored in RTL).</td></tr>
+        <tr><td><kbd class="sui-kbd-inline">&larr;</kbd></td><td>Close a sub-menu and focus its parent (mirrored in RTL).</td></tr>
+        <tr><td><kbd class="sui-kbd-inline">Esc</kbd></td><td>Close the open panel or sub-menu and focus its trigger.</td></tr>
+        <tr><td><kbd class="sui-kbd-inline">Tab</kbd></td><td>Tabbing out of a panel closes it.</td></tr>
+        <tr><td><code>aria-expanded</code>, <code>aria-controls</code></td><td>Set automatically on triggers and sub-menu parents.</td></tr>
+      </tbody>
+    </table>
   </div>
 </div>

@@ -7,6 +7,8 @@ hasControls: false
 toc:
   - Default
   - Compact
+  - Full Width
+  - Reference
 ---
 
 <!-- Default -->
@@ -22,6 +24,8 @@ toc:
   &lt;div class="sui-navbar-links"&gt;
     &lt;a href="#" class="sui-navbar-link active"&gt;Home&lt;/a&gt;
     &lt;a href="#" class="sui-navbar-link"&gt;Features&lt;/a&gt;
+    &lt;a href="#" class="sui-navbar-link"&gt;Pricing&lt;/a&gt;
+    &lt;a href="#" class="sui-navbar-link"&gt;About&lt;/a&gt;
   &lt;/div&gt;
   &lt;button class="sui-btn sui-btn-primary sui-btn-sm"&gt;Sign Up&lt;/button&gt;
 &lt;/div&gt;</pre></div>
@@ -45,5 +49,44 @@ toc:
   &lt;/div&gt;
   &lt;button class="sui-btn sui-btn-primary sui-btn-sm"&gt;Login&lt;/button&gt;
 &lt;/div&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Full Width -->
+<div class="pg-section" id="section-3">
+  <h3 class="pg-section-title">Full Width</h3>
+  <p style="font-size:13px;color:var(--sui-text-light);margin-bottom:16px;">Add <code>sui-navbar-full</code> for square corners on an edge-to-edge bar.</p>
+  <div class="pg-section-row">
+    <div class="sui-navbar sui-navbar-full" style="width:100%;"><div class="sui-navbar-brand">SoftUI</div><div class="sui-navbar-links"><a href="#" class="sui-navbar-link active">Home</a><a href="#" class="sui-navbar-link">Docs</a><a href="#" class="sui-navbar-link">Blog</a></div><button class="sui-btn sui-btn-primary sui-btn-sm">Login</button></div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-navbar sui-navbar-full"&gt;
+  &lt;div class="sui-navbar-brand"&gt;SoftUI&lt;/div&gt;
+  &lt;div class="sui-navbar-links"&gt;
+    &lt;a href="#" class="sui-navbar-link active"&gt;Home&lt;/a&gt;
+    &lt;a href="#" class="sui-navbar-link"&gt;Docs&lt;/a&gt;
+    &lt;a href="#" class="sui-navbar-link"&gt;Blog&lt;/a&gt;
+  &lt;/div&gt;
+  &lt;button class="sui-btn sui-btn-primary sui-btn-sm"&gt;Login&lt;/button&gt;
+&lt;/div&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Reference -->
+<div class="pg-section" id="section-4">
+  <h3 class="pg-section-title">Reference</h3>
+  <div class="docs-table-wrap">
+    <table class="sui-table sui-table-compact">
+      <thead>
+        <tr><th scope="col" style="width:40%;">Class</th><th scope="col">Description</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><code>sui-navbar-compact</code></td><td>Less padding and smaller links.</td></tr>
+        <tr><td><code>sui-navbar-full</code></td><td>Square corners for an edge-to-edge bar.</td></tr>
+        <tr><td><code>sui-navbar-sticky</code></td><td>Sticks to the top of the viewport while the page scrolls.</td></tr>
+        <tr><td><code>active</code></td><td>On a <code>sui-navbar-link</code>, marks the current page.</td></tr>
+      </tbody>
+    </table>
   </div>
 </div>

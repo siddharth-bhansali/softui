@@ -148,7 +148,7 @@ toc:
 <div class="pg-section" id="section-4">
   <h3 class="pg-section-title">With Status</h3>
   <div class="pg-section-row">
-    <div class="sui-chat" style="max-width:500px;">
+    <div class="sui-chat" style="max-width:500px;width:100%;">
       <div class="sui-chat-message sui-chat-message-sent">
         <div>
           <div class="sui-chat-bubble">Deployment is done.</div>
@@ -224,65 +224,90 @@ toc:
     <div style="display:flex;flex-wrap:wrap;gap:24px;">
       <div class="sui-chat" style="max-width:280px;">
         <div class="sui-chat-message sui-chat-message-received">
-          <div class="sui-chat-bubble">Default received</div>
+          <div class="sui-chat-bubble">Received</div>
         </div>
         <div class="sui-chat-message sui-chat-message-sent">
-          <div class="sui-chat-bubble">Primary (default)</div>
+          <div class="sui-chat-bubble">Primary</div>
         </div>
       </div>
       <div class="sui-chat sui-chat-success" style="max-width:280px;">
         <div class="sui-chat-message sui-chat-message-received">
-          <div class="sui-chat-bubble">Default received</div>
+          <div class="sui-chat-bubble">Received</div>
         </div>
         <div class="sui-chat-message sui-chat-message-sent">
-          <div class="sui-chat-bubble">Success sent</div>
+          <div class="sui-chat-bubble">Success</div>
         </div>
       </div>
       <div class="sui-chat sui-chat-danger" style="max-width:280px;">
         <div class="sui-chat-message sui-chat-message-received">
-          <div class="sui-chat-bubble">Default received</div>
+          <div class="sui-chat-bubble">Received</div>
         </div>
         <div class="sui-chat-message sui-chat-message-sent">
-          <div class="sui-chat-bubble">Danger sent</div>
+          <div class="sui-chat-bubble">Danger</div>
+        </div>
+      </div>
+      <div class="sui-chat sui-chat-warning" style="max-width:280px;">
+        <div class="sui-chat-message sui-chat-message-received">
+          <div class="sui-chat-bubble">Received</div>
+        </div>
+        <div class="sui-chat-message sui-chat-message-sent">
+          <div class="sui-chat-bubble">Warning</div>
         </div>
       </div>
       <div class="sui-chat sui-chat-info" style="max-width:280px;">
         <div class="sui-chat-message sui-chat-message-received">
-          <div class="sui-chat-bubble">Default received</div>
+          <div class="sui-chat-bubble">Received</div>
         </div>
         <div class="sui-chat-message sui-chat-message-sent">
-          <div class="sui-chat-bubble">Info sent</div>
+          <div class="sui-chat-bubble">Info</div>
         </div>
       </div>
     </div>
   </div>
   <div class="pg-code-wrap">
     <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
-    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;!-- Default (primary) --&gt;
-&lt;div class="sui-chat"&gt;
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-chat"&gt;
+  &lt;div class="sui-chat-message sui-chat-message-received"&gt;
+    &lt;div class="sui-chat-bubble"&gt;Received&lt;/div&gt;
+  &lt;/div&gt;
   &lt;div class="sui-chat-message sui-chat-message-sent"&gt;
-    &lt;div class="sui-chat-bubble"&gt;Primary sent&lt;/div&gt;
+    &lt;div class="sui-chat-bubble"&gt;Primary&lt;/div&gt;
   &lt;/div&gt;
 &lt;/div&gt;
 
-&lt;!-- Success --&gt;
 &lt;div class="sui-chat sui-chat-success"&gt;
+  &lt;div class="sui-chat-message sui-chat-message-received"&gt;
+    &lt;div class="sui-chat-bubble"&gt;Received&lt;/div&gt;
+  &lt;/div&gt;
   &lt;div class="sui-chat-message sui-chat-message-sent"&gt;
-    &lt;div class="sui-chat-bubble"&gt;Success sent&lt;/div&gt;
+    &lt;div class="sui-chat-bubble"&gt;Success&lt;/div&gt;
   &lt;/div&gt;
 &lt;/div&gt;
 
-&lt;!-- Danger --&gt;
 &lt;div class="sui-chat sui-chat-danger"&gt;
+  &lt;div class="sui-chat-message sui-chat-message-received"&gt;
+    &lt;div class="sui-chat-bubble"&gt;Received&lt;/div&gt;
+  &lt;/div&gt;
   &lt;div class="sui-chat-message sui-chat-message-sent"&gt;
-    &lt;div class="sui-chat-bubble"&gt;Danger sent&lt;/div&gt;
+    &lt;div class="sui-chat-bubble"&gt;Danger&lt;/div&gt;
   &lt;/div&gt;
 &lt;/div&gt;
 
-&lt;!-- Info --&gt;
-&lt;div class="sui-chat sui-chat-info"&gt;
+&lt;div class="sui-chat sui-chat-warning"&gt;
+  &lt;div class="sui-chat-message sui-chat-message-received"&gt;
+    &lt;div class="sui-chat-bubble"&gt;Received&lt;/div&gt;
+  &lt;/div&gt;
   &lt;div class="sui-chat-message sui-chat-message-sent"&gt;
-    &lt;div class="sui-chat-bubble"&gt;Info sent&lt;/div&gt;
+    &lt;div class="sui-chat-bubble"&gt;Warning&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="sui-chat sui-chat-info"&gt;
+  &lt;div class="sui-chat-message sui-chat-message-received"&gt;
+    &lt;div class="sui-chat-bubble"&gt;Received&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="sui-chat-message sui-chat-message-sent"&gt;
+    &lt;div class="sui-chat-bubble"&gt;Info&lt;/div&gt;
   &lt;/div&gt;
 &lt;/div&gt;</pre></div>
   </div>
@@ -319,27 +344,28 @@ toc:
   </div>
   <div class="pg-code-wrap">
     <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
-    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-chat sui-chat-grouped"&gt;
-  &lt;div class="sui-chat-message sui-chat-message-received"&gt;
-    &lt;div class="sui-chat-avatar"&gt;AM&lt;/div&gt;
-    &lt;div class="sui-chat-bubble"&gt;Hey, quick update on the bug.&lt;/div&gt;
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-chat"&gt;
+  &lt;div class="sui-chat sui-chat-grouped"&gt;
+    &lt;div class="sui-chat-message sui-chat-message-received"&gt;
+      &lt;div class="sui-chat-avatar"&gt;AM&lt;/div&gt;
+      &lt;div class="sui-chat-bubble"&gt;Hey, quick update on the bug.&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="sui-chat-message sui-chat-message-received"&gt;
+      &lt;div class="sui-chat-avatar"&gt;AM&lt;/div&gt;
+      &lt;div class="sui-chat-bubble"&gt;Found the root cause, it was a race condition.&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="sui-chat-message sui-chat-message-received"&gt;
+      &lt;div class="sui-chat-avatar"&gt;AM&lt;/div&gt;
+      &lt;div class="sui-chat-bubble"&gt;Fix is ready for review.&lt;/div&gt;
+    &lt;/div&gt;
   &lt;/div&gt;
-  &lt;div class="sui-chat-message sui-chat-message-received"&gt;
-    &lt;div class="sui-chat-avatar"&gt;AM&lt;/div&gt;
-    &lt;div class="sui-chat-bubble"&gt;Found the root cause, it was a race condition.&lt;/div&gt;
-  &lt;/div&gt;
-  &lt;div class="sui-chat-message sui-chat-message-received"&gt;
-    &lt;div class="sui-chat-avatar"&gt;AM&lt;/div&gt;
-    &lt;div class="sui-chat-bubble"&gt;Fix is ready for review.&lt;/div&gt;
-  &lt;/div&gt;
-&lt;/div&gt;
-
-&lt;div class="sui-chat sui-chat-grouped"&gt;
-  &lt;div class="sui-chat-message sui-chat-message-sent"&gt;
-    &lt;div class="sui-chat-bubble"&gt;Awesome, I'll take a look now.&lt;/div&gt;
-  &lt;/div&gt;
-  &lt;div class="sui-chat-message sui-chat-message-sent"&gt;
-    &lt;div class="sui-chat-bubble"&gt;Approved and merged!&lt;/div&gt;
+  &lt;div class="sui-chat sui-chat-grouped" style="margin-top:12px;"&gt;
+    &lt;div class="sui-chat-message sui-chat-message-sent"&gt;
+      &lt;div class="sui-chat-bubble"&gt;Awesome, I'll take a look now.&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="sui-chat-message sui-chat-message-sent"&gt;
+      &lt;div class="sui-chat-bubble"&gt;Approved and merged!&lt;/div&gt;
+    &lt;/div&gt;
   &lt;/div&gt;
 &lt;/div&gt;</pre></div>
   </div>

@@ -37,8 +37,9 @@ toc:
     &lt;div class="sui-browser-dots"&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;/div&gt;
     &lt;div class="sui-browser-url"&gt;softui-css.netlify.app&lt;/div&gt;
   &lt;/div&gt;
-  &lt;div class="sui-browser-body"&gt;
-    &lt;!-- Your content here --&gt;
+  &lt;div class="sui-browser-body" style="padding:32px;text-align:center;"&gt;
+    &lt;h3 style="margin-bottom:8px;"&gt;Hello World&lt;/h3&gt;
+    &lt;p style="font-size:13px;color:var(--sui-text-muted);"&gt;Your content goes here.&lt;/p&gt;
   &lt;/div&gt;
 &lt;/div&gt;</pre></div>
   </div>
@@ -54,7 +55,7 @@ toc:
         <div class="sui-browser-actions">{{ navSvgs | safe }}</div>
         <div class="sui-browser-url">https://softui-css.netlify.app/components/buttons/</div>
       </div>
-      <div class="sui-browser-body" style="padding:24px;display:flex;gap:8px;flex-wrap:wrap;">
+      <div class="sui-browser-body" style="padding:24px;display:flex;align-items:flex-start;gap:8px;flex-wrap:wrap;">
         <button class="sui-btn sui-btn-sm">Default</button>
         <button class="sui-btn sui-btn-primary sui-btn-sm">Primary</button>
         <button class="sui-btn sui-btn-success sui-btn-sm">Success</button>
@@ -73,9 +74,11 @@ toc:
     &lt;/div&gt;
     &lt;div class="sui-browser-url"&gt;https://softui-css.netlify.app/components/buttons/&lt;/div&gt;
   &lt;/div&gt;
-  &lt;div class="sui-browser-body"&gt;
+  &lt;div class="sui-browser-body" style="padding:24px;display:flex;align-items:flex-start;gap:8px;flex-wrap:wrap;"&gt;
+    &lt;button class="sui-btn sui-btn-sm"&gt;Default&lt;/button&gt;
     &lt;button class="sui-btn sui-btn-primary sui-btn-sm"&gt;Primary&lt;/button&gt;
     &lt;button class="sui-btn sui-btn-success sui-btn-sm"&gt;Success&lt;/button&gt;
+    &lt;button class="sui-btn sui-btn-danger sui-btn-sm"&gt;Danger&lt;/button&gt;
   &lt;/div&gt;
 &lt;/div&gt;</pre></div>
   </div>
@@ -89,9 +92,9 @@ toc:
       <div class="sui-browser-bar">
         <div class="sui-browser-url">softui-css.netlify.app</div>
         <div class="sui-browser-win-btns">
-          <button><svg viewBox="0 0 10 12"><line x1="1" y1="10" x2="9" y2="10"/></svg></button>
-          <button><svg viewBox="0 0 10 12"><rect x="1" y="3" width="8" height="8" rx="1"/></svg></button>
-          <button><svg viewBox="0 0 10 12"><line x1="1" y1="3" x2="9" y2="11"/><line x1="9" y1="3" x2="1" y2="11"/></svg></button>
+          <button type="button" aria-label="Minimize"><svg viewBox="0 0 10 12"><line x1="1" y1="10" x2="9" y2="10"/></svg></button>
+          <button type="button" aria-label="Maximize"><svg viewBox="0 0 10 12"><rect x="1" y="3" width="8" height="8" rx="1"/></svg></button>
+          <button type="button" aria-label="Close"><svg viewBox="0 0 10 12"><line x1="1" y1="3" x2="9" y2="11"/><line x1="9" y1="3" x2="1" y2="11"/></svg></button>
         </div>
       </div>
       <div class="sui-browser-body" style="padding:32px;text-align:center;">
@@ -106,13 +109,14 @@ toc:
   &lt;div class="sui-browser-bar"&gt;
     &lt;div class="sui-browser-url"&gt;softui-css.netlify.app&lt;/div&gt;
     &lt;div class="sui-browser-win-btns"&gt;
-      &lt;button&gt;&lt;svg viewBox="0 0 10 10"&gt;&lt;line x1="1" y1="5" x2="9" y2="5"/&gt;&lt;/svg&gt;&lt;/button&gt;
-      &lt;button&gt;&lt;svg viewBox="0 0 10 10"&gt;&lt;rect x="1" y="1" width="8" height="8" rx="1"/&gt;&lt;/svg&gt;&lt;/button&gt;
-      &lt;button&gt;&lt;svg viewBox="0 0 10 10"&gt;&lt;line x1="1" y1="1" x2="9" y2="9"/&gt;&lt;line x1="9" y1="1" x2="1" y2="9"/&gt;&lt;/svg&gt;&lt;/button&gt;
+      &lt;button type="button" aria-label="Minimize"&gt;&lt;svg viewBox="0 0 10 12"&gt;&lt;line x1="1" y1="10" x2="9" y2="10"/&gt;&lt;/svg&gt;&lt;/button&gt;
+      &lt;button type="button" aria-label="Maximize"&gt;&lt;svg viewBox="0 0 10 12"&gt;&lt;rect x="1" y="3" width="8" height="8" rx="1"/&gt;&lt;/svg&gt;&lt;/button&gt;
+      &lt;button type="button" aria-label="Close"&gt;&lt;svg viewBox="0 0 10 12"&gt;&lt;line x1="1" y1="3" x2="9" y2="11"/&gt;&lt;line x1="9" y1="3" x2="1" y2="11"/&gt;&lt;/svg&gt;&lt;/button&gt;
     &lt;/div&gt;
   &lt;/div&gt;
-  &lt;div class="sui-browser-body"&gt;
-    &lt;!-- Your content here --&gt;
+  &lt;div class="sui-browser-body" style="padding:32px;text-align:center;"&gt;
+    &lt;h3 style="margin-bottom:8px;"&gt;Windows Chrome&lt;/h3&gt;
+    &lt;p style="font-size:13px;color:var(--sui-text-muted);"&gt;Minimize, maximize, close on the right.&lt;/p&gt;
   &lt;/div&gt;
 &lt;/div&gt;</pre></div>
   </div>
@@ -153,8 +157,12 @@ toc:
     &lt;div class="sui-browser-dots"&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;/div&gt;
     &lt;div class="sui-browser-url"&gt;softui-css.netlify.app&lt;/div&gt;
   &lt;/div&gt;
-  &lt;div class="sui-browser-body"&gt;
-    &lt;!-- Your content here --&gt;
+  &lt;div class="sui-browser-body" style="padding:24px;"&gt;
+    &lt;div class="sui-card" style="padding:16px;max-width:280px;"&gt;
+      &lt;h4 style="font-size:14px;margin-bottom:6px;"&gt;Getting Started&lt;/h4&gt;
+      &lt;p style="font-size:12px;color:var(--sui-text-muted);"&gt;Install with npm, yarn, or CDN.&lt;/p&gt;
+      &lt;button class="sui-btn sui-btn-primary sui-btn-sm" style="margin-top:10px;"&gt;View Docs&lt;/button&gt;
+    &lt;/div&gt;
   &lt;/div&gt;
 &lt;/div&gt;</pre></div>
   </div>
@@ -201,8 +209,15 @@ toc:
     &lt;/div&gt;
     &lt;div class="sui-browser-url"&gt;app.cloudmetrics.io/dashboard&lt;/div&gt;
   &lt;/div&gt;
-  &lt;div class="sui-browser-body"&gt;
-    &lt;!-- Your content here --&gt;
+  &lt;div class="sui-browser-body" style="padding:24px;display:flex;gap:12px;flex-wrap:wrap;"&gt;
+    &lt;div class="sui-stat" style="flex:1;min-width:120px;"&gt;
+      &lt;p class="sui-stat-label"&gt;Revenue&lt;/p&gt;
+      &lt;div class="sui-stat-value" style="font-size:20px;"&gt;$12,450&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="sui-stat" style="flex:1;min-width:120px;"&gt;
+      &lt;p class="sui-stat-label"&gt;Users&lt;/p&gt;
+      &lt;div class="sui-stat-value" style="font-size:20px;"&gt;1,283&lt;/div&gt;
+    &lt;/div&gt;
   &lt;/div&gt;
 &lt;/div&gt;</pre></div>
   </div>

@@ -1,7 +1,7 @@
 ---
 layout: component.njk
 title: Speed Dial
-description: Floating action button that expands to reveal a set of related actions. Supports directions, labels, hover trigger, and sizes.
+description: Floating action button that expands to reveal related actions.
 componentId: speeddial
 hasControls: false
 requiresJs: true
@@ -12,88 +12,104 @@ toc:
   - Hover Trigger
   - Colors
   - Sizes
+  - Reference
 ---
-
-{% set plusSvg %}<svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>{% endset %}
-{% set mailSvg %}<svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22 6 12 13 2 6"/></svg>{% endset %}
-{% set editSvg %}<svg viewBox="0 0 24 24"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>{% endset %}
-{% set shareSvg %}<svg viewBox="0 0 24 24"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>{% endset %}
-{% set uploadSvg %}<svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>{% endset %}
-{% set copySvg %}<svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>{% endset %}
-{% set trashSvg %}<svg viewBox="0 0 24 24"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 01-2 2H7a2 2 0 01-2-2V6m3 0V4a2 2 0 012-2h4a2 2 0 012 2v2"/></svg>{% endset %}
 
 <!-- Default -->
 <div class="pg-section" id="section-1">
   <h3 class="pg-section-title">Default</h3>
-  <div class="pg-section-row">
-    <div style="position:relative;height:240px;width:100%;max-width:200px;">
-      <div class="sui-speed-dial sui-speed-dial-relative" style="position:absolute;bottom:16px;right:16px;">
-        <button class="sui-speed-dial-trigger">{{ plusSvg | safe }}</button>
-        <div class="sui-speed-dial-actions">
-          <button class="sui-speed-dial-action">{{ mailSvg | safe }}</button>
-          <button class="sui-speed-dial-action">{{ editSvg | safe }}</button>
-          <button class="sui-speed-dial-action">{{ shareSvg | safe }}</button>
-        </div>
+  <p style="font-size:13px;color:var(--sui-text-light);margin-bottom:16px;">Demos use <code>sui-speed-dial-relative</code> to stay in the page; swap it for a corner class such as <code>sui-speed-dial-br</code> to pin the dial to the viewport.</p>
+  <div class="pg-section-row" style="align-items:flex-start;">
+    <div class="sui-speed-dial sui-speed-dial-relative">
+      <button type="button" class="sui-speed-dial-trigger" aria-expanded="false" aria-label="Open actions">
+        <svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+      </button>
+      <div class="sui-speed-dial-actions">
+        <button type="button" class="sui-speed-dial-action" aria-label="Compose">
+          <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22 6 12 13 2 6"/></svg>
+        </button>
+        <button type="button" class="sui-speed-dial-action" aria-label="Edit">
+          <svg viewBox="0 0 24 24"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+        </button>
+        <button type="button" class="sui-speed-dial-action" aria-label="Share">
+          <svg viewBox="0 0 24 24"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+        </button>
       </div>
     </div>
   </div>
   <div class="pg-code-wrap">
     <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
-    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;!-- Fixed to bottom-right corner --&gt;
-&lt;div class="sui-speed-dial sui-speed-dial-br"&gt;
-  &lt;button class="sui-speed-dial-trigger"&gt;
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-speed-dial sui-speed-dial-relative"&gt;
+  &lt;button type="button" class="sui-speed-dial-trigger" aria-expanded="false" aria-label="Open actions"&gt;
     &lt;svg viewBox="0 0 24 24"&gt;&lt;line x1="12" y1="5" x2="12" y2="19"/&gt;&lt;line x1="5" y1="12" x2="19" y2="12"/&gt;&lt;/svg&gt;
   &lt;/button&gt;
   &lt;div class="sui-speed-dial-actions"&gt;
-    &lt;button class="sui-speed-dial-action"&gt;
+    &lt;button type="button" class="sui-speed-dial-action" aria-label="Compose"&gt;
       &lt;svg viewBox="0 0 24 24"&gt;&lt;path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/&gt;&lt;polyline points="22 6 12 13 2 6"/&gt;&lt;/svg&gt;
     &lt;/button&gt;
-    &lt;button class="sui-speed-dial-action"&gt;
+    &lt;button type="button" class="sui-speed-dial-action" aria-label="Edit"&gt;
       &lt;svg viewBox="0 0 24 24"&gt;&lt;path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/&gt;&lt;path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/&gt;&lt;/svg&gt;
     &lt;/button&gt;
-    &lt;button class="sui-speed-dial-action"&gt;
+    &lt;button type="button" class="sui-speed-dial-action" aria-label="Share"&gt;
       &lt;svg viewBox="0 0 24 24"&gt;&lt;circle cx="18" cy="5" r="3"/&gt;&lt;circle cx="6" cy="12" r="3"/&gt;&lt;circle cx="18" cy="19" r="3"/&gt;&lt;line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/&gt;&lt;line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/&gt;&lt;/svg&gt;
     &lt;/button&gt;
   &lt;/div&gt;
-&lt;/div&gt;
-
-&lt;!-- Position classes: sui-speed-dial-br, sui-speed-dial-bl, sui-speed-dial-tr, sui-speed-dial-tl --&gt;</pre></div>
+&lt;/div&gt;</pre></div>
   </div>
 </div>
+
+<script>
+  // Docs only: show the Default dial open on load
+  (function() {
+    var dial = document.querySelector('#section-1 .sui-speed-dial');
+    dial.classList.add('open');
+    dial.querySelector('.sui-speed-dial-trigger').setAttribute('aria-expanded', 'true');
+  })();
+</script>
 
 <!-- With Labels -->
 <div class="pg-section" id="section-2">
   <h3 class="pg-section-title">With Labels</h3>
-  <div class="pg-section-row">
-    <div style="position:relative;height:280px;width:100%;max-width:240px;">
-      <div class="sui-speed-dial sui-speed-dial-relative" style="position:absolute;bottom:16px;right:16px;">
-        <button class="sui-speed-dial-trigger">{{ plusSvg | safe }}</button>
+  <div class="pg-section-row" style="align-items:flex-start;">
+    <div style="padding-left:96px;">
+      <div class="sui-speed-dial sui-speed-dial-relative">
+        <button type="button" class="sui-speed-dial-trigger" aria-expanded="false" aria-label="Open actions">
+          <svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
         <div class="sui-speed-dial-actions">
-          <button class="sui-speed-dial-action" data-label="Compose">{{ mailSvg | safe }}</button>
-          <button class="sui-speed-dial-action" data-label="Edit">{{ editSvg | safe }}</button>
-          <button class="sui-speed-dial-action" data-label="Share">{{ shareSvg | safe }}</button>
-          <button class="sui-speed-dial-action" data-label="Upload">{{ uploadSvg | safe }}</button>
+          <button type="button" class="sui-speed-dial-action" data-label="Compose">
+            <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22 6 12 13 2 6"/></svg>
+          </button>
+          <button type="button" class="sui-speed-dial-action" data-label="Edit">
+            <svg viewBox="0 0 24 24"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+          </button>
+          <button type="button" class="sui-speed-dial-action" data-label="Share">
+            <svg viewBox="0 0 24 24"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+          </button>
+          <button type="button" class="sui-speed-dial-action" data-label="Upload">
+            <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+          </button>
         </div>
       </div>
     </div>
   </div>
   <div class="pg-code-wrap">
     <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
-    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-speed-dial sui-speed-dial-br"&gt;
-  &lt;button class="sui-speed-dial-trigger"&gt;
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-speed-dial sui-speed-dial-relative"&gt;
+  &lt;button type="button" class="sui-speed-dial-trigger" aria-expanded="false" aria-label="Open actions"&gt;
     &lt;svg viewBox="0 0 24 24"&gt;&lt;line x1="12" y1="5" x2="12" y2="19"/&gt;&lt;line x1="5" y1="12" x2="19" y2="12"/&gt;&lt;/svg&gt;
   &lt;/button&gt;
   &lt;div class="sui-speed-dial-actions"&gt;
-    &lt;button class="sui-speed-dial-action" data-label="Compose"&gt;
+    &lt;button type="button" class="sui-speed-dial-action" data-label="Compose"&gt;
       &lt;svg viewBox="0 0 24 24"&gt;&lt;path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/&gt;&lt;polyline points="22 6 12 13 2 6"/&gt;&lt;/svg&gt;
     &lt;/button&gt;
-    &lt;button class="sui-speed-dial-action" data-label="Edit"&gt;
+    &lt;button type="button" class="sui-speed-dial-action" data-label="Edit"&gt;
       &lt;svg viewBox="0 0 24 24"&gt;&lt;path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/&gt;&lt;path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/&gt;&lt;/svg&gt;
     &lt;/button&gt;
-    &lt;button class="sui-speed-dial-action" data-label="Share"&gt;
+    &lt;button type="button" class="sui-speed-dial-action" data-label="Share"&gt;
       &lt;svg viewBox="0 0 24 24"&gt;&lt;circle cx="18" cy="5" r="3"/&gt;&lt;circle cx="6" cy="12" r="3"/&gt;&lt;circle cx="18" cy="19" r="3"/&gt;&lt;line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/&gt;&lt;line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/&gt;&lt;/svg&gt;
     &lt;/button&gt;
-    &lt;button class="sui-speed-dial-action" data-label="Upload"&gt;
+    &lt;button type="button" class="sui-speed-dial-action" data-label="Upload"&gt;
       &lt;svg viewBox="0 0 24 24"&gt;&lt;path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/&gt;&lt;polyline points="17 8 12 3 7 8"/&gt;&lt;line x1="12" y1="3" x2="12" y2="15"/&gt;&lt;/svg&gt;
     &lt;/button&gt;
   &lt;/div&gt;
@@ -104,45 +120,69 @@ toc:
 <!-- Directions -->
 <div class="pg-section" id="section-3">
   <h3 class="pg-section-title">Directions</h3>
-  <div class="pg-section-row">
+  <div class="pg-section-row" style="align-items:flex-start;">
     <div style="display:flex;flex-wrap:wrap;gap:32px;align-items:flex-start;">
-      <div style="position:relative;height:220px;width:120px;">
-        <div style="font-size:12px;color:var(--sui-text-muted);margin-bottom:4px;">Up (default)</div>
-        <div class="sui-speed-dial sui-speed-dial-relative" style="position:absolute;bottom:16px;left:50%;transform:translateX(-50%);">
-          <button class="sui-speed-dial-trigger">{{ plusSvg | safe }}</button>
+      <div style="display:flex;flex-direction:column;align-items:center;gap:8px;">
+        <div style="font-size:12px;color:var(--sui-text-muted);">Up (default)</div>
+        <div class="sui-speed-dial sui-speed-dial-relative">
+          <button type="button" class="sui-speed-dial-trigger" aria-expanded="false" aria-label="Open actions">
+            <svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          </button>
           <div class="sui-speed-dial-actions">
-            <button class="sui-speed-dial-action">{{ mailSvg | safe }}</button>
-            <button class="sui-speed-dial-action">{{ editSvg | safe }}</button>
+            <button type="button" class="sui-speed-dial-action" aria-label="Compose">
+              <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22 6 12 13 2 6"/></svg>
+            </button>
+            <button type="button" class="sui-speed-dial-action" aria-label="Edit">
+              <svg viewBox="0 0 24 24"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+            </button>
           </div>
         </div>
       </div>
-      <div style="position:relative;height:220px;width:120px;">
-        <div style="font-size:12px;color:var(--sui-text-muted);margin-bottom:4px;">Down</div>
-        <div class="sui-speed-dial sui-speed-dial-relative sui-speed-dial-down" style="position:absolute;top:30px;left:50%;transform:translateX(-50%);">
-          <button class="sui-speed-dial-trigger">{{ plusSvg | safe }}</button>
+      <div style="display:flex;flex-direction:column;align-items:center;gap:8px;">
+        <div style="font-size:12px;color:var(--sui-text-muted);">Down</div>
+        <div class="sui-speed-dial sui-speed-dial-relative sui-speed-dial-down">
+          <button type="button" class="sui-speed-dial-trigger" aria-expanded="false" aria-label="Open actions">
+            <svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          </button>
           <div class="sui-speed-dial-actions">
-            <button class="sui-speed-dial-action">{{ mailSvg | safe }}</button>
-            <button class="sui-speed-dial-action">{{ editSvg | safe }}</button>
+            <button type="button" class="sui-speed-dial-action" aria-label="Compose">
+              <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22 6 12 13 2 6"/></svg>
+            </button>
+            <button type="button" class="sui-speed-dial-action" aria-label="Edit">
+              <svg viewBox="0 0 24 24"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+            </button>
           </div>
         </div>
       </div>
-      <div style="position:relative;height:100px;width:180px;">
-        <div style="font-size:12px;color:var(--sui-text-muted);margin-bottom:4px;">Left</div>
-        <div class="sui-speed-dial sui-speed-dial-relative sui-speed-dial-left" style="position:absolute;top:30px;right:8px;">
-          <button class="sui-speed-dial-trigger">{{ plusSvg | safe }}</button>
+      <div style="display:flex;flex-direction:column;align-items:flex-end;gap:8px;">
+        <div style="font-size:12px;color:var(--sui-text-muted);">Left</div>
+        <div class="sui-speed-dial sui-speed-dial-relative sui-speed-dial-left">
+          <button type="button" class="sui-speed-dial-trigger" aria-expanded="false" aria-label="Open actions">
+            <svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          </button>
           <div class="sui-speed-dial-actions">
-            <button class="sui-speed-dial-action">{{ mailSvg | safe }}</button>
-            <button class="sui-speed-dial-action">{{ editSvg | safe }}</button>
+            <button type="button" class="sui-speed-dial-action" aria-label="Compose">
+              <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22 6 12 13 2 6"/></svg>
+            </button>
+            <button type="button" class="sui-speed-dial-action" aria-label="Edit">
+              <svg viewBox="0 0 24 24"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+            </button>
           </div>
         </div>
       </div>
-      <div style="position:relative;height:100px;width:260px;">
-        <div style="font-size:12px;color:var(--sui-text-muted);margin-bottom:4px;">Right</div>
-        <div class="sui-speed-dial sui-speed-dial-relative sui-speed-dial-right" style="position:absolute;top:30px;left:16px;">
-          <button class="sui-speed-dial-trigger">{{ plusSvg | safe }}</button>
+      <div style="display:flex;flex-direction:column;align-items:flex-start;gap:8px;">
+        <div style="font-size:12px;color:var(--sui-text-muted);">Right</div>
+        <div class="sui-speed-dial sui-speed-dial-relative sui-speed-dial-right">
+          <button type="button" class="sui-speed-dial-trigger" aria-expanded="false" aria-label="Open actions">
+            <svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          </button>
           <div class="sui-speed-dial-actions">
-            <button class="sui-speed-dial-action">{{ mailSvg | safe }}</button>
-            <button class="sui-speed-dial-action">{{ editSvg | safe }}</button>
+            <button type="button" class="sui-speed-dial-action" aria-label="Compose">
+              <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22 6 12 13 2 6"/></svg>
+            </button>
+            <button type="button" class="sui-speed-dial-action" aria-label="Edit">
+              <svg viewBox="0 0 24 24"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+            </button>
           </div>
         </div>
       </div>
@@ -151,29 +191,63 @@ toc:
   <div class="pg-code-wrap">
     <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
     <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;!-- Up (default) --&gt;
-&lt;div class="sui-speed-dial sui-speed-dial-br"&gt;
-  &lt;button class="sui-speed-dial-trigger"&gt;
+&lt;div class="sui-speed-dial sui-speed-dial-relative"&gt;
+  &lt;button type="button" class="sui-speed-dial-trigger" aria-expanded="false" aria-label="Open actions"&gt;
     &lt;svg viewBox="0 0 24 24"&gt;&lt;line x1="12" y1="5" x2="12" y2="19"/&gt;&lt;line x1="5" y1="12" x2="19" y2="12"/&gt;&lt;/svg&gt;
   &lt;/button&gt;
   &lt;div class="sui-speed-dial-actions"&gt;
-    &lt;button class="sui-speed-dial-action"&gt;&lt;!-- icon --&gt;&lt;/button&gt;
-    &lt;button class="sui-speed-dial-action"&gt;&lt;!-- icon --&gt;&lt;/button&gt;
+    &lt;button type="button" class="sui-speed-dial-action" aria-label="Compose"&gt;
+      &lt;svg viewBox="0 0 24 24"&gt;&lt;path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/&gt;&lt;polyline points="22 6 12 13 2 6"/&gt;&lt;/svg&gt;
+    &lt;/button&gt;
+    &lt;button type="button" class="sui-speed-dial-action" aria-label="Edit"&gt;
+      &lt;svg viewBox="0 0 24 24"&gt;&lt;path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/&gt;&lt;path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/&gt;&lt;/svg&gt;
+    &lt;/button&gt;
   &lt;/div&gt;
 &lt;/div&gt;
 
 &lt;!-- Down --&gt;
-&lt;div class="sui-speed-dial sui-speed-dial-tr sui-speed-dial-down"&gt;
-  &lt;!-- same structure --&gt;
+&lt;div class="sui-speed-dial sui-speed-dial-relative sui-speed-dial-down"&gt;
+  &lt;button type="button" class="sui-speed-dial-trigger" aria-expanded="false" aria-label="Open actions"&gt;
+    &lt;svg viewBox="0 0 24 24"&gt;&lt;line x1="12" y1="5" x2="12" y2="19"/&gt;&lt;line x1="5" y1="12" x2="19" y2="12"/&gt;&lt;/svg&gt;
+  &lt;/button&gt;
+  &lt;div class="sui-speed-dial-actions"&gt;
+    &lt;button type="button" class="sui-speed-dial-action" aria-label="Compose"&gt;
+      &lt;svg viewBox="0 0 24 24"&gt;&lt;path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/&gt;&lt;polyline points="22 6 12 13 2 6"/&gt;&lt;/svg&gt;
+    &lt;/button&gt;
+    &lt;button type="button" class="sui-speed-dial-action" aria-label="Edit"&gt;
+      &lt;svg viewBox="0 0 24 24"&gt;&lt;path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/&gt;&lt;path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/&gt;&lt;/svg&gt;
+    &lt;/button&gt;
+  &lt;/div&gt;
 &lt;/div&gt;
 
 &lt;!-- Left --&gt;
-&lt;div class="sui-speed-dial sui-speed-dial-br sui-speed-dial-left"&gt;
-  &lt;!-- same structure --&gt;
+&lt;div class="sui-speed-dial sui-speed-dial-relative sui-speed-dial-left"&gt;
+  &lt;button type="button" class="sui-speed-dial-trigger" aria-expanded="false" aria-label="Open actions"&gt;
+    &lt;svg viewBox="0 0 24 24"&gt;&lt;line x1="12" y1="5" x2="12" y2="19"/&gt;&lt;line x1="5" y1="12" x2="19" y2="12"/&gt;&lt;/svg&gt;
+  &lt;/button&gt;
+  &lt;div class="sui-speed-dial-actions"&gt;
+    &lt;button type="button" class="sui-speed-dial-action" aria-label="Compose"&gt;
+      &lt;svg viewBox="0 0 24 24"&gt;&lt;path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/&gt;&lt;polyline points="22 6 12 13 2 6"/&gt;&lt;/svg&gt;
+    &lt;/button&gt;
+    &lt;button type="button" class="sui-speed-dial-action" aria-label="Edit"&gt;
+      &lt;svg viewBox="0 0 24 24"&gt;&lt;path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/&gt;&lt;path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/&gt;&lt;/svg&gt;
+    &lt;/button&gt;
+  &lt;/div&gt;
 &lt;/div&gt;
 
 &lt;!-- Right --&gt;
-&lt;div class="sui-speed-dial sui-speed-dial-bl sui-speed-dial-right"&gt;
-  &lt;!-- same structure --&gt;
+&lt;div class="sui-speed-dial sui-speed-dial-relative sui-speed-dial-right"&gt;
+  &lt;button type="button" class="sui-speed-dial-trigger" aria-expanded="false" aria-label="Open actions"&gt;
+    &lt;svg viewBox="0 0 24 24"&gt;&lt;line x1="12" y1="5" x2="12" y2="19"/&gt;&lt;line x1="5" y1="12" x2="19" y2="12"/&gt;&lt;/svg&gt;
+  &lt;/button&gt;
+  &lt;div class="sui-speed-dial-actions"&gt;
+    &lt;button type="button" class="sui-speed-dial-action" aria-label="Compose"&gt;
+      &lt;svg viewBox="0 0 24 24"&gt;&lt;path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/&gt;&lt;polyline points="22 6 12 13 2 6"/&gt;&lt;/svg&gt;
+    &lt;/button&gt;
+    &lt;button type="button" class="sui-speed-dial-action" aria-label="Edit"&gt;
+      &lt;svg viewBox="0 0 24 24"&gt;&lt;path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/&gt;&lt;path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/&gt;&lt;/svg&gt;
+    &lt;/button&gt;
+  &lt;/div&gt;
 &lt;/div&gt;</pre></div>
   </div>
 </div>
@@ -181,33 +255,40 @@ toc:
 <!-- Hover Trigger -->
 <div class="pg-section" id="section-4">
   <h3 class="pg-section-title">Hover Trigger</h3>
-  <div class="pg-section-row">
-    <div style="position:relative;height:240px;width:100%;max-width:200px;">
-      <div class="sui-speed-dial sui-speed-dial-relative sui-speed-dial-hover" style="position:absolute;bottom:16px;right:16px;">
-        <button class="sui-speed-dial-trigger">{{ plusSvg | safe }}</button>
+  <div class="pg-section-row" style="align-items:flex-start;">
+    <div style="padding-left:96px;">
+      <div class="sui-speed-dial sui-speed-dial-relative sui-speed-dial-hover">
+        <button type="button" class="sui-speed-dial-trigger" aria-expanded="false" aria-label="Open actions">
+          <svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
         <div class="sui-speed-dial-actions">
-          <button class="sui-speed-dial-action" data-label="Copy">{{ copySvg | safe }}</button>
-          <button class="sui-speed-dial-action" data-label="Edit">{{ editSvg | safe }}</button>
-          <button class="sui-speed-dial-action" data-label="Delete">{{ trashSvg | safe }}</button>
+          <button type="button" class="sui-speed-dial-action" data-label="Copy">
+            <svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+          </button>
+          <button type="button" class="sui-speed-dial-action" data-label="Edit">
+            <svg viewBox="0 0 24 24"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+          </button>
+          <button type="button" class="sui-speed-dial-action" data-label="Delete">
+            <svg viewBox="0 0 24 24"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 01-2 2H7a2 2 0 01-2-2V6m3 0V4a2 2 0 012-2h4a2 2 0 012 2v2"/></svg>
+          </button>
         </div>
       </div>
     </div>
   </div>
   <div class="pg-code-wrap">
     <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
-    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;!-- Add sui-speed-dial-hover to open on hover instead of click --&gt;
-&lt;div class="sui-speed-dial sui-speed-dial-br sui-speed-dial-hover"&gt;
-  &lt;button class="sui-speed-dial-trigger"&gt;
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-speed-dial sui-speed-dial-relative sui-speed-dial-hover"&gt;
+  &lt;button type="button" class="sui-speed-dial-trigger" aria-expanded="false" aria-label="Open actions"&gt;
     &lt;svg viewBox="0 0 24 24"&gt;&lt;line x1="12" y1="5" x2="12" y2="19"/&gt;&lt;line x1="5" y1="12" x2="19" y2="12"/&gt;&lt;/svg&gt;
   &lt;/button&gt;
   &lt;div class="sui-speed-dial-actions"&gt;
-    &lt;button class="sui-speed-dial-action" data-label="Copy"&gt;
+    &lt;button type="button" class="sui-speed-dial-action" data-label="Copy"&gt;
       &lt;svg viewBox="0 0 24 24"&gt;&lt;rect x="9" y="9" width="13" height="13" rx="2" ry="2"/&gt;&lt;path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/&gt;&lt;/svg&gt;
     &lt;/button&gt;
-    &lt;button class="sui-speed-dial-action" data-label="Edit"&gt;
+    &lt;button type="button" class="sui-speed-dial-action" data-label="Edit"&gt;
       &lt;svg viewBox="0 0 24 24"&gt;&lt;path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/&gt;&lt;path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/&gt;&lt;/svg&gt;
     &lt;/button&gt;
-    &lt;button class="sui-speed-dial-action" data-label="Delete"&gt;
+    &lt;button type="button" class="sui-speed-dial-action" data-label="Delete"&gt;
       &lt;svg viewBox="0 0 24 24"&gt;&lt;polyline points="3 6 5 6 21 6"/&gt;&lt;path d="M19 6v14a2 2 0 01-2 2H7a2 2 0 01-2-2V6m3 0V4a2 2 0 012-2h4a2 2 0 012 2v2"/&gt;&lt;/svg&gt;
     &lt;/button&gt;
   &lt;/div&gt;
@@ -218,35 +299,85 @@ toc:
 <!-- Colors -->
 <div class="pg-section" id="section-5">
   <h3 class="pg-section-title">Colors</h3>
-  <div class="pg-section-row">
-    <div style="display:flex;flex-wrap:wrap;gap:32px;align-items:flex-end;">
-      <div style="position:relative;height:200px;width:80px;">
-        <div style="font-size:12px;color:var(--sui-text-muted);margin-bottom:4px;text-align:center;">Primary</div>
-        <div class="sui-speed-dial sui-speed-dial-relative" style="position:absolute;bottom:16px;left:50%;transform:translateX(-50%);">
-          <button class="sui-speed-dial-trigger">{{ plusSvg | safe }}</button>
+  <div class="pg-section-row" style="align-items:flex-start;">
+    <div style="display:flex;flex-wrap:wrap;gap:32px;align-items:flex-start;">
+      <div style="display:flex;flex-direction:column;align-items:center;gap:8px;">
+        <div style="font-size:12px;color:var(--sui-text-muted);">Primary</div>
+        <div class="sui-speed-dial sui-speed-dial-relative">
+          <button type="button" class="sui-speed-dial-trigger" aria-expanded="false" aria-label="Open actions">
+            <svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          </button>
           <div class="sui-speed-dial-actions">
-            <button class="sui-speed-dial-action">{{ mailSvg | safe }}</button>
-            <button class="sui-speed-dial-action">{{ editSvg | safe }}</button>
+            <button type="button" class="sui-speed-dial-action" aria-label="Compose">
+              <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22 6 12 13 2 6"/></svg>
+            </button>
+            <button type="button" class="sui-speed-dial-action" aria-label="Edit">
+              <svg viewBox="0 0 24 24"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+            </button>
           </div>
         </div>
       </div>
-      <div style="position:relative;height:200px;width:80px;">
-        <div style="font-size:12px;color:var(--sui-text-muted);margin-bottom:4px;text-align:center;">Success</div>
-        <div class="sui-speed-dial sui-speed-dial-relative sui-speed-dial-success" style="position:absolute;bottom:16px;left:50%;transform:translateX(-50%);">
-          <button class="sui-speed-dial-trigger">{{ plusSvg | safe }}</button>
+      <div style="display:flex;flex-direction:column;align-items:center;gap:8px;">
+        <div style="font-size:12px;color:var(--sui-text-muted);">Success</div>
+        <div class="sui-speed-dial sui-speed-dial-relative sui-speed-dial-success">
+          <button type="button" class="sui-speed-dial-trigger" aria-expanded="false" aria-label="Open actions">
+            <svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          </button>
           <div class="sui-speed-dial-actions">
-            <button class="sui-speed-dial-action">{{ mailSvg | safe }}</button>
-            <button class="sui-speed-dial-action">{{ editSvg | safe }}</button>
+            <button type="button" class="sui-speed-dial-action" aria-label="Compose">
+              <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22 6 12 13 2 6"/></svg>
+            </button>
+            <button type="button" class="sui-speed-dial-action" aria-label="Edit">
+              <svg viewBox="0 0 24 24"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+            </button>
           </div>
         </div>
       </div>
-      <div style="position:relative;height:200px;width:80px;">
-        <div style="font-size:12px;color:var(--sui-text-muted);margin-bottom:4px;text-align:center;">Danger</div>
-        <div class="sui-speed-dial sui-speed-dial-relative sui-speed-dial-danger" style="position:absolute;bottom:16px;left:50%;transform:translateX(-50%);">
-          <button class="sui-speed-dial-trigger">{{ plusSvg | safe }}</button>
+      <div style="display:flex;flex-direction:column;align-items:center;gap:8px;">
+        <div style="font-size:12px;color:var(--sui-text-muted);">Danger</div>
+        <div class="sui-speed-dial sui-speed-dial-relative sui-speed-dial-danger">
+          <button type="button" class="sui-speed-dial-trigger" aria-expanded="false" aria-label="Open actions">
+            <svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          </button>
           <div class="sui-speed-dial-actions">
-            <button class="sui-speed-dial-action">{{ mailSvg | safe }}</button>
-            <button class="sui-speed-dial-action">{{ editSvg | safe }}</button>
+            <button type="button" class="sui-speed-dial-action" aria-label="Compose">
+              <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22 6 12 13 2 6"/></svg>
+            </button>
+            <button type="button" class="sui-speed-dial-action" aria-label="Edit">
+              <svg viewBox="0 0 24 24"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;align-items:center;gap:8px;">
+        <div style="font-size:12px;color:var(--sui-text-muted);">Warning</div>
+        <div class="sui-speed-dial sui-speed-dial-relative sui-speed-dial-warning">
+          <button type="button" class="sui-speed-dial-trigger" aria-expanded="false" aria-label="Open actions">
+            <svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          </button>
+          <div class="sui-speed-dial-actions">
+            <button type="button" class="sui-speed-dial-action" aria-label="Compose">
+              <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22 6 12 13 2 6"/></svg>
+            </button>
+            <button type="button" class="sui-speed-dial-action" aria-label="Edit">
+              <svg viewBox="0 0 24 24"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;align-items:center;gap:8px;">
+        <div style="font-size:12px;color:var(--sui-text-muted);">Info</div>
+        <div class="sui-speed-dial sui-speed-dial-relative sui-speed-dial-info">
+          <button type="button" class="sui-speed-dial-trigger" aria-expanded="false" aria-label="Open actions">
+            <svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          </button>
+          <div class="sui-speed-dial-actions">
+            <button type="button" class="sui-speed-dial-action" aria-label="Compose">
+              <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22 6 12 13 2 6"/></svg>
+            </button>
+            <button type="button" class="sui-speed-dial-action" aria-label="Edit">
+              <svg viewBox="0 0 24 24"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+            </button>
           </div>
         </div>
       </div>
@@ -254,24 +385,79 @@ toc:
   </div>
   <div class="pg-code-wrap">
     <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
-    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;!-- Primary (default) --&gt;
-&lt;div class="sui-speed-dial sui-speed-dial-br"&gt;
-  &lt;button class="sui-speed-dial-trigger"&gt;
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;!-- Primary --&gt;
+&lt;div class="sui-speed-dial sui-speed-dial-relative"&gt;
+  &lt;button type="button" class="sui-speed-dial-trigger" aria-expanded="false" aria-label="Open actions"&gt;
     &lt;svg viewBox="0 0 24 24"&gt;&lt;line x1="12" y1="5" x2="12" y2="19"/&gt;&lt;line x1="5" y1="12" x2="19" y2="12"/&gt;&lt;/svg&gt;
   &lt;/button&gt;
   &lt;div class="sui-speed-dial-actions"&gt;
-    &lt;button class="sui-speed-dial-action"&gt;&lt;!-- icon --&gt;&lt;/button&gt;
+    &lt;button type="button" class="sui-speed-dial-action" aria-label="Compose"&gt;
+      &lt;svg viewBox="0 0 24 24"&gt;&lt;path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/&gt;&lt;polyline points="22 6 12 13 2 6"/&gt;&lt;/svg&gt;
+    &lt;/button&gt;
+    &lt;button type="button" class="sui-speed-dial-action" aria-label="Edit"&gt;
+      &lt;svg viewBox="0 0 24 24"&gt;&lt;path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/&gt;&lt;path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/&gt;&lt;/svg&gt;
+    &lt;/button&gt;
   &lt;/div&gt;
 &lt;/div&gt;
 
 &lt;!-- Success --&gt;
-&lt;div class="sui-speed-dial sui-speed-dial-br sui-speed-dial-success"&gt;
-  &lt;!-- same structure --&gt;
+&lt;div class="sui-speed-dial sui-speed-dial-relative sui-speed-dial-success"&gt;
+  &lt;button type="button" class="sui-speed-dial-trigger" aria-expanded="false" aria-label="Open actions"&gt;
+    &lt;svg viewBox="0 0 24 24"&gt;&lt;line x1="12" y1="5" x2="12" y2="19"/&gt;&lt;line x1="5" y1="12" x2="19" y2="12"/&gt;&lt;/svg&gt;
+  &lt;/button&gt;
+  &lt;div class="sui-speed-dial-actions"&gt;
+    &lt;button type="button" class="sui-speed-dial-action" aria-label="Compose"&gt;
+      &lt;svg viewBox="0 0 24 24"&gt;&lt;path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/&gt;&lt;polyline points="22 6 12 13 2 6"/&gt;&lt;/svg&gt;
+    &lt;/button&gt;
+    &lt;button type="button" class="sui-speed-dial-action" aria-label="Edit"&gt;
+      &lt;svg viewBox="0 0 24 24"&gt;&lt;path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/&gt;&lt;path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/&gt;&lt;/svg&gt;
+    &lt;/button&gt;
+  &lt;/div&gt;
 &lt;/div&gt;
 
 &lt;!-- Danger --&gt;
-&lt;div class="sui-speed-dial sui-speed-dial-br sui-speed-dial-danger"&gt;
-  &lt;!-- same structure --&gt;
+&lt;div class="sui-speed-dial sui-speed-dial-relative sui-speed-dial-danger"&gt;
+  &lt;button type="button" class="sui-speed-dial-trigger" aria-expanded="false" aria-label="Open actions"&gt;
+    &lt;svg viewBox="0 0 24 24"&gt;&lt;line x1="12" y1="5" x2="12" y2="19"/&gt;&lt;line x1="5" y1="12" x2="19" y2="12"/&gt;&lt;/svg&gt;
+  &lt;/button&gt;
+  &lt;div class="sui-speed-dial-actions"&gt;
+    &lt;button type="button" class="sui-speed-dial-action" aria-label="Compose"&gt;
+      &lt;svg viewBox="0 0 24 24"&gt;&lt;path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/&gt;&lt;polyline points="22 6 12 13 2 6"/&gt;&lt;/svg&gt;
+    &lt;/button&gt;
+    &lt;button type="button" class="sui-speed-dial-action" aria-label="Edit"&gt;
+      &lt;svg viewBox="0 0 24 24"&gt;&lt;path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/&gt;&lt;path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/&gt;&lt;/svg&gt;
+    &lt;/button&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- Warning --&gt;
+&lt;div class="sui-speed-dial sui-speed-dial-relative sui-speed-dial-warning"&gt;
+  &lt;button type="button" class="sui-speed-dial-trigger" aria-expanded="false" aria-label="Open actions"&gt;
+    &lt;svg viewBox="0 0 24 24"&gt;&lt;line x1="12" y1="5" x2="12" y2="19"/&gt;&lt;line x1="5" y1="12" x2="19" y2="12"/&gt;&lt;/svg&gt;
+  &lt;/button&gt;
+  &lt;div class="sui-speed-dial-actions"&gt;
+    &lt;button type="button" class="sui-speed-dial-action" aria-label="Compose"&gt;
+      &lt;svg viewBox="0 0 24 24"&gt;&lt;path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/&gt;&lt;polyline points="22 6 12 13 2 6"/&gt;&lt;/svg&gt;
+    &lt;/button&gt;
+    &lt;button type="button" class="sui-speed-dial-action" aria-label="Edit"&gt;
+      &lt;svg viewBox="0 0 24 24"&gt;&lt;path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/&gt;&lt;path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/&gt;&lt;/svg&gt;
+    &lt;/button&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- Info --&gt;
+&lt;div class="sui-speed-dial sui-speed-dial-relative sui-speed-dial-info"&gt;
+  &lt;button type="button" class="sui-speed-dial-trigger" aria-expanded="false" aria-label="Open actions"&gt;
+    &lt;svg viewBox="0 0 24 24"&gt;&lt;line x1="12" y1="5" x2="12" y2="19"/&gt;&lt;line x1="5" y1="12" x2="19" y2="12"/&gt;&lt;/svg&gt;
+  &lt;/button&gt;
+  &lt;div class="sui-speed-dial-actions"&gt;
+    &lt;button type="button" class="sui-speed-dial-action" aria-label="Compose"&gt;
+      &lt;svg viewBox="0 0 24 24"&gt;&lt;path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/&gt;&lt;polyline points="22 6 12 13 2 6"/&gt;&lt;/svg&gt;
+    &lt;/button&gt;
+    &lt;button type="button" class="sui-speed-dial-action" aria-label="Edit"&gt;
+      &lt;svg viewBox="0 0 24 24"&gt;&lt;path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/&gt;&lt;path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/&gt;&lt;/svg&gt;
+    &lt;/button&gt;
+  &lt;/div&gt;
 &lt;/div&gt;</pre></div>
   </div>
 </div>
@@ -279,35 +465,53 @@ toc:
 <!-- Sizes -->
 <div class="pg-section" id="section-6">
   <h3 class="pg-section-title">Sizes</h3>
-  <div class="pg-section-row">
-    <div style="display:flex;flex-wrap:wrap;gap:32px;align-items:flex-end;">
-      <div style="position:relative;height:200px;width:80px;">
-        <div style="font-size:12px;color:var(--sui-text-muted);margin-bottom:4px;text-align:center;">Small</div>
-        <div class="sui-speed-dial sui-speed-dial-relative sui-speed-dial-sm" style="position:absolute;bottom:16px;left:50%;transform:translateX(-50%);">
-          <button class="sui-speed-dial-trigger">{{ plusSvg | safe }}</button>
+  <div class="pg-section-row" style="align-items:flex-start;">
+    <div style="display:flex;flex-wrap:wrap;gap:32px;align-items:flex-start;">
+      <div style="display:flex;flex-direction:column;align-items:center;gap:8px;">
+        <div style="font-size:12px;color:var(--sui-text-muted);">Small</div>
+        <div class="sui-speed-dial sui-speed-dial-relative sui-speed-dial-sm">
+          <button type="button" class="sui-speed-dial-trigger" aria-expanded="false" aria-label="Open actions">
+            <svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          </button>
           <div class="sui-speed-dial-actions">
-            <button class="sui-speed-dial-action">{{ mailSvg | safe }}</button>
-            <button class="sui-speed-dial-action">{{ editSvg | safe }}</button>
+            <button type="button" class="sui-speed-dial-action" aria-label="Compose">
+              <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22 6 12 13 2 6"/></svg>
+            </button>
+            <button type="button" class="sui-speed-dial-action" aria-label="Edit">
+              <svg viewBox="0 0 24 24"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+            </button>
           </div>
         </div>
       </div>
-      <div style="position:relative;height:220px;width:80px;">
-        <div style="font-size:12px;color:var(--sui-text-muted);margin-bottom:4px;text-align:center;">Default</div>
-        <div class="sui-speed-dial sui-speed-dial-relative" style="position:absolute;bottom:16px;left:50%;transform:translateX(-50%);">
-          <button class="sui-speed-dial-trigger">{{ plusSvg | safe }}</button>
+      <div style="display:flex;flex-direction:column;align-items:center;gap:8px;">
+        <div style="font-size:12px;color:var(--sui-text-muted);">Default</div>
+        <div class="sui-speed-dial sui-speed-dial-relative">
+          <button type="button" class="sui-speed-dial-trigger" aria-expanded="false" aria-label="Open actions">
+            <svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          </button>
           <div class="sui-speed-dial-actions">
-            <button class="sui-speed-dial-action">{{ mailSvg | safe }}</button>
-            <button class="sui-speed-dial-action">{{ editSvg | safe }}</button>
+            <button type="button" class="sui-speed-dial-action" aria-label="Compose">
+              <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22 6 12 13 2 6"/></svg>
+            </button>
+            <button type="button" class="sui-speed-dial-action" aria-label="Edit">
+              <svg viewBox="0 0 24 24"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+            </button>
           </div>
         </div>
       </div>
-      <div style="position:relative;height:260px;width:80px;">
-        <div style="font-size:12px;color:var(--sui-text-muted);margin-bottom:4px;text-align:center;">Large</div>
-        <div class="sui-speed-dial sui-speed-dial-relative sui-speed-dial-lg" style="position:absolute;bottom:16px;left:50%;transform:translateX(-50%);">
-          <button class="sui-speed-dial-trigger">{{ plusSvg | safe }}</button>
+      <div style="display:flex;flex-direction:column;align-items:center;gap:8px;">
+        <div style="font-size:12px;color:var(--sui-text-muted);">Large</div>
+        <div class="sui-speed-dial sui-speed-dial-relative sui-speed-dial-lg">
+          <button type="button" class="sui-speed-dial-trigger" aria-expanded="false" aria-label="Open actions">
+            <svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          </button>
           <div class="sui-speed-dial-actions">
-            <button class="sui-speed-dial-action">{{ mailSvg | safe }}</button>
-            <button class="sui-speed-dial-action">{{ editSvg | safe }}</button>
+            <button type="button" class="sui-speed-dial-action" aria-label="Compose">
+              <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22 6 12 13 2 6"/></svg>
+            </button>
+            <button type="button" class="sui-speed-dial-action" aria-label="Edit">
+              <svg viewBox="0 0 24 24"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+            </button>
           </div>
         </div>
       </div>
@@ -316,23 +520,70 @@ toc:
   <div class="pg-code-wrap">
     <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
     <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;!-- Small --&gt;
-&lt;div class="sui-speed-dial sui-speed-dial-br sui-speed-dial-sm"&gt;
-  &lt;button class="sui-speed-dial-trigger"&gt;
+&lt;div class="sui-speed-dial sui-speed-dial-relative sui-speed-dial-sm"&gt;
+  &lt;button type="button" class="sui-speed-dial-trigger" aria-expanded="false" aria-label="Open actions"&gt;
     &lt;svg viewBox="0 0 24 24"&gt;&lt;line x1="12" y1="5" x2="12" y2="19"/&gt;&lt;line x1="5" y1="12" x2="19" y2="12"/&gt;&lt;/svg&gt;
   &lt;/button&gt;
   &lt;div class="sui-speed-dial-actions"&gt;
-    &lt;button class="sui-speed-dial-action"&gt;&lt;!-- icon --&gt;&lt;/button&gt;
+    &lt;button type="button" class="sui-speed-dial-action" aria-label="Compose"&gt;
+      &lt;svg viewBox="0 0 24 24"&gt;&lt;path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/&gt;&lt;polyline points="22 6 12 13 2 6"/&gt;&lt;/svg&gt;
+    &lt;/button&gt;
+    &lt;button type="button" class="sui-speed-dial-action" aria-label="Edit"&gt;
+      &lt;svg viewBox="0 0 24 24"&gt;&lt;path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/&gt;&lt;path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/&gt;&lt;/svg&gt;
+    &lt;/button&gt;
   &lt;/div&gt;
 &lt;/div&gt;
 
 &lt;!-- Default --&gt;
-&lt;div class="sui-speed-dial sui-speed-dial-br"&gt;
-  &lt;!-- same structure --&gt;
+&lt;div class="sui-speed-dial sui-speed-dial-relative"&gt;
+  &lt;button type="button" class="sui-speed-dial-trigger" aria-expanded="false" aria-label="Open actions"&gt;
+    &lt;svg viewBox="0 0 24 24"&gt;&lt;line x1="12" y1="5" x2="12" y2="19"/&gt;&lt;line x1="5" y1="12" x2="19" y2="12"/&gt;&lt;/svg&gt;
+  &lt;/button&gt;
+  &lt;div class="sui-speed-dial-actions"&gt;
+    &lt;button type="button" class="sui-speed-dial-action" aria-label="Compose"&gt;
+      &lt;svg viewBox="0 0 24 24"&gt;&lt;path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/&gt;&lt;polyline points="22 6 12 13 2 6"/&gt;&lt;/svg&gt;
+    &lt;/button&gt;
+    &lt;button type="button" class="sui-speed-dial-action" aria-label="Edit"&gt;
+      &lt;svg viewBox="0 0 24 24"&gt;&lt;path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/&gt;&lt;path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/&gt;&lt;/svg&gt;
+    &lt;/button&gt;
+  &lt;/div&gt;
 &lt;/div&gt;
 
 &lt;!-- Large --&gt;
-&lt;div class="sui-speed-dial sui-speed-dial-br sui-speed-dial-lg"&gt;
-  &lt;!-- same structure --&gt;
+&lt;div class="sui-speed-dial sui-speed-dial-relative sui-speed-dial-lg"&gt;
+  &lt;button type="button" class="sui-speed-dial-trigger" aria-expanded="false" aria-label="Open actions"&gt;
+    &lt;svg viewBox="0 0 24 24"&gt;&lt;line x1="12" y1="5" x2="12" y2="19"/&gt;&lt;line x1="5" y1="12" x2="19" y2="12"/&gt;&lt;/svg&gt;
+  &lt;/button&gt;
+  &lt;div class="sui-speed-dial-actions"&gt;
+    &lt;button type="button" class="sui-speed-dial-action" aria-label="Compose"&gt;
+      &lt;svg viewBox="0 0 24 24"&gt;&lt;path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/&gt;&lt;polyline points="22 6 12 13 2 6"/&gt;&lt;/svg&gt;
+    &lt;/button&gt;
+    &lt;button type="button" class="sui-speed-dial-action" aria-label="Edit"&gt;
+      &lt;svg viewBox="0 0 24 24"&gt;&lt;path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/&gt;&lt;path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/&gt;&lt;/svg&gt;
+    &lt;/button&gt;
+  &lt;/div&gt;
 &lt;/div&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Reference -->
+<div class="pg-section" id="section-7">
+  <h3 class="pg-section-title">Reference</h3>
+  <div class="docs-table-wrap">
+    <table class="sui-table sui-table-compact">
+      <thead><tr><th scope="col">Class / Attribute / Key</th><th scope="col">Description</th></tr></thead>
+      <tbody>
+        <tr><td><code>sui-speed-dial-br</code>, <code>sui-speed-dial-bl</code>, <code>sui-speed-dial-tr</code>, <code>sui-speed-dial-tl</code></td><td>Fixes the dial 24px from a viewport corner (bottom-right, bottom-left, top-right, top-left); left and right flip in RTL.</td></tr>
+        <tr><td><code>sui-speed-dial-relative</code></td><td>Keeps the dial in the page flow instead of fixed to the viewport, as in these demos.</td></tr>
+        <tr><td><code>sui-speed-dial-down</code>, <code>sui-speed-dial-left</code>, <code>sui-speed-dial-right</code></td><td>Direction the actions open (default up).</td></tr>
+        <tr><td><code>sui-speed-dial-hover</code></td><td>Opens on hover as well as on click.</td></tr>
+        <tr><td><code>sui-speed-dial-sm</code>, <code>sui-speed-dial-lg</code></td><td>Smaller or larger trigger and actions.</td></tr>
+        <tr><td><code>sui-speed-dial-success</code>, <code>sui-speed-dial-danger</code>, <code>sui-speed-dial-warning</code>, <code>sui-speed-dial-info</code></td><td>Trigger colour (default primary).</td></tr>
+        <tr><td><code>data-label</code></td><td>On an action: tooltip text shown on hover and focus.</td></tr>
+        <tr><td><code>aria-label</code></td><td>Accessible name for icon-only actions without <code>data-label</code>.</td></tr>
+        <tr><td><code>.open</code></td><td>Set by softui.js when the trigger is clicked, which also updates <code>aria-expanded</code>; clicking an action or outside the dial removes it.</td></tr>
+        <tr><td><kbd class="sui-kbd-inline">Esc</kbd></td><td>Closes an open dial and returns focus to its trigger.</td></tr>
+      </tbody>
+    </table>
   </div>
 </div>

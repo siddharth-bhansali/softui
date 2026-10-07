@@ -15,6 +15,7 @@ toc:
   - Custom Icons
   - Raised
   - Inset
+  - Reference
 ---
 
 {% set starSvg %}<svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>{% endset %}
@@ -223,7 +224,8 @@ toc:
   </div>
   <div class="pg-code-wrap">
     <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
-    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-rating sui-rating-primary" data-value="4"&gt;
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;!-- Default (warning) --&gt;
+&lt;div class="sui-rating" data-value="4"&gt;
   &lt;span class="sui-rating-star active"&gt;
     &lt;svg viewBox="0 0 24 24"&gt;&lt;path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14 2 9.27l6.91-1.01L12 2z"/&gt;&lt;/svg&gt;
   &lt;/span&gt;
@@ -241,7 +243,81 @@ toc:
   &lt;/span&gt;
 &lt;/div&gt;
 
-&lt;!-- Color variants: sui-rating-primary, sui-rating-success, sui-rating-danger, sui-rating-info --&gt;</pre></div>
+&lt;!-- Primary --&gt;
+&lt;div class="sui-rating sui-rating-primary" data-value="4"&gt;
+  &lt;span class="sui-rating-star active"&gt;
+    &lt;svg viewBox="0 0 24 24"&gt;&lt;path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14 2 9.27l6.91-1.01L12 2z"/&gt;&lt;/svg&gt;
+  &lt;/span&gt;
+  &lt;span class="sui-rating-star active"&gt;
+    &lt;svg viewBox="0 0 24 24"&gt;&lt;path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14 2 9.27l6.91-1.01L12 2z"/&gt;&lt;/svg&gt;
+  &lt;/span&gt;
+  &lt;span class="sui-rating-star active"&gt;
+    &lt;svg viewBox="0 0 24 24"&gt;&lt;path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14 2 9.27l6.91-1.01L12 2z"/&gt;&lt;/svg&gt;
+  &lt;/span&gt;
+  &lt;span class="sui-rating-star active"&gt;
+    &lt;svg viewBox="0 0 24 24"&gt;&lt;path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14 2 9.27l6.91-1.01L12 2z"/&gt;&lt;/svg&gt;
+  &lt;/span&gt;
+  &lt;span class="sui-rating-star"&gt;
+    &lt;svg viewBox="0 0 24 24"&gt;&lt;path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14 2 9.27l6.91-1.01L12 2z"/&gt;&lt;/svg&gt;
+  &lt;/span&gt;
+&lt;/div&gt;
+
+&lt;!-- Success --&gt;
+&lt;div class="sui-rating sui-rating-success" data-value="4"&gt;
+  &lt;span class="sui-rating-star active"&gt;
+    &lt;svg viewBox="0 0 24 24"&gt;&lt;path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14 2 9.27l6.91-1.01L12 2z"/&gt;&lt;/svg&gt;
+  &lt;/span&gt;
+  &lt;span class="sui-rating-star active"&gt;
+    &lt;svg viewBox="0 0 24 24"&gt;&lt;path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14 2 9.27l6.91-1.01L12 2z"/&gt;&lt;/svg&gt;
+  &lt;/span&gt;
+  &lt;span class="sui-rating-star active"&gt;
+    &lt;svg viewBox="0 0 24 24"&gt;&lt;path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14 2 9.27l6.91-1.01L12 2z"/&gt;&lt;/svg&gt;
+  &lt;/span&gt;
+  &lt;span class="sui-rating-star active"&gt;
+    &lt;svg viewBox="0 0 24 24"&gt;&lt;path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14 2 9.27l6.91-1.01L12 2z"/&gt;&lt;/svg&gt;
+  &lt;/span&gt;
+  &lt;span class="sui-rating-star"&gt;
+    &lt;svg viewBox="0 0 24 24"&gt;&lt;path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14 2 9.27l6.91-1.01L12 2z"/&gt;&lt;/svg&gt;
+  &lt;/span&gt;
+&lt;/div&gt;
+
+&lt;!-- Danger --&gt;
+&lt;div class="sui-rating sui-rating-danger" data-value="3"&gt;
+  &lt;span class="sui-rating-star active"&gt;
+    &lt;svg viewBox="0 0 24 24"&gt;&lt;path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14 2 9.27l6.91-1.01L12 2z"/&gt;&lt;/svg&gt;
+  &lt;/span&gt;
+  &lt;span class="sui-rating-star active"&gt;
+    &lt;svg viewBox="0 0 24 24"&gt;&lt;path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14 2 9.27l6.91-1.01L12 2z"/&gt;&lt;/svg&gt;
+  &lt;/span&gt;
+  &lt;span class="sui-rating-star active"&gt;
+    &lt;svg viewBox="0 0 24 24"&gt;&lt;path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14 2 9.27l6.91-1.01L12 2z"/&gt;&lt;/svg&gt;
+  &lt;/span&gt;
+  &lt;span class="sui-rating-star"&gt;
+    &lt;svg viewBox="0 0 24 24"&gt;&lt;path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14 2 9.27l6.91-1.01L12 2z"/&gt;&lt;/svg&gt;
+  &lt;/span&gt;
+  &lt;span class="sui-rating-star"&gt;
+    &lt;svg viewBox="0 0 24 24"&gt;&lt;path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14 2 9.27l6.91-1.01L12 2z"/&gt;&lt;/svg&gt;
+  &lt;/span&gt;
+&lt;/div&gt;
+
+&lt;!-- Info --&gt;
+&lt;div class="sui-rating sui-rating-info" data-value="5"&gt;
+  &lt;span class="sui-rating-star active"&gt;
+    &lt;svg viewBox="0 0 24 24"&gt;&lt;path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14 2 9.27l6.91-1.01L12 2z"/&gt;&lt;/svg&gt;
+  &lt;/span&gt;
+  &lt;span class="sui-rating-star active"&gt;
+    &lt;svg viewBox="0 0 24 24"&gt;&lt;path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14 2 9.27l6.91-1.01L12 2z"/&gt;&lt;/svg&gt;
+  &lt;/span&gt;
+  &lt;span class="sui-rating-star active"&gt;
+    &lt;svg viewBox="0 0 24 24"&gt;&lt;path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14 2 9.27l6.91-1.01L12 2z"/&gt;&lt;/svg&gt;
+  &lt;/span&gt;
+  &lt;span class="sui-rating-star active"&gt;
+    &lt;svg viewBox="0 0 24 24"&gt;&lt;path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14 2 9.27l6.91-1.01L12 2z"/&gt;&lt;/svg&gt;
+  &lt;/span&gt;
+  &lt;span class="sui-rating-star active"&gt;
+    &lt;svg viewBox="0 0 24 24"&gt;&lt;path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14 2 9.27l6.91-1.01L12 2z"/&gt;&lt;/svg&gt;
+  &lt;/span&gt;
+&lt;/div&gt;</pre></div>
   </div>
 </div>
 
@@ -334,6 +410,24 @@ toc:
   &lt;span class="sui-rating-star active"&gt;
     &lt;svg viewBox="0 0 24 24"&gt;&lt;path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14 2 9.27l6.91-1.01L12 2z"/&gt;&lt;/svg&gt;
   &lt;/span&gt;
+&lt;/div&gt;
+
+&lt;div class="sui-rating sui-rating-readonly" data-value="2"&gt;
+  &lt;span class="sui-rating-star active"&gt;
+    &lt;svg viewBox="0 0 24 24"&gt;&lt;path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14 2 9.27l6.91-1.01L12 2z"/&gt;&lt;/svg&gt;
+  &lt;/span&gt;
+  &lt;span class="sui-rating-star active"&gt;
+    &lt;svg viewBox="0 0 24 24"&gt;&lt;path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14 2 9.27l6.91-1.01L12 2z"/&gt;&lt;/svg&gt;
+  &lt;/span&gt;
+  &lt;span class="sui-rating-star"&gt;
+    &lt;svg viewBox="0 0 24 24"&gt;&lt;path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14 2 9.27l6.91-1.01L12 2z"/&gt;&lt;/svg&gt;
+  &lt;/span&gt;
+  &lt;span class="sui-rating-star"&gt;
+    &lt;svg viewBox="0 0 24 24"&gt;&lt;path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14 2 9.27l6.91-1.01L12 2z"/&gt;&lt;/svg&gt;
+  &lt;/span&gt;
+  &lt;span class="sui-rating-star"&gt;
+    &lt;svg viewBox="0 0 24 24"&gt;&lt;path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14 2 9.27l6.91-1.01L12 2z"/&gt;&lt;/svg&gt;
+  &lt;/span&gt;
 &lt;/div&gt;</pre></div>
   </div>
 </div>
@@ -363,7 +457,7 @@ toc:
   </div>
   <div class="pg-code-wrap">
     <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
-    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-rating sui-rating-readonly" data-value="4"&gt;
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-rating" data-value="4"&gt;
   &lt;span class="sui-rating-star active"&gt;
     &lt;svg viewBox="0 0 24 24"&gt;&lt;path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14 2 9.27l6.91-1.01L12 2z"/&gt;&lt;/svg&gt;
   &lt;/span&gt;
@@ -380,6 +474,25 @@ toc:
     &lt;svg viewBox="0 0 24 24"&gt;&lt;path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14 2 9.27l6.91-1.01L12 2z"/&gt;&lt;/svg&gt;
   &lt;/span&gt;
   &lt;span class="sui-rating-count"&gt;4.0 (128 reviews)&lt;/span&gt;
+&lt;/div&gt;
+
+&lt;div class="sui-rating sui-rating-sm" data-value="5"&gt;
+  &lt;span class="sui-rating-star active"&gt;
+    &lt;svg viewBox="0 0 24 24"&gt;&lt;path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14 2 9.27l6.91-1.01L12 2z"/&gt;&lt;/svg&gt;
+  &lt;/span&gt;
+  &lt;span class="sui-rating-star active"&gt;
+    &lt;svg viewBox="0 0 24 24"&gt;&lt;path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14 2 9.27l6.91-1.01L12 2z"/&gt;&lt;/svg&gt;
+  &lt;/span&gt;
+  &lt;span class="sui-rating-star active"&gt;
+    &lt;svg viewBox="0 0 24 24"&gt;&lt;path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14 2 9.27l6.91-1.01L12 2z"/&gt;&lt;/svg&gt;
+  &lt;/span&gt;
+  &lt;span class="sui-rating-star active"&gt;
+    &lt;svg viewBox="0 0 24 24"&gt;&lt;path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14 2 9.27l6.91-1.01L12 2z"/&gt;&lt;/svg&gt;
+  &lt;/span&gt;
+  &lt;span class="sui-rating-star active"&gt;
+    &lt;svg viewBox="0 0 24 24"&gt;&lt;path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14 2 9.27l6.91-1.01L12 2z"/&gt;&lt;/svg&gt;
+  &lt;/span&gt;
+  &lt;span class="sui-rating-count"&gt;5.0 (42 reviews)&lt;/span&gt;
 &lt;/div&gt;</pre></div>
   </div>
 </div>
@@ -589,6 +702,63 @@ toc:
   &lt;span class="sui-rating-star"&gt;
     &lt;svg viewBox="0 0 24 24"&gt;&lt;path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14 2 9.27l6.91-1.01L12 2z"/&gt;&lt;/svg&gt;
   &lt;/span&gt;
+&lt;/div&gt;
+
+&lt;div class="sui-rating sui-rating-inset sui-rating-primary" data-value="3"&gt;
+  &lt;span class="sui-rating-star active"&gt;
+    &lt;svg viewBox="0 0 24 24"&gt;&lt;path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14 2 9.27l6.91-1.01L12 2z"/&gt;&lt;/svg&gt;
+  &lt;/span&gt;
+  &lt;span class="sui-rating-star active"&gt;
+    &lt;svg viewBox="0 0 24 24"&gt;&lt;path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14 2 9.27l6.91-1.01L12 2z"/&gt;&lt;/svg&gt;
+  &lt;/span&gt;
+  &lt;span class="sui-rating-star active"&gt;
+    &lt;svg viewBox="0 0 24 24"&gt;&lt;path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14 2 9.27l6.91-1.01L12 2z"/&gt;&lt;/svg&gt;
+  &lt;/span&gt;
+  &lt;span class="sui-rating-star"&gt;
+    &lt;svg viewBox="0 0 24 24"&gt;&lt;path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14 2 9.27l6.91-1.01L12 2z"/&gt;&lt;/svg&gt;
+  &lt;/span&gt;
+  &lt;span class="sui-rating-star"&gt;
+    &lt;svg viewBox="0 0 24 24"&gt;&lt;path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14 2 9.27l6.91-1.01L12 2z"/&gt;&lt;/svg&gt;
+  &lt;/span&gt;
+&lt;/div&gt;
+
+&lt;div class="sui-rating sui-rating-inset sui-rating-lg sui-rating-success" data-value="5"&gt;
+  &lt;span class="sui-rating-star active"&gt;
+    &lt;svg viewBox="0 0 24 24"&gt;&lt;path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14 2 9.27l6.91-1.01L12 2z"/&gt;&lt;/svg&gt;
+  &lt;/span&gt;
+  &lt;span class="sui-rating-star active"&gt;
+    &lt;svg viewBox="0 0 24 24"&gt;&lt;path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14 2 9.27l6.91-1.01L12 2z"/&gt;&lt;/svg&gt;
+  &lt;/span&gt;
+  &lt;span class="sui-rating-star active"&gt;
+    &lt;svg viewBox="0 0 24 24"&gt;&lt;path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14 2 9.27l6.91-1.01L12 2z"/&gt;&lt;/svg&gt;
+  &lt;/span&gt;
+  &lt;span class="sui-rating-star active"&gt;
+    &lt;svg viewBox="0 0 24 24"&gt;&lt;path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14 2 9.27l6.91-1.01L12 2z"/&gt;&lt;/svg&gt;
+  &lt;/span&gt;
+  &lt;span class="sui-rating-star active"&gt;
+    &lt;svg viewBox="0 0 24 24"&gt;&lt;path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14 2 9.27l6.91-1.01L12 2z"/&gt;&lt;/svg&gt;
+  &lt;/span&gt;
 &lt;/div&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Reference -->
+<div class="pg-section" id="section-10">
+  <h3 class="pg-section-title">Reference</h3>
+  <div class="docs-table-wrap">
+    <table class="sui-table sui-table-compact">
+      <thead>
+        <tr><th scope="col" style="width:40%;">Key / Event / Class</th><th scope="col">Description</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><kbd class="sui-kbd-inline">&rarr;</kbd> / <kbd class="sui-kbd-inline">&uarr;</kbd></td><td>Increase by one star (half with <code>sui-rating-half</code>). Left/right mirror in RTL.</td></tr>
+        <tr><td><kbd class="sui-kbd-inline">&larr;</kbd> / <kbd class="sui-kbd-inline">&darr;</kbd></td><td>Decrease by one star.</td></tr>
+        <tr><td><kbd class="sui-kbd-inline">Home</kbd> / <kbd class="sui-kbd-inline">End</kbd></td><td>Set 0 / the maximum.</td></tr>
+        <tr><td><kbd class="sui-kbd-inline">0</kbd>&ndash;<kbd class="sui-kbd-inline">9</kbd></td><td>Set the value directly.</td></tr>
+        <tr><td><code>sui-rating-change</code></td><td>Fires on each change with <code>detail.value</code>.</td></tr>
+        <tr><td><code>sui-rating-readonly</code></td><td>Not interactive; announced as an image, e.g. &ldquo;Rated 3 of 5&rdquo;.</td></tr>
+        <tr><td><code>SoftUI.init(el)</code></td><td>Adds roles and <code>tabindex</code> to markup inserted after page load.</td></tr>
+      </tbody>
+    </table>
   </div>
 </div>

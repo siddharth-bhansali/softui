@@ -1,12 +1,14 @@
 ---
 layout: component.njk
 title: Text & Colors
-description: Text alignment and color utility classes.
+description: Text alignment, color, font family and numeric utility classes.
 componentId: text
 hasControls: false
 toc:
   - Text Colors
   - Text Alignment
+  - Font Family & Numerals
+  - Reference
 ---
 
 <!-- Text Colors -->
@@ -54,5 +56,76 @@ toc:
     <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-text-left"&gt;Left aligned text&lt;/div&gt;
 &lt;div class="sui-text-center"&gt;Center aligned text&lt;/div&gt;
 &lt;div class="sui-text-right"&gt;Right aligned text&lt;/div&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Font Family & Numerals -->
+<div class="pg-section" id="section-3">
+  <h3 class="pg-section-title">Font Family & Numerals</h3>
+  <div class="pg-section-row">
+    <div style="display:flex;flex-direction:column;gap:8px;">
+      <span class="sui-font-sans">sui-font-sans — Plus Jakarta Sans</span>
+      <span class="sui-font-mono">sui-font-mono — const x = 42;</span>
+    </div>
+  </div>
+  <div class="pg-section-row">
+    <div style="display:flex;gap:16px;flex-wrap:wrap;">
+      <div class="sui-raised sui-text-right" style="border-radius:12px;padding:16px;min-width:140px;">
+        <small class="sui-text-muted">Default</small>
+        <div>1,111.11</div>
+        <div>8,888.88</div>
+        <div>4,701.10</div>
+      </div>
+      <div class="sui-raised sui-text-right sui-tabular-nums" style="border-radius:12px;padding:16px;min-width:140px;">
+        <small class="sui-text-muted">sui-tabular-nums</small>
+        <div>1,111.11</div>
+        <div>8,888.88</div>
+        <div>4,701.10</div>
+      </div>
+    </div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div style="display:flex;flex-direction:column;gap:8px;"&gt;
+  &lt;span class="sui-font-sans"&gt;sui-font-sans — Plus Jakarta Sans&lt;/span&gt;
+  &lt;span class="sui-font-mono"&gt;sui-font-mono — const x = 42;&lt;/span&gt;
+&lt;/div&gt;
+
+&lt;div style="display:flex;gap:16px;flex-wrap:wrap;"&gt;
+  &lt;div class="sui-raised sui-text-right" style="border-radius:12px;padding:16px;min-width:140px;"&gt;
+    &lt;small class="sui-text-muted"&gt;Default&lt;/small&gt;
+    &lt;div&gt;1,111.11&lt;/div&gt;
+    &lt;div&gt;8,888.88&lt;/div&gt;
+    &lt;div&gt;4,701.10&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="sui-raised sui-text-right sui-tabular-nums" style="border-radius:12px;padding:16px;min-width:140px;"&gt;
+    &lt;small class="sui-text-muted"&gt;sui-tabular-nums&lt;/small&gt;
+    &lt;div&gt;1,111.11&lt;/div&gt;
+    &lt;div&gt;8,888.88&lt;/div&gt;
+    &lt;div&gt;4,701.10&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Reference -->
+<div class="pg-section" id="section-4">
+  <h3 class="pg-section-title">Reference</h3>
+  <div class="docs-table-wrap">
+    <table class="sui-table sui-table-compact">
+      <thead>
+        <tr><th scope="col" style="width:40%;">Class</th><th scope="col">Description</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><code>sui-text-primary</code>, <code>-success</code>, <code>-danger</code>, <code>-warning</code>, <code>-info</code></td><td>Colour from the matching <code>--sui-*-text</code> token, at least 4.5:1 on every theme background.</td></tr>
+        <tr><td><code>sui-text-muted</code></td><td>Colour from <code>--sui-text-muted</code>.</td></tr>
+        <tr><td><code>sui-text-left</code></td><td><code>text-align: start</code>; right-aligned in RTL.</td></tr>
+        <tr><td><code>sui-text-center</code></td><td><code>text-align: center</code>.</td></tr>
+        <tr><td><code>sui-text-right</code></td><td><code>text-align: end</code>; left-aligned in RTL.</td></tr>
+        <tr><td><code>sui-font-sans</code>, <code>sui-font-mono</code></td><td>Use the <code>--sui-font</code> / <code>--sui-font-mono</code> stacks; override a component's own font.</td></tr>
+        <tr><td><code>sui-tabular-nums</code></td><td>Equal-width digits, so columns of numbers line up.</td></tr>
+        <tr><td><code>sui-proportional-nums</code></td><td>Back to proportional digits.</td></tr>
+      </tbody>
+    </table>
   </div>
 </div>

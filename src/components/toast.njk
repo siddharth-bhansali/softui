@@ -9,6 +9,7 @@ toc:
   - Default
   - Variants
   - Positions
+  - Reference
 ---
 
 <!-- Default -->
@@ -62,13 +63,13 @@ toc:
 
 SoftUI.toast({
   title: 'Error',
-  message: 'Something went wrong.',
+  message: 'Something went wrong. Please try again.',
   variant: 'danger'
 });
 
 SoftUI.toast({
   title: 'Warning',
-  message: 'Your session will expire soon.',
+  message: 'Your session will expire in 5 minutes.',
   variant: 'warning'
 });
 
@@ -93,11 +94,28 @@ SoftUI.toast({
   </div>
   <div class="pg-code-wrap">
     <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
-    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>// Position options: 'tr', 'tl', 'br', 'bl', 'tc', 'bc'
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>SoftUI.toast({
+  title: 'Top Right',
+  message: 'Default position.',
+  position: 'tr'
+});
+
 SoftUI.toast({
   title: 'Top Left',
   message: 'Slides in from the left.',
   position: 'tl'
+});
+
+SoftUI.toast({
+  title: 'Bottom Right',
+  message: 'Bottom right corner.',
+  position: 'br'
+});
+
+SoftUI.toast({
+  title: 'Bottom Left',
+  message: 'Bottom left corner.',
+  position: 'bl'
 });
 
 SoftUI.toast({
@@ -106,12 +124,32 @@ SoftUI.toast({
   position: 'tc'
 });
 
-// Options:
-// title    — bold heading text
-// message  — body text
-// variant  — 'success', 'danger', 'warning', 'info'
-// duration — ms before auto-dismiss (default 4000, 0 = persistent)
-// position — 'tr', 'tl', 'br', 'bl', 'tc', 'bc' (default 'tr')
-// closable — show close button (default true)</pre></div>
+SoftUI.toast({
+  title: 'Bottom Center',
+  message: 'Centered at the bottom.',
+  position: 'bc'
+});</pre></div>
+  </div>
+</div>
+
+<!-- Reference -->
+<div class="pg-section" id="section-4">
+  <h3 class="pg-section-title">Reference</h3>
+  <div class="docs-table-wrap">
+    <table class="sui-table sui-table-compact">
+      <thead>
+        <tr><th scope="col" style="width:40%;">Option / API</th><th scope="col">Description</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><code>SoftUI.toast(options)</code></td><td>Shows a toast and returns its element.</td></tr>
+        <tr><td><code>title</code></td><td>Bold heading text.</td></tr>
+        <tr><td><code>message</code></td><td>Body text.</td></tr>
+        <tr><td><code>variant</code></td><td><code>'success'</code>, <code>'danger'</code>, <code>'warning'</code> or <code>'info'</code>. Default: none.</td></tr>
+        <tr><td><code>duration</code></td><td>Milliseconds before it closes. Default <code>4000</code>; <code>0</code> keeps it open.</td></tr>
+        <tr><td><code>position</code></td><td><code>'tr'</code>, <code>'tl'</code>, <code>'br'</code>, <code>'bl'</code>, <code>'tc'</code> or <code>'bc'</code>. Default <code>'tr'</code>.</td></tr>
+        <tr><td><code>closable</code></td><td>Shows the close button. Default <code>true</code>.</td></tr>
+        <tr><td><code>html</code></td><td>Renders title and message as HTML. Default <code>false</code> (plain text). Only pass trusted HTML, never user input.</td></tr>
+      </tbody>
+    </table>
   </div>
 </div>

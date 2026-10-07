@@ -12,6 +12,7 @@ toc:
   - Wrap
   - Gap
   - Auto Margins
+  - Reference
 ---
 
 <!-- Display -->
@@ -26,10 +27,11 @@ toc:
   </div>
   <div class="pg-code-wrap">
     <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
-    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-d-flex"&gt;...&lt;/div&gt;
-&lt;div class="sui-d-inline-flex"&gt;...&lt;/div&gt;
-&lt;div class="sui-d-block"&gt;...&lt;/div&gt;
-&lt;div class="sui-d-none"&gt;...&lt;/div&gt;</pre></div>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-d-flex sui-gap-2"&gt;
+  &lt;div&gt;Flex Item 1&lt;/div&gt;
+  &lt;div&gt;Flex Item 2&lt;/div&gt;
+  &lt;div&gt;Flex Item 3&lt;/div&gt;
+&lt;/div&gt;</pre></div>
   </div>
 </div>
 
@@ -38,7 +40,7 @@ toc:
   <h3 class="pg-section-title">Direction</h3>
   <div class="pg-section-row" style="gap:24px;">
     <div>
-      <small style="display:block;margin-bottom:8px;color:var(--sui-text-muted);">sui-flex-row (default)</small>
+      <small style="display:block;margin-bottom:8px;color:var(--sui-text-muted);"><code>sui-flex-row</code> (default)</small>
       <div class="sui-d-flex sui-flex-row sui-gap-2">
         <div class="sui-raised" style="padding:10px 14px;border-radius:8px;">1</div>
         <div class="sui-raised" style="padding:10px 14px;border-radius:8px;">2</div>
@@ -46,7 +48,7 @@ toc:
       </div>
     </div>
     <div>
-      <small style="display:block;margin-bottom:8px;color:var(--sui-text-muted);">sui-flex-column</small>
+      <small style="display:block;margin-bottom:8px;color:var(--sui-text-muted);"><code>sui-flex-column</code></small>
       <div class="sui-d-flex sui-flex-column sui-gap-2">
         <div class="sui-raised" style="padding:10px 14px;border-radius:8px;">1</div>
         <div class="sui-raised" style="padding:10px 14px;border-radius:8px;">2</div>
@@ -66,7 +68,7 @@ toc:
   <h3 class="pg-section-title">Justify Content</h3>
   <div style="display:flex;flex-direction:column;gap:12px;">
     <div>
-      <small style="display:block;margin-bottom:4px;color:var(--sui-text-muted);">sui-justify-start</small>
+      <small style="display:block;margin-bottom:4px;color:var(--sui-text-muted);"><code>sui-justify-start</code></small>
       <div class="sui-d-flex sui-justify-start sui-gap-2 sui-inset" style="padding:10px;border-radius:8px;">
         <div class="sui-raised" style="padding:8px 14px;border-radius:6px;">A</div>
         <div class="sui-raised" style="padding:8px 14px;border-radius:6px;">B</div>
@@ -74,7 +76,7 @@ toc:
       </div>
     </div>
     <div>
-      <small style="display:block;margin-bottom:4px;color:var(--sui-text-muted);">sui-justify-center</small>
+      <small style="display:block;margin-bottom:4px;color:var(--sui-text-muted);"><code>sui-justify-center</code></small>
       <div class="sui-d-flex sui-justify-center sui-gap-2 sui-inset" style="padding:10px;border-radius:8px;">
         <div class="sui-raised" style="padding:8px 14px;border-radius:6px;">A</div>
         <div class="sui-raised" style="padding:8px 14px;border-radius:6px;">B</div>
@@ -82,7 +84,7 @@ toc:
       </div>
     </div>
     <div>
-      <small style="display:block;margin-bottom:4px;color:var(--sui-text-muted);">sui-justify-end</small>
+      <small style="display:block;margin-bottom:4px;color:var(--sui-text-muted);"><code>sui-justify-end</code></small>
       <div class="sui-d-flex sui-justify-end sui-gap-2 sui-inset" style="padding:10px;border-radius:8px;">
         <div class="sui-raised" style="padding:8px 14px;border-radius:6px;">A</div>
         <div class="sui-raised" style="padding:8px 14px;border-radius:6px;">B</div>
@@ -90,7 +92,7 @@ toc:
       </div>
     </div>
     <div>
-      <small style="display:block;margin-bottom:4px;color:var(--sui-text-muted);">sui-justify-between</small>
+      <small style="display:block;margin-bottom:4px;color:var(--sui-text-muted);"><code>sui-justify-between</code></small>
       <div class="sui-d-flex sui-justify-between sui-inset" style="padding:10px;border-radius:8px;">
         <div class="sui-raised" style="padding:8px 14px;border-radius:6px;">A</div>
         <div class="sui-raised" style="padding:8px 14px;border-radius:6px;">B</div>
@@ -98,7 +100,7 @@ toc:
       </div>
     </div>
     <div>
-      <small style="display:block;margin-bottom:4px;color:var(--sui-text-muted);">sui-justify-around</small>
+      <small style="display:block;margin-bottom:4px;color:var(--sui-text-muted);"><code>sui-justify-around</code></small>
       <div class="sui-d-flex sui-justify-around sui-inset" style="padding:10px;border-radius:8px;">
         <div class="sui-raised" style="padding:8px 14px;border-radius:6px;">A</div>
         <div class="sui-raised" style="padding:8px 14px;border-radius:6px;">B</div>
@@ -106,7 +108,7 @@ toc:
       </div>
     </div>
     <div>
-      <small style="display:block;margin-bottom:4px;color:var(--sui-text-muted);">sui-justify-evenly</small>
+      <small style="display:block;margin-bottom:4px;color:var(--sui-text-muted);"><code>sui-justify-evenly</code></small>
       <div class="sui-d-flex sui-justify-evenly sui-inset" style="padding:10px;border-radius:8px;">
         <div class="sui-raised" style="padding:8px 14px;border-radius:6px;">A</div>
         <div class="sui-raised" style="padding:8px 14px;border-radius:6px;">B</div>
@@ -130,28 +132,28 @@ toc:
   <h3 class="pg-section-title">Align Items</h3>
   <div style="display:flex;flex-direction:column;gap:12px;">
     <div>
-      <small style="display:block;margin-bottom:4px;color:var(--sui-text-muted);">sui-align-start</small>
+      <small style="display:block;margin-bottom:4px;color:var(--sui-text-muted);"><code>sui-align-start</code></small>
       <div class="sui-d-flex sui-align-start sui-gap-2 sui-inset" style="padding:10px;border-radius:8px;height:80px;">
         <div class="sui-raised" style="padding:8px 14px;border-radius:6px;">A</div>
         <div class="sui-raised" style="padding:8px 14px;border-radius:6px;">B</div>
       </div>
     </div>
     <div>
-      <small style="display:block;margin-bottom:4px;color:var(--sui-text-muted);">sui-align-center</small>
+      <small style="display:block;margin-bottom:4px;color:var(--sui-text-muted);"><code>sui-align-center</code></small>
       <div class="sui-d-flex sui-align-center sui-gap-2 sui-inset" style="padding:10px;border-radius:8px;height:80px;">
         <div class="sui-raised" style="padding:8px 14px;border-radius:6px;">A</div>
         <div class="sui-raised" style="padding:8px 14px;border-radius:6px;">B</div>
       </div>
     </div>
     <div>
-      <small style="display:block;margin-bottom:4px;color:var(--sui-text-muted);">sui-align-end</small>
+      <small style="display:block;margin-bottom:4px;color:var(--sui-text-muted);"><code>sui-align-end</code></small>
       <div class="sui-d-flex sui-align-end sui-gap-2 sui-inset" style="padding:10px;border-radius:8px;height:80px;">
         <div class="sui-raised" style="padding:8px 14px;border-radius:6px;">A</div>
         <div class="sui-raised" style="padding:8px 14px;border-radius:6px;">B</div>
       </div>
     </div>
     <div>
-      <small style="display:block;margin-bottom:4px;color:var(--sui-text-muted);">sui-align-stretch</small>
+      <small style="display:block;margin-bottom:4px;color:var(--sui-text-muted);"><code>sui-align-stretch</code></small>
       <div class="sui-d-flex sui-align-stretch sui-gap-2 sui-inset" style="padding:10px;border-radius:8px;height:80px;">
         <div class="sui-raised" style="padding:8px 14px;border-radius:6px;">A</div>
         <div class="sui-raised" style="padding:8px 14px;border-radius:6px;">B</div>
@@ -172,7 +174,7 @@ toc:
   <h3 class="pg-section-title">Wrap</h3>
   <div style="display:flex;flex-direction:column;gap:12px;">
     <div>
-      <small style="display:block;margin-bottom:4px;color:var(--sui-text-muted);">sui-flex-wrap</small>
+      <small style="display:block;margin-bottom:4px;color:var(--sui-text-muted);"><code>sui-flex-wrap</code></small>
       <div class="sui-d-flex sui-flex-wrap sui-gap-2 sui-inset" style="padding:10px;border-radius:8px;max-width:280px;">
         <div class="sui-raised" style="padding:8px 14px;border-radius:6px;">Item 1</div>
         <div class="sui-raised" style="padding:8px 14px;border-radius:6px;">Item 2</div>
@@ -182,7 +184,7 @@ toc:
       </div>
     </div>
     <div>
-      <small style="display:block;margin-bottom:4px;color:var(--sui-text-muted);">sui-flex-nowrap</small>
+      <small style="display:block;margin-bottom:4px;color:var(--sui-text-muted);"><code>sui-flex-nowrap</code></small>
       <div class="sui-d-flex sui-flex-nowrap sui-gap-2 sui-inset" style="padding:10px;border-radius:8px;max-width:280px;overflow:auto;">
         <div class="sui-raised" style="padding:8px 14px;border-radius:6px;white-space:nowrap;">Item 1</div>
         <div class="sui-raised" style="padding:8px 14px;border-radius:6px;white-space:nowrap;">Item 2</div>
@@ -204,7 +206,7 @@ toc:
   <h3 class="pg-section-title">Gap</h3>
   <div style="display:flex;flex-direction:column;gap:12px;">
     <div>
-      <small style="display:block;margin-bottom:4px;color:var(--sui-text-muted);">sui-gap-0 (0)</small>
+      <small style="display:block;margin-bottom:4px;color:var(--sui-text-muted);"><code>sui-gap-0</code> (0)</small>
       <div class="sui-d-flex sui-gap-0 sui-inset" style="padding:10px;border-radius:8px;">
         <div class="sui-raised" style="padding:8px 14px;border-radius:6px;">A</div>
         <div class="sui-raised" style="padding:8px 14px;border-radius:6px;">B</div>
@@ -212,7 +214,7 @@ toc:
       </div>
     </div>
     <div>
-      <small style="display:block;margin-bottom:4px;color:var(--sui-text-muted);">sui-gap-2 (8px)</small>
+      <small style="display:block;margin-bottom:4px;color:var(--sui-text-muted);"><code>sui-gap-2</code> (8px)</small>
       <div class="sui-d-flex sui-gap-2 sui-inset" style="padding:10px;border-radius:8px;">
         <div class="sui-raised" style="padding:8px 14px;border-radius:6px;">A</div>
         <div class="sui-raised" style="padding:8px 14px;border-radius:6px;">B</div>
@@ -220,8 +222,16 @@ toc:
       </div>
     </div>
     <div>
-      <small style="display:block;margin-bottom:4px;color:var(--sui-text-muted);">sui-gap-4 (24px)</small>
+      <small style="display:block;margin-bottom:4px;color:var(--sui-text-muted);"><code>sui-gap-4</code> (24px)</small>
       <div class="sui-d-flex sui-gap-4 sui-inset" style="padding:10px;border-radius:8px;">
+        <div class="sui-raised" style="padding:8px 14px;border-radius:6px;">A</div>
+        <div class="sui-raised" style="padding:8px 14px;border-radius:6px;">B</div>
+        <div class="sui-raised" style="padding:8px 14px;border-radius:6px;">C</div>
+      </div>
+    </div>
+    <div>
+      <small style="display:block;margin-bottom:4px;color:var(--sui-text-muted);"><code>sui-gap-6</code> (64px)</small>
+      <div class="sui-d-flex sui-gap-6 sui-inset" style="padding:10px;border-radius:8px;">
         <div class="sui-raised" style="padding:8px 14px;border-radius:6px;">A</div>
         <div class="sui-raised" style="padding:8px 14px;border-radius:6px;">B</div>
         <div class="sui-raised" style="padding:8px 14px;border-radius:6px;">C</div>
@@ -230,13 +240,10 @@ toc:
   </div>
   <div class="pg-code-wrap">
     <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
-    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;!-- Gap scale: 0=0, 1=4px, 2=8px, 3=16px, 4=24px, 5=48px --&gt;
-&lt;div class="sui-d-flex sui-gap-0"&gt;...&lt;/div&gt;
-&lt;div class="sui-d-flex sui-gap-1"&gt;...&lt;/div&gt;
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-d-flex sui-gap-0"&gt;...&lt;/div&gt;
 &lt;div class="sui-d-flex sui-gap-2"&gt;...&lt;/div&gt;
-&lt;div class="sui-d-flex sui-gap-3"&gt;...&lt;/div&gt;
 &lt;div class="sui-d-flex sui-gap-4"&gt;...&lt;/div&gt;
-&lt;div class="sui-d-flex sui-gap-5"&gt;...&lt;/div&gt;</pre></div>
+&lt;div class="sui-d-flex sui-gap-6"&gt;...&lt;/div&gt;</pre></div>
   </div>
 </div>
 
@@ -245,30 +252,36 @@ toc:
   <h3 class="pg-section-title">Auto Margins</h3>
   <div style="display:flex;flex-direction:column;gap:12px;">
     <div>
-      <small style="display:block;margin-bottom:4px;color:var(--sui-text-muted);">sui-ms-auto — push item to the right</small>
+      <small style="display:block;margin-bottom:4px;color:var(--sui-text-muted);"><code>sui-ms-auto</code> — push item to the end</small>
       <div class="sui-d-flex sui-gap-2 sui-inset" style="padding:10px;border-radius:8px;">
         <div class="sui-raised" style="padding:8px 14px;border-radius:6px;">Logo</div>
         <div class="sui-raised sui-ms-auto" style="padding:8px 14px;border-radius:6px;">Profile</div>
       </div>
     </div>
     <div>
-      <small style="display:block;margin-bottom:4px;color:var(--sui-text-muted);">sui-mx-auto — center horizontally</small>
+      <small style="display:block;margin-bottom:4px;color:var(--sui-text-muted);"><code>sui-mx-auto</code> — center horizontally</small>
       <div class="sui-d-flex sui-inset" style="padding:10px;border-radius:8px;">
         <div class="sui-raised sui-mx-auto" style="padding:8px 14px;border-radius:6px;">Centered</div>
       </div>
     </div>
     <div>
-      <small style="display:block;margin-bottom:4px;color:var(--sui-text-muted);">sui-me-auto — push item to the left</small>
+      <small style="display:block;margin-bottom:4px;color:var(--sui-text-muted);"><code>sui-me-auto</code> — push others to the end</small>
       <div class="sui-d-flex sui-gap-2 sui-inset" style="padding:10px;border-radius:8px;">
         <div class="sui-raised sui-me-auto" style="padding:8px 14px;border-radius:6px;">Left</div>
         <div class="sui-raised" style="padding:8px 14px;border-radius:6px;">Right 1</div>
         <div class="sui-raised" style="padding:8px 14px;border-radius:6px;">Right 2</div>
       </div>
     </div>
+    <div>
+      <small style="display:block;margin-bottom:4px;color:var(--sui-text-muted);"><code>sui-my-auto</code> — center vertically</small>
+      <div class="sui-d-flex sui-inset" style="padding:10px;border-radius:8px;height:96px;">
+        <div class="sui-raised sui-my-auto" style="padding:8px 14px;border-radius:6px;">Middle</div>
+      </div>
+    </div>
   </div>
   <div class="pg-code-wrap">
     <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
-    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;!-- Push item to the right --&gt;
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;!-- Push item to the end (right in LTR) --&gt;
 &lt;div class="sui-d-flex"&gt;
   &lt;div&gt;Logo&lt;/div&gt;
   &lt;div class="sui-ms-auto"&gt;Profile&lt;/div&gt;
@@ -279,11 +292,38 @@ toc:
   &lt;div class="sui-mx-auto"&gt;Centered&lt;/div&gt;
 &lt;/div&gt;
 
-&lt;!-- Push item to the left --&gt;
+&lt;!-- Push others to the end (right in LTR) --&gt;
 &lt;div class="sui-d-flex"&gt;
   &lt;div class="sui-me-auto"&gt;Left&lt;/div&gt;
   &lt;div&gt;Right 1&lt;/div&gt;
   &lt;div&gt;Right 2&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- Center vertically --&gt;
+&lt;div class="sui-d-flex" style="height:96px;"&gt;
+  &lt;div class="sui-my-auto"&gt;Middle&lt;/div&gt;
 &lt;/div&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Reference -->
+<div class="pg-section" id="section-8">
+  <h3 class="pg-section-title">Reference</h3>
+  <div class="docs-table-wrap">
+    <table class="sui-table sui-table-compact">
+      <thead>
+        <tr><th scope="col" style="width:40%;">Class</th><th scope="col">Description</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><code>sui-gap-0</code></td><td>0, <code>--sui-space-0</code>.</td></tr>
+        <tr><td><code>sui-gap-1</code></td><td>4px, <code>--sui-space-1</code>.</td></tr>
+        <tr><td><code>sui-gap-2</code></td><td>8px, <code>--sui-space-2</code>.</td></tr>
+        <tr><td><code>sui-gap-3</code></td><td>16px, <code>--sui-space-3</code>.</td></tr>
+        <tr><td><code>sui-gap-4</code></td><td>24px, <code>--sui-space-4</code>.</td></tr>
+        <tr><td><code>sui-gap-5</code></td><td>48px, <code>--sui-space-5</code>.</td></tr>
+        <tr><td><code>sui-gap-6</code></td><td>64px, <code>--sui-space-6</code>.</td></tr>
+        <tr><td><code>sui-gap-7</code></td><td>96px, <code>--sui-space-7</code>.</td></tr>
+      </tbody>
+    </table>
   </div>
 </div>

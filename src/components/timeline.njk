@@ -14,6 +14,7 @@ toc:
   - Inset Dots
   - Icon Dots
   - Compact
+  - RTL
 ---
 
 <!-- Default -->
@@ -882,6 +883,83 @@ toc:
     &lt;div class="sui-timeline-content"&gt;
       &lt;h6&gt;v1.0.0 released&lt;/h6&gt;
       &lt;p&gt;Initial public release with 44 components.&lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</pre></div>
+  </div>
+</div>
+
+<!-- RTL -->
+<div class="pg-section" id="section-10">
+  <h3 class="pg-section-title">RTL</h3>
+  <p style="font-size:13px;color:var(--sui-text-light);margin-bottom:16px;">Every variant mirrors automatically under <code>dir="rtl"</code>.</p>
+  <div class="pg-section-row">
+    <div dir="rtl">
+      <div class="sui-timeline sui-timeline-alternate">
+        <div class="sui-timeline-item">
+          <div class="sui-timeline-separator">
+            <div class="sui-timeline-dot sui-timeline-dot-primary"></div>
+            <div class="sui-timeline-connector"></div>
+          </div>
+          <div class="sui-timeline-content">
+            <h6>Kickoff</h6>
+            <p>Margins, padding and text alignment use logical properties</p>
+          </div>
+        </div>
+        <div class="sui-timeline-item">
+          <div class="sui-timeline-separator">
+            <div class="sui-timeline-dot sui-timeline-dot-primary"></div>
+            <div class="sui-timeline-connector"></div>
+          </div>
+          <div class="sui-timeline-content">
+            <h6>Review</h6>
+            <p>Text always aligns toward the dot</p>
+          </div>
+        </div>
+        <div class="sui-timeline-item">
+          <div class="sui-timeline-separator">
+            <div class="sui-timeline-dot"></div>
+          </div>
+          <div class="sui-timeline-content">
+            <h6>Launch</h6>
+            <p>No extra classes needed for right-to-left</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div dir="rtl"&gt;
+  &lt;div class="sui-timeline sui-timeline-alternate"&gt;
+    &lt;div class="sui-timeline-item"&gt;
+      &lt;div class="sui-timeline-separator"&gt;
+        &lt;div class="sui-timeline-dot sui-timeline-dot-primary"&gt;&lt;/div&gt;
+        &lt;div class="sui-timeline-connector"&gt;&lt;/div&gt;
+      &lt;/div&gt;
+      &lt;div class="sui-timeline-content"&gt;
+        &lt;h6&gt;Kickoff&lt;/h6&gt;
+        &lt;p&gt;Margins, padding and text alignment use logical properties&lt;/p&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="sui-timeline-item"&gt;
+      &lt;div class="sui-timeline-separator"&gt;
+        &lt;div class="sui-timeline-dot sui-timeline-dot-primary"&gt;&lt;/div&gt;
+        &lt;div class="sui-timeline-connector"&gt;&lt;/div&gt;
+      &lt;/div&gt;
+      &lt;div class="sui-timeline-content"&gt;
+        &lt;h6&gt;Review&lt;/h6&gt;
+        &lt;p&gt;Text always aligns toward the dot&lt;/p&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="sui-timeline-item"&gt;
+      &lt;div class="sui-timeline-separator"&gt;
+        &lt;div class="sui-timeline-dot"&gt;&lt;/div&gt;
+      &lt;/div&gt;
+      &lt;div class="sui-timeline-content"&gt;
+        &lt;h6&gt;Launch&lt;/h6&gt;
+        &lt;p&gt;No extra classes needed for right-to-left&lt;/p&gt;
+      &lt;/div&gt;
     &lt;/div&gt;
   &lt;/div&gt;
 &lt;/div&gt;</pre></div>

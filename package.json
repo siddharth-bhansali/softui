@@ -1,6 +1,6 @@
 {
   "name": "softui-css",
-  "version": "1.15.0",
+  "version": "1.16.0",
   "description": "A neumorphic CSS component library with soft shadows, muted palettes, and tactile depth.",
   "main": "dist/softui.js",
   "style": "dist/softui.css",
@@ -8,9 +8,10 @@
     "dist/"
   ],
   "scripts": {
-    "dev": "NODE_OPTIONS='--max-old-space-size=8192' bunx @11ty/eleventy --serve --incremental",
+    "dev": "node --max-old-space-size=8192 node_modules/@11ty/eleventy/cmd.cjs --serve --incremental",
     "build": "bunx @11ty/eleventy",
-    "build:min": "cleancss -o dist/softui.min.css src/softui.css && terser src/softui.js -o dist/softui.min.js --compress --mangle && node -e \"fs=require('fs');fs.copyFileSync('src/softui.css','dist/softui.css');fs.copyFileSync('src/softui.js','dist/softui.js')\"",
+    "build:embed": "node scripts/build-embed.js && cleancss -o dist/softui-embed.min.css dist/softui-embed.css",
+    "build:min": "node scripts/sync-version.js && node scripts/build-embed.js && cleancss -o dist/softui.min.css src/softui.css && cleancss -o dist/softui-embed.min.css dist/softui-embed.css && terser src/softui.js -o dist/softui.min.js --compress --mangle && node -e \"fs=require('fs');fs.copyFileSync('src/softui.css','dist/softui.css');fs.copyFileSync('src/softui.js','dist/softui.js')\"",
     "lint": "eslint src/softui.js",
     "lint:fix": "eslint --fix src/softui.js",
     "prepublishOnly": "npm run build:min"

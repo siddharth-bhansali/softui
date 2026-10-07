@@ -4,7 +4,8 @@ title: Theming
 description: Customize SoftUI with CSS variables. Full reference for colors, shadows, radius, fonts, transitions, dark mode, and design tokens.
 permalink: /theming/
 ---
-<div class="docs-getstarted-page">
+<div class="docs-pg-layout">
+<div class="docs-getstarted-page" style="flex:1;min-width:0;">
 
   <h1 class="docs-getstarted-title">Theming</h1>
   <p class="docs-getstarted-desc">Customize SoftUI to match your brand by overriding CSS custom properties. No build tools needed.</p>
@@ -26,7 +27,7 @@ permalink: /theming/
   <!-- Colors -->
   <section class="docs-getstarted-section" id="colors">
     <h2>Colors</h2>
-    <p>The color system has 5 semantic colors, each with a hover variant.</p>
+    <p>The color system has 5 semantic colors, each with a hover variant. Fills, borders, shadows and icons use these base tokens.</p>
     <div class="docs-getstarted-code">
 <pre><code>:root {
   /* Primary — buttons, links, active states */
@@ -34,8 +35,8 @@ permalink: /theming/
   --sui-primary-hover: #4A44C4;
 
   /* Success — confirmations, positive actions */
-  --sui-success: #1FA96E;
-  --sui-success-hover: #178A59;
+  --sui-success: #198758;
+  --sui-success-hover: #126D47;
 
   /* Danger — errors, destructive actions */
   --sui-danger: #D03A5C;
@@ -46,8 +47,46 @@ permalink: /theming/
   --sui-warning-hover: #DB921A;
 
   /* Info — informational, neutral highlights */
-  --sui-info: #1A82D4;
-  --sui-info-hover: #146BAE;
+  --sui-info: #187AC8;
+  --sui-info-hover: #1364A3;
+}</code></pre>
+    </div>
+    <p style="margin-top:16px;"><strong>Text shades.</strong> Colored <em>text</em> (links, outline and ghost buttons, outline badges and chips, alerts, <code>.sui-text-*</code> utilities, active nav items) uses a separate <code>-text</code> token that reaches WCAG AA (4.5:1) on every plain <code>--sui-bg*</code> surface of the theme. On tinted hover and active surfaces (selected items, ghost-button hover, range highlights) components switch to the <code>-text-hover</code> shade, which keeps 4.5:1. Each theme block sets its own values — dark mode uses lighter shades.</p>
+    <div class="docs-getstarted-code">
+<pre><code>:root {
+  --sui-primary-text: #4D45DD;   --sui-primary-text-hover: #3A31DA;
+  --sui-success-text: #136A45;   --sui-success-text-hover: #115C3C;
+  --sui-danger-text: #AE2947;    --sui-danger-text-hover: #97243E;
+  --sui-warning-text: #825306;   --sui-warning-text-hover: #714805;
+  --sui-info-text: #13609D;      --sui-info-text-hover: #115388;
+
+  /* Text on a warning fill (buttons, badges, chips, filled alerts) */
+  --sui-warning-contrast: #2D3748;
+}</code></pre>
+    </div>
+    <p style="margin-top:12px;font-size:14px;color:var(--sui-text-muted);">If you override <code>--sui-primary</code> (or another semantic color), also set the matching <code>-text</code> and <code>-text-hover</code> tokens for each theme — on <code>:root, [data-theme="light"]</code> and on <code>[data-theme="dark"]</code> (the light block redeclares them, so a <code>:root</code>-only override is reset inside light scopes and leaks into dark mode). Pick shades with at least 4.5:1 contrast on every <code>--sui-bg*</code> of that theme: the darkest one, <code>--sui-bg-dark</code>, in light mode; the lightest one, <code>--sui-bg-light</code>, in dark mode.</p>
+    <p style="margin-top:16px;"><strong>Tints and focus rings.</strong> Hover tints, glows and focus rings are mixed from the color tokens with <code>color-mix()</code>, so they follow your brand color automatically (Chrome/Edge 111+, Safari 16.2+, Firefox 113+). The focus ring has two optional overrides:</p>
+    <div class="docs-getstarted-code">
+<pre><code>:root {
+  /* Just the color (default: --sui-primary at 40%) */
+  --sui-focus-ring-color: color-mix(in srgb, #0066FF 50%, transparent);
+
+  /* Or the whole ring (default: 0 0 0 3px var(--sui-focus-ring-color)) */
+  --sui-focus-ring: 0 0 0 2px #fff, 0 0 0 4px #0066FF;
+}</code></pre>
+    </div>
+    <p style="margin-top:16px;"><strong>Links.</strong> Bare <code>&lt;a&gt;</code>, <code>.sui-link</code>, <code>.sui-link-subtle</code> and <code>.sui-link-arrow</code> read three optional tokens. Unset, they fall back to <code>--sui-primary-text</code> / <code>--sui-primary-text-hover</code>, so they follow the theme (including scoped <code>data-theme</code> areas). If you set them, set them per theme like the <code>-text</code> tokens, and keep 4.5:1 contrast on every <code>--sui-bg*</code>.</p>
+    <div class="docs-getstarted-code">
+<pre><code>:root, [data-theme="light"] {
+  --sui-link: #0057B8;         /* default: var(--sui-primary-text) */
+  --sui-link-hover: #00428C;   /* default: var(--sui-primary-text-hover) */
+  /* Underline color of .sui-link / -subtle / -muted at rest
+     (default: color-mix(in srgb, currentColor 40%, transparent)) */
+  --sui-link-underline: currentColor;
+}
+[data-theme="dark"] {
+  --sui-link: #7DB8FF;
+  --sui-link-hover: #A6CEFF;
 }</code></pre>
     </div>
   </section>
@@ -99,12 +138,13 @@ permalink: /theming/
   <!-- Text -->
   <section class="docs-getstarted-section" id="text">
     <h2>Text Colors</h2>
-    <p>Three text color tiers for hierarchy.</p>
+    <p>Three text color tiers for hierarchy. <code>--sui-edge-mix</code> sets how much <code>--sui-text-light</code> goes into the hairlines and control edges that must show in both themes (unchecked toggles, slider tracks, dashed drop zones).</p>
     <div class="docs-getstarted-code">
 <pre><code>:root {
   --sui-text: #2D3748;       /* Primary text — headings, body */
-  --sui-text-muted: #5A6A7E;  /* Secondary — descriptions, labels */
-  --sui-text-light: #6A7D94;  /* Tertiary — hints, placeholders */
+  --sui-text-muted: #4D5A6D;  /* Secondary — descriptions, labels */
+  --sui-text-light: #526072;  /* Tertiary — hints, placeholders */
+  --sui-edge-mix: 22%;        /* Edge strength (38% in dark mode) */
 }</code></pre>
     </div>
   </section>
@@ -146,8 +186,8 @@ permalink: /theming/
     <p>Change the font family used across all components.</p>
     <div class="docs-getstarted-code">
 <pre><code>:root {
-  --sui-font: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont,
-              'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+  --sui-font: 'Plus Jakarta Sans', 'Plus Jakarta Sans Variable', -apple-system,
+              BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
 }
 
 /* Use Inter */
@@ -161,11 +201,29 @@ permalink: /theming/
               Roboto, Oxygen, Ubuntu, sans-serif;
 }
 
-/* Monospace font (used in Copy Button, Color Picker, code elements) */
+/* Monospace font (code, kbd, shortcuts, OTP, Copy Button, Color Picker) */
 :root {
-  --sui-font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+  --sui-font-mono: 'JetBrains Mono', 'JetBrains Mono Variable', 'Fira Code',
+                   'Cascadia Code', ui-monospace, SFMono-Regular, Menlo,
+                   Consolas, monospace;
 }</code></pre>
     </div>
+    <p style="margin-top:16px;"><strong>Loading the fonts.</strong> SoftUI doesn't bundle any fonts. Plus Jakarta Sans and JetBrains Mono are only used if your page loads them; otherwise each stack falls back to the system fonts listed after them. Pick one of these:</p>
+    <p style="margin-top:12px;">1. Google Fonts — add to your <code>&lt;head&gt;</code>, before the SoftUI stylesheet:</p>
+    <div class="docs-getstarted-code">
+<pre><code>&lt;link rel="preconnect" href="https://fonts.googleapis.com"&gt;
+&lt;link rel="preconnect" href="https://fonts.gstatic.com" crossorigin&gt;
+&lt;link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet"&gt;</code></pre>
+    </div>
+    <p style="margin-top:12px;">2. Self-hosted with Fontsource — the <code>'… Variable'</code> family names are already in the default stacks, so no override is needed:</p>
+    <div class="docs-getstarted-code">
+<pre><code>npm i @fontsource-variable/plus-jakarta-sans @fontsource-variable/jetbrains-mono
+
+/* In your entry file */
+import '@fontsource-variable/plus-jakarta-sans';
+import '@fontsource-variable/jetbrains-mono';</code></pre>
+    </div>
+    <p style="margin-top:12px;">3. Nothing — skip both and SoftUI renders in the system UI and monospace fonts.</p>
   </section>
 
   <!-- Component Variables -->
@@ -182,6 +240,36 @@ permalink: /theming/
 .sui-stack-hover {
   --sui-stack-gap: 180px;    /* base spread distance (match your card width) */
   --sui-stack-spread: 0.6;   /* multiplier (0.15 to 1) */
+}
+
+/* Sections — vertical rhythm for .sui-section / .sui-section-header */
+:root {
+  --sui-section-space-lg: 128px; /* .sui-section-lg padding (80px below 768px) */
+  --sui-section-space: 96px;     /* .sui-section padding (64px below 768px) */
+  --sui-section-space-sm: 64px;  /* .sui-section-sm, and .sui-section on mobile */
+  --sui-section-space-xs: 40px;  /* .sui-section-sm on mobile */
+  --sui-section-header-gap: 40px; /* space below .sui-section-header */
+}
+
+/* Stat card footer — fill width and tint of .sui-stat-footer */
+.sui-stat-footer {
+  --sui-fill: 0%;   /* how much of the footer the tint covers */
+  --sui-stat-footer-tint: color-mix(in srgb, var(--sui-primary) 14%, transparent);
+}
+
+/* Scroll reveal — set on .sui-reveal or any ancestor */
+.sui-reveal {
+  --sui-reveal-distance: 24px;  /* slide distance */
+  --sui-reveal-duration: 0.6s;  /* or use sui-reveal-fast / sui-reveal-slow */
+  --sui-reveal-blur: 8px;       /* start blur of .sui-reveal-blur */
+  --sui-delay: 0ms;             /* per-element delay */
+}
+
+/* Heading accent bar — optional, defaults to var(--sui-primary).
+   Not declared on :root, so it follows --sui-primary wherever that is set;
+   set it on any ancestor, e.g. a lighter bar for more contrast on dark: */
+[data-theme="dark"] {
+  --sui-heading-accent: #8C86F0;
 }</code></pre>
     </div>
   </section>
@@ -212,6 +300,7 @@ permalink: /theming/
   --sui-transition-slow: 0s;
 }</code></pre>
     </div>
+    <p style="margin-top:12px;font-size:14px;color:var(--sui-text-muted);"><strong>Reduced motion.</strong> When the user sets <code>prefers-reduced-motion: reduce</code>, CSS transitions and animations become near-instant, and <code>softui.js</code> turns off its own motion: carousel autoplay stops, text rotate stays on its first word, typewriters show their text immediately, radial progress shows its final value, scroll reveal shows content straight away, and scrollspy/tour links jump instead of scrolling smoothly. No setup needed.</p>
   </section>
 
   <!-- Dark Mode -->
@@ -232,7 +321,15 @@ permalink: /theming/
 
   --sui-text: #E2E8F0;
   --sui-text-muted: #9BA5B8;
-  --sui-text-light: #8A94A6;
+  --sui-text-light: #939CAD;
+  --sui-edge-mix: 38%;  /* stronger edges on the dark background */
+
+  /* Colored text goes lighter in dark mode */
+  --sui-primary-text: #9894EC;   --sui-primary-text-hover: #ADAAF0;
+  --sui-success-text: #21B374;   --sui-success-text-hover: #25CA83;
+  --sui-danger-text: #E18197;    --sui-danger-text-hover: #E89DAE;
+  --sui-warning-text: #F5A623;   --sui-warning-text-hover: #F8BB55;
+  --sui-info-text: #4BA4E9;      --sui-info-text-hover: #73B8EE;
 }
 
 /* Custom dark theme */
@@ -241,55 +338,121 @@ permalink: /theming/
   --sui-bg-light: #222240;
   --sui-bg-dark: #141427;
   --sui-primary: #9B59B6;
+  --sui-primary-text: #C39BD3;
+  --sui-primary-text-hover: #D5B8E0;
 }</code></pre>
     </div>
-    <p style="margin-top:16px;"><strong>Scoped themes.</strong> <code>data-theme</code> works on any element, not just <code>&lt;html&gt;</code>. Use <code>data-theme="dark"</code> or <code>data-theme="light"</code> on a section to give it its own theme. Pair it with <code>.sui-surface</code> so the section paints the matching background — see <a href="/getting-started/#existing-sites" style="color:var(--sui-primary);font-weight:600;">Using in an Existing Site</a>.</p>
+    <p style="margin-top:16px;"><strong>Scoped themes.</strong> <code>data-theme</code> works on any element, not just <code>&lt;html&gt;</code>. Use <code>data-theme="dark"</code> or <code>data-theme="light"</code> on a section to give it its own theme. Pair it with <code>.sui-surface</code> so the section paints the matching background — see <a class="sui-link" href="/getting-started/#existing-sites">Using in an Existing Site</a>.</p>
     <div class="docs-getstarted-code">
 <pre><code>&lt;section class="sui-surface" data-theme="dark"&gt;
   &lt;!-- Dark SoftUI components on a light page --&gt;
 &lt;/section&gt;</code></pre>
     </div>
-    <p style="margin-top:12px;font-size:14px;color:var(--sui-text-muted);">Scoped sections set their own color and shadow tokens. If you customize shadows, override them on <code>[data-theme]</code> as well as <code>:root</code>.</p>
+    <p style="margin-top:12px;font-size:14px;color:var(--sui-text-muted);">Scoped sections set their own background, shadow, text and component tokens (tints, select arrow, scrollbars), so a light section inside a dark page fully resets. If you customize these, override them on <code>[data-theme]</code> as well as <code>:root</code>.</p>
+    <p style="margin-top:12px;font-size:14px;color:var(--sui-text-muted);"><strong>Dark theme on a darker page.</strong> On a background darker than <code>--sui-bg</code> (for example pure black), the light half of dark-mode shadows shows as a faint halo. Wrap the area in <code>.sui-surface</code> with <code>data-theme="dark"</code> so it gets the matching background, or use <code>.sui-flat-all</code>.</p>
   </section>
 
   <!-- Dark Mode Toggle -->
   <section class="docs-getstarted-section" id="dark-mode-toggle">
     <h2>Dark Mode Toggle</h2>
-    <p>Add a toggle button and a few lines of JS to let users switch themes. This also respects system preference and persists the choice.</p>
+    <p><code>softui.js</code> includes a theme switcher. Add <code>data-sui-theme-toggle</code> to any button and it toggles dark mode, saves the choice, follows the operating system until the user picks one, and stays in sync across tabs. Try these — they control this site:</p>
+    <div style="display:flex;flex-wrap:wrap;gap:24px;align-items:center;margin:16px 0;">
+      <button class="sui-theme-toggle sui-theme-toggle-sm" data-sui-theme-toggle aria-label="Dark mode">
+        <svg class="sui-theme-toggle-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+        <svg class="sui-theme-toggle-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+      </button>
+      <button class="sui-theme-toggle" data-sui-theme-toggle aria-label="Dark mode">
+        <svg class="sui-theme-toggle-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+        <svg class="sui-theme-toggle-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+      </button>
+      <button class="sui-theme-toggle sui-theme-toggle-lg" data-sui-theme-toggle aria-label="Dark mode">
+        <svg class="sui-theme-toggle-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+        <svg class="sui-theme-toggle-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+      </button>
+      <button class="sui-swap sui-swap-rotate sui-swap-raised" data-sui-theme-toggle aria-label="Dark mode">
+        <span class="sui-swap-on"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg></span>
+        <span class="sui-swap-off"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg></span>
+      </button>
+      <div class="sui-toggle-group" role="group" aria-label="Theme">
+        <button class="sui-toggle-group-item" data-sui-theme-toggle="light">Light</button>
+        <button class="sui-toggle-group-item" data-sui-theme-toggle="dark">Dark</button>
+        <button class="sui-toggle-group-item" data-sui-theme-toggle="system">System</button>
+      </div>
+    </div>
     <div class="docs-getstarted-code">
-<pre><code>&lt;!-- Toggle button --&gt;
-&lt;button onclick="toggleTheme()"&gt;Toggle Dark Mode&lt;/button&gt;
+<pre><code>&lt;!-- Sun/moon button (sun in light, moon in dark) --&gt;
+&lt;button class="sui-theme-toggle" data-sui-theme-toggle aria-label="Dark mode"&gt;
+  &lt;svg class="sui-theme-toggle-sun" viewBox="0 0 24 24" aria-hidden="true"&gt;...&lt;/svg&gt;
+  &lt;svg class="sui-theme-toggle-moon" viewBox="0 0 24 24" aria-hidden="true"&gt;...&lt;/svg&gt;
+&lt;/button&gt;
+
+&lt;!-- Sizes: add sui-theme-toggle-sm or sui-theme-toggle-lg --&gt;
+&lt;button class="sui-theme-toggle sui-theme-toggle-sm" data-sui-theme-toggle aria-label="Dark mode"&gt;...&lt;/button&gt;
+&lt;button class="sui-theme-toggle sui-theme-toggle-lg" data-sui-theme-toggle aria-label="Dark mode"&gt;...&lt;/button&gt;
+
+&lt;!-- Any swap works too (the moon shows while dark) --&gt;
+&lt;button class="sui-swap sui-swap-rotate sui-swap-raised" data-sui-theme-toggle aria-label="Dark mode"&gt;
+  &lt;span class="sui-swap-on"&gt;&lt;!-- moon svg --&gt;&lt;/span&gt;
+  &lt;span class="sui-swap-off"&gt;&lt;!-- sun svg --&gt;&lt;/span&gt;
+&lt;/button&gt;
+
+&lt;!-- Set a value instead of toggling --&gt;
+&lt;div class="sui-toggle-group" role="group" aria-label="Theme"&gt;
+  &lt;button class="sui-toggle-group-item" data-sui-theme-toggle="light"&gt;Light&lt;/button&gt;
+  &lt;button class="sui-toggle-group-item" data-sui-theme-toggle="dark"&gt;Dark&lt;/button&gt;
+  &lt;button class="sui-toggle-group-item" data-sui-theme-toggle="system"&gt;System&lt;/button&gt;
+&lt;/div&gt;</code></pre>
+    </div>
+    <p style="margin-top:16px;">Add this blocking script to your <code>&lt;head&gt;</code>, before the stylesheets, so the saved theme applies before the first paint (no flash of the wrong theme):</p>
+    <div class="docs-getstarted-code">
+<pre><code>&lt;head&gt;
+  &lt;script&gt;
+    try {
+      var t = localStorage.getItem('sui-theme');
+      if (t !== 'light' &amp;&amp; t !== 'dark')
+        t = matchMedia('(prefers-color-scheme:dark)').matches ? 'dark' : 'light';
+      document.documentElement.setAttribute('data-theme', t);
+    } catch (e) {}
+  &lt;/script&gt;
+  &lt;link rel="stylesheet" href="softui.min.css"&gt;
+&lt;/head&gt;</code></pre>
+    </div>
+    <p style="margin-top:16px;"><strong>Behavior.</strong></p>
+    <ul class="sui-list" style="font-size:14px;">
+      <li><strong>Priority:</strong> the saved choice (<code>localStorage['sui-theme']</code>) wins, then the system preference. <code>&lt;html&gt;</code> always gets an explicit <code>data-theme="light"</code> or <code>"dark"</code>.</li>
+      <li><strong>Opt-in:</strong> the switcher only runs when the page has a <code>[data-sui-theme-toggle]</code> element, <code>&lt;html data-sui-theme-auto&gt;</code> (follow the system with no button), or when you call the API. Pages that set <code>data-theme</code> by hand are left alone.</li>
+      <li><strong>Values:</strong> <code>data-sui-theme-toggle</code> with no value toggles. <code>="light"</code> and <code>="dark"</code> save that theme; <code>="system"</code> clears the saved choice and follows the OS again.</li>
+      <li><strong>Accessibility:</strong> toggles get <code>aria-pressed="true"</code> while dark is on, and <code>aria-label="Dark mode"</code> if they have no name. Set-buttons are pressed when they match the saved choice. To swap the label instead, add <code>data-sui-label-dark</code> and <code>data-sui-label-light</code> (the label used while that theme is active) — <code>aria-pressed</code> is then left off.</li>
+      <li><strong>Swaps:</strong> a <code>.sui-swap</code> with <code>data-sui-theme-toggle</code> is driven by the switcher (<code>.active</code> = dark) and does not fire <code>sui-swap-change</code>.</li>
+      <li><strong>Scope:</strong> the switcher controls <code>&lt;html&gt;</code> only. Scoped <code>data-theme</code> sections keep their own theme.</li>
+    </ul>
+    <div class="docs-getstarted-code">
+<pre><code>SoftUI.theme.get();          // 'light' | 'dark' — the current theme
+SoftUI.theme.set('dark');    // save and apply
+SoftUI.theme.toggle();       // flip and save
+SoftUI.theme.clear();        // forget the choice, follow the system
+SoftUI.theme.system();       // 'light' | 'dark' — the OS preference
+
+// Fires on every change
+document.addEventListener('sui-theme-change', function (e) {
+  e.detail.theme;   // 'light' | 'dark'
+  e.detail.source;  // 'user' | 'system' | 'storage' (another tab) | 'init'
+});</code></pre>
+    </div>
+    <p style="margin-top:16px;"><strong>Without softui.js.</strong> If you only use the CSS, a few lines do the basics:</p>
+    <div class="docs-getstarted-code">
+<pre><code>&lt;button onclick="toggleTheme(this)" aria-pressed="false"&gt;Dark mode&lt;/button&gt;
 
 &lt;script&gt;
-  function toggleTheme() {
+  function toggleTheme(btn) {
     var html = document.documentElement;
-    var isDark = html.getAttribute('data-theme') === 'dark';
-    html.setAttribute('data-theme', isDark ? 'light' : 'dark');
-    localStorage.setItem('sui-theme', isDark ? 'light' : 'dark');
+    var next = html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+    html.setAttribute('data-theme', next);
+    btn.setAttribute('aria-pressed', String(next === 'dark'));
+    try { localStorage.setItem('sui-theme', next); } catch (e) {}
   }
-
-  // Restore saved preference on load
-  (function() {
-    var saved = localStorage.getItem('sui-theme');
-    if (saved) {
-      document.documentElement.setAttribute('data-theme', saved);
-    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-      document.documentElement.setAttribute('data-theme', 'dark');
-    }
-  })();
-
-  // Listen for system theme changes
-  window.matchMedia('(prefers-color-scheme: dark)')
-    .addEventListener('change', function(e) {
-      if (!localStorage.getItem('sui-theme')) {
-        document.documentElement.setAttribute(
-          'data-theme', e.matches ? 'dark' : 'light'
-        );
-      }
-    });
 &lt;/script&gt;</code></pre>
     </div>
-    <p style="margin-top:12px;">Priority: saved user preference > system preference > default (light).</p>
   </section>
 
   <!-- Full Example -->
@@ -298,12 +461,12 @@ permalink: /theming/
     <p>A complete brand override — just drop this in your CSS after importing SoftUI.</p>
     <div class="docs-getstarted-code">
 <pre><code>/* My Brand Theme */
-:root {
+:root, [data-theme="light"] {
   /* Colors */
   --sui-primary: #0066FF;
   --sui-primary-hover: #0052CC;
-  --sui-success: #00C853;
-  --sui-danger: #FF1744;
+  --sui-primary-text: #0052CC;       /* AA on --sui-bg-dark */
+  --sui-primary-text-hover: #0043A8;
 
   /* Surfaces */
   --sui-bg: #F0F2F5;
@@ -323,6 +486,19 @@ permalink: /theming/
 
   /* Speed */
   --sui-transition-base: 0.2s;
+}
+
+/* Dark mode: the rule above also matches &lt;html data-theme="dark"&gt;
+   (it is :root), so restate the dark surfaces and text here. */
+[data-theme="dark"] {
+  --sui-bg: #2A2D35;
+  --sui-bg-light: #31343C;
+  --sui-bg-dark: #23262D;
+  --sui-shadow-light: #33363F;
+  --sui-shadow-dark: #1E2027;
+  --sui-text: #E2E8F0;
+  --sui-primary-text: #6EA8FF;       /* AA on --sui-bg-light */
+  --sui-primary-text-hover: #8FBBFF;
 }</code></pre>
     </div>
   </section>
@@ -366,16 +542,33 @@ module.exports = {
   "colors": {
     "primary": "#5B54E0",
     "primary-hover": "#4A44C4",
-    "success": "#1FA96E",
-    "danger": "#D03A5C",
-    "warning": "#F5A623",
-    "info": "#1A82D4"
+    "success": "#198758", "success-hover": "#126D47",
+    "danger": "#D03A5C",  "danger-hover": "#B42E4C",
+    "warning": "#F5A623", "warning-hover": "#DB921A",
+    "info": "#187AC8",    "info-hover": "#1364A3",
+    "primary-text": "#4D45DD", "primary-text-hover": "#3A31DA",
+    "success-text": "#136A45", "success-text-hover": "#115C3C",
+    "danger-text": "#AE2947",  "danger-text-hover": "#97243E",
+    "warning-text": "#825306", "warning-text-hover": "#714805",
+    "info-text": "#13609D",    "info-text-hover": "#115388",
+    "warning-contrast": "#2D3748"
+  },
+  "colors-dark": {
+    "primary-text": "#9894EC", "primary-text-hover": "#ADAAF0",
+    "success-text": "#21B374", "success-text-hover": "#25CA83",
+    "danger-text": "#E18197",  "danger-text-hover": "#E89DAE",
+    "warning-text": "#F5A623", "warning-text-hover": "#F8BB55",
+    "info-text": "#4BA4E9",    "info-text-hover": "#73B8EE"
   },
   "backgrounds": { "bg": "#E4E9F0", "bg-light": "#EDF1F7", "bg-dark": "#D1D9E6" },
   "backgrounds-dark": { "bg": "#2A2D35", "bg-light": "#31343C", "bg-dark": "#23262D" },
-  "text": { "text": "#2D3748", "text-muted": "#5A6A7E", "text-light": "#6A7D94" },
+  "text": { "text": "#2D3748", "text-muted": "#4D5A6D", "text-light": "#526072", "edge-mix": "22%" },
+  "text-dark": { "text": "#E2E8F0", "text-muted": "#9BA5B8", "text-light": "#939CAD", "edge-mix": "38%" },
   "shadows": { "shadow-light": "#FFFFFF", "shadow-dark": "#B8C0CC" },
+  "shadows-dark": { "shadow-light": "#33363F", "shadow-dark": "#1E2027" },
   "radius": { "xs": "6px", "sm": "10px", "default": "16px", "lg": "24px", "full": "9999px" },
+  "spacing": { "0": "0", "1": "4px", "2": "8px", "3": "16px", "4": "24px", "5": "48px", "6": "64px", "7": "96px" },
+  "sections": { "section-space-lg": "128px", "section-space": "96px", "section-space-sm": "64px", "section-space-xs": "40px", "section-header-gap": "40px" },
   "typography": { "font": "...", "font-mono": "..." },
   "transitions": { "fast": "0.15s", "base": "0.25s", "slow": "0.35s" }
 }</code></pre>
@@ -388,4 +581,22 @@ module.exports = {
     <a href="/changelog/" class="sui-btn sui-btn-outline sui-btn-lg">View Changelog</a>
   </div>
 
+</div>
+
+<aside class="docs-pg-controls">
+  <div class="pg-toc-title">On This Page</div>
+  <a class="pg-toc-link" href="#how-it-works">How It Works</a>
+  <a class="pg-toc-link" href="#colors">Colors</a>
+  <a class="pg-toc-link" href="#backgrounds">Backgrounds &amp; Surfaces</a>
+  <a class="pg-toc-link" href="#shadows">Shadows</a>
+  <a class="pg-toc-link" href="#text">Text Colors</a>
+  <a class="pg-toc-link" href="#radius">Border Radius</a>
+  <a class="pg-toc-link" href="#typography">Typography</a>
+  <a class="pg-toc-link" href="#component-vars">Component Variables</a>
+  <a class="pg-toc-link" href="#transitions">Transitions</a>
+  <a class="pg-toc-link" href="#dark-mode">Dark Mode</a>
+  <a class="pg-toc-link" href="#dark-mode-toggle">Dark Mode Toggle</a>
+  <a class="pg-toc-link" href="#example">Full Example</a>
+  <a class="pg-toc-link" href="#tokens">Design Tokens</a>
+</aside>
 </div>

@@ -1,0 +1,330 @@
+---
+layout: component.njk
+title: Section
+description: Page-section spacing and surfaces, section headers, and accent bars for headings.
+componentId: section
+hasControls: false
+requiresJs: false
+toc:
+  - Default
+  - Sizes
+  - Raised
+  - Inset
+  - Alternate
+  - Bordered
+  - Section Header
+  - Centered Header
+  - Bordered Header
+  - Heading Accent
+  - Accent Colors
+  - Accent Styles
+  - Reference
+---
+
+<!-- Default -->
+<div class="pg-section" id="section-1">
+  <h3 class="pg-section-title">Default</h3>
+  <div class="pg-section-row" style="display:block;">
+    <div style="outline:1px dashed color-mix(in srgb, var(--sui-text-light) 40%, transparent);border-radius:var(--sui-radius);">
+      <section class="sui-section">
+        <div class="sui-container">
+          <h2>Section content</h2>
+          <p>The section sets vertical rhythm; the container sets width.</p>
+        </div>
+      </section>
+    </div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;section class="sui-section"&gt;
+  &lt;div class="sui-container"&gt;
+    &lt;h2&gt;Section content&lt;/h2&gt;
+    &lt;p&gt;The section sets vertical rhythm; the container sets width.&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/section&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Sizes -->
+<div class="pg-section" id="section-2">
+  <h3 class="pg-section-title">Sizes</h3>
+  <div class="pg-section-row" style="display:block;">
+    <div style="outline:1px dashed color-mix(in srgb, var(--sui-text-light) 40%, transparent);border-radius:var(--sui-radius);">
+      <section class="sui-section-sm">
+        <div class="sui-container">
+          <h3>Small</h3>
+        </div>
+      </section>
+    </div>
+    <div style="outline:1px dashed color-mix(in srgb, var(--sui-text-light) 40%, transparent);border-radius:var(--sui-radius);margin-top:24px;">
+      <section class="sui-section">
+        <div class="sui-container">
+          <h3>Default</h3>
+        </div>
+      </section>
+    </div>
+    <div style="outline:1px dashed color-mix(in srgb, var(--sui-text-light) 40%, transparent);border-radius:var(--sui-radius);margin-top:24px;">
+      <section class="sui-section-lg">
+        <div class="sui-container">
+          <h3>Large</h3>
+        </div>
+      </section>
+    </div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;section class="sui-section-sm"&gt;
+  &lt;div class="sui-container"&gt;
+    &lt;h3&gt;Small&lt;/h3&gt;
+  &lt;/div&gt;
+&lt;/section&gt;
+&lt;section class="sui-section"&gt;
+  &lt;div class="sui-container"&gt;
+    &lt;h3&gt;Default&lt;/h3&gt;
+  &lt;/div&gt;
+&lt;/section&gt;
+&lt;section class="sui-section-lg"&gt;
+  &lt;div class="sui-container"&gt;
+    &lt;h3&gt;Large&lt;/h3&gt;
+  &lt;/div&gt;
+&lt;/section&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Raised -->
+<div class="pg-section" id="section-3">
+  <h3 class="pg-section-title">Raised</h3>
+  <div class="pg-section-row" style="display:block;">
+    <section class="sui-section-sm sui-section-raised">
+      <h2>Raised section</h2>
+      <p>A panel that lifts off the page.</p>
+      <button class="sui-btn sui-btn-primary">Get started</button>
+    </section>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;section class="sui-section-sm sui-section-raised"&gt;
+  &lt;h2&gt;Raised section&lt;/h2&gt;
+  &lt;p&gt;A panel that lifts off the page.&lt;/p&gt;
+  &lt;button class="sui-btn sui-btn-primary"&gt;Get started&lt;/button&gt;
+&lt;/section&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Inset -->
+<div class="pg-section" id="section-4">
+  <h3 class="pg-section-title">Inset</h3>
+  <div class="pg-section-row" style="display:block;">
+    <section class="sui-section-sm sui-section-inset">
+      <h2>Inset section</h2>
+      <p>A panel pressed into the page.</p>
+      <button class="sui-btn">Learn more</button>
+    </section>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;section class="sui-section-sm sui-section-inset"&gt;
+  &lt;h2&gt;Inset section&lt;/h2&gt;
+  &lt;p&gt;A panel pressed into the page.&lt;/p&gt;
+  &lt;button class="sui-btn"&gt;Learn more&lt;/button&gt;
+&lt;/section&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Alternate -->
+<div class="pg-section" id="section-5">
+  <h3 class="pg-section-title">Alternate</h3>
+  <div class="pg-section-row" style="display:block;">
+    <section class="sui-section-sm sui-section-alt">
+      <div class="sui-container">
+        <h2>Alternate band</h2>
+        <p>Alternate with plain sections to separate long pages.</p>
+      </div>
+    </section>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;section class="sui-section-sm sui-section-alt"&gt;
+  &lt;div class="sui-container"&gt;
+    &lt;h2&gt;Alternate band&lt;/h2&gt;
+    &lt;p&gt;Alternate with plain sections to separate long pages.&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/section&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Bordered -->
+<div class="pg-section" id="section-6">
+  <h3 class="pg-section-title">Bordered</h3>
+  <div class="pg-section-row" style="display:block;">
+    <section class="sui-section-sm sui-section-bordered">
+      <div class="sui-container">
+        <h2>Bordered section</h2>
+        <p>Hairlines above and below.</p>
+      </div>
+    </section>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;section class="sui-section-sm sui-section-bordered"&gt;
+  &lt;div class="sui-container"&gt;
+    &lt;h2&gt;Bordered section&lt;/h2&gt;
+    &lt;p&gt;Hairlines above and below.&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/section&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Section Header -->
+<div class="pg-section" id="section-7">
+  <h3 class="pg-section-title">Section Header</h3>
+  <div class="pg-section-row" style="display:block;">
+    <div class="sui-section-header">
+      <div>
+        <h2 class="sui-section-title">Latest articles</h2>
+        <p class="sui-section-subtitle">Guides, release notes and design deep-dives from the team.</p>
+      </div>
+      <a class="sui-btn sui-btn-sm sui-section-action" href="#">View all</a>
+    </div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-section-header"&gt;
+  &lt;div&gt;
+    &lt;h2 class="sui-section-title"&gt;Latest articles&lt;/h2&gt;
+    &lt;p class="sui-section-subtitle"&gt;Guides, release notes and design deep-dives from the team.&lt;/p&gt;
+  &lt;/div&gt;
+  &lt;a class="sui-btn sui-btn-sm sui-section-action" href="#"&gt;View all&lt;/a&gt;
+&lt;/div&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Centered Header -->
+<div class="pg-section" id="section-8">
+  <h3 class="pg-section-title">Centered Header</h3>
+  <div class="pg-section-row" style="display:block;">
+    <div class="sui-section-header sui-section-header-center">
+      <div>
+        <h2 class="sui-section-title sui-heading-accent sui-heading-accent-bottom">Pricing</h2>
+        <p class="sui-section-subtitle">Simple plans that grow with your team.</p>
+      </div>
+    </div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-section-header sui-section-header-center"&gt;
+  &lt;div&gt;
+    &lt;h2 class="sui-section-title sui-heading-accent sui-heading-accent-bottom"&gt;Pricing&lt;/h2&gt;
+    &lt;p class="sui-section-subtitle"&gt;Simple plans that grow with your team.&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Bordered Header -->
+<div class="pg-section" id="section-9">
+  <h3 class="pg-section-title">Bordered Header</h3>
+  <div class="pg-section-row" style="display:block;">
+    <div class="sui-section-header sui-section-header-bordered">
+      <div>
+        <h2 class="sui-section-title">Projects</h2>
+        <p class="sui-section-subtitle">Everything your team is working on.</p>
+      </div>
+      <a class="sui-btn sui-btn-sm sui-btn-primary sui-section-action" href="#">New project</a>
+    </div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-section-header sui-section-header-bordered"&gt;
+  &lt;div&gt;
+    &lt;h2 class="sui-section-title"&gt;Projects&lt;/h2&gt;
+    &lt;p class="sui-section-subtitle"&gt;Everything your team is working on.&lt;/p&gt;
+  &lt;/div&gt;
+  &lt;a class="sui-btn sui-btn-sm sui-btn-primary sui-section-action" href="#"&gt;New project&lt;/a&gt;
+&lt;/div&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Heading Accent -->
+<div class="pg-section" id="section-10">
+  <h3 class="pg-section-title">Heading Accent</h3>
+  <div class="pg-section-row" style="display:block;">
+    <h2 class="sui-heading-accent">Our <em>selected</em> work</h2>
+    <h3 class="sui-heading-accent" style="max-width:420px;margin-top:24px;">A longer heading that wraps onto a second line keeps the bar beside both lines</h3>
+    <h3 class="sui-heading-accent" dir="rtl" style="margin-top:24px;">Right-to-left heading</h3>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;h2 class="sui-heading-accent"&gt;Our &lt;em&gt;selected&lt;/em&gt; work&lt;/h2&gt;
+&lt;h3 class="sui-heading-accent" style="max-width:420px;margin-top:24px;"&gt;A longer heading that wraps onto a second line keeps the bar beside both lines&lt;/h3&gt;
+&lt;h3 class="sui-heading-accent" dir="rtl" style="margin-top:24px;"&gt;Right-to-left heading&lt;/h3&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Accent Colors -->
+<div class="pg-section" id="section-11">
+  <h3 class="pg-section-title">Accent Colors</h3>
+  <div class="pg-section-row" style="display:block;">
+    <h3 class="sui-heading-accent">Primary</h3>
+    <h3 class="sui-heading-accent sui-heading-accent-success" style="margin-top:16px;">Success</h3>
+    <h3 class="sui-heading-accent sui-heading-accent-danger" style="margin-top:16px;">Danger</h3>
+    <h3 class="sui-heading-accent sui-heading-accent-warning" style="margin-top:16px;">Warning</h3>
+    <h3 class="sui-heading-accent sui-heading-accent-info" style="margin-top:16px;">Info</h3>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;h3 class="sui-heading-accent"&gt;Primary&lt;/h3&gt;
+&lt;h3 class="sui-heading-accent sui-heading-accent-success" style="margin-top:16px;"&gt;Success&lt;/h3&gt;
+&lt;h3 class="sui-heading-accent sui-heading-accent-danger" style="margin-top:16px;"&gt;Danger&lt;/h3&gt;
+&lt;h3 class="sui-heading-accent sui-heading-accent-warning" style="margin-top:16px;"&gt;Warning&lt;/h3&gt;
+&lt;h3 class="sui-heading-accent sui-heading-accent-info" style="margin-top:16px;"&gt;Info&lt;/h3&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Accent Styles -->
+<div class="pg-section" id="section-12">
+  <h3 class="pg-section-title">Accent Styles</h3>
+  <div class="pg-section-row" style="display:block;">
+    <h2 class="sui-heading-accent sui-heading-accent-lg">Large accent</h2>
+    <h2 class="sui-heading-accent sui-heading-accent-bottom" style="margin-top:32px;">Bottom accent</h2>
+    <h2 class="sui-heading-accent sui-heading-accent-bottom sui-heading-accent-lg" style="margin-top:32px;">Large bottom accent</h2>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;h2 class="sui-heading-accent sui-heading-accent-lg"&gt;Large accent&lt;/h2&gt;
+&lt;h2 class="sui-heading-accent sui-heading-accent-bottom" style="margin-top:32px;"&gt;Bottom accent&lt;/h2&gt;
+&lt;h2 class="sui-heading-accent sui-heading-accent-bottom sui-heading-accent-lg" style="margin-top:32px;"&gt;Large bottom accent&lt;/h2&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Reference -->
+<div class="pg-section" id="section-13">
+  <h3 class="pg-section-title">Reference</h3>
+  <div class="docs-table-wrap">
+    <table class="sui-table sui-table-compact">
+      <thead>
+        <tr><th scope="col" style="width:40%;">Class / Token / Attribute</th><th scope="col">Description</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><code>sui-section</code></td><td>Block padding <code>--sui-section-space</code> (96px); below 768px it uses <code>--sui-section-space-sm</code> (64px) instead</td></tr>
+        <tr><td><code>sui-section-sm</code></td><td><code>--sui-section-space-sm</code>: 64px; <code>--sui-section-space-xs</code> (40px) below 768px</td></tr>
+        <tr><td><code>--sui-section-space-xs</code></td><td>40px; the mobile padding of <code>.sui-section-sm</code></td></tr>
+        <tr><td><code>sui-section-lg</code></td><td><code>--sui-section-space-lg</code>: 128px; 62.5% of it (80px) below 768px</td></tr>
+        <tr><td><code>sui-section-raised</code> <code>sui-section-inset</code></td><td>Panel with large radius and 40px inline padding (20px on mobile)</td></tr>
+        <tr><td><code>sui-section-alt</code></td><td><code>--sui-bg-light</code> background band</td></tr>
+        <tr><td><code>sui-section-bordered</code></td><td>Hairlines at the block start and end</td></tr>
+        <tr><td><code>sui-section-header</code></td><td>Title block and action; the action wraps below on narrow screens</td></tr>
+        <tr><td><code>sui-section-header-center</code></td><td>Centred title and subtitle; also centres a bottom accent</td></tr>
+        <tr><td><code>sui-section-header-bordered</code></td><td>Hairline under the header</td></tr>
+        <tr><td><code>sui-section-title</code> <code>sui-section-subtitle</code> <code>sui-section-action</code></td><td>Header title (1.75rem), muted subtitle (max 60ch) and action at the inline end</td></tr>
+        <tr><td><code>sui-heading-accent</code></td><td>4px primary bar at the inline start of a heading</td></tr>
+        <tr><td><code>sui-heading-accent-lg</code></td><td>Thicker 6px bar</td></tr>
+        <tr><td><code>sui-heading-accent-bottom</code></td><td>Bar under the heading instead (48px wide, 64px with <code>.sui-heading-accent-lg</code>)</td></tr>
+        <tr><td><code>sui-heading-accent-{color}</code></td><td>success, danger, warning, info (default is primary)</td></tr>
+        <tr><td><code>--sui-heading-accent</code></td><td>Custom bar colour, set on the heading or any ancestor</td></tr>
+        <tr><td><code>--sui-section-header-gap</code></td><td>Space below the header: 40px; 70% of it (28px) below 768px</td></tr>
+        <tr><td><code>dir="rtl"</code></td><td>No extra class: the accent bar sits at the inline start, the action at the inline end</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>

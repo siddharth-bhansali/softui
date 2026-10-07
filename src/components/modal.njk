@@ -30,18 +30,22 @@ toc:
       &lt;button class="sui-modal-close" aria-label="Close"&gt;&lt;/button&gt;
     &lt;/div&gt;
     &lt;div class="sui-modal-body"&gt;
-      &lt;p&gt;Content here.&lt;/p&gt;
+      &lt;p&gt;This is a neumorphic modal dialog. It features backdrop blur, smooth animations, and focus trap. Press Escape or click outside to close.&lt;/p&gt;
     &lt;/div&gt;
     &lt;div class="sui-modal-footer"&gt;
-      &lt;button class="sui-btn sui-btn-sm"&gt;Cancel&lt;/button&gt;
+      &lt;button class="sui-btn sui-btn-sm" onclick="SoftUI.modal('#myModal').close()"&gt;Cancel&lt;/button&gt;
       &lt;button class="sui-btn sui-btn-primary sui-btn-sm"&gt;Confirm&lt;/button&gt;
     &lt;/div&gt;
   &lt;/div&gt;
 &lt;/div&gt;
 
-SoftUI.modal('#myModal').open();
-SoftUI.modal('#myModal').close();
-</pre></div>
+&lt;script&gt;
+  // Open and close by selector or element
+  SoftUI.modal('#myModal').open();
+  SoftUI.modal('#myModal').close();
+  // Escape, the backdrop, the X and close() all return focus to the
+  // element that opened the modal. Escape closes the topmost modal/sheet.
+&lt;/script&gt;</pre></div>
   </div>
 </div>
 
@@ -52,18 +56,18 @@ SoftUI.modal('#myModal').close();
   </div>
   <div class="pg-code-wrap">
     <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
-    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-modal-backdrop" id="mySmallModal"&gt;
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-modal-backdrop" id="mySmallModal" role="dialog" aria-modal="true" aria-labelledby="mySmallModalTitle"&gt;
   &lt;div class="sui-modal sui-modal-sm"&gt;
     &lt;div class="sui-modal-header"&gt;
-      &lt;h3&gt;Session Timeout&lt;/h3&gt;
+      &lt;h3 id="mySmallModalTitle"&gt;Session Timeout&lt;/h3&gt;
       &lt;button class="sui-modal-close" aria-label="Close"&gt;&lt;/button&gt;
     &lt;/div&gt;
     &lt;div class="sui-modal-body"&gt;
       &lt;p&gt;Your session will expire in 5 minutes. Would you like to stay signed in?&lt;/p&gt;
     &lt;/div&gt;
     &lt;div class="sui-modal-footer"&gt;
-      &lt;button class="sui-btn sui-btn-sm"&gt;Sign Out&lt;/button&gt;
-      &lt;button class="sui-btn sui-btn-primary sui-btn-sm"&gt;Stay Signed In&lt;/button&gt;
+      &lt;button class="sui-btn sui-btn-sm" onclick="SoftUI.modal('#mySmallModal').close()"&gt;Sign Out&lt;/button&gt;
+      &lt;button class="sui-btn sui-btn-primary sui-btn-sm" onclick="SoftUI.modal('#mySmallModal').close()"&gt;Stay Signed In&lt;/button&gt;
     &lt;/div&gt;
   &lt;/div&gt;
 &lt;/div&gt;</pre></div>
@@ -77,23 +81,20 @@ SoftUI.modal('#myModal').close();
   </div>
   <div class="pg-code-wrap">
     <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
-    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-modal-backdrop" id="myLargeModal"&gt;
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-modal-backdrop" id="myLargeModal" role="dialog" aria-modal="true" aria-labelledby="myLargeModalTitle"&gt;
   &lt;div class="sui-modal sui-modal-lg"&gt;
     &lt;div class="sui-modal-header"&gt;
-      &lt;h3&gt;Large Modal&lt;/h3&gt;
+      &lt;h3 id="myLargeModalTitle"&gt;Create Account&lt;/h3&gt;
       &lt;button class="sui-modal-close" aria-label="Close"&gt;&lt;/button&gt;
     &lt;/div&gt;
     &lt;div class="sui-modal-body"&gt;
-      &lt;form&gt;
-        &lt;label class="sui-label"&gt;Name&lt;/label&gt;
-        &lt;input class="sui-input" type="text" placeholder="Enter name"&gt;
-        &lt;label class="sui-label"&gt;Email&lt;/label&gt;
-        &lt;input class="sui-input" type="email" placeholder="Enter email"&gt;
-      &lt;/form&gt;
+      &lt;div class="sui-form-group"&gt;&lt;label class="sui-label"&gt;Full Name&lt;/label&gt;&lt;input type="text" class="sui-input" placeholder="John Doe"&gt;&lt;/div&gt;
+      &lt;div class="sui-form-group"&gt;&lt;label class="sui-label"&gt;Email Address&lt;/label&gt;&lt;input type="email" class="sui-input" placeholder="john@example.com"&gt;&lt;/div&gt;
+      &lt;div class="sui-form-group"&gt;&lt;label class="sui-label"&gt;Message&lt;/label&gt;&lt;textarea class="sui-input sui-textarea" placeholder="Tell us about yourself..."&gt;&lt;/textarea&gt;&lt;/div&gt;
     &lt;/div&gt;
     &lt;div class="sui-modal-footer"&gt;
-      &lt;button class="sui-btn sui-btn-sm"&gt;Cancel&lt;/button&gt;
-      &lt;button class="sui-btn sui-btn-primary sui-btn-sm"&gt;Submit&lt;/button&gt;
+      &lt;button class="sui-btn sui-btn-sm" onclick="SoftUI.modal('#myLargeModal').close()"&gt;Cancel&lt;/button&gt;
+      &lt;button class="sui-btn sui-btn-primary sui-btn-sm"&gt;Create Account&lt;/button&gt;
     &lt;/div&gt;
   &lt;/div&gt;
 &lt;/div&gt;</pre></div>
@@ -107,18 +108,18 @@ SoftUI.modal('#myModal').close();
   </div>
   <div class="pg-code-wrap">
     <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
-    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-modal-backdrop" id="myFullscreenModal"&gt;
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-modal-backdrop" id="myFullscreenModal" role="dialog" aria-modal="true" aria-labelledby="myFullscreenModalTitle"&gt;
   &lt;div class="sui-modal sui-modal-fullscreen"&gt;
     &lt;div class="sui-modal-header"&gt;
-      &lt;h3&gt;Fullscreen Modal&lt;/h3&gt;
+      &lt;h3 id="myFullscreenModalTitle"&gt;Fullscreen Modal&lt;/h3&gt;
       &lt;button class="sui-modal-close" aria-label="Close"&gt;&lt;/button&gt;
     &lt;/div&gt;
     &lt;div class="sui-modal-body"&gt;
-      &lt;!-- Full viewport content --&gt;
-      &lt;p&gt;This modal spans the entire screen.&lt;/p&gt;
+      &lt;p&gt;This modal takes up the entire viewport. Useful for immersive content, editors, or media viewers.&lt;/p&gt;
+      &lt;p&gt;Press Escape or click the close button to dismiss.&lt;/p&gt;
     &lt;/div&gt;
     &lt;div class="sui-modal-footer"&gt;
-      &lt;button class="sui-btn sui-btn-sm"&gt;Close&lt;/button&gt;
+      &lt;button class="sui-btn sui-btn-sm" onclick="SoftUI.modal('#myFullscreenModal').close()"&gt;Close&lt;/button&gt;
     &lt;/div&gt;
   &lt;/div&gt;
 &lt;/div&gt;</pre></div>
@@ -132,18 +133,33 @@ SoftUI.modal('#myModal').close();
   </div>
   <div class="pg-code-wrap">
     <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
-    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-modal-backdrop" id="myScrollableModal"&gt;
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-modal-backdrop" id="myScrollableModal" role="dialog" aria-modal="true" aria-labelledby="myScrollableModalTitle"&gt;
   &lt;div class="sui-modal sui-modal-scrollable"&gt;
     &lt;div class="sui-modal-header"&gt;
-      &lt;h3&gt;Scrollable Modal&lt;/h3&gt;
+      &lt;h3 id="myScrollableModalTitle"&gt;Terms of Service&lt;/h3&gt;
       &lt;button class="sui-modal-close" aria-label="Close"&gt;&lt;/button&gt;
     &lt;/div&gt;
     &lt;div class="sui-modal-body"&gt;
-      &lt;!-- Long content that scrolls within the modal body --&gt;
-      &lt;p&gt;When content exceeds the modal height, the body becomes scrollable.&lt;/p&gt;
+      &lt;h4 style="margin-bottom:12px;"&gt;1. Acceptance of Terms&lt;/h4&gt;
+      &lt;p&gt;By accessing and using this service, you accept and agree to be bound by the terms and provision of this agreement. In addition, when using these particular services, you shall be subject to any posted guidelines or rules applicable to such services. Any participation in this service will constitute acceptance of this agreement.&lt;/p&gt;
+      &lt;h4 style="margin-bottom:12px;"&gt;2. Use License&lt;/h4&gt;
+      &lt;p&gt;Permission is granted to temporarily download one copy of the materials on this website for personal, non-commercial transitory viewing only. This is the grant of a license, not a transfer of title, and under this license you may not modify or copy the materials, use the materials for any commercial purpose, attempt to reverse engineer any software, or remove any copyright notations.&lt;/p&gt;
+      &lt;h4 style="margin-bottom:12px;"&gt;3. Disclaimer&lt;/h4&gt;
+      &lt;p&gt;The materials on this website are provided on an 'as is' basis. We make no warranties, expressed or implied, and hereby disclaim and negate all other warranties including, without limitation, implied warranties or conditions of merchantability, fitness for a particular purpose, or non-infringement of intellectual property.&lt;/p&gt;
+      &lt;h4 style="margin-bottom:12px;"&gt;4. Limitations&lt;/h4&gt;
+      &lt;p&gt;In no event shall this company or its suppliers be liable for any damages (including, without limitation, damages for loss of data or profit, or due to business interruption) arising out of the use or inability to use the materials, even if we have been notified orally or in writing of the possibility of such damage.&lt;/p&gt;
+      &lt;h4 style="margin-bottom:12px;"&gt;5. Accuracy of Materials&lt;/h4&gt;
+      &lt;p&gt;The materials appearing on this website could include technical, typographical, or photographic errors. We do not warrant that any of the materials on its website are accurate, complete or current. We may make changes to the materials contained on its website at any time without notice.&lt;/p&gt;
+      &lt;h4 style="margin-bottom:12px;"&gt;6. Links&lt;/h4&gt;
+      &lt;p&gt;We have not reviewed all of the sites linked to this website and are not responsible for the contents of any such linked site. The inclusion of any link does not imply endorsement. Use of any such linked web site is at the user's own risk.&lt;/p&gt;
+      &lt;h4 style="margin-bottom:12px;"&gt;7. Modifications&lt;/h4&gt;
+      &lt;p&gt;We may revise these terms of service for this website at any time without notice. By using this website you are agreeing to be bound by the then current version of these terms of service. Any changes will be posted on this page with an updated revision date.&lt;/p&gt;
+      &lt;h4 style="margin-bottom:12px;"&gt;8. Governing Law&lt;/h4&gt;
+      &lt;p&gt;These terms and conditions are governed by and construed in accordance with applicable laws and you irrevocably submit to the exclusive jurisdiction of the courts in that location. If any provision of these terms shall be unlawful, void, or unenforceable, then that provision shall be deemed severable and shall not affect the validity of the remaining provisions.&lt;/p&gt;
     &lt;/div&gt;
     &lt;div class="sui-modal-footer"&gt;
-      &lt;button class="sui-btn sui-btn-sm"&gt;Close&lt;/button&gt;
+      &lt;button class="sui-btn sui-btn-sm" onclick="SoftUI.modal('#myScrollableModal').close()"&gt;Decline&lt;/button&gt;
+      &lt;button class="sui-btn sui-btn-primary sui-btn-sm"&gt;Accept&lt;/button&gt;
     &lt;/div&gt;
   &lt;/div&gt;
 &lt;/div&gt;</pre></div>
@@ -157,17 +173,17 @@ SoftUI.modal('#myModal').close();
   </div>
   <div class="pg-code-wrap">
     <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
-    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-modal-backdrop sui-modal-static" id="myStaticModal"&gt;
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-modal-backdrop sui-modal-static" id="myStaticModal" role="dialog" aria-modal="true" aria-labelledby="myStaticModalTitle"&gt;
   &lt;div class="sui-modal"&gt;
     &lt;div class="sui-modal-header"&gt;
-      &lt;h3&gt;Static Backdrop&lt;/h3&gt;
+      &lt;h3 id="myStaticModalTitle"&gt;Static Backdrop&lt;/h3&gt;
       &lt;button class="sui-modal-close" aria-label="Close"&gt;&lt;/button&gt;
     &lt;/div&gt;
     &lt;div class="sui-modal-body"&gt;
-      &lt;p&gt;Clicking outside won't close this modal. It shakes instead.&lt;/p&gt;
+      &lt;p&gt;Clicking outside this modal won't close it. Instead, the modal will shake to indicate it requires explicit action. Pressing Escape shakes it too — use the close button or an action to dismiss.&lt;/p&gt;
     &lt;/div&gt;
     &lt;div class="sui-modal-footer"&gt;
-      &lt;button class="sui-btn sui-btn-sm"&gt;Cancel&lt;/button&gt;
+      &lt;button class="sui-btn sui-btn-sm" onclick="SoftUI.modal('#myStaticModal').close()"&gt;Cancel&lt;/button&gt;
       &lt;button class="sui-btn sui-btn-primary sui-btn-sm"&gt;Understood&lt;/button&gt;
     &lt;/div&gt;
   &lt;/div&gt;
@@ -177,28 +193,24 @@ SoftUI.modal('#myModal').close();
 
 <div class="pg-section" id="section-7">
   <h3 class="pg-section-title">Alert Dialog</h3>
-  <p style="font-size:13px;color:var(--sui-text-light);margin-bottom:16px;">A confirmation dialog that requires explicit user action. Combines <code>sui-modal-sm</code> + <code>sui-modal-static</code> with no close button and <code>role="alertdialog"</code>. Clicking outside shakes the dialog instead of dismissing it — the user must choose an action.</p>
+  <p style="font-size:13px;color:var(--sui-text-light);margin-bottom:16px;"><code>sui-modal-static</code> + <code>role="alertdialog"</code> with no close button: the user must pick an action.</p>
   <div class="pg-section-row">
     <button class="sui-btn sui-btn-danger" onclick="SoftUI.modal('#demoModalAlert').open()">Delete Item</button>
   </div>
   <div class="pg-code-wrap">
     <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
     <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;!-- Alert Dialog = sui-modal-sm + sui-modal-static + no close button --&gt;
-&lt;div class="sui-modal-backdrop sui-modal-static" id="alertDialog"
-     role="alertdialog" aria-modal="true"
-     aria-labelledby="alertTitle" aria-describedby="alertDesc"&gt;
+&lt;div class="sui-modal-backdrop sui-modal-static" id="alertDialog" role="alertdialog" aria-modal="true" aria-labelledby="alertTitle" aria-describedby="alertDesc"&gt;
   &lt;div class="sui-modal sui-modal-sm"&gt;
     &lt;div class="sui-modal-header"&gt;
       &lt;h3 id="alertTitle"&gt;Delete this item?&lt;/h3&gt;
     &lt;/div&gt;
     &lt;div class="sui-modal-body"&gt;
-      &lt;p id="alertDesc"&gt;This action cannot be undone. This will permanently
-      delete the item and remove all associated data.&lt;/p&gt;
+      &lt;p id="alertDesc"&gt;This action cannot be undone. This will permanently delete the item and remove all associated data.&lt;/p&gt;
     &lt;/div&gt;
     &lt;div class="sui-modal-footer"&gt;
-      &lt;button class="sui-btn sui-btn-sm"
-        onclick="SoftUI.modal('#alertDialog').close()"&gt;Cancel&lt;/button&gt;
-      &lt;button class="sui-btn sui-btn-danger sui-btn-sm"&gt;Delete&lt;/button&gt;
+      &lt;button class="sui-btn sui-btn-sm" onclick="SoftUI.modal('#alertDialog').close()"&gt;Cancel&lt;/button&gt;
+      &lt;button class="sui-btn sui-btn-danger sui-btn-sm" onclick="SoftUI.modal('#alertDialog').close()"&gt;Delete&lt;/button&gt;
     &lt;/div&gt;
   &lt;/div&gt;
 &lt;/div&gt;</pre></div>
@@ -218,27 +230,27 @@ SoftUI.modal('#myModal').close();
   <div class="pg-code-wrap">
     <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
     <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;!-- No blur --&gt;
-&lt;div class="sui-modal-backdrop sui-modal-blur-none" id="myModal"&gt;
+&lt;div class="sui-modal-backdrop sui-modal-blur-none" id="blurNone" role="dialog" aria-modal="true"&gt;
   &lt;div class="sui-modal"&gt;...&lt;/div&gt;
 &lt;/div&gt;
 
 &lt;!-- Small blur (3px) --&gt;
-&lt;div class="sui-modal-backdrop sui-modal-blur-sm" id="myModal"&gt;
+&lt;div class="sui-modal-backdrop sui-modal-blur-sm" id="blurSm" role="dialog" aria-modal="true"&gt;
   &lt;div class="sui-modal"&gt;...&lt;/div&gt;
 &lt;/div&gt;
 
-&lt;!-- Default blur (6px) — no class needed --&gt;
-&lt;div class="sui-modal-backdrop" id="myModal"&gt;
+&lt;!-- Default blur (6px), no class needed --&gt;
+&lt;div class="sui-modal-backdrop" id="blurDefault" role="dialog" aria-modal="true"&gt;
   &lt;div class="sui-modal"&gt;...&lt;/div&gt;
 &lt;/div&gt;
 
 &lt;!-- Large blur (12px) --&gt;
-&lt;div class="sui-modal-backdrop sui-modal-blur-lg" id="myModal"&gt;
+&lt;div class="sui-modal-backdrop sui-modal-blur-lg" id="blurLg" role="dialog" aria-modal="true"&gt;
   &lt;div class="sui-modal"&gt;...&lt;/div&gt;
 &lt;/div&gt;
 
 &lt;!-- Extra large blur (20px) --&gt;
-&lt;div class="sui-modal-backdrop sui-modal-blur-xl" id="myModal"&gt;
+&lt;div class="sui-modal-backdrop sui-modal-blur-xl" id="blurXl" role="dialog" aria-modal="true"&gt;
   &lt;div class="sui-modal"&gt;...&lt;/div&gt;
 &lt;/div&gt;
 
