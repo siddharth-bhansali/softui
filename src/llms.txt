@@ -152,7 +152,7 @@ All classes use the `sui-` prefix (e.g. `sui-btn`, `sui-card`, `sui-modal`).
 - Shadows: `sui-raised`, `sui-inset`, `sui-flat` (removes the element's own shadow and adds a border, works on any background), `sui-flat-all` (on a container: replaces every neumorphic shadow inside, incl. toggles and range thumbs, with a hairline outline), `sui-raised-lg`
 - Surface: `sui-surface` — paints the SoftUI background, text color, and font on a section (combine with `data-theme="dark"` for a scoped dark section)
 - Border Radius: `sui-rounded-xs`, `sui-rounded-sm`, `sui-rounded`, `sui-rounded-lg`, `sui-rounded-full`
-- Spacing (0-7 = 0/4/8/16/24/48/64/96px, tokens `--sui-space-0..7`): `sui-{p,px,py,pt,pb,ps,pe}-{0-7}`, `sui-{m,mx,my,mt,mb,ms,me}-{0-7}`, `sui-ml-*`/`sui-mr-*` (aliases of ms/me), `sui-mx-auto`, `sui-my-auto`. Start/end (`ps`/`pe`/`ms`/`me`/`px`/`mx`) are logical and flip in RTL
+- Spacing (0-7 = 0/4/8/16/24/48/64/96px, tokens `--sui-space-0..7`): `sui-{p,px,py,pt,pb,ps,pe}-{0-7}`, `sui-{m,mx,my,mt,mb,ms,me}-{0-7}`, `sui-ml-*`/`sui-mr-*` (aliases of ms/me), `sui-mx-auto`, `sui-my-auto`, `sui-mt-auto`, `sui-mb-auto`, `sui-ms-auto`, `sui-me-auto`. Start/end (`ps`/`pe`/`ms`/`me`/`px`/`mx`) are logical and flip in RTL
 - Text: `sui-text-center`, `sui-text-left`, `sui-text-right`, `sui-text-muted`, `sui-text-primary`, `sui-text-success`, `sui-text-warning`, `sui-text-danger`, `sui-text-info`, `sui-small`
 - Font: `sui-font-sans`, `sui-font-mono` (uses `--sui-font-mono`), `sui-tabular-nums`, `sui-proportional-nums`
 - Flex: `sui-d-flex`, `sui-justify-center`, `sui-align-center`, `sui-flex-wrap`, `sui-gap-{0-7}`

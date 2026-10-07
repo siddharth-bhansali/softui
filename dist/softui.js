@@ -1,4 +1,4 @@
-/*! SoftUI v1.16.0 — Interactive Behaviors */
+/*! SoftUI v1.16.1 — Interactive Behaviors */
 
 // Works as a classic <script> (window.SoftUI), a CommonJS/bundler import
 // (module.exports, with .default for ESM interop) and on the server (no-op).
@@ -10,7 +10,7 @@
   }
   if (root && typeof window !== 'undefined') root.SoftUI = api;
 })(typeof window !== 'undefined' ? window : (typeof globalThis !== 'undefined' ? globalThis : this), function () {
-  const VERSION = '1.16.0';
+  const VERSION = '1.16.1';
 
   // SSR: importing on the server is a no-op (nothing touches document)
   if (typeof window === 'undefined' || typeof document === 'undefined') {

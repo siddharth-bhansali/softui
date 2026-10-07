@@ -221,8 +221,8 @@ toc:
 <div class="pg-section" id="section-4">
   <h3 class="pg-section-title">With Footer</h3>
   <div class="pg-section-row">
-    <div style="display:flex;flex-direction:column;gap:16px;">
-      <div style="display:flex;flex-wrap:wrap;gap:16px;">
+    <div style="display:flex;flex-direction:column;gap:16px;width:100%;max-width:680px;">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:16px;">
         <div class="sui-stat">
           <p class="sui-stat-label">Storage</p>
           <div class="sui-stat-value">45 GB</div>
@@ -234,7 +234,7 @@ toc:
           <div class="sui-stat-footer sui-stat-footer-success" style="--sui-fill:72%"><span>Target reached</span><strong>72%</strong></div>
         </div>
         <div class="sui-stat">
-          <p class="sui-stat-label">API Requests</p>
+          <p class="sui-stat-label">API requests this billing cycle</p>
           <div class="sui-stat-value">9.0M</div>
           <div class="sui-stat-footer sui-stat-footer-warning" style="--sui-fill:90%"><span>Rate limit</span><strong>90%</strong></div>
         </div>
@@ -268,7 +268,7 @@ toc:
 &lt;/div&gt;
 
 &lt;div class="sui-stat"&gt;
-  &lt;p class="sui-stat-label"&gt;API Requests&lt;/p&gt;
+  &lt;p class="sui-stat-label"&gt;API requests this billing cycle&lt;/p&gt;
   &lt;div class="sui-stat-value"&gt;9.0M&lt;/div&gt;
   &lt;div class="sui-stat-footer sui-stat-footer-warning" style="--sui-fill:90%"&gt;&lt;span&gt;Rate limit&lt;/span&gt;&lt;strong&gt;90%&lt;/strong&gt;&lt;/div&gt;
 &lt;/div&gt;
@@ -521,7 +521,7 @@ toc:
         <tr><th scope="col" style="width:40%;">Class / Token</th><th scope="col">Description</th></tr>
       </thead>
       <tbody>
-        <tr><td><code>sui-stat-footer</code></td><td>Recessed pill below the value. Smaller inside <code>sui-stat-compact</code>.</td></tr>
+        <tr><td><code>sui-stat-footer</code></td><td>Recessed pill at the bottom of the card, so footers line up across a row. Smaller inside <code>sui-stat-compact</code>.</td></tr>
         <tr><td><code>--sui-fill</code></td><td>0&ndash;100% tint from the inline start (right in RTL). Keep the percentage in the visible text.</td></tr>
         <tr><td><code>sui-stat-footer-primary</code></td><td>Primary tint. This is the default, so the class is optional.</td></tr>
         <tr><td><code>sui-stat-footer-success</code></td><td>Success tint.</td></tr>

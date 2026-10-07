@@ -1,4 +1,4 @@
-/*! SoftUI v1.16.0 (embed: no global page styles) — A Neumorphic CSS Library */
+/*! SoftUI v1.16.1 (embed: no global page styles) — A Neumorphic CSS Library */
 
 /* ===========================================
    CSS Variables / Tokens
@@ -1429,6 +1429,8 @@ a.sui-btn-warning:visited {
 .sui-mr-7 { margin-inline-end: var(--sui-space-7) !important; }
 
 /* Margin: auto on one side (after the single-side scale) */
+.sui-mt-auto { margin-top: auto !important; }
+.sui-mb-auto { margin-bottom: auto !important; }
 .sui-ms-auto { margin-inline-start: auto !important; }
 .sui-me-auto { margin-inline-end: auto !important; }
 
@@ -14353,6 +14355,16 @@ select.sui-datatable-filter:focus-visible {
 .sui-stat-footer-warning { --sui-stat-footer-tint: color-mix(in srgb, var(--sui-warning) 20%, transparent); }
 .sui-stat-footer-info    { --sui-stat-footer-tint: color-mix(in srgb, var(--sui-info) 18%, transparent); }
 .sui-stat-compact .sui-stat-footer { margin-top: 8px; padding: 4px 10px; min-height: 24px; font-size: 11px; }
+
+/* Pin the footer to the bottom of the card, so footers line up across a row
+   of stats whose labels wrap to different line counts. The element above the
+   footer keeps the minimum gap: 12px (2px flex gap + 10px), compact 8px.
+   Without :has() support the fixed gap above applies. */
+@supports selector(:has(+ *)) {
+  .sui-stat > .sui-stat-footer { margin-top: auto; }
+  .sui-stat > :has(+ .sui-stat-footer) { margin-bottom: 10px; }
+  .sui-stat-compact > :has(+ .sui-stat-footer) { margin-bottom: 8px; }
+}
 
 /* ===========================================
    Status Dot (inline)
