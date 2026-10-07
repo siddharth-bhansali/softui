@@ -18,7 +18,7 @@ toc:
 <!-- Vertical -->
 <div class="pg-section" id="section-1">
   <h3 class="pg-section-title">Vertical</h3>
-  <p style="font-size:13px;color:var(--sui-text-light);margin-bottom:16px;">Add <code>sui-scroll-area</code> to any container with a fixed height. Use <code>sui-scroll-area-y</code> to restrict to vertical only.</p>
+  <p style="font-size:13px;color:var(--sui-text-light);margin-bottom:16px;">Add <code>sui-scroll-area-y</code> to a fixed-height container for vertical-only scrolling.</p>
   <div class="pg-section-row" style="align-items:flex-start;">
     <div class="sui-scroll-area sui-scroll-area-y" style="height:200px;width:280px;padding:16px;border-radius:var(--sui-radius-sm);background:var(--sui-bg);box-shadow:var(--sui-shadow-raised-sm);">
       <div style="font-size:14px;font-weight:600;margin-bottom:12px;color:var(--sui-text);">Team Members</div>
@@ -48,7 +48,7 @@ toc:
     <div class="sui-scroll-area sui-scroll-area-x" style="width:100%;max-width:500px;padding:16px;border-radius:var(--sui-radius-sm);background:var(--sui-bg);box-shadow:var(--sui-shadow-raised-sm);">
       <div style="display:flex;gap:10px;width:max-content;">
         {% for tag in tags %}
-        <div style="padding:8px 16px;border-radius:var(--sui-radius-xs);background:var(--sui-bg);box-shadow:var(--sui-shadow-inset-sm);font-size:13px;font-weight:500;color:var(--sui-text);white-space:nowrap;">{{ tag }}</div>
+        <span class="sui-chip">{{ tag }}</span>
         {% endfor %}
       </div>
     </div>
@@ -57,8 +57,8 @@ toc:
     <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
     <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-scroll-area sui-scroll-area-x"&gt;
   &lt;div style="display:flex;gap:10px;width:max-content;"&gt;
-    &lt;div class="tag"&gt;Design&lt;/div&gt;
-    &lt;div class="tag"&gt;Engineering&lt;/div&gt;
+    &lt;span class="sui-chip"&gt;Design&lt;/span&gt;
+    &lt;span class="sui-chip"&gt;Engineering&lt;/span&gt;
     &lt;!-- ...more items --&gt;
   &lt;/div&gt;
 &lt;/div&gt;</pre></div>
@@ -70,15 +70,15 @@ toc:
   <h3 class="pg-section-title">Both Axes</h3>
   <p style="font-size:13px;color:var(--sui-text-light);margin-bottom:16px;">Use <code>sui-scroll-area</code> alone for scrolling in both directions.</p>
   <div class="pg-section-row" style="align-items:flex-start;">
-    <div class="sui-scroll-area" style="height:200px;width:100%;max-width:400px;border-radius:var(--sui-radius-sm);background:var(--sui-bg);box-shadow:var(--sui-shadow-raised-sm);">
-      <table style="width:600px;border-collapse:collapse;font-size:13px;">
+    <div class="sui-scroll-area" style="height:200px;width:100%;max-width:400px;padding:12px;">
+      <table class="sui-table sui-table-compact" style="width:600px;">
         <thead>
           <tr>
-            <th style="padding:10px 14px;text-align:left;font-weight:600;color:var(--sui-text);white-space:nowrap;border-bottom:1px solid var(--sui-bg-dark);position:sticky;top:0;background:var(--sui-bg);">Name</th>
-            <th style="padding:10px 14px;text-align:left;font-weight:600;color:var(--sui-text);white-space:nowrap;border-bottom:1px solid var(--sui-bg-dark);position:sticky;top:0;background:var(--sui-bg);">Role</th>
-            <th style="padding:10px 14px;text-align:left;font-weight:600;color:var(--sui-text);white-space:nowrap;border-bottom:1px solid var(--sui-bg-dark);position:sticky;top:0;background:var(--sui-bg);">Department</th>
-            <th style="padding:10px 14px;text-align:left;font-weight:600;color:var(--sui-text);white-space:nowrap;border-bottom:1px solid var(--sui-bg-dark);position:sticky;top:0;background:var(--sui-bg);">Status</th>
-            <th style="padding:10px 14px;text-align:left;font-weight:600;color:var(--sui-text);white-space:nowrap;border-bottom:1px solid var(--sui-bg-dark);position:sticky;top:0;background:var(--sui-bg);">Location</th>
+            <th>Name</th>
+            <th>Role</th>
+            <th>Department</th>
+            <th>Status</th>
+            <th>Location</th>
           </tr>
         </thead>
         <tbody>
@@ -96,7 +96,7 @@ toc:
           ] %}
           <tr>
             {% for cell in row %}
-            <td style="padding:10px 14px;color:var(--sui-text-muted);white-space:nowrap;border-bottom:1px solid var(--sui-bg-dark);">{{ cell }}</td>
+            <td>{{ cell }}</td>
             {% endfor %}
           </tr>
           {% endfor %}
@@ -106,9 +106,15 @@ toc:
   </div>
   <div class="pg-code-wrap">
     <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
-    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-scroll-area" style="height:200px;width:400px;"&gt;
-  &lt;table style="width:600px;"&gt;
-    &lt;!-- Wide table content that overflows both axes --&gt;
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-scroll-area" style="height:200px;width:100%;max-width:400px;padding:12px;"&gt;
+  &lt;table class="sui-table sui-table-compact" style="width:600px;"&gt;
+    &lt;thead&gt;
+      &lt;tr&gt;&lt;th&gt;Name&lt;/th&gt;&lt;th&gt;Role&lt;/th&gt;&lt;th&gt;Department&lt;/th&gt;&lt;th&gt;Status&lt;/th&gt;&lt;th&gt;Location&lt;/th&gt;&lt;/tr&gt;
+    &lt;/thead&gt;
+    &lt;tbody&gt;
+      &lt;tr&gt;&lt;td&gt;Alice Johnson&lt;/td&gt;&lt;td&gt;Designer&lt;/td&gt;&lt;td&gt;Product&lt;/td&gt;&lt;td&gt;Active&lt;/td&gt;&lt;td&gt;New York&lt;/td&gt;&lt;/tr&gt;
+      &lt;!-- ...more rows --&gt;
+    &lt;/tbody&gt;
   &lt;/table&gt;
 &lt;/div&gt;</pre></div>
   </div>

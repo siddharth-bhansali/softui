@@ -143,7 +143,7 @@ toc:
 <!-- Loop -->
 <div class="pg-section" id="section-3">
   <h3 class="pg-section-title">Loop</h3>
-  <p style="font-size:13px;color:var(--sui-text-light);margin-bottom:16px;">Add <code>data-sui-loop</code> to loop continuously — navigating past the last slide wraps back to the first, and vice versa.</p>
+  <p style="font-size:13px;color:var(--sui-text-light);margin-bottom:16px;">Add <code>data-sui-loop</code> to wrap seamlessly past either end.</p>
   <div class="pg-section-row">
     <div class="sui-carousel" id="carouselLoop" data-sui-loop style="max-width:480px;">
       <div class="sui-carousel-track">
@@ -200,7 +200,7 @@ toc:
 <!-- Loop Rewind -->
 <div class="pg-section" id="section-4">
   <h3 class="pg-section-title">Loop Rewind</h3>
-  <p style="font-size:13px;color:var(--sui-text-light);margin-bottom:16px;">Use <code>data-sui-loop="rewind"</code> to wrap around by scrolling back to the beginning instead of seamlessly continuing.</p>
+  <p style="font-size:13px;color:var(--sui-text-light);margin-bottom:16px;">Use <code>data-sui-loop="rewind"</code> to scroll back to the start instead.</p>
   <div class="pg-section-row">
     <div class="sui-carousel" id="carouselRewind" data-sui-loop="rewind" style="max-width:480px;">
       <div class="sui-carousel-track">
@@ -313,7 +313,7 @@ toc:
 <!-- Multiple with Cards -->
 <div class="pg-section" id="section-6">
   <h3 class="pg-section-title">Multiple with Cards</h3>
-  <p style="font-size:13px;color:var(--sui-text-light);margin-bottom:16px;">Wrap slide content in <code>sui-card</code> for a raised neumorphic look. Add <code>sui-carousel-gap</code> for spacing between cards.</p>
+  <p style="font-size:13px;color:var(--sui-text-light);margin-bottom:16px;">Wrap slides in <code>sui-card</code> and add <code>sui-carousel-gap</code> to space them.</p>
   <div class="pg-section-row">
     <div class="sui-carousel sui-carousel-3 sui-carousel-gap" id="carouselCards" style="max-width:600px;">
       <div class="sui-carousel-track">
@@ -425,7 +425,7 @@ toc:
 <!-- Autoplay -->
 <div class="pg-section" id="section-8">
   <h3 class="pg-section-title">Autoplay</h3>
-  <p style="font-size:13px;color:var(--sui-text-light);margin-bottom:16px;">Add <code>data-sui-autoplay="3000"</code> (milliseconds) for auto-advancing slides. Pauses on hover. Combine with <code>data-sui-loop</code> for continuous looping.</p>
+  <p style="font-size:13px;color:var(--sui-text-light);margin-bottom:16px;">Add <code>data-sui-autoplay="3000"</code> (ms) to auto-advance; pauses on hover.</p>
   <div class="pg-section-row">
     <div class="sui-carousel" id="carouselAuto" data-sui-autoplay="3000" data-sui-loop style="max-width:480px;">
       <div class="sui-carousel-track">
@@ -483,7 +483,7 @@ toc:
 <!-- Vertical -->
 <div class="pg-section" id="section-9">
   <h3 class="pg-section-title">Vertical</h3>
-  <p style="font-size:13px;color:var(--sui-text-light);margin-bottom:16px;">Add <code>sui-carousel-vertical</code> for a vertically scrolling carousel. Combine with <code>sui-carousel-3</code> to show multiple items.</p>
+  <p style="font-size:13px;color:var(--sui-text-light);margin-bottom:16px;">Add <code>sui-carousel-vertical</code> to scroll slides vertically.</p>
   <div class="pg-section-row">
     <div class="sui-carousel sui-carousel-vertical sui-carousel-3" id="carouselVertical" style="max-width:300px;height:340px;">
       <div class="sui-carousel-track">
@@ -546,10 +546,13 @@ toc:
         <tr><th scope="col" style="width:40%;">Attribute / Class</th><th scope="col">Description</th></tr>
       </thead>
       <tbody>
-        <tr><td><code>data-sui-loop="rewind"</code></td><td>With several items per view, rewind stops on the last full page (dots and <code>goTo()</code> too).</td></tr>
-        <tr><td><code>data-sui-loop</code></td><td>A seamless loop with no more slides than are visible stays put.</td></tr>
-        <tr><td><code>data-sui-autoplay</code></td><td>Disabled when the user prefers reduced motion.</td></tr>
-        <tr><td><code>sui-carousel-prev</code>, <code>-next</code>, <code>-dot</code></td><td>Native buttons with <code>aria-label</code>s: <kbd class="sui-kbd-inline">Tab</kbd>, <kbd class="sui-kbd-inline">Enter</kbd> and <kbd class="sui-kbd-inline">Space</kbd> work.</td></tr>
+        <tr><td><code>id</code></td><td>Required for auto-init: a <code>.sui-carousel</code> without an <code>id</code> is skipped (call <code>SoftUI.carousel(el)</code> yourself).</td></tr>
+        <tr><td><code>SoftUI.carousel(el)</code></td><td>Returns the carousel's controller with <code>next()</code>, <code>prev()</code>, <code>goTo(i)</code> and <code>current()</code>.</td></tr>
+        <tr><td><code>data-sui-loop</code></td><td>Wraps seamlessly past the ends; stays put when all slides fit.</td></tr>
+        <tr><td><code>data-sui-loop="rewind"</code></td><td>Scrolls back to the start instead; with several items per view it stops on the last full page (dots and <code>goTo()</code> too).</td></tr>
+        <tr><td><code>data-sui-autoplay</code></td><td>Interval in ms; pauses on hover; off under reduced motion. Combine with <code>data-sui-loop</code> for continuous play.</td></tr>
+        <tr><td><code>sui-carousel-2</code>, <code>sui-carousel-3</code>, <code>sui-carousel-4</code></td><td>Items visible at once; also work with <code>sui-carousel-vertical</code>.</td></tr>
+        <tr><td><code>sui-carousel-prev</code>, <code>sui-carousel-next</code>, <code>sui-carousel-dot</code></td><td>Native buttons with <code>aria-label</code>s: <kbd class="sui-kbd-inline">Tab</kbd>, <kbd class="sui-kbd-inline">Enter</kbd> and <kbd class="sui-kbd-inline">Space</kbd> work.</td></tr>
       </tbody>
     </table>
   </div>

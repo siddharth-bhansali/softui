@@ -300,26 +300,31 @@ toc:
 <!-- Reference -->
 <div class="pg-section" id="section-13">
   <h3 class="pg-section-title">Reference</h3>
-  <div class="pg-section-row" style="display:block;"><div class="docs-table-wrap">
+  <div class="docs-table-wrap">
     <table class="sui-table sui-table-compact">
       <thead>
-        <tr><th scope="col">Class / Token / Attribute</th><th scope="col">Description</th></tr>
+        <tr><th scope="col" style="width:40%;">Class / Token / Attribute</th><th scope="col">Description</th></tr>
       </thead>
       <tbody>
-        <tr><td><code>.sui-section</code></td><td>Block padding <code>--sui-section-space</code>: 96px, 64px below 768px</td></tr>
-        <tr><td><code>.sui-section-sm</code></td><td><code>--sui-section-space-sm</code>: 64px, 40px below 768px</td></tr>
-        <tr><td><code>.sui-section-lg</code></td><td><code>--sui-section-space-lg</code>: 128px, 80px below 768px</td></tr>
-        <tr><td><code>.sui-section-raised / -inset</code></td><td>Panel with large radius and 40px inline padding (20px on mobile)</td></tr>
-        <tr><td><code>.sui-section-alt</code></td><td><code>--sui-bg-light</code> background band</td></tr>
-        <tr><td><code>.sui-section-bordered</code></td><td>Hairlines at the block start and end</td></tr>
-        <tr><td><code>.sui-section-header</code></td><td>Title block and action; the action wraps below on narrow screens</td></tr>
-        <tr><td><code>.sui-section-header-center</code></td><td>Centred title and subtitle; also centres a bottom accent</td></tr>
-        <tr><td><code>.sui-section-header-bordered</code></td><td>Hairline under the header</td></tr>
-        <tr><td><code>.sui-heading-accent-{color}</code></td><td>success, danger, warning, info (default is primary)</td></tr>
+        <tr><td><code>sui-section</code></td><td>Block padding <code>--sui-section-space</code> (96px); below 768px it uses <code>--sui-section-space-sm</code> (64px) instead</td></tr>
+        <tr><td><code>sui-section-sm</code></td><td><code>--sui-section-space-sm</code>: 64px; <code>--sui-section-space-xs</code> (40px) below 768px</td></tr>
+        <tr><td><code>--sui-section-space-xs</code></td><td>40px; the mobile padding of <code>.sui-section-sm</code></td></tr>
+        <tr><td><code>sui-section-lg</code></td><td><code>--sui-section-space-lg</code>: 128px; 62.5% of it (80px) below 768px</td></tr>
+        <tr><td><code>sui-section-raised</code> <code>sui-section-inset</code></td><td>Panel with large radius and 40px inline padding (20px on mobile)</td></tr>
+        <tr><td><code>sui-section-alt</code></td><td><code>--sui-bg-light</code> background band</td></tr>
+        <tr><td><code>sui-section-bordered</code></td><td>Hairlines at the block start and end</td></tr>
+        <tr><td><code>sui-section-header</code></td><td>Title block and action; the action wraps below on narrow screens</td></tr>
+        <tr><td><code>sui-section-header-center</code></td><td>Centred title and subtitle; also centres a bottom accent</td></tr>
+        <tr><td><code>sui-section-header-bordered</code></td><td>Hairline under the header</td></tr>
+        <tr><td><code>sui-section-title</code> <code>sui-section-subtitle</code> <code>sui-section-action</code></td><td>Header title (1.75rem), muted subtitle (max 60ch) and action at the inline end</td></tr>
+        <tr><td><code>sui-heading-accent</code></td><td>4px primary bar at the inline start of a heading</td></tr>
+        <tr><td><code>sui-heading-accent-lg</code></td><td>Thicker 6px bar</td></tr>
+        <tr><td><code>sui-heading-accent-bottom</code></td><td>Bar under the heading instead (48px wide, 64px with <code>.sui-heading-accent-lg</code>)</td></tr>
+        <tr><td><code>sui-heading-accent-{color}</code></td><td>success, danger, warning, info (default is primary)</td></tr>
         <tr><td><code>--sui-heading-accent</code></td><td>Custom bar colour, set on the heading or any ancestor</td></tr>
-        <tr><td><code>--sui-section-header-gap</code></td><td>Space below the header: 40px, 28px below 768px</td></tr>
+        <tr><td><code>--sui-section-header-gap</code></td><td>Space below the header: 40px; 70% of it (28px) below 768px</td></tr>
         <tr><td><code>dir="rtl"</code></td><td>No extra class: the accent bar sits at the inline start, the action at the inline end</td></tr>
       </tbody>
     </table>
-  </div></div>
+  </div>
 </div>

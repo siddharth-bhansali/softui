@@ -4,7 +4,7 @@ title: Pricing
 description: Neumorphic pricing cards with feature lists, billing toggle, and highlighted plans.
 componentId: pricing
 hasControls: false
-requiresJs: false
+requiresJs: true
 toc:
   - Default
   - With Billing Toggle
@@ -94,17 +94,19 @@ toc:
     &lt;ul class="sui-pricing-features"&gt;
       &lt;li&gt;1 project&lt;/li&gt;
       &lt;li&gt;500 MB storage&lt;/li&gt;
+      &lt;li&gt;Community support&lt;/li&gt;
       &lt;li class="disabled"&gt;Custom domain&lt;/li&gt;
+      &lt;li class="disabled"&gt;Analytics&lt;/li&gt;
+      &lt;li class="disabled"&gt;Priority support&lt;/li&gt;
     &lt;/ul&gt;
     &lt;div class="sui-pricing-cta"&gt;
       &lt;button class="sui-btn sui-btn-outline sui-btn-block"&gt;Get Started&lt;/button&gt;
     &lt;/div&gt;
   &lt;/div&gt;
-
   &lt;div class="sui-pricing-card sui-pricing-featured"&gt;
     &lt;span class="sui-pricing-badge"&gt;Most Popular&lt;/span&gt;
     &lt;h3 class="sui-pricing-name"&gt;Pro&lt;/h3&gt;
-    &lt;p class="sui-pricing-desc"&gt;For growing teams&lt;/p&gt;
+    &lt;p class="sui-pricing-desc"&gt;For growing teams and businesses&lt;/p&gt;
     &lt;div class="sui-pricing-price"&gt;
       &lt;span class="sui-pricing-currency"&gt;$&lt;/span&gt;
       &lt;span class="sui-pricing-amount"&gt;29&lt;/span&gt;
@@ -114,13 +116,14 @@ toc:
       &lt;li&gt;Unlimited projects&lt;/li&gt;
       &lt;li&gt;50 GB storage&lt;/li&gt;
       &lt;li&gt;Priority support&lt;/li&gt;
-      &lt;li class="disabled"&gt;Dedicated manager&lt;/li&gt;
+      &lt;li&gt;Custom domain&lt;/li&gt;
+      &lt;li&gt;Advanced analytics&lt;/li&gt;
+      &lt;li class="disabled"&gt;Dedicated account manager&lt;/li&gt;
     &lt;/ul&gt;
     &lt;div class="sui-pricing-cta"&gt;
       &lt;button class="sui-btn sui-btn-primary sui-btn-block"&gt;Upgrade to Pro&lt;/button&gt;
     &lt;/div&gt;
   &lt;/div&gt;
-
   &lt;div class="sui-pricing-card"&gt;
     &lt;h3 class="sui-pricing-name"&gt;Enterprise&lt;/h3&gt;
     &lt;p class="sui-pricing-desc"&gt;For large organizations&lt;/p&gt;
@@ -133,7 +136,9 @@ toc:
       &lt;li&gt;Unlimited everything&lt;/li&gt;
       &lt;li&gt;1 TB storage&lt;/li&gt;
       &lt;li&gt;24/7 phone support&lt;/li&gt;
-      &lt;li&gt;Dedicated manager&lt;/li&gt;
+      &lt;li&gt;Custom domain&lt;/li&gt;
+      &lt;li&gt;Advanced analytics&lt;/li&gt;
+      &lt;li&gt;Dedicated account manager&lt;/li&gt;
     &lt;/ul&gt;
     &lt;div class="sui-pricing-cta"&gt;
       &lt;button class="sui-btn sui-btn-outline sui-btn-block"&gt;Contact Sales&lt;/button&gt;
@@ -146,7 +151,7 @@ toc:
 <!-- With Billing Toggle -->
 <div class="pg-section" id="section-2">
   <h3 class="pg-section-title">With Billing Toggle</h3>
-  <p class="pg-section-desc">Toggle between monthly and annual pricing. Annual prices show with a savings badge.</p>
+  <p class="pg-section-desc">Swap prices between <code>data-monthly</code> and <code>data-annual</code> with a short script.</p>
   <div class="pg-section-row">
     <div>
       <div class="sui-pricing-toggle">
@@ -233,44 +238,87 @@ toc:
   </script>
   <div class="pg-code-wrap">
     <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
-    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-pricing-toggle"&gt;
-  &lt;span class="sui-pricing-toggle-active"&gt;Monthly&lt;/span&gt;
-  &lt;label class="sui-toggle sui-toggle-sm sui-toggle-primary"&gt;
-    &lt;input type="checkbox" id="billingToggle"&gt;
-    &lt;span class="sui-toggle-slider"&gt;&lt;/span&gt;
-  &lt;/label&gt;
-  &lt;span&gt;Annual&lt;/span&gt;
-  &lt;span class="sui-pricing-save"&gt;Save 20%&lt;/span&gt;
-&lt;/div&gt;
-
-&lt;div class="sui-pricing"&gt;
-  &lt;div class="sui-pricing-card"&gt;
-    &lt;h3 class="sui-pricing-name"&gt;Starter&lt;/h3&gt;
-    &lt;p class="sui-pricing-desc"&gt;Perfect for side projects&lt;/p&gt;
-    &lt;div class="sui-pricing-price"&gt;
-      &lt;span class="sui-pricing-currency"&gt;$&lt;/span&gt;
-      &lt;span class="sui-pricing-amount" data-monthly="9" data-annual="7"&gt;9&lt;/span&gt;
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div&gt;
+  &lt;div class="sui-pricing-toggle"&gt;
+    &lt;span class="sui-pricing-toggle-active" id="toggleMonthly"&gt;Monthly&lt;/span&gt;
+    &lt;label class="sui-toggle sui-toggle-sm sui-toggle-primary"&gt;
+      &lt;input type="checkbox" id="billingToggle"&gt;
+      &lt;span class="sui-toggle-slider"&gt;&lt;/span&gt;
+    &lt;/label&gt;
+    &lt;span id="toggleAnnual"&gt;Annual&lt;/span&gt;
+    &lt;span class="sui-pricing-save"&gt;Save 20%&lt;/span&gt;
+  &lt;/div&gt;
+  &lt;div class="sui-pricing"&gt;
+    &lt;div class="sui-pricing-card"&gt;
+      &lt;h3 class="sui-pricing-name"&gt;Starter&lt;/h3&gt;
+      &lt;p class="sui-pricing-desc"&gt;Perfect for side projects&lt;/p&gt;
+      &lt;div class="sui-pricing-price"&gt;
+        &lt;span class="sui-pricing-currency"&gt;$&lt;/span&gt;
+        &lt;span class="sui-pricing-amount" data-monthly="9" data-annual="7"&gt;9&lt;/span&gt;
+      &lt;/div&gt;
+      &lt;div class="sui-pricing-period" data-monthly="per month" data-annual="per month, billed annually"&gt;per month&lt;/div&gt;
+      &lt;ul class="sui-pricing-features"&gt;
+        &lt;li&gt;5 projects&lt;/li&gt;
+        &lt;li&gt;5 GB storage&lt;/li&gt;
+        &lt;li&gt;Email support&lt;/li&gt;
+        &lt;li class="disabled"&gt;Custom domain&lt;/li&gt;
+      &lt;/ul&gt;
+      &lt;div class="sui-pricing-cta"&gt;
+        &lt;button class="sui-btn sui-btn-outline sui-btn-block"&gt;Choose Starter&lt;/button&gt;
+      &lt;/div&gt;
     &lt;/div&gt;
-    &lt;div class="sui-pricing-period" data-monthly="per month" data-annual="per month, billed annually"&gt;per month&lt;/div&gt;
-    &lt;ul class="sui-pricing-features"&gt;
-      &lt;li&gt;5 projects&lt;/li&gt;
-      &lt;li&gt;5 GB storage&lt;/li&gt;
-    &lt;/ul&gt;
-    &lt;div class="sui-pricing-cta"&gt;
-      &lt;button class="sui-btn sui-btn-outline sui-btn-block"&gt;Choose Starter&lt;/button&gt;
+    &lt;div class="sui-pricing-card sui-pricing-featured"&gt;
+      &lt;span class="sui-pricing-badge"&gt;Best Value&lt;/span&gt;
+      &lt;h3 class="sui-pricing-name"&gt;Pro&lt;/h3&gt;
+      &lt;p class="sui-pricing-desc"&gt;For growing teams&lt;/p&gt;
+      &lt;div class="sui-pricing-price"&gt;
+        &lt;span class="sui-pricing-currency"&gt;$&lt;/span&gt;
+        &lt;span class="sui-pricing-amount" data-monthly="29" data-annual="23"&gt;29&lt;/span&gt;
+      &lt;/div&gt;
+      &lt;div class="sui-pricing-period" data-monthly="per month" data-annual="per month, billed annually"&gt;per month&lt;/div&gt;
+      &lt;ul class="sui-pricing-features"&gt;
+        &lt;li&gt;Unlimited projects&lt;/li&gt;
+        &lt;li&gt;50 GB storage&lt;/li&gt;
+        &lt;li&gt;Priority support&lt;/li&gt;
+        &lt;li&gt;Custom domain&lt;/li&gt;
+      &lt;/ul&gt;
+      &lt;div class="sui-pricing-cta"&gt;
+        &lt;button class="sui-btn sui-btn-primary sui-btn-block"&gt;Choose Pro&lt;/button&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="sui-pricing-card"&gt;
+      &lt;h3 class="sui-pricing-name"&gt;Enterprise&lt;/h3&gt;
+      &lt;p class="sui-pricing-desc"&gt;For large organizations&lt;/p&gt;
+      &lt;div class="sui-pricing-price"&gt;
+        &lt;span class="sui-pricing-currency"&gt;$&lt;/span&gt;
+        &lt;span class="sui-pricing-amount" data-monthly="79" data-annual="63"&gt;79&lt;/span&gt;
+      &lt;/div&gt;
+      &lt;div class="sui-pricing-period" data-monthly="per month" data-annual="per month, billed annually"&gt;per month&lt;/div&gt;
+      &lt;ul class="sui-pricing-features"&gt;
+        &lt;li&gt;Unlimited everything&lt;/li&gt;
+        &lt;li&gt;1 TB storage&lt;/li&gt;
+        &lt;li&gt;24/7 phone support&lt;/li&gt;
+        &lt;li&gt;Dedicated manager&lt;/li&gt;
+      &lt;/ul&gt;
+      &lt;div class="sui-pricing-cta"&gt;
+        &lt;button class="sui-btn sui-btn-outline sui-btn-block"&gt;Choose Enterprise&lt;/button&gt;
+      &lt;/div&gt;
     &lt;/div&gt;
   &lt;/div&gt;
 &lt;/div&gt;
 
 &lt;script&gt;
   document.getElementById('billingToggle').addEventListener('change', function() {
-    var key = this.checked ? 'annual' : 'monthly';
+    var annual = this.checked;
+    var key = annual ? 'annual' : 'monthly';
     document.querySelectorAll('.sui-pricing-amount[data-monthly]').forEach(function(el) {
       el.textContent = el.getAttribute('data-' + key);
     });
     document.querySelectorAll('.sui-pricing-period[data-monthly]').forEach(function(el) {
       el.textContent = el.getAttribute('data-' + key);
     });
+    document.getElementById('toggleMonthly').classList.toggle('sui-pricing-toggle-active', !annual);
+    document.getElementById('toggleAnnual').classList.toggle('sui-pricing-toggle-active', annual);
   });
 &lt;/script&gt;</pre></div>
   </div>
@@ -279,7 +327,7 @@ toc:
 <!-- Selectable -->
 <div class="pg-section" id="section-3">
   <h3 class="pg-section-title">Selectable</h3>
-  <p class="pg-section-desc">Add <code>sui-pricing-selectable</code> to make cards clickable with radio-style selection. Click a card to select it. Use <code>data-plan</code> to identify the selected plan.</p>
+  <p class="pg-section-desc">Add <code>sui-pricing-selectable</code> for radio-style cards; the chosen <code>data-plan</code> lands in <code>data-selected</code>.</p>
   <div class="pg-section-row">
     <div class="sui-pricing sui-pricing-selectable">
       <div class="sui-pricing-card" data-plan="basic">
@@ -344,6 +392,7 @@ toc:
     &lt;ul class="sui-pricing-features"&gt;
       &lt;li&gt;10 projects&lt;/li&gt;
       &lt;li&gt;10 GB storage&lt;/li&gt;
+      &lt;li&gt;Email support&lt;/li&gt;
       &lt;li class="disabled"&gt;Custom domain&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/div&gt;
@@ -360,6 +409,22 @@ toc:
       &lt;li&gt;Unlimited projects&lt;/li&gt;
       &lt;li&gt;100 GB storage&lt;/li&gt;
       &lt;li&gt;Priority support&lt;/li&gt;
+      &lt;li&gt;Custom domain&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/div&gt;
+  &lt;div class="sui-pricing-card" data-plan="enterprise"&gt;
+    &lt;h3 class="sui-pricing-name"&gt;Enterprise&lt;/h3&gt;
+    &lt;p class="sui-pricing-desc"&gt;For large organizations&lt;/p&gt;
+    &lt;div class="sui-pricing-price"&gt;
+      &lt;span class="sui-pricing-currency"&gt;$&lt;/span&gt;
+      &lt;span class="sui-pricing-amount"&gt;99&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;div class="sui-pricing-period"&gt;per month&lt;/div&gt;
+    &lt;ul class="sui-pricing-features"&gt;
+      &lt;li&gt;Unlimited everything&lt;/li&gt;
+      &lt;li&gt;1 TB storage&lt;/li&gt;
+      &lt;li&gt;24/7 phone support&lt;/li&gt;
+      &lt;li&gt;Dedicated manager&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/div&gt;
 &lt;/div&gt;
@@ -423,6 +488,7 @@ toc:
     &lt;ul class="sui-pricing-features"&gt;
       &lt;li&gt;10 projects&lt;/li&gt;
       &lt;li&gt;10 GB storage&lt;/li&gt;
+      &lt;li&gt;Email support&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/div&gt;
   &lt;div class="sui-pricing-card selected" data-plan="business"&gt;
@@ -437,6 +503,7 @@ toc:
     &lt;ul class="sui-pricing-features"&gt;
       &lt;li&gt;Unlimited projects&lt;/li&gt;
       &lt;li&gt;100 GB storage&lt;/li&gt;
+      &lt;li&gt;Priority support&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/div&gt;
 &lt;/div&gt;</pre></div>

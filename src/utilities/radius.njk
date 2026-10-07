@@ -6,34 +6,60 @@ componentId: radius
 hasControls: false
 toc:
   - Radius Sizes
+  - Reference
 ---
 
 <!-- Radius Sizes -->
 <div class="pg-section" id="section-1">
   <h3 class="pg-section-title">Radius Sizes</h3>
-  <div class="pg-section-grid">
+  <div class="pg-section-row">
+    <div style="text-align:center;">
+      <div class="sui-raised sui-rounded-xs" style="width:72px;height:72px;margin:0 auto 8px;"></div>
+      <code>sui-rounded-xs</code>
+    </div>
     <div style="text-align:center;">
       <div class="sui-raised sui-rounded-sm" style="width:72px;height:72px;margin:0 auto 8px;"></div>
-      <small>sui-rounded-sm</small>
+      <code>sui-rounded-sm</code>
     </div>
     <div style="text-align:center;">
       <div class="sui-raised sui-rounded" style="width:72px;height:72px;margin:0 auto 8px;"></div>
-      <small>sui-rounded</small>
+      <code>sui-rounded</code>
     </div>
     <div style="text-align:center;">
       <div class="sui-raised sui-rounded-lg" style="width:72px;height:72px;margin:0 auto 8px;"></div>
-      <small>sui-rounded-lg</small>
+      <code>sui-rounded-lg</code>
     </div>
     <div style="text-align:center;">
       <div class="sui-raised sui-rounded-full" style="width:72px;height:72px;margin:0 auto 8px;"></div>
-      <small>sui-rounded-full</small>
+      <code>sui-rounded-full</code>
     </div>
   </div>
   <div class="pg-code-wrap">
     <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
-    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-rounded-sm"&gt;...&lt;/div&gt;
-&lt;div class="sui-rounded"&gt;...&lt;/div&gt;
-&lt;div class="sui-rounded-lg"&gt;...&lt;/div&gt;
-&lt;div class="sui-rounded-full"&gt;...&lt;/div&gt;</pre></div>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-raised sui-rounded-xs" style="width:72px;height:72px;"&gt;&lt;/div&gt;
+&lt;div class="sui-raised sui-rounded-sm" style="width:72px;height:72px;"&gt;&lt;/div&gt;
+&lt;div class="sui-raised sui-rounded" style="width:72px;height:72px;"&gt;&lt;/div&gt;
+&lt;div class="sui-raised sui-rounded-lg" style="width:72px;height:72px;"&gt;&lt;/div&gt;
+&lt;div class="sui-raised sui-rounded-full" style="width:72px;height:72px;"&gt;&lt;/div&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Reference -->
+<div class="pg-section" id="section-2">
+  <h3 class="pg-section-title">Reference</h3>
+  <div class="docs-table-wrap">
+    <table class="sui-table sui-table-compact">
+      <thead>
+        <tr><th scope="col" style="width:40%;">Class / Token</th><th scope="col">Description</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><code>sui-rounded-xs</code></td><td>6px, from <code>--sui-radius-xs</code>.</td></tr>
+        <tr><td><code>sui-rounded-sm</code></td><td>10px, from <code>--sui-radius-sm</code>.</td></tr>
+        <tr><td><code>sui-rounded</code></td><td>16px, from <code>--sui-radius</code>.</td></tr>
+        <tr><td><code>sui-rounded-lg</code></td><td>24px, from <code>--sui-radius-lg</code>.</td></tr>
+        <tr><td><code>sui-rounded-full</code></td><td>9999px, from <code>--sui-radius-full</code>.</td></tr>
+        <tr><td><code>--sui-radius-xs</code></td><td>6px. Token only, with no utility class; use <code>border-radius: var(--sui-radius-xs)</code>.</td></tr>
+      </tbody>
+    </table>
   </div>
 </div>

@@ -8,6 +8,7 @@ toc:
   - Position
   - Placement
   - Z-Index
+  - Reference
 ---
 
 <!-- Position -->
@@ -30,7 +31,7 @@ toc:
     <div>
       <small style="display:block;margin-bottom:4px;color:var(--sui-text-muted);">sui-sticky — sticks to the top when scrolling (scroll the container below)</small>
       <div class="sui-inset sui-overflow-auto" style="padding:0;border-radius:8px;height:160px;">
-        <div class="sui-sticky sui-raised" style="top:0;padding:10px 14px;border-radius:0;z-index:10;background:var(--sui-primary);color:#fff;text-align:center;">
+        <div class="sui-sticky sui-raised" style="padding:10px 14px;border-radius:0;z-index:10;background:var(--sui-primary);color:#fff;text-align:center;">
           Sticky header
         </div>
         <div style="padding:14px;color:var(--sui-text);">
@@ -56,7 +57,7 @@ toc:
 &lt;div class="sui-fixed" style="top:0;left:0;"&gt;Fixed to viewport&lt;/div&gt;
 
 &lt;!-- Sticky positioning (sticks on scroll) --&gt;
-&lt;div class="sui-sticky" style="top:0;"&gt;Sticky header&lt;/div&gt;</pre></div>
+&lt;div class="sui-sticky"&gt;Sticky header&lt;/div&gt;</pre></div>
   </div>
 </div>
 
@@ -103,22 +104,22 @@ toc:
   <h3 class="pg-section-title">Z-Index</h3>
   <div class="pg-section-row">
     <div class="sui-relative" style="height:180px;width:100%;max-width:500px;">
-      <div class="sui-absolute sui-z-0 sui-raised" style="top:0;left:0;width:120px;height:120px;border-radius:8px;display:flex;align-items:center;justify-content:center;background:var(--sui-primary);color:#fff;opacity:0.9;">
+      <div class="sui-absolute sui-z-0 sui-raised" style="top:0;left:0;width:120px;height:120px;border-radius:8px;display:flex;align-items:flex-start;justify-content:flex-start;padding:6px;font-size:12px;font-weight:600;background:var(--sui-primary);color:#fff;">
         z-0
       </div>
-      <div class="sui-absolute sui-z-10 sui-raised" style="top:20px;left:40px;width:120px;height:120px;border-radius:8px;display:flex;align-items:center;justify-content:center;background:var(--sui-success);color:#fff;opacity:0.9;">
+      <div class="sui-absolute sui-z-10 sui-raised" style="top:20px;left:40px;width:120px;height:120px;border-radius:8px;display:flex;align-items:flex-start;justify-content:flex-start;padding:6px;font-size:12px;font-weight:600;background:var(--sui-success);color:#fff;">
         z-10
       </div>
-      <div class="sui-absolute sui-z-20 sui-raised" style="top:40px;left:80px;width:120px;height:120px;border-radius:8px;display:flex;align-items:center;justify-content:center;background:var(--sui-warning);color:#fff;opacity:0.9;">
+      <div class="sui-absolute sui-z-20 sui-raised" style="top:40px;left:80px;width:120px;height:120px;border-radius:8px;display:flex;align-items:flex-start;justify-content:flex-start;padding:6px;font-size:12px;font-weight:600;background:var(--sui-warning);color:var(--sui-warning-contrast);">
         z-20
       </div>
-      <div class="sui-absolute sui-z-30 sui-raised" style="top:20px;left:120px;width:120px;height:120px;border-radius:8px;display:flex;align-items:center;justify-content:center;background:var(--sui-danger);color:#fff;opacity:0.9;">
+      <div class="sui-absolute sui-z-30 sui-raised" style="top:20px;left:120px;width:120px;height:120px;border-radius:8px;display:flex;align-items:flex-start;justify-content:flex-start;padding:6px;font-size:12px;font-weight:600;background:var(--sui-danger);color:#fff;">
         z-30
       </div>
-      <div class="sui-absolute sui-z-40 sui-raised" style="top:0;left:160px;width:120px;height:120px;border-radius:8px;display:flex;align-items:center;justify-content:center;background:var(--sui-info);color:#fff;opacity:0.9;">
+      <div class="sui-absolute sui-z-40 sui-raised" style="top:0;left:160px;width:120px;height:120px;border-radius:8px;display:flex;align-items:flex-start;justify-content:flex-start;padding:6px;font-size:12px;font-weight:600;background:var(--sui-info);color:#fff;">
         z-40
       </div>
-      <div class="sui-absolute sui-z-50 sui-raised" style="top:50px;left:200px;width:120px;height:120px;border-radius:8px;display:flex;align-items:center;justify-content:center;background:var(--sui-primary-hover);color:#fff;opacity:0.9;">
+      <div class="sui-absolute sui-z-50 sui-raised" style="top:50px;left:200px;width:120px;height:120px;border-radius:8px;display:flex;align-items:flex-start;justify-content:flex-start;padding:6px;font-size:12px;font-weight:600;background:var(--sui-primary-hover);color:#fff;">
         z-50
       </div>
     </div>
@@ -132,5 +133,27 @@ toc:
 &lt;div class="sui-z-40"&gt;z-index: 40&lt;/div&gt;
 &lt;div class="sui-z-50"&gt;z-index: 50&lt;/div&gt;
 &lt;div class="sui-z-auto"&gt;z-index: auto&lt;/div&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Reference -->
+<div class="pg-section" id="section-4">
+  <h3 class="pg-section-title">Reference</h3>
+  <div class="docs-table-wrap">
+    <table class="sui-table sui-table-compact">
+      <thead>
+        <tr><th scope="col" style="width:40%;">Class</th><th scope="col">Description</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><code>sui-relative</code></td><td><code>position: relative</code>; the positioning context for absolute children.</td></tr>
+        <tr><td><code>sui-absolute</code></td><td><code>position: absolute</code>, placed against the nearest positioned ancestor.</td></tr>
+        <tr><td><code>sui-fixed</code></td><td><code>position: fixed</code>, placed against the viewport.</td></tr>
+        <tr><td><code>sui-sticky</code></td><td><code>position: sticky</code> with <code>top: 0</code> built in.</td></tr>
+        <tr><td><code>sui-inset-0</code></td><td><code>inset: 0</code>; stretches to fill the parent.</td></tr>
+        <tr><td><code>sui-top-0</code>, <code>sui-right-0</code>, <code>sui-bottom-0</code>, <code>sui-left-0</code></td><td>Sets one side to 0.</td></tr>
+        <tr><td><code>sui-z-0</code> &ndash; <code>sui-z-50</code></td><td><code>z-index</code> 0, 10, 20, 30, 40 or 50.</td></tr>
+        <tr><td><code>sui-z-auto</code></td><td><code>z-index: auto</code>.</td></tr>
+      </tbody>
+    </table>
   </div>
 </div>

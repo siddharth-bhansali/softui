@@ -1,6 +1,6 @@
 {
   "forms": [
-    { "id": "forms", "name": "Inputs", "url": "/components/forms/" },
+    { "id": "forms", "name": "Forms & Inputs", "url": "/components/forms/" },
     { "id": "toggles", "name": "Toggles & Checks", "url": "/components/toggles/" },
     { "id": "slider", "name": "Slider", "url": "/components/slider/" },
     { "id": "colorpicker", "name": "Color Picker", "url": "/components/colorpicker/" },

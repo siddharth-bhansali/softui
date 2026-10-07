@@ -8,6 +8,8 @@ requiresJs: true
 toc:
   - Default
   - With Min/Max Labels
+  - With Label
+  - With Ticks
   - Colors
   - Sizes
   - Vertical
@@ -54,8 +56,52 @@ toc:
   </div>
 </div>
 
-<!-- Colors -->
+<!-- With Label -->
 <div class="pg-section" id="section-3">
+  <h3 class="pg-section-title">With Label</h3>
+  <p style="font-size:13px;color:var(--sui-text-light);margin-bottom:16px;">Add a <code>sui-slider-label</code> before the track.</p>
+  <div class="pg-section-row" style="flex-direction:column; gap:16px; max-width:500px;">
+    <div class="sui-slider">
+      <label class="sui-slider-label" for="slider-volume">Volume</label>
+      <input type="range" id="slider-volume" min="0" max="100" value="40">
+      <span class="sui-slider-value">40</span>
+    </div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-slider"&gt;
+  &lt;label class="sui-slider-label" for="slider-volume"&gt;Volume&lt;/label&gt;
+  &lt;input type="range" id="slider-volume" min="0" max="100" value="40"&gt;
+  &lt;span class="sui-slider-value"&gt;40&lt;/span&gt;
+&lt;/div&gt;</pre></div>
+  </div>
+</div>
+
+<!-- With Ticks -->
+<div class="pg-section" id="section-4">
+  <h3 class="pg-section-title">With Ticks</h3>
+  <p style="font-size:13px;color:var(--sui-text-light);margin-bottom:16px;">Put <code>sui-slider-ticks</code> under a slider with no value display.</p>
+  <div class="pg-section-row" style="flex-direction:column; gap:16px; max-width:500px;">
+    <div style="width:100%;">
+      <div class="sui-slider">
+        <input type="range" aria-label="Value" min="0" max="100" step="25" value="50">
+      </div>
+      <div class="sui-slider-ticks" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span></div>
+    </div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div style="width:100%;"&gt;
+  &lt;div class="sui-slider"&gt;
+    &lt;input type="range" aria-label="Value" min="0" max="100" step="25" value="50"&gt;
+  &lt;/div&gt;
+  &lt;div class="sui-slider-ticks" aria-hidden="true"&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;/div&gt;
+&lt;/div&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Colors -->
+<div class="pg-section" id="section-5">
   <h3 class="pg-section-title">Colors</h3>
   <div class="pg-section-row" style="flex-direction:column; gap:20px; max-width:500px;">
     <div class="sui-slider sui-slider-primary">
@@ -109,7 +155,7 @@ toc:
 </div>
 
 <!-- Sizes -->
-<div class="pg-section" id="section-4">
+<div class="pg-section" id="section-6">
   <h3 class="pg-section-title">Sizes</h3>
   <div class="pg-section-row" style="flex-direction:column; align-items:stretch; gap:20px; max-width:500px;">
     <div>
@@ -157,7 +203,7 @@ toc:
 </div>
 
 <!-- Vertical -->
-<div class="pg-section" id="section-5">
+<div class="pg-section" id="section-7">
   <h3 class="pg-section-title">Vertical</h3>
   <div class="pg-section-row" style="gap:40px; align-items:flex-end;">
     <div class="sui-slider sui-slider-vertical sui-slider-primary">

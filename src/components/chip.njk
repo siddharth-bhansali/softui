@@ -4,6 +4,8 @@ title: Chip
 description: Compact labels with optional dismiss and avatar support.
 componentId: chip
 hasControls: false
+requiresJs: true
+partialJs: true
 toc:
   - Default
   - Dismissible
@@ -134,24 +136,25 @@ toc:
   </div>
   <div class="pg-code-wrap">
     <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
-    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;span class="sui-chip sui-chip-avatar"&gt;
-  &lt;img src="avatar.jpg" alt="Alice"&gt;
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;!-- An &lt;img src="..." alt="..."&gt; also works in place of the svg --&gt;
+&lt;span class="sui-chip sui-chip-avatar"&gt;
+  &lt;svg class="sui-chip-avatar-placeholder" viewBox="0 0 24 24" style="background:var(--sui-primary);border-radius:50%;"&gt;&lt;text x="50%" y="54%" text-anchor="middle" dominant-baseline="middle" fill="#fff" font-size="12" font-weight="600" font-family="var(--sui-font)"&gt;A&lt;/text&gt;&lt;/svg&gt;
   Alice
 &lt;/span&gt;
 
 &lt;span class="sui-chip sui-chip-avatar sui-chip-primary"&gt;
-  &lt;img src="avatar.jpg" alt="Bob"&gt;
+  &lt;svg class="sui-chip-avatar-placeholder" viewBox="0 0 24 24" style="background:rgba(255,255,255,0.25);border-radius:50%;"&gt;&lt;text x="50%" y="54%" text-anchor="middle" dominant-baseline="middle" fill="#fff" font-size="12" font-weight="600" font-family="var(--sui-font)"&gt;B&lt;/text&gt;&lt;/svg&gt;
   Bob
 &lt;/span&gt;
 
 &lt;span class="sui-chip sui-chip-avatar sui-chip-outline sui-chip-success"&gt;
-  &lt;img src="avatar.jpg" alt="Carol"&gt;
+  &lt;svg class="sui-chip-avatar-placeholder" viewBox="0 0 24 24" style="background:var(--sui-success);border-radius:50%;"&gt;&lt;text x="50%" y="54%" text-anchor="middle" dominant-baseline="middle" fill="#fff" font-size="12" font-weight="600" font-family="var(--sui-font)"&gt;C&lt;/text&gt;&lt;/svg&gt;
   Carol
   &lt;button class="sui-chip-close" aria-label="Remove"&gt;&lt;/button&gt;
 &lt;/span&gt;
 
 &lt;span class="sui-chip sui-chip-avatar sui-chip-danger"&gt;
-  &lt;img src="avatar.jpg" alt="Dave"&gt;
+  &lt;svg class="sui-chip-avatar-placeholder" viewBox="0 0 24 24" style="background:rgba(255,255,255,0.25);border-radius:50%;"&gt;&lt;text x="50%" y="54%" text-anchor="middle" dominant-baseline="middle" fill="#fff" font-size="12" font-weight="600" font-family="var(--sui-font)"&gt;D&lt;/text&gt;&lt;/svg&gt;
   Dave
   &lt;button class="sui-chip-close" aria-label="Remove"&gt;&lt;/button&gt;
 &lt;/span&gt;</pre></div>

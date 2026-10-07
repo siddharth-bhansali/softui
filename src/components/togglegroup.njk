@@ -18,7 +18,7 @@ toc:
 <!-- Single Select -->
 <div class="pg-section" id="section-1">
   <h3 class="pg-section-title">Single Select</h3>
-  <p style="font-size:13px;color:var(--sui-text-light);margin-bottom:16px;">Only one item can be active at a time. Click an active item to deselect it.</p>
+  <p style="font-size:13px;color:var(--sui-text-light);margin-bottom:16px;">Only one item can be active; click it again to deselect.</p>
   <div class="pg-section-row">
     <div class="sui-toggle-group" data-sui-toggle="single">
       <button class="sui-toggle-group-item active" aria-pressed="true">Left</button>
@@ -32,8 +32,7 @@ toc:
   &lt;button class="sui-toggle-group-item active" aria-pressed="true"&gt;Left&lt;/button&gt;
   &lt;button class="sui-toggle-group-item" aria-pressed="false"&gt;Center&lt;/button&gt;
   &lt;button class="sui-toggle-group-item" aria-pressed="false"&gt;Right&lt;/button&gt;
-&lt;/div&gt;
-</pre></div>
+&lt;/div&gt;</pre></div>
   </div>
 </div>
 
@@ -63,8 +62,8 @@ toc:
 <!-- Outline -->
 <div class="pg-section" id="section-3">
   <h3 class="pg-section-title">Outline</h3>
-  <p style="font-size:13px;color:var(--sui-text-light);margin-bottom:16px;">Add <code>sui-toggle-group-outline</code> for a flat bordered style. Active items get a filled primary background.</p>
-  <div class="pg-section-row" style="display:flex;flex-direction:column;gap:20px;">
+  <p style="font-size:13px;color:var(--sui-text-light);margin-bottom:16px;">Add <code>sui-toggle-group-outline</code> for a flat bordered style.</p>
+  <div class="pg-section-row" style="display:flex;flex-direction:column;gap:20px;align-items:flex-start;">
     <div class="sui-toggle-group sui-toggle-group-outline" data-sui-toggle="single">
       <button class="sui-toggle-group-item active" aria-pressed="true">Day</button>
       <button class="sui-toggle-group-item" aria-pressed="false">Week</button>
@@ -93,13 +92,13 @@ toc:
 
 &lt;!-- Outline multi select --&gt;
 &lt;div class="sui-toggle-group sui-toggle-group-outline" data-sui-toggle="multi"&gt;
-  &lt;button class="sui-toggle-group-item active"&gt;S&lt;/button&gt;
-  &lt;button class="sui-toggle-group-item"&gt;M&lt;/button&gt;
-  &lt;button class="sui-toggle-group-item active"&gt;T&lt;/button&gt;
-  &lt;button class="sui-toggle-group-item"&gt;W&lt;/button&gt;
-  &lt;button class="sui-toggle-group-item"&gt;T&lt;/button&gt;
-  &lt;button class="sui-toggle-group-item active"&gt;F&lt;/button&gt;
-  &lt;button class="sui-toggle-group-item"&gt;S&lt;/button&gt;
+  &lt;button class="sui-toggle-group-item active" aria-pressed="true"&gt;S&lt;/button&gt;
+  &lt;button class="sui-toggle-group-item" aria-pressed="false"&gt;M&lt;/button&gt;
+  &lt;button class="sui-toggle-group-item active" aria-pressed="true"&gt;T&lt;/button&gt;
+  &lt;button class="sui-toggle-group-item" aria-pressed="false"&gt;W&lt;/button&gt;
+  &lt;button class="sui-toggle-group-item" aria-pressed="false"&gt;T&lt;/button&gt;
+  &lt;button class="sui-toggle-group-item active" aria-pressed="true"&gt;F&lt;/button&gt;
+  &lt;button class="sui-toggle-group-item" aria-pressed="false"&gt;S&lt;/button&gt;
 &lt;/div&gt;</pre></div>
   </div>
 </div>
@@ -107,8 +106,8 @@ toc:
 <!-- With Icons -->
 <div class="pg-section" id="section-4">
   <h3 class="pg-section-title">With Icons</h3>
-  <p style="font-size:13px;color:var(--sui-text-light);margin-bottom:16px;">Use <code>sui-toggle-icon</code> on items for square icon-only toggles. Icons use inline SVG.</p>
-  <div class="pg-section-row" style="display:flex;flex-direction:column;gap:20px;">
+  <p style="font-size:13px;color:var(--sui-text-light);margin-bottom:16px;">Add <code>sui-toggle-icon</code> to items for square icon-only toggles.</p>
+  <div class="pg-section-row" style="display:flex;flex-direction:column;gap:20px;align-items:flex-start;">
     <div class="sui-toggle-group" data-sui-toggle="single">
       <button class="sui-toggle-group-item sui-toggle-icon active" aria-pressed="true" aria-label="Align left"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><line x1="2" y1="3" x2="14" y2="3"/><line x1="2" y1="6.5" x2="10" y2="6.5"/><line x1="2" y1="10" x2="14" y2="10"/><line x1="2" y1="13.5" x2="10" y2="13.5"/></svg></button>
       <button class="sui-toggle-group-item sui-toggle-icon" aria-pressed="false" aria-label="Align center"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><line x1="2" y1="3" x2="14" y2="3"/><line x1="4" y1="6.5" x2="12" y2="6.5"/><line x1="2" y1="10" x2="14" y2="10"/><line x1="4" y1="13.5" x2="12" y2="13.5"/></svg></button>
@@ -175,20 +174,23 @@ toc:
     <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
     <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;!-- Small --&gt;
 &lt;div class="sui-toggle-group sui-toggle-group-sm" data-sui-toggle="single"&gt;
-  &lt;button class="sui-toggle-group-item active"&gt;Option A&lt;/button&gt;
-  &lt;button class="sui-toggle-group-item"&gt;Option B&lt;/button&gt;
+  &lt;button class="sui-toggle-group-item active" aria-pressed="true"&gt;Small&lt;/button&gt;
+  &lt;button class="sui-toggle-group-item" aria-pressed="false"&gt;Option B&lt;/button&gt;
+  &lt;button class="sui-toggle-group-item" aria-pressed="false"&gt;Option C&lt;/button&gt;
 &lt;/div&gt;
 
 &lt;!-- Default --&gt;
 &lt;div class="sui-toggle-group" data-sui-toggle="single"&gt;
-  &lt;button class="sui-toggle-group-item active"&gt;Option A&lt;/button&gt;
-  &lt;button class="sui-toggle-group-item"&gt;Option B&lt;/button&gt;
+  &lt;button class="sui-toggle-group-item active" aria-pressed="true"&gt;Default&lt;/button&gt;
+  &lt;button class="sui-toggle-group-item" aria-pressed="false"&gt;Option B&lt;/button&gt;
+  &lt;button class="sui-toggle-group-item" aria-pressed="false"&gt;Option C&lt;/button&gt;
 &lt;/div&gt;
 
 &lt;!-- Large --&gt;
 &lt;div class="sui-toggle-group sui-toggle-group-lg" data-sui-toggle="single"&gt;
-  &lt;button class="sui-toggle-group-item active"&gt;Option A&lt;/button&gt;
-  &lt;button class="sui-toggle-group-item"&gt;Option B&lt;/button&gt;
+  &lt;button class="sui-toggle-group-item active" aria-pressed="true"&gt;Large&lt;/button&gt;
+  &lt;button class="sui-toggle-group-item" aria-pressed="false"&gt;Option B&lt;/button&gt;
+  &lt;button class="sui-toggle-group-item" aria-pressed="false"&gt;Option C&lt;/button&gt;
 &lt;/div&gt;</pre></div>
   </div>
 </div>
@@ -206,10 +208,10 @@ toc:
   </div>
   <div class="pg-code-wrap">
     <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
-    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-toggle-group sui-toggle-group-vertical" data-sui-toggle="single"&gt;
-  &lt;button class="sui-toggle-group-item active"&gt;List View&lt;/button&gt;
-  &lt;button class="sui-toggle-group-item"&gt;Grid View&lt;/button&gt;
-  &lt;button class="sui-toggle-group-item"&gt;Board View&lt;/button&gt;
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-toggle-group sui-toggle-group-vertical" data-sui-toggle="single" style="width:200px;"&gt;
+  &lt;button class="sui-toggle-group-item active" aria-pressed="true"&gt;List View&lt;/button&gt;
+  &lt;button class="sui-toggle-group-item" aria-pressed="false"&gt;Grid View&lt;/button&gt;
+  &lt;button class="sui-toggle-group-item" aria-pressed="false"&gt;Board View&lt;/button&gt;
 &lt;/div&gt;</pre></div>
   </div>
 </div>
@@ -228,9 +230,9 @@ toc:
   <div class="pg-code-wrap">
     <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
     <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-toggle-group" data-sui-toggle="single"&gt;
-  &lt;button class="sui-toggle-group-item active"&gt;Available&lt;/button&gt;
-  &lt;button class="sui-toggle-group-item"&gt;Available&lt;/button&gt;
-  &lt;button class="sui-toggle-group-item" disabled&gt;Unavailable&lt;/button&gt;
+  &lt;button class="sui-toggle-group-item active" aria-pressed="true"&gt;Available&lt;/button&gt;
+  &lt;button class="sui-toggle-group-item" aria-pressed="false"&gt;Available&lt;/button&gt;
+  &lt;button class="sui-toggle-group-item" aria-pressed="false" disabled&gt;Unavailable&lt;/button&gt;
 &lt;/div&gt;</pre></div>
   </div>
 </div>

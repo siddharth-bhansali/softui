@@ -91,6 +91,10 @@
   --sui-tint-active: 10%;
   --sui-tint-blockquote: 4%;
   --sui-hover-neutral: rgba(0, 0, 0, 0.04);
+  /* Mix amount of --sui-text-light for hairlines and control edges that have
+     to stay visible in both themes (unchecked controls, dashed drop zones,
+     outlined keys, empty stars). Raised in dark, where shadows fade. */
+  --sui-edge-mix: 22%;
   --sui-select-arrow: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%238492A6' viewBox='0 0 16 16'%3E%3Cpath d='M8 11L3 6h10l-5 5z'/%3E%3C/svg%3E");
 
   --sui-transition-fast: 0.15s;
@@ -132,6 +136,7 @@
   --sui-tint-active: 15%;
   --sui-tint-blockquote: 6%;
   --sui-hover-neutral: rgba(255, 255, 255, 0.06);
+  --sui-edge-mix: 38%;
   --sui-border-subtle: var(--sui-bg-light); /* light themes leave it unset */
   --sui-select-arrow: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%238B95A8' viewBox='0 0 16 16'%3E%3Cpath d='M8 11L3 6h10l-5 5z'/%3E%3C/svg%3E");
 
@@ -175,6 +180,7 @@
   --sui-tint-active: 10%;
   --sui-tint-blockquote: 4%;
   --sui-hover-neutral: rgba(0, 0, 0, 0.04);
+  --sui-edge-mix: 22%;
   --sui-border-subtle: initial; /* unset: uses var(--sui-bg-dark) per element */
   --sui-select-arrow: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%238492A6' viewBox='0 0 16 16'%3E%3Cpath d='M8 11L3 6h10l-5 5z'/%3E%3C/svg%3E");
 
@@ -409,7 +415,7 @@ a.sui-btn-warning:visited {
 .sui-btn-outline {
   background: transparent;
   box-shadow: none;
-  border: 2px solid var(--sui-bg-dark);
+  border: 2px solid color-mix(in srgb, var(--sui-text-light) var(--sui-edge-mix, 22%), transparent);
 }
 .sui-btn-outline:hover {
   background: var(--sui-bg-light);
@@ -742,7 +748,7 @@ a.sui-btn-warning:visited {
   -webkit-appearance: none;
   background: var(--sui-bg);
   border-radius: var(--sui-radius-full);
-  box-shadow: var(--sui-shadow-inset-sm);
+  box-shadow: var(--sui-shadow-inset-sm), inset 0 0 0 1px color-mix(in srgb, var(--sui-text-light) var(--sui-edge-mix, 22%), transparent);
   outline: none;
   margin: 12px 0;
 }
@@ -754,12 +760,12 @@ a.sui-btn-warning:visited {
   height: 24px;
   border-radius: 50%;
   background: var(--sui-bg);
-  box-shadow: var(--sui-shadow-raised-sm);
+  box-shadow: var(--sui-shadow-raised-sm), inset 0 0 0 1px color-mix(in srgb, var(--sui-text-light) var(--sui-edge-mix, 22%), transparent);
   cursor: pointer;
   transition: var(--sui-transition);
 }
 .sui-range::-webkit-slider-thumb:hover {
-  box-shadow: var(--sui-shadow-raised), 0 0 0 3px color-mix(in srgb, var(--sui-primary) 15%, transparent);
+  box-shadow: var(--sui-shadow-raised), inset 0 0 0 1px color-mix(in srgb, var(--sui-text-light) var(--sui-edge-mix, 22%), transparent), 0 0 0 3px color-mix(in srgb, var(--sui-primary) 15%, transparent);
 }
 
 .sui-range::-moz-range-thumb {
@@ -767,13 +773,13 @@ a.sui-btn-warning:visited {
   height: 24px;
   border-radius: 50%;
   background: var(--sui-bg);
-  box-shadow: var(--sui-shadow-raised-sm);
+  box-shadow: var(--sui-shadow-raised-sm), inset 0 0 0 1px color-mix(in srgb, var(--sui-text-light) var(--sui-edge-mix, 22%), transparent);
   cursor: pointer;
   border: none;
 }
 
 .sui-range:focus-visible {
-  box-shadow: var(--sui-shadow-inset-sm), var(--sui-focus-ring, 0 0 0 3px var(--sui-focus-ring-color, color-mix(in srgb, var(--sui-primary) 40%, transparent)));
+  box-shadow: var(--sui-shadow-inset-sm), inset 0 0 0 1px color-mix(in srgb, var(--sui-text-light) var(--sui-edge-mix, 22%), transparent), var(--sui-focus-ring, 0 0 0 3px var(--sui-focus-ring-color, color-mix(in srgb, var(--sui-primary) 40%, transparent)));
 }
 
 /* ===========================================
@@ -802,7 +808,7 @@ a.sui-btn-warning:visited {
   bottom: 0;
   background: var(--sui-bg);
   border-radius: var(--sui-radius-full);
-  box-shadow: var(--sui-shadow-inset);
+  box-shadow: var(--sui-shadow-inset), inset 0 0 0 1px color-mix(in srgb, var(--sui-text-light) var(--sui-edge-mix, 22%), transparent);
   transition: var(--sui-transition);
 }
 
@@ -815,7 +821,7 @@ a.sui-btn-warning:visited {
   height: 22px;
   border-radius: 50%;
   background: var(--sui-bg);
-  box-shadow: var(--sui-shadow-raised-sm);
+  box-shadow: var(--sui-shadow-raised-sm), inset 0 0 0 1px color-mix(in srgb, var(--sui-text-light) var(--sui-edge-mix, 22%), transparent);
   transition: var(--sui-transition);
 }
 
@@ -829,7 +835,7 @@ a.sui-btn-warning:visited {
 }
 
 .sui-toggle input:focus-visible + .sui-toggle-slider {
-  box-shadow: var(--sui-shadow-inset), var(--sui-focus-ring, 0 0 0 3px var(--sui-focus-ring-color, color-mix(in srgb, var(--sui-primary) 40%, transparent)));
+  box-shadow: var(--sui-shadow-inset), inset 0 0 0 1px color-mix(in srgb, var(--sui-text-light) var(--sui-edge-mix, 22%), transparent), var(--sui-focus-ring, 0 0 0 3px var(--sui-focus-ring-color, color-mix(in srgb, var(--sui-primary) 40%, transparent)));
 }
 
 .sui-toggle-primary input:checked + .sui-toggle-slider::before {
@@ -863,7 +869,7 @@ a.sui-btn-warning:visited {
   height: 22px;
   border-radius: var(--sui-radius-xs);
   background: var(--sui-bg);
-  box-shadow: var(--sui-shadow-inset-sm);
+  box-shadow: var(--sui-shadow-inset-sm), inset 0 0 0 1px color-mix(in srgb, var(--sui-text-light) var(--sui-edge-mix, 22%), transparent);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -887,7 +893,7 @@ a.sui-btn-warning:visited {
 }
 
 .sui-checkbox input:focus-visible + .sui-check-mark {
-  box-shadow: var(--sui-shadow-inset-sm), var(--sui-focus-ring, 0 0 0 3px var(--sui-focus-ring-color, color-mix(in srgb, var(--sui-primary) 40%, transparent)));
+  box-shadow: var(--sui-shadow-inset-sm), inset 0 0 0 1px color-mix(in srgb, var(--sui-text-light) var(--sui-edge-mix, 22%), transparent), var(--sui-focus-ring, 0 0 0 3px var(--sui-focus-ring-color, color-mix(in srgb, var(--sui-primary) 40%, transparent)));
 }
 
 .sui-checkbox input:disabled ~ * {
@@ -921,7 +927,7 @@ a.sui-btn-warning:visited {
   height: 22px;
   border-radius: 50%;
   background: var(--sui-bg);
-  box-shadow: var(--sui-shadow-inset-sm);
+  box-shadow: var(--sui-shadow-inset-sm), inset 0 0 0 1px color-mix(in srgb, var(--sui-text-light) var(--sui-edge-mix, 22%), transparent);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -944,7 +950,7 @@ a.sui-btn-warning:visited {
 }
 
 .sui-radio input:focus-visible + .sui-radio-mark {
-  box-shadow: var(--sui-shadow-inset-sm), var(--sui-focus-ring, 0 0 0 3px var(--sui-focus-ring-color, color-mix(in srgb, var(--sui-primary) 40%, transparent)));
+  box-shadow: var(--sui-shadow-inset-sm), inset 0 0 0 1px color-mix(in srgb, var(--sui-text-light) var(--sui-edge-mix, 22%), transparent), var(--sui-focus-ring, 0 0 0 3px var(--sui-focus-ring-color, color-mix(in srgb, var(--sui-primary) 40%, transparent)));
 }
 
 .sui-radio input:disabled ~ * {
@@ -1192,6 +1198,7 @@ a.sui-btn-warning:visited {
 /* ===========================================
    Utility: Border Radius
    =========================================== */
+.sui-rounded-xs   { border-radius: var(--sui-radius-xs) !important; }
 .sui-rounded-sm   { border-radius: var(--sui-radius-sm) !important; }
 .sui-rounded      { border-radius: var(--sui-radius) !important; }
 .sui-rounded-lg   { border-radius: var(--sui-radius-lg) !important; }
@@ -1241,6 +1248,7 @@ a.sui-btn-warning:visited {
   border-radius: var(--sui-img-frame-radius, var(--sui-radius));
 }
 :where(.sui-img-frame) { box-shadow: var(--sui-shadow-raised); }
+.sui-img-frame.sui-rounded-xs   { --sui-img-frame-radius: var(--sui-radius-xs); }
 .sui-img-frame.sui-rounded-sm   { --sui-img-frame-radius: var(--sui-radius-sm); }
 .sui-img-frame.sui-rounded      { --sui-img-frame-radius: var(--sui-radius); }
 .sui-img-frame.sui-rounded-lg   { --sui-img-frame-radius: var(--sui-radius-lg); }
@@ -1511,6 +1519,10 @@ a.sui-btn-warning:visited {
 }
 
 .sui-kbd-inline {
+  display: inline-block;
+  min-width: 1.75em;
+  text-align: center;
+  line-height: 1.4;
   font-family: var(--sui-font-mono);
   background: var(--sui-bg);
   padding: 2px 6px;
@@ -1683,9 +1695,13 @@ a.sui-btn-warning:visited {
   z-index: 900;
   pointer-events: none;
 }
+/* max-content so a long tip uses the full max-width instead of
+   shrinking to the trigger's width, then wraps */
 .sui-tooltip-wrap::after {
   white-space: normal;
   text-align: center;
+  width: max-content;
+  max-width: min(280px, calc(100vw - 32px));
 }
 
 .sui-tooltip:hover::after {
@@ -1757,8 +1773,9 @@ a.sui-btn-warning:visited {
    =========================================== */
 .sui-breadcrumb {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
-  gap: 0;
+  gap: 4px 0;
   padding: 12px 24px;
   background: var(--sui-bg);
   border-radius: var(--sui-radius-sm);
@@ -1875,7 +1892,10 @@ a.sui-btn-warning:visited {
   box-shadow: var(--sui-shadow-inset);
 }
 
-.sui-page-item.disabled .sui-page-link {
+/* Disabled: muted, no pointer, so no hover lift or press */
+.sui-page-item.disabled .sui-page-link,
+.sui-page-link:disabled,
+.sui-page-link[aria-disabled="true"] {
   opacity: 0.4;
   cursor: not-allowed;
   pointer-events: none;
@@ -2282,6 +2302,10 @@ a.sui-btn-warning:visited {
 .sui-btn-ghost.sui-btn-success:hover { color: var(--sui-success-text-hover); background: color-mix(in srgb, var(--sui-success) 10%, transparent); }
 .sui-btn-ghost.sui-btn-danger { color: var(--sui-danger-text); }
 .sui-btn-ghost.sui-btn-danger:hover { color: var(--sui-danger-text-hover); background: color-mix(in srgb, var(--sui-danger) 10%, transparent); }
+.sui-btn-ghost.sui-btn-warning { color: var(--sui-warning-text); }
+.sui-btn-ghost.sui-btn-warning:hover { color: var(--sui-warning-text-hover); background: color-mix(in srgb, var(--sui-warning) 10%, transparent); }
+.sui-btn-ghost.sui-btn-info { color: var(--sui-info-text); }
+.sui-btn-ghost.sui-btn-info:hover { color: var(--sui-info-text-hover); background: color-mix(in srgb, var(--sui-info) 10%, transparent); }
 
 /* ===========================================
    Buttons — Pill / Rounded
@@ -2772,7 +2796,7 @@ a.sui-btn-warning:visited {
    Toggles — Disabled
    =========================================== */
 .sui-toggle input:disabled + .sui-toggle-slider {
-  opacity: 0.5;
+  opacity: 0.6;
   cursor: not-allowed;
 }
 .sui-toggle input:disabled + .sui-toggle-slider::before {
@@ -3001,6 +3025,8 @@ a.sui-btn-warning:visited {
 }
 
 .sui-alert-icon-symbol {
+  width: 1.25em;
+  text-align: center;
   font-size: 20px;
   line-height: 1;
   flex-shrink: 0;
@@ -3134,21 +3160,25 @@ a.sui-btn-warning:visited {
   height: 20px;
 }
 .sui-progress-labeled .sui-progress-bar {
-  overflow: visible;
+  position: relative;
 }
+/* Label sits at the end of the fill, in a colour that contrasts with it */
 .sui-progress-labeled .sui-progress-bar::after {
   content: attr(data-label);
   position: absolute;
   inset: 0;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-end;
+  padding-inline-end: 8px;
   font-size: 11px;
-  font-weight: 600;
-  color: var(--sui-text-muted);
+  font-weight: 700;
+  color: var(--sui-bg);
   white-space: nowrap;
   pointer-events: none;
 }
+.sui-progress-labeled :is(.sui-progress-primary, .sui-progress-success, .sui-progress-danger, .sui-progress-info)::after { color: #fff; }
+.sui-progress-labeled .sui-progress-warning::after { color: var(--sui-warning-contrast); }
 
 /* ===========================================
    Progress — Indeterminate
@@ -3197,8 +3227,18 @@ a.sui-btn-warning:visited {
    Tables — Inset
    =========================================== */
 .sui-table-inset {
+  background: var(--sui-bg);
   box-shadow: var(--sui-shadow-inset);
   overflow: hidden;
+}
+.sui-table-inset thead {
+  background: transparent;
+}
+.sui-table-inset th {
+  border-bottom: 1px solid color-mix(in srgb, var(--sui-text-light) var(--sui-edge-mix, 22%), transparent);
+}
+.sui-table-inset td {
+  border-bottom-color: var(--sui-bg-light);
 }
 
 .sui-table-inset tbody tr:hover {
@@ -3598,7 +3638,7 @@ select.sui-datatable-filter:focus-visible {
   justify-content: center;
   gap: 8px;
   padding: 40px 24px;
-  border: 2px dashed var(--sui-bg-dark);
+  border: 2px dashed color-mix(in srgb, var(--sui-text-light) calc(var(--sui-edge-mix, 22%) * 1.75), transparent);
   border-radius: var(--sui-radius);
   background: var(--sui-bg);
   box-shadow: var(--sui-shadow-inset-sm);
@@ -4798,8 +4838,20 @@ select.sui-datatable-filter:focus-visible {
 }
 
 .sui-calendar-months .sui-calendar-month + .sui-calendar-month {
-  padding-left: 16px;
-  border-left: 1px solid var(--sui-bg-dark);
+  padding-inline-start: 16px;
+  border-inline-start: 1px solid var(--sui-bg-dark);
+}
+
+@media (max-width: 600px) {
+  .sui-calendar-months {
+    flex-direction: column;
+  }
+  .sui-calendar-months .sui-calendar-month + .sui-calendar-month {
+    padding-inline-start: 0;
+    border-inline-start: none;
+    padding-block-start: 16px;
+    border-block-start: 1px solid var(--sui-bg-dark);
+  }
 }
 
 .sui-calendar-title {
@@ -5435,7 +5487,8 @@ select.sui-datatable-filter:focus-visible {
   white-space: nowrap;
 }
 
-.sui-combobox-value.placeholder {
+.sui-combobox-value.placeholder,
+.sui-combobox-chips .placeholder {
   color: var(--sui-text-light);
 }
 
@@ -5962,9 +6015,9 @@ select.sui-datatable-filter:focus-visible {
   display: block;
   background: linear-gradient(
     90deg,
-    var(--sui-bg-dark) 0%,
-    var(--sui-bg-light) 40%,
-    var(--sui-bg-dark) 80%
+    color-mix(in srgb, var(--sui-text-light) calc(var(--sui-edge-mix, 22%) * 0.6), var(--sui-bg)) 0%,
+    color-mix(in srgb, var(--sui-text-light) calc(var(--sui-edge-mix, 22%) * 0.25), var(--sui-bg-light)) 40%,
+    color-mix(in srgb, var(--sui-text-light) calc(var(--sui-edge-mix, 22%) * 0.6), var(--sui-bg)) 80%
   );
   background-size: 800px 100%;
   box-shadow: var(--sui-shadow-inset-sm);
@@ -6412,7 +6465,7 @@ select.sui-datatable-filter:focus-visible {
   align-self: stretch;
   border-top: none;
   border-bottom: none;
-  border-left: 1px solid var(--sui-bg-dark);
+  border-left: 1px solid var(--sui-text-light);
   border-right: 1px solid var(--sui-bg-light);
 }
 
@@ -6576,12 +6629,12 @@ select.sui-datatable-filter:focus-visible {
 .sui-stepper-vertical .sui-step {
   flex-direction: row;
   align-items: center;
-  text-align: left;
+  text-align: start;
 }
 
 .sui-stepper-vertical .sui-step-label {
   margin-top: 0;
-  margin-left: 12px;
+  margin-inline-start: 12px;
 }
 
 .sui-stepper-vertical .sui-step-connector {
@@ -6589,7 +6642,7 @@ select.sui-datatable-filter:focus-visible {
   height: 32px;
   flex: none;
   margin: 0;
-  margin-left: 17px;
+  margin-inline-start: 17px;
   align-self: auto;
   margin-top: 0;
 }
@@ -6679,7 +6732,7 @@ select.sui-datatable-filter:focus-visible {
   border-bottom-width: 2px;
 }
 .sui-stepper-sm.sui-stepper-vertical .sui-step-connector {
-  margin-left: 13px;
+  margin-inline-start: 13px;
   margin-top: 0;
   height: 24px;
 }
@@ -6703,7 +6756,7 @@ select.sui-datatable-filter:focus-visible {
   border-bottom-width: 3px;
 }
 .sui-stepper-lg.sui-stepper-vertical .sui-step-connector {
-  margin-left: 21px;
+  margin-inline-start: 21px;
   margin-top: 0;
   height: 40px;
 }
@@ -6764,7 +6817,7 @@ select.sui-datatable-filter:focus-visible {
 .sui-kbd-outline {
   background: transparent;
   box-shadow: none;
-  border: 1.5px solid var(--sui-border-subtle, var(--sui-bg-dark));
+  border: 1.5px solid color-mix(in srgb, var(--sui-text-light) var(--sui-edge-mix, 22%), transparent);
 }
 
 /* Kbd Group */
@@ -7064,7 +7117,7 @@ select.sui-datatable-filter:focus-visible {
   -webkit-appearance: none;
   background: var(--sui-bg);
   border-radius: var(--sui-radius-full);
-  box-shadow: var(--sui-shadow-inset-sm);
+  box-shadow: var(--sui-shadow-inset-sm), inset 0 0 0 1px color-mix(in srgb, var(--sui-text-light) var(--sui-edge-mix, 22%), transparent);
   outline: none;
   margin: 0;
   cursor: pointer;
@@ -7078,13 +7131,13 @@ select.sui-datatable-filter:focus-visible {
   height: 22px;
   border-radius: 50%;
   background: var(--sui-bg);
-  box-shadow: var(--sui-shadow-raised-sm);
+  box-shadow: var(--sui-shadow-raised-sm), inset 0 0 0 1px color-mix(in srgb, var(--sui-text-light) var(--sui-edge-mix, 22%), transparent);
   cursor: pointer;
   transition: var(--sui-transition);
 }
 
 .sui-slider input[type="range"]::-webkit-slider-thumb:hover {
-  box-shadow: var(--sui-shadow-raised), 0 0 0 3px color-mix(in srgb, var(--sui-primary) 15%, transparent);
+  box-shadow: var(--sui-shadow-raised), inset 0 0 0 1px color-mix(in srgb, var(--sui-text-light) var(--sui-edge-mix, 22%), transparent), 0 0 0 3px color-mix(in srgb, var(--sui-primary) 15%, transparent);
 }
 
 .sui-slider input[type="range"]::-moz-range-thumb {
@@ -7092,7 +7145,7 @@ select.sui-datatable-filter:focus-visible {
   height: 22px;
   border-radius: 50%;
   background: var(--sui-bg);
-  box-shadow: var(--sui-shadow-raised-sm);
+  box-shadow: var(--sui-shadow-raised-sm), inset 0 0 0 1px color-mix(in srgb, var(--sui-text-light) var(--sui-edge-mix, 22%), transparent);
   cursor: pointer;
   border: none;
 }
@@ -7219,7 +7272,7 @@ select.sui-datatable-filter:focus-visible {
 }
 .sui-slider-warning .sui-slider-value {
   background: var(--sui-warning);
-  color: #fff;
+  color: var(--sui-warning-contrast);
 }
 
 .sui-slider-info input[type="range"]::-webkit-slider-thumb {
@@ -7902,7 +7955,8 @@ select.sui-datatable-filter:focus-visible {
 .sui-carousel-gap.sui-carousel-2 .sui-carousel-item { flex-basis: calc(50% - 8px); }
 .sui-carousel-gap.sui-carousel-3 .sui-carousel-item { flex-basis: calc(33.333% - 11px); }
 .sui-carousel-gap.sui-carousel-4 .sui-carousel-item { flex-basis: calc(25% - 12px); }
-.sui-carousel-gap .sui-carousel-viewport { padding: 6px 0; }
+/* Room for raised card shadows; the negative margin keeps the old footprint */
+.sui-carousel-gap .sui-carousel-viewport { padding: 18px 0; margin-block: -12px; }
 
 /* Navigation buttons */
 .sui-carousel-prev,
@@ -8083,7 +8137,7 @@ select.sui-datatable-filter:focus-visible {
   background: var(--sui-bg);
   border: 2px solid transparent;
   border-radius: var(--sui-radius-sm);
-  box-shadow: var(--sui-shadow-inset);
+  box-shadow: var(--sui-shadow-inset), inset 0 0 0 1px color-mix(in srgb, var(--sui-text-light) var(--sui-edge-mix, 22%), transparent);
   transition: var(--sui-transition);
   -webkit-user-select: none;
   user-select: none;
@@ -8166,7 +8220,7 @@ select.sui-datatable-filter:focus-visible {
   gap: 0;
   background: var(--sui-bg);
   border-radius: var(--sui-radius-sm);
-  box-shadow: var(--sui-shadow-inset);
+  box-shadow: var(--sui-shadow-inset), inset 0 0 0 1px color-mix(in srgb, var(--sui-text-light) var(--sui-edge-mix, 22%), transparent);
   padding: 2px;
 }
 
@@ -8185,7 +8239,7 @@ select.sui-datatable-filter:focus-visible {
   top: 20%;
   bottom: 20%;
   width: 1px;
-  background: var(--sui-shadow-dark);
+  background: color-mix(in srgb, var(--sui-text-light) var(--sui-edge-mix, 22%), transparent);
 }
 
 .sui-otp-connected .sui-otp-slot.sui-otp-active {
@@ -8712,7 +8766,7 @@ select.sui-datatable-filter:focus-visible {
   height: auto;
 }
 
-.sui-chart-line-wrap .chart-line {
+.sui-chart-line-wrap :is(.chart-line, .sui-chart-line) {
   fill: none;
   stroke-width: 2.5;
   stroke-linecap: round;
@@ -8720,11 +8774,11 @@ select.sui-datatable-filter:focus-visible {
   stroke: var(--sui-primary);
 }
 
-.sui-chart-line-wrap .chart-area {
+.sui-chart-line-wrap :is(.chart-area, .sui-chart-area) {
   opacity: 0.15;
 }
 
-.sui-chart-line-wrap .chart-dot {
+.sui-chart-line-wrap :is(.chart-dot, .sui-chart-dot) {
   fill: var(--sui-bg);
   stroke-width: 2.5;
   stroke: var(--sui-primary);
@@ -8732,7 +8786,7 @@ select.sui-datatable-filter:focus-visible {
   transition: r 0.15s ease, fill 0.15s ease;
 }
 
-.sui-chart-line-wrap .chart-dot:hover {
+.sui-chart-line-wrap :is(.chart-dot, .sui-chart-dot):hover {
   r: 6;
   fill: var(--sui-primary);
 }
@@ -8759,36 +8813,44 @@ select.sui-datatable-filter:focus-visible {
   opacity: 1;
 }
 
-.sui-chart-line-wrap .chart-grid-line {
+.sui-chart-line-wrap :is(.chart-grid-line, .sui-chart-grid-line) {
   stroke: var(--sui-bg-dark);
   stroke-width: 1;
 }
 
-.sui-chart-line-wrap .chart-axis-label {
+.sui-chart-line-wrap :is(.chart-axis-label, .sui-chart-axis-label) {
   font-size: 10px;
   fill: var(--sui-text-muted);
   font-family: inherit;
 }
 
+/* Labels are in viewBox units and shrink with the SVG; enlarge them on
+   phones so they still render at roughly 10px */
+@media (max-width: 600px) {
+  .sui-chart-line-wrap :is(.chart-axis-label, .sui-chart-axis-label) {
+    font-size: 16px;
+  }
+}
+
 /* Line colors */
-.chart-line-success { stroke: var(--sui-success); }
-.chart-dot-success  { stroke: var(--sui-success); }
-.chart-area-success { fill: var(--sui-success); }
+.chart-line-success, .sui-chart-line-success { stroke: var(--sui-success); }
+.chart-dot-success, .sui-chart-dot-success { stroke: var(--sui-success); }
+.chart-area-success, .sui-chart-area-success { fill: var(--sui-success); }
 
-.chart-line-warning { stroke: var(--sui-warning); }
-.chart-dot-warning  { stroke: var(--sui-warning); }
-.chart-area-warning { fill: var(--sui-warning); }
+.chart-line-warning, .sui-chart-line-warning { stroke: var(--sui-warning); }
+.chart-dot-warning, .sui-chart-dot-warning { stroke: var(--sui-warning); }
+.chart-area-warning, .sui-chart-area-warning { fill: var(--sui-warning); }
 
-.chart-line-danger { stroke: var(--sui-danger); }
-.chart-dot-danger  { stroke: var(--sui-danger); }
-.chart-area-danger { fill: var(--sui-danger); }
+.chart-line-danger, .sui-chart-line-danger { stroke: var(--sui-danger); }
+.chart-dot-danger, .sui-chart-dot-danger { stroke: var(--sui-danger); }
+.chart-area-danger, .sui-chart-area-danger { fill: var(--sui-danger); }
 
-.chart-line-info { stroke: var(--sui-info); }
-.chart-dot-info  { stroke: var(--sui-info); }
-.chart-area-info { fill: var(--sui-info); }
+.chart-line-info, .sui-chart-line-info { stroke: var(--sui-info); }
+.chart-dot-info, .sui-chart-dot-info { stroke: var(--sui-info); }
+.chart-area-info, .sui-chart-area-info { fill: var(--sui-info); }
 
 /* Line animation */
-.sui-chart-line-wrap .chart-line {
+.sui-chart-line-wrap :is(.chart-line, .sui-chart-line) {
   stroke-dasharray: var(--line-length, 1000);
   stroke-dashoffset: var(--line-length, 1000);
   animation: sui-chart-draw 1.2s ease forwards;
@@ -8844,25 +8906,52 @@ select.sui-datatable-filter:focus-visible {
     flex-wrap: wrap;
     gap: 8px;
   }
-  .sui-navbar-nav {
+  .sui-navbar-links {
     flex-wrap: wrap;
     gap: 4px;
   }
+  /* Horizontal steppers stack like .sui-stepper-vertical */
   .sui-stepper:not(.sui-stepper-vertical) {
     flex-direction: column;
     align-items: flex-start;
   }
+  .sui-stepper:not(.sui-stepper-vertical) .sui-step {
+    flex-direction: row;
+    text-align: start;
+  }
+  .sui-stepper:not(.sui-stepper-vertical) .sui-step-label {
+    margin-top: 0;
+    margin-inline-start: 12px;
+  }
   .sui-stepper:not(.sui-stepper-vertical) .sui-step-connector {
+    flex: 0 0 24px;
     width: 2px;
     height: 24px;
-    margin: 0 0 0 19px;
+    margin: 0;
+    margin-inline-start: 17px;
+    align-self: auto;
   }
+  .sui-stepper-sm:not(.sui-stepper-vertical) .sui-step-connector { margin-inline-start: 13px; }
+  .sui-stepper-lg:not(.sui-stepper-vertical) .sui-step-connector { margin-inline-start: 21px; }
+  /* A connected group scrolls sideways rather than wrapping: a wrapped row
+     splits the shared surface and leaves the end radii on the wrong buttons */
   .sui-btn-group {
-    flex-wrap: wrap;
-  }
-  .sui-tabs {
+    max-width: 100%;
     overflow-x: auto;
+    scrollbar-width: thin;
     -webkit-overflow-scrolling: touch;
+  }
+  .sui-btn-group > .sui-btn {
+    flex-shrink: 0;
+  }
+  .sui-tab-list {
+    max-width: 100%;
+    overflow-x: auto;
+    scrollbar-width: thin;
+    -webkit-overflow-scrolling: touch;
+  }
+  .sui-tab-list .sui-tab {
+    flex-shrink: 0;
   }
   .sui-pagination {
     flex-wrap: wrap;
@@ -9386,7 +9475,7 @@ select.sui-datatable-filter:focus-visible {
   width: 14px;
   height: 14px;
   border-radius: 50%;
-  background: var(--sui-bg-dark);
+  background: color-mix(in srgb, var(--sui-text-light) calc(var(--sui-edge-mix, 22%) * 1.2), var(--sui-bg));
   box-shadow: var(--sui-shadow-raised-sm);
   flex-shrink: 0;
   position: relative;
@@ -9397,21 +9486,21 @@ select.sui-datatable-filter:focus-visible {
 /* Inset dot */
 .sui-timeline-dot-inset {
   background: var(--sui-bg);
-  box-shadow: var(--sui-shadow-inset-sm);
+  box-shadow: var(--sui-shadow-inset-sm), inset 0 0 0 1px color-mix(in srgb, var(--sui-text-light) var(--sui-edge-mix, 22%), transparent);
 }
 
-.sui-timeline-dot-inset.sui-timeline-dot-primary { background: color-mix(in srgb, var(--sui-primary) 15%, transparent); box-shadow: var(--sui-shadow-inset-sm); }
-.sui-timeline-dot-inset.sui-timeline-dot-success { background: color-mix(in srgb, var(--sui-success) 15%, transparent); box-shadow: var(--sui-shadow-inset-sm); }
-.sui-timeline-dot-inset.sui-timeline-dot-danger { background: color-mix(in srgb, var(--sui-danger) 15%, transparent); box-shadow: var(--sui-shadow-inset-sm); }
-.sui-timeline-dot-inset.sui-timeline-dot-warning { background: color-mix(in srgb, var(--sui-warning) 15%, transparent); box-shadow: var(--sui-shadow-inset-sm); }
-.sui-timeline-dot-inset.sui-timeline-dot-info { background: color-mix(in srgb, var(--sui-info) 15%, transparent); box-shadow: var(--sui-shadow-inset-sm); }
+.sui-timeline-dot-inset.sui-timeline-dot-primary { background: color-mix(in srgb, var(--sui-primary) 35%, transparent); box-shadow: var(--sui-shadow-inset-sm), inset 0 0 0 2px color-mix(in srgb, var(--sui-primary) 60%, transparent); }
+.sui-timeline-dot-inset.sui-timeline-dot-success { background: color-mix(in srgb, var(--sui-success) 35%, transparent); box-shadow: var(--sui-shadow-inset-sm), inset 0 0 0 2px color-mix(in srgb, var(--sui-success) 60%, transparent); }
+.sui-timeline-dot-inset.sui-timeline-dot-danger { background: color-mix(in srgb, var(--sui-danger) 35%, transparent); box-shadow: var(--sui-shadow-inset-sm), inset 0 0 0 2px color-mix(in srgb, var(--sui-danger) 60%, transparent); }
+.sui-timeline-dot-inset.sui-timeline-dot-warning { background: color-mix(in srgb, var(--sui-warning) 35%, transparent); box-shadow: var(--sui-shadow-inset-sm), inset 0 0 0 2px color-mix(in srgb, var(--sui-warning) 60%, transparent); }
+.sui-timeline-dot-inset.sui-timeline-dot-info { background: color-mix(in srgb, var(--sui-info) 35%, transparent); box-shadow: var(--sui-shadow-inset-sm), inset 0 0 0 2px color-mix(in srgb, var(--sui-info) 60%, transparent); }
 
 /* --- Connector --- */
 .sui-timeline-connector {
   width: 2px;
   flex: 1;
   min-height: 24px;
-  background: var(--sui-bg-dark);
+  background: color-mix(in srgb, var(--sui-text-light) var(--sui-edge-mix, 22%), transparent);
   box-shadow: var(--sui-shadow-inset-sm);
   border-radius: 1px;
   margin: 4px 0;
@@ -9554,7 +9643,7 @@ select.sui-datatable-filter:focus-visible {
 .sui-timeline-dot-outline {
   background: transparent;
   box-shadow: none;
-  border: 2px solid var(--sui-bg-dark);
+  border: 2px solid color-mix(in srgb, var(--sui-text-light) calc(var(--sui-edge-mix, 22%) * 1.75), transparent);
 }
 
 .sui-timeline-dot-outline.sui-timeline-dot-primary {
@@ -9639,7 +9728,7 @@ select.sui-datatable-filter:focus-visible {
 .sui-timeline-dot-icon.sui-timeline-dot-outline {
   background: transparent;
   box-shadow: none;
-  border: 2px solid var(--sui-bg-dark);
+  border: 2px solid color-mix(in srgb, var(--sui-text-light) calc(var(--sui-edge-mix, 22%) * 1.75), transparent);
 }
 
 .sui-timeline-dot-icon.sui-timeline-dot-outline.sui-timeline-dot-primary {
@@ -9970,7 +10059,7 @@ select.sui-datatable-filter:focus-visible {
   width: 24px;
   height: 24px;
   cursor: pointer;
-  color: var(--sui-bg-dark);
+  color: color-mix(in srgb, var(--sui-text-light) calc(var(--sui-edge-mix, 22%) * 1.75), transparent);
   transition: color 0.15s ease, transform 0.15s ease;
   flex-shrink: 0;
 }
@@ -10013,7 +10102,7 @@ select.sui-datatable-filter:focus-visible {
 .sui-rating-star.half,
 .sui-rating-star.hover-half {
   position: relative;
-  color: var(--sui-bg-dark);
+  color: color-mix(in srgb, var(--sui-text-light) calc(var(--sui-edge-mix, 22%) * 1.75), transparent);
 }
 
 .sui-rating-star.hover-half {
@@ -10270,6 +10359,9 @@ select.sui-datatable-filter:focus-visible {
   box-shadow: var(--sui-shadow-raised-sm);
   transition: var(--sui-transition);
   position: relative;
+  /* Faint edge so near-background swatches (very dark/light) stay visible */
+  outline: 1px solid color-mix(in srgb, var(--sui-text) 14%, transparent);
+  outline-offset: -1px;
 }
 
 .sui-color-swatch:hover {
@@ -10373,6 +10465,13 @@ select.sui-datatable-filter:focus-visible {
   transform: scale(1.15);
   z-index: 1;
   box-shadow: var(--sui-shadow-raised-sm);
+}
+
+/* Label + swatch row pair */
+.sui-color-palette-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
 }
 
 .sui-color-palette-label {
@@ -10667,7 +10766,7 @@ select.sui-datatable-filter:focus-visible {
   justify-content: center;
   gap: 8px;
   padding: 32px 24px;
-  border: 2px dashed var(--sui-bg-dark);
+  border: 2px dashed color-mix(in srgb, var(--sui-text-light) calc(var(--sui-edge-mix, 22%) * 1.75), transparent);
   border-radius: var(--sui-radius-lg);
   background: var(--sui-bg);
   text-align: center;
@@ -11063,16 +11162,16 @@ select.sui-datatable-filter:focus-visible {
 
 /* Inset — inner circle is pressed in */
 .sui-radial-inset .sui-radial-track {
-  stroke: none;
+  stroke: color-mix(in srgb, var(--sui-bg-dark) 50%, transparent);
 }
 
 .sui-radial-inset::before {
   content: "";
   position: absolute;
-  top: 12%;
-  left: 12%;
-  width: 76%;
-  height: 76%;
+  top: 20%;
+  left: 20%;
+  width: 60%;
+  height: 60%;
   border-radius: 50%;
   background: var(--sui-bg);
   box-shadow: var(--sui-shadow-inset-sm);
@@ -12002,8 +12101,21 @@ select.sui-datatable-filter:focus-visible {
   box-shadow: 0 4px 14px color-mix(in srgb, var(--sui-danger) 40%, transparent);
 }
 
+.sui-speed-dial-warning .sui-speed-dial-trigger {
+  background: var(--sui-warning);
+  color: var(--sui-warning-contrast);
+  box-shadow: 0 4px 14px color-mix(in srgb, var(--sui-warning) 40%, transparent);
+}
+
+.sui-speed-dial-info .sui-speed-dial-trigger {
+  background: var(--sui-info);
+  box-shadow: 0 4px 14px color-mix(in srgb, var(--sui-info) 40%, transparent);
+}
+
 .sui-speed-dial-success .sui-speed-dial-trigger:focus-visible { outline-color: var(--sui-success); }
 .sui-speed-dial-danger .sui-speed-dial-trigger:focus-visible { outline-color: var(--sui-danger); }
+.sui-speed-dial-warning .sui-speed-dial-trigger:focus-visible { outline-color: var(--sui-warning); }
+.sui-speed-dial-info .sui-speed-dial-trigger:focus-visible { outline-color: var(--sui-info); }
 
 /* Sizes */
 .sui-speed-dial-sm .sui-speed-dial-trigger {
@@ -12446,9 +12558,19 @@ select.sui-datatable-filter:focus-visible {
   right: 12px;
 }
 
-/* Vertical mode */
+/* Vertical mode — Before labels the top half, After the bottom half */
 .sui-diff-vertical {
   cursor: ns-resize;
+}
+
+.sui-diff-vertical .sui-diff-label-before {
+  top: 12px;
+  bottom: auto;
+}
+
+.sui-diff-vertical .sui-diff-label-after {
+  left: 12px;
+  right: auto;
 }
 
 .sui-diff-vertical .sui-diff-before {
@@ -13424,7 +13546,7 @@ select.sui-datatable-filter:focus-visible {
   background: #1B1D2A;
   border-radius: 36px;
   padding: 12px;
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2), inset 0 0 0 2px rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2), 0 0 0 1px color-mix(in srgb, var(--sui-text-light) var(--sui-edge-mix, 22%), transparent), inset 0 0 0 2px rgba(255, 255, 255, 0.14);
 }
 
 .sui-phone-screen {
@@ -13452,7 +13574,7 @@ select.sui-datatable-filter:focus-visible {
   transform: translateX(-50%);
   width: 100px;
   height: 24px;
-  background: #1B1D2A;
+  background: #0B0C12;
   border-radius: 0 0 16px 16px;
   z-index: 2;
 }
@@ -13466,7 +13588,7 @@ select.sui-datatable-filter:focus-visible {
   transform: translateX(-50%);
   width: 80px;
   height: 22px;
-  background: #1B1D2A;
+  background: #0B0C12;
   border-radius: 20px;
   z-index: 2;
 }
@@ -13480,7 +13602,7 @@ select.sui-datatable-filter:focus-visible {
   transform: translateX(-50%);
   width: 16px;
   height: 16px;
-  background: #1B1D2A;
+  background: #0B0C12;
   border-radius: 0 0 50% 50%;
   z-index: 2;
 }
@@ -13494,7 +13616,7 @@ select.sui-datatable-filter:focus-visible {
   transform: translateX(-50%);
   width: 12px;
   height: 12px;
-  background: #1B1D2A;
+  background: #0B0C12;
   border-radius: 50%;
   z-index: 2;
 }
@@ -13508,24 +13630,13 @@ select.sui-datatable-filter:focus-visible {
   transform: translateX(-50%);
   width: 12px;
   height: 12px;
-  background: #1B1D2A;
+  background: #0B0C12;
   border-radius: 50%;
   z-index: 2;
-  box-shadow: 18px 0 0 0 #1B1D2A;
+  box-shadow: 18px 0 0 0 #0B0C12;
 }
 
-/* White/Gold frame overrides for new cutouts */
-.sui-phone-white .sui-phone-teardrop::before,
-.sui-phone-white .sui-phone-punch::before,
-.sui-phone-white .sui-phone-punch-double::before { background: #E8E8ED; }
-
-.sui-phone-white .sui-phone-punch-double::before { box-shadow: 18px 0 0 0 #E8E8ED; }
-
-.sui-phone-gold .sui-phone-teardrop::before,
-.sui-phone-gold .sui-phone-punch::before,
-.sui-phone-gold .sui-phone-punch-double::before { background: #D4C5A9; }
-
-.sui-phone-gold .sui-phone-punch-double::before { box-shadow: 18px 0 0 0 #D4C5A9; }
+/* Cutouts stay dark on every frame colour, as on real devices */
 
 /* Status bar */
 .sui-phone-status {
@@ -13561,22 +13672,12 @@ select.sui-datatable-filter:focus-visible {
 /* Frame colors */
 .sui-phone-white {
   background: #E8E8ED;
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12), inset 0 0 0 2px rgba(0, 0, 0, 0.06);
-}
-
-.sui-phone-white .sui-phone-notch::before,
-.sui-phone-white .sui-phone-island::before {
-  background: #E8E8ED;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12), 0 0 0 1px color-mix(in srgb, var(--sui-text-light) var(--sui-edge-mix, 22%), transparent), inset 0 0 0 2px rgba(0, 0, 0, 0.12);
 }
 
 .sui-phone-gold {
   background: #D4C5A9;
   box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15), inset 0 0 0 2px rgba(255, 255, 255, 0.2);
-}
-
-.sui-phone-gold .sui-phone-notch::before,
-.sui-phone-gold .sui-phone-island::before {
-  background: #D4C5A9;
 }
 
 /* Sizes */
@@ -13608,13 +13709,74 @@ select.sui-datatable-filter:focus-visible {
   height: 3px;
 }
 
-/* Landscape */
-.sui-phone-landscape {
-  transform: rotate(-90deg);
+/* Landscape: the screen swaps width and height, and the cutout moves to
+   the left edge (the phone turned a quarter turn anticlockwise) */
+.sui-phone-landscape .sui-phone-screen {
+  width: 520px;
+  height: 260px;
+  max-width: 100%;
 }
 
-.sui-phone-landscape .sui-phone-screen {
-  transform: rotate(90deg);
+.sui-phone-landscape.sui-phone-sm .sui-phone-screen {
+  width: 360px;
+  height: 180px;
+}
+
+.sui-phone-landscape .sui-phone-notch::before,
+.sui-phone-landscape .sui-phone-teardrop::before {
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  width: 24px;
+  height: 100px;
+  border-radius: 0 16px 16px 0;
+}
+
+.sui-phone-landscape .sui-phone-teardrop::before {
+  width: 16px;
+  height: 16px;
+  border-radius: 0 50% 50% 0;
+}
+
+.sui-phone-landscape .sui-phone-island::before {
+  top: 50%;
+  left: 10px;
+  transform: translateY(-50%);
+  width: 22px;
+  height: 80px;
+}
+
+.sui-phone-landscape .sui-phone-punch::before,
+.sui-phone-landscape .sui-phone-punch-double::before {
+  top: 50%;
+  left: 12px;
+  transform: translateY(-50%);
+}
+
+.sui-phone-landscape .sui-phone-punch-double::before {
+  margin-top: -9px;
+  box-shadow: 0 18px 0 0 #0B0C12;
+}
+
+.sui-phone-landscape.sui-phone-sm .sui-phone-notch::before {
+  width: 18px;
+  height: 70px;
+  border-radius: 0 12px 12px 0;
+}
+
+.sui-phone-landscape.sui-phone-sm .sui-phone-island::before {
+  left: 8px;
+  width: 16px;
+  height: 56px;
+}
+
+/* Status bar clears the side cutout */
+.sui-phone-landscape .sui-phone-status {
+  padding: 0 20px 0 44px;
+}
+
+.sui-phone-landscape {
+  max-width: 100%;
 }
 
 /* =========================================
@@ -13752,8 +13914,8 @@ select.sui-datatable-filter:focus-visible {
   flex-direction: column;
   align-items: center;
   text-align: center;
-  flex: 1;
-  min-width: 240px;
+  flex: 1 1 200px; /* three plans fit a ~700px column; wraps below that */
+  min-width: 200px;
   max-width: 340px;
   position: relative;
   transition: var(--sui-transition);
@@ -13961,9 +14123,9 @@ select.sui-datatable-filter:focus-visible {
 /* ===========================================
    Typography — Display Headings (fluid)
    =========================================== */
-.sui-display-1 { font-size: clamp(2.5rem, 1.5rem + 4vw, 4.5rem); font-weight: 800; letter-spacing: -0.03em; line-height: 1.1; color: var(--sui-text); }
-.sui-display-2 { font-size: clamp(2.25rem, 1.375rem + 3.5vw, 3.75rem); font-weight: 800; letter-spacing: -0.03em; line-height: 1.1; color: var(--sui-text); }
-.sui-display-3 { font-size: clamp(2rem, 1.25rem + 3vw, 3rem); font-weight: 700; letter-spacing: -0.025em; line-height: 1.15; color: var(--sui-text); }
+.sui-display-1 { font-size: clamp(3rem, 1.5rem + 4vw, 4.5rem); font-weight: 800; letter-spacing: -0.03em; line-height: 1.1; color: var(--sui-text); }
+.sui-display-2 { font-size: clamp(2.75rem, 1.375rem + 3.5vw, 3.75rem); font-weight: 800; letter-spacing: -0.03em; line-height: 1.1; color: var(--sui-text); }
+.sui-display-3 { font-size: clamp(2.5rem, 1.25rem + 3vw, 3rem); font-weight: 700; letter-spacing: -0.025em; line-height: 1.15; color: var(--sui-text); }
 
 /* ===========================================
    Links
@@ -14124,7 +14286,7 @@ select.sui-datatable-filter:focus-visible {
   .sui-section-lg { padding-block: calc(var(--sui-section-space-lg) * 0.625); }
   .sui-section-raised,
   .sui-section-inset { padding-inline: 20px; }
-  .sui-section-header { margin-block-end: 28px; }
+  .sui-section-header { margin-block-end: calc(var(--sui-section-header-gap) * 0.7); }
   .sui-section-title { font-size: 1.5rem; }
 }
 
@@ -14531,6 +14693,52 @@ select.sui-datatable-filter:focus-visible {
   border-bottom: none;
 }
 
+/* <button> items (e.g. submenu toggles) look like the link items */
+button.sui-list-group-item {
+  width: 100%;
+  margin: 0;
+  background: none;
+  border: 0;
+  border-bottom: 1px solid var(--sui-bg-dark);
+  font: inherit;
+  font-size: 14px;
+  text-align: start;
+  cursor: pointer;
+}
+
+button.sui-list-group-item:focus-visible {
+  outline: none;
+  box-shadow: var(--sui-focus-ring, 0 0 0 3px var(--sui-focus-ring-color, color-mix(in srgb, var(--sui-primary) 40%, transparent)));
+}
+
+button.sui-list-group-item:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+
+/* A dropdown wrapping an item (flyout submenu) spans the full row */
+.sui-list-group > .sui-dropdown {
+  display: block;
+}
+
+.sui-list-group > .sui-dropdown:last-child > .sui-list-group-item {
+  border-bottom: none;
+}
+
+/* Small screens: the flyout opens below its item instead of off-screen */
+@media (max-width: 600px) {
+  .sui-list-group > .sui-dropend .sui-dropdown-menu {
+    top: calc(100% + 6px);
+    left: auto;
+    right: auto;
+    inset-inline-start: 0;
+    transform: translateY(-8px);
+  }
+  .sui-list-group > .sui-dropend.open .sui-dropdown-menu {
+    transform: translateY(0);
+  }
+}
+
 a.sui-list-group-item:hover,
 button.sui-list-group-item:hover {
   background: color-mix(in srgb, var(--sui-primary) var(--sui-tint-subtle), transparent);
@@ -14628,6 +14836,12 @@ button.sui-list-group-item:hover {
 
 .sui-desc-row:last-child {
   border-bottom: none;
+}
+
+/* Striped rows need side padding so the stripe doesn't touch the text;
+   bordered, raised and inset (below) keep their own 20px */
+.sui-desc-striped .sui-desc-row {
+  padding-inline: 12px;
 }
 
 .sui-desc-label {
@@ -15010,8 +15224,10 @@ button.sui-list-group-item:hover {
    =========================================== */
 .sui-countdown {
   display: inline-flex;
+  flex-wrap: wrap;
   align-items: center;
   gap: 8px;
+  max-width: 100%;
 }
 
 .sui-countdown-unit {
@@ -15103,6 +15319,28 @@ button.sui-list-group-item:hover {
   margin-top: -18px;
 }
 
+@media (max-width: 600px) {
+  .sui-countdown { gap: 6px; }
+  .sui-countdown-value {
+    min-width: 46px;
+    height: 46px;
+    font-size: 22px;
+  }
+  .sui-countdown-separator {
+    font-size: 20px;
+    margin-top: -14px;
+  }
+  .sui-countdown-lg .sui-countdown-value {
+    min-width: 56px;
+    height: 56px;
+    font-size: 28px;
+  }
+  .sui-countdown-lg .sui-countdown-separator {
+    font-size: 24px;
+    margin-top: -16px;
+  }
+}
+
 /* ===========================================
    Segmented Control
    =========================================== */
@@ -15158,7 +15396,7 @@ button.sui-list-group-item:hover {
   left: 0;
   border-radius: var(--sui-radius-full);
   background: var(--sui-bg);
-  box-shadow: var(--sui-shadow-raised-sm);
+  box-shadow: var(--sui-shadow-raised-sm), inset 0 0 0 1px color-mix(in srgb, var(--sui-text-light) var(--sui-edge-mix, 22%), transparent);
   transition: left var(--sui-transition-base) ease, width var(--sui-transition-base) ease;
   z-index: 0;
 }
@@ -15414,7 +15652,7 @@ a.sui-nav-menu-trigger::after {
 
 /* Bordered variant */
 .sui-nav-menu-bordered {
-  border: 1.5px solid var(--sui-bg-dark);
+  border: 1.5px solid color-mix(in srgb, var(--sui-text-light) var(--sui-edge-mix, 22%), transparent);
   border-radius: var(--sui-radius-sm);
   padding: 6px 8px;
 }
@@ -15565,6 +15803,7 @@ a.sui-nav-menu-trigger::after {
     --sui-tint-active: 10%;
     --sui-tint-blockquote: 4%;
     --sui-hover-neutral: rgba(0, 0, 0, 0.04);
+    --sui-edge-mix: 22%;
     --sui-border-subtle: initial;
     --sui-select-arrow: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%238492A6' viewBox='0 0 16 16'%3E%3Cpath d='M8 11L3 6h10l-5 5z'/%3E%3C/svg%3E");
   }

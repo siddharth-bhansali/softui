@@ -565,7 +565,7 @@ toc:
   &lt;div class="sui-tree-item expanded"&gt;
     &lt;div class="sui-tree-label"&gt;
       &lt;span class="sui-tree-toggle"&gt;&lt;svg viewBox="0 0 24 24"&gt;&lt;polyline points="9 18 15 12 9 6"/&gt;&lt;/svg&gt;&lt;/span&gt;
-      &lt;label class="sui-checkbox"&gt;&lt;input type="checkbox"&gt;&lt;span class="sui-check-mark"&gt;&lt;/span&gt;&lt;/label&gt;
+      &lt;label class="sui-checkbox"&gt;&lt;input type="checkbox" id="tree-docs"&gt;&lt;span class="sui-check-mark"&gt;&lt;/span&gt;&lt;/label&gt;
       &lt;span class="sui-tree-text"&gt;Documents&lt;/span&gt;
     &lt;/div&gt;
     &lt;div class="sui-tree-children"&gt;
@@ -615,13 +615,16 @@ toc:
       &lt;/div&gt;
     &lt;/div&gt;
   &lt;/div&gt;
-&lt;/div&gt;</pre></div>
+&lt;/div&gt;
+
+&lt;!-- Partly checked parent: set indeterminate before SoftUI init (or dispatch a change event on a child after) --&gt;
+&lt;script&gt;
+  document.getElementById('tree-docs').indeterminate = true;
+&lt;/script&gt;</pre></div>
   </div>
   <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      var el = document.getElementById('demo-tree-docs');
-      if (el) el.indeterminate = true;
-    });
+    // Runs during parsing, before SoftUI init, so aria-checked starts as "mixed"
+    document.getElementById('demo-tree-docs').indeterminate = true;
   </script>
 </div>
 
@@ -814,8 +817,45 @@ toc:
   <div class="pg-code-wrap">
     <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
     <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-tree sui-tree-raised sui-tree-lines"&gt;
-  &lt;!-- same tree structure as other examples --&gt;
-  &lt;!-- sui-tree-raised adds a raised neumorphic container --&gt;
+  &lt;div class="sui-tree-item expanded"&gt;
+    &lt;div class="sui-tree-label"&gt;
+      &lt;span class="sui-tree-toggle"&gt;&lt;svg viewBox="0 0 24 24"&gt;&lt;polyline points="9 18 15 12 9 6"/&gt;&lt;/svg&gt;&lt;/span&gt;
+      &lt;span class="sui-tree-icon"&gt;&lt;svg viewBox="0 0 24 24"&gt;&lt;path d="M22 19a2 2 0 01-2 2H4a2 2 0 01-2-2V5a2 2 0 012-2h5l2 3h9a2 2 0 012 2z"/&gt;&lt;/svg&gt;&lt;/span&gt;
+      &lt;span class="sui-tree-text"&gt;project&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;div class="sui-tree-children"&gt;
+      &lt;div class="sui-tree-item expanded"&gt;
+        &lt;div class="sui-tree-label"&gt;
+          &lt;span class="sui-tree-toggle"&gt;&lt;svg viewBox="0 0 24 24"&gt;&lt;polyline points="9 18 15 12 9 6"/&gt;&lt;/svg&gt;&lt;/span&gt;
+          &lt;span class="sui-tree-icon"&gt;&lt;svg viewBox="0 0 24 24"&gt;&lt;path d="M22 19a2 2 0 01-2 2H4a2 2 0 01-2-2V5a2 2 0 012-2h5l2 3h9a2 2 0 012 2z"/&gt;&lt;/svg&gt;&lt;/span&gt;
+          &lt;span class="sui-tree-text"&gt;src&lt;/span&gt;
+        &lt;/div&gt;
+        &lt;div class="sui-tree-children"&gt;
+          &lt;div class="sui-tree-item"&gt;
+            &lt;div class="sui-tree-label"&gt;
+              &lt;span class="sui-tree-toggle-spacer"&gt;&lt;/span&gt;
+              &lt;span class="sui-tree-icon"&gt;&lt;svg viewBox="0 0 24 24"&gt;&lt;polyline points="16 18 22 12 16 6"/&gt;&lt;polyline points="8 6 2 12 8 18"/&gt;&lt;/svg&gt;&lt;/span&gt;
+              &lt;span class="sui-tree-text"&gt;App.tsx&lt;/span&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+          &lt;div class="sui-tree-item"&gt;
+            &lt;div class="sui-tree-label"&gt;
+              &lt;span class="sui-tree-toggle-spacer"&gt;&lt;/span&gt;
+              &lt;span class="sui-tree-icon"&gt;&lt;svg viewBox="0 0 24 24"&gt;&lt;path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/&gt;&lt;polyline points="14 2 14 8 20 8"/&gt;&lt;/svg&gt;&lt;/span&gt;
+              &lt;span class="sui-tree-text"&gt;index.ts&lt;/span&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+      &lt;div class="sui-tree-item"&gt;
+        &lt;div class="sui-tree-label"&gt;
+          &lt;span class="sui-tree-toggle-spacer"&gt;&lt;/span&gt;
+          &lt;span class="sui-tree-icon"&gt;&lt;svg viewBox="0 0 24 24"&gt;&lt;circle cx="12" cy="12" r="3"/&gt;&lt;path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"/&gt;&lt;/svg&gt;&lt;/span&gt;
+          &lt;span class="sui-tree-text"&gt;package.json&lt;/span&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
 &lt;/div&gt;</pre></div>
   </div>
 </div>
@@ -918,16 +958,21 @@ toc:
   <div class="docs-table-wrap">
     <table class="sui-table sui-table-compact">
       <thead>
-        <tr><th scope="col" style="width:40%;">Key / Event</th><th scope="col">Description</th></tr>
+        <tr><th scope="col" style="width:40%;">Class / Key / Event / API</th><th scope="col">Description</th></tr>
       </thead>
       <tbody>
+        <tr><td><code>sui-tree</code>, <code>sui-tree-item</code>, <code>sui-tree-label</code>, <code>sui-tree-children</code></td><td>Tree root, node, row and nested group.</td></tr>
+        <tr><td><code>expanded</code></td><td>On a <code>sui-tree-item</code>: starts the node open.</td></tr>
+        <tr><td><code>sui-tree-lines</code></td><td>Guide lines between nested levels.</td></tr>
+        <tr><td><code>sui-tree-sm</code>, <code>sui-tree-lg</code></td><td>Compact or larger rows.</td></tr>
+        <tr><td><code>sui-tree-raised</code>, <code>sui-tree-inset</code></td><td>Raised or inset container.</td></tr>
         <tr><td><kbd class="sui-kbd-inline">Tab</kbd></td><td>One tab stop for the whole tree (WAI-ARIA tree pattern).</td></tr>
         <tr><td><kbd class="sui-kbd-inline">&darr;</kbd> / <kbd class="sui-kbd-inline">&uarr;</kbd></td><td>Next / previous visible item.</td></tr>
         <tr><td><kbd class="sui-kbd-inline">&rarr;</kbd></td><td>Expand, or move to the first child (mirrored in RTL).</td></tr>
         <tr><td><kbd class="sui-kbd-inline">&larr;</kbd></td><td>Collapse, or move to the parent.</td></tr>
         <tr><td><kbd class="sui-kbd-inline">Home</kbd> / <kbd class="sui-kbd-inline">End</kbd></td><td>First / last visible item.</td></tr>
         <tr><td><kbd class="sui-kbd-inline">Enter</kbd></td><td>Toggle the item.</td></tr>
-        <tr><td><kbd class="sui-kbd-inline">Space</kbd></td><td>Toggle the checkbox in checkbox trees (<code>aria-checked</code> includes &ldquo;mixed&rdquo;).</td></tr>
+        <tr><td><kbd class="sui-kbd-inline">Space</kbd></td><td>Toggle the checkbox (<code>aria-checked</code> includes &ldquo;mixed&rdquo;); in trees without checkboxes, expand or collapse.</td></tr>
         <tr><td><code>sui-tree-toggle</code></td><td>Fires on expand or collapse with <code>detail.expanded</code>.</td></tr>
         <tr><td><code>SoftUI.init(el)</code></td><td>Adds roles and <code>tabindex</code> to markup inserted after page load.</td></tr>
       </tbody>

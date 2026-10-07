@@ -42,12 +42,14 @@ toc:
     <div class="sui-avatar sui-avatar-sm sui-avatar-square">E</div>
     <div class="sui-avatar sui-avatar-square">F</div>
     <div class="sui-avatar sui-avatar-lg sui-avatar-square">G</div>
+    <div class="sui-avatar sui-avatar-2xl sui-avatar-square">H</div>
   </div>
   <div class="pg-code-wrap">
     <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
     <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-avatar sui-avatar-sm sui-avatar-square"&gt;E&lt;/div&gt;
 &lt;div class="sui-avatar sui-avatar-square"&gt;F&lt;/div&gt;
-&lt;div class="sui-avatar sui-avatar-lg sui-avatar-square"&gt;G&lt;/div&gt;</pre></div>
+&lt;div class="sui-avatar sui-avatar-lg sui-avatar-square"&gt;G&lt;/div&gt;
+&lt;div class="sui-avatar sui-avatar-2xl sui-avatar-square"&gt;H&lt;/div&gt;</pre></div>
   </div>
 </div>
 
@@ -60,6 +62,7 @@ toc:
     <div class="sui-avatar sui-avatar-status sui-avatar-status-offline" role="img" aria-label="C, offline">C</div>
     <div class="sui-avatar sui-avatar-lg sui-avatar-status sui-avatar-status-online" role="img" aria-label="D, online">D</div>
     <div class="sui-avatar sui-avatar-2xl sui-avatar-status sui-avatar-status-online" role="img" aria-label="E, online">E</div>
+    <div class="sui-avatar sui-avatar-3xl sui-avatar-status sui-avatar-status-busy" role="img" aria-label="F, busy">F</div>
   </div>
   <div class="pg-code-wrap">
     <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
@@ -67,7 +70,8 @@ toc:
 &lt;div class="sui-avatar sui-avatar-status sui-avatar-status-busy" role="img" aria-label="B, busy"&gt;B&lt;/div&gt;
 &lt;div class="sui-avatar sui-avatar-status sui-avatar-status-offline" role="img" aria-label="C, offline"&gt;C&lt;/div&gt;
 &lt;div class="sui-avatar sui-avatar-lg sui-avatar-status sui-avatar-status-online" role="img" aria-label="D, online"&gt;D&lt;/div&gt;
-&lt;div class="sui-avatar sui-avatar-2xl sui-avatar-status sui-avatar-status-online" role="img" aria-label="E, online"&gt;E&lt;/div&gt;</pre></div>
+&lt;div class="sui-avatar sui-avatar-2xl sui-avatar-status sui-avatar-status-online" role="img" aria-label="E, online"&gt;E&lt;/div&gt;
+&lt;div class="sui-avatar sui-avatar-3xl sui-avatar-status sui-avatar-status-busy" role="img" aria-label="F, busy"&gt;F&lt;/div&gt;</pre></div>
   </div>
 </div>
 
@@ -118,7 +122,8 @@ toc:
         <tr><th scope="col" style="width:40%;">Class</th><th scope="col">Description</th></tr>
       </thead>
       <tbody>
-        <tr><td><code>sui-avatar-status-{online|busy|offline}</code></td><td>Status dot. Colour only, so add <code>role="img"</code> and an <code>aria-label</code> that names the status.</td></tr>
+        <tr><td><code>sui-avatar-status</code></td><td>Adds the status dot. Required with the colour classes below.</td></tr>
+        <tr><td><code>sui-avatar-status-{online|busy|offline}</code></td><td>Status dot colour. Colour only, so add <code>role="img"</code> and an <code>aria-label</code> that names the status.</td></tr>
       </tbody>
     </table>
   </div>

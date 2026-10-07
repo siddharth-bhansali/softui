@@ -9,11 +9,17 @@ toc:
   - Text Ticker
   - Cards
   - Reverse
+  - Speeds
   - Fade Edges
   - Vertical
 ---
 
-{% set logoSet %}
+<!-- Logos -->
+<div class="pg-section" id="section-1">
+  <h3 class="pg-section-title">Logos</h3>
+  <div class="pg-section-row" style="overflow:hidden;">
+    <div class="sui-marquee sui-marquee-hover">
+      <div class="sui-marquee-track">
         <div class="sui-marquee-logo">Acme Inc</div>
         <div class="sui-marquee-logo">Globex</div>
         <div class="sui-marquee-logo">Initech</div>
@@ -22,16 +28,14 @@ toc:
         <div class="sui-marquee-logo">Stark</div>
         <div class="sui-marquee-logo">Wonka</div>
         <div class="sui-marquee-logo">Wayne</div>
-{% endset %}
-
-<!-- Logos -->
-<div class="pg-section" id="section-1">
-  <h3 class="pg-section-title">Logos</h3>
-  <div class="pg-section-row" style="overflow:hidden;">
-    <div class="sui-marquee sui-marquee-hover">
-      <div class="sui-marquee-track">
-        {{ logoSet | safe }}
-        {{ logoSet | safe }}
+        <div class="sui-marquee-logo">Acme Inc</div>
+        <div class="sui-marquee-logo">Globex</div>
+        <div class="sui-marquee-logo">Initech</div>
+        <div class="sui-marquee-logo">Umbrella</div>
+        <div class="sui-marquee-logo">Hooli</div>
+        <div class="sui-marquee-logo">Stark</div>
+        <div class="sui-marquee-logo">Wonka</div>
+        <div class="sui-marquee-logo">Wayne</div>
       </div>
     </div>
   </div>
@@ -39,29 +43,25 @@ toc:
     <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
     <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-marquee sui-marquee-hover"&gt;
   &lt;div class="sui-marquee-track"&gt;
-    &lt;!-- Duplicate the set for seamless loop --&gt;
     &lt;div class="sui-marquee-logo"&gt;Acme Inc&lt;/div&gt;
     &lt;div class="sui-marquee-logo"&gt;Globex&lt;/div&gt;
     &lt;div class="sui-marquee-logo"&gt;Initech&lt;/div&gt;
     &lt;div class="sui-marquee-logo"&gt;Umbrella&lt;/div&gt;
-    &lt;div class="sui-marquee-logo"&gt;NexaFlow&lt;/div&gt;
-    &lt;div class="sui-marquee-logo"&gt;Quartex&lt;/div&gt;
-    &lt;div class="sui-marquee-logo"&gt;Synapse&lt;/div&gt;
-    &lt;div class="sui-marquee-logo"&gt;Horizon&lt;/div&gt;
-    &lt;!-- Repeat the same set --&gt;
+    &lt;div class="sui-marquee-logo"&gt;Hooli&lt;/div&gt;
+    &lt;div class="sui-marquee-logo"&gt;Stark&lt;/div&gt;
+    &lt;div class="sui-marquee-logo"&gt;Wonka&lt;/div&gt;
+    &lt;div class="sui-marquee-logo"&gt;Wayne&lt;/div&gt;
+    &lt;!-- Duplicate the set for a seamless loop --&gt;
     &lt;div class="sui-marquee-logo"&gt;Acme Inc&lt;/div&gt;
     &lt;div class="sui-marquee-logo"&gt;Globex&lt;/div&gt;
     &lt;div class="sui-marquee-logo"&gt;Initech&lt;/div&gt;
     &lt;div class="sui-marquee-logo"&gt;Umbrella&lt;/div&gt;
-    &lt;div class="sui-marquee-logo"&gt;NexaFlow&lt;/div&gt;
-    &lt;div class="sui-marquee-logo"&gt;Quartex&lt;/div&gt;
-    &lt;div class="sui-marquee-logo"&gt;Synapse&lt;/div&gt;
-    &lt;div class="sui-marquee-logo"&gt;Horizon&lt;/div&gt;
+    &lt;div class="sui-marquee-logo"&gt;Hooli&lt;/div&gt;
+    &lt;div class="sui-marquee-logo"&gt;Stark&lt;/div&gt;
+    &lt;div class="sui-marquee-logo"&gt;Wonka&lt;/div&gt;
+    &lt;div class="sui-marquee-logo"&gt;Wayne&lt;/div&gt;
   &lt;/div&gt;
-&lt;/div&gt;
-
-&lt;!-- Content must be duplicated inside .sui-marquee-track for seamless loop --&gt;
-&lt;!-- sui-marquee-hover pauses on hover --&gt;</pre></div>
+&lt;/div&gt;</pre></div>
   </div>
 </div>
 
@@ -71,15 +71,15 @@ toc:
   <div class="pg-section-row" style="overflow:hidden;">
     <div class="sui-marquee sui-marquee-hover">
       <div class="sui-marquee-track">
-        <div class="sui-marquee-text">&#9733; 60+ neumorphic components</div>
+        <div class="sui-marquee-text">&#9733; 80+ neumorphic components</div>
         <div class="sui-marquee-text">&#9733; Dark mode built-in</div>
         <div class="sui-marquee-text">&#9733; Zero dependencies</div>
-        <div class="sui-marquee-text">&#9733; Under 200KB CSS</div>
+        <div class="sui-marquee-text">&#9733; Copy-paste HTML</div>
         <div class="sui-marquee-text">&#9733; MIT licensed</div>
-        <div class="sui-marquee-text">&#9733; 60+ neumorphic components</div>
+        <div class="sui-marquee-text">&#9733; 80+ neumorphic components</div>
         <div class="sui-marquee-text">&#9733; Dark mode built-in</div>
         <div class="sui-marquee-text">&#9733; Zero dependencies</div>
-        <div class="sui-marquee-text">&#9733; Under 200KB CSS</div>
+        <div class="sui-marquee-text">&#9733; Copy-paste HTML</div>
         <div class="sui-marquee-text">&#9733; MIT licensed</div>
       </div>
     </div>
@@ -88,16 +88,16 @@ toc:
     <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
     <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-marquee sui-marquee-hover"&gt;
   &lt;div class="sui-marquee-track"&gt;
-    &lt;div class="sui-marquee-text"&gt;&amp;#9733; 60+ neumorphic components&lt;/div&gt;
+    &lt;div class="sui-marquee-text"&gt;&amp;#9733; 80+ neumorphic components&lt;/div&gt;
     &lt;div class="sui-marquee-text"&gt;&amp;#9733; Dark mode built-in&lt;/div&gt;
     &lt;div class="sui-marquee-text"&gt;&amp;#9733; Zero dependencies&lt;/div&gt;
-    &lt;div class="sui-marquee-text"&gt;&amp;#9733; Under 200KB CSS&lt;/div&gt;
+    &lt;div class="sui-marquee-text"&gt;&amp;#9733; Copy-paste HTML&lt;/div&gt;
     &lt;div class="sui-marquee-text"&gt;&amp;#9733; MIT licensed&lt;/div&gt;
-    &lt;!-- Duplicate for seamless loop --&gt;
-    &lt;div class="sui-marquee-text"&gt;&amp;#9733; 60+ neumorphic components&lt;/div&gt;
+    &lt;!-- Duplicate the set for a seamless loop --&gt;
+    &lt;div class="sui-marquee-text"&gt;&amp;#9733; 80+ neumorphic components&lt;/div&gt;
     &lt;div class="sui-marquee-text"&gt;&amp;#9733; Dark mode built-in&lt;/div&gt;
     &lt;div class="sui-marquee-text"&gt;&amp;#9733; Zero dependencies&lt;/div&gt;
-    &lt;div class="sui-marquee-text"&gt;&amp;#9733; Under 200KB CSS&lt;/div&gt;
+    &lt;div class="sui-marquee-text"&gt;&amp;#9733; Copy-paste HTML&lt;/div&gt;
     &lt;div class="sui-marquee-text"&gt;&amp;#9733; MIT licensed&lt;/div&gt;
   &lt;/div&gt;
 &lt;/div&gt;</pre></div>
@@ -158,14 +158,46 @@ toc:
     <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-marquee sui-marquee-hover"&gt;
   &lt;div class="sui-marquee-track"&gt;
     &lt;div class="sui-marquee-card"&gt;
-      &lt;div style="font-weight:700;"&gt;"Looks amazing!"&lt;/div&gt;
+      &lt;div style="font-weight:700;font-size:14px;margin-bottom:4px;"&gt;"Looks amazing!"&lt;/div&gt;
       &lt;div style="font-size:12px;color:var(--sui-text-muted);"&gt;— Alex, Developer&lt;/div&gt;
     &lt;/div&gt;
     &lt;div class="sui-marquee-card"&gt;
-      &lt;div style="font-weight:700;"&gt;"So easy to use."&lt;/div&gt;
+      &lt;div style="font-weight:700;font-size:14px;margin-bottom:4px;"&gt;"So easy to use."&lt;/div&gt;
       &lt;div style="font-size:12px;color:var(--sui-text-muted);"&gt;— Sarah, Designer&lt;/div&gt;
     &lt;/div&gt;
-    &lt;!-- Duplicate all cards for seamless loop --&gt;
+    &lt;div class="sui-marquee-card"&gt;
+      &lt;div style="font-weight:700;font-size:14px;margin-bottom:4px;"&gt;"Best CSS library."&lt;/div&gt;
+      &lt;div style="font-size:12px;color:var(--sui-text-muted);"&gt;— Mark, Founder&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="sui-marquee-card"&gt;
+      &lt;div style="font-weight:700;font-size:14px;margin-bottom:4px;"&gt;"Love the dark mode."&lt;/div&gt;
+      &lt;div style="font-size:12px;color:var(--sui-text-muted);"&gt;— Priya, Engineer&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="sui-marquee-card"&gt;
+      &lt;div style="font-weight:700;font-size:14px;margin-bottom:4px;"&gt;"Clean and minimal."&lt;/div&gt;
+      &lt;div style="font-size:12px;color:var(--sui-text-muted);"&gt;— Jake, PM&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;!-- Duplicate the set for a seamless loop --&gt;
+    &lt;div class="sui-marquee-card"&gt;
+      &lt;div style="font-weight:700;font-size:14px;margin-bottom:4px;"&gt;"Looks amazing!"&lt;/div&gt;
+      &lt;div style="font-size:12px;color:var(--sui-text-muted);"&gt;— Alex, Developer&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="sui-marquee-card"&gt;
+      &lt;div style="font-weight:700;font-size:14px;margin-bottom:4px;"&gt;"So easy to use."&lt;/div&gt;
+      &lt;div style="font-size:12px;color:var(--sui-text-muted);"&gt;— Sarah, Designer&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="sui-marquee-card"&gt;
+      &lt;div style="font-weight:700;font-size:14px;margin-bottom:4px;"&gt;"Best CSS library."&lt;/div&gt;
+      &lt;div style="font-size:12px;color:var(--sui-text-muted);"&gt;— Mark, Founder&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="sui-marquee-card"&gt;
+      &lt;div style="font-weight:700;font-size:14px;margin-bottom:4px;"&gt;"Love the dark mode."&lt;/div&gt;
+      &lt;div style="font-size:12px;color:var(--sui-text-muted);"&gt;— Priya, Engineer&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="sui-marquee-card"&gt;
+      &lt;div style="font-weight:700;font-size:14px;margin-bottom:4px;"&gt;"Clean and minimal."&lt;/div&gt;
+      &lt;div style="font-size:12px;color:var(--sui-text-muted);"&gt;— Jake, PM&lt;/div&gt;
+    &lt;/div&gt;
   &lt;/div&gt;
 &lt;/div&gt;</pre></div>
   </div>
@@ -178,14 +210,42 @@ toc:
     <div style="display:flex;flex-direction:column;gap:12px;">
       <div class="sui-marquee">
         <div class="sui-marquee-track">
-          {{ logoSet | safe }}
-          {{ logoSet | safe }}
+          <div class="sui-marquee-logo">Acme Inc</div>
+          <div class="sui-marquee-logo">Globex</div>
+          <div class="sui-marquee-logo">Initech</div>
+          <div class="sui-marquee-logo">Umbrella</div>
+          <div class="sui-marquee-logo">Hooli</div>
+          <div class="sui-marquee-logo">Stark</div>
+          <div class="sui-marquee-logo">Wonka</div>
+          <div class="sui-marquee-logo">Wayne</div>
+          <div class="sui-marquee-logo">Acme Inc</div>
+          <div class="sui-marquee-logo">Globex</div>
+          <div class="sui-marquee-logo">Initech</div>
+          <div class="sui-marquee-logo">Umbrella</div>
+          <div class="sui-marquee-logo">Hooli</div>
+          <div class="sui-marquee-logo">Stark</div>
+          <div class="sui-marquee-logo">Wonka</div>
+          <div class="sui-marquee-logo">Wayne</div>
         </div>
       </div>
       <div class="sui-marquee sui-marquee-reverse">
         <div class="sui-marquee-track">
-          {{ logoSet | safe }}
-          {{ logoSet | safe }}
+          <div class="sui-marquee-logo">Acme Inc</div>
+          <div class="sui-marquee-logo">Globex</div>
+          <div class="sui-marquee-logo">Initech</div>
+          <div class="sui-marquee-logo">Umbrella</div>
+          <div class="sui-marquee-logo">Hooli</div>
+          <div class="sui-marquee-logo">Stark</div>
+          <div class="sui-marquee-logo">Wonka</div>
+          <div class="sui-marquee-logo">Wayne</div>
+          <div class="sui-marquee-logo">Acme Inc</div>
+          <div class="sui-marquee-logo">Globex</div>
+          <div class="sui-marquee-logo">Initech</div>
+          <div class="sui-marquee-logo">Umbrella</div>
+          <div class="sui-marquee-logo">Hooli</div>
+          <div class="sui-marquee-logo">Stark</div>
+          <div class="sui-marquee-logo">Wonka</div>
+          <div class="sui-marquee-logo">Wayne</div>
         </div>
       </div>
     </div>
@@ -195,55 +255,244 @@ toc:
     <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;!-- Normal direction --&gt;
 &lt;div class="sui-marquee"&gt;
   &lt;div class="sui-marquee-track"&gt;
-    &lt;!-- items (duplicated) --&gt;
+    &lt;div class="sui-marquee-logo"&gt;Acme Inc&lt;/div&gt;
+    &lt;div class="sui-marquee-logo"&gt;Globex&lt;/div&gt;
+    &lt;div class="sui-marquee-logo"&gt;Initech&lt;/div&gt;
+    &lt;div class="sui-marquee-logo"&gt;Umbrella&lt;/div&gt;
+    &lt;div class="sui-marquee-logo"&gt;Hooli&lt;/div&gt;
+    &lt;div class="sui-marquee-logo"&gt;Stark&lt;/div&gt;
+    &lt;div class="sui-marquee-logo"&gt;Wonka&lt;/div&gt;
+    &lt;div class="sui-marquee-logo"&gt;Wayne&lt;/div&gt;
+    &lt;!-- Duplicate the set for a seamless loop --&gt;
+    &lt;div class="sui-marquee-logo"&gt;Acme Inc&lt;/div&gt;
+    &lt;div class="sui-marquee-logo"&gt;Globex&lt;/div&gt;
+    &lt;div class="sui-marquee-logo"&gt;Initech&lt;/div&gt;
+    &lt;div class="sui-marquee-logo"&gt;Umbrella&lt;/div&gt;
+    &lt;div class="sui-marquee-logo"&gt;Hooli&lt;/div&gt;
+    &lt;div class="sui-marquee-logo"&gt;Stark&lt;/div&gt;
+    &lt;div class="sui-marquee-logo"&gt;Wonka&lt;/div&gt;
+    &lt;div class="sui-marquee-logo"&gt;Wayne&lt;/div&gt;
   &lt;/div&gt;
 &lt;/div&gt;
 
 &lt;!-- Reverse direction --&gt;
 &lt;div class="sui-marquee sui-marquee-reverse"&gt;
   &lt;div class="sui-marquee-track"&gt;
-    &lt;!-- items (duplicated) --&gt;
+    &lt;div class="sui-marquee-logo"&gt;Acme Inc&lt;/div&gt;
+    &lt;div class="sui-marquee-logo"&gt;Globex&lt;/div&gt;
+    &lt;div class="sui-marquee-logo"&gt;Initech&lt;/div&gt;
+    &lt;div class="sui-marquee-logo"&gt;Umbrella&lt;/div&gt;
+    &lt;div class="sui-marquee-logo"&gt;Hooli&lt;/div&gt;
+    &lt;div class="sui-marquee-logo"&gt;Stark&lt;/div&gt;
+    &lt;div class="sui-marquee-logo"&gt;Wonka&lt;/div&gt;
+    &lt;div class="sui-marquee-logo"&gt;Wayne&lt;/div&gt;
+    &lt;!-- Duplicate the set for a seamless loop --&gt;
+    &lt;div class="sui-marquee-logo"&gt;Acme Inc&lt;/div&gt;
+    &lt;div class="sui-marquee-logo"&gt;Globex&lt;/div&gt;
+    &lt;div class="sui-marquee-logo"&gt;Initech&lt;/div&gt;
+    &lt;div class="sui-marquee-logo"&gt;Umbrella&lt;/div&gt;
+    &lt;div class="sui-marquee-logo"&gt;Hooli&lt;/div&gt;
+    &lt;div class="sui-marquee-logo"&gt;Stark&lt;/div&gt;
+    &lt;div class="sui-marquee-logo"&gt;Wonka&lt;/div&gt;
+    &lt;div class="sui-marquee-logo"&gt;Wayne&lt;/div&gt;
   &lt;/div&gt;
-&lt;/div&gt;
-
-&lt;!-- Speed variants --&gt;
-&lt;div class="sui-marquee sui-marquee-slow"&gt;...&lt;/div&gt;
-&lt;div class="sui-marquee sui-marquee-fast"&gt;...&lt;/div&gt;</pre></div>
+&lt;/div&gt;</pre></div>
   </div>
 </div>
 
-<!-- Fade Edges -->
+<!-- Speeds -->
 <div class="pg-section" id="section-5">
-  <h3 class="pg-section-title">Fade Edges</h3>
+  <h3 class="pg-section-title">Speeds</h3>
   <div class="pg-section-row" style="overflow:hidden;">
-    <div class="sui-marquee sui-marquee-fade sui-marquee-hover">
-      <div class="sui-marquee-track">
-        {{ logoSet | safe }}
-        {{ logoSet | safe }}
+    <div style="display:flex;flex-direction:column;gap:12px;">
+      <div class="sui-marquee sui-marquee-slow">
+        <div class="sui-marquee-track">
+          <div class="sui-marquee-logo">Acme Inc</div>
+          <div class="sui-marquee-logo">Globex</div>
+          <div class="sui-marquee-logo">Initech</div>
+          <div class="sui-marquee-logo">Umbrella</div>
+          <div class="sui-marquee-logo">Hooli</div>
+          <div class="sui-marquee-logo">Stark</div>
+          <div class="sui-marquee-logo">Wonka</div>
+          <div class="sui-marquee-logo">Wayne</div>
+          <div class="sui-marquee-logo">Acme Inc</div>
+          <div class="sui-marquee-logo">Globex</div>
+          <div class="sui-marquee-logo">Initech</div>
+          <div class="sui-marquee-logo">Umbrella</div>
+          <div class="sui-marquee-logo">Hooli</div>
+          <div class="sui-marquee-logo">Stark</div>
+          <div class="sui-marquee-logo">Wonka</div>
+          <div class="sui-marquee-logo">Wayne</div>
+        </div>
+      </div>
+      <div class="sui-marquee">
+        <div class="sui-marquee-track">
+          <div class="sui-marquee-logo">Acme Inc</div>
+          <div class="sui-marquee-logo">Globex</div>
+          <div class="sui-marquee-logo">Initech</div>
+          <div class="sui-marquee-logo">Umbrella</div>
+          <div class="sui-marquee-logo">Hooli</div>
+          <div class="sui-marquee-logo">Stark</div>
+          <div class="sui-marquee-logo">Wonka</div>
+          <div class="sui-marquee-logo">Wayne</div>
+          <div class="sui-marquee-logo">Acme Inc</div>
+          <div class="sui-marquee-logo">Globex</div>
+          <div class="sui-marquee-logo">Initech</div>
+          <div class="sui-marquee-logo">Umbrella</div>
+          <div class="sui-marquee-logo">Hooli</div>
+          <div class="sui-marquee-logo">Stark</div>
+          <div class="sui-marquee-logo">Wonka</div>
+          <div class="sui-marquee-logo">Wayne</div>
+        </div>
+      </div>
+      <div class="sui-marquee sui-marquee-fast">
+        <div class="sui-marquee-track">
+          <div class="sui-marquee-logo">Acme Inc</div>
+          <div class="sui-marquee-logo">Globex</div>
+          <div class="sui-marquee-logo">Initech</div>
+          <div class="sui-marquee-logo">Umbrella</div>
+          <div class="sui-marquee-logo">Hooli</div>
+          <div class="sui-marquee-logo">Stark</div>
+          <div class="sui-marquee-logo">Wonka</div>
+          <div class="sui-marquee-logo">Wayne</div>
+          <div class="sui-marquee-logo">Acme Inc</div>
+          <div class="sui-marquee-logo">Globex</div>
+          <div class="sui-marquee-logo">Initech</div>
+          <div class="sui-marquee-logo">Umbrella</div>
+          <div class="sui-marquee-logo">Hooli</div>
+          <div class="sui-marquee-logo">Stark</div>
+          <div class="sui-marquee-logo">Wonka</div>
+          <div class="sui-marquee-logo">Wayne</div>
+        </div>
       </div>
     </div>
   </div>
   <div class="pg-code-wrap">
     <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
-    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;!-- Fades content at left and right edges --&gt;
-&lt;div class="sui-marquee sui-marquee-fade sui-marquee-hover"&gt;
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;!-- Slow (40s loop) --&gt;
+&lt;div class="sui-marquee sui-marquee-slow"&gt;
   &lt;div class="sui-marquee-track"&gt;
     &lt;div class="sui-marquee-logo"&gt;Acme Inc&lt;/div&gt;
     &lt;div class="sui-marquee-logo"&gt;Globex&lt;/div&gt;
     &lt;div class="sui-marquee-logo"&gt;Initech&lt;/div&gt;
     &lt;div class="sui-marquee-logo"&gt;Umbrella&lt;/div&gt;
-    &lt;!-- Duplicate for seamless loop --&gt;
+    &lt;div class="sui-marquee-logo"&gt;Hooli&lt;/div&gt;
+    &lt;div class="sui-marquee-logo"&gt;Stark&lt;/div&gt;
+    &lt;div class="sui-marquee-logo"&gt;Wonka&lt;/div&gt;
+    &lt;div class="sui-marquee-logo"&gt;Wayne&lt;/div&gt;
+    &lt;!-- Duplicate the set for a seamless loop --&gt;
     &lt;div class="sui-marquee-logo"&gt;Acme Inc&lt;/div&gt;
     &lt;div class="sui-marquee-logo"&gt;Globex&lt;/div&gt;
     &lt;div class="sui-marquee-logo"&gt;Initech&lt;/div&gt;
     &lt;div class="sui-marquee-logo"&gt;Umbrella&lt;/div&gt;
+    &lt;div class="sui-marquee-logo"&gt;Hooli&lt;/div&gt;
+    &lt;div class="sui-marquee-logo"&gt;Stark&lt;/div&gt;
+    &lt;div class="sui-marquee-logo"&gt;Wonka&lt;/div&gt;
+    &lt;div class="sui-marquee-logo"&gt;Wayne&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- Default --&gt;
+&lt;div class="sui-marquee"&gt;
+  &lt;div class="sui-marquee-track"&gt;
+    &lt;div class="sui-marquee-logo"&gt;Acme Inc&lt;/div&gt;
+    &lt;div class="sui-marquee-logo"&gt;Globex&lt;/div&gt;
+    &lt;div class="sui-marquee-logo"&gt;Initech&lt;/div&gt;
+    &lt;div class="sui-marquee-logo"&gt;Umbrella&lt;/div&gt;
+    &lt;div class="sui-marquee-logo"&gt;Hooli&lt;/div&gt;
+    &lt;div class="sui-marquee-logo"&gt;Stark&lt;/div&gt;
+    &lt;div class="sui-marquee-logo"&gt;Wonka&lt;/div&gt;
+    &lt;div class="sui-marquee-logo"&gt;Wayne&lt;/div&gt;
+    &lt;!-- Duplicate the set for a seamless loop --&gt;
+    &lt;div class="sui-marquee-logo"&gt;Acme Inc&lt;/div&gt;
+    &lt;div class="sui-marquee-logo"&gt;Globex&lt;/div&gt;
+    &lt;div class="sui-marquee-logo"&gt;Initech&lt;/div&gt;
+    &lt;div class="sui-marquee-logo"&gt;Umbrella&lt;/div&gt;
+    &lt;div class="sui-marquee-logo"&gt;Hooli&lt;/div&gt;
+    &lt;div class="sui-marquee-logo"&gt;Stark&lt;/div&gt;
+    &lt;div class="sui-marquee-logo"&gt;Wonka&lt;/div&gt;
+    &lt;div class="sui-marquee-logo"&gt;Wayne&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- Fast (10s loop) --&gt;
+&lt;div class="sui-marquee sui-marquee-fast"&gt;
+  &lt;div class="sui-marquee-track"&gt;
+    &lt;div class="sui-marquee-logo"&gt;Acme Inc&lt;/div&gt;
+    &lt;div class="sui-marquee-logo"&gt;Globex&lt;/div&gt;
+    &lt;div class="sui-marquee-logo"&gt;Initech&lt;/div&gt;
+    &lt;div class="sui-marquee-logo"&gt;Umbrella&lt;/div&gt;
+    &lt;div class="sui-marquee-logo"&gt;Hooli&lt;/div&gt;
+    &lt;div class="sui-marquee-logo"&gt;Stark&lt;/div&gt;
+    &lt;div class="sui-marquee-logo"&gt;Wonka&lt;/div&gt;
+    &lt;div class="sui-marquee-logo"&gt;Wayne&lt;/div&gt;
+    &lt;!-- Duplicate the set for a seamless loop --&gt;
+    &lt;div class="sui-marquee-logo"&gt;Acme Inc&lt;/div&gt;
+    &lt;div class="sui-marquee-logo"&gt;Globex&lt;/div&gt;
+    &lt;div class="sui-marquee-logo"&gt;Initech&lt;/div&gt;
+    &lt;div class="sui-marquee-logo"&gt;Umbrella&lt;/div&gt;
+    &lt;div class="sui-marquee-logo"&gt;Hooli&lt;/div&gt;
+    &lt;div class="sui-marquee-logo"&gt;Stark&lt;/div&gt;
+    &lt;div class="sui-marquee-logo"&gt;Wonka&lt;/div&gt;
+    &lt;div class="sui-marquee-logo"&gt;Wayne&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Fade Edges -->
+<div class="pg-section" id="section-6">
+  <h3 class="pg-section-title">Fade Edges</h3>
+  <div class="pg-section-row" style="overflow:hidden;">
+    <div class="sui-marquee sui-marquee-fade sui-marquee-hover">
+      <div class="sui-marquee-track">
+        <div class="sui-marquee-logo">Acme Inc</div>
+        <div class="sui-marquee-logo">Globex</div>
+        <div class="sui-marquee-logo">Initech</div>
+        <div class="sui-marquee-logo">Umbrella</div>
+        <div class="sui-marquee-logo">Hooli</div>
+        <div class="sui-marquee-logo">Stark</div>
+        <div class="sui-marquee-logo">Wonka</div>
+        <div class="sui-marquee-logo">Wayne</div>
+        <div class="sui-marquee-logo">Acme Inc</div>
+        <div class="sui-marquee-logo">Globex</div>
+        <div class="sui-marquee-logo">Initech</div>
+        <div class="sui-marquee-logo">Umbrella</div>
+        <div class="sui-marquee-logo">Hooli</div>
+        <div class="sui-marquee-logo">Stark</div>
+        <div class="sui-marquee-logo">Wonka</div>
+        <div class="sui-marquee-logo">Wayne</div>
+      </div>
+    </div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-marquee sui-marquee-fade sui-marquee-hover"&gt;
+  &lt;div class="sui-marquee-track"&gt;
+    &lt;div class="sui-marquee-logo"&gt;Acme Inc&lt;/div&gt;
+    &lt;div class="sui-marquee-logo"&gt;Globex&lt;/div&gt;
+    &lt;div class="sui-marquee-logo"&gt;Initech&lt;/div&gt;
+    &lt;div class="sui-marquee-logo"&gt;Umbrella&lt;/div&gt;
+    &lt;div class="sui-marquee-logo"&gt;Hooli&lt;/div&gt;
+    &lt;div class="sui-marquee-logo"&gt;Stark&lt;/div&gt;
+    &lt;div class="sui-marquee-logo"&gt;Wonka&lt;/div&gt;
+    &lt;div class="sui-marquee-logo"&gt;Wayne&lt;/div&gt;
+    &lt;!-- Duplicate the set for a seamless loop --&gt;
+    &lt;div class="sui-marquee-logo"&gt;Acme Inc&lt;/div&gt;
+    &lt;div class="sui-marquee-logo"&gt;Globex&lt;/div&gt;
+    &lt;div class="sui-marquee-logo"&gt;Initech&lt;/div&gt;
+    &lt;div class="sui-marquee-logo"&gt;Umbrella&lt;/div&gt;
+    &lt;div class="sui-marquee-logo"&gt;Hooli&lt;/div&gt;
+    &lt;div class="sui-marquee-logo"&gt;Stark&lt;/div&gt;
+    &lt;div class="sui-marquee-logo"&gt;Wonka&lt;/div&gt;
+    &lt;div class="sui-marquee-logo"&gt;Wayne&lt;/div&gt;
   &lt;/div&gt;
 &lt;/div&gt;</pre></div>
   </div>
 </div>
 
 <!-- Vertical -->
-<div class="pg-section" id="section-6">
+<div class="pg-section" id="section-7">
   <h3 class="pg-section-title">Vertical</h3>
   <div class="pg-section-row">
     <div class="sui-marquee sui-marquee-vertical sui-marquee-hover" style="height:180px;max-width:300px;">
@@ -285,17 +534,41 @@ toc:
   </div>
   <div class="pg-code-wrap">
     <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
-    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-marquee sui-marquee-vertical sui-marquee-hover" style="height:180px;"&gt;
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-marquee sui-marquee-vertical sui-marquee-hover" style="height:180px;max-width:300px;"&gt;
   &lt;div class="sui-marquee-track"&gt;
-    &lt;div class="sui-marquee-card"&gt;
-      &lt;div style="font-weight:700;"&gt;"Incredible library!"&lt;/div&gt;
+    &lt;div class="sui-marquee-card" style="min-width:auto;"&gt;
+      &lt;div style="font-weight:700;font-size:13px;margin-bottom:2px;"&gt;"Incredible library!"&lt;/div&gt;
       &lt;div style="font-size:11px;color:var(--sui-text-muted);"&gt;— Alex&lt;/div&gt;
     &lt;/div&gt;
-    &lt;div class="sui-marquee-card"&gt;
-      &lt;div style="font-weight:700;"&gt;"So clean and soft."&lt;/div&gt;
+    &lt;div class="sui-marquee-card" style="min-width:auto;"&gt;
+      &lt;div style="font-weight:700;font-size:13px;margin-bottom:2px;"&gt;"So clean and soft."&lt;/div&gt;
       &lt;div style="font-size:11px;color:var(--sui-text-muted);"&gt;— Sarah&lt;/div&gt;
     &lt;/div&gt;
-    &lt;!-- Duplicate all cards for seamless loop --&gt;
+    &lt;div class="sui-marquee-card" style="min-width:auto;"&gt;
+      &lt;div style="font-weight:700;font-size:13px;margin-bottom:2px;"&gt;"My go-to CSS lib."&lt;/div&gt;
+      &lt;div style="font-size:11px;color:var(--sui-text-muted);"&gt;— Mark&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="sui-marquee-card" style="min-width:auto;"&gt;
+      &lt;div style="font-weight:700;font-size:13px;margin-bottom:2px;"&gt;"Dark mode is chef's kiss."&lt;/div&gt;
+      &lt;div style="font-size:11px;color:var(--sui-text-muted);"&gt;— Priya&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;!-- Duplicate the set for a seamless loop --&gt;
+    &lt;div class="sui-marquee-card" style="min-width:auto;"&gt;
+      &lt;div style="font-weight:700;font-size:13px;margin-bottom:2px;"&gt;"Incredible library!"&lt;/div&gt;
+      &lt;div style="font-size:11px;color:var(--sui-text-muted);"&gt;— Alex&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="sui-marquee-card" style="min-width:auto;"&gt;
+      &lt;div style="font-weight:700;font-size:13px;margin-bottom:2px;"&gt;"So clean and soft."&lt;/div&gt;
+      &lt;div style="font-size:11px;color:var(--sui-text-muted);"&gt;— Sarah&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="sui-marquee-card" style="min-width:auto;"&gt;
+      &lt;div style="font-weight:700;font-size:13px;margin-bottom:2px;"&gt;"My go-to CSS lib."&lt;/div&gt;
+      &lt;div style="font-size:11px;color:var(--sui-text-muted);"&gt;— Mark&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="sui-marquee-card" style="min-width:auto;"&gt;
+      &lt;div style="font-weight:700;font-size:13px;margin-bottom:2px;"&gt;"Dark mode is chef's kiss."&lt;/div&gt;
+      &lt;div style="font-size:11px;color:var(--sui-text-muted);"&gt;— Priya&lt;/div&gt;
+    &lt;/div&gt;
   &lt;/div&gt;
 &lt;/div&gt;</pre></div>
   </div>

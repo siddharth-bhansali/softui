@@ -51,7 +51,9 @@ toc:
     <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;span class="sui-badge sui-badge-outline"&gt;Default&lt;/span&gt;
 &lt;span class="sui-badge sui-badge-primary sui-badge-outline"&gt;Primary&lt;/span&gt;
 &lt;span class="sui-badge sui-badge-success sui-badge-outline"&gt;Success&lt;/span&gt;
-&lt;span class="sui-badge sui-badge-danger sui-badge-outline"&gt;Danger&lt;/span&gt;</pre></div>
+&lt;span class="sui-badge sui-badge-danger sui-badge-outline"&gt;Danger&lt;/span&gt;
+&lt;span class="sui-badge sui-badge-warning sui-badge-outline"&gt;Warning&lt;/span&gt;
+&lt;span class="sui-badge sui-badge-info sui-badge-outline"&gt;Info&lt;/span&gt;</pre></div>
   </div>
 </div>
 
@@ -148,7 +150,10 @@ toc:
     <span class="sui-status"><span class="sui-status-dot sui-status-dot-danger sui-status-dot-pulse"></span>Recording</span>
     <span class="sui-status"><span class="sui-status-dot sui-status-dot-success sui-status-dot-sm"></span>Small</span>
     <span class="sui-status"><span class="sui-status-dot sui-status-dot-success sui-status-dot-lg"></span>Large</span>
+  </div>
+  <div class="pg-section-row" style="gap:12px;">
     <span class="sui-status-dot sui-status-dot-success" role="img" aria-label="Online"></span>
+    <small style="color:var(--sui-text-muted);">Standalone dot, named by <code>aria-label</code></small>
   </div>
   <div class="pg-code-wrap">
     <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
@@ -178,12 +183,18 @@ toc:
   <div class="docs-table-wrap">
     <table class="sui-table sui-table-compact">
       <thead>
-        <tr><th scope="col" style="width:40%;">Class</th><th scope="col">Description</th></tr>
+        <tr><th scope="col" style="width:40%;">Class / Token</th><th scope="col">Description</th></tr>
       </thead>
       <tbody>
+        <tr><td><code>sui-badge</code></td><td>Base badge. Neutral without a colour class.</td></tr>
+        <tr><td><code>sui-badge-primary</code>, <code>-success</code>, <code>-danger</code>, <code>-warning</code>, <code>-info</code></td><td>Badge colour.</td></tr>
+        <tr><td><code>sui-badge-outline</code></td><td>Border and coloured text instead of a fill.</td></tr>
+        <tr><td><code>sui-badge-pill</code></td><td>Fully rounded, for counts.</td></tr>
+        <tr><td><code>sui-badge-sm</code>, <code>sui-badge-lg</code></td><td>Small and large badges.</td></tr>
+        <tr><td><code>sui-badge-positioned</code></td><td>Wrapper that pins its badge to the top end corner of the element inside.</td></tr>
         <tr><td><code>sui-badge-dot</code></td><td>Empty dot. Give it <code>role="img"</code> and an <code>aria-label</code>.</td></tr>
         <tr><td><code>sui-status</code></td><td>Inline wrapper for a status dot and its visible label. A dot without a label needs <code>role="img"</code> and an <code>aria-label</code>.</td></tr>
-        <tr><td><code>sui-status-dot-{primary|success|warning|danger|info}</code></td><td>Dot colour. Without one the dot is neutral.</td></tr>
+        <tr><td><code>sui-status-dot-primary</code>, <code>-success</code>, <code>-warning</code>, <code>-danger</code>, <code>-info</code></td><td>Dot colour. Without one the dot is neutral.</td></tr>
         <tr><td><code>sui-status-dot-pulse</code></td><td>Live ping. Hidden when the user prefers reduced motion.</td></tr>
         <tr><td><code>sui-status-dot-sm</code>, <code>sui-status-dot-lg</code></td><td>Small and large dots.</td></tr>
         <tr><td><code>--sui-status-color</code>, <code>--sui-status-size</code></td><td>Custom colour and size, set on the dot or any ancestor.</td></tr>

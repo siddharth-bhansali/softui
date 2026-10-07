@@ -306,9 +306,20 @@
   white-space: nowrap;
 }
 
+/* Key caps, matching .sui-kbd-inline used across the docs */
 .pg-editor-hint kbd {
+  display: inline-block;
+  min-width: 1.75em;
+  text-align: center;
+  line-height: 1.4;
+  padding: 1px 6px;
+  margin: 0 2px;
   font-family: var(--sui-font-mono);
   font-size: 0.6875rem;
+  color: var(--sui-text);
+  background: var(--sui-bg);
+  border-radius: 4px;
+  box-shadow: var(--sui-shadow-raised-sm), inset 0 -1px 0 rgba(0,0,0,0.08);
 }
 
 .pg-toolbar-label {
@@ -343,6 +354,8 @@
   width: 100%;
   padding: 20px 24px;
   font-family: 'JetBrains Mono', monospace;
+  font-variant-ligatures: none;
+  font-feature-settings: "liga" 0, "calt" 0;
   font-size: 13px;
   line-height: 1.7;
   color: #e2e8f0;

@@ -44,7 +44,7 @@ toc:
 <!-- Square (1:1) -->
 <div class="pg-section" id="section-2">
   <h3 class="pg-section-title">Square (1:1)</h3>
-  <p style="font-size:13px;color:var(--sui-text-light);margin-bottom:16px;">Add <code>sui-aspect-square</code> for a 1:1 ratio. Great for avatars and thumbnails.</p>
+  <p style="font-size:13px;color:var(--sui-text-light);margin-bottom:16px;">Add <code>sui-aspect-square</code> for a 1:1 ratio, for avatars and thumbnails.</p>
   <div class="pg-section-row" style="align-items:flex-start;">
     <div class="sui-aspect sui-aspect-square" style="max-width:200px;border-radius:var(--sui-radius-sm);box-shadow:var(--sui-shadow-raised-sm);">
       <div style="display:flex;align-items:center;justify-content:center;background:{{ gradients[1] }};color:#fff;font-size:14px;font-weight:600;">1 : 1</div>
@@ -61,7 +61,7 @@ toc:
 <!-- Portrait (9:16) -->
 <div class="pg-section" id="section-3">
   <h3 class="pg-section-title">Portrait (9:16)</h3>
-  <p style="font-size:13px;color:var(--sui-text-light);margin-bottom:16px;">Add <code>sui-aspect-portrait</code> for a 9:16 vertical ratio. Good for phone mockups and stories.</p>
+  <p style="font-size:13px;color:var(--sui-text-light);margin-bottom:16px;">Add <code>sui-aspect-portrait</code> for a 9:16 ratio, for phone mockups and stories.</p>
   <div class="pg-section-row" style="align-items:flex-start;">
     <div class="sui-aspect sui-aspect-portrait" style="max-width:160px;border-radius:var(--sui-radius-sm);box-shadow:var(--sui-shadow-raised-sm);">
       <div style="display:flex;align-items:center;justify-content:center;background:{{ gradients[2] }};color:#fff;font-size:14px;font-weight:600;">9 : 16</div>
@@ -146,7 +146,7 @@ toc:
 <!-- With Content -->
 <div class="pg-section" id="section-8">
   <h3 class="pg-section-title">With Content</h3>
-  <p style="font-size:13px;color:var(--sui-text-light);margin-bottom:16px;">Children are stretched to fill the container. Use <code>object-fit: cover</code> on images or flex alignment on content.</p>
+  <p style="font-size:13px;color:var(--sui-text-light);margin-bottom:16px;">Direct children fill the box, and images are cropped with <code>object-fit: cover</code> automatically.</p>
   <div class="pg-section-row" style="display:flex;gap:16px;flex-wrap:wrap;align-items:flex-start;">
     <div class="sui-aspect sui-aspect-video" style="max-width:280px;border-radius:var(--sui-radius-sm);box-shadow:var(--sui-shadow-raised-sm);">
       <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;background:var(--sui-bg);padding:16px;">
@@ -171,21 +171,25 @@ toc:
   </div>
   <div class="pg-code-wrap">
     <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
-    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;!-- Video placeholder --&gt;
-&lt;div class="sui-aspect sui-aspect-video" style="max-width:280px;"&gt;
-  &lt;div style="display:flex;align-items:center;justify-content:center;"&gt;
-    Video Player
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-aspect sui-aspect-video" style="max-width:280px;border-radius:var(--sui-radius-sm);box-shadow:var(--sui-shadow-raised-sm);"&gt;
+  &lt;div style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;background:var(--sui-bg);padding:16px;"&gt;
+    &lt;div style="width:48px;height:48px;border-radius:50%;background:linear-gradient(135deg, #7C5CFC, #5B54E0);"&gt;&lt;/div&gt;
+    &lt;span style="font-size:14px;font-weight:600;color:var(--sui-text);"&gt;Video Player&lt;/span&gt;
+    &lt;span style="font-size:12px;color:var(--sui-text-muted);"&gt;16:9 container&lt;/span&gt;
   &lt;/div&gt;
 &lt;/div&gt;
-
-&lt;!-- Square avatar --&gt;
-&lt;div class="sui-aspect sui-aspect-square" style="max-width:160px;"&gt;
-  &lt;img src="..." alt="..." style="object-fit:cover;" /&gt;
+&lt;div class="sui-aspect sui-aspect-square" style="max-width:160px;border-radius:var(--sui-radius-sm);box-shadow:var(--sui-shadow-raised-sm);"&gt;
+  &lt;div style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;background:var(--sui-bg);padding:16px;"&gt;
+    &lt;div style="width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg, #2DCE89, #1AAB6B);"&gt;&lt;/div&gt;
+    &lt;span style="font-size:13px;font-weight:600;color:var(--sui-text);"&gt;Avatar&lt;/span&gt;
+  &lt;/div&gt;
 &lt;/div&gt;
-
-&lt;!-- Photo card --&gt;
-&lt;div class="sui-aspect sui-aspect-4-3" style="max-width:220px;"&gt;
-  &lt;div&gt;...&lt;/div&gt;
+&lt;div class="sui-aspect sui-aspect-4-3" style="max-width:220px;border-radius:var(--sui-radius-sm);box-shadow:var(--sui-shadow-raised-sm);"&gt;
+  &lt;div style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;background:var(--sui-bg);padding:16px;"&gt;
+    &lt;div style="width:48px;height:36px;border-radius:6px;background:linear-gradient(135deg, #36D1DC, #5B86E5);"&gt;&lt;/div&gt;
+    &lt;span style="font-size:14px;font-weight:600;color:var(--sui-text);"&gt;Photo Card&lt;/span&gt;
+    &lt;span style="font-size:12px;color:var(--sui-text-muted);"&gt;4:3 container&lt;/span&gt;
+  &lt;/div&gt;
 &lt;/div&gt;</pre></div>
   </div>
 </div>

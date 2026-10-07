@@ -142,26 +142,31 @@ export default function SoftUIInit() {
   console.log(e.target, e.detail.date);
 });</code></pre>
     </div>
-    <div class="docs-getstarted-code" style="margin-top:12px;">
-<pre><code>Event                 Fired on                  detail
-sui-date-select       .sui-calendar             { date, hour, minute, period, is24h }  (single)
-                                                { start, end }                          (range)
-sui-date-clear        .sui-calendar             —
-sui-time-change       .sui-timepicker           { hour, minute, period, is24h }
-sui-otp-complete      .sui-otp                  { value }
-sui-rating-change     .sui-rating               { value }
-sui-color-change      .sui-color-picker         { color }        (swatch picker)
-                      .sui-color-spectrum       { hex, rgb }     (spectrum picker)
-sui-swap-change       .sui-swap                 { active }       (two-state swap)
-                      .sui-swap-cycle           { state, total } (multi-state swap)
-sui-editable-save     .sui-editable             { value, previous }
-sui-editable-cancel   .sui-editable             —
-sui-countdown-end     .sui-countdown            —
-sui-copy              .sui-copy-btn             { text }
-sui-copy-error        .sui-copy-btn             { text, error }
-sui-tree-toggle       .sui-tree-item            { expanded }
-sui-diff-change       .sui-diff                 { value }
-sui-theme-change      document                  { theme, source }</code></pre>
+    <div class="docs-table-wrap" style="margin-top:12px;">
+      <table class="sui-table sui-table-compact">
+        <thead>
+          <tr><th scope="col">Event</th><th scope="col">Fired on</th><th scope="col">detail</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><code>sui-date-select</code></td><td><code>.sui-calendar</code></td><td><code>{ date, hour, minute, period, is24h }</code> (single), <code>{ start, end }</code> (range)</td></tr>
+          <tr><td><code>sui-date-clear</code></td><td><code>.sui-calendar</code></td><td>&mdash;</td></tr>
+          <tr><td><code>sui-time-change</code></td><td><code>.sui-timepicker</code></td><td><code>{ hour, minute, period, is24h }</code></td></tr>
+          <tr><td><code>sui-otp-complete</code></td><td><code>.sui-otp</code></td><td><code>{ value }</code></td></tr>
+          <tr><td><code>sui-rating-change</code></td><td><code>.sui-rating</code></td><td><code>{ value }</code></td></tr>
+          <tr><td><code>sui-color-change</code></td><td><code>.sui-color-picker</code></td><td><code>{ color }</code> (swatch picker)</td></tr>
+          <tr><td><code>sui-color-change</code></td><td><code>.sui-color-spectrum</code></td><td><code>{ hex, rgb }</code> (spectrum picker)</td></tr>
+          <tr><td><code>sui-swap-change</code></td><td><code>.sui-swap</code></td><td><code>{ active }</code> (two-state swap)</td></tr>
+          <tr><td><code>sui-swap-change</code></td><td><code>.sui-swap-cycle</code></td><td><code>{ state, total }</code> (multi-state swap)</td></tr>
+          <tr><td><code>sui-editable-save</code></td><td><code>.sui-editable</code></td><td><code>{ value, previous }</code></td></tr>
+          <tr><td><code>sui-editable-cancel</code></td><td><code>.sui-editable</code></td><td>&mdash;</td></tr>
+          <tr><td><code>sui-countdown-end</code></td><td><code>.sui-countdown</code></td><td>&mdash;</td></tr>
+          <tr><td><code>sui-copy</code></td><td><code>.sui-copy-btn</code></td><td><code>{ text }</code></td></tr>
+          <tr><td><code>sui-copy-error</code></td><td><code>.sui-copy-btn</code></td><td><code>{ text, error }</code></td></tr>
+          <tr><td><code>sui-tree-toggle</code></td><td><code>.sui-tree-item</code></td><td><code>{ expanded }</code></td></tr>
+          <tr><td><code>sui-diff-change</code></td><td><code>.sui-diff</code></td><td><code>{ value }</code></td></tr>
+          <tr><td><code>sui-theme-change</code></td><td><code>document</code></td><td><code>{ theme, source }</code></td></tr>
+        </tbody>
+      </table>
     </div>
     <p style="margin-top:12px;font-size:14px;color:var(--sui-text-muted);">The older names <code>editable:save</code>, <code>editable:cancel</code> and <code>countdown:end</code> still fire alongside the <code>sui-*</code> names. Native <code>change</code> events also bubble from styled selects, selectable pricing cards and number inputs.</p>
   </section>

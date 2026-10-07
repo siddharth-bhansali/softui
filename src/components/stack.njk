@@ -7,8 +7,10 @@ hasControls: false
 toc:
   - Default
   - Fanned
+  - Directions
   - Images
   - Hover Spread
+  - Reference
 ---
 
 {% set placeholderBase %}data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='140'%3E{% endset %}
@@ -38,16 +40,16 @@ toc:
     <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
     <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-stack"&gt;
   &lt;div class="sui-card" style="width:220px;padding:16px;"&gt;
-    &lt;h4&gt;Top Card&lt;/h4&gt;
-    &lt;p&gt;This card is on top of the stack.&lt;/p&gt;
+    &lt;h4 style="font-size:14px;margin-bottom:4px;"&gt;Top Card&lt;/h4&gt;
+    &lt;p style="font-size:12px;color:var(--sui-text-muted);"&gt;This card is on top of the stack.&lt;/p&gt;
   &lt;/div&gt;
   &lt;div class="sui-card" style="width:220px;padding:16px;"&gt;
-    &lt;h4&gt;Middle Card&lt;/h4&gt;
-    &lt;p&gt;Offset behind the first.&lt;/p&gt;
+    &lt;h4 style="font-size:14px;margin-bottom:4px;"&gt;Middle Card&lt;/h4&gt;
+    &lt;p style="font-size:12px;color:var(--sui-text-muted);"&gt;Offset behind the first.&lt;/p&gt;
   &lt;/div&gt;
   &lt;div class="sui-card" style="width:220px;padding:16px;"&gt;
-    &lt;h4&gt;Bottom Card&lt;/h4&gt;
-    &lt;p&gt;Furthest back in the stack.&lt;/p&gt;
+    &lt;h4 style="font-size:14px;margin-bottom:4px;"&gt;Bottom Card&lt;/h4&gt;
+    &lt;p style="font-size:12px;color:var(--sui-text-muted);"&gt;Furthest back in the stack.&lt;/p&gt;
   &lt;/div&gt;
 &lt;/div&gt;</pre></div>
   </div>
@@ -78,23 +80,133 @@ toc:
     <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
     <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-stack sui-stack-fanned"&gt;
   &lt;div class="sui-card" style="width:200px;padding:16px;"&gt;
-    &lt;h4&gt;Design&lt;/h4&gt;
-    &lt;p&gt;Create mockups&lt;/p&gt;
+    &lt;h4 style="font-size:14px;margin-bottom:4px;"&gt;Design&lt;/h4&gt;
+    &lt;p style="font-size:12px;color:var(--sui-text-muted);"&gt;Create mockups&lt;/p&gt;
   &lt;/div&gt;
   &lt;div class="sui-card" style="width:200px;padding:16px;"&gt;
-    &lt;h4&gt;Develop&lt;/h4&gt;
-    &lt;p&gt;Write code&lt;/p&gt;
+    &lt;h4 style="font-size:14px;margin-bottom:4px;"&gt;Develop&lt;/h4&gt;
+    &lt;p style="font-size:12px;color:var(--sui-text-muted);"&gt;Write code&lt;/p&gt;
   &lt;/div&gt;
   &lt;div class="sui-card" style="width:200px;padding:16px;"&gt;
-    &lt;h4&gt;Deploy&lt;/h4&gt;
-    &lt;p&gt;Ship to prod&lt;/p&gt;
+    &lt;h4 style="font-size:14px;margin-bottom:4px;"&gt;Deploy&lt;/h4&gt;
+    &lt;p style="font-size:12px;color:var(--sui-text-muted);"&gt;Ship to prod&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Directions -->
+<div class="pg-section" id="section-3">
+  <h3 class="pg-section-title">Directions</h3>
+  <div class="pg-section-row">
+    <div style="display:flex;flex-wrap:wrap;gap:64px;align-items:flex-start;padding:24px 0 0 24px;">
+      <div>
+        <div style="font-size:12px;color:var(--sui-text-muted);margin-bottom:24px;">Down-right (default)</div>
+        <div class="sui-stack">
+          <div class="sui-card" style="width:180px;padding:16px;">
+            <h4 style="font-size:14px;margin-bottom:4px;">One</h4>
+            <p style="font-size:12px;color:var(--sui-text-muted);">Front card.</p>
+          </div>
+          <div class="sui-card" style="width:180px;padding:16px;">
+            <h4 style="font-size:14px;margin-bottom:4px;">Two</h4>
+            <p style="font-size:12px;color:var(--sui-text-muted);">Second card.</p>
+          </div>
+          <div class="sui-card" style="width:180px;padding:16px;">
+            <h4 style="font-size:14px;margin-bottom:4px;">Three</h4>
+            <p style="font-size:12px;color:var(--sui-text-muted);">Third card.</p>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div style="font-size:12px;color:var(--sui-text-muted);margin-bottom:24px;">Up-left</div>
+        <div class="sui-stack sui-stack-up">
+          <div class="sui-card" style="width:180px;padding:16px;">
+            <h4 style="font-size:14px;margin-bottom:4px;">One</h4>
+            <p style="font-size:12px;color:var(--sui-text-muted);">Front card.</p>
+          </div>
+          <div class="sui-card" style="width:180px;padding:16px;">
+            <h4 style="font-size:14px;margin-bottom:4px;">Two</h4>
+            <p style="font-size:12px;color:var(--sui-text-muted);">Second card.</p>
+          </div>
+          <div class="sui-card" style="width:180px;padding:16px;">
+            <h4 style="font-size:14px;margin-bottom:4px;">Three</h4>
+            <p style="font-size:12px;color:var(--sui-text-muted);">Third card.</p>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div style="font-size:12px;color:var(--sui-text-muted);margin-bottom:24px;">Right</div>
+        <div class="sui-stack sui-stack-right">
+          <div class="sui-card" style="width:180px;padding:16px;">
+            <h4 style="font-size:14px;margin-bottom:4px;">One</h4>
+            <p style="font-size:12px;color:var(--sui-text-muted);">Front card.</p>
+          </div>
+          <div class="sui-card" style="width:180px;padding:16px;">
+            <h4 style="font-size:14px;margin-bottom:4px;">Two</h4>
+            <p style="font-size:12px;color:var(--sui-text-muted);">Second card.</p>
+          </div>
+          <div class="sui-card" style="width:180px;padding:16px;">
+            <h4 style="font-size:14px;margin-bottom:4px;">Three</h4>
+            <p style="font-size:12px;color:var(--sui-text-muted);">Third card.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;!-- Down-right (default) --&gt;
+&lt;div class="sui-stack"&gt;
+  &lt;div class="sui-card" style="width:180px;padding:16px;"&gt;
+    &lt;h4 style="font-size:14px;margin-bottom:4px;"&gt;One&lt;/h4&gt;
+    &lt;p style="font-size:12px;color:var(--sui-text-muted);"&gt;Front card.&lt;/p&gt;
+  &lt;/div&gt;
+  &lt;div class="sui-card" style="width:180px;padding:16px;"&gt;
+    &lt;h4 style="font-size:14px;margin-bottom:4px;"&gt;Two&lt;/h4&gt;
+    &lt;p style="font-size:12px;color:var(--sui-text-muted);"&gt;Second card.&lt;/p&gt;
+  &lt;/div&gt;
+  &lt;div class="sui-card" style="width:180px;padding:16px;"&gt;
+    &lt;h4 style="font-size:14px;margin-bottom:4px;"&gt;Three&lt;/h4&gt;
+    &lt;p style="font-size:12px;color:var(--sui-text-muted);"&gt;Third card.&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- Up-left --&gt;
+&lt;div class="sui-stack sui-stack-up"&gt;
+  &lt;div class="sui-card" style="width:180px;padding:16px;"&gt;
+    &lt;h4 style="font-size:14px;margin-bottom:4px;"&gt;One&lt;/h4&gt;
+    &lt;p style="font-size:12px;color:var(--sui-text-muted);"&gt;Front card.&lt;/p&gt;
+  &lt;/div&gt;
+  &lt;div class="sui-card" style="width:180px;padding:16px;"&gt;
+    &lt;h4 style="font-size:14px;margin-bottom:4px;"&gt;Two&lt;/h4&gt;
+    &lt;p style="font-size:12px;color:var(--sui-text-muted);"&gt;Second card.&lt;/p&gt;
+  &lt;/div&gt;
+  &lt;div class="sui-card" style="width:180px;padding:16px;"&gt;
+    &lt;h4 style="font-size:14px;margin-bottom:4px;"&gt;Three&lt;/h4&gt;
+    &lt;p style="font-size:12px;color:var(--sui-text-muted);"&gt;Third card.&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- Right --&gt;
+&lt;div class="sui-stack sui-stack-right"&gt;
+  &lt;div class="sui-card" style="width:180px;padding:16px;"&gt;
+    &lt;h4 style="font-size:14px;margin-bottom:4px;"&gt;One&lt;/h4&gt;
+    &lt;p style="font-size:12px;color:var(--sui-text-muted);"&gt;Front card.&lt;/p&gt;
+  &lt;/div&gt;
+  &lt;div class="sui-card" style="width:180px;padding:16px;"&gt;
+    &lt;h4 style="font-size:14px;margin-bottom:4px;"&gt;Two&lt;/h4&gt;
+    &lt;p style="font-size:12px;color:var(--sui-text-muted);"&gt;Second card.&lt;/p&gt;
+  &lt;/div&gt;
+  &lt;div class="sui-card" style="width:180px;padding:16px;"&gt;
+    &lt;h4 style="font-size:14px;margin-bottom:4px;"&gt;Three&lt;/h4&gt;
+    &lt;p style="font-size:12px;color:var(--sui-text-muted);"&gt;Third card.&lt;/p&gt;
   &lt;/div&gt;
 &lt;/div&gt;</pre></div>
   </div>
 </div>
 
 <!-- Images -->
-<div class="pg-section" id="section-3">
+<div class="pg-section" id="section-4">
   <h3 class="pg-section-title">Images</h3>
   <div class="pg-section-row">
     <div style="display:flex;flex-wrap:wrap;gap:80px;align-items:flex-start;padding:10px 20px;">
@@ -120,98 +232,94 @@ toc:
     <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
     <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;!-- Stacked images --&gt;
 &lt;div class="sui-stack"&gt;
-  &lt;img src="image1.jpg" alt="Image 1" style="width:160px;border-radius:8px;"&gt;
-  &lt;img src="image2.jpg" alt="Image 2" style="width:160px;border-radius:8px;"&gt;
-  &lt;img src="image3.jpg" alt="Image 3" style="width:160px;border-radius:8px;"&gt;
+  &lt;img src="image1.jpg" alt="Image 1" style="width:160px;height:110px;border-radius:var(--sui-radius-sm);box-shadow:var(--sui-shadow-raised-sm);display:block;"&gt;
+  &lt;img src="image2.jpg" alt="Image 2" style="width:160px;height:110px;border-radius:var(--sui-radius-sm);box-shadow:var(--sui-shadow-raised-sm);display:block;"&gt;
+  &lt;img src="image3.jpg" alt="Image 3" style="width:160px;height:110px;border-radius:var(--sui-radius-sm);box-shadow:var(--sui-shadow-raised-sm);display:block;"&gt;
 &lt;/div&gt;
 
 &lt;!-- Fanned images --&gt;
-&lt;div class="sui-stack sui-stack-fanned"&gt;
-  &lt;img src="image1.jpg" alt="Image 1" style="width:160px;border-radius:8px;"&gt;
-  &lt;img src="image2.jpg" alt="Image 2" style="width:160px;border-radius:8px;"&gt;
-  &lt;img src="image3.jpg" alt="Image 3" style="width:160px;border-radius:8px;"&gt;
+&lt;div class="sui-stack sui-stack-fanned" style="padding:10px 20px;"&gt;
+  &lt;img src="image1.jpg" alt="Image 1" style="width:160px;height:110px;border-radius:var(--sui-radius-sm);box-shadow:var(--sui-shadow-raised-sm);display:block;"&gt;
+  &lt;img src="image2.jpg" alt="Image 2" style="width:160px;height:110px;border-radius:var(--sui-radius-sm);box-shadow:var(--sui-shadow-raised-sm);display:block;"&gt;
+  &lt;img src="image3.jpg" alt="Image 3" style="width:160px;height:110px;border-radius:var(--sui-radius-sm);box-shadow:var(--sui-shadow-raised-sm);display:block;"&gt;
 &lt;/div&gt;</pre></div>
   </div>
 </div>
 
 <!-- Hover Spread -->
-<div class="pg-section" id="section-4">
+<div class="pg-section" id="section-5">
   <h3 class="pg-section-title">Hover Spread</h3>
   <div class="pg-section-row">
-    <div style="display:flex;flex-direction:column;gap:40px;align-items:center;">
-      <div style="display:flex;flex-wrap:wrap;gap:40px;justify-content:center;">
-        <div style="min-width:280px;text-align:center;">
-          <div style="font-size:12px;color:var(--sui-text-muted);margin-bottom:10px;">Extra Small</div>
-          <div class="sui-stack sui-stack-hover sui-stack-spread-xs">
-            <div class="sui-card" style="width:160px;padding:12px;">
-              <h4 style="font-size:13px;margin-bottom:4px;">Inbox</h4>
-              <p style="font-size:11px;color:var(--sui-text-muted);">3 new messages</p>
-            </div>
-            <div class="sui-card" style="width:160px;padding:12px;">
-              <h4 style="font-size:13px;margin-bottom:4px;">Updates</h4>
-              <p style="font-size:11px;color:var(--sui-text-muted);">2 notifications</p>
-            </div>
-            <div class="sui-card" style="width:160px;padding:12px;">
-              <h4 style="font-size:13px;margin-bottom:4px;">Archive</h4>
-              <p style="font-size:11px;color:var(--sui-text-muted);">12 items</p>
-            </div>
+    <div style="display:flex;flex-direction:column;gap:40px;width:100%;">
+      <div style="width:100%;text-align:center;">
+        <div style="font-size:12px;color:var(--sui-text-muted);margin-bottom:10px;">Extra Small</div>
+        <div class="sui-stack sui-stack-hover sui-stack-spread-xs">
+          <div class="sui-card" style="width:160px;padding:12px;">
+            <h4 style="font-size:13px;margin-bottom:4px;">Inbox</h4>
+            <p style="font-size:11px;color:var(--sui-text-muted);">3 new messages</p>
           </div>
-        </div>
-        <div style="min-width:320px;text-align:center;">
-          <div style="font-size:12px;color:var(--sui-text-muted);margin-bottom:10px;">Small</div>
-          <div class="sui-stack sui-stack-hover sui-stack-spread-sm">
-            <div class="sui-card" style="width:160px;padding:12px;">
-              <h4 style="font-size:13px;margin-bottom:4px;">Inbox</h4>
-              <p style="font-size:11px;color:var(--sui-text-muted);">3 new messages</p>
-            </div>
-            <div class="sui-card" style="width:160px;padding:12px;">
-              <h4 style="font-size:13px;margin-bottom:4px;">Updates</h4>
-              <p style="font-size:11px;color:var(--sui-text-muted);">2 notifications</p>
-            </div>
-            <div class="sui-card" style="width:160px;padding:12px;">
-              <h4 style="font-size:13px;margin-bottom:4px;">Archive</h4>
-              <p style="font-size:11px;color:var(--sui-text-muted);">12 items</p>
-            </div>
+          <div class="sui-card" style="width:160px;padding:12px;">
+            <h4 style="font-size:13px;margin-bottom:4px;">Updates</h4>
+            <p style="font-size:11px;color:var(--sui-text-muted);">2 notifications</p>
+          </div>
+          <div class="sui-card" style="width:160px;padding:12px;">
+            <h4 style="font-size:13px;margin-bottom:4px;">Archive</h4>
+            <p style="font-size:11px;color:var(--sui-text-muted);">12 items</p>
           </div>
         </div>
       </div>
-      <div style="display:flex;flex-wrap:wrap;gap:40px;justify-content:center;">
-        <div style="min-width:380px;text-align:center;">
-          <div style="font-size:12px;color:var(--sui-text-muted);margin-bottom:10px;">Medium (default)</div>
-          <div class="sui-stack sui-stack-hover sui-stack-spread-md">
-            <div class="sui-card" style="width:160px;padding:12px;">
-              <h4 style="font-size:13px;margin-bottom:4px;">Inbox</h4>
-              <p style="font-size:11px;color:var(--sui-text-muted);">3 new messages</p>
-            </div>
-            <div class="sui-card" style="width:160px;padding:12px;">
-              <h4 style="font-size:13px;margin-bottom:4px;">Updates</h4>
-              <p style="font-size:11px;color:var(--sui-text-muted);">2 notifications</p>
-            </div>
-            <div class="sui-card" style="width:160px;padding:12px;">
-              <h4 style="font-size:13px;margin-bottom:4px;">Archive</h4>
-              <p style="font-size:11px;color:var(--sui-text-muted);">12 items</p>
-            </div>
+      <div style="width:100%;text-align:center;">
+        <div style="font-size:12px;color:var(--sui-text-muted);margin-bottom:10px;">Small</div>
+        <div class="sui-stack sui-stack-hover sui-stack-spread-sm">
+          <div class="sui-card" style="width:160px;padding:12px;">
+            <h4 style="font-size:13px;margin-bottom:4px;">Inbox</h4>
+            <p style="font-size:11px;color:var(--sui-text-muted);">3 new messages</p>
           </div>
-        </div>
-        <div style="min-width:480px;text-align:center;">
-          <div style="font-size:12px;color:var(--sui-text-muted);margin-bottom:10px;">Large</div>
-          <div class="sui-stack sui-stack-hover sui-stack-spread-lg">
-            <div class="sui-card" style="width:160px;padding:12px;">
-              <h4 style="font-size:13px;margin-bottom:4px;">Inbox</h4>
-              <p style="font-size:11px;color:var(--sui-text-muted);">3 new messages</p>
-            </div>
-            <div class="sui-card" style="width:160px;padding:12px;">
-              <h4 style="font-size:13px;margin-bottom:4px;">Updates</h4>
-              <p style="font-size:11px;color:var(--sui-text-muted);">2 notifications</p>
-            </div>
-            <div class="sui-card" style="width:160px;padding:12px;">
-              <h4 style="font-size:13px;margin-bottom:4px;">Archive</h4>
-              <p style="font-size:11px;color:var(--sui-text-muted);">12 items</p>
-            </div>
+          <div class="sui-card" style="width:160px;padding:12px;">
+            <h4 style="font-size:13px;margin-bottom:4px;">Updates</h4>
+            <p style="font-size:11px;color:var(--sui-text-muted);">2 notifications</p>
+          </div>
+          <div class="sui-card" style="width:160px;padding:12px;">
+            <h4 style="font-size:13px;margin-bottom:4px;">Archive</h4>
+            <p style="font-size:11px;color:var(--sui-text-muted);">12 items</p>
           </div>
         </div>
       </div>
-      <div style="text-align:center;">
+      <div style="width:100%;text-align:center;">
+        <div style="font-size:12px;color:var(--sui-text-muted);margin-bottom:10px;">Medium (default)</div>
+        <div class="sui-stack sui-stack-hover sui-stack-spread-md">
+          <div class="sui-card" style="width:160px;padding:12px;">
+            <h4 style="font-size:13px;margin-bottom:4px;">Inbox</h4>
+            <p style="font-size:11px;color:var(--sui-text-muted);">3 new messages</p>
+          </div>
+          <div class="sui-card" style="width:160px;padding:12px;">
+            <h4 style="font-size:13px;margin-bottom:4px;">Updates</h4>
+            <p style="font-size:11px;color:var(--sui-text-muted);">2 notifications</p>
+          </div>
+          <div class="sui-card" style="width:160px;padding:12px;">
+            <h4 style="font-size:13px;margin-bottom:4px;">Archive</h4>
+            <p style="font-size:11px;color:var(--sui-text-muted);">12 items</p>
+          </div>
+        </div>
+      </div>
+      <div style="width:100%;text-align:center;">
+        <div style="font-size:12px;color:var(--sui-text-muted);margin-bottom:10px;">Large</div>
+        <div class="sui-stack sui-stack-hover sui-stack-spread-lg">
+          <div class="sui-card" style="width:160px;padding:12px;">
+            <h4 style="font-size:13px;margin-bottom:4px;">Inbox</h4>
+            <p style="font-size:11px;color:var(--sui-text-muted);">3 new messages</p>
+          </div>
+          <div class="sui-card" style="width:160px;padding:12px;">
+            <h4 style="font-size:13px;margin-bottom:4px;">Updates</h4>
+            <p style="font-size:11px;color:var(--sui-text-muted);">2 notifications</p>
+          </div>
+          <div class="sui-card" style="width:160px;padding:12px;">
+            <h4 style="font-size:13px;margin-bottom:4px;">Archive</h4>
+            <p style="font-size:11px;color:var(--sui-text-muted);">12 items</p>
+          </div>
+        </div>
+      </div>
+      <div style="width:100%;text-align:center;">
         <div style="font-size:12px;color:var(--sui-text-muted);margin-bottom:10px;">Full</div>
         <div class="sui-stack sui-stack-hover sui-stack-spread-full">
           <div class="sui-card" style="width:160px;padding:12px;">
@@ -232,46 +340,104 @@ toc:
   </div>
   <div class="pg-code-wrap">
     <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
-    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;!-- Extra small spread --&gt;
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;!-- Extra Small --&gt;
 &lt;div class="sui-stack sui-stack-hover sui-stack-spread-xs"&gt;
-  &lt;div class="sui-card"&gt;...&lt;/div&gt;
-  &lt;div class="sui-card"&gt;...&lt;/div&gt;
-  &lt;div class="sui-card"&gt;...&lt;/div&gt;
+  &lt;div class="sui-card" style="width:160px;padding:12px;"&gt;
+    &lt;h4 style="font-size:13px;margin-bottom:4px;"&gt;Inbox&lt;/h4&gt;
+    &lt;p style="font-size:11px;color:var(--sui-text-muted);"&gt;3 new messages&lt;/p&gt;
+  &lt;/div&gt;
+  &lt;div class="sui-card" style="width:160px;padding:12px;"&gt;
+    &lt;h4 style="font-size:13px;margin-bottom:4px;"&gt;Updates&lt;/h4&gt;
+    &lt;p style="font-size:11px;color:var(--sui-text-muted);"&gt;2 notifications&lt;/p&gt;
+  &lt;/div&gt;
+  &lt;div class="sui-card" style="width:160px;padding:12px;"&gt;
+    &lt;h4 style="font-size:13px;margin-bottom:4px;"&gt;Archive&lt;/h4&gt;
+    &lt;p style="font-size:11px;color:var(--sui-text-muted);"&gt;12 items&lt;/p&gt;
+  &lt;/div&gt;
 &lt;/div&gt;
 
-&lt;!-- Small spread --&gt;
+&lt;!-- Small --&gt;
 &lt;div class="sui-stack sui-stack-hover sui-stack-spread-sm"&gt;
-  &lt;div class="sui-card"&gt;...&lt;/div&gt;
-  &lt;div class="sui-card"&gt;...&lt;/div&gt;
-  &lt;div class="sui-card"&gt;...&lt;/div&gt;
+  &lt;div class="sui-card" style="width:160px;padding:12px;"&gt;
+    &lt;h4 style="font-size:13px;margin-bottom:4px;"&gt;Inbox&lt;/h4&gt;
+    &lt;p style="font-size:11px;color:var(--sui-text-muted);"&gt;3 new messages&lt;/p&gt;
+  &lt;/div&gt;
+  &lt;div class="sui-card" style="width:160px;padding:12px;"&gt;
+    &lt;h4 style="font-size:13px;margin-bottom:4px;"&gt;Updates&lt;/h4&gt;
+    &lt;p style="font-size:11px;color:var(--sui-text-muted);"&gt;2 notifications&lt;/p&gt;
+  &lt;/div&gt;
+  &lt;div class="sui-card" style="width:160px;padding:12px;"&gt;
+    &lt;h4 style="font-size:13px;margin-bottom:4px;"&gt;Archive&lt;/h4&gt;
+    &lt;p style="font-size:11px;color:var(--sui-text-muted);"&gt;12 items&lt;/p&gt;
+  &lt;/div&gt;
 &lt;/div&gt;
 
 &lt;!-- Medium (default) --&gt;
 &lt;div class="sui-stack sui-stack-hover sui-stack-spread-md"&gt;
-  &lt;div class="sui-card"&gt;...&lt;/div&gt;
-  &lt;div class="sui-card"&gt;...&lt;/div&gt;
-  &lt;div class="sui-card"&gt;...&lt;/div&gt;
+  &lt;div class="sui-card" style="width:160px;padding:12px;"&gt;
+    &lt;h4 style="font-size:13px;margin-bottom:4px;"&gt;Inbox&lt;/h4&gt;
+    &lt;p style="font-size:11px;color:var(--sui-text-muted);"&gt;3 new messages&lt;/p&gt;
+  &lt;/div&gt;
+  &lt;div class="sui-card" style="width:160px;padding:12px;"&gt;
+    &lt;h4 style="font-size:13px;margin-bottom:4px;"&gt;Updates&lt;/h4&gt;
+    &lt;p style="font-size:11px;color:var(--sui-text-muted);"&gt;2 notifications&lt;/p&gt;
+  &lt;/div&gt;
+  &lt;div class="sui-card" style="width:160px;padding:12px;"&gt;
+    &lt;h4 style="font-size:13px;margin-bottom:4px;"&gt;Archive&lt;/h4&gt;
+    &lt;p style="font-size:11px;color:var(--sui-text-muted);"&gt;12 items&lt;/p&gt;
+  &lt;/div&gt;
 &lt;/div&gt;
 
 &lt;!-- Large --&gt;
 &lt;div class="sui-stack sui-stack-hover sui-stack-spread-lg"&gt;
-  &lt;div class="sui-card"&gt;...&lt;/div&gt;
-  &lt;div class="sui-card"&gt;...&lt;/div&gt;
-  &lt;div class="sui-card"&gt;...&lt;/div&gt;
+  &lt;div class="sui-card" style="width:160px;padding:12px;"&gt;
+    &lt;h4 style="font-size:13px;margin-bottom:4px;"&gt;Inbox&lt;/h4&gt;
+    &lt;p style="font-size:11px;color:var(--sui-text-muted);"&gt;3 new messages&lt;/p&gt;
+  &lt;/div&gt;
+  &lt;div class="sui-card" style="width:160px;padding:12px;"&gt;
+    &lt;h4 style="font-size:13px;margin-bottom:4px;"&gt;Updates&lt;/h4&gt;
+    &lt;p style="font-size:11px;color:var(--sui-text-muted);"&gt;2 notifications&lt;/p&gt;
+  &lt;/div&gt;
+  &lt;div class="sui-card" style="width:160px;padding:12px;"&gt;
+    &lt;h4 style="font-size:13px;margin-bottom:4px;"&gt;Archive&lt;/h4&gt;
+    &lt;p style="font-size:11px;color:var(--sui-text-muted);"&gt;12 items&lt;/p&gt;
+  &lt;/div&gt;
 &lt;/div&gt;
 
-&lt;!-- Full — all cards fully separate --&gt;
+&lt;!-- Full --&gt;
 &lt;div class="sui-stack sui-stack-hover sui-stack-spread-full"&gt;
-  &lt;div class="sui-card"&gt;...&lt;/div&gt;
-  &lt;div class="sui-card"&gt;...&lt;/div&gt;
-  &lt;div class="sui-card"&gt;...&lt;/div&gt;
-&lt;/div&gt;
-
-&lt;!-- Custom gap for larger cards (default 180px) --&gt;
-&lt;div class="sui-stack sui-stack-hover sui-stack-spread-full" style="--sui-stack-gap: 320px;"&gt;
-  &lt;div class="sui-card" style="width:300px;"&gt;...&lt;/div&gt;
-  &lt;div class="sui-card" style="width:300px;"&gt;...&lt;/div&gt;
-  &lt;div class="sui-card" style="width:300px;"&gt;...&lt;/div&gt;
+  &lt;div class="sui-card" style="width:160px;padding:12px;"&gt;
+    &lt;h4 style="font-size:13px;margin-bottom:4px;"&gt;Inbox&lt;/h4&gt;
+    &lt;p style="font-size:11px;color:var(--sui-text-muted);"&gt;3 new messages&lt;/p&gt;
+  &lt;/div&gt;
+  &lt;div class="sui-card" style="width:160px;padding:12px;"&gt;
+    &lt;h4 style="font-size:13px;margin-bottom:4px;"&gt;Updates&lt;/h4&gt;
+    &lt;p style="font-size:11px;color:var(--sui-text-muted);"&gt;2 notifications&lt;/p&gt;
+  &lt;/div&gt;
+  &lt;div class="sui-card" style="width:160px;padding:12px;"&gt;
+    &lt;h4 style="font-size:13px;margin-bottom:4px;"&gt;Archive&lt;/h4&gt;
+    &lt;p style="font-size:11px;color:var(--sui-text-muted);"&gt;12 items&lt;/p&gt;
+  &lt;/div&gt;
 &lt;/div&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Reference -->
+<div class="pg-section" id="section-6">
+  <h3 class="pg-section-title">Reference</h3>
+  <div class="docs-table-wrap">
+    <table class="sui-table sui-table-compact">
+      <thead>
+        <tr><th scope="col" style="width:40%;">Class / Token</th><th scope="col">Description</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><code>sui-stack-fanned</code></td><td>Rotates the layers into a fan.</td></tr>
+        <tr><td><code>sui-stack-up</code>, <code>sui-stack-right</code></td><td>Offset the back layers up-left or to the right instead of down-right.</td></tr>
+        <tr><td><code>sui-stack-hover</code></td><td>Spreads the layers side by side on hover.</td></tr>
+        <tr><td><code>sui-stack-spread-{xs|sm|md|lg|full}</code></td><td>How far the hover spread goes (0.15, 0.3, 0.6, 0.85, 1).</td></tr>
+        <tr><td><code>--sui-stack-gap</code></td><td>Distance between spread layers at full spread (default <code>180px</code>); raise it for wider cards, e.g. <code>style="--sui-stack-gap:320px;"</code>.</td></tr>
+        <tr><td><code>--sui-stack-spread</code></td><td>Spread factor set by the <code>sui-stack-spread-*</code> classes.</td></tr>
+      </tbody>
+    </table>
   </div>
 </div>

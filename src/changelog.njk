@@ -12,15 +12,15 @@ permalink: /changelog/
   <!-- 1.16.0 -->
   <section class="docs-getstarted-section" id="v1.16.0">
     <h2>v1.16.0</h2>
-    <p><strong>Theme Switcher, AA Colours, Section, Footer, Links & Scroll Reveal, Framework-Ready JS</strong></p>
+    <p><strong>Theme Switcher, AA Colors, Section, Footer, Links & Scroll Reveal, Framework-Ready JS</strong></p>
     <div class="docs-getstarted-code">
 <pre><code>New Components:
   - Theme Toggle — data-sui-theme-toggle on any button toggles dark mode;
-    ="light" / "dark" / "system" set a value; &lt;html data-sui-theme-auto&gt;
-    follows the OS with no button. Saves the choice, follows the OS until
-    the user picks, syncs across tabs. SoftUI.theme.get/set/toggle/clear/
-    system and a sui-theme-change event ({theme, source}). New
-    sui-theme-toggle sun/moon button (-sm, -lg)
+    data-sui-theme-toggle="light" | "dark" | "system" sets that value;
+    &lt;html data-sui-theme-auto&gt; follows the OS with no button. Saves the
+    choice, follows the OS until the user picks, syncs across tabs.
+    SoftUI.theme.get/set/toggle/clear/system and a sui-theme-change event
+    ({theme, source}). New sui-theme-toggle sun/moon button (-sm, -lg)
   - Scroll Reveal — sui-reveal with -start, -end, -down, -fade, -scale,
     -zoom-out, -blur; speeds sui-reveal-fast / -slow; --sui-reveal-blur;
     data-reveal-stagger, data-reveal-repeat, --sui-delay,
@@ -30,16 +30,16 @@ permalink: /changelog/
     with sui-section-title, sui-section-subtitle, sui-section-action, and
     sui-heading-accent. Sizes sui-section-sm / -lg; surfaces
     sui-section-raised, -inset, -alt, -bordered; sui-section-header-center
-    and -bordered; heading accent colours (-success, -danger, -warning,
+    and -bordered; heading accent colors (-success, -danger, -warning,
     -info), -lg and -bottom
-  - Footer — centred, split (sui-footer-split) and multi-column
+  - Footer — centered, split (sui-footer-split) and multi-column
     (sui-footer-columns), bordered / raised / inset / tinted, compact
     (sui-footer-sm), raised links and social icons (sui-footer-social)
   - Links — sui-link (underlined prose link), sui-link-subtle,
     sui-link-muted, sui-link-arrow (RTL-aware), sui-link-external,
-    sui-link-raised, sui-link-underline-hover, colours (-success, -danger,
+    sui-link-raised, sui-link-underline-hover, colors (-success, -danger,
     -warning, -info) and sizes (-sm, -lg)
-  - Status Dot — sui-status-dot with colours, -sm / -lg, -pulse, and a
+  - Status Dot — sui-status-dot with colors, -sm / -lg, -pulse, and a
     sui-status label wrapper
 
 New:
@@ -78,14 +78,36 @@ New:
     is a no-op; loading the script twice reuses the first copy
   - SoftUI.init(root) sets up markup added after load (element, selector or
     nothing; safe to repeat). SoftUI.version
-  - A component that fails to initialise logs "[SoftUI] &lt;name&gt; failed"
+  - A component that fails to initialize logs "[SoftUI] &lt;name&gt; failed"
     and no longer stops the others
   - SoftUI.modal(), SoftUI.sheet() and SoftUI.carousel() accept an element
   - Typewriter and Text Rotate: data-reserve (fixed width), data-sr-text
   - New events: sui-copy, sui-copy-error, sui-tree-toggle, sui-diff-change
+  - Token --sui-edge-mix (22% light, 38% dark): how much --sui-text-light
+    goes into the hairlines and control edges that must show in both themes
+  - Ghost buttons cover all six colors: sui-btn-ghost with sui-btn-warning
+    or sui-btn-info
+  - Speed dial trigger colors sui-speed-dial-warning and -info
+  - sui-rounded-xs (--sui-radius-xs, 6px)
+  - sui-color-palette-item: a palette label plus its swatch row, no inline
+    style needed
+  - sui- names for the SVG line/area chart parts: sui-chart-line, -area,
+    -dot, -grid-line, -axis-label, and colors such as
+    sui-chart-line-success or sui-chart-dot-info. The old chart-* names
+    still work
+  - List group items can be &lt;button type="button"&gt; (e.g. sub-menu
+    toggles); a sui-dropend flyout in a list group opens below its item on
+    screens 600px or less
+  - Pagination: a disabled button (disabled) or link (aria-disabled="true")
+    is muted with no hover lift, like .sui-page-item.disabled
+  - Color input: softui.js updates .sui-color-input-value when a color is
+    picked
+  - Tour: Escape closes it; next(), prev() and goTo(n) do nothing when out
+    of range (they used to throw); padding: 0 is respected; onComplete
+    runs once
 
 Changes (check these when upgrading):
-  - Coloured text uses the new -text shades: links, outline and ghost
+  - Colored text uses the new -text shades: links, outline and ghost
     buttons, outline badges and chips, alerts, sui-text-*, steppers, toasts
     and active nav. Darker in light mode (warning text is now brown),
     lighter in dark mode (link hover gets lighter, not darker). If you
@@ -99,12 +121,12 @@ Changes (check these when upgrading):
     AA on --sui-bg-dark
   - Dark-mode warning fills (buttons, badges, chips, filled alerts) use dark
     text (#2D3748) instead of white
-  - Tints, glows and focus rings use color-mix() and follow your colour
+  - Tints, glows and focus rings use color-mix() and follow your color
     tokens at any scope. Old-palette tints now match the current palette
-    (slightly deeper); the info chart colour is now --sui-info.
+    (slightly deeper); the info chart color is now --sui-info.
     Browser baseline for these effects: Chrome/Edge 111, Safari 16.2,
     Firefox 113. Older browsers lose tints and rings; layout is unaffected
-  - Spacing (sui-p-*, sui-m-*, ...), text colour and alignment (sui-text-*),
+  - Spacing (sui-p-*, sui-m-*, ...), text color and alignment (sui-text-*),
     radius (sui-rounded-*) and aspect-ratio (sui-aspect-*) utilities now use
     !important, like display, flex and gap. They now override component
     defaults (e.g. sui-modal-body sui-p-0) and inline margin/padding on the
@@ -139,17 +161,25 @@ Changes (check these when upgrading):
   - Scoped themes fully reset component tints, the select arrow, borders,
     scrollbars, warning text and the loading overlay; the overlay follows
     the theme background
-  - code, kbd, OTP slots, colour picker, copy input and calendar time use
+  - code, kbd, OTP slots, color picker, copy input and calendar time use
     --sui-font-mono. --sui-font also lists 'Plus Jakarta Sans Variable'
   - The hero title scales smoothly (clamp) instead of jumping at 600px
   - Typewriter block and underscore cursors blink; text already in the
     element is kept and typed over
   - Playground preview iframe no longer has allow-same-origin, so shared
     #code= links cannot run script against the docs site
+  - Button groups scroll sideways on screens 600px or less instead of
+    wrapping onto a second row
+  - Pricing cards shrink to 200px (was 240px), so three plans fit side by
+    side in a ~700px column
+  - Progress with label: the label sits at the end of the fill in a
+    contrasting color (it was muted text centered over the bar)
+  - Disabled toggles: opacity 0.5 → 0.6
+  - Table inset looks recessed: transparent header, --sui-bg body
 
 Fixes:
   - Badge dot inside sui-badge-positioned is a 10px dot (was an 18px pill);
-    added the info dot colour
+    added the info dot color
   - Cards: images keep their aspect ratio and match the card radius;
     overlay cards are positioned and clipped automatically; cards drop
     their padding for direct images; sui-card-horizontal is a real row
@@ -175,23 +205,52 @@ Fixes:
   - Timeline compact + right / alternate margins
   - Stack back cards show inside surfaces and cards (isolation)
   - Tour no longer dims the highlighted target
-  - Bottom-centre toasts slide up from the bottom edge
+  - Bottom-center toasts slide up from the bottom edge
   - Text rotate exit animation in RTL
   - RTL via logical properties: navbar brand, timeline, alerts, filled
     alerts, blockquotes, table headers and corners, sortable data table
     headers, lists, bordered stats, positioned badges, avatar status dots,
     navigation menu
+  - Dark mode: unchecked toggles, checkboxes and radios, range and slider
+    tracks and thumbs, the segmented indicator and OTP slots get a faint
+    edge; outlined buttons, drop zones, file upload, empty rating stars,
+    outlined kbd, bordered nav menu, OTP dividers, timeline dots and
+    connectors, skeletons and color swatches are visible again
+  - Phone mockup: cutouts stay dark on every frame color (the island and
+    notch were invisible on White); sui-phone-landscape turns the screen
+    with the frame instead of overflowing it
+  - Command palette: arrow keys, Enter and hover skip disabled items
+  - Slider warning value badge uses --sui-warning-contrast (white was 2:1)
+  - Breadcrumbs wrap on narrow screens; navbar links wrap on mobile (the
+    rule targeted a class that does not exist)
+  - Mobile (600px or less): horizontal steppers stack like the vertical
+    one; the tab list scrolls instead of clipping panel shadows; calendar
+    with two months stacks; countdown wraps; line/area chart axis labels
+    stay readable
+  - Carousel with gap leaves room for card shadows; diff vertical labels
+    Before at the top and After at the bottom; alert icons have a fixed
+    width; the combobox multiple placeholder is muted; striped
+    descriptions get side padding
+  - Wrapping tooltips (sui-tooltip-wrap) use their full 280px instead of
+    the trigger's width
+  - Section header gap on mobile is 70% of --sui-section-header-gap (was a
+    fixed 28px), so overriding the token works
+  - Display headings never render smaller than sui-h1 on phones
+  - Radial progress inset keeps a faint track and shows the pressed-in look
+  - sui-kbd-inline is an inline-block, so single glyphs like arrows read
+  - Theme: with localStorage blocked, the theme switcher keeps a data-theme
+    the page already set
 
 Accessibility:
-  - Contrast: coloured text (-text tokens) meets WCAG AA 4.5:1 on every
+  - Contrast: colored text (-text tokens) meets WCAG AA 4.5:1 on every
     --sui-bg* surface in light and dark; text on filled buttons, badges and
     chips meets 4.5:1 (white, or #2D3748 on warning)
-  - Keyboard support and roles: rating (slider), colour swatches (radio
+  - Keyboard support and roles: rating (slider), color swatches (radio
     group), tree view (ARIA tree), editable text (button), lightbox (dialog
     with focus trap), diff (slider), navigation menu (arrows, Esc,
     aria-expanded), sidebar drawer (focus trap, Esc)
   - Focus-visible rings: dock, swap, speed dial, data table selects,
-    calendar AM/PM, copy buttons, colour swatches, navigation menu;
+    calendar AM/PM, copy buttons, color swatches, navigation menu;
     context-menu items reached by keyboard get the hover highlight
   - Speed dial: aria-expanded, Escape closes it, closed actions leave the
     tab order; dock and speed-dial labels show on focus
@@ -205,13 +264,22 @@ Accessibility:
 
 Docs:
   - New pages: Section, Links, Footer, Scroll Reveal
-  - Pages changed in this release keep demos uncluttered: short captions,
-    with keys, attributes, events and tokens in a Reference table
+  - Demo captions are one short sentence; keys, attributes, events and
+    tokens go in a Reference table (new on Command, Data Table, Drag &amp;
+    Drop, Dropdown, File Upload, Input OTP, Menubar, Navbar, Resizable,
+    Speed Dial, Stack, Toast, Tour, Position, Radius). Class names in
+    Reference tables are written without a leading dot
   - New sections: Hero (Start Aligned, Split), Typography (Display), Stat
     Card (With Footer), Badges (Status Dot), Shadows (Flat Scope), Avatars
-    (2XL/3XL), Sidebar (Mobile Drawer), Timeline (RTL), Spacing, Text,
-    Sizing (Images), Aspect Ratio (4:5), Typewriter / Text Rotate (Reserve
-    Space)
+    (Sizes: 2XL/3XL), Sidebar (Mobile Drawer), Timeline (RTL), Spacing
+    (Spacing Scale, Padding/Margin Directions, Spacing Tokens), Text (Font
+    Family &amp; Numerals), Sizing (Images), Aspect Ratio (4:5), Typewriter /
+    Text Rotate (Reserve Space), Hero (Split, Media First), Slider (With
+    Label, With Ticks), Kbd (Inline), Chart (Donut Sizes), Descriptions
+    (Horizontal), Stack (Directions), Swap (Sizes), Navbar (Full Width),
+    Result (Info), List Group (With Icons, Flush), Marquee (Speeds),
+    Sidebar (Inset, Sizes), Button Group (Segmented), Toggles (Radio
+    Colors), Tooltips (Multiline), Phone Mockup (Landscape)
   - Theming: theme switcher, text shades, tints and focus rings, link and
     section tokens, dark-theme halo note, loading the fonts
   - Getting Started: JS API, frameworks with SoftUI.init, events, embed
@@ -221,7 +289,9 @@ Docs:
   - Fixed "On This Page" links on Alerts, Badges, Buttons, Cards, Progress
     and Toggles; fixed Playground snippets with non-existent classes
   - 118 playground snippets (new: Theme Toggle, Hero Split, Section &amp;
-    Header, Stat Card Footer, Status Dot, Footer, Scroll Reveal, Links)
+    Header, Stat Card Footer, Status Dot, Footer, Scroll Reveal, Links),
+    with variants for section surfaces, hero alignment, footer layouts,
+    reveal directions and effects, and status dot and link sizes
   - The docs footer uses sui-footer
 
 Tooling:

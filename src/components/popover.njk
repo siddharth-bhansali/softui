@@ -118,7 +118,7 @@ toc:
 <!-- Alignment -->
 <div class="pg-section" id="section-3">
   <h3 class="pg-section-title">Alignment</h3>
-  <p class="pg-section-desc" style="margin-bottom:16px;font-size:13px;color:var(--sui-text-light);">Control where the popover aligns relative to the trigger. Default is centered.</p>
+  <p style="font-size:13px;color:var(--sui-text-light);margin-bottom:16px;">Align to the trigger's start, center (default) or end.</p>
   <div class="pg-section-row" style="gap:16px;">
     <div class="sui-popover sui-popover-start">
       <button class="sui-btn sui-btn-primary" data-sui-popover aria-expanded="false" aria-haspopup="true">Start</button>
@@ -237,24 +237,24 @@ toc:
   <div class="pg-code-wrap">
     <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
     <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-popover sui-popover-start"&gt;
-  &lt;button class="sui-btn" data-sui-popover&gt;Set Dimensions&lt;/button&gt;
-  &lt;div class="sui-popover-content" role="dialog"&gt;
+  &lt;button class="sui-btn sui-btn-primary" data-sui-popover aria-expanded="false" aria-haspopup="true"&gt;Set Dimensions&lt;/button&gt;
+  &lt;div class="sui-popover-content" role="dialog" style="min-width:280px;"&gt;
     &lt;div class="sui-popover-header"&gt;
       Dimensions
       &lt;button class="sui-popover-close" aria-label="Close"&gt;&lt;/button&gt;
     &lt;/div&gt;
-    &lt;div class="sui-popover-body"&gt;
-      &lt;div class="sui-form-group"&gt;
-        &lt;label class="sui-label"&gt;Width&lt;/label&gt;
-        &lt;input type="text" class="sui-input" value="100%"&gt;
+    &lt;div class="sui-popover-body" style="display:flex;flex-direction:column;gap:12px;"&gt;
+      &lt;div class="sui-form-group" style="margin:0;"&gt;
+        &lt;label class="sui-label" style="font-size:12px;margin-bottom:4px;"&gt;Width&lt;/label&gt;
+        &lt;input type="text" class="sui-input" value="100%" style="font-size:13px;padding:8px 12px;"&gt;
       &lt;/div&gt;
-      &lt;div class="sui-form-group"&gt;
-        &lt;label class="sui-label"&gt;Max Width&lt;/label&gt;
-        &lt;input type="text" class="sui-input" value="320px"&gt;
+      &lt;div class="sui-form-group" style="margin:0;"&gt;
+        &lt;label class="sui-label" style="font-size:12px;margin-bottom:4px;"&gt;Max Width&lt;/label&gt;
+        &lt;input type="text" class="sui-input" value="320px" style="font-size:13px;padding:8px 12px;"&gt;
       &lt;/div&gt;
-      &lt;div class="sui-form-group"&gt;
-        &lt;label class="sui-label"&gt;Height&lt;/label&gt;
-        &lt;input type="text" class="sui-input" value="auto"&gt;
+      &lt;div class="sui-form-group" style="margin:0;"&gt;
+        &lt;label class="sui-label" style="font-size:12px;margin-bottom:4px;"&gt;Height&lt;/label&gt;
+        &lt;input type="text" class="sui-input" value="auto" style="font-size:13px;padding:8px 12px;"&gt;
       &lt;/div&gt;
     &lt;/div&gt;
     &lt;div class="sui-popover-footer"&gt;

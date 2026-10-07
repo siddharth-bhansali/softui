@@ -16,8 +16,11 @@ toc:
   - With Accent
   - Start Aligned
   - Split
+  - Split, Media First
   - Reference
 ---
+
+{% set heroImg %}data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='450'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0%25' stop-color='%235B54E0'/%3E%3Cstop offset='100%25' stop-color='%2336A3F7'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect fill='url(%23g)' width='600' height='450'/%3E%3Ccircle cx='300' cy='225' r='90' fill='white' fill-opacity='0.18'/%3E%3C/svg%3E{% endset %}
 
 <!-- Default -->
 <div class="pg-section" id="section-1">
@@ -75,7 +78,7 @@ toc:
   <div class="pg-section-row">
     <div class="sui-hero sui-hero-lg" style="width:100%;">
       <h1 class="sui-hero-title">Ship Faster</h1>
-      <p class="sui-hero-subtitle">68+ neumorphic components, ready to drop in. No build tools, no configuration, no JavaScript required for most components.</p>
+      <p class="sui-hero-subtitle">80+ neumorphic components, ready to drop in. No build tools, no configuration, no JavaScript required for most components.</p>
       <div class="sui-hero-actions">
         <button class="sui-btn sui-btn-primary sui-btn-lg">Start Building</button>
         <button class="sui-btn sui-btn-outline sui-btn-lg">Browse Components</button>
@@ -86,7 +89,7 @@ toc:
     <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
     <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-hero sui-hero-lg"&gt;
   &lt;h1 class="sui-hero-title"&gt;Ship Faster&lt;/h1&gt;
-  &lt;p class="sui-hero-subtitle"&gt;68+ neumorphic components, ready to drop in. No build tools, no configuration, no JavaScript required for most components.&lt;/p&gt;
+  &lt;p class="sui-hero-subtitle"&gt;80+ neumorphic components, ready to drop in. No build tools, no configuration, no JavaScript required for most components.&lt;/p&gt;
   &lt;div class="sui-hero-actions"&gt;
     &lt;button class="sui-btn sui-btn-primary sui-btn-lg"&gt;Start Building&lt;/button&gt;
     &lt;button class="sui-btn sui-btn-outline sui-btn-lg"&gt;Browse Components&lt;/button&gt;
@@ -227,7 +230,7 @@ toc:
 <div class="pg-section" id="section-9">
   <h3 class="pg-section-title">Start Aligned</h3>
   <div class="pg-section-row" style="display:block;">
-    <div class="sui-hero sui-hero-start sui-hero-accent">
+    <div class="sui-hero sui-hero-start">
       <h1 class="sui-hero-title">Release Notes</h1>
       <p class="sui-hero-subtitle">Every change, fix and new component, version by version. Subscribe to get updates in your inbox.</p>
       <div class="sui-hero-actions">
@@ -238,7 +241,7 @@ toc:
   </div>
   <div class="pg-code-wrap">
     <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
-    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-hero sui-hero-start sui-hero-accent"&gt;
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-hero sui-hero-start"&gt;
   &lt;h1 class="sui-hero-title"&gt;Release Notes&lt;/h1&gt;
   &lt;p class="sui-hero-subtitle"&gt;Every change, fix and new component, version by version. Subscribe to get updates in your inbox.&lt;/p&gt;
   &lt;div class="sui-hero-actions"&gt;
@@ -263,7 +266,7 @@ toc:
         </div>
       </div>
       <div class="sui-hero-media">
-        <div class="sui-raised" style="aspect-ratio:4/3;border-radius:var(--sui-radius-lg);display:flex;align-items:center;justify-content:center;color:var(--sui-text-muted);font-weight:600;">Image or video</div>
+        <img src="{{ heroImg }}" alt="Product screenshot" width="600" height="450">
       </div>
     </div>
   </div>
@@ -279,14 +282,50 @@ toc:
     &lt;/div&gt;
   &lt;/div&gt;
   &lt;div class="sui-hero-media"&gt;
-    &lt;div class="sui-raised" style="aspect-ratio:4/3;border-radius:var(--sui-radius-lg);display:flex;align-items:center;justify-content:center;color:var(--sui-text-muted);font-weight:600;"&gt;Image or video&lt;/div&gt;
+    &lt;img src="hero.jpg" alt="Product screenshot" width="600" height="450"&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Split, Media First -->
+<div class="pg-section" id="section-11">
+  <h3 class="pg-section-title">Split, Media First</h3>
+  <div class="pg-section-row" style="display:block;">
+    <div class="sui-hero sui-hero-split sui-hero-media-start">
+      <div class="sui-hero-content">
+        <h1 class="sui-hero-title">See It in Action</h1>
+        <p class="sui-hero-subtitle">Every component works with light and dark themes, RTL layouts and keyboard navigation out of the box.</p>
+        <div class="sui-hero-actions">
+          <button class="sui-btn sui-btn-primary">Browse Components</button>
+          <button class="sui-btn sui-btn-outline">Read the Docs</button>
+        </div>
+      </div>
+      <div class="sui-hero-media">
+        <img src="{{ heroImg }}" alt="Product screenshot" width="600" height="450">
+      </div>
+    </div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-hero sui-hero-split sui-hero-media-start"&gt;
+  &lt;div class="sui-hero-content"&gt;
+    &lt;h1 class="sui-hero-title"&gt;See It in Action&lt;/h1&gt;
+    &lt;p class="sui-hero-subtitle"&gt;Every component works with light and dark themes, RTL layouts and keyboard navigation out of the box.&lt;/p&gt;
+    &lt;div class="sui-hero-actions"&gt;
+      &lt;button class="sui-btn sui-btn-primary"&gt;Browse Components&lt;/button&gt;
+      &lt;button class="sui-btn sui-btn-outline"&gt;Read the Docs&lt;/button&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="sui-hero-media"&gt;
+    &lt;img src="hero.jpg" alt="Product screenshot" width="600" height="450"&gt;
   &lt;/div&gt;
 &lt;/div&gt;</pre></div>
   </div>
 </div>
 
 <!-- Reference -->
-<div class="pg-section" id="section-11">
+<div class="pg-section" id="section-12">
   <h3 class="pg-section-title">Reference</h3>
   <div class="docs-table-wrap">
     <table class="sui-table sui-table-compact">
@@ -294,6 +333,17 @@ toc:
         <tr><th scope="col" style="width:40%;">Class</th><th scope="col">Description</th></tr>
       </thead>
       <tbody>
+        <tr><td><code>sui-hero</code></td><td>Base banner: centred column with vertical padding.</td></tr>
+        <tr><td><code>sui-hero-title</code></td><td>Large, bold heading that scales with the viewport.</td></tr>
+        <tr><td><code>sui-hero-subtitle</code></td><td>Muted lead paragraph, up to 560px wide.</td></tr>
+        <tr><td><code>sui-hero-actions</code></td><td>Wrapping row of buttons.</td></tr>
+        <tr><td><code>sui-hero-sm</code></td><td>Less padding and a smaller title.</td></tr>
+        <tr><td><code>sui-hero-lg</code></td><td>More padding, a larger title and a wider subtitle.</td></tr>
+        <tr><td><code>sui-hero-raised</code></td><td>Raised neumorphic surface with a large radius.</td></tr>
+        <tr><td><code>sui-hero-bordered</code></td><td>Subtle 1px border with a large radius.</td></tr>
+        <tr><td><code>sui-hero-inset</code></td><td>Inset neumorphic surface with a large radius.</td></tr>
+        <tr><td><code>sui-hero-gradient</code></td><td>Soft diagonal background gradient.</td></tr>
+        <tr><td><code>sui-hero-accent</code></td><td>Short primary line under the title; follows the alignment.</td></tr>
         <tr><td><code>sui-hero-start</code></td><td>Aligns content to the inline start (right in RTL). Use it instead of <code>sui-text-left</code>.</td></tr>
         <tr><td><code>sui-hero-split</code></td><td>Text and media side by side from 992px; stacked, text first, below. Columns follow the writing direction (mirrored in RTL).</td></tr>
         <tr><td><code>sui-hero-content</code></td><td>Required wrapper for the title, subtitle and actions in a split hero.</td></tr>

@@ -504,6 +504,41 @@
 .docs-table-wrap {
   overflow-x: auto;
   border-radius: var(--sui-radius);
+  -webkit-overflow-scrolling: touch;
+}
+/* Reference tables: never split a class / token / key name at its hyphens.
+   Chips stay whole, the table keeps a readable minimum width and the
+   wrapper scrolls sideways on small screens instead of squeezing. */
+.docs-table-wrap > .sui-table {
+  min-width: 560px;
+}
+.docs-table-wrap td:first-child code,
+.docs-table-wrap td:first-child kbd {
+  white-space: nowrap;
+}
+/* Chips that must wrap elsewhere keep their padding on both lines */
+.docs-table-wrap code {
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+}
+@media (max-width: 600px) {
+  .docs-table-wrap > .sui-table { min-width: 520px; }
+}
+
+/* Section caption under a .pg-section-title (house caption style) */
+.pg-section-desc {
+  font-size: 13px;
+  color: var(--sui-text-light);
+  line-height: 1.7;
+  margin-bottom: 16px;
+}
+
+/* Code shows literal characters: no ligatures for !==, =>, <!-- etc. */
+pre, code, kbd, samp,
+.pg-code-box pre, .pg-code-block pre, .docs-getstarted-code code,
+.sui-kbd-inline, .sui-kbd {
+  font-variant-ligatures: none;
+  font-feature-settings: "liga" 0, "calt" 0;
 }
 .form-row {
   display: grid;
@@ -726,6 +761,19 @@ body.mobile-nav-open { overflow: hidden; }
   line-height: 1.6;
 }
 
+.docs-getstarted-section ul:not([class]),
+.docs-getstarted-section ol:not([class]) {
+  font-size: 14px;
+  color: var(--sui-text-muted);
+  line-height: 1.6;
+  margin: 8px 0 16px 20px;
+}
+
+/* Short inline names in prose stay on one line */
+.docs-getstarted-section p code {
+  white-space: nowrap;
+}
+
 .docs-getstarted-code {
   background: var(--sui-bg-dark);
   border-radius: var(--sui-radius-sm);
@@ -750,4 +798,32 @@ body.mobile-nav-open { overflow: hidden; }
   .docs-getstarted-page { padding: 32px 16px 48px; }
   .docs-getstarted-title { font-size: 26px; }
   .docs-getstarted-code { padding: 16px; }
+  /* Changelog release notes wrap on phones instead of scrolling sideways */
+  .docs-getstarted-section[id^="v"] .docs-getstarted-code pre {
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+  }
+}
+
+/* Context menu page: dashed right-click target */
+.docs-context-zone {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 160px;
+  border: 2px dashed color-mix(in srgb, var(--sui-text-muted) 35%, transparent);
+  border-radius: var(--sui-radius-sm);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--sui-text-muted);
+  cursor: default;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+/* Sidebar page: the caption pane beside a demo sidebar is hidden on phones,
+   where it would squeeze into a one-word column */
+@media (max-width: 600px) {
+  .docs-caption-pane { display: none !important; }
 }

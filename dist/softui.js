@@ -937,7 +937,8 @@
       let focusedIndex = -1;
 
       function getVisibleItems() {
-        return Array.from(list.querySelectorAll('.sui-command-item:not([hidden])'));
+        // Disabled items are skipped by arrow keys, Enter and hover
+        return Array.from(list.querySelectorAll('.sui-command-item:not([hidden]):not(.disabled):not([disabled]):not([aria-disabled="true"])'));
       }
 
       function updateFocus(visibleItems) {
@@ -2547,7 +2548,7 @@
     });
 
     // Line / Area charts — measure path length for animation
-    each(root, '.sui-chart-line-wrap .chart-line', 'chart-line', function(path) {
+    each(root, '.sui-chart-line-wrap .chart-line, .sui-chart-line-wrap .sui-chart-line', 'chart-line', function(path) {
       if (path.getTotalLength) {
         const len = path.getTotalLength();
         path.style.setProperty('--line-length', len);
@@ -2558,7 +2559,7 @@
 
     // SVG dot tooltips
     each(root, '.sui-chart-line-wrap', 'chart-line-wrap', function(wrap) {
-      const dots = wrap.querySelectorAll('.chart-dot[data-value]');
+      const dots = wrap.querySelectorAll('.chart-dot[data-value], .sui-chart-dot[data-value]');
       if (!dots.length) return;
 
       const tip = document.createElement('div');
@@ -5491,7 +5492,7 @@
     options = options || {};
     let currentStep = 0;
     let overlay, backdrop, spotlight, tooltip;
-    const padding = options.padding || 8;
+    const padding = options.padding != null ? options.padding : 8;
     const noOverlay = options.noOverlay || false;
 
     function create() {
@@ -5509,11 +5510,18 @@
       document.body.appendChild(overlay);
 
       backdrop.addEventListener('click', close);
+      document.addEventListener('keydown', onKeydown);
+    }
+
+    function onKeydown(e) {
+      if (e.key === 'Escape') close();
     }
 
     let firstShow = true;
 
     function show(idx) {
+      // Out of range (next() on the last step, goTo(n)) or already closed: no-op
+      if (!overlay || typeof idx !== 'number' || idx < 0 || idx >= steps.length) return;
       currentStep = idx;
       const step = steps[idx];
       const target = document.querySelector(step.target);
@@ -5626,12 +5634,18 @@
       overlay.classList.add('active');
     }
 
+    let closed = false;
+
     function close() {
-      if (overlay) {
-        overlay.classList.remove('active');
+      if (closed) return;
+      closed = true;
+      document.removeEventListener('keydown', onKeydown);
+      const el = overlay;
+      overlay = null;
+      if (el) {
+        el.classList.remove('active');
         setTimeout(function() {
-          if (overlay && overlay.parentNode) overlay.parentNode.removeChild(overlay);
-          overlay = null;
+          if (el.parentNode) el.parentNode.removeChild(el);
         }, 300);
       }
       if (options.onComplete) options.onComplete();
@@ -5659,6 +5673,15 @@
       return v === 'light' || v === 'dark' ? v : null;
     } catch (_) {
       return null;
+    }
+  }
+
+  function storageAvailable() {
+    try {
+      localStorage.getItem(THEME_KEY);
+      return true;
+    } catch (_) {
+      return false;
     }
   }
 
@@ -5719,7 +5742,14 @@
   function activateTheme(skipInit) {
     if (themeActive) return;
     themeActive = true;
-    if (!skipInit) applyTheme(resolveTheme(), 'init');
+    if (!skipInit) {
+      // Without storage (sandboxed iframe, blocked cookies) nothing can have
+      // been saved, so keep a data-theme the page already set rather than
+      // overriding it with the OS preference.
+      const cur = document.documentElement.getAttribute('data-theme');
+      const keep = !storageAvailable() && (cur === 'light' || cur === 'dark');
+      applyTheme(keep ? cur : resolveTheme(), 'init');
+    }
     // Follow the OS while no choice is saved
     if (themeMql) {
       const onSystemChange = function() { if (!readTheme()) applyTheme(systemTheme(), 'system'); };
@@ -5765,6 +5795,17 @@
     if (v === 'light' || v === 'dark') setTheme(v);
     else if (v === 'system') clearTheme();
     else toggleTheme();
+  });
+
+  // =========================================
+  // Color input — keep the hex readout in sync
+  // =========================================
+  document.addEventListener('input', function(e) {
+    const input = e.target;
+    if (!input || input.type !== 'color' || !input.closest) return;
+    const wrap = input.closest('.sui-color-input');
+    const out = wrap && wrap.querySelector('.sui-color-input-value');
+    if (out) out.textContent = input.value.toUpperCase();
   });
 
   // =========================================

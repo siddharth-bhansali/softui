@@ -4,7 +4,7 @@ title: RTL Demo
 description: Live RTL (right-to-left) demo showing SoftUI components with Arabic text. Navbar, cards, forms, tables, timeline, and more.
 permalink: /rtl-demo/
 ---
-<div dir="rtl" lang="ar" class="docs-getstarted-page" style="font-family:'Plus Jakarta Sans',sans-serif;">
+<div dir="rtl" lang="ar" class="docs-getstarted-page" style="font-family:var(--sui-font);">
 
   <h1 class="docs-getstarted-title">عرض RTL</h1>
   <p class="docs-getstarted-desc">مثال حي يعرض مكونات SoftUI بدعم كامل من اليمين إلى اليسار.</p>
@@ -28,7 +28,7 @@ permalink: /rtl-demo/
     <h2>بطاقات</h2>
     <div class="sui-row sui-g-3">
       <div class="sui-col-md-4">
-        <div class="sui-card" style="padding:20px;">
+        <div class="sui-card" style="padding:20px;height:100%;">
           <div style="display:flex;align-items:center;gap:12px;margin-bottom:12px;">
             <div class="sui-avatar sui-avatar-sm sui-avatar-status sui-avatar-status-online" style="background:var(--sui-primary);color:#fff;font-weight:600;">أ</div>
             <div>
@@ -44,7 +44,7 @@ permalink: /rtl-demo/
         </div>
       </div>
       <div class="sui-col-md-4">
-        <div class="sui-stat" style="text-align:center;">
+        <div class="sui-stat" style="text-align:center;height:100%;">
           <p class="sui-stat-label">إجمالي المبيعات</p>
           <div class="sui-stat-value">٤٨,٢٩٥ ر.س</div>
           <div class="sui-stat-trend">
@@ -54,7 +54,7 @@ permalink: /rtl-demo/
         </div>
       </div>
       <div class="sui-col-md-4">
-        <div class="sui-card sui-flat" style="padding:20px;">
+        <div class="sui-card sui-flat" style="padding:20px;height:100%;">
           <h4 style="margin:0 0 12px;font-size:15px;">حالة النظام</h4>
           <div style="display:flex;align-items:center;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--sui-bg-dark);">
             <span>الخادم الرئيسي</span>
@@ -78,27 +78,27 @@ permalink: /rtl-demo/
     <h2>نموذج</h2>
     <div class="sui-card" style="padding:24px;max-width:500px;">
       <h4 style="margin:0 0 16px;">تسجيل حساب جديد</h4>
-      <div class="sui-row sui-g-2" style="margin-bottom:12px;">
+      <div class="sui-row sui-gx-2">
         <div class="sui-col-12 sui-col-sm-6">
-          <div class="sui-form-group">
-            <label class="sui-label">الاسم الأول</label>
-            <input class="sui-input" type="text" placeholder="أحمد">
+          <div class="sui-form-group" style="margin-bottom:12px;">
+            <label class="sui-label" for="rtl-first-name">الاسم الأول</label>
+            <input class="sui-input" type="text" id="rtl-first-name" placeholder="أحمد">
           </div>
         </div>
         <div class="sui-col-12 sui-col-sm-6">
-          <div class="sui-form-group">
-            <label class="sui-label">اسم العائلة</label>
-            <input class="sui-input" type="text" placeholder="محمد">
+          <div class="sui-form-group" style="margin-bottom:12px;">
+            <label class="sui-label" for="rtl-last-name">اسم العائلة</label>
+            <input class="sui-input" type="text" id="rtl-last-name" placeholder="محمد">
           </div>
         </div>
       </div>
       <div class="sui-form-group" style="margin-bottom:12px;">
-        <label class="sui-label">البريد الإلكتروني</label>
-        <input class="sui-input" type="email" placeholder="ahmed@example.com">
+        <label class="sui-label" for="rtl-email">البريد الإلكتروني</label>
+        <input class="sui-input" type="email" id="rtl-email" placeholder="ahmed@example.com">
       </div>
       <div class="sui-form-group" style="margin-bottom:12px;">
-        <label class="sui-label">كلمة المرور</label>
-        <input class="sui-input" type="password" placeholder="أدخل كلمة المرور">
+        <label class="sui-label" for="rtl-password">كلمة المرور</label>
+        <input class="sui-input" type="password" id="rtl-password" placeholder="أدخل كلمة المرور">
       </div>
       <div class="sui-form-group" style="margin-bottom:16px;">
         <label class="sui-label">الدولة</label>
@@ -126,10 +126,10 @@ permalink: /rtl-demo/
   <!-- Breadcrumbs + Tabs -->
   <section class="docs-getstarted-section" id="nav">
     <h2>التنقل</h2>
-    <nav class="sui-breadcrumb" style="margin-bottom:20px;">
-      <div class="sui-breadcrumb-item"><a href="#">الرئيسية</a></div>
-      <div class="sui-breadcrumb-item"><a href="#">المنتجات</a></div>
-      <div class="sui-breadcrumb-item active">التفاصيل</div>
+    <nav class="sui-breadcrumb" aria-label="مسار التنقل" style="margin-bottom:20px;">
+      <span class="sui-breadcrumb-item"><a href="#">الرئيسية</a></span>
+      <span class="sui-breadcrumb-item"><a href="#">المنتجات</a></span>
+      <span class="sui-breadcrumb-item active"><span aria-current="page">التفاصيل</span></span>
     </nav>
     <div class="sui-tabs">
       <div class="sui-tab-list" role="tablist">
@@ -158,7 +158,7 @@ permalink: /rtl-demo/
   <!-- Table -->
   <section class="docs-getstarted-section" id="table">
     <h2>جدول البيانات</h2>
-    <div class="sui-card" style="padding:0;overflow:hidden;">
+    <div class="sui-card sui-overflow-x-auto" style="padding:0;">
       <table class="sui-table" style="margin:0;">
         <thead>
           <tr>
@@ -246,6 +246,25 @@ permalink: /rtl-demo/
         </div>
       </div>
     </div>
+  </section>
+
+  <!-- Links, Status & Footer -->
+  <section class="docs-getstarted-section" id="links-footer">
+    <h2>روابط وتذييل</h2>
+    <div style="display:flex;flex-wrap:wrap;align-items:center;gap:20px;margin-bottom:20px;">
+      <a class="sui-link-arrow" href="#">اقرأ المزيد</a>
+      <span class="sui-status"><span class="sui-status-dot sui-status-dot-success"></span>متصل</span>
+      <span class="sui-status"><span class="sui-status-dot sui-status-dot-warning"></span>بعيد</span>
+    </div>
+    <footer class="sui-footer sui-footer-split sui-footer-bordered">
+      <div class="sui-footer-inner">
+        <span class="sui-footer-brand">SoftUI</span>
+        <nav class="sui-footer-links" aria-label="روابط التذييل">
+          <a class="sui-footer-link" href="#">الخصوصية</a>
+          <a class="sui-footer-link" href="#">الشروط</a>
+        </nav>
+      </div>
+    </footer>
   </section>
 
   <div style="text-align:center;margin-top:48px;">

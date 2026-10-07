@@ -8,7 +8,7 @@ requiresJs: true
 toc:
   - Default
   - Without Overlay
-  - API
+  - Reference
 ---
 
 <!-- Default -->
@@ -32,7 +32,7 @@ toc:
         <button class="sui-btn sui-btn-sm" id="tour-btn-settings">Settings</button>
       </div>
       <hr class="sui-divider">
-      <button class="sui-btn sui-btn-primary" onclick="startDemoTour()">Start Tour</button>
+      <button class="sui-btn sui-btn-primary" style="align-self:flex-start;" onclick="startDemoTour()">Start Tour</button>
     </div>
   </div>
   <script>
@@ -47,36 +47,35 @@ toc:
   </script>
   <div class="pg-code-wrap">
     <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
-    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;!-- Target elements with IDs --&gt;
-&lt;div id="my-avatar"&gt;...&lt;/div&gt;
-&lt;div id="my-card"&gt;...&lt;/div&gt;
-&lt;button id="my-button"&gt;...&lt;/button&gt;
-
-&lt;!-- Start the tour --&gt;
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div style="display:flex;flex-direction:column;gap:16px;max-width:500px;"&gt;
+  &lt;div style="display:flex;gap:12px;align-items:center;"&gt;
+    &lt;div class="sui-avatar" id="tour-avatar"&gt;AB&lt;/div&gt;
+    &lt;div&gt;
+      &lt;div style="font-weight:600;font-size:14px;" id="tour-name"&gt;Alex Brown&lt;/div&gt;
+      &lt;div style="font-size:12px;color:var(--sui-text-muted);"&gt;Product Designer&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="sui-card" style="padding:16px;" id="tour-card"&gt;
+    &lt;h4 style="font-size:14px;margin-bottom:6px;"&gt;Project Overview&lt;/h4&gt;
+    &lt;p style="font-size:12px;color:var(--sui-text-muted);"&gt;Your dashboard shows all active projects and team activity.&lt;/p&gt;
+  &lt;/div&gt;
+  &lt;div style="display:flex;gap:8px;"&gt;
+    &lt;button class="sui-btn sui-btn-primary sui-btn-sm" id="tour-btn-new"&gt;New Project&lt;/button&gt;
+    &lt;button class="sui-btn sui-btn-sm" id="tour-btn-settings"&gt;Settings&lt;/button&gt;
+  &lt;/div&gt;
+  &lt;hr class="sui-divider"&gt;
+  &lt;button class="sui-btn sui-btn-primary" style="align-self:flex-start;" onclick="startDemoTour()"&gt;Start Tour&lt;/button&gt;
+&lt;/div&gt;
 &lt;script&gt;
-  SoftUI.tour([
-    {
-      target: '#my-avatar',
-      title: 'Your Profile',
-      description: 'Click to view your account settings.',
-      position: 'right'
-    },
-    {
-      target: '#my-card',
-      title: 'Dashboard',
-      description: 'See your active projects here.',
-      position: 'bottom'
-    },
-    {
-      target: '#my-button',
-      title: 'Create Project',
-      description: 'Start a new project from here.',
-      position: 'bottom'
-    }
-  ]);
-&lt;/script&gt;
-
-&lt;!-- Position options: 'top', 'bottom', 'left', 'right' --&gt;</pre></div>
+  function startDemoTour() {
+    SoftUI.tour([
+      { target: '#tour-avatar', title: 'Your Profile', description: 'This is your avatar. Click it to view your profile and account settings.', position: 'right' },
+      { target: '#tour-card', title: 'Project Overview', description: 'Here you can see a summary of your active projects and recent activity.', position: 'bottom' },
+      { target: '#tour-btn-new', title: 'Create a Project', description: 'Click here to start a new project. You can invite team members and set deadlines.', position: 'bottom' },
+      { target: '#tour-btn-settings', title: 'Settings', description: 'Manage your account preferences, notifications, and integrations.', position: 'bottom' }
+    ]);
+  }
+&lt;/script&gt;</pre></div>
   </div>
 </div>
 
@@ -93,7 +92,7 @@ toc:
         <h4 style="font-size:14px;margin-bottom:6px;">Notifications</h4>
         <p style="font-size:12px;color:var(--sui-text-muted);">You have 3 unread notifications.</p>
       </div>
-      <button class="sui-btn sui-btn-primary" onclick="startDemoTour2()">Start Tour (No Overlay)</button>
+      <button class="sui-btn sui-btn-primary" style="align-self:flex-start;" onclick="startDemoTour2()">Start Tour (No Overlay)</button>
     </div>
   </div>
   <script>
@@ -107,74 +106,53 @@ toc:
   </script>
   <div class="pg-code-wrap">
     <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
-    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;script&gt;
-  SoftUI.tour([
-    { target: '#badge', title: 'Notifications', description: 'You have new notifications.', position: 'bottom' },
-    { target: '#card', title: 'Panel', description: 'Expand to see all.', position: 'bottom' }
-  ], { noOverlay: true });
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div style="display:flex;flex-direction:column;gap:16px;max-width:500px;"&gt;
+  &lt;div style="display:flex;gap:8px;"&gt;
+    &lt;span class="sui-badge sui-badge-primary" id="tour2-badge"&gt;3 new&lt;/span&gt;
+    &lt;span class="sui-badge sui-badge-success" id="tour2-badge2"&gt;Online&lt;/span&gt;
+  &lt;/div&gt;
+  &lt;div class="sui-card" style="padding:16px;" id="tour2-card"&gt;
+    &lt;h4 style="font-size:14px;margin-bottom:6px;"&gt;Notifications&lt;/h4&gt;
+    &lt;p style="font-size:12px;color:var(--sui-text-muted);"&gt;You have 3 unread notifications.&lt;/p&gt;
+  &lt;/div&gt;
+  &lt;button class="sui-btn sui-btn-primary" style="align-self:flex-start;" onclick="startDemoTour2()"&gt;Start Tour (No Overlay)&lt;/button&gt;
+&lt;/div&gt;
+&lt;script&gt;
+  function startDemoTour2() {
+    SoftUI.tour([
+      { target: '#tour2-badge', title: 'Notifications', description: 'You have new notifications waiting.', position: 'bottom' },
+      { target: '#tour2-card', title: 'Notification Panel', description: 'Click to expand and see all your notifications.', position: 'bottom' },
+      { target: '#tour2-badge2', title: 'Status', description: 'Your current online status is shown here.', position: 'bottom' }
+    ], { noOverlay: true });
+  }
 &lt;/script&gt;</pre></div>
   </div>
 </div>
 
-<!-- API -->
+<!-- Reference -->
 <div class="pg-section" id="section-3">
-  <h3 class="pg-section-title">API</h3>
-  <div class="pg-section-row">
-    <div style="max-width:500px;">
-      <div class="sui-card" style="padding:20px;font-size:13px;">
-        <h4 style="margin-bottom:12px;">SoftUI.tour(steps, options)</h4>
-        <div style="margin-bottom:12px;">
-          <div style="font-weight:600;margin-bottom:4px;">Steps (array of objects):</div>
-          <ul style="padding-left:20px;color:var(--sui-text-muted);line-height:1.8;">
-            <li><code>target</code> — CSS selector for the element to highlight</li>
-            <li><code>title</code> — Step title text</li>
-            <li><code>description</code> — Step description text</li>
-            <li><code>position</code> — Tooltip position: <code>'top'</code>, <code>'bottom'</code>, <code>'left'</code>, <code>'right'</code></li>
-            <li><code>html</code> — Render this step's title/description as HTML (overrides the tour option)</li>
-          </ul>
-        </div>
-        <div style="margin-bottom:12px;">
-          <div style="font-weight:600;margin-bottom:4px;">Options:</div>
-          <ul style="padding-left:20px;color:var(--sui-text-muted);line-height:1.8;">
-            <li><code>padding</code> — Spotlight padding around target (default: 8)</li>
-            <li><code>noOverlay</code> — Skip backdrop overlay (default: false)</li>
-            <li><code>onComplete</code> — Callback when tour finishes</li>
-            <li><code>html</code> — Render titles/descriptions as HTML (default: false, plain text). Trusted content only — never user input.</li>
-          </ul>
-        </div>
-        <div>
-          <div style="font-weight:600;margin-bottom:4px;">Returns:</div>
-          <ul style="padding-left:20px;color:var(--sui-text-muted);line-height:1.8;">
-            <li><code>next()</code> — Go to next step</li>
-            <li><code>prev()</code> — Go to previous step</li>
-            <li><code>goTo(index)</code> — Jump to specific step</li>
-            <li><code>close()</code> — End the tour</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="pg-code-wrap">
-    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
-    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;script&gt;
-  // Start a tour and get control handle
-  var myTour = SoftUI.tour([
-    { target: '#step1', title: 'First', description: 'Welcome!', position: 'bottom' },
-    { target: '#step2', title: 'Second', description: 'Next feature.', position: 'right' },
-    { target: '#step3', title: 'Done', description: 'All set!', position: 'top' }
-  ], {
-    padding: 12,
-    noOverlay: false,
-    onComplete: function() {
-      console.log('Tour finished!');
-    }
-  });
-
-  // Programmatic control
-  myTour.next();
-  myTour.prev();
-  myTour.goTo(2);
-  myTour.close();
-&lt;/script&gt;</pre></div>
+  <h3 class="pg-section-title">Reference</h3>
+  <div class="docs-table-wrap">
+    <table class="sui-table sui-table-compact">
+      <thead>
+        <tr><th scope="col" style="width:40%;">Option / Method</th><th scope="col">Description</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><code>SoftUI.tour(steps, options)</code></td><td>Starts a tour at the first step and returns a handle with the methods below. Clicking the backdrop closes the tour.</td></tr>
+        <tr><td><code>step.target</code></td><td>CSS selector for the element to highlight.</td></tr>
+        <tr><td><code>step.title</code></td><td>Step title text.</td></tr>
+        <tr><td><code>step.description</code></td><td>Step description text.</td></tr>
+        <tr><td><code>step.position</code></td><td>Tooltip side: <code>'top'</code>, <code>'bottom'</code>, <code>'left'</code> or <code>'right'</code>. Default <code>'bottom'</code>.</td></tr>
+        <tr><td><code>step.html</code></td><td>Renders this step's title and description as HTML; overrides the tour's <code>html</code> option.</td></tr>
+        <tr><td><code>padding</code></td><td>Spotlight padding around the target in px. Default <code>8</code>.</td></tr>
+        <tr><td><code>noOverlay</code></td><td>Skips the dimmed backdrop. Default <code>false</code>.</td></tr>
+        <tr><td><code>onComplete</code></td><td>Called when the tour closes (Done, Skip or backdrop click).</td></tr>
+        <tr><td><code>html</code></td><td>Renders titles and descriptions as HTML. Default <code>false</code> (plain text). Trusted content only, never user input.</td></tr>
+        <tr><td><code>.next()</code></td><td>Goes to the next step.</td></tr>
+        <tr><td><code>.prev()</code></td><td>Goes to the previous step.</td></tr>
+        <tr><td><code>.goTo(index)</code></td><td>Jumps to the step at <code>index</code> (zero-based).</td></tr>
+        <tr><td><code>.close()</code></td><td>Ends the tour and calls <code>onComplete</code>.</td></tr>
+      </tbody>
+    </table>
   </div>
 </div>

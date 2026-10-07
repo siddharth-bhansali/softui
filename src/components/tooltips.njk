@@ -1,13 +1,14 @@
 ---
 layout: component.njk
 title: Tooltips
-description: Pure CSS tooltips with soft shadows and auto-repositioning.
+description: CSS tooltips with soft shadows; softui.js adds auto-repositioning near viewport edges.
 componentId: tooltips
 hasControls: false
 toc:
   - Directions
   - Colors
   - On Different Elements
+  - Multiline
 ---
 
 <!-- Directions -->
@@ -21,19 +22,19 @@ toc:
   </div>
   <div class="pg-code-wrap">
     <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
-    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;span class="sui-tooltip" data-sui-tooltip="Tooltip on top"&gt;
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;span class="sui-tooltip" data-sui-tooltip="Tooltip on top" aria-label="Tooltip on top"&gt;
   &lt;button class="sui-btn"&gt;Top&lt;/button&gt;
 &lt;/span&gt;
 
-&lt;span class="sui-tooltip sui-tooltip-bottom" data-sui-tooltip="Tooltip on bottom"&gt;
+&lt;span class="sui-tooltip sui-tooltip-bottom" data-sui-tooltip="Tooltip on bottom" aria-label="Tooltip on bottom"&gt;
   &lt;button class="sui-btn"&gt;Bottom&lt;/button&gt;
 &lt;/span&gt;
 
-&lt;span class="sui-tooltip sui-tooltip-left" data-sui-tooltip="Tooltip on left"&gt;
+&lt;span class="sui-tooltip sui-tooltip-left" data-sui-tooltip="Tooltip on left" aria-label="Tooltip on left"&gt;
   &lt;button class="sui-btn"&gt;Left&lt;/button&gt;
 &lt;/span&gt;
 
-&lt;span class="sui-tooltip sui-tooltip-right" data-sui-tooltip="Tooltip on right"&gt;
+&lt;span class="sui-tooltip sui-tooltip-right" data-sui-tooltip="Tooltip on right" aria-label="Tooltip on right"&gt;
   &lt;button class="sui-btn"&gt;Right&lt;/button&gt;
 &lt;/span&gt;</pre></div>
   </div>
@@ -51,23 +52,23 @@ toc:
   </div>
   <div class="pg-code-wrap">
     <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
-    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;span class="sui-tooltip sui-tooltip-primary" data-sui-tooltip="Primary tooltip"&gt;
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;span class="sui-tooltip sui-tooltip-primary" data-sui-tooltip="Primary tooltip" aria-label="Primary tooltip"&gt;
   &lt;button class="sui-btn"&gt;Primary&lt;/button&gt;
 &lt;/span&gt;
 
-&lt;span class="sui-tooltip sui-tooltip-success" data-sui-tooltip="Success tooltip"&gt;
+&lt;span class="sui-tooltip sui-tooltip-success" data-sui-tooltip="Success tooltip" aria-label="Success tooltip"&gt;
   &lt;button class="sui-btn"&gt;Success&lt;/button&gt;
 &lt;/span&gt;
 
-&lt;span class="sui-tooltip sui-tooltip-danger" data-sui-tooltip="Danger tooltip"&gt;
+&lt;span class="sui-tooltip sui-tooltip-danger" data-sui-tooltip="Danger tooltip" aria-label="Danger tooltip"&gt;
   &lt;button class="sui-btn"&gt;Danger&lt;/button&gt;
 &lt;/span&gt;
 
-&lt;span class="sui-tooltip sui-tooltip-warning" data-sui-tooltip="Warning tooltip"&gt;
+&lt;span class="sui-tooltip sui-tooltip-warning" data-sui-tooltip="Warning tooltip" aria-label="Warning tooltip"&gt;
   &lt;button class="sui-btn"&gt;Warning&lt;/button&gt;
 &lt;/span&gt;
 
-&lt;span class="sui-tooltip sui-tooltip-info" data-sui-tooltip="Info tooltip"&gt;
+&lt;span class="sui-tooltip sui-tooltip-info" data-sui-tooltip="Info tooltip" aria-label="Info tooltip"&gt;
   &lt;button class="sui-btn"&gt;Info&lt;/button&gt;
 &lt;/span&gt;</pre></div>
   </div>
@@ -83,19 +84,33 @@ toc:
   </div>
   <div class="pg-code-wrap">
     <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
-    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;span class="sui-tooltip" data-sui-tooltip="This is a badge"&gt;
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;span class="sui-tooltip" data-sui-tooltip="This is a badge" aria-label="This is a badge"&gt;
   &lt;span class="sui-badge sui-badge-primary"&gt;Hover me&lt;/span&gt;
 &lt;/span&gt;
 
-&lt;span class="sui-tooltip" data-sui-tooltip="User avatar"&gt;
+&lt;span class="sui-tooltip" data-sui-tooltip="User avatar" aria-label="User avatar"&gt;
   &lt;div class="sui-avatar"&gt;A&lt;/div&gt;
 &lt;/span&gt;
 
-&lt;span class="sui-tooltip" data-sui-tooltip="Toggle this"&gt;
+&lt;span class="sui-tooltip" data-sui-tooltip="Toggle this" aria-label="Toggle this"&gt;
   &lt;label class="sui-toggle sui-toggle-primary"&gt;
     &lt;input type="checkbox" checked&gt;
     &lt;span class="sui-toggle-slider"&gt;&lt;/span&gt;
   &lt;/label&gt;
+&lt;/span&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Multiline -->
+<div class="pg-section" id="section-4">
+  <h3 class="pg-section-title">Multiline</h3>
+  <div class="pg-section-row">
+    <span class="sui-tooltip sui-tooltip-wrap" data-sui-tooltip="Long tooltips wrap onto several lines and stay centred, up to 280px wide." aria-label="Long tooltips wrap onto several lines and stay centred, up to 280px wide."><button class="sui-btn">Long Tooltip</button></span>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;span class="sui-tooltip sui-tooltip-wrap" data-sui-tooltip="Long tooltips wrap onto several lines and stay centred, up to 280px wide." aria-label="Long tooltips wrap onto several lines and stay centred, up to 280px wide."&gt;
+  &lt;button class="sui-btn"&gt;Long Tooltip&lt;/button&gt;
 &lt;/span&gt;</pre></div>
   </div>
 </div>

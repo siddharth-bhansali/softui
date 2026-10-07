@@ -14,22 +14,26 @@ toc:
 <!-- Shadow Classes -->
 <div class="pg-section" id="section-1">
   <h3 class="pg-section-title">Shadow Classes</h3>
-  <div class="pg-section-grid">
+  <div class="pg-section-row" style="gap:24px;">
     <div style="text-align:center;">
       <div class="sui-raised" style="width:72px;height:72px;border-radius:12px;margin:0 auto 8px;background:var(--sui-bg);"></div>
-      <small>sui-raised</small>
+      <code>sui-raised</code>
     </div>
     <div style="text-align:center;">
       <div class="sui-raised-lg" style="width:72px;height:72px;border-radius:12px;margin:0 auto 8px;background:var(--sui-bg);"></div>
-      <small>sui-raised-lg</small>
+      <code>sui-raised-lg</code>
     </div>
     <div style="text-align:center;">
       <div class="sui-inset" style="width:72px;height:72px;border-radius:12px;margin:0 auto 8px;background:var(--sui-bg);"></div>
-      <small>sui-inset</small>
+      <code>sui-inset</code>
+    </div>
+    <div style="text-align:center;">
+      <div class="sui-pressed" style="width:72px;height:72px;border-radius:12px;margin:0 auto 8px;background:var(--sui-bg);"></div>
+      <code>sui-pressed</code>
     </div>
     <div style="text-align:center;">
       <div class="sui-flat" style="width:72px;height:72px;border-radius:12px;margin:0 auto 8px;background:var(--sui-bg);"></div>
-      <small>sui-flat</small>
+      <code>sui-flat</code>
     </div>
   </div>
   <div class="pg-code-wrap">
@@ -37,6 +41,7 @@ toc:
     <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-raised"&gt;...&lt;/div&gt;
 &lt;div class="sui-raised-lg"&gt;...&lt;/div&gt;
 &lt;div class="sui-inset"&gt;...&lt;/div&gt;
+&lt;div class="sui-pressed"&gt;...&lt;/div&gt;
 &lt;div class="sui-flat"&gt;...&lt;/div&gt;</pre></div>
   </div>
 </div>
@@ -44,7 +49,7 @@ toc:
 <!-- Flat on Any Background -->
 <div class="pg-section" id="section-2">
   <h3 class="pg-section-title">Flat on Any Background</h3>
-  <p style="margin-bottom:16px;color:var(--sui-text-muted);">Neumorphic shadows need the SoftUI background behind them. On your own background, add <code>.sui-flat</code> to remove the shadow — including on hover — and use a subtle border instead. Keyboard focus still shows a ring.</p>
+  <p style="font-size:13px;color:var(--sui-text-light);margin-bottom:16px;">Add <code>sui-flat</code> to drop the shadow on a non-SoftUI background.</p>
   <div data-theme="light" style="display:flex;gap:12px;flex-wrap:wrap;align-items:center;background:#fff;padding:24px;border-radius:var(--sui-radius);">
     <button class="sui-btn sui-flat">Flat Button</button>
     <button class="sui-btn sui-btn-primary sui-flat">Primary</button>
@@ -63,7 +68,7 @@ toc:
 <!-- Flat Scope -->
 <div class="pg-section" id="section-3">
   <h3 class="pg-section-title">Flat Scope</h3>
-  <p style="font-size:13px;color:var(--sui-text-light);margin-bottom:16px;">Add <code>.sui-flat-all</code> to a container to flatten everything inside it, including toggle knobs and slider thumbs.</p>
+  <p style="font-size:13px;color:var(--sui-text-light);margin-bottom:16px;">Add <code>sui-flat-all</code> to a container to flatten everything inside it, including toggle knobs and slider thumbs.</p>
   <div class="sui-flat-all" data-theme="light" style="color:var(--sui-text);display:flex;gap:20px;flex-wrap:wrap;align-items:center;background:#fff;padding:24px;border-radius:var(--sui-radius);">
     <div class="sui-card" style="padding:16px 20px;">Card</div>
     <label class="sui-toggle"><input type="checkbox" checked aria-label="Notifications"><span class="sui-toggle-slider"></span></label>
@@ -91,13 +96,17 @@ toc:
   <div class="docs-table-wrap">
     <table class="sui-table sui-table-compact">
       <thead>
-        <tr><th scope="col" style="width:40%;">Class / Token</th><th scope="col">Description</th></tr>
+        <tr><th scope="col" style="width:40%;">Class / Token / Attribute</th><th scope="col">Description</th></tr>
       </thead>
       <tbody>
-        <tr><td><code>.sui-flat</code></td><td>Removes the element's own shadow, also on hover, and adds a subtle border.</td></tr>
-        <tr><td><code>.sui-flat-all</code></td><td>Swaps every neumorphic shadow inside for a hairline <code>--sui-bg-dark</code> outline. Coloured glows, menu and modal shadows, and focus rings are kept.</td></tr>
+        <tr><td><code>sui-raised</code></td><td>Raised neumorphic shadow (<code>--sui-shadow-raised</code>).</td></tr>
+        <tr><td><code>sui-raised-lg</code></td><td>Larger, deeper raised shadow (<code>--sui-shadow-raised-lg</code>).</td></tr>
+        <tr><td><code>sui-inset</code></td><td>Inset shadow (<code>--sui-shadow-inset</code>).</td></tr>
+        <tr><td><code>sui-pressed</code></td><td>Same inset shadow as <code>sui-inset</code>, for a pressed state.</td></tr>
+        <tr><td><code>sui-flat</code></td><td>Removes the element's own shadow, also on hover, and adds a subtle border. Neumorphic shadows need the SoftUI background behind them, so use it on your own backgrounds. Keyboard focus still shows a ring.</td></tr>
+        <tr><td><code>sui-flat-all</code></td><td>Swaps every neumorphic shadow inside for a hairline <code>--sui-bg-dark</code> outline. Coloured glows, menu and modal shadows, and focus rings are kept.</td></tr>
         <tr><td><code>--sui-shadow-raised</code>, <code>--sui-shadow-inset</code></td><td>For an outline above WCAG's 3:1 (the hairline is below it), on the container set <code>--sui-shadow-raised</code>, <code>-raised-sm</code>, <code>-raised-lg</code> to <code>0 0 0 1px var(--sui-text-light)</code> and <code>--sui-shadow-inset</code>, <code>-inset-sm</code> to <code>inset 0 0 0 1px var(--sui-text-light)</code>.</td></tr>
-        <tr><td><code>.sui-surface</code> + <code>data-theme="dark"</code></td><td>On a page darker than <code>--sui-bg</code>, gives the area the matching background so dark shadows don't show a light halo.</td></tr>
+        <tr><td><code>sui-surface</code> + <code>data-theme="dark"</code></td><td>On a page darker than <code>--sui-bg</code>, gives the area the matching background so dark shadows don't show a light halo.</td></tr>
       </tbody>
     </table>
   </div>

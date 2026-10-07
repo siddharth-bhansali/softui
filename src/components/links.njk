@@ -12,8 +12,8 @@ toc:
   - Hover Underline
   - Arrow Link
   - External Link
-  - Sizes
   - Raised
+  - Sizes
   - Reference
 ---
 
@@ -66,7 +66,7 @@ toc:
 <!-- Hover Underline -->
 <div class="pg-section" id="section-4">
   <h3 class="pg-section-title">Hover Underline</h3>
-  <p style="font-size:13px;color:var(--sui-text-light);margin-bottom:16px;">Underlined only on hover, for navigation lists. Keep the full underline inside prose.</p>
+  <p style="font-size:13px;color:var(--sui-text-light);margin-bottom:16px;">Underlined only on hover; for nav lists, not prose.</p>
   <div class="pg-section-row" style="display:block;">
     <nav style="display:flex;flex-wrap:wrap;gap:24px;">
       <a class="sui-link-subtle sui-link-underline-hover" href="#">Docs</a>
@@ -118,8 +118,28 @@ toc:
   </div>
 </div>
 
-<!-- Sizes -->
+<!-- Raised -->
 <div class="pg-section" id="section-7">
+  <h3 class="pg-section-title">Raised</h3>
+  <div class="pg-section-row" style="gap:16px;flex-wrap:wrap;">
+    <a class="sui-link-raised" href="#">Docs</a>
+    <a class="sui-link-raised sui-link-arrow" href="#">Get started</a>
+    <a class="sui-link-raised sui-link-external" href="https://github.com/" target="_blank" rel="noopener">GitHub</a>
+    <a class="sui-link-raised sui-link-success" href="#">Changelog</a>
+    <a class="sui-link-raised sui-link-danger" href="#">Report a bug</a>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;a class="sui-link-raised" href="#"&gt;Docs&lt;/a&gt;
+&lt;a class="sui-link-raised sui-link-arrow" href="#"&gt;Get started&lt;/a&gt;
+&lt;a class="sui-link-raised sui-link-external" href="https://github.com/" target="_blank" rel="noopener"&gt;GitHub&lt;/a&gt;
+&lt;a class="sui-link-raised sui-link-success" href="#"&gt;Changelog&lt;/a&gt;
+&lt;a class="sui-link-raised sui-link-danger" href="#"&gt;Report a bug&lt;/a&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Sizes -->
+<div class="pg-section" id="section-8">
   <h3 class="pg-section-title">Sizes</h3>
   <div class="pg-section-row" style="gap:24px;flex-wrap:wrap;align-items:baseline;">
     <a class="sui-link-arrow sui-link-sm" href="#">Small</a>
@@ -143,26 +163,6 @@ toc:
   </div>
 </div>
 
-<!-- Raised -->
-<div class="pg-section" id="section-8">
-  <h3 class="pg-section-title">Raised</h3>
-  <div class="pg-section-row" style="gap:16px;flex-wrap:wrap;">
-    <a class="sui-link-raised" href="#">Docs</a>
-    <a class="sui-link-raised sui-link-arrow" href="#">Get started</a>
-    <a class="sui-link-raised sui-link-external" href="https://github.com/" target="_blank" rel="noopener">GitHub</a>
-    <a class="sui-link-raised sui-link-success" href="#">Changelog</a>
-    <a class="sui-link-raised sui-link-danger" href="#">Report a bug</a>
-  </div>
-  <div class="pg-code-wrap">
-    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
-    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;a class="sui-link-raised" href="#"&gt;Docs&lt;/a&gt;
-&lt;a class="sui-link-raised sui-link-arrow" href="#"&gt;Get started&lt;/a&gt;
-&lt;a class="sui-link-raised sui-link-external" href="https://github.com/" target="_blank" rel="noopener"&gt;GitHub&lt;/a&gt;
-&lt;a class="sui-link-raised sui-link-success" href="#"&gt;Changelog&lt;/a&gt;
-&lt;a class="sui-link-raised sui-link-danger" href="#"&gt;Report a bug&lt;/a&gt;</pre></div>
-  </div>
-</div>
-
 <!-- Reference -->
 <div class="pg-section" id="section-9">
   <h3 class="pg-section-title">Reference</h3>
@@ -170,16 +170,16 @@ toc:
     <table class="sui-table sui-table-compact">
       <thead><tr><th scope="col">Class / Token</th><th scope="col">Description</th></tr></thead>
       <tbody>
-        <tr><td><code>.sui-link</code></td><td>Underlined link for running text (WCAG 1.4.1); a bare <code>&lt;a&gt;</code> is coloured only.</td></tr>
-        <tr><td><code>.sui-link-subtle</code></td><td>Inherits the text colour; standalone, no <code>.sui-link</code> needed.</td></tr>
-        <tr><td><code>.sui-link-muted</code></td><td>Muted text colour; standalone, no <code>.sui-link</code> needed.</td></tr>
-        <tr><td><code>.sui-link-{color}</code></td><td>success, danger, warning or info; pairs with <code>.sui-link</code>, <code>-arrow</code> or <code>-raised</code>.</td></tr>
-        <tr><td><code>.sui-link-underline-hover</code></td><td>Underline on hover only; for nav lists, not prose.</td></tr>
-        <tr><td><code>.sui-link-arrow</code></td><td>Trailing arrow, never underlined; nudges on hover (instantly with reduced motion); points left in RTL.</td></tr>
-        <tr><td><code>.sui-link-external</code></td><td>Trailing &#8599; glyph, hidden from screen readers; mirrored in RTL. Do not combine with <code>-arrow</code>.</td></tr>
-        <tr><td><code>.sui-link-sm</code></td><td>13px text; on <code>-raised</code>, a smaller pill.</td></tr>
-        <tr><td><code>.sui-link-lg</code></td><td>18px text; on <code>-raised</code>, a larger pill.</td></tr>
-        <tr><td><code>.sui-link-raised</code></td><td>Pill link with raised depth, inset when pressed.</td></tr>
+        <tr><td><code>sui-link</code></td><td>Underlined link for running text (WCAG 1.4.1); a bare <code>&lt;a&gt;</code> is coloured only.</td></tr>
+        <tr><td><code>sui-link-subtle</code></td><td>Inherits the text colour; standalone, no <code>sui-link</code> needed.</td></tr>
+        <tr><td><code>sui-link-muted</code></td><td>Muted text colour; standalone, no <code>sui-link</code> needed.</td></tr>
+        <tr><td><code>sui-link-success</code>, <code>sui-link-danger</code>, <code>sui-link-warning</code>, <code>sui-link-info</code></td><td>Colour modifiers; pair with <code>sui-link</code>, <code>sui-link-arrow</code> or <code>sui-link-raised</code>.</td></tr>
+        <tr><td><code>sui-link-underline-hover</code></td><td>Underline on hover only; for nav lists, not prose.</td></tr>
+        <tr><td><code>sui-link-arrow</code></td><td>Trailing arrow; no underline at rest, underlined on hover; nudges on hover (instantly with reduced motion); points left in RTL.</td></tr>
+        <tr><td><code>sui-link-external</code></td><td>Trailing &#8599; glyph, hidden from screen readers; mirrored in RTL. Do not combine with <code>sui-link-arrow</code>.</td></tr>
+        <tr><td><code>sui-link-sm</code></td><td>13px text; on <code>sui-link-raised</code>, a smaller pill.</td></tr>
+        <tr><td><code>sui-link-lg</code></td><td>18px text; on <code>sui-link-raised</code>, a larger pill.</td></tr>
+        <tr><td><code>sui-link-raised</code></td><td>Pill link with raised depth, inset when pressed.</td></tr>
         <tr><td><code>--sui-link</code></td><td>Link colour. Default <code>var(--sui-primary-text)</code>, 4.5:1 in light and dark. See <a class="sui-link" href="/theming/#colors">Theming</a>.</td></tr>
         <tr><td><code>--sui-link-hover</code></td><td>Hover colour. Default <code>var(--sui-primary-text-hover)</code>.</td></tr>
         <tr><td><code>--sui-link-underline</code></td><td>Resting underline colour. Default <code>currentColor</code> at 40%.</td></tr>

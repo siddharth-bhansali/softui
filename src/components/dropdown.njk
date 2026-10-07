@@ -7,14 +7,15 @@ hasControls: false
 requiresJs: true
 toc:
   - Default
-  - Button colors
-  - Split button
-  - With links
-  - Headers & dividers
-  - Disabled items
+  - Button Colors
+  - Split Button
+  - With Links
+  - Headers & Dividers
+  - Disabled Items
   - Directions
-  - Menu alignment
+  - Menu Alignment
   - Sizing
+  - Reference
 ---
 
 <!-- Default -->
@@ -33,20 +34,20 @@ toc:
   <div class="pg-code-wrap">
     <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
     <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-dropdown"&gt;
-  &lt;button class="sui-btn sui-dropdown-toggle" data-sui-dropdown&gt;Options&lt;/button&gt;
-  &lt;div class="sui-dropdown-menu"&gt;
-    &lt;button class="sui-dropdown-item"&gt;Profile&lt;/button&gt;
-    &lt;button class="sui-dropdown-item"&gt;Settings&lt;/button&gt;
-    &lt;button class="sui-dropdown-item"&gt;Notifications&lt;/button&gt;
+  &lt;button class="sui-btn sui-dropdown-toggle" data-sui-dropdown aria-expanded="false" aria-haspopup="true"&gt;Options&lt;/button&gt;
+  &lt;div class="sui-dropdown-menu" role="menu"&gt;
+    &lt;button class="sui-dropdown-item" role="menuitem"&gt;Profile&lt;/button&gt;
+    &lt;button class="sui-dropdown-item" role="menuitem"&gt;Settings&lt;/button&gt;
+    &lt;button class="sui-dropdown-item" role="menuitem"&gt;Notifications&lt;/button&gt;
   &lt;/div&gt;
 &lt;/div&gt;
 </pre></div>
   </div>
 </div>
 
-<!-- Button colors -->
+<!-- Button Colors -->
 <div class="pg-section" id="section-2">
-  <h3 class="pg-section-title">Button colors</h3>
+  <h3 class="pg-section-title">Button Colors</h3>
   <div class="pg-section-row" style="gap:12px;flex-wrap:wrap;">
     <div class="sui-dropdown">
       <button class="sui-btn sui-btn-primary sui-dropdown-toggle" data-sui-dropdown aria-expanded="false" aria-haspopup="true">Primary</button>
@@ -80,46 +81,46 @@ toc:
   <div class="pg-code-wrap">
     <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
     <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-dropdown"&gt;
-  &lt;button class="sui-btn sui-btn-primary sui-dropdown-toggle" data-sui-dropdown&gt;Primary&lt;/button&gt;
-  &lt;div class="sui-dropdown-menu"&gt;
-    &lt;button class="sui-dropdown-item"&gt;Action One&lt;/button&gt;
-    &lt;button class="sui-dropdown-item"&gt;Action Two&lt;/button&gt;
+  &lt;button class="sui-btn sui-btn-primary sui-dropdown-toggle" data-sui-dropdown aria-expanded="false" aria-haspopup="true"&gt;Primary&lt;/button&gt;
+  &lt;div class="sui-dropdown-menu" role="menu"&gt;
+    &lt;button class="sui-dropdown-item" role="menuitem"&gt;Action One&lt;/button&gt;
+    &lt;button class="sui-dropdown-item" role="menuitem"&gt;Action Two&lt;/button&gt;
   &lt;/div&gt;
 &lt;/div&gt;
 
 &lt;div class="sui-dropdown"&gt;
-  &lt;button class="sui-btn sui-btn-success sui-dropdown-toggle" data-sui-dropdown&gt;Success&lt;/button&gt;
-  &lt;div class="sui-dropdown-menu"&gt;
-    &lt;button class="sui-dropdown-item"&gt;Action One&lt;/button&gt;
-    &lt;button class="sui-dropdown-item"&gt;Action Two&lt;/button&gt;
+  &lt;button class="sui-btn sui-btn-success sui-dropdown-toggle" data-sui-dropdown aria-expanded="false" aria-haspopup="true"&gt;Success&lt;/button&gt;
+  &lt;div class="sui-dropdown-menu" role="menu"&gt;
+    &lt;button class="sui-dropdown-item" role="menuitem"&gt;Action One&lt;/button&gt;
+    &lt;button class="sui-dropdown-item" role="menuitem"&gt;Action Two&lt;/button&gt;
   &lt;/div&gt;
 &lt;/div&gt;
 
 &lt;div class="sui-dropdown"&gt;
-  &lt;button class="sui-btn sui-btn-danger sui-dropdown-toggle" data-sui-dropdown&gt;Danger&lt;/button&gt;
-  &lt;div class="sui-dropdown-menu"&gt;
-    &lt;button class="sui-dropdown-item"&gt;Action One&lt;/button&gt;
-    &lt;button class="sui-dropdown-item"&gt;Action Two&lt;/button&gt;
+  &lt;button class="sui-btn sui-btn-danger sui-dropdown-toggle" data-sui-dropdown aria-expanded="false" aria-haspopup="true"&gt;Danger&lt;/button&gt;
+  &lt;div class="sui-dropdown-menu" role="menu"&gt;
+    &lt;button class="sui-dropdown-item" role="menuitem"&gt;Action One&lt;/button&gt;
+    &lt;button class="sui-dropdown-item" role="menuitem"&gt;Action Two&lt;/button&gt;
   &lt;/div&gt;
 &lt;/div&gt;
 
 &lt;div class="sui-dropdown"&gt;
-  &lt;button class="sui-btn sui-btn-outline sui-btn-primary sui-dropdown-toggle" data-sui-dropdown&gt;Outline&lt;/button&gt;
-  &lt;div class="sui-dropdown-menu"&gt;
-    &lt;button class="sui-dropdown-item"&gt;Action One&lt;/button&gt;
-    &lt;button class="sui-dropdown-item"&gt;Action Two&lt;/button&gt;
+  &lt;button class="sui-btn sui-btn-outline sui-btn-primary sui-dropdown-toggle" data-sui-dropdown aria-expanded="false" aria-haspopup="true"&gt;Outline&lt;/button&gt;
+  &lt;div class="sui-dropdown-menu" role="menu"&gt;
+    &lt;button class="sui-dropdown-item" role="menuitem"&gt;Action One&lt;/button&gt;
+    &lt;button class="sui-dropdown-item" role="menuitem"&gt;Action Two&lt;/button&gt;
   &lt;/div&gt;
 &lt;/div&gt;</pre></div>
   </div>
 </div>
 
-<!-- Split button -->
+<!-- Split Button -->
 <div class="pg-section" id="section-3">
-  <h3 class="pg-section-title">Split button</h3>
+  <h3 class="pg-section-title">Split Button</h3>
   <div class="pg-section-row" style="gap:12px;flex-wrap:wrap;">
     <div class="sui-dropdown-split">
       <button class="sui-btn sui-btn-primary">Save</button>
-      <button class="sui-btn sui-btn-primary sui-dropdown-toggle" data-sui-dropdown aria-expanded="false" aria-haspopup="true"></button>
+      <button class="sui-btn sui-btn-primary sui-dropdown-toggle" data-sui-dropdown aria-expanded="false" aria-haspopup="true" aria-label="More save options"></button>
       <div class="sui-dropdown-menu" role="menu">
         <button class="sui-dropdown-item" role="menuitem">Save as draft</button>
         <button class="sui-dropdown-item" role="menuitem">Save and publish</button>
@@ -128,10 +129,10 @@ toc:
     </div>
     <div class="sui-dropdown-split">
       <button class="sui-btn sui-btn-danger">Delete</button>
-      <button class="sui-btn sui-btn-danger sui-dropdown-toggle" data-sui-dropdown aria-expanded="false" aria-haspopup="true"></button>
+      <button class="sui-btn sui-btn-danger sui-dropdown-toggle" data-sui-dropdown aria-expanded="false" aria-haspopup="true" aria-label="More delete options"></button>
       <div class="sui-dropdown-menu" role="menu">
         <button class="sui-dropdown-item" role="menuitem">Move to trash</button>
-        <button class="sui-dropdown-item" role="menuitem" style="color:var(--sui-danger);">Delete permanently</button>
+        <button class="sui-dropdown-item" role="menuitem" style="color:var(--sui-danger-text);">Delete permanently</button>
       </div>
     </div>
   </div>
@@ -139,19 +140,28 @@ toc:
     <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
     <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-dropdown-split"&gt;
   &lt;button class="sui-btn sui-btn-primary"&gt;Save&lt;/button&gt;
-  &lt;button class="sui-btn sui-btn-primary sui-dropdown-toggle" data-sui-dropdown&gt;&lt;/button&gt;
-  &lt;div class="sui-dropdown-menu"&gt;
-    &lt;button class="sui-dropdown-item"&gt;Save as draft&lt;/button&gt;
-    &lt;button class="sui-dropdown-item"&gt;Save and publish&lt;/button&gt;
-    &lt;button class="sui-dropdown-item"&gt;Save as template&lt;/button&gt;
+  &lt;button class="sui-btn sui-btn-primary sui-dropdown-toggle" data-sui-dropdown aria-expanded="false" aria-haspopup="true" aria-label="More save options"&gt;&lt;/button&gt;
+  &lt;div class="sui-dropdown-menu" role="menu"&gt;
+    &lt;button class="sui-dropdown-item" role="menuitem"&gt;Save as draft&lt;/button&gt;
+    &lt;button class="sui-dropdown-item" role="menuitem"&gt;Save and publish&lt;/button&gt;
+    &lt;button class="sui-dropdown-item" role="menuitem"&gt;Save as template&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="sui-dropdown-split"&gt;
+  &lt;button class="sui-btn sui-btn-danger"&gt;Delete&lt;/button&gt;
+  &lt;button class="sui-btn sui-btn-danger sui-dropdown-toggle" data-sui-dropdown aria-expanded="false" aria-haspopup="true" aria-label="More delete options"&gt;&lt;/button&gt;
+  &lt;div class="sui-dropdown-menu" role="menu"&gt;
+    &lt;button class="sui-dropdown-item" role="menuitem"&gt;Move to trash&lt;/button&gt;
+    &lt;button class="sui-dropdown-item" role="menuitem" style="color:var(--sui-danger-text);"&gt;Delete permanently&lt;/button&gt;
   &lt;/div&gt;
 &lt;/div&gt;</pre></div>
   </div>
 </div>
 
-<!-- With links -->
+<!-- With Links -->
 <div class="pg-section" id="section-4">
-  <h3 class="pg-section-title">With links</h3>
+  <h3 class="pg-section-title">With Links</h3>
   <div class="pg-section-row">
     <div class="sui-dropdown">
       <button class="sui-btn sui-dropdown-toggle" data-sui-dropdown aria-expanded="false" aria-haspopup="true">Navigate</button>
@@ -165,19 +175,19 @@ toc:
   <div class="pg-code-wrap">
     <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
     <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-dropdown"&gt;
-  &lt;button class="sui-btn sui-dropdown-toggle" data-sui-dropdown&gt;Navigate&lt;/button&gt;
-  &lt;div class="sui-dropdown-menu"&gt;
-    &lt;a href="#" class="sui-dropdown-item"&gt;Documentation&lt;/a&gt;
-    &lt;a href="#" class="sui-dropdown-item"&gt;API Reference&lt;/a&gt;
-    &lt;a href="#" class="sui-dropdown-item"&gt;Examples&lt;/a&gt;
+  &lt;button class="sui-btn sui-dropdown-toggle" data-sui-dropdown aria-expanded="false" aria-haspopup="true"&gt;Navigate&lt;/button&gt;
+  &lt;div class="sui-dropdown-menu" role="menu"&gt;
+    &lt;a href="#" class="sui-dropdown-item" role="menuitem"&gt;Documentation&lt;/a&gt;
+    &lt;a href="#" class="sui-dropdown-item" role="menuitem"&gt;API Reference&lt;/a&gt;
+    &lt;a href="#" class="sui-dropdown-item" role="menuitem"&gt;Examples&lt;/a&gt;
   &lt;/div&gt;
 &lt;/div&gt;</pre></div>
   </div>
 </div>
 
-<!-- Headers & dividers -->
+<!-- Headers & Dividers -->
 <div class="pg-section" id="section-5">
-  <h3 class="pg-section-title">Headers & dividers</h3>
+  <h3 class="pg-section-title">Headers & Dividers</h3>
   <div class="pg-section-row">
     <div class="sui-dropdown">
       <button class="sui-btn sui-dropdown-toggle" data-sui-dropdown aria-expanded="false" aria-haspopup="true">More Actions</button>
@@ -192,34 +202,34 @@ toc:
         <button class="sui-dropdown-item" role="menuitem">Copy</button>
         <button class="sui-dropdown-item" role="menuitem">Paste</button>
         <div class="sui-dropdown-divider"></div>
-        <button class="sui-dropdown-item" role="menuitem" style="color:var(--sui-danger);">Delete</button>
+        <button class="sui-dropdown-item" role="menuitem" style="color:var(--sui-danger-text);">Delete</button>
       </div>
     </div>
   </div>
   <div class="pg-code-wrap">
     <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
     <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-dropdown"&gt;
-  &lt;button class="sui-btn sui-dropdown-toggle" data-sui-dropdown&gt;More Actions&lt;/button&gt;
-  &lt;div class="sui-dropdown-menu"&gt;
+  &lt;button class="sui-btn sui-dropdown-toggle" data-sui-dropdown aria-expanded="false" aria-haspopup="true"&gt;More Actions&lt;/button&gt;
+  &lt;div class="sui-dropdown-menu" role="menu"&gt;
     &lt;span class="sui-dropdown-header"&gt;File&lt;/span&gt;
-    &lt;button class="sui-dropdown-item"&gt;New&lt;/button&gt;
-    &lt;button class="sui-dropdown-item"&gt;Open&lt;/button&gt;
-    &lt;button class="sui-dropdown-item"&gt;Save&lt;/button&gt;
+    &lt;button class="sui-dropdown-item" role="menuitem"&gt;New&lt;/button&gt;
+    &lt;button class="sui-dropdown-item" role="menuitem"&gt;Open&lt;/button&gt;
+    &lt;button class="sui-dropdown-item" role="menuitem"&gt;Save&lt;/button&gt;
     &lt;div class="sui-dropdown-divider"&gt;&lt;/div&gt;
     &lt;span class="sui-dropdown-header"&gt;Edit&lt;/span&gt;
-    &lt;button class="sui-dropdown-item"&gt;Cut&lt;/button&gt;
-    &lt;button class="sui-dropdown-item"&gt;Copy&lt;/button&gt;
-    &lt;button class="sui-dropdown-item"&gt;Paste&lt;/button&gt;
+    &lt;button class="sui-dropdown-item" role="menuitem"&gt;Cut&lt;/button&gt;
+    &lt;button class="sui-dropdown-item" role="menuitem"&gt;Copy&lt;/button&gt;
+    &lt;button class="sui-dropdown-item" role="menuitem"&gt;Paste&lt;/button&gt;
     &lt;div class="sui-dropdown-divider"&gt;&lt;/div&gt;
-    &lt;button class="sui-dropdown-item" style="color:var(--sui-danger);"&gt;Delete&lt;/button&gt;
+    &lt;button class="sui-dropdown-item" role="menuitem" style="color:var(--sui-danger-text);"&gt;Delete&lt;/button&gt;
   &lt;/div&gt;
 &lt;/div&gt;</pre></div>
   </div>
 </div>
 
-<!-- Disabled items -->
+<!-- Disabled Items -->
 <div class="pg-section" id="section-6">
-  <h3 class="pg-section-title">Disabled items</h3>
+  <h3 class="pg-section-title">Disabled Items</h3>
   <div class="pg-section-row">
     <div class="sui-dropdown">
       <button class="sui-btn sui-dropdown-toggle" data-sui-dropdown aria-expanded="false" aria-haspopup="true">User Menu</button>
@@ -235,13 +245,13 @@ toc:
   <div class="pg-code-wrap">
     <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
     <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-dropdown"&gt;
-  &lt;button class="sui-btn sui-dropdown-toggle" data-sui-dropdown&gt;User Menu&lt;/button&gt;
-  &lt;div class="sui-dropdown-menu"&gt;
-    &lt;button class="sui-dropdown-item active"&gt;Dashboard&lt;/button&gt;
-    &lt;button class="sui-dropdown-item"&gt;Settings&lt;/button&gt;
-    &lt;button class="sui-dropdown-item disabled"&gt;Admin Panel&lt;/button&gt;
+  &lt;button class="sui-btn sui-dropdown-toggle" data-sui-dropdown aria-expanded="false" aria-haspopup="true"&gt;User Menu&lt;/button&gt;
+  &lt;div class="sui-dropdown-menu" role="menu"&gt;
+    &lt;button class="sui-dropdown-item active" role="menuitem"&gt;Dashboard&lt;/button&gt;
+    &lt;button class="sui-dropdown-item" role="menuitem"&gt;Settings&lt;/button&gt;
+    &lt;button class="sui-dropdown-item disabled" role="menuitem"&gt;Admin Panel&lt;/button&gt;
     &lt;div class="sui-dropdown-divider"&gt;&lt;/div&gt;
-    &lt;button class="sui-dropdown-item"&gt;Log Out&lt;/button&gt;
+    &lt;button class="sui-dropdown-item" role="menuitem"&gt;Log Out&lt;/button&gt;
   &lt;/div&gt;
 &lt;/div&gt;</pre></div>
   </div>
@@ -284,46 +294,46 @@ toc:
     <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
     <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;!-- Down (default) --&gt;
 &lt;div class="sui-dropdown"&gt;
-  &lt;button class="sui-btn sui-dropdown-toggle" data-sui-dropdown&gt;Dropdown&lt;/button&gt;
-  &lt;div class="sui-dropdown-menu"&gt;
-    &lt;button class="sui-dropdown-item"&gt;Action One&lt;/button&gt;
-    &lt;button class="sui-dropdown-item"&gt;Action Two&lt;/button&gt;
+  &lt;button class="sui-btn sui-dropdown-toggle" data-sui-dropdown aria-expanded="false" aria-haspopup="true"&gt;Dropdown&lt;/button&gt;
+  &lt;div class="sui-dropdown-menu" role="menu"&gt;
+    &lt;button class="sui-dropdown-item" role="menuitem"&gt;Action One&lt;/button&gt;
+    &lt;button class="sui-dropdown-item" role="menuitem"&gt;Action Two&lt;/button&gt;
   &lt;/div&gt;
 &lt;/div&gt;
 
 &lt;!-- Up --&gt;
 &lt;div class="sui-dropdown sui-dropup"&gt;
-  &lt;button class="sui-btn sui-dropdown-toggle" data-sui-dropdown&gt;Dropup&lt;/button&gt;
-  &lt;div class="sui-dropdown-menu"&gt;
-    &lt;button class="sui-dropdown-item"&gt;Action One&lt;/button&gt;
-    &lt;button class="sui-dropdown-item"&gt;Action Two&lt;/button&gt;
+  &lt;button class="sui-btn sui-dropdown-toggle" data-sui-dropdown aria-expanded="false" aria-haspopup="true"&gt;Dropup&lt;/button&gt;
+  &lt;div class="sui-dropdown-menu" role="menu"&gt;
+    &lt;button class="sui-dropdown-item" role="menuitem"&gt;Action One&lt;/button&gt;
+    &lt;button class="sui-dropdown-item" role="menuitem"&gt;Action Two&lt;/button&gt;
   &lt;/div&gt;
 &lt;/div&gt;
 
 &lt;!-- Right --&gt;
 &lt;div class="sui-dropdown sui-dropend"&gt;
-  &lt;button class="sui-btn sui-dropdown-toggle" data-sui-dropdown&gt;Dropend&lt;/button&gt;
-  &lt;div class="sui-dropdown-menu"&gt;
-    &lt;button class="sui-dropdown-item"&gt;Action One&lt;/button&gt;
-    &lt;button class="sui-dropdown-item"&gt;Action Two&lt;/button&gt;
+  &lt;button class="sui-btn sui-dropdown-toggle" data-sui-dropdown aria-expanded="false" aria-haspopup="true"&gt;Dropend&lt;/button&gt;
+  &lt;div class="sui-dropdown-menu" role="menu"&gt;
+    &lt;button class="sui-dropdown-item" role="menuitem"&gt;Action One&lt;/button&gt;
+    &lt;button class="sui-dropdown-item" role="menuitem"&gt;Action Two&lt;/button&gt;
   &lt;/div&gt;
 &lt;/div&gt;
 
 &lt;!-- Left --&gt;
 &lt;div class="sui-dropdown sui-dropstart"&gt;
-  &lt;button class="sui-btn sui-dropdown-toggle" data-sui-dropdown&gt;Dropstart&lt;/button&gt;
-  &lt;div class="sui-dropdown-menu"&gt;
-    &lt;button class="sui-dropdown-item"&gt;Action One&lt;/button&gt;
-    &lt;button class="sui-dropdown-item"&gt;Action Two&lt;/button&gt;
+  &lt;button class="sui-btn sui-dropdown-toggle" data-sui-dropdown aria-expanded="false" aria-haspopup="true"&gt;Dropstart&lt;/button&gt;
+  &lt;div class="sui-dropdown-menu" role="menu"&gt;
+    &lt;button class="sui-dropdown-item" role="menuitem"&gt;Action One&lt;/button&gt;
+    &lt;button class="sui-dropdown-item" role="menuitem"&gt;Action Two&lt;/button&gt;
   &lt;/div&gt;
 &lt;/div&gt;</pre></div>
   </div>
 </div>
 
-<!-- Menu alignment -->
+<!-- Menu Alignment -->
 <div class="pg-section" id="section-8">
-  <h3 class="pg-section-title">Menu alignment</h3>
-  <p style="font-size:13px;color:var(--sui-text-muted);margin-bottom:16px;">Controls which edge of the menu aligns with the button. Default aligns the left edges; <code>sui-dropdown-menu-end</code> aligns the right edges.</p>
+  <h3 class="pg-section-title">Menu Alignment</h3>
+  <p style="font-size:13px;color:var(--sui-text-light);margin-bottom:16px;">Add <code>sui-dropdown-menu-end</code> to align the menu to the button's end edge.</p>
   <div class="pg-section-row" style="gap:12px;flex-wrap:wrap;">
     <div class="sui-dropdown">
       <button class="sui-btn sui-dropdown-toggle" data-sui-dropdown aria-expanded="false" aria-haspopup="true">Start-aligned</button>
@@ -344,19 +354,19 @@ toc:
     <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
     <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;!-- Start-aligned (default) --&gt;
 &lt;div class="sui-dropdown"&gt;
-  &lt;button class="sui-btn sui-dropdown-toggle" data-sui-dropdown&gt;Start-aligned&lt;/button&gt;
-  &lt;div class="sui-dropdown-menu"&gt;
-    &lt;button class="sui-dropdown-item"&gt;Menu left edge matches&lt;/button&gt;
-    &lt;button class="sui-dropdown-item"&gt;button left edge&lt;/button&gt;
+  &lt;button class="sui-btn sui-dropdown-toggle" data-sui-dropdown aria-expanded="false" aria-haspopup="true"&gt;Start-aligned&lt;/button&gt;
+  &lt;div class="sui-dropdown-menu" role="menu"&gt;
+    &lt;button class="sui-dropdown-item" role="menuitem"&gt;Menu left edge matches&lt;/button&gt;
+    &lt;button class="sui-dropdown-item" role="menuitem"&gt;button left edge&lt;/button&gt;
   &lt;/div&gt;
 &lt;/div&gt;
 
 &lt;!-- End-aligned --&gt;
 &lt;div class="sui-dropdown"&gt;
-  &lt;button class="sui-btn sui-dropdown-toggle" data-sui-dropdown&gt;End-aligned&lt;/button&gt;
-  &lt;div class="sui-dropdown-menu sui-dropdown-menu-end"&gt;
-    &lt;button class="sui-dropdown-item"&gt;Menu right edge matches&lt;/button&gt;
-    &lt;button class="sui-dropdown-item"&gt;button right edge&lt;/button&gt;
+  &lt;button class="sui-btn sui-dropdown-toggle" data-sui-dropdown aria-expanded="false" aria-haspopup="true"&gt;End-aligned&lt;/button&gt;
+  &lt;div class="sui-dropdown-menu sui-dropdown-menu-end" role="menu"&gt;
+    &lt;button class="sui-dropdown-item" role="menuitem"&gt;Menu right edge matches&lt;/button&gt;
+    &lt;button class="sui-dropdown-item" role="menuitem"&gt;button right edge&lt;/button&gt;
   &lt;/div&gt;
 &lt;/div&gt;</pre></div>
   </div>
@@ -365,9 +375,10 @@ toc:
 <!-- Sizing -->
 <div class="pg-section" id="section-9">
   <h3 class="pg-section-title">Sizing</h3>
+  <p style="font-size:13px;color:var(--sui-text-light);margin-bottom:16px;"><code>sui-dropdown-sm</code> and <code>sui-dropdown-lg</code> resize the menu items.</p>
   <div class="pg-section-row" style="gap:12px;flex-wrap:wrap;">
     <div class="sui-dropdown sui-dropdown-sm">
-      <button class="sui-btn sui-dropdown-toggle" data-sui-dropdown aria-expanded="false" aria-haspopup="true">Small</button>
+      <button class="sui-btn sui-btn-sm sui-dropdown-toggle" data-sui-dropdown aria-expanded="false" aria-haspopup="true">Small</button>
       <div class="sui-dropdown-menu" role="menu">
         <button class="sui-dropdown-item" role="menuitem">Action One</button>
         <button class="sui-dropdown-item" role="menuitem">Action Two</button>
@@ -375,7 +386,7 @@ toc:
       </div>
     </div>
     <div class="sui-dropdown sui-dropdown-lg">
-      <button class="sui-btn sui-dropdown-toggle" data-sui-dropdown aria-expanded="false" aria-haspopup="true">Large</button>
+      <button class="sui-btn sui-btn-lg sui-dropdown-toggle" data-sui-dropdown aria-expanded="false" aria-haspopup="true">Large</button>
       <div class="sui-dropdown-menu" role="menu">
         <button class="sui-dropdown-item" role="menuitem">Action One</button>
         <button class="sui-dropdown-item" role="menuitem">Action Two</button>
@@ -387,22 +398,47 @@ toc:
     <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
     <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;!-- Small --&gt;
 &lt;div class="sui-dropdown sui-dropdown-sm"&gt;
-  &lt;button class="sui-btn sui-dropdown-toggle" data-sui-dropdown&gt;Small&lt;/button&gt;
-  &lt;div class="sui-dropdown-menu"&gt;
-    &lt;button class="sui-dropdown-item"&gt;Action One&lt;/button&gt;
-    &lt;button class="sui-dropdown-item"&gt;Action Two&lt;/button&gt;
-    &lt;button class="sui-dropdown-item"&gt;Action Three&lt;/button&gt;
+  &lt;button class="sui-btn sui-btn-sm sui-dropdown-toggle" data-sui-dropdown aria-expanded="false" aria-haspopup="true"&gt;Small&lt;/button&gt;
+  &lt;div class="sui-dropdown-menu" role="menu"&gt;
+    &lt;button class="sui-dropdown-item" role="menuitem"&gt;Action One&lt;/button&gt;
+    &lt;button class="sui-dropdown-item" role="menuitem"&gt;Action Two&lt;/button&gt;
+    &lt;button class="sui-dropdown-item" role="menuitem"&gt;Action Three&lt;/button&gt;
   &lt;/div&gt;
 &lt;/div&gt;
 
 &lt;!-- Large --&gt;
 &lt;div class="sui-dropdown sui-dropdown-lg"&gt;
-  &lt;button class="sui-btn sui-dropdown-toggle" data-sui-dropdown&gt;Large&lt;/button&gt;
-  &lt;div class="sui-dropdown-menu"&gt;
-    &lt;button class="sui-dropdown-item"&gt;Action One&lt;/button&gt;
-    &lt;button class="sui-dropdown-item"&gt;Action Two&lt;/button&gt;
-    &lt;button class="sui-dropdown-item"&gt;Action Three&lt;/button&gt;
+  &lt;button class="sui-btn sui-btn-lg sui-dropdown-toggle" data-sui-dropdown aria-expanded="false" aria-haspopup="true"&gt;Large&lt;/button&gt;
+  &lt;div class="sui-dropdown-menu" role="menu"&gt;
+    &lt;button class="sui-dropdown-item" role="menuitem"&gt;Action One&lt;/button&gt;
+    &lt;button class="sui-dropdown-item" role="menuitem"&gt;Action Two&lt;/button&gt;
+    &lt;button class="sui-dropdown-item" role="menuitem"&gt;Action Three&lt;/button&gt;
   &lt;/div&gt;
 &lt;/div&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Reference -->
+<div class="pg-section" id="section-10">
+  <h3 class="pg-section-title">Reference</h3>
+  <div class="docs-table-wrap">
+    <table class="sui-table sui-table-compact">
+      <thead>
+        <tr><th scope="col" style="width:40%;">Class / Attribute / Key</th><th scope="col">Description</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><code>data-sui-dropdown</code></td><td>Marks the toggle that opens and closes its menu; an outside click closes it.</td></tr>
+        <tr><td><code>sui-dropup</code> / <code>sui-dropend</code> / <code>sui-dropstart</code></td><td>Opens the menu above, to the end side or to the start side.</td></tr>
+        <tr><td><code>sui-dropdown-menu-end</code></td><td>Aligns the menu to the toggle's end edge.</td></tr>
+        <tr><td><code>sui-dropdown-sm</code> / <code>sui-dropdown-lg</code></td><td>Smaller or larger menu items.</td></tr>
+        <tr><td><code>sui-dropdown-no-arrow</code></td><td>Hides the toggle's caret (on <code>.sui-dropdown</code> or the toggle).</td></tr>
+        <tr><td><code>sui-dropdown-header</code></td><td>Small uppercase group label inside the menu.</td></tr>
+        <tr><td><code>sui-dropdown-divider</code></td><td>Line between item groups.</td></tr>
+        <tr><td><code>sui-dropdown-text</code></td><td>Muted plain text inside the menu.</td></tr>
+        <tr><td><code>active</code> / <code>disabled</code></td><td>Marks the current item, or dims an item and skips it in keyboard navigation.</td></tr>
+        <tr><td><kbd class="sui-kbd-inline">&uarr;</kbd> / <kbd class="sui-kbd-inline">&darr;</kbd></td><td>Move focus through the open menu's items (wraps).</td></tr>
+        <tr><td><kbd class="sui-kbd-inline">Esc</kbd></td><td>Close the menu; focus returns to the toggle.</td></tr>
+      </tbody>
+    </table>
   </div>
 </div>

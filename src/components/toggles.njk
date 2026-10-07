@@ -10,6 +10,7 @@ toc:
   - Checkboxes
   - Checkbox Colors
   - Radio Buttons
+  - Radio Colors
   - Radio Cards
   - Checkbox Cards
 ---
@@ -68,15 +69,20 @@ toc:
   <div class="pg-section-row">
     <label class="sui-checkbox"><input type="checkbox" checked><span class="sui-check-mark"></span>Checked</label>
     <label class="sui-checkbox"><input type="checkbox"><span class="sui-check-mark"></span>Unchecked</label>
-    <label class="sui-checkbox"><input type="checkbox" class="indeterminate"><span class="sui-check-mark"></span>Indeterminate</label>
+    <label class="sui-checkbox"><input type="checkbox" id="demo-check-mixed"><span class="sui-check-mark"></span>Indeterminate</label>
     <label class="sui-checkbox"><input type="checkbox" disabled><span class="sui-check-mark"></span>Disabled</label>
   </div>
   <div class="pg-code-wrap">
     <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
     <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;label class="sui-checkbox"&gt;&lt;input type="checkbox" checked&gt;&lt;span class="sui-check-mark"&gt;&lt;/span&gt;Checked&lt;/label&gt;
 &lt;label class="sui-checkbox"&gt;&lt;input type="checkbox"&gt;&lt;span class="sui-check-mark"&gt;&lt;/span&gt;Unchecked&lt;/label&gt;
-&lt;label class="sui-checkbox"&gt;&lt;input type="checkbox" class="indeterminate"&gt;&lt;span class="sui-check-mark"&gt;&lt;/span&gt;Indeterminate&lt;/label&gt;
-&lt;label class="sui-checkbox"&gt;&lt;input type="checkbox" disabled&gt;&lt;span class="sui-check-mark"&gt;&lt;/span&gt;Disabled&lt;/label&gt;</pre></div>
+&lt;label class="sui-checkbox"&gt;&lt;input type="checkbox" id="check-mixed"&gt;&lt;span class="sui-check-mark"&gt;&lt;/span&gt;Indeterminate&lt;/label&gt;
+&lt;label class="sui-checkbox"&gt;&lt;input type="checkbox" disabled&gt;&lt;span class="sui-check-mark"&gt;&lt;/span&gt;Disabled&lt;/label&gt;
+
+&lt;!-- Indeterminate is a JS property, not an attribute --&gt;
+&lt;script&gt;
+  document.getElementById('check-mixed').indeterminate = true;
+&lt;/script&gt;</pre></div>
   </div>
 </div>
 
@@ -102,25 +108,32 @@ toc:
     <label class="sui-radio"><input type="radio" name="demo-radio"><span class="sui-radio-mark"></span>Option B</label>
     <label class="sui-radio"><input type="radio" name="demo-radio"><span class="sui-radio-mark"></span>Option C</label>
   </div>
-  <div class="pg-section-row" style="margin-top:1rem;">
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;label class="sui-radio"&gt;&lt;input type="radio" name="demo-radio" checked&gt;&lt;span class="sui-radio-mark"&gt;&lt;/span&gt;Option A&lt;/label&gt;
+&lt;label class="sui-radio"&gt;&lt;input type="radio" name="demo-radio"&gt;&lt;span class="sui-radio-mark"&gt;&lt;/span&gt;Option B&lt;/label&gt;
+&lt;label class="sui-radio"&gt;&lt;input type="radio" name="demo-radio"&gt;&lt;span class="sui-radio-mark"&gt;&lt;/span&gt;Option C&lt;/label&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Radio Colors -->
+<div class="pg-section" id="section-7">
+  <h3 class="pg-section-title">Radio Colors</h3>
+  <div class="pg-section-row">
     <label class="sui-radio sui-radio-success"><input type="radio" name="demo-radio-color1" checked><span class="sui-radio-mark"></span>Success</label>
     <label class="sui-radio sui-radio-danger"><input type="radio" name="demo-radio-color2" checked><span class="sui-radio-mark"></span>Danger</label>
   </div>
   <div class="pg-code-wrap">
     <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
-    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;label class="sui-radio"&gt;&lt;input type="radio" name="demo-radio" checked&gt;&lt;span class="sui-radio-mark"&gt;&lt;/span&gt;Option A&lt;/label&gt;
-&lt;label class="sui-radio"&gt;&lt;input type="radio" name="demo-radio"&gt;&lt;span class="sui-radio-mark"&gt;&lt;/span&gt;Option B&lt;/label&gt;
-&lt;label class="sui-radio"&gt;&lt;input type="radio" name="demo-radio"&gt;&lt;span class="sui-radio-mark"&gt;&lt;/span&gt;Option C&lt;/label&gt;
-
-&lt;label class="sui-radio sui-radio-success"&gt;&lt;input type="radio" name="demo-radio-color1" checked&gt;&lt;span class="sui-radio-mark"&gt;&lt;/span&gt;Success&lt;/label&gt;
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;label class="sui-radio sui-radio-success"&gt;&lt;input type="radio" name="demo-radio-color1" checked&gt;&lt;span class="sui-radio-mark"&gt;&lt;/span&gt;Success&lt;/label&gt;
 &lt;label class="sui-radio sui-radio-danger"&gt;&lt;input type="radio" name="demo-radio-color2" checked&gt;&lt;span class="sui-radio-mark"&gt;&lt;/span&gt;Danger&lt;/label&gt;</pre></div>
   </div>
 </div>
 
 <!-- Radio Cards -->
-<div class="pg-section" id="section-7">
+<div class="pg-section" id="section-8">
   <h3 class="pg-section-title">Radio Cards</h3>
-  <p class="pg-section-desc">Click an entire card to select. Uses a hidden radio input — only one can be selected at a time.</p>
+  <p class="pg-section-desc">Wrap a radio in <code>sui-radio-card</code> to make the whole card selectable.</p>
   <div class="pg-section-row">
     <div style="display:flex;flex-direction:column;gap:12px;width:100%;max-width:400px;">
       <label class="sui-radio-card">
@@ -169,7 +182,7 @@ toc:
   &lt;div class="sui-radio-card-content"&gt;
     &lt;div&gt;
       &lt;div class="sui-radio-card-title"&gt;Pro — $29/mo&lt;/div&gt;
-      &lt;div class="sui-radio-card-desc"&gt;Unlimited projects, 50 GB, priority support&lt;/div&gt;
+      &lt;div class="sui-radio-card-desc"&gt;Unlimited projects, 50 GB storage, priority support&lt;/div&gt;
     &lt;/div&gt;
   &lt;/div&gt;
 &lt;/label&gt;
@@ -179,7 +192,7 @@ toc:
   &lt;div class="sui-radio-card-content"&gt;
     &lt;div&gt;
       &lt;div class="sui-radio-card-title"&gt;Enterprise — $99/mo&lt;/div&gt;
-      &lt;div class="sui-radio-card-desc"&gt;Unlimited everything, dedicated manager&lt;/div&gt;
+      &lt;div class="sui-radio-card-desc"&gt;Unlimited everything, dedicated account manager&lt;/div&gt;
     &lt;/div&gt;
   &lt;/div&gt;
 &lt;/label&gt;</pre></div>
@@ -187,9 +200,9 @@ toc:
 </div>
 
 <!-- Checkbox Cards -->
-<div class="pg-section" id="section-8">
+<div class="pg-section" id="section-9">
   <h3 class="pg-section-title">Checkbox Cards</h3>
-  <p class="pg-section-desc">Same pattern but with checkboxes — multiple can be selected.</p>
+  <p class="pg-section-desc">Use <code>sui-checkbox-card</code> to allow several cards to be selected.</p>
   <div class="pg-section-row">
     <div style="display:flex;flex-direction:column;gap:12px;width:100%;max-width:400px;">
       <label class="sui-checkbox-card">
@@ -256,9 +269,5 @@ toc:
 </div>
 
 <script>
-document.addEventListener('DOMContentLoaded', function() {
-  document.querySelectorAll('input.indeterminate').forEach(function(el) {
-    el.indeterminate = true;
-  });
-});
+document.getElementById('demo-check-mixed').indeterminate = true;
 </script>

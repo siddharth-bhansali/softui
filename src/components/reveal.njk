@@ -1,7 +1,7 @@
 ---
 layout: component.njk
 title: Scroll Reveal
-description: Fade and slide content in as it scrolls into view. Directions, staggered groups, repeat on scroll, and a JS API — with no hidden content for no-JS or reduced-motion users.
+description: Fade and slide content in as it scrolls into view. Supports directions, effects, stagger and repeat.
 componentId: reveal
 hasControls: false
 requiresJs: true
@@ -38,15 +38,13 @@ toc:
 
 <!-- Basic -->
 <div class="pg-section" id="section-1">
-  <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:16px;">
-    <h3 class="pg-section-title" style="margin-bottom:0;">Basic</h3>
-    <button class="sui-btn sui-btn-sm" onclick="replayReveal(this)">Replay</button>
-  </div>
+  <h3 class="pg-section-title">Basic</h3>
   <div class="pg-section-row">
     <div class="sui-card sui-reveal" style="padding:24px;max-width:360px;">
       <h4 style="margin-bottom:8px;">Fades up into view</h4>
       <p style="color:var(--sui-text-muted);font-size:14px;">Revealed once, the first time it enters the viewport.</p>
     </div>
+    <button class="sui-btn sui-btn-sm" onclick="replayReveal(this)">Replay</button>
   </div>
   <div class="pg-code-wrap">
     <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
@@ -59,10 +57,7 @@ toc:
 
 <!-- Directions -->
 <div class="pg-section" id="section-2">
-  <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:16px;">
-    <h3 class="pg-section-title" style="margin-bottom:0;">Directions</h3>
-    <button class="sui-btn sui-btn-sm" onclick="replayReveal(this)">Replay</button>
-  </div>
+  <h3 class="pg-section-title">Directions</h3>
   <div class="pg-section-row">
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:16px;width:100%;">
       <div class="sui-card sui-reveal" style="padding:20px;text-align:center;">Up</div>
@@ -70,6 +65,7 @@ toc:
       <div class="sui-card sui-reveal sui-reveal-start" style="padding:20px;text-align:center;">Start</div>
       <div class="sui-card sui-reveal sui-reveal-end" style="padding:20px;text-align:center;">End</div>
     </div>
+    <button class="sui-btn sui-btn-sm" onclick="replayReveal(this)">Replay</button>
   </div>
   <div class="pg-code-wrap">
     <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
@@ -84,10 +80,7 @@ toc:
 
 <!-- Effects -->
 <div class="pg-section" id="section-3">
-  <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:16px;">
-    <h3 class="pg-section-title" style="margin-bottom:0;">Effects</h3>
-    <button class="sui-btn sui-btn-sm" onclick="replayReveal(this)">Replay</button>
-  </div>
+  <h3 class="pg-section-title">Effects</h3>
   <div class="pg-section-row">
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:16px;width:100%;">
       <div class="sui-card sui-reveal sui-reveal-fade" style="padding:20px;text-align:center;">Fade</div>
@@ -95,6 +88,7 @@ toc:
       <div class="sui-card sui-reveal sui-reveal-zoom-out" style="padding:20px;text-align:center;">Zoom Out</div>
       <div class="sui-card sui-reveal sui-reveal-blur" style="padding:20px;text-align:center;">Blur</div>
     </div>
+    <button class="sui-btn sui-btn-sm" onclick="replayReveal(this)">Replay</button>
   </div>
   <div class="pg-code-wrap">
     <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
@@ -109,16 +103,14 @@ toc:
 
 <!-- Speed -->
 <div class="pg-section" id="section-4">
-  <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:16px;">
-    <h3 class="pg-section-title" style="margin-bottom:0;">Speed</h3>
-    <button class="sui-btn sui-btn-sm" onclick="replayReveal(this)">Replay</button>
-  </div>
+  <h3 class="pg-section-title">Speed</h3>
   <div class="pg-section-row">
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:16px;width:100%;">
       <div class="sui-card sui-reveal sui-reveal-fast" style="padding:20px;text-align:center;">Fast</div>
       <div class="sui-card sui-reveal" style="padding:20px;text-align:center;">Default</div>
       <div class="sui-card sui-reveal sui-reveal-slow" style="padding:20px;text-align:center;">Slow</div>
     </div>
+    <button class="sui-btn sui-btn-sm" onclick="replayReveal(this)">Replay</button>
   </div>
   <div class="pg-code-wrap">
     <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
@@ -132,10 +124,7 @@ toc:
 
 <!-- Stagger -->
 <div class="pg-section" id="section-5">
-  <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:16px;">
-    <h3 class="pg-section-title" style="margin-bottom:0;">Stagger</h3>
-    <button class="sui-btn sui-btn-sm" onclick="replayReveal(this)">Replay</button>
-  </div>
+  <h3 class="pg-section-title">Stagger</h3>
   <div class="pg-section-row">
     <div data-reveal-stagger="120" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:16px;width:100%;">
       <div class="sui-card sui-reveal" style="padding:20px;">
@@ -151,6 +140,7 @@ toc:
         <p style="color:var(--sui-text-muted);font-size:13px;">240ms</p>
       </div>
     </div>
+    <button class="sui-btn sui-btn-sm" onclick="replayReveal(this)">Replay</button>
   </div>
   <div class="pg-code-wrap">
     <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
@@ -173,10 +163,7 @@ toc:
 
 <!-- Repeat -->
 <div class="pg-section" id="section-6">
-  <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:16px;">
-    <h3 class="pg-section-title" style="margin-bottom:0;">Repeat</h3>
-    <button class="sui-btn sui-btn-sm" onclick="replayReveal(this)">Replay</button>
-  </div>
+  <h3 class="pg-section-title">Repeat</h3>
   <div class="pg-section-row">
     <div class="sui-reveal sui-reveal-start" data-reveal-repeat style="max-width:360px;">
       <div class="sui-card sui-card-hover" style="padding:24px;">
@@ -184,6 +171,7 @@ toc:
         <p style="color:var(--sui-text-muted);font-size:14px;">The wrapper reveals; the card keeps its hover lift. Scroll away and back to replay.</p>
       </div>
     </div>
+    <button class="sui-btn sui-btn-sm" onclick="replayReveal(this)">Replay</button>
   </div>
   <div class="pg-code-wrap">
     <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
@@ -225,25 +213,25 @@ toc:
 <div class="pg-section" id="section-8">
   <h3 class="pg-section-title">Reference</h3>
   <div class="docs-table-wrap">
-    <table class="sui-table sui-table-compact" style="min-width:640px;">
-      <thead><tr><th scope="col">Name</th><th scope="col">Description</th></tr></thead>
+    <table class="sui-table sui-table-compact">
+      <thead><tr><th scope="col" style="width:40%;">Class / Attribute / Token / API</th><th scope="col">Description</th></tr></thead>
       <tbody>
-        <tr><td style="white-space:nowrap;"><code>.sui-reveal</code></td><td>Fades up on first scroll into view; content already on screen at load shows at once. It sets <code>opacity</code>, so put it on a wrapper around interactive components.</td></tr>
-        <tr><td style="white-space:nowrap;"><code>.sui-reveal-down</code> / <code>-start</code> / <code>-end</code></td><td>Slide direction; start and end flip in RTL.</td></tr>
-        <tr><td style="white-space:nowrap;"><code>.sui-reveal-fade</code> / <code>-scale</code></td><td>Opacity only, or grow in from 95%.</td></tr>
-        <tr><td style="white-space:nowrap;"><code>.sui-reveal-zoom-out</code> / <code>-blur</code></td><td>Shrink in from 108%, or sharpen from a blur.</td></tr>
-        <tr><td style="white-space:nowrap;"><code>.sui-reveal-fast</code> / <code>-slow</code></td><td>0.3s / 1.2s; on the element or any parent.</td></tr>
-        <tr><td style="white-space:nowrap;"><code>data-reveal-stagger="80"</code></td><td>On a parent: each <code>.sui-reveal</code> child waits this many ms longer (default 80).</td></tr>
-        <tr><td style="white-space:nowrap;"><code>data-reveal-repeat</code></td><td>Hides again when it leaves the viewport and replays on return.</td></tr>
-        <tr><td style="white-space:nowrap;"><code>--sui-reveal-distance</code></td><td>Slide distance (default 24px).</td></tr>
-        <tr><td style="white-space:nowrap;"><code>--sui-reveal-duration</code></td><td>Animation length (default 0.6s).</td></tr>
-        <tr><td style="white-space:nowrap;"><code>--sui-reveal-blur</code></td><td>Starting blur for <code>-blur</code> (default 8px).</td></tr>
-        <tr><td style="white-space:nowrap;"><code>--sui-delay</code></td><td>Delay before this element starts (default 0ms).</td></tr>
-        <tr><td style="white-space:nowrap;"><code>SoftUI.reveal(target, opts)</code></td><td>Reveal added content: no argument, a selector, an element or a list.</td></tr>
-        <tr><td style="white-space:nowrap;"><code>opts.rootMargin</code> / <code>opts.threshold</code></td><td>Observer options, read on the first call only.</td></tr>
-        <tr><td style="white-space:nowrap;"><code>SoftUI.init(el)</code></td><td>Also picks up <code>.sui-reveal</code> inside <code>el</code>.</td></tr>
-        <tr><td style="white-space:nowrap;"><code>prefers-reduced-motion</code></td><td>Content is always visible and nothing animates. The same applies without JS and in print.</td></tr>
-        <tr><td style="white-space:nowrap;"><kbd class="sui-kbd-inline">Tab</kbd></td><td>Focusing content that has not revealed yet shows it at once.</td></tr>
+        <tr><td><code>sui-reveal</code></td><td>Fades up on first scroll into view; content already on screen at load shows at once. It sets <code>opacity</code>, so put it on a wrapper around interactive components.</td></tr>
+        <tr><td><code>sui-reveal-down</code> <code>sui-reveal-start</code> <code>sui-reveal-end</code></td><td>Slide direction; start and end flip in RTL.</td></tr>
+        <tr><td><code>sui-reveal-fade</code> <code>sui-reveal-scale</code></td><td>Opacity only, or grow in from 95%.</td></tr>
+        <tr><td><code>sui-reveal-zoom-out</code> <code>sui-reveal-blur</code></td><td>Shrink in from 108%, or sharpen from a blur.</td></tr>
+        <tr><td><code>sui-reveal-fast</code> <code>sui-reveal-slow</code></td><td>0.3s / 1.2s; on the element or any parent.</td></tr>
+        <tr><td><code>data-reveal-stagger="80"</code></td><td>On a parent: each <code>.sui-reveal</code> child waits this many ms longer (default 80).</td></tr>
+        <tr><td><code>data-reveal-repeat</code></td><td>Hides again when it leaves the viewport and replays on return.</td></tr>
+        <tr><td><code>--sui-reveal-distance</code></td><td>Slide distance (default 24px).</td></tr>
+        <tr><td><code>--sui-reveal-duration</code></td><td>Animation length (default 0.6s).</td></tr>
+        <tr><td><code>--sui-reveal-blur</code></td><td>Starting blur for <code>.sui-reveal-blur</code> (default 8px).</td></tr>
+        <tr><td><code>--sui-delay</code></td><td>Delay before this element starts (default 0ms).</td></tr>
+        <tr><td><code>SoftUI.reveal(target, opts)</code></td><td>Reveal added content: no argument, a selector, an element or a list.</td></tr>
+        <tr><td><code>opts.rootMargin</code> / <code>opts.threshold</code></td><td>Observer options, read on the first call only (defaults <code>0px 0px -10% 0px</code> and <code>0.1</code>).</td></tr>
+        <tr><td><code>SoftUI.init(el)</code></td><td>Also picks up <code>.sui-reveal</code> inside <code>el</code>.</td></tr>
+        <tr><td><code>prefers-reduced-motion</code></td><td>Content is always visible and nothing animates. The same applies without JS and in print.</td></tr>
+        <tr><td><kbd class="sui-kbd-inline">Tab</kbd></td><td>Focusing content that has not revealed yet shows it at once.</td></tr>
       </tbody>
     </table>
   </div>

@@ -46,6 +46,16 @@ toc:
   &lt;label for="view-grid"&gt;Grid&lt;/label&gt;
   &lt;input type="radio" name="view" id="view-map" value="map"&gt;
   &lt;label for="view-map"&gt;Map&lt;/label&gt;
+&lt;/div&gt;
+
+&lt;div class="sui-segmented"&gt;
+  &lt;div class="sui-segmented-indicator"&gt;&lt;/div&gt;
+  &lt;input type="radio" name="filter" id="filter-all" value="all" checked&gt;
+  &lt;label for="filter-all"&gt;All&lt;/label&gt;
+  &lt;input type="radio" name="filter" id="filter-active" value="active"&gt;
+  &lt;label for="filter-active"&gt;Active&lt;/label&gt;
+  &lt;input type="radio" name="filter" id="filter-archived" value="archived"&gt;
+  &lt;label for="filter-archived"&gt;Archived&lt;/label&gt;
 &lt;/div&gt;</pre></div>
   </div>
 </div>
@@ -98,14 +108,16 @@ toc:
 <div class="pg-section" id="section-3">
   <h3 class="pg-section-title">Block (Full Width)</h3>
   <div class="pg-section-row">
-    <div class="sui-segmented sui-segmented-block sui-segmented-primary" style="max-width:400px;width:100%;">
-      <div class="sui-segmented-indicator"></div>
-      <input type="radio" name="seg5" id="seg5-a" value="overview" checked>
-      <label for="seg5-a">Overview</label>
-      <input type="radio" name="seg5" id="seg5-b" value="analytics">
-      <label for="seg5-b">Analytics</label>
-      <input type="radio" name="seg5" id="seg5-c" value="reports">
-      <label for="seg5-c">Reports</label>
+    <div style="max-width:400px;width:100%;">
+      <div class="sui-segmented sui-segmented-block sui-segmented-primary">
+        <div class="sui-segmented-indicator"></div>
+        <input type="radio" name="seg5" id="seg5-a" value="overview" checked>
+        <label for="seg5-a">Overview</label>
+        <input type="radio" name="seg5" id="seg5-b" value="analytics">
+        <label for="seg5-b">Analytics</label>
+        <input type="radio" name="seg5" id="seg5-c" value="reports">
+        <label for="seg5-c">Reports</label>
+      </div>
     </div>
   </div>
   <div class="pg-code-wrap">
@@ -158,18 +170,32 @@ toc:
     <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
     <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-segmented sui-segmented-sm"&gt;
   &lt;div class="sui-segmented-indicator"&gt;&lt;/div&gt;
-  &lt;input type="radio" name="size" id="size-a" value="a" checked&gt;
-  &lt;label for="size-a"&gt;Small&lt;/label&gt;
-  &lt;input type="radio" name="size" id="size-b" value="b"&gt;
-  &lt;label for="size-b"&gt;Options&lt;/label&gt;
+  &lt;input type="radio" name="size-sm" id="size-sm-a" value="a" checked&gt;
+  &lt;label for="size-sm-a"&gt;Small&lt;/label&gt;
+  &lt;input type="radio" name="size-sm" id="size-sm-b" value="b"&gt;
+  &lt;label for="size-sm-b"&gt;Options&lt;/label&gt;
+  &lt;input type="radio" name="size-sm" id="size-sm-c" value="c"&gt;
+  &lt;label for="size-sm-c"&gt;Here&lt;/label&gt;
 &lt;/div&gt;
 
 &lt;div class="sui-segmented"&gt;
-  &lt;!-- default size --&gt;
+  &lt;div class="sui-segmented-indicator"&gt;&lt;/div&gt;
+  &lt;input type="radio" name="size-md" id="size-md-a" value="a" checked&gt;
+  &lt;label for="size-md-a"&gt;Default&lt;/label&gt;
+  &lt;input type="radio" name="size-md" id="size-md-b" value="b"&gt;
+  &lt;label for="size-md-b"&gt;Options&lt;/label&gt;
+  &lt;input type="radio" name="size-md" id="size-md-c" value="c"&gt;
+  &lt;label for="size-md-c"&gt;Here&lt;/label&gt;
 &lt;/div&gt;
 
 &lt;div class="sui-segmented sui-segmented-lg"&gt;
-  &lt;!-- large size --&gt;
+  &lt;div class="sui-segmented-indicator"&gt;&lt;/div&gt;
+  &lt;input type="radio" name="size-lg" id="size-lg-a" value="a" checked&gt;
+  &lt;label for="size-lg-a"&gt;Large&lt;/label&gt;
+  &lt;input type="radio" name="size-lg" id="size-lg-b" value="b"&gt;
+  &lt;label for="size-lg-b"&gt;Options&lt;/label&gt;
+  &lt;input type="radio" name="size-lg" id="size-lg-c" value="c"&gt;
+  &lt;label for="size-lg-c"&gt;Here&lt;/label&gt;
 &lt;/div&gt;</pre></div>
   </div>
 </div>

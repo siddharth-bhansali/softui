@@ -9,10 +9,13 @@ toc:
   - Default
   - With Badges
   - With Descriptions
+  - With Icons
   - Active & Disabled
+  - With Submenus
   - Raised
   - Bordered
   - Inset
+  - Flush
 ---
 
 <!-- Default -->
@@ -116,7 +119,7 @@ toc:
     <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
     <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-list-group sui-list-group-raised"&gt;
   &lt;a href="#" class="sui-list-group-item"&gt;
-    &lt;div class="sui-avatar sui-avatar-sm" style="background:var(--sui-primary);color:#fff;font-weight:600;"&gt;SK&lt;/div&gt;
+    &lt;div class="sui-avatar sui-avatar-sm" style="background:var(--sui-primary);color:#fff;font-weight:600;flex-shrink:0;"&gt;SK&lt;/div&gt;
     &lt;div class="sui-list-group-content"&gt;
       &lt;div class="sui-list-group-title"&gt;Sarah Kim&lt;/div&gt;
       &lt;div class="sui-list-group-desc"&gt;Hey, are we still on for the meeting?&lt;/div&gt;
@@ -124,7 +127,7 @@ toc:
     &lt;span class="sui-list-group-action" style="font-size:11px;color:var(--sui-text-muted);"&gt;2m ago&lt;/span&gt;
   &lt;/a&gt;
   &lt;a href="#" class="sui-list-group-item"&gt;
-    &lt;div class="sui-avatar sui-avatar-sm" style="background:var(--sui-success);color:#fff;font-weight:600;"&gt;MR&lt;/div&gt;
+    &lt;div class="sui-avatar sui-avatar-sm" style="background:var(--sui-success);color:#fff;font-weight:600;flex-shrink:0;"&gt;MR&lt;/div&gt;
     &lt;div class="sui-list-group-content"&gt;
       &lt;div class="sui-list-group-title"&gt;Mike Ross&lt;/div&gt;
       &lt;div class="sui-list-group-desc"&gt;The new designs look great!&lt;/div&gt;
@@ -132,7 +135,7 @@ toc:
     &lt;span class="sui-list-group-action" style="font-size:11px;color:var(--sui-text-muted);"&gt;1h ago&lt;/span&gt;
   &lt;/a&gt;
   &lt;a href="#" class="sui-list-group-item"&gt;
-    &lt;div class="sui-avatar sui-avatar-sm" style="background:var(--sui-warning);color:#fff;font-weight:600;"&gt;AL&lt;/div&gt;
+    &lt;div class="sui-avatar sui-avatar-sm" style="background:var(--sui-warning);color:#fff;font-weight:600;flex-shrink:0;"&gt;AL&lt;/div&gt;
     &lt;div class="sui-list-group-content"&gt;
       &lt;div class="sui-list-group-title"&gt;Anna Lee&lt;/div&gt;
       &lt;div class="sui-list-group-desc"&gt;Can you review the PR when you get a chance?&lt;/div&gt;
@@ -143,8 +146,54 @@ toc:
   </div>
 </div>
 
-<!-- Active & Disabled -->
+<!-- With Icons -->
 <div class="pg-section" id="section-4">
+  <h3 class="pg-section-title">With Icons</h3>
+  <div class="pg-section-row">
+    <div class="sui-list-group sui-list-group-raised" style="max-width:400px;width:100%;">
+      <a href="#" class="sui-list-group-item active">
+        <svg class="sui-list-group-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        <div class="sui-list-group-content">Home</div>
+      </a>
+      <a href="#" class="sui-list-group-item">
+        <svg class="sui-list-group-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 19a2 2 0 01-2 2H4a2 2 0 01-2-2V5a2 2 0 012-2h5l2 3h9a2 2 0 012 2z"/></svg>
+        <div class="sui-list-group-content">Projects</div>
+      </a>
+      <a href="#" class="sui-list-group-item">
+        <svg class="sui-list-group-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        <div class="sui-list-group-content">Calendar</div>
+      </a>
+      <a href="#" class="sui-list-group-item">
+        <svg class="sui-list-group-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg>
+        <div class="sui-list-group-content">Settings</div>
+      </a>
+    </div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-list-group sui-list-group-raised"&gt;
+  &lt;a href="#" class="sui-list-group-item active"&gt;
+    &lt;svg class="sui-list-group-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"&gt;&lt;path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/&gt;&lt;polyline points="9 22 9 12 15 12 15 22"/&gt;&lt;/svg&gt;
+    &lt;div class="sui-list-group-content"&gt;Home&lt;/div&gt;
+  &lt;/a&gt;
+  &lt;a href="#" class="sui-list-group-item"&gt;
+    &lt;svg class="sui-list-group-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"&gt;&lt;path d="M22 19a2 2 0 01-2 2H4a2 2 0 01-2-2V5a2 2 0 012-2h5l2 3h9a2 2 0 012 2z"/&gt;&lt;/svg&gt;
+    &lt;div class="sui-list-group-content"&gt;Projects&lt;/div&gt;
+  &lt;/a&gt;
+  &lt;a href="#" class="sui-list-group-item"&gt;
+    &lt;svg class="sui-list-group-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"&gt;&lt;rect x="3" y="4" width="18" height="18" rx="2"/&gt;&lt;line x1="16" y1="2" x2="16" y2="6"/&gt;&lt;line x1="8" y1="2" x2="8" y2="6"/&gt;&lt;line x1="3" y1="10" x2="21" y2="10"/&gt;&lt;/svg&gt;
+    &lt;div class="sui-list-group-content"&gt;Calendar&lt;/div&gt;
+  &lt;/a&gt;
+  &lt;a href="#" class="sui-list-group-item"&gt;
+    &lt;svg class="sui-list-group-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"&gt;&lt;circle cx="12" cy="12" r="3"/&gt;&lt;path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/&gt;&lt;/svg&gt;
+    &lt;div class="sui-list-group-content"&gt;Settings&lt;/div&gt;
+  &lt;/a&gt;
+&lt;/div&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Active & Disabled -->
+<div class="pg-section" id="section-5">
   <h3 class="pg-section-title">Active & Disabled</h3>
   <div class="pg-section-row">
     <div class="sui-list-group sui-list-group-raised" style="max-width:400px;width:100%;">
@@ -165,18 +214,18 @@ toc:
   </div>
 </div>
 
-<!-- Raised -->
-<div class="pg-section" id="section-5">
-  <h3 class="pg-section-title">Raised</h3>
-  <p class="pg-section-desc">Use <code>&lt;a&gt;</code> or <code>&lt;button&gt;</code> elements for clickable items with hover states. Add chevrons to indicate navigation.</p>
+<!-- With Submenus -->
+<div class="pg-section" id="section-6">
+  <h3 class="pg-section-title">With Submenus</h3>
+  <p style="font-size:13px;color:var(--sui-text-light);margin-bottom:16px;">Wrap a <code>&lt;button&gt;</code> item in a <code>sui-dropdown sui-dropend</code> for a flyout submenu; on phones it opens below.</p>
   <div class="pg-section-row">
     <div class="sui-list-group sui-list-group-raised" style="max-width:400px;width:100%;">
-      <div class="sui-dropdown" style="display:block;">
-        <a class="sui-list-group-item sui-dropdown-toggle sui-dropdown-no-arrow" data-sui-dropdown style="cursor:pointer;">
-          <div class="sui-list-group-content">General</div>
+      <div class="sui-dropdown sui-dropend">
+        <button type="button" class="sui-list-group-item sui-dropdown-toggle sui-dropdown-no-arrow" data-sui-dropdown aria-haspopup="true" aria-expanded="false">
+          <span class="sui-list-group-content">General</span>
           <span class="sui-list-group-action" style="color:var(--sui-text-muted);">&#9654;</span>
-        </a>
-        <div class="sui-dropdown-menu" role="menu" style="left:100%;top:0;min-width:180px;">
+        </button>
+        <div class="sui-dropdown-menu" role="menu">
           <a class="sui-dropdown-item" role="menuitem" href="#">Language</a>
           <a class="sui-dropdown-item" role="menuitem" href="#">Timezone</a>
           <a class="sui-dropdown-item" role="menuitem" href="#">Theme</a>
@@ -186,18 +235,18 @@ toc:
         <div class="sui-list-group-content">Notifications</div>
         <span class="sui-list-group-action"><span class="sui-badge sui-badge-danger sui-badge-pill">3</span></span>
       </a>
-      <div class="sui-dropdown" style="display:block;">
-        <a class="sui-list-group-item sui-dropdown-toggle sui-dropdown-no-arrow" data-sui-dropdown style="cursor:pointer;">
-          <div class="sui-list-group-content">Privacy</div>
+      <div class="sui-dropdown sui-dropend">
+        <button type="button" class="sui-list-group-item sui-dropdown-toggle sui-dropdown-no-arrow" data-sui-dropdown aria-haspopup="true" aria-expanded="false">
+          <span class="sui-list-group-content">Privacy</span>
           <span class="sui-list-group-action" style="color:var(--sui-text-muted);">&#9654;</span>
-        </a>
-        <div class="sui-dropdown-menu" role="menu" style="left:100%;top:0;min-width:180px;">
+        </button>
+        <div class="sui-dropdown-menu" role="menu">
           <a class="sui-dropdown-item" role="menuitem" href="#">Password</a>
           <a class="sui-dropdown-item" role="menuitem" href="#">Two-Factor Auth</a>
           <a class="sui-dropdown-item" role="menuitem" href="#">Sessions</a>
         </div>
       </div>
-      <a href="#" class="sui-list-group-item" style="color:var(--sui-danger);">
+      <a href="#" class="sui-list-group-item" style="color:var(--sui-danger-text);">
         <div class="sui-list-group-content">Delete Account</div>
       </a>
     </div>
@@ -205,12 +254,12 @@ toc:
   <div class="pg-code-wrap">
     <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
     <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-list-group sui-list-group-raised"&gt;
-  &lt;div class="sui-dropdown" style="display:block;"&gt;
-    &lt;a class="sui-list-group-item sui-dropdown-toggle sui-dropdown-no-arrow" data-sui-dropdown style="cursor:pointer;"&gt;
-      &lt;div class="sui-list-group-content"&gt;General&lt;/div&gt;
+  &lt;div class="sui-dropdown sui-dropend"&gt;
+    &lt;button type="button" class="sui-list-group-item sui-dropdown-toggle sui-dropdown-no-arrow" data-sui-dropdown aria-haspopup="true" aria-expanded="false"&gt;
+      &lt;span class="sui-list-group-content"&gt;General&lt;/span&gt;
       &lt;span class="sui-list-group-action" style="color:var(--sui-text-muted);"&gt;&amp;#9654;&lt;/span&gt;
-    &lt;/a&gt;
-    &lt;div class="sui-dropdown-menu" role="menu" style="left:100%;top:0;min-width:180px;"&gt;
+    &lt;/button&gt;
+    &lt;div class="sui-dropdown-menu" role="menu"&gt;
       &lt;a class="sui-dropdown-item" role="menuitem" href="#"&gt;Language&lt;/a&gt;
       &lt;a class="sui-dropdown-item" role="menuitem" href="#"&gt;Timezone&lt;/a&gt;
       &lt;a class="sui-dropdown-item" role="menuitem" href="#"&gt;Theme&lt;/a&gt;
@@ -220,26 +269,46 @@ toc:
     &lt;div class="sui-list-group-content"&gt;Notifications&lt;/div&gt;
     &lt;span class="sui-list-group-action"&gt;&lt;span class="sui-badge sui-badge-danger sui-badge-pill"&gt;3&lt;/span&gt;&lt;/span&gt;
   &lt;/a&gt;
-  &lt;div class="sui-dropdown" style="display:block;"&gt;
-    &lt;a class="sui-list-group-item sui-dropdown-toggle sui-dropdown-no-arrow" data-sui-dropdown style="cursor:pointer;"&gt;
-      &lt;div class="sui-list-group-content"&gt;Privacy&lt;/div&gt;
+  &lt;div class="sui-dropdown sui-dropend"&gt;
+    &lt;button type="button" class="sui-list-group-item sui-dropdown-toggle sui-dropdown-no-arrow" data-sui-dropdown aria-haspopup="true" aria-expanded="false"&gt;
+      &lt;span class="sui-list-group-content"&gt;Privacy&lt;/span&gt;
       &lt;span class="sui-list-group-action" style="color:var(--sui-text-muted);"&gt;&amp;#9654;&lt;/span&gt;
-    &lt;/a&gt;
-    &lt;div class="sui-dropdown-menu" role="menu" style="left:100%;top:0;min-width:180px;"&gt;
+    &lt;/button&gt;
+    &lt;div class="sui-dropdown-menu" role="menu"&gt;
       &lt;a class="sui-dropdown-item" role="menuitem" href="#"&gt;Password&lt;/a&gt;
       &lt;a class="sui-dropdown-item" role="menuitem" href="#"&gt;Two-Factor Auth&lt;/a&gt;
       &lt;a class="sui-dropdown-item" role="menuitem" href="#"&gt;Sessions&lt;/a&gt;
     &lt;/div&gt;
   &lt;/div&gt;
-  &lt;a href="#" class="sui-list-group-item" style="color:var(--sui-danger);"&gt;
+  &lt;a href="#" class="sui-list-group-item" style="color:var(--sui-danger-text);"&gt;
     &lt;div class="sui-list-group-content"&gt;Delete Account&lt;/div&gt;
   &lt;/a&gt;
 &lt;/div&gt;</pre></div>
   </div>
 </div>
 
+<!-- Raised -->
+<div class="pg-section" id="section-7">
+  <h3 class="pg-section-title">Raised</h3>
+  <div class="pg-section-row">
+    <div class="sui-list-group sui-list-group-raised" style="max-width:400px;width:100%;">
+      <a href="#" class="sui-list-group-item">Overview</a>
+      <a href="#" class="sui-list-group-item">Reports</a>
+      <a href="#" class="sui-list-group-item">Exports</a>
+    </div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-list-group sui-list-group-raised"&gt;
+  &lt;a href="#" class="sui-list-group-item"&gt;Overview&lt;/a&gt;
+  &lt;a href="#" class="sui-list-group-item"&gt;Reports&lt;/a&gt;
+  &lt;a href="#" class="sui-list-group-item"&gt;Exports&lt;/a&gt;
+&lt;/div&gt;</pre></div>
+  </div>
+</div>
+
 <!-- Bordered -->
-<div class="pg-section" id="section-6">
+<div class="pg-section" id="section-8">
   <h3 class="pg-section-title">Bordered</h3>
   <div class="pg-section-row">
     <div class="sui-list-group sui-list-group-bordered" style="max-width:400px;width:100%;">
@@ -259,7 +328,7 @@ toc:
 </div>
 
 <!-- Inset -->
-<div class="pg-section" id="section-7">
+<div class="pg-section" id="section-9">
   <h3 class="pg-section-title">Inset</h3>
   <div class="pg-section-row">
     <div class="sui-list-group sui-list-group-inset" style="max-width:400px;width:100%;">
@@ -274,6 +343,32 @@ toc:
   &lt;a href="#" class="sui-list-group-item"&gt;Account&lt;/a&gt;
   &lt;a href="#" class="sui-list-group-item"&gt;Appearance&lt;/a&gt;
   &lt;a href="#" class="sui-list-group-item"&gt;Language&lt;/a&gt;
+&lt;/div&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Flush -->
+<div class="pg-section" id="section-10">
+  <h3 class="pg-section-title">Flush</h3>
+  <div class="pg-section-row">
+    <div class="sui-card" style="max-width:400px;width:100%;">
+      <div class="sui-card-header">Recent Files</div>
+      <div class="sui-list-group sui-list-group-flush">
+        <a href="#" class="sui-list-group-item">Q3-report.pdf</a>
+        <a href="#" class="sui-list-group-item">roadmap.xlsx</a>
+        <a href="#" class="sui-list-group-item">brand-assets.zip</a>
+      </div>
+    </div>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div class="sui-card"&gt;
+  &lt;div class="sui-card-header"&gt;Recent Files&lt;/div&gt;
+  &lt;div class="sui-list-group sui-list-group-flush"&gt;
+    &lt;a href="#" class="sui-list-group-item"&gt;Q3-report.pdf&lt;/a&gt;
+    &lt;a href="#" class="sui-list-group-item"&gt;roadmap.xlsx&lt;/a&gt;
+    &lt;a href="#" class="sui-list-group-item"&gt;brand-assets.zip&lt;/a&gt;
+  &lt;/div&gt;
 &lt;/div&gt;</pre></div>
   </div>
 </div>

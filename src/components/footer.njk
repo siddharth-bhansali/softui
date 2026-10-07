@@ -9,7 +9,9 @@ toc:
   - Centered
   - Split
   - Columns
-  - Bordered, Raised & Inset
+  - Raised
+  - Bordered
+  - Inset
   - Tinted
   - Small
   - Social Icons
@@ -150,25 +152,35 @@ toc:
   </div>
 </div>
 
-<!-- Bordered, Raised & Inset -->
+<!-- Raised -->
 <div class="pg-section" id="section-4">
-  <h3 class="pg-section-title">Bordered, Raised & Inset</h3>
+  <h3 class="pg-section-title">Raised</h3>
   <div class="pg-section-row" style="display:block;">
-    <footer class="sui-footer sui-footer-split sui-footer-bordered">
-      <div class="sui-footer-inner">
-        <span class="sui-footer-brand">Bordered</span>
-        <span class="sui-footer-copy">&copy; 2026 Acme Inc.</span>
-      </div>
-    </footer>
-    <footer class="sui-footer sui-footer-split sui-footer-raised" style="border-radius:var(--sui-radius);margin-top:24px;">
+    <footer class="sui-footer sui-footer-split sui-footer-raised" style="border-radius:var(--sui-radius);">
       <div class="sui-footer-inner">
         <span class="sui-footer-brand">Raised</span>
         <span class="sui-footer-copy">&copy; 2026 Acme Inc.</span>
       </div>
     </footer>
-    <footer class="sui-footer sui-footer-split sui-footer-inset" style="border-radius:var(--sui-radius);margin-top:24px;">
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;footer class="sui-footer sui-footer-split sui-footer-raised" style="border-radius:var(--sui-radius);"&gt;
+  &lt;div class="sui-footer-inner"&gt;
+    &lt;span class="sui-footer-brand"&gt;Raised&lt;/span&gt;
+    &lt;span class="sui-footer-copy"&gt;&amp;copy; 2026 Acme Inc.&lt;/span&gt;
+  &lt;/div&gt;
+&lt;/footer&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Bordered -->
+<div class="pg-section" id="section-5">
+  <h3 class="pg-section-title">Bordered</h3>
+  <div class="pg-section-row" style="display:block;">
+    <footer class="sui-footer sui-footer-split sui-footer-bordered">
       <div class="sui-footer-inner">
-        <span class="sui-footer-brand">Inset</span>
+        <span class="sui-footer-brand">Bordered</span>
         <span class="sui-footer-copy">&copy; 2026 Acme Inc.</span>
       </div>
     </footer>
@@ -180,14 +192,24 @@ toc:
     &lt;span class="sui-footer-brand"&gt;Bordered&lt;/span&gt;
     &lt;span class="sui-footer-copy"&gt;&amp;copy; 2026 Acme Inc.&lt;/span&gt;
   &lt;/div&gt;
-&lt;/footer&gt;
-&lt;footer class="sui-footer sui-footer-split sui-footer-raised" style="border-radius:var(--sui-radius);margin-top:24px;"&gt;
-  &lt;div class="sui-footer-inner"&gt;
-    &lt;span class="sui-footer-brand"&gt;Raised&lt;/span&gt;
-    &lt;span class="sui-footer-copy"&gt;&amp;copy; 2026 Acme Inc.&lt;/span&gt;
-  &lt;/div&gt;
-&lt;/footer&gt;
-&lt;footer class="sui-footer sui-footer-split sui-footer-inset" style="border-radius:var(--sui-radius);margin-top:24px;"&gt;
+&lt;/footer&gt;</pre></div>
+  </div>
+</div>
+
+<!-- Inset -->
+<div class="pg-section" id="section-6">
+  <h3 class="pg-section-title">Inset</h3>
+  <div class="pg-section-row" style="display:block;">
+    <footer class="sui-footer sui-footer-split sui-footer-inset" style="border-radius:var(--sui-radius);">
+      <div class="sui-footer-inner">
+        <span class="sui-footer-brand">Inset</span>
+        <span class="sui-footer-copy">&copy; 2026 Acme Inc.</span>
+      </div>
+    </footer>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;footer class="sui-footer sui-footer-split sui-footer-inset" style="border-radius:var(--sui-radius);"&gt;
   &lt;div class="sui-footer-inner"&gt;
     &lt;span class="sui-footer-brand"&gt;Inset&lt;/span&gt;
     &lt;span class="sui-footer-copy"&gt;&amp;copy; 2026 Acme Inc.&lt;/span&gt;
@@ -197,7 +219,7 @@ toc:
 </div>
 
 <!-- Tinted -->
-<div class="pg-section" id="section-5">
+<div class="pg-section" id="section-7">
   <h3 class="pg-section-title">Tinted</h3>
   <div class="pg-section-row" style="display:block;">
     <footer class="sui-footer sui-footer-split sui-footer-tinted" style="border-radius:var(--sui-radius);">
@@ -233,10 +255,10 @@ toc:
 </div>
 
 <!-- Small -->
-<div class="pg-section" id="section-6">
+<div class="pg-section" id="section-8">
   <h3 class="pg-section-title">Small</h3>
   <div class="pg-section-row" style="display:block;">
-    <footer class="sui-footer sui-footer-sm sui-footer-split sui-footer-bordered">
+    <footer class="sui-footer sui-footer-sm sui-footer-split">
       <div class="sui-footer-inner">
         <span class="sui-footer-copy">&copy; 2026 Acme Inc.</span>
         <nav class="sui-footer-links" aria-label="Footer (small demo)">
@@ -249,7 +271,7 @@ toc:
   </div>
   <div class="pg-code-wrap">
     <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
-    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;footer class="sui-footer sui-footer-sm sui-footer-split sui-footer-bordered"&gt;
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;footer class="sui-footer sui-footer-sm sui-footer-split"&gt;
   &lt;div class="sui-footer-inner"&gt;
     &lt;span class="sui-footer-copy"&gt;&amp;copy; 2026 Acme Inc.&lt;/span&gt;
     &lt;nav class="sui-footer-links" aria-label="Footer (small demo)"&gt;
@@ -263,10 +285,10 @@ toc:
 </div>
 
 <!-- Social Icons -->
-<div class="pg-section" id="section-7">
+<div class="pg-section" id="section-9">
   <h3 class="pg-section-title">Social Icons</h3>
   <div class="pg-section-row" style="display:block;">
-    <footer class="sui-footer sui-footer-bordered">
+    <footer class="sui-footer">
       <div class="sui-footer-inner">
         <span class="sui-footer-brand">Acme</span>
         <nav class="sui-footer-social" aria-label="Social">
@@ -277,7 +299,7 @@ toc:
         <span class="sui-footer-copy">&copy; 2026 Acme Inc.</span>
       </div>
     </footer>
-    <footer class="sui-footer sui-footer-sm sui-footer-split sui-footer-bordered" style="margin-top:24px;">
+    <footer class="sui-footer sui-footer-sm sui-footer-split" style="margin-top:24px;">
       <div class="sui-footer-inner">
         <span class="sui-footer-copy">&copy; 2026 Acme Inc.</span>
         <nav class="sui-footer-social" aria-label="Social (small)">
@@ -290,7 +312,7 @@ toc:
   </div>
   <div class="pg-code-wrap">
     <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
-    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;footer class="sui-footer sui-footer-bordered"&gt;
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;footer class="sui-footer"&gt;
   &lt;div class="sui-footer-inner"&gt;
     &lt;span class="sui-footer-brand"&gt;Acme&lt;/span&gt;
     &lt;nav class="sui-footer-social" aria-label="Social"&gt;
@@ -301,7 +323,7 @@ toc:
     &lt;span class="sui-footer-copy"&gt;&amp;copy; 2026 Acme Inc.&lt;/span&gt;
   &lt;/div&gt;
 &lt;/footer&gt;
-&lt;footer class="sui-footer sui-footer-sm sui-footer-split sui-footer-bordered" style="margin-top:24px;"&gt;
+&lt;footer class="sui-footer sui-footer-sm sui-footer-split" style="margin-top:24px;"&gt;
   &lt;div class="sui-footer-inner"&gt;
     &lt;span class="sui-footer-copy"&gt;&amp;copy; 2026 Acme Inc.&lt;/span&gt;
     &lt;nav class="sui-footer-social" aria-label="Social (small)"&gt;
@@ -315,10 +337,10 @@ toc:
 </div>
 
 <!-- Raised Links -->
-<div class="pg-section" id="section-8">
+<div class="pg-section" id="section-10">
   <h3 class="pg-section-title">Raised Links</h3>
   <div class="pg-section-row" style="display:block;">
-    <footer class="sui-footer sui-footer-split sui-footer-bordered">
+    <footer class="sui-footer sui-footer-split">
       <div class="sui-footer-inner">
         <div class="sui-footer-brand">
           Acme
@@ -333,7 +355,7 @@ toc:
   </div>
   <div class="pg-code-wrap">
     <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
-    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;footer class="sui-footer sui-footer-split sui-footer-bordered"&gt;
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;footer class="sui-footer sui-footer-split"&gt;
   &lt;div class="sui-footer-inner"&gt;
     &lt;div class="sui-footer-brand"&gt;
       Acme
@@ -349,12 +371,12 @@ toc:
 </div>
 
 <!-- RTL -->
-<div class="pg-section" id="section-9">
+<div class="pg-section" id="section-11">
   <h3 class="pg-section-title">RTL</h3>
   <p style="font-size:13px;color:var(--sui-text-light);margin-bottom:16px;">Logical properties mirror the footer under <code>dir="rtl"</code> with no extra classes.</p>
   <div class="pg-section-row" style="display:block;">
     <div dir="rtl">
-      <footer class="sui-footer sui-footer-split sui-footer-bordered">
+      <footer class="sui-footer sui-footer-split">
         <div class="sui-footer-inner">
           <span class="sui-footer-brand">Acme</span>
           <nav class="sui-footer-links" aria-label="Footer (RTL demo)">
@@ -368,7 +390,7 @@ toc:
   <div class="pg-code-wrap">
     <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
     <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;div dir="rtl"&gt;
-  &lt;footer class="sui-footer sui-footer-split sui-footer-bordered"&gt;
+  &lt;footer class="sui-footer sui-footer-split"&gt;
     &lt;div class="sui-footer-inner"&gt;
       &lt;span class="sui-footer-brand"&gt;Acme&lt;/span&gt;
       &lt;nav class="sui-footer-links" aria-label="Footer (RTL demo)"&gt;
@@ -382,27 +404,28 @@ toc:
 </div>
 
 <!-- Reference -->
-<div class="pg-section" id="section-10">
+<div class="pg-section" id="section-12">
   <h3 class="pg-section-title">Reference</h3>
   <div class="docs-table-wrap">
-    <table class="sui-table sui-table-compact" style="min-width:640px;">
-      <thead><tr><th scope="col">Class</th><th scope="col">Description</th></tr></thead>
+    <table class="sui-table sui-table-compact">
+      <thead><tr><th scope="col" style="width:40%;">Class</th><th scope="col">Description</th></tr></thead>
       <tbody>
-        <tr><td style="white-space:nowrap;"><code>.sui-footer</code></td><td>Wrapper on <code>&lt;footer&gt;</code>; page background, 32px block padding.</td></tr>
-        <tr><td style="white-space:nowrap;"><code>.sui-footer-inner</code></td><td>Content container, max 1100px, centred.</td></tr>
-        <tr><td style="white-space:nowrap;"><code>.sui-footer-brand</code> / <code>-tagline</code></td><td>Brand name and muted tagline.</td></tr>
-        <tr><td style="white-space:nowrap;"><code>.sui-footer-links</code> / <code>.sui-footer-link</code></td><td>Link row and links (global focus outline).</td></tr>
-        <tr><td style="white-space:nowrap;"><code>.sui-footer-copy</code></td><td>Copyright text.</td></tr>
-        <tr><td style="white-space:nowrap;"><code>.sui-footer-split</code></td><td>Brand at inline start, links at inline end; stacks and centres below 600px.</td></tr>
-        <tr><td style="white-space:nowrap;"><code>.sui-footer-columns</code></td><td>Grid of columns that wrap; two per row below 600px.</td></tr>
-        <tr><td style="white-space:nowrap;"><code>.sui-footer-col</code> / <code>-brand-col</code></td><td>Link column; the brand column spans the full row on mobile.</td></tr>
-        <tr><td style="white-space:nowrap;"><code>.sui-footer-heading</code></td><td>Column heading; any level (usually <code>h2</code> in a site footer).</td></tr>
-        <tr><td style="white-space:nowrap;"><code>.sui-footer-bottom</code></td><td>Full-width bottom row with a top border.</td></tr>
-        <tr><td style="white-space:nowrap;"><code>.sui-footer-bordered</code> / <code>-raised</code> / <code>-inset</code></td><td>Top border, or raised / inset depth.</td></tr>
-        <tr><td style="white-space:nowrap;"><code>.sui-footer-tinted</code></td><td>Lighter <code>--sui-bg-light</code> band.</td></tr>
-        <tr><td style="white-space:nowrap;"><code>.sui-footer-sm</code></td><td>Compact padding, gaps, links and icons.</td></tr>
-        <tr><td style="white-space:nowrap;"><code>.sui-footer-social</code></td><td>Row of round raised icon links; give each an <code>aria-label</code>.</td></tr>
-        <tr><td style="white-space:nowrap;"><code>.sui-footer-links-raised</code></td><td>Links as raised pills.</td></tr>
+        <tr><td><code>sui-footer</code></td><td>Wrapper on <code>&lt;footer&gt;</code>; page background, 32px block padding.</td></tr>
+        <tr><td><code>sui-footer-inner</code></td><td>Content container, max 1100px, centred.</td></tr>
+        <tr><td><code>sui-footer-brand</code> <code>sui-footer-tagline</code></td><td>Brand name and muted tagline.</td></tr>
+        <tr><td><code>sui-footer-links</code> <code>sui-footer-link</code></td><td>Link row and links (global focus outline).</td></tr>
+        <tr><td><code>sui-footer-copy</code></td><td>Copyright text.</td></tr>
+        <tr><td><code>sui-footer-split</code></td><td>Brand at inline start, links at inline end; stacks and centres below 600px.</td></tr>
+        <tr><td><code>sui-footer-columns</code></td><td>Grid of columns that wrap; two per row below 600px.</td></tr>
+        <tr><td><code>sui-footer-col</code> <code>sui-footer-brand-col</code></td><td>Link column; the brand column spans the full row on mobile.</td></tr>
+        <tr><td><code>sui-footer-heading</code></td><td>Column heading; any level (usually <code>h2</code> in a site footer).</td></tr>
+        <tr><td><code>sui-footer-bottom</code></td><td>Full-width bottom row with a top border.</td></tr>
+        <tr><td><code>sui-footer-raised</code> <code>sui-footer-inset</code></td><td>Raised or inset depth.</td></tr>
+        <tr><td><code>sui-footer-bordered</code></td><td>Top border.</td></tr>
+        <tr><td><code>sui-footer-tinted</code></td><td>Lighter <code>--sui-bg-light</code> band.</td></tr>
+        <tr><td><code>sui-footer-sm</code></td><td>Compact padding, gaps, links and icons.</td></tr>
+        <tr><td><code>sui-footer-social</code></td><td>Row of round raised icon links; give each an <code>aria-label</code>.</td></tr>
+        <tr><td><code>sui-footer-links-raised</code></td><td>Links as raised pills.</td></tr>
       </tbody>
     </table>
   </div>

@@ -11,6 +11,7 @@ toc:
   - Sizes
   - Inset
   - Outline
+  - Inline
   - In Context
 ---
 
@@ -161,10 +162,10 @@ toc:
   </div>
   <div class="pg-code-wrap">
     <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
-    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;kbd class="sui-kbd sui-kbd-xs"&gt;Ctrl&lt;/kbd&gt;
-&lt;kbd class="sui-kbd sui-kbd-sm"&gt;Ctrl&lt;/kbd&gt;
-&lt;kbd class="sui-kbd"&gt;Ctrl&lt;/kbd&gt;
-&lt;kbd class="sui-kbd sui-kbd-lg"&gt;Ctrl&lt;/kbd&gt;</pre></div>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;kbd class="sui-kbd sui-kbd-xs"&gt;Ctrl&lt;/kbd&gt; &lt;kbd class="sui-kbd sui-kbd-xs"&gt;S&lt;/kbd&gt;
+&lt;kbd class="sui-kbd sui-kbd-sm"&gt;Ctrl&lt;/kbd&gt; &lt;kbd class="sui-kbd sui-kbd-sm"&gt;S&lt;/kbd&gt;
+&lt;kbd class="sui-kbd"&gt;Ctrl&lt;/kbd&gt; &lt;kbd class="sui-kbd"&gt;S&lt;/kbd&gt;
+&lt;kbd class="sui-kbd sui-kbd-lg"&gt;Ctrl&lt;/kbd&gt; &lt;kbd class="sui-kbd sui-kbd-lg"&gt;S&lt;/kbd&gt;</pre></div>
   </div>
 </div>
 
@@ -202,10 +203,23 @@ toc:
   </div>
 </div>
 
-<!-- In Context -->
+<!-- Inline -->
 <div class="pg-section" id="section-7">
+  <h3 class="pg-section-title">Inline</h3>
+  <p style="font-size:13px;color:var(--sui-text-light);margin-bottom:16px;">Use <code>sui-kbd-inline</code> for a compact key that sits in running text or table cells.</p>
+  <div class="pg-section-row">
+    <p style="font-size:14px;color:var(--sui-text);margin:0;">Press <kbd class="sui-kbd-inline">Esc</kbd> to close, or <kbd class="sui-kbd-inline">&larr;</kbd> and <kbd class="sui-kbd-inline">&rarr;</kbd> to move between slides.</p>
+  </div>
+  <div class="pg-code-wrap">
+    <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;p&gt;Press &lt;kbd class="sui-kbd-inline"&gt;Esc&lt;/kbd&gt; to close, or &lt;kbd class="sui-kbd-inline"&gt;&amp;larr;&lt;/kbd&gt; and &lt;kbd class="sui-kbd-inline"&gt;&amp;rarr;&lt;/kbd&gt; to move between slides.&lt;/p&gt;</pre></div>
+  </div>
+</div>
+
+<!-- In Context -->
+<div class="pg-section" id="section-8">
   <h3 class="pg-section-title">In Context</h3>
-  <p style="font-size:13px;color:var(--sui-text-light);margin-bottom:16px;">Kbd elements work inline with text, inside buttons, tooltips, and menu items.</p>
+  <p style="font-size:13px;color:var(--sui-text-light);margin-bottom:16px;">Kbd works inline with text, in search fields and in menu items.</p>
   <div class="pg-section-row" style="display:flex;flex-direction:column;gap:20px;align-items:flex-start;">
     <p style="font-size:14px;color:var(--sui-text);margin:0;">Press <kbd class="sui-kbd sui-kbd-sm">Esc</kbd> to close the dialog.</p>
     <p style="font-size:14px;color:var(--sui-text);margin:0;">Save your work with <span class="sui-kbd-group"><kbd class="sui-kbd sui-kbd-sm">Ctrl</kbd><span class="sui-kbd-separator">+</span><kbd class="sui-kbd sui-kbd-sm">S</kbd></span></p>
@@ -234,37 +248,29 @@ toc:
   </div>
   <div class="pg-code-wrap">
     <button class="pg-code-toggle" onclick="toggleGalleryCode(this)"><span class="chevron">&#9654;</span> Show Code</button>
-    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;!-- Inline with text --&gt;
-&lt;p&gt;Press &lt;kbd class="sui-kbd sui-kbd-sm"&gt;Esc&lt;/kbd&gt; to close the dialog.&lt;/p&gt;
-
-&lt;!-- Shortcut inline --&gt;
-&lt;p&gt;Save your work with
-  &lt;span class="sui-kbd-group"&gt;
-    &lt;kbd class="sui-kbd sui-kbd-sm"&gt;Ctrl&lt;/kbd&gt;
-    &lt;span class="sui-kbd-separator"&gt;+&lt;/span&gt;
-    &lt;kbd class="sui-kbd sui-kbd-sm"&gt;S&lt;/kbd&gt;
-  &lt;/span&gt;
-&lt;/p&gt;
-
-&lt;!-- Search bar --&gt;
-&lt;div style="display:flex;align-items:center;justify-content:space-between;..."&gt;
+    <div class="pg-code-block"><button class="pg-code-copy" onclick="copyPgCode(this)">Copy</button><pre>&lt;p style="font-size:14px;color:var(--sui-text);margin:0;"&gt;Press &lt;kbd class="sui-kbd sui-kbd-sm"&gt;Esc&lt;/kbd&gt; to close the dialog.&lt;/p&gt;
+&lt;p style="font-size:14px;color:var(--sui-text);margin:0;"&gt;Save your work with &lt;span class="sui-kbd-group"&gt;&lt;kbd class="sui-kbd sui-kbd-sm"&gt;Ctrl&lt;/kbd&gt;&lt;span class="sui-kbd-separator"&gt;+&lt;/span&gt;&lt;kbd class="sui-kbd sui-kbd-sm"&gt;S&lt;/kbd&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;div style="display:flex;align-items:center;justify-content:space-between;gap:40px;padding:10px 16px;border-radius:var(--sui-radius-xs);background:var(--sui-bg);box-shadow:var(--sui-shadow-raised-sm);font-size:14px;color:var(--sui-text);"&gt;
   &lt;span&gt;Search&lt;/span&gt;
-  &lt;span class="sui-kbd-group"&gt;
-    &lt;kbd class="sui-kbd sui-kbd-xs"&gt;&amp;#8984;&lt;/kbd&gt;
-    &lt;kbd class="sui-kbd sui-kbd-xs"&gt;K&lt;/kbd&gt;
-  &lt;/span&gt;
+  &lt;span class="sui-kbd-group"&gt;&lt;kbd class="sui-kbd sui-kbd-xs"&gt;&amp;#8984;&lt;/kbd&gt;&lt;kbd class="sui-kbd sui-kbd-xs"&gt;K&lt;/kbd&gt;&lt;/span&gt;
 &lt;/div&gt;
-
-&lt;!-- Command menu --&gt;
-&lt;div&gt;
-  &lt;div style="display:flex;align-items:center;justify-content:space-between;..."&gt;
+&lt;div style="display:flex;flex-direction:column;gap:2px;width:220px;"&gt;
+  &lt;div style="display:flex;align-items:center;justify-content:space-between;padding:8px 12px;border-radius:var(--sui-radius-xs);font-size:13px;color:var(--sui-text);"&gt;
     &lt;span&gt;Undo&lt;/span&gt;
-    &lt;span class="sui-kbd-group"&gt;
-      &lt;kbd class="sui-kbd sui-kbd-xs"&gt;&amp;#8984;&lt;/kbd&gt;
-      &lt;kbd class="sui-kbd sui-kbd-xs"&gt;Z&lt;/kbd&gt;
-    &lt;/span&gt;
+    &lt;span class="sui-kbd-group"&gt;&lt;kbd class="sui-kbd sui-kbd-xs"&gt;&amp;#8984;&lt;/kbd&gt;&lt;kbd class="sui-kbd sui-kbd-xs"&gt;Z&lt;/kbd&gt;&lt;/span&gt;
   &lt;/div&gt;
-  &lt;!-- ...more items --&gt;
+  &lt;div style="display:flex;align-items:center;justify-content:space-between;padding:8px 12px;border-radius:var(--sui-radius-xs);font-size:13px;color:var(--sui-text);"&gt;
+    &lt;span&gt;Redo&lt;/span&gt;
+    &lt;span class="sui-kbd-group"&gt;&lt;kbd class="sui-kbd sui-kbd-xs"&gt;&amp;#8984;&lt;/kbd&gt;&lt;kbd class="sui-kbd sui-kbd-xs"&gt;&amp;#8679;&lt;/kbd&gt;&lt;kbd class="sui-kbd sui-kbd-xs"&gt;Z&lt;/kbd&gt;&lt;/span&gt;
+  &lt;/div&gt;
+  &lt;div style="display:flex;align-items:center;justify-content:space-between;padding:8px 12px;border-radius:var(--sui-radius-xs);font-size:13px;color:var(--sui-text);"&gt;
+    &lt;span&gt;Copy&lt;/span&gt;
+    &lt;span class="sui-kbd-group"&gt;&lt;kbd class="sui-kbd sui-kbd-xs"&gt;&amp;#8984;&lt;/kbd&gt;&lt;kbd class="sui-kbd sui-kbd-xs"&gt;C&lt;/kbd&gt;&lt;/span&gt;
+  &lt;/div&gt;
+  &lt;div style="display:flex;align-items:center;justify-content:space-between;padding:8px 12px;border-radius:var(--sui-radius-xs);font-size:13px;color:var(--sui-text);"&gt;
+    &lt;span&gt;Paste&lt;/span&gt;
+    &lt;span class="sui-kbd-group"&gt;&lt;kbd class="sui-kbd sui-kbd-xs"&gt;&amp;#8984;&lt;/kbd&gt;&lt;kbd class="sui-kbd sui-kbd-xs"&gt;V&lt;/kbd&gt;&lt;/span&gt;
+  &lt;/div&gt;
 &lt;/div&gt;</pre></div>
   </div>
 </div>
